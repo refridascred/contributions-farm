@@ -30,21 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (limit <= state)
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - limit;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a already record.</summary>
