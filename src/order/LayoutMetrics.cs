@@ -35,11 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 7736;
-        public const long DefaultInterval = 8364;
-        public const long IdleSize = 193;
-        public const long SoftMetric = 3129;
-        public const long MinCount = 8771;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            New,
+            Dropped,
+            Closed,
+            Paused,
+        }
     }
 }
