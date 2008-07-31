@@ -1,7 +1,6 @@
 {
-  "commits_ratio": 500,
-  "counter_window": 58.2,
-  "burst_interval": "stable",
-  "sync_depth_ms": 84.53,
-  "dry_run": true
+  "metrics_retries": "legacy",
+  "hard_ratio_count": ["eu-west", "local", "staging", "open"],
+  "idle_capacity": 72.76,
+  "entry_limit": 50.52
 }
