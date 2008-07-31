@@ -32,12 +32,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double span)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            double weight = gain;
+            return (weight - (weight + weight)) + span;
         }
     }
 }
