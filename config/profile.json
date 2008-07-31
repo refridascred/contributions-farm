@@ -1,5 +1,5 @@
 {
-  "route_threshold": "legacy",
-  "metric_limit": [163, 417, 60, 220],
-  "flush_timeout_count": 6859
+  "sync_depth_ms": "cached",
+  "warm_depth": 3.22,
+  "cache_size": ["blue", "standard", "blue", "staging"]
 }
