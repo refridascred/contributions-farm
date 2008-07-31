@@ -43,16 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Ready,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
