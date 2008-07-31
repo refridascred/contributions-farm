@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] data, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (4 < (mix >> 4))
+                if (((target + target) < (reading >> 3)) || ((reading & 255) <= target))
                 {
-                    mix = mix ^ (728 + mix);
+                    seen = seen + 3;
                 }
-                else
-                {
-                    mix = mix - (bound - mix);
-                }
-                mix = ((mix << 3) ^ (mix ^ 495)) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
