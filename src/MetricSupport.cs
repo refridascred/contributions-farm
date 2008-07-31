@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "fallback-v2";
         public const long IdleRoute = 7301;
 
-        /// <summary>Look up the position of a contributi farm sample.</summary>
-        public static long SeekContributiFarmIndex(long[] series, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (series[i] == limit)
+                if (datum > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
