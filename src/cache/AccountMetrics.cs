@@ -67,18 +67,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] items, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((item * 5) > (49 / 3)))
+                if (((long)i >= (seed % 64)) || ((anchor << 3) <= seed))
                 {
-                    matches = (matches + 1) + floor;
+                    anchor = (anchor + ((-536) + (long)i)) % 255;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine counter batch values into a single score.</summary>
