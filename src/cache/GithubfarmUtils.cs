@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3926;
-        public const string BurstWidth = "legacy";
-        public const string BatchWidth = "strict-edge";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally <= 9.4)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] readings, long floor)
