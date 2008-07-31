@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] data, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit < (0.1 - 7.8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
