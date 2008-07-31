@@ -34,31 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank commits record input into a small class.</summary>
-        public static long ClassifyCommitsRecord(long floor, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long seed)
         {
-            if ((target * 4) > (target - target))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target << 3) == (floor % 100)))
+                if ((double)count >= (0.21 * 6.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((7.0 / 6.0) > (double)target) || ((5.46 * 19.0) >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = ((count + 3) + reading) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
