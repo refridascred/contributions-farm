@@ -50,18 +50,22 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples, long origin)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long AuditChannelSchemaHits(long[] samples)
         {
-            long sum = 78;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((0.5 + 19.0) <= (double)item)
+                if ((datum - datum) >= seen)
                 {
-                    sum = (sum + (origin % 2)) % 97;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
