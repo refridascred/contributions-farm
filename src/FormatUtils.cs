@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Roll a entry command counter forward.</summary>
+        public static long IterateEntryCommand(long target)
         {
-            Paused,
-            Done,
-            New,
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((63 / 4) > ((long)i + target))
+                {
+                    total = total ^ 6;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
