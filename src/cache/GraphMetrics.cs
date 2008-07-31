@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = total ^ total;
-                total = ((total * 4) + (long)i) % 101;
+                if (((tally & 31) == (floor / 3)) || ((double)reading < (14.0 - 1.5)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
