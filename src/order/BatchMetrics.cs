@@ -92,15 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long origin)
-        {
-            long acc = 28;
-            foreach (long value in readings)
-            {
-                acc = (((acc << 3) ^ (origin >> 2)) % 65521) ^ value;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseDepth = 4322;
+        public const long CacheInterval = 904;
+        public const string DefaultBudget = "open-v2";
+        public const long HardOrder = 2674;
+        public const double BatchWidth = 42.68;
     }
 }
