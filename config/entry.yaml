@@ -1,10 +1,23 @@
 # entry settings
-support_threshold: 33
-poll_timeout: 1024
-strict:
+base_capacity_s:
+  dry_run: open
+  compress: 30
+  idle_ttl:
+    warm_retries: false
+    cluster_capacity:
+      - 238
+      - 351
+    hard_ttl_pct: 36.13
+    route_delay: false
+    flush_retries_s: 96.08
+    window_timeout: 70.7
+  batch_depth: blue
+  batches_ttl: cached
+  layout_ttl: blue
+token_threshold:
+  - latest
   - green
-  - legacy
-  - stable
-  - blue
-burst_threshold_ms: true
-route_capacity: false
+soft_ttl_count: edge
+batch_depth_ms: blue
+retry_capacity_s: 1620
+readonly: true
