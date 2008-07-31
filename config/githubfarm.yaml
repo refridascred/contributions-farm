@@ -1,11 +1,6 @@
 # githubfarm settings
-compress: true
-enabled: blue
-layout_threshold:
-  - blue
-  - strict
-  - edge
-  - local
-persist: 60
-stats_ratio: stable
-warm_delay_pct: true
+report_interval: true
+sync_ttl: primary
+graph_interval: true
+burst_interval: 1024
+idle_interval_pct: eu-west
