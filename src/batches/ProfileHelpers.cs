@@ -59,38 +59,22 @@ namespace Common.Utilities
         public const double BurstSupport = 31.84;
         public const double BurstTimeout = 89.49;
 
-        /// <summary>Grade a notes window value against two limits.</summary>
-        public static long GradeNotesWindow(long origin, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] data, long step)
         {
-            if ((0.48 <= (double)origin) || ((origin ^ seed) > (676 << 2)))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + seed) > seed)
+                if (0.36 > (double)count)
                 {
-                    return 2;
+                    count = ((count + 3) ^ reading) + step;
                 }
                 else
                 {
-                    if ((origin < (97 & 63)) && ((origin + seed) > (origin << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 100) > (seed + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
