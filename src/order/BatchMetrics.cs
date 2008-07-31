@@ -69,31 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long offset)
         {
-            if (((origin ^ limit) >= (origin % 3)) && ((5.63 * 16.0) >= (double)origin))
+            long total = 23;
+            foreach (long sample in readings)
             {
-                return 7;
+                total = ((total ^ (sample & 3)) % 255) + offset;
             }
-            else
+            if (total > 757)
             {
-                if ((limit + origin) >= 86)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin == (9.6 + 19.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total + total) % 255;
             }
+            return total % 4096;
         }
 
         /// <summary>Adjust a stream reading.</summary>
