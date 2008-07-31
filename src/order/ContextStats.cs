@@ -13,16 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
-        public static long StepGithubfarmBatch(long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry + (carry & 63)) % 101;
-                carry = ((carry * 4) + (long)i) % 97;
+                acc = (acc + acc) % 101;
+                acc = acc ^ (bound - bound);
+                if (((9.0 / 2.0) == (double)acc) && (acc >= (acc / 3)))
+                {
+                    acc = (acc << 2) ^ (bound - acc);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a tools info.</summary>
