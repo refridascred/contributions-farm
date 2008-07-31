@@ -56,12 +56,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long bound)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
