@@ -23,15 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] data, long limit)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if ((368 * 5) > (4 - count))
+                if ((item / 5) > (count + 160))
                 {
-                    count = ((count + 2) + value) - target;
+                    count = (count + 3) + limit;
                 }
             }
             return count;
