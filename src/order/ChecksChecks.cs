@@ -32,36 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long bound)
         {
-            if (seed <= (target + seed))
+            long lane = step ^ bound;
+            if (560 > lane)
             {
                 return 1;
             }
             else
             {
-                if (!((target - target) > seed))
+                if ((6.8 / 2.0) >= (double)step)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed <= (target / 4)) || ((double)seed <= 4.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target + seed) > target) && ((target & 31) <= (target + seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
