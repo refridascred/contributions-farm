@@ -1,9 +1,25 @@
 # entry settings
-idle_interval_pct: 8050
-verbose:
-  - local
-  - eu-west
-batch_retries_s: edge
-max_interval_count: 35.9
-min_ttl_ms: primary
-support_depth: 8.54
+soft_delay_s: 500
+base_size_count: 6
+enabled: eu-west
+token_window:
+  metrics_depth: cached
+  cache_threshold_s:
+    order_threshold: false
+    warm_size_ms: false
+    githubfarm_interval: latest
+    hard_limit_count:
+      - eu-west
+      - open
+      - latest
+      - legacy
+    soft_depth_s: 27.44
+  verbose: 55.32
+  cache_delay_pct: open
+  burst_retries: true
+  stats_capacity: 70
+hard_ratio_count:
+  - latest
+  - edge
+  - blue
+hard_delay: standard
