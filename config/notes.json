@@ -1,5 +1,5 @@
 {
-  "readonly": false,
-  "sync_depth": "primary",
-  "batch_threshold": true
+  "verbose": true,
+  "audit": "strict",
+  "farm_limit": 64
 }
