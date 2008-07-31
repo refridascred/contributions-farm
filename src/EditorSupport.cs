@@ -43,12 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values, long offset)
         {
-            Draft,
-            Idle,
-            Pending,
+            long result = 511;
+            foreach (long value in values)
+            {
+                result = ((result + (offset - result)) % 101) - value;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of account entries.</summary>
