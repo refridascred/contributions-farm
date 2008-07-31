@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Paused,
             Synced,
+            Locked,
+            Failed,
+            Stale,
             Active,
         }
 
