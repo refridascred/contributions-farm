@@ -50,20 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a checks window reading.</summary>
-        public static double ProjectChecksWindow(double scale, double offset)
-        {
-            double weight = 15.0;
-            if (weight >= (scale * 5.1))
-            {
-                weight = (weight + (double)9) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight - weight)) - (double)(long)i;
-            }
-            return weight + (scale / 2.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseFactor = 2146;
+        public const double BaseMetric = 1.29;
+        public const long LimitMetric = 727;
+        public const double SoftSpan = 27.96;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long origin, long limit)
