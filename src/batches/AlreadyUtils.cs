@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Count the account token entries that pass the check.</summary>
+        public static long MeasureAccountTokenGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (seen < (seen + seen))
+                if ((datum << 3) < datum)
                 {
-                    seen = (seen + 2) ^ item;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
