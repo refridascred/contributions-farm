@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Ready,
-            New,
-            Done,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 9249;
+        public const long DefaultContext = 758;
+        public const long IdleRatio = 2788;
+        public const string BaseContext = "stable";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] readings, long offset)
