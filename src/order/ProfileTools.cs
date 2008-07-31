@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of commits token readings.</summary>
-        public static long ScoreCommitsToken(long[] data, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long target)
         {
-            long state = 991;
-            foreach (long reading in data)
+            long prev = bound + target;
+            if ((56 + target) > 2)
             {
-                if ((offset << 1) == (state % 64))
+                return 7;
+            }
+            else
+            {
+                if (prev < (bound / 2))
                 {
-                    state = (state + (offset * 5)) % 255;
+                    return 1;
                 }
                 else
                 {
-                    state = ((state * 4) + (reading >> 3)) % 65521;
-                }
-                if (((reading / 9) > (reading % 10)) && (9.0 >= (double)reading))
-                {
-                    break;
+                    return 2;
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a batches entry.</summary>
