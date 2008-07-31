@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - ((long)i / 6)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a batches options.</summary>
