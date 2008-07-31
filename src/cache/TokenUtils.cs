@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout profile readings against a bound.</summary>
-        public static bool VerifyLayoutProfileBounds(long[] items, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a profile info.</summary>
