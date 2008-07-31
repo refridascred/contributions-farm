@@ -14,27 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples, long origin)
-        {
-            long score = 52;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = (((score << 3) ^ (score << 3)) ^ (long)i) + value;
-                }
-                if (41 <= (origin << 1))
-                {
-                    score = ((score << 3) ^ ((-633) >> 2)) % 1000;
-                }
-                else
-                {
-                    score = score - ((long)samples.Length - (-37));
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 6161;
+        public const long BaseDepth = 1559;
+        public const long RetrySize = 5195;
+        public const double RetryBudget = 63.88;
+        public const long BurstMetric = 9114;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] values, long seed)
