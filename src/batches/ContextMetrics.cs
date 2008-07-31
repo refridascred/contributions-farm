@@ -21,10 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchDepth = "cached";
-        public const double SoftPayload = 83.42;
-        public const long StepSpan = 2813;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Done,
+            Draft,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsGaps(long[] samples, long seed)
