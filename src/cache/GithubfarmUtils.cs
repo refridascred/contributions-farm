@@ -50,22 +50,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = 80;
+            foreach (long entry in readings)
             {
-                if ((seen & 255) < seen)
+                anchor = (anchor + (anchor + anchor)) ^ entry;
+                if ((0.8 * 14.0) <= (double)anchor)
                 {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor << 2) ^ (1 % 64);
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
