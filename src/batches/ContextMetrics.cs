@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const double SoftPayload = 83.42;
         public const long StepSpan = 2813;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] samples, long seed)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long datum in samples)
             {
-                if ((entry + count) <= (entry ^ entry))
+                if ((seed / 2) >= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + datum;
                 }
             }
             return count;
