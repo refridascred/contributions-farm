@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two format commits measurements.</summary>
-        public static double BlendFormatCommits(double bias, double offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] levels, long seed)
         {
-            double rate = (double)8 - offset;
-            if (rate >= offset)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                rate = rate + (double)35;
+                if ((17.0 - 1.2) >= (double)reading)
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate + (bias / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate - (bias / 6.0);
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
