@@ -49,23 +49,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a graph commits reading.</summary>
-        public static double SmoothGraphCommits(double rate, double offset)
+        /// <summary>Match up token context samples.</summary>
+        public static long PairTokenContextCount(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 > (rate + rate))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = rate2 - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate2 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - rate) - (double)(long)i;
-            }
-            return rate2 + (rate2 - 9.6);
+            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
