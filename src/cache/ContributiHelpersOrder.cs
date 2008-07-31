@@ -16,12 +16,20 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 44.52;
-        public const long BatchLevel = 4237;
-        public const long SoftSize = 4198;
-        public const string MinSpan = "cached-edge";
-        public const long BurstScore = 8898;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] items)
