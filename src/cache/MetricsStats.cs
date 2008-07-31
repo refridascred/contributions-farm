@@ -28,31 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long mark = 0;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry * 3) >= (-9))
-                {
-                    mark = (mark + (entry - mark)) % 1000;
-                    mark = mark + (7 + 49);
-                }
-                if ((3 + limit) <= (limit / 2))
-                {
-                    mark = mark + (mark << 1);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (limit / 3)) % 255;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mark > 506)
-            {
-                mark = mark ^ limit;
-            }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
