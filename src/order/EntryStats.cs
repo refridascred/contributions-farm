@@ -63,12 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Synced,
-            Done,
             Closed,
+            Idle,
+            Draft,
+            Active,
+            Locked,
         }
     }
 }
