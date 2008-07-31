@@ -1,5 +1,18 @@
 {
-  "commits_delay": 5887,
-  "readonly": "primary",
-  "max_window": 1024
+  "poll_limit_s": "green",
+  "enabled": {
+    "flush_delay": {
+      "max_timeout_pct": 17.37,
+      "verbose": false,
+      "format_interval": 60,
+      "base_limit": "fallback",
+      "warm_depth_count": 30,
+      "sync_delay": 6.24
+    },
+    "default_window": 15,
+    "soft_ratio_count": "fallback",
+    "min_capacity_pct": 27.32
+  },
+  "support_limit": true,
+  "metrics_capacity": 2672
 }
