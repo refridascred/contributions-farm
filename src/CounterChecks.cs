@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long offset)
         {
-            long sum = 3;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((double)sum == (20.0 / 3.0)))
+                if (cell < offset)
                 {
-                    sum = ((sum * 3) + (46 + sum)) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum << 2) ^ (sum - sum);
-            }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Grade a commits metrics value against two limits.</summary>
