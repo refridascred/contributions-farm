@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache stream entry stays within the limit.</summary>
-        public static bool ValidateCacheStreamLimits(long[] levels, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= limit)
+                if (levels[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
