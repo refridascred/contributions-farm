@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] series, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
