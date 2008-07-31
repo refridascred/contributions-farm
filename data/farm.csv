@@ -1,6 +1,9 @@
-id,region,rank,weight,label
-1,29.24,380,330,strict
-2,821,green,86.53,30.35
-3,980,873,29.84,327
-4,554,672,470,84.3
-5,26.22,50.56,72.31,300
+id,rank,ratio,level,owner
+1,41.6,375,standard,136
+2,stable,strict,8.2,62.5
+3,eu-west,325,13.59,cached
+4,86.37,5.11,fallback,529
+5,primary,stable,open,91.88
+6,48.93,551,454,998
+7,primary,567,74.76,fallback
+8,local,312,910,898
