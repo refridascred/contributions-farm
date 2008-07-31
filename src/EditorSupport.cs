@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long HardEntry = 9839;
         public const long DefaultEntry = 6237;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinDepth = 9152;
-        public const long BurstProfile = 3117;
-        public const double LimitBudget = 45.06;
-        public const long RetryProfile = 1071;
-        public const long HardProfile = 8202;
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long TallyRouteTokenOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < 3.76)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
