@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 6300;
-        public const long SoftOrder = 3337;
-        public const long MinWidth = 8062;
+        /// <summary>Compare every pair of metrics command readings.</summary>
+        public static long CompareMetricsCommandCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] data)
