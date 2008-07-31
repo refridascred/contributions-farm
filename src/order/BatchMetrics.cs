@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 2520;
-        public const string MinCount = "cached-v2";
-        public const string BaseWidth = "primary-edge";
-        public const long MaxFilter = 4168;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Adjust a checks window reading.</summary>
         public static double ProjectChecksWindow(double scale, double offset)
