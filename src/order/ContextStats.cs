@@ -33,21 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 459;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result - ((-9) - 3)) % 4096) - value;
+                if (!((double)bound > (double)result))
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result + 78;
+                }
+                if (!((bound << 1) >= (result / 5)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 57)
+            {
+                result = result - (result & 31);
+            }
+            return result % 1000;
         }
 
         /// <summary>Adjust a command reading.</summary>
