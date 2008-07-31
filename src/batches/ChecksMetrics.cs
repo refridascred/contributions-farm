@@ -14,22 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats metrics readings against a rule.</summary>
-        public static long CountStatsMetricsMatches(long[] values)
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long CombineToolsCommand(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = -7;
+            foreach (long cell in samples)
             {
-                if ((reading / 6) > reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum + (sum - sum)) ^ cell;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
