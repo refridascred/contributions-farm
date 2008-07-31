@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryInterval = "alpha-1";
-        public const long LimitCount = 2465;
-        public const long StepBudget = 1580;
-        public const long MaxMetric = 9000;
-        public const string LimitMetric = "open-1";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (target >= (target - cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] readings, long limit)
