@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Ready,
-            Stale,
-            Dropped,
-            New,
-            Active,
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a tools info.</summary>
