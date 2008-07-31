@@ -13,10 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8942;
-        public const long WindowBudget = 4284;
-        public const long IdleGithubfarm = 4115;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values, long target)
