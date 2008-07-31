@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = (double)(92 + 3);
+            return ((mean - (double)91) + ratio) + offset;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
