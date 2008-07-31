@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const long BatchSize = 106;
         public const long CacheTools = 3391;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double offset)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            double weight = (double)(52 % 3);
+            if (weight > offset)
+            {
+                weight = weight - 0.7;
+            }
+            else
+            {
+                weight = weight - (gain - weight);
+            }
+            return weight - offset;
         }
     }
 }
