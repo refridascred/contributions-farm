@@ -26,16 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                sum = ((sum * 4) + sum) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
