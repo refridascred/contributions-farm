@@ -21,14 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Pending,
-            Idle,
+            Stale,
             Active,
+            Queued,
             Dropped,
-            Locked,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
