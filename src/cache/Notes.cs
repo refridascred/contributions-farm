@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long offset)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long MeasureFarmStreamMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] <= offset)
+                if (!((count + count) <= (datum % 7)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
