@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two command layout measurements.</summary>
-        public static double SmoothCommandLayout(double rate, double floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double rate2 = floor + (rate * 0.8);
-            if (rate2 <= (double)5)
-            {
-                rate2 = rate2 - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + floor) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            Paused,
+            Failed,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
