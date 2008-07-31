@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples, long floor)
         {
-            long total = -202;
+            long tally = 0;
             foreach (long entry in samples)
             {
-                if ((total ^ limit) < (limit + 998))
+                if ((entry - floor) >= floor)
                 {
-                    total = ((total << 3) ^ (entry & 7)) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    total = total + (total / 2);
-                }
-                if ((limit >> 4) < (limit ^ limit))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (total > 97)
-            {
-                total = total ^ (total / 2);
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
