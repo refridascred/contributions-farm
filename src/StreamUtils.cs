@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Count the profile format entries that pass the check.</summary>
+        public static long AuditProfileFormatMatches(long[] levels, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (!(((floor << 1) < (99 + entry)) && ((floor + entry) > (floor & 15))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
