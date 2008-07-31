@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < offset)
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
