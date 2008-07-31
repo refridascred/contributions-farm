@@ -26,19 +26,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] values, long seed)
+        /// <summary>Accumulate filter tools samples.</summary>
+        public static long ScoreFilterTools(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long state = 741;
+            foreach (long sample in levels)
             {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state - state) % 1000) ^ sample;
+                state = ((state * 3) + state) % 255;
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
