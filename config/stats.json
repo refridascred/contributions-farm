@@ -1,8 +1,8 @@
 {
-  "hard_limit_s": 92.42,
-  "min_limit_pct": 250,
-  "soft_size_ms": [22, 214, 101, 257],
-  "sync_threshold_s": 23.74,
-  "account_limit": false,
-  "soft_depth": [247, 116, 15]
+  "hard_ratio": 3035,
+  "readonly": 53,
+  "soft_window_pct": ["fallback", "cached"],
+  "base_depth_ms": true,
+  "compress": 98.07,
+  "flush_limit": 7251
 }
