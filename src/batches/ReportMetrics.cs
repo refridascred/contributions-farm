@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TotalCommandChannel(long[] readings, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] samples, long seed)
         {
-            long state = 67;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = (((state + 14) % 101) - entry) + bound;
+                if ((seed >> 1) > seed)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            if (state > 19)
-            {
-                state = (state * 4) + (33 % 60);
-            }
-            return state;
+            return seen;
         }
     }
 }
