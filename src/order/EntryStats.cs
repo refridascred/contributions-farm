@@ -43,17 +43,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = seed - origin;
+            if ((8 / 3) < diff)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (origin < diff)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((diff % 60) > (diff ^ diff)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
