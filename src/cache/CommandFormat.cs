@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values, long step)
         {
-            Synced,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((6 - step) != (step / 6))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
