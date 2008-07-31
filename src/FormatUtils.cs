@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Fold a list of order graph readings.</summary>
-        public static long CombineOrderGraph(long[] readings, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long bound)
         {
-            long mix = 736;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mix = (((mix * 2) + (seed % 60)) % 1000) ^ entry;
+                if ((seen / 5) >= (cell / 2))
+                {
+                    seen = (seen + 1) + bound;
+                }
             }
-            if (mix > 2)
-            {
-                mix = mix + (seed ^ mix);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
