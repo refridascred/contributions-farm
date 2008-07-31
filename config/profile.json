@@ -1,13 +1,10 @@
 {
-  "compress": "staging",
-  "burst_ratio_count": 3056,
-  "notes_threshold": {
-    "idle_retries_s": "blue",
-    "dry_run": 1024,
-    "max_window": 44,
-    "strict": false,
-    "command_window": 5885,
-    "readonly": 20.7
+  "sync_delay_s": {
+    "profile_timeout": 6872,
+    "cache_size_pct": "primary",
+    "warm_retries_pct": "blue",
+    "min_ttl": 79.35
   },
-  "dry_run": 6891
+  "dry_run": "blue",
+  "cache_limit_count": 40.68
 }
