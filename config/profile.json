@@ -1,8 +1,13 @@
 {
-  "queue_retries": "legacy",
-  "flush_limit": "primary",
-  "verbose": ["green", "local", "primary", "blue"],
-  "base_limit": true,
-  "max_ttl": 60,
-  "poll_capacity_pct": "blue"
+  "cache_capacity_ms": {
+    "payload_threshold": 24.27,
+    "burst_interval_s": "green",
+    "retry_capacity_pct": 11.52
+  },
+  "readonly": ["strict", "local", "cached", "staging"],
+  "entry_retries": {
+    "warm_window": 3583,
+    "queue_interval": 6546,
+    "sync_delay": 74.11
+  }
 }
