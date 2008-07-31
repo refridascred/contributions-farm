@@ -16,31 +16,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            if (((8.83 + 0.4) < (double)origin) && ((double)origin > 8.3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (origin % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 2) >= (step * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double gain = (4.3 * 5.7) * 2.16;
+            return ((gain + (double)82) + rate) + bias;
         }
 
         /// <summary>Describe the route level values.</summary>
