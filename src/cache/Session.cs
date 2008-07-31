@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long AuditWindowCounterGaps(long[] values, long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1.0 < (double)seen)
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
                 {
-                    seen = ((seen + 3) - cell) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
