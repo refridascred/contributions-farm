@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
