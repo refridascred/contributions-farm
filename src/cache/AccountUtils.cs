@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Check that every cache stream entry stays within the limit.</summary>
+        public static bool ValidateCacheStreamLimits(long[] levels, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the queue phase values.</summary>
