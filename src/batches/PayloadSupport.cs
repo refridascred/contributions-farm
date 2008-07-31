@@ -13,18 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "staging-1";
+        public const long BatchInterval = 2312;
+        public const long SoftDepth = 8018;
+        public const long HardTools = 5959;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] levels, long bound)
