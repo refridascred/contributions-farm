@@ -44,18 +44,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] readings, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((5.0 * 3.1) != (double)target) || ((double)item <= (6.16 * 10.0)))
+                if (!((anchor + (long)i) > ((long)i + anchor)))
                 {
-                    count = count + 1;
+                    anchor = (anchor * 4) + (anchor + anchor);
+                    anchor = anchor ^ step;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many token profile samples are out of range.</summary>
