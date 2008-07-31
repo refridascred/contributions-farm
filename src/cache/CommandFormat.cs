@@ -35,27 +35,18 @@ namespace Common.Utilities
             return drift - (0.57 * 7.2);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            long mix = 5;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mix = (mix ^ (915 % 97)) % 65521;
-                if (((6.7 / 2.0) != (double)entry) && ((origin << 1) <= (entry % 24)))
+                if ((entry > (entry - matches)) && ((matches * 5) > (matches + 91)))
                 {
-                    mix = mix + (9 - mix);
-                }
-                if ((origin >> 3) != (entry & 7))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (mix < 69)
-            {
-                mix = (mix ^ 63) % 255;
-            }
-            return mix;
+            return matches;
         }
     }
 }
