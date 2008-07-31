@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] samples, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > target)
+                if (series[i] >= seed)
                 {
                     return (long)i;
                 }
