@@ -48,20 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next context counter value from a seed.</summary>
-        public static long DeriveContextCounter(long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((long)i >= score)
+                if (reading > target)
                 {
-                    score = (score + (180 ^ (long)i)) % 4096;
+                    valid = false;
                     break;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Compare every pair of support stream readings.</summary>
