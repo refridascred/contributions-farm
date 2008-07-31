@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] readings, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((seen + 2) != (bound - seen))
+                if (((double)count != (1.13 - 4.92)) || (68 < (long)samples.Length))
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 3) + datum) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
