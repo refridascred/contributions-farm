@@ -33,18 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools farm entries that pass the check.</summary>
-        public static long TallyToolsFarmOutliers(long[] values, long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if (origin > (limit ^ origin))
             {
-                if ((limit ^ tally) < (limit * 5))
+                return 6;
+            }
+            else
+            {
+                if ((limit - 3) > (origin + origin))
                 {
-                    tally = (tally + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
