@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6541;
-        public const string BaseFactor = "open";
-        public const long IdleFormat = 5605;
-        public const double BaseFormat = 98.68;
-        public const string IdleWidth = "stable";
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double weight, double floor)
+        {
+            double load = 4.0;
+            if (load < 2.7)
+            {
+                load = ((load + 6.0) - weight) - floor;
+            }
+            return load + load;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterGaps(long[] levels)
