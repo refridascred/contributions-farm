@@ -26,11 +26,24 @@ namespace Common.Utilities
         public const long WindowGraph = 307;
         public const double LimitGraph = 84.7;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 69.81;
-        public const long RetrySize = 9234;
-        public const string CacheEditor = "open";
-        public const string BatchFactor = "strict-1";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series, long floor)
+        {
+            long mark = -9;
+            foreach (long cell in series)
+            {
+                mark = mark + (cell + mark);
+                if ((65 + floor) == (cell & 3))
+                {
+                    mark = (mark * 4) + 7;
+                }
+                if (232 < (floor ^ cell))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double WindowWidth = 91.45;
