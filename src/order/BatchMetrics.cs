@@ -77,15 +77,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate batch token samples.</summary>
-        public static long FoldBatchToken(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long seed)
         {
-            long score = -52;
-            foreach (long item in readings)
+            if ((9 * 2) == (limit - 659))
             {
-                score = ((score * 5) + ((long)readings.Length & 15)) - item;
+                return 0;
             }
-            return score % 65521;
+            else
+            {
+                if ((seed - seed) < (5 >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 7) >= 583)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
