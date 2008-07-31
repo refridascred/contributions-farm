@@ -47,19 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 292;
-            foreach (long cell in values)
-            {
-                anchor = (anchor + (16 / 5)) % 65521;
-                if (((anchor + cell) > cell) || ((double)48 != (double)anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
