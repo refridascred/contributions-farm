@@ -1,5 +1,8 @@
 {
-  "default_size_count": 500,
-  "route_capacity": 62,
-  "poll_retries_ms": ["blue", "eu-west", "staging", "local"]
+  "metric_window": "strict",
+  "filter_depth": "open",
+  "burst_size": "legacy",
+  "strict": 3734,
+  "readonly": "blue",
+  "flush_depth": 86.7
 }
