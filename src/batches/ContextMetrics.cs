@@ -40,11 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseTimeout = 1779;
-        public const long DefaultScore = 7118;
-        public const long LimitCount = 163;
-        public const long BurstSupport = 7409;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a editor session value against two limits.</summary>
         public static long GradeEditorSession(long floor, long step)
