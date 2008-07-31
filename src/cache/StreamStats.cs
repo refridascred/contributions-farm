@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long SoftRecord = 4286;
         public const long IdleRatio = 5952;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long origin)
         {
-            long state = 4;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((bound * 4) < entry)
+                if (reading < origin)
                 {
-                    state = (state * 2) + (bound * 2);
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
     }
 }
