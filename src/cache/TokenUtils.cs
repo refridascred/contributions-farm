@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + (long)samples.Length) <= reading)
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
