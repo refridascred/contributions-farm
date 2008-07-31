@@ -42,12 +42,21 @@ namespace Common.Utilities
         public const long MaxGraph = 3267;
         public const string BatchGraph = "staging-v2";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
