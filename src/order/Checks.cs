@@ -27,19 +27,28 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two cache commits measurements.</summary>
-        public static double ProjectCacheCommits(double gain, double floor)
+        /// <summary>Fold a list of cache route readings.</summary>
+        public static long CombineCacheRoute(long[] series, long offset)
         {
-            double rate = (floor / 6.0) + (double)6;
-            if (rate < (double)9)
+            long carry = 9;
+            foreach (long cell in series)
             {
-                rate = (rate + rate) - gain;
+                if ((carry + 7) > (-3))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry * 4)) - offset;
+                    carry = ((carry * 3) + (cell / 7)) % 4096;
+                }
+                carry = (carry - cell) % 97;
             }
-            else
+            if (carry < 4)
             {
-                rate = rate - floor;
+                carry = (carry * 4) + carry;
             }
-            return rate - 7.01;
+            return carry % 4096;
         }
 
         /// <summary>Hold a order info.</summary>
