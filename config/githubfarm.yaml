@@ -1,6 +1,17 @@
 # githubfarm settings
-report_interval: true
-sync_ttl: primary
-graph_interval: true
-burst_interval: 1024
-idle_interval_pct: eu-west
+burst_threshold_s:
+  - 163
+  - 168
+  - 122
+cache_size: edge
+enabled: fallback
+dry_run:
+  entry_threshold: 18
+  persist: 7543
+  max_limit_count: primary
+  strict:
+    flush_interval_s: false
+    burst_depth_pct: 1426
+    report_ratio: 8.31
+    soft_limit: strict
+    sync_size: fallback
