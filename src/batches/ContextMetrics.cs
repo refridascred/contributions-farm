@@ -44,17 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if ((double)datum <= (5.0 / 6.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many token profile samples are out of range.</summary>
