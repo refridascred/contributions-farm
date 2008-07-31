@@ -1,12 +1,17 @@
 {
-  "readonly": 82.8,
-  "session_timeout": "stable",
-  "sync_limit": {
-    "sync_ratio_s": 6633,
-    "idle_ratio_count": 8046,
-    "verbose": ["fallback", "fallback"]
+  "poll_depth_ms": "local",
+  "max_retries": {
+    "support_delay": "latest",
+    "retry_limit": "green",
+    "layout_threshold": false,
+    "poll_limit_ms": {
+      "metrics_window": 7558,
+      "warm_timeout_s": "blue",
+      "batch_depth_s": "edge",
+      "batch_timeout": true,
+      "verbose": 30
+    }
   },
-  "sync_ratio": ["fallback", "edge", "local", "blue"],
-  "tools_depth": "latest",
-  "max_depth_count": 82
+  "filter_ttl": "local",
+  "retry_delay_pct": true
 }
