@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) < (cell & 15))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
