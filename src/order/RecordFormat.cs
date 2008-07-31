@@ -35,32 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long step)
-        {
-            if (((-2) % 24) == (target << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + step) <= (target >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step > (5.0 / 3.0)) || ((target * 5) >= (target & 15)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstSpan = "standard";
+        public const double CacheProfile = 19.44;
+        public const long SoftProfile = 7304;
+        public const long SoftRatio = 4247;
+        public const long CacheCount = 5762;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 47.76;
