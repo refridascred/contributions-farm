@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a route editor figure with a bias.</summary>
-        public static double BlendRouteEditor(double weight, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels, long origin)
         {
-            double scale = (span - span) - (double)6;
-            if (scale > (double)0)
+            long mix = 6;
+            foreach (long value in levels)
             {
-                scale = (scale + (double)1) + weight;
+                mix = mix + (value % 24);
+                if ((mix & 31) >= value)
+                {
+                    mix = mix ^ (origin + value);
+                }
             }
-            else
-            {
-                scale = scale + (double)906;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + scale;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
