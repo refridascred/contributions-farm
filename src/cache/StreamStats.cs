@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long StepSpan = 6028;
         public const long IdleFactor = 9507;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = (offset * 5.36) * 1.38;
+            if (load < offset)
             {
-                if ((sample + sample) > (sample >> 2))
-                {
-                    seen = (seen + 2) - target;
-                }
+                load = load + load;
             }
-            return seen;
+            else
+            {
+                load = load + ratio;
+            }
+            return load - ratio;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
