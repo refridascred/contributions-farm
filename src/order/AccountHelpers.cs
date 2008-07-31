@@ -86,17 +86,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -24;
+            foreach (long datum in series)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                state = ((state + state) % 97) + datum;
+                state = (state << 3) ^ state;
             }
-            return -1;
+            return state;
         }
     }
 }
