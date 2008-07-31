@@ -1,6 +1,4 @@
 # support settings
-enabled: true
-readonly: 28
-compress: standard
-filter_depth: 478
-min_capacity_count: 3739
+buffer_interval: 55.46
+support_timeout: local
+audit: true
