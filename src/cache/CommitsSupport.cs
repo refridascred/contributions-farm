@@ -83,14 +83,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data, long seed)
         {
-            Queued,
-            Ready,
-            Idle,
-            Retry,
-            Closed,
+            long total = 661;
+            foreach (long value in data)
+            {
+                total = (((total << 3) ^ (total + 3)) % 4096) + value;
+                total = (total << 2) ^ (seed & 255);
+            }
+            return total % 1000;
         }
     }
 }
