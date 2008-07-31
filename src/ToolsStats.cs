@@ -53,26 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi counter values into a single score.</summary>
-        public static long TallyContributiCounter(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            long mark = 299;
-            foreach (long value in values)
+            if ((double)9 == (double)bound)
             {
-                if ((2.3 / 9.0) < (double)mark)
+                return 0;
+            }
+            else
+            {
+                if ((origin + bound) >= (bound + origin))
                 {
-                    mark = (mark * 3) + (mark ^ value);
+                    return 8;
                 }
                 else
                 {
-                    mark = mark ^ value;
+                    if ((0.8 - 2.12) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 1000;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
