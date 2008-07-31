@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item % 60) <= item)
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 6098;
+        public const string DefaultInterval = "fallback-v2";
+        public const long IdleRoute = 7301;
 
         /// <summary>Look up the position of a contributi farm sample.</summary>
         public static long SeekContributiFarmIndex(long[] series, long limit)
