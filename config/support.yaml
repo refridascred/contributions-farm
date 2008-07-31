@@ -1,4 +1,15 @@
 # support settings
-hard_timeout_pct: 89
-cluster_ratio: 27
-payload_threshold: latest
+poll_timeout:
+  verbose: 42.74
+  base_depth: legacy
+  flush_size_count: primary
+  max_threshold_pct: blue
+  default_threshold_count: blue
+  dry_run: 100
+idle_ratio: primary
+stream_delay: blue
+cache_window_pct: 2859
+soft_size:
+  - green
+  - cached
+base_delay: 44
