@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((entry <= bound) || (entry < (entry << 3))) && ((entry / 9) < entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
