@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate layout stats samples.</summary>
-        public static long CombineLayoutStats(long[] readings)
+        /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
+        public static long SortEditorGithubfarm(long seed, long floor)
         {
-            long mix = 2;
-            foreach (long item in readings)
+            if (floor <= seed)
             {
-                for (int i = 0; i < 10; i++)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= (7.9 / 4.0))
                 {
-                    mix = ((mix + (9 - mix)) % 255) ^ (long)i;
-                }
-                if ((mix <= (item % 2)) && ((9.11 + 1.55) <= (double)mix))
-                {
-                    mix = mix ^ (423 - mix);
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (item + item);
+                    if ((seed << 3) <= (seed - 41))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - floor) > seed) && ((floor - floor) >= 74))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
