@@ -70,19 +70,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next schema entry value.</summary>
-        public static double SmoothSchemaEntry(double bias, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long floor)
         {
-            double drift = bias;
-            if (drift <= offset)
+            if (!((double)step <= (6.27 * 4.95)))
             {
-                drift = drift + offset;
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift - (drift / 5.0)) + (double)(long)i;
+                if (748 <= (1 + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < (365 % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= ((-25) + (-8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return drift - (drift + bias);
         }
     }
 }
