@@ -21,33 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a order schema pair into a bucket.</summary>
-        public static long BucketOrderSchema(long origin, long offset)
-        {
-            long step = origin ^ offset;
-            if (!((double)step < (double)31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((882 >> 3) >= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (76 % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchDepth = "cached";
+        public const double SoftPayload = 83.42;
+        public const long StepSpan = 2813;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] values)
