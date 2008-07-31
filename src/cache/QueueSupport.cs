@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
