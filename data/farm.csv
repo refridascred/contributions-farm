@@ -1,11 +1,6 @@
-id,ratio,count,active
-1,latest,36,9.07
-2,977,415,147
-3,740,353,925
-4,46.97,eu-west,70.72
-5,389,636,73
-6,478,66.96,553
-7,staging,208,standard
-8,edge,30.05,31.34
-9,353,28.44,legacy
-10,43.71,legacy,legacy
+id,level,ratio,score
+1,fallback,51.55,617
+2,primary,eu-west,596
+3,756,48.69,527
+4,49,71.32,842
+5,634,308,standard
