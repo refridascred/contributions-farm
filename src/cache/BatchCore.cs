@@ -30,11 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
