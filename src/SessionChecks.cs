@@ -28,22 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            long sum = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((sum - limit) >= (sample + sum))
+                if ((cell % 10) <= count)
                 {
-                    sum = ((sum << 3) ^ (sum * 2)) % 101;
+                    count = count + 3;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum ^ (sum - limit)) % 97;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Locate a tools buffer reading by value.</summary>
