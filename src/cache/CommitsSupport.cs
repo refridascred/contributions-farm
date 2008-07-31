@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
             Stale,
-            Active,
-            Ready,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate stream queue readings against a bound.</summary>
