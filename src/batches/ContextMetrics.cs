@@ -49,24 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long origin2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] values)
         {
-            if (!((origin2 / 4) < (8 ^ origin)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 1) <= (origin2 + origin2))
+                if ((entry + count) <= (entry ^ entry))
                 {
-                    return 7;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
