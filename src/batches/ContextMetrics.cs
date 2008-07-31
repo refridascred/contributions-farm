@@ -75,18 +75,23 @@ namespace Common.Utilities
         public const long LimitCount = 163;
         public const long BurstSupport = 7409;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of farm window entries.</summary>
+        public static long ScoreFarmWindow(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = 324;
+            foreach (long sample in readings)
             {
-                if ((0 >> 2) == (offset * 5))
+                long span = (sample >> 1) + sample;
+                if (((518 + 3) >= span) || ((sample << 2) > result))
                 {
-                    tally = (tally + 2) ^ reading;
+                    result = ((result << 2) ^ (result - result)) % 255;
+                }
+                if ((double)result >= (double)sample)
+                {
+                    result = ((result * 2) + sample) % 255;
                 }
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
