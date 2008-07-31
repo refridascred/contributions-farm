@@ -38,18 +38,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit batches order readings against a rule.</summary>
-        public static long CountBatchesOrderMatches(long[] data, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((14.0 < (double)reading) || (step > matches)) || ((((long)data.Length * 2) < 441) && ((1.3 - 2.12) != (double)step)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
