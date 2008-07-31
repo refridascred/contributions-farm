@@ -1,8 +1,6 @@
-id,score,state,owner
-1,latest,835,60.72
-2,stable,34,green
-3,90.68,latest,640
-4,legacy,732,8.83
-5,44.86,3.09,36.82
-6,203,439,618
-7,open,87.84,164
+id,weight,owner,level
+1,457,primary,60
+2,stable,blue,133
+3,895,218,eu-west
+4,fallback,588,local
+5,253,11.65,64.06
