@@ -32,18 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((6 >> 4) <= hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
