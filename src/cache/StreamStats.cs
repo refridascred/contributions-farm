@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long limit, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((double)floor == (4.37 * 14.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 / 2.0) <= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= 7)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((16.0 * 8.88) > (0.26 / 9.0)) && ((1.5 * 9.8) >= (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
