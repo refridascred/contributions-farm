@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token farm readings.</summary>
-        public static long OverlapTokenFarmCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 151;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)offset == (8.0 * 16.0))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 2) ^ (-526)) ^ datum;
                 }
             }
-            return hits;
+            if (mark < 931)
+            {
+                mark = (mark - (offset / 9)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every format window entry stays within the limit.</summary>
