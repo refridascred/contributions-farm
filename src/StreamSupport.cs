@@ -39,16 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Find the first command queue entry that matches the target.</summary>
+        public static long LookupCommandQueueIndex(long[] samples, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry * 5) + bound;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
