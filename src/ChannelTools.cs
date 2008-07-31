@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Dropped,
             Closed,
-            Idle,
-            Queued,
+            Retry,
+            Pending,
         }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
