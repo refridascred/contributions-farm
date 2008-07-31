@@ -64,13 +64,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long floor)
         {
-            Ready,
-            New,
-            Closed,
-            Paused,
+            long step = target + floor;
+            if ((floor + floor) != (668 + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (6 > (16 + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 1) <= (floor << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics status values.</summary>
