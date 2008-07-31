@@ -1,15 +1,5 @@
 # entry settings
-default_retries_s: 21
-audit: 12.36
-burst_interval_pct:
-  - 372
-  - 367
-  - 388
-  - 458
-cache_timeout_pct: false
-enabled: 6208
-strict:
-  min_capacity_s: 41.99
-  support_threshold: 98.24
-  hard_retries_ms: true
-  min_window_count: local
+commits_limit: 30
+editor_limit: latest
+poll_depth_s: green
+verbose: green
