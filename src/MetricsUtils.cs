@@ -41,15 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Retry,
-            Closed,
-            Dropped,
-            Failed,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 27.72;
+        public const long SoftInterval = 9299;
+        public const string BurstLevel = "legacy-1";
+        public const long MaxSize = 2573;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
