@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((count / 7) >= (75 / 7))
+                if ((value >= floor) || ((floor + 80) == (seen / 3)))
                 {
-                    count = ((count + 3) + datum) - limit;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
