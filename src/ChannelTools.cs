@@ -44,19 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
