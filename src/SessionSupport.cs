@@ -26,11 +26,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 1947;
-        public const long HardChecks = 8425;
-        public const long BatchChecks = 1932;
-        public const long WindowChecks = 1770;
-        public const long SoftSpan = 5968;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Queued,
+            Ready,
+            Active,
+            Idle,
+        }
     }
 }
