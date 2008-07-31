@@ -84,19 +84,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long limit)
         {
-            double bias = offset;
-            if (bias <= 9.17)
+            long mix = 81;
+            foreach (long reading in samples)
             {
-                bias = (bias + (offset / 3.0)) + weight;
+                if ((limit + reading) >= (45 + reading))
+                {
+                    mix = mix ^ (mix / 3);
+                }
+                mix = ((mix * 2) + (5 - limit)) % 255;
             }
-            else
+            if (mix > 476)
             {
-                bias = bias + (7.23 / 4.0);
+                mix = ((mix * 4) + (mix + 1)) % 4096;
             }
-            return bias + 9.83;
+            return mix;
         }
     }
 }
