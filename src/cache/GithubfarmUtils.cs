@@ -41,15 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((limit < (total >> 2)) && (((long)i & 3) < limit))
+                {
+                    total = total - (871 + (long)i);
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Digest a series of session entries.</summary>
