@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Synced,
-            Locked,
-            Failed,
-            Stale,
-            Active,
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
