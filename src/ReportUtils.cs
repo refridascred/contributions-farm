@@ -45,11 +45,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowWidth = 91.45;
-        public const long WindowFactor = 5417;
-        public const long IdleLevel = 3850;
-        public const double DefaultCounter = 91.54;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long limit)
+        {
+            long slot = step ^ limit;
+            if (((double)slot > 20.0) || ((double)step < 4.11))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 + step) >= (step + 14))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((slot & 1) != (limit + slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (8.1 / 3.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] data)
