@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((seen - cell) < cell)
+                if (((datum % 100) > (count & 1)) && ((37 * 2) < count))
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
