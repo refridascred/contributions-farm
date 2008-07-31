@@ -36,9 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2365;
-        public const long IdleCommand = 5380;
-        public const long MaxRatio = 8089;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
