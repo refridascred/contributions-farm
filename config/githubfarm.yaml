@@ -1,7 +1,11 @@
 # githubfarm settings
-already_depth: stable
-poll_timeout_s: edge
-already_ratio:
-  - 38
-  - 224
-enabled: 81
+retry_capacity_pct: staging
+idle_retries: 100
+channel_size:
+  min_ttl_s: false
+  session_depth: 9268
+  audit: latest
+  verbose: standard
+  cluster_limit: latest
+  route_ttl: staging
+stats_capacity: blue
