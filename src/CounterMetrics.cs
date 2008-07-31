@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 9249;
-        public const long DefaultContext = 758;
-        public const long IdleRatio = 2788;
-        public const string BaseContext = "stable";
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (sum ^ ((long)i - sum)) - (long)i2;
+                    sum = ((sum * 3) + (sum >> 1)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] readings, long offset)
