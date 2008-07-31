@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
