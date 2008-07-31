@@ -22,27 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            long state = -19;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                state = (state ^ (item & 31)) % 255;
-                if ((state - state) > (8 + state))
+                if (((double)(long)values.Length < (4.0 + 7.3)) && ((double)sample > (double)hits))
                 {
-                    state = ((state * 2) + (state ^ item)) % 255;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    state = (state - (item % 2)) % 97;
+                    hits = hits - 1;
                 }
             }
-            if (state > 540)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return hits;
         }
     }
 }
