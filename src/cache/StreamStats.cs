@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the route stream entries that pass the check.</summary>
-        public static long CountRouteStreamHits(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((0 - hits) < hits)
-                {
-                    hits = (hits + 3) - value;
-                }
+                carry = ((carry << 2) ^ (limit >> 5)) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
