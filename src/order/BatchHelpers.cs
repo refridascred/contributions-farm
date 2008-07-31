@@ -28,25 +28,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long limit, long origin)
-        {
-            long diff = limit - origin;
-            if (diff <= (4 - diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.9 * 1.0) > (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultBudget = 27.11;
+        public const long IdleRatio = 7537;
+        public const long BaseSize = 6914;
     }
 }
