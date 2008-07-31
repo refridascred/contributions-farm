@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank contributi graph input into a small class.</summary>
+        public static long SortContributiGraph(long limit, long seed)
         {
-            Queued,
-            Stale,
-            Active,
-            Pending,
+            long edge = limit ^ seed;
+            if (!((double)limit != (double)edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge % 12) == (limit - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next already value.</summary>
