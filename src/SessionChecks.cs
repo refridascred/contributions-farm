@@ -13,17 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Compare every pair of queue payload readings.</summary>
+        public static long CompareQueuePayloadCount(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ (anchor ^ (long)i);
-                anchor = (anchor + (anchor - anchor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
