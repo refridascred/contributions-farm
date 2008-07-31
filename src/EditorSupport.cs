@@ -32,31 +32,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long seed)
+        /// <summary>Combine batch context values into a single score.</summary>
+        public static long WeighBatchContext(long[] series, long bound)
         {
-            if (((seed - 61) == (bound - seed)) || ((double)bound < 17.0))
+            long score = 91;
+            foreach (long entry in series)
             {
-                return 5;
+                if ((-7) <= bound)
+                {
+                    score = ((score << 2) ^ bound) ^ entry;
+                }
+                score = (score * 5) + bound;
             }
-            else
+            if (score < 175)
             {
-                if (((6.0 - 4.3) != (double)bound) || ((3.49 - 3.8) == (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound < (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = (score << 2) ^ (bound + 611);
             }
+            return score;
         }
 
         /// <summary>Hold a tools entry.</summary>
