@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first token entry entry that matches the target.</summary>
-        public static long SeekTokenEntryIndex(long[] items, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
