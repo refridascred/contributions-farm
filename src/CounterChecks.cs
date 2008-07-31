@@ -51,11 +51,21 @@ namespace Common.Utilities
         public const long CacheRecord = 3;
         public const double MaxTimeout = 88.13;
 
-        /// <summary>Project the next notes order value.</summary>
-        public static double AdjustNotesOrder(double bias, double floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            double gain = floor + floor;
-            return (gain + 1.0) + bias;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
