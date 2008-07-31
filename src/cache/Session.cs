@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = result + (limit - result);
+                result = (result - (95 ^ 1)) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of context readings.</summary>
