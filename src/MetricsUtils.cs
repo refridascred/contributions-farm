@@ -69,12 +69,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] series, long step)
         {
-            Ready,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((216 - step) < cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
