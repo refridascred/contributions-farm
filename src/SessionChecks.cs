@@ -15,19 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate record checks readings against a bound.</summary>
-        public static bool GuardRecordChecksRange(long[] values, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
