@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] levels, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((17.0 - 1.2) >= (double)reading)
+                if (reading < seed)
                 {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
