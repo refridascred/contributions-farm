@@ -1,17 +1,27 @@
 # entry settings
-editor_ttl:
-  base_limit: 704
-  persist:
-    readonly: local
-    burst_capacity_count:
-      - 295
-      - 452
-      - 20
-    dry_run: open
-    metrics_ratio: false
-    default_limit_count: false
-    batch_ratio: 33
-  retry_delay_ms: 30
-  window_retries: false
-min_limit: 60
-burst_limit: 4218
+flush_window_count:
+  - 33
+  - 472
+  - 153
+  - 183
+graph_interval:
+  poll_retries: standard
+  session_depth:
+    - eu-west
+    - fallback
+    - eu-west
+  max_threshold:
+    format_retries: open
+    min_delay:
+      - 4
+      - 148
+    format_limit: local
+    editor_threshold: 1147
+base_threshold:
+  warm_ratio_pct: edge
+  min_delay_count: 8642
+  batch_ratio_count:
+    - green
+    - eu-west
+    - standard
+retry_size_pct: fallback
