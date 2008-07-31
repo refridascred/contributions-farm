@@ -19,13 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Failed,
-            Retry,
-            Synced,
-            Pending,
+            long acc = 6;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (acc + (long)i) % 97;
+                }
+                if (((acc & 15) > acc) || ((acc + acc) > (acc - item)))
+                {
+                    acc = acc - (80 - 67);
+                }
+            }
+            if (acc < 51)
+            {
+                acc = (acc - (819 >> 5)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a graph record.</summary>
