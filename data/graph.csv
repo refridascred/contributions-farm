@@ -1,6 +1,7 @@
-id,active,weight
-1,11.57,strict
-2,30.17,45.49
-3,95.64,80.66
-4,9.41,899
-5,712,91.28
+id,label,owner,score
+1,legacy,staging,standard
+2,97.33,fallback,851
+3,181,52,831
+4,503,281,eu-west
+5,691,834,stable
+6,202,edge,32.39
