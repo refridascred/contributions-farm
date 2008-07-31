@@ -55,15 +55,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            double bias = (double)8 - (floor + floor);
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = ((bias - floor) + (double)(long)i) + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias + (floor * 6.4);
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
