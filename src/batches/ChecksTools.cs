@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] readings, long limit)
         {
-            Stale,
-            Paused,
-            Failed,
-            Active,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a batches options.</summary>
