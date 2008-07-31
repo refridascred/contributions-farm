@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 3;
+            foreach (long item in items)
             {
-                if ((mark - mark) < (mark >> 5))
+                mix = mix ^ (mix << 1);
+                if (mix > item)
                 {
-                    mark = (mark ^ offset) % 101;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
