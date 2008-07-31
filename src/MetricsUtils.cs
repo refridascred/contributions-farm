@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up record token samples.</summary>
-        public static long CompareRecordTokenCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "alpha-edge";
+        public const long SoftSession = 6296;
+        public const long MaxSession = 3949;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
