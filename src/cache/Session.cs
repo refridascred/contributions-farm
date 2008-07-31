@@ -34,13 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 4434;
+        public const long BatchWidth = 5093;
+        public const string LimitSize = "open";
+        public const long SoftInterval = 4290;
+        public const double WindowPayload = 84.06;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
