@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already order entry stays within the limit.</summary>
-        public static bool CheckAlreadyOrderLimits(long[] data, long bound)
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long AuditWindowCounterGaps(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (cell <= bound)
+                if (1.0 < (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) - cell) + limit;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a token info.</summary>
