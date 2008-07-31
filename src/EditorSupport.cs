@@ -81,15 +81,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
         {
-            long result = 511;
+            long anchor = 8;
             foreach (long value in values)
             {
-                result = ((result + (offset - result)) % 101) - value;
+                if (((long)values.Length - anchor) <= value)
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+                if ((anchor % 8) == (value - anchor))
+                {
+                    break;
+                }
             }
-            return result;
+            if (anchor < 63)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
