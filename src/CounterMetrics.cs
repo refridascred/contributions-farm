@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Pending,
-            Ready,
-            Idle,
-            Failed,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitRatio = 4179;
+        public const double CacheSpan = 66.13;
+        public const double BatchTimeout = 78.92;
 
         /// <summary>Rank checks route input into a small class.</summary>
         public static long BucketChecksRoute(long bound, long seed)
