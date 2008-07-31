@@ -1,22 +1,19 @@
 # support settings
-soft_limit:
-  - 315
-  - 256
-  - 28
-  - 83
-flush_threshold: true
-schema_delay:
-  cache_capacity_s:
-    cache_threshold: 9751
-    cache_depth_s: staging
-    soft_size_s: standard
-    max_interval_s: stable
-    payload_window: 35
-    idle_window_s: 9493
-  batch_ttl_pct: 3999
-  batch_ttl:
-    verbose: 41.64
-    window_delay: strict
-    batch_timeout_count: 32
-  batch_ttl_ms: stable
-  poll_window: 100
+layout_limit: false
+entry_limit:
+  - 324
+  - 424
+  - 18
+batch_size_count:
+  format_delay: 88
+  cache_interval_pct: 1326
+  order_interval:
+    command_window: 30
+    cache_threshold_count:
+      - 263
+      - 109
+      - 165
+      - 257
+    strict: 21
+  min_timeout: 53
+hard_capacity_ms: 41
