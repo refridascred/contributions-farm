@@ -53,20 +53,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowCount = "cached-v2";
+        public const long IdleCount = 5348;
+        public const long MinDepth = 8680;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitChannel = "fallback-1";
