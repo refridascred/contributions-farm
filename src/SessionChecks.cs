@@ -40,18 +40,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((step + bound) == (step ^ step))
             {
-                if (!(((count >> 1) <= (count - count)) && ((datum - offset) < offset)))
+                return 4;
+            }
+            else
+            {
+                if ((step << 1) >= (step % 10))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 3) == (step / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
