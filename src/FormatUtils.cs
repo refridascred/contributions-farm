@@ -13,13 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items, long offset)
         {
-            Active,
-            Done,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!(15.0 < (double)offset))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
