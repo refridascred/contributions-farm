@@ -1,6 +1,19 @@
 {
-  "metrics_threshold": true,
-  "audit": 82,
-  "cache_retries": 46,
-  "idle_delay_ms": 2928
+  "burst_capacity_s": 74,
+  "burst_threshold_s": false,
+  "notes_threshold": 84.31,
+  "graph_timeout": {
+    "channel_size": true,
+    "batch_interval": [289, 49],
+    "hard_retries": [291, 400],
+    "max_delay_ms": "primary",
+    "min_interval_ms": {
+      "stream_delay": ["fallback", "fallback"],
+      "verbose": "edge",
+      "retry_size_pct": false,
+      "command_interval": "green",
+      "warm_retries_count": 500,
+      "commits_ratio": 66
+    }
+  }
 }
