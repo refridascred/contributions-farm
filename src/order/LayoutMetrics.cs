@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long MeasureAccountEditorHits(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long offset = origin + floor;
+            if (offset >= (floor + floor))
             {
-                if ((entry ^ entry) != (entry - tally))
+                return 7;
+            }
+            else
+            {
+                if ((5.8 / 4.0) >= (10.0 + 4.0))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.0 * 3.44) > (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor <= (7 >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
