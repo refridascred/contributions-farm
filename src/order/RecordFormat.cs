@@ -74,31 +74,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if (seed <= (seed + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.6 / 4.0) < (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - seed) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
