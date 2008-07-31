@@ -29,11 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5276;
-        public const long BurstMetrics = 2283;
-        public const long RetryLevel = 8889;
-        public const long SoftMetrics = 3872;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Active,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
