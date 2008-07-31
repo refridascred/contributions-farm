@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double MinSpan = 95.04;
         public const long StepMetric = 2276;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] data)
         {
-            Draft,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(((sample % 60) >= (sample + 27)) || ((sample >> 2) <= (sample + sample))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
