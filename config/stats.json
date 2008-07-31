@@ -1,7 +1,8 @@
 {
-  "base_ttl_count": 94,
-  "verbose": ["blue", "primary", "staging"],
-  "idle_threshold_count": "open",
-  "notes_depth": "open",
-  "poll_size": "eu-west"
+  "order_interval": 71.42,
+  "soft_size": "staging",
+  "soft_timeout_s": 3801,
+  "max_ttl_pct": true,
+  "schema_limit": 4499,
+  "hard_window_pct": 20
 }
