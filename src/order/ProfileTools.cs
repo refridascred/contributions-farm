@@ -32,22 +32,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double floor)
         {
-            long mix = -68;
-            foreach (long reading in levels)
+            double drift = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((mix / 8) < reading))
-                {
-                    mix = mix - mix;
-                }
+                drift = (drift - (floor + 3.36)) - (double)(long)i;
             }
-            if (mix > 191)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
+            return drift - 2.3;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
