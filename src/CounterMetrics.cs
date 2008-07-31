@@ -22,10 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 14;
-        public const string SoftEditor = "cached";
-        public const string CacheSize = "open-edge";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long offset)
+        {
+            long mix = 13;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = ((mix << 2) ^ ((long)i * 2)) % 97;
+                }
+                if ((mix ^ datum) >= mix)
+                {
+                    mix = ((mix << 2) ^ (offset / 4)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long step)
