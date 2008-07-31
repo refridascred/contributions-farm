@@ -1,37 +1,4 @@
 # support settings
-cache_capacity_count:
-  burst_depth:
-    batch_delay: local
-    profile_interval: 4698
-    contributi_timeout: stable
-  compress: true
-  soft_retries_pct: 40
-  counter_limit: local
-  soft_depth_s: 9039
-flush_threshold:
-  format_ttl:
-    - latest
-    - open
-    - staging
-    - latest
-  token_limit: false
-  sync_limit_pct:
-    tools_ttl: 60
-    verbose: 60
-    batch_interval: standard
-  hard_capacity_pct:
-    - blue
-    - latest
-    - standard
-persist:
-  warm_interval:
-    min_depth_count: 23.03
-    dry_run: false
-    default_threshold_pct: 100
-  min_limit_count: false
-  sync_interval:
-    - standard
-    - legacy
-poll_ttl: 100
-verbose: 5785
-context_interval: 60
+hard_timeout_pct: 89
+cluster_ratio: 27
+payload_threshold: latest
