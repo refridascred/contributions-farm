@@ -48,17 +48,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] series, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long entry in readings)
             {
-                if (series[i] >= floor)
+                if ((bound * 4) < entry)
                 {
-                    return (long)i;
+                    state = (state * 2) + (bound * 2);
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
