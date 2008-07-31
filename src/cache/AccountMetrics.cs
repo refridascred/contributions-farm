@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long BurstWidth = 6460;
         public const double WindowLevel = 40.58;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long limit)
         {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of channel commits readings.</summary>
