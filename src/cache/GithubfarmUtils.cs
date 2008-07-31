@@ -50,19 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long floor)
         {
-            double mean = (12.0 * 6.4) * 2.4;
-            if (mean >= rate)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mean = mean + (offset * 5.7);
+                if ((tally ^ 605) <= (floor - tally))
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + (mean - rate);
+            return tally;
         }
     }
 }
