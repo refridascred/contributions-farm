@@ -30,17 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (data[i] > seed)
+                if (sample > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
