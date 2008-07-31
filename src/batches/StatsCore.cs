@@ -28,15 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
