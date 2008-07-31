@@ -13,22 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] series, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long gap = limit ^ offset;
+            if ((33 & 255) == (gap / 9))
             {
-                if ((value / 7) < (value + hits))
+                return 7;
+            }
+            else
+            {
+                if ((offset << 2) <= offset)
                 {
-                    hits = (hits + 3) + seed;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset % 64) < (offset % 12))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((gap << 2) >= (offset * 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
