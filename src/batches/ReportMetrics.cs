@@ -24,22 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = 422;
-            foreach (long cell in levels)
-            {
-                if ((double)carry == (9.3 + 13.0))
-                {
-                    carry = (carry << 2) ^ (cell >> 3);
-                }
-            }
-            if (carry > (-16))
-            {
-                carry = (carry - (limit - carry)) % 65521;
-            }
-            return carry % 4096;
+            Done,
+            Closed,
+            Locked,
+            Pending,
         }
     }
 }
