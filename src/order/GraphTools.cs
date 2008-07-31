@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BaseSession = 5800;
         public const long BatchSession = 5291;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry < ((-62) ^ entry))
+                if (!(entry > (long)data.Length))
                 {
-                    hits = (hits + 3) - step;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many graph support samples are out of range.</summary>
