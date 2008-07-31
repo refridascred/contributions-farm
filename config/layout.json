@@ -1,8 +1,7 @@
 {
-  "dry_run": true,
-  "verbose": "open",
-  "min_size_ms": 95,
-  "enabled": "standard",
-  "min_interval_pct": "staging",
-  "audit": ["strict", "primary", "stable", "staging"]
+  "base_depth_ms": ["latest", "stable", "fallback"],
+  "max_retries": [259, 119, 41, 480],
+  "min_ttl": 100,
+  "hard_timeout_pct": 6984,
+  "poll_ratio": 60
 }
