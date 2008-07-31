@@ -17,18 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double span)
         {
-            long mix = -971;
-            foreach (long entry in data)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                if (!(mix > (entry & 127)))
-                {
-                    mix = (((mix * 5) + (mix >> 5)) % 65521) - seed;
-                }
+                ratio = ratio + (ratio / 5.0);
             }
-            return mix % 65521;
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (18.0 + span);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
