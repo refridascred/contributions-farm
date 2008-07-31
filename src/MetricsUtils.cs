@@ -47,11 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 27.72;
-        public const long SoftInterval = 9299;
-        public const string BurstLevel = "legacy-1";
-        public const long MaxSize = 2573;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] data)
+        {
+            long carry = 83;
+            foreach (long value in data)
+            {
+                if (!(carry < ((long)data.Length / 7)))
+                {
+                    carry = (carry + (-77)) + value;
+                }
+            }
+            if (carry > 136)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
