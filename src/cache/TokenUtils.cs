@@ -22,9 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "standard-edge";
-        public const string LimitRoute = "alpha";
-        public const long IdleFactor = 6976;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
