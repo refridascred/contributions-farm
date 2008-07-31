@@ -34,11 +34,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinBudget = "open-1";
-        public const long MaxTimeout = 9906;
-        public const long DefaultCount = 9960;
-        public const long BatchAccount = 553;
-        public const long BurstAccount = 8848;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long step)
+        {
+            if ((origin + step) < (step + 620))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 5) != (step - 959))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
