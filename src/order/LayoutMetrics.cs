@@ -48,18 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally + entry) >= ((long)levels.Length + 42))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseInterval = 45.49;
+        public const double StepLevel = 1.79;
+        public const long SoftTools = 3386;
+        public const string MinTools = "staging-edge";
     }
 }
