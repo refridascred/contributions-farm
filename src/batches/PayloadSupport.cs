@@ -30,12 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values, long target)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((368 * 5) > (4 - count))
+                {
+                    count = ((count + 2) + value) - target;
+                }
+            }
+            return count;
         }
     }
 }
