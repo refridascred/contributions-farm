@@ -63,9 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 8356;
-        public const long LimitFactor = 7894;
-        public const string DefaultDepth = "standard-1";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value <= 4.0)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
