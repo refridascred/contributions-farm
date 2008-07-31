@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long seed, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long step = seed ^ limit;
-            if (((16 * 3) >= (seed >> 3)) && ((step / 7) >= (limit + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 2) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.23 * 11.0) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.0 / 6.0) >= (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
