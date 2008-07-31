@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double bias)
+        /// <summary>Validate tools account readings against a bound.</summary>
+        public static bool GuardToolsAccountBounds(long[] levels, long offset)
         {
-            double weight = (scale + scale) * 16.0;
-            return (weight + 19.0) + bias;
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
