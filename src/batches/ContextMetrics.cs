@@ -53,24 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor session value against two limits.</summary>
-        public static long GradeEditorSession(long floor, long step)
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long MeasureTokenProfileMatches(long[] samples, long bound)
         {
-            if ((7.2 + 1.06) <= (double)step)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 2) < ((-4) ^ step))
+                if (!(((8.1 - 15.0) != (double)bound) || ((8 * 4) < (reading + seen))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
