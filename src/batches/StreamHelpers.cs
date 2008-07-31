@@ -30,11 +30,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Blend two checks profile measurements.</summary>
+        public static double AdjustChecksProfile(double weight, double span)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            double rate = (double)(78 + 583);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + span) + (double)(long)i) - weight;
+            }
+            return rate - (double)8;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
