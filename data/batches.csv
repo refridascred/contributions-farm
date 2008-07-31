@@ -1,6 +1,7 @@
-id,token,owner,level
-1,local,900,8.58
-2,22.4,legacy,775
-3,local,86.23,42.18
-4,822,58.71,local
-5,706,970,19.34
+id,label,owner,score,level
+1,0.15,eu-west,94.9,blue
+2,662,edge,95.21,74.25
+3,10.51,3.36,edge,675
+4,263,39,21.07,45.65
+5,standard,primary,fallback,fallback
+6,legacy,77.31,85.8,fallback
