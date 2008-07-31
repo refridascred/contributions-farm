@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] levels, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= limit)
+                mark = mark + (seed << 1);
+                mark = mark + seed;
+                if (!!(mark < (seed >> 1)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - (long)i) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
