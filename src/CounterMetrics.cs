@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((61 < acc) && ((acc + acc) <= acc))
-                {
-                    acc = (acc + 818) % 65521;
-                    acc = acc + (long)i;
-                }
-                acc = ((acc * 3) + (offset - acc)) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Pending,
+            Ready,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank checks route input into a small class.</summary>
