@@ -1,6 +1,7 @@
 # entry settings
-editor_timeout: 88
-batch_window: 22.74
-cache_size_pct: cached
-cluster_capacity: true
-route_limit: open
+soft_interval_pct: 29.33
+min_size_pct: latest
+retry_limit:
+  - open
+  - latest
+  - cached
