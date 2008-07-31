@@ -30,11 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5178;
-        public const long MinEntry = 986;
-        public const long StepEntry = 7359;
-        public const double HardInterval = 27.47;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Done,
+            New,
+            Retry,
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] levels, long floor)
