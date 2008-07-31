@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell > (cell + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
