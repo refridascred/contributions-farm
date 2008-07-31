@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate tools account readings against a bound.</summary>
-        public static bool GuardToolsAccountBounds(long[] levels, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
