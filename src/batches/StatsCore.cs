@@ -94,17 +94,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
         {
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
