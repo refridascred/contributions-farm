@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
