@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
