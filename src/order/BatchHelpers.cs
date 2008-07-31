@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items, long seed)
         {
-            Stale,
-            Failed,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((2.0 + 9.8) > (double)cell))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
