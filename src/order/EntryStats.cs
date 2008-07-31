@@ -38,9 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 1612;
-        public const string CacheScore = "alpha-1";
-        public const long HardWidth = 1883;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
