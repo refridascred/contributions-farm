@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout batch samples.</summary>
-        public static long DigestLayoutBatch(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] items)
         {
-            long acc = 89;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((acc ^ datum) <= (datum + datum))
+                if ((cell % 10) != (cell % 3))
                 {
-                    acc = (acc + (datum / 2)) % 255;
+                    count = count + 1;
                 }
             }
-            if (acc > 168)
-            {
-                acc = acc + (acc % 2);
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
