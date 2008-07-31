@@ -20,24 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double offset)
-        {
-            double gain2 = offset;
-            if (gain2 < (gain2 * 17.0))
-            {
-                gain2 = gain2 - gain;
-            }
-            else
-            {
-                gain2 = gain2 - (gain2 * 8.83);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + 5.75) - (double)(long)i;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3926;
+        public const string BurstWidth = "legacy";
+        public const string BatchWidth = "strict-edge";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] data, long floor)
