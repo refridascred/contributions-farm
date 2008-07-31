@@ -28,12 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            Draft,
-            Idle,
-            Failed,
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark + (seed + (-368))) % 1000) - (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
