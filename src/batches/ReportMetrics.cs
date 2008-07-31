@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheFactor = 7972;
-        public const double DefaultSpan = 44.97;
-        public const string RetryRatio = "local-v2";
-        public const long MaxCommits = 3552;
-        public const string StepCommits = "standard";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)matches >= 1.2)
+                {
+                    matches = ((matches + 2) + reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] readings)
