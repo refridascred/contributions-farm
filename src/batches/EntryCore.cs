@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultDepth = 6281;
-        public const string WindowLevel = "strict";
-        public const long MinCount = 4329;
-        public const long HardReport = 9880;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total - ((long)i + total)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double span)
