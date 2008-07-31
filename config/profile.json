@@ -1,9 +1,13 @@
 {
-  "min_capacity_s": ["primary", "strict", "stable", "blue"],
-  "sync_delay_s": 82.44,
-  "base_interval_s": {
-    "min_interval_pct": true,
-    "strict": 8911,
-    "contributi_timeout": true
-  }
+  "schema_delay": {
+    "stream_ratio": "latest",
+    "enabled": 51.75,
+    "idle_timeout_pct": 35.67,
+    "audit": [296, 497, 155]
+  },
+  "max_ttl_s": "stable",
+  "session_timeout": "cached",
+  "counter_threshold": "standard",
+  "window_threshold": 8619,
+  "batch_ratio_pct": 77
 }
