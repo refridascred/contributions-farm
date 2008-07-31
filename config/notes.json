@@ -1,8 +1,5 @@
 {
-  "base_interval": 68.88,
-  "retry_window": 100,
-  "dry_run": 9610,
-  "batch_ratio": 2821,
-  "retry_threshold_pct": false,
-  "verbose": true
+  "idle_size": "green",
+  "cluster_interval": 6228,
+  "compress": 0.99
 }
