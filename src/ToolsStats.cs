@@ -57,12 +57,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 6332;
-        public const long BatchBuffer = 6874;
-        public const double BaseBuffer = 29.97;
-        public const long SoftBuffer = 3389;
-        public const long StepBuffer = 9207;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long origin)
