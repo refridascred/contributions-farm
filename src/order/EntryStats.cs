@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinSize = 52.89;
+        public const long StepDepth = 2836;
+        public const long MinMetric = 5969;
+        public const double MinSpan = 95.04;
+        public const long StepMetric = 2276;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
