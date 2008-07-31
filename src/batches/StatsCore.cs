@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)count != (1.13 - 4.92)) || (68 < (long)samples.Length))
-                {
-                    count = ((count + 3) + datum) - target;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a report record.</summary>
