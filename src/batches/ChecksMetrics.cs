@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = 0;
+            foreach (long cell in values)
             {
-                if (!(((2.16 + 8.5) < (double)reading) || ((floor >> 3) <= (hits * 4))))
+                if (((bound + cell) <= (52 + bound)) || ((double)cell <= (13.0 - 0.49)))
                 {
-                    hits = hits + 2;
+                    acc = (acc + (bound >> 5)) % 255;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
