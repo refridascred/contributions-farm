@@ -41,17 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache buffer sample.</summary>
-        public static long FindCacheBufferIndex(long[] data, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] <= target)
+                if ((count + count) < (sample % 8))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
