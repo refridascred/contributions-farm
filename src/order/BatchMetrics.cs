@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseScore = "standard-1";
-        public const string BaseInterval = "legacy";
-        public const double MaxMetrics = 75.37;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((limit << 3) >= (sample / 5))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] items)
