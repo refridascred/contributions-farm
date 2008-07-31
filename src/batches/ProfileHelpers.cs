@@ -44,21 +44,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Derive the next context counter value from a seed.</summary>
+        public static long DeriveContextCounter(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i >= score)
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (180 ^ (long)i)) % 4096;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Compare every pair of support stream readings.</summary>
