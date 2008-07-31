@@ -43,27 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 262;
-            foreach (long item in readings)
-            {
-                if ((bound <= state) && ((728 << 2) > (bound - bound)))
-                {
-                    state = ((state * 3) + (state + 23)) % 65521;
-                    state = (state ^ (2 + state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ bound) % 101;
-                }
-                if ((item <= state) || ((double)item != (4.4 + 4.5)))
-                {
-                    state = (state + (state & 1)) % 255;
-                }
-            }
-            return state;
+            Idle,
+            Retry,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
