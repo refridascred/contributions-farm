@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long LimitNotes = 2052;
         public const long HardNotes = 9445;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels, long bound)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound + entry) >= bound)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
