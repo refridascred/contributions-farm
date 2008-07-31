@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - sample) > 490)
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
