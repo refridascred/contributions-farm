@@ -1,11 +1,15 @@
 {
-  "enabled": 6775,
-  "soft_retries": 68.16,
-  "sync_size_pct": {
-    "poll_capacity_s": 46.21,
-    "checks_size": "primary",
-    "command_retries": 95,
-    "min_depth": "eu-west",
-    "max_retries_count": 86.86
-  }
+  "sync_depth": {
+    "max_delay_ms": {
+      "retry_retries_ms": "standard",
+      "queue_depth": 3584,
+      "strict": 8050
+    },
+    "queue_retries": 17.11,
+    "burst_threshold": "staging",
+    "editor_ttl": 3
+  },
+  "idle_retries_count": "latest",
+  "soft_capacity": 11.54,
+  "hard_size": 500
 }
