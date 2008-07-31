@@ -1,24 +1,17 @@
 # entry settings
-batch_limit_pct: strict
-retry_timeout_pct:
-  hard_interval: 53.85
-  sync_capacity_count: 250
-  notes_retries:
-    max_ratio_ms: 30
-    poll_delay_count: blue
-    poll_interval_count: 81
-    warm_ttl_pct: strict
-    batch_retries_pct:
-      - 165
-      - 218
-      - 458
-  compress: true
-cache_ratio_s:
-  sync_size:
-    support_limit: 37.59
-    cache_ratio: eu-west
-    editor_capacity: false
-    sync_capacity_s: 57.83
-  compress: 13
-  context_depth: 84
-context_threshold: 92.05
+sync_limit_count: 90
+audit: open
+soft_timeout_count:
+  flush_interval_ms: 5203
+  dry_run: cached
+  retry_threshold_pct:
+    - eu-west
+    - primary
+    - primary
+    - cached
+flush_ttl_count: cached
+max_capacity: legacy
+idle_interval_s:
+  route_ratio: strict
+  burst_timeout_count: 30
+  sync_retries_pct: true
