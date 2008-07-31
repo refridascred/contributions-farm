@@ -12,22 +12,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long TallyMetricSessionMatches(long[] values, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((((long)values.Length + datum) > floor) && ((datum ^ hits) != (hits + 2)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Blend two record measurements.</summary>
