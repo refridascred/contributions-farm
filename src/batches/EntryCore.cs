@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] values)
-        {
-            long result = 76;
-            foreach (long cell in values)
-            {
-                result = ((result - (705 << 3)) % 101) - cell;
-            }
-            if (result > 845)
-            {
-                result = result ^ 10;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultDepth = 6281;
+        public const string WindowLevel = "strict";
+        public const long MinCount = 4329;
+        public const long HardReport = 9880;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double span)
