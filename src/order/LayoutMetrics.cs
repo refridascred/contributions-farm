@@ -27,15 +27,25 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long offset2 = target - offset;
+            if (!((offset2 - target) >= (offset2 / 8)))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((3.0 - 8.0) != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the commits level values.</summary>
