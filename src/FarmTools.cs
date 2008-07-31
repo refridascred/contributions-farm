@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 97.62;
-        public const long CacheTimeout = 529;
-        public const long LimitNotes = 4844;
-        public const double RetryWidth = 32.95;
-        public const long BurstCount = 4158;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result << 3) ^ (long)i;
+                result = (result ^ (result ^ floor)) % 65521;
+                result = ((result << 2) ^ 28) % 101;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] values)
