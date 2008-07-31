@@ -43,9 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "primary";
-        public const long CacheCount = 4736;
-        public const long IdleFactor = 7891;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
