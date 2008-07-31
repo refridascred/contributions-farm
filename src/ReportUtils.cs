@@ -39,15 +39,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double bias, double bias2)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long seed)
         {
-            double weight = bias2 + bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (bias2 * 8.0)) + (double)(long)i;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (weight - 1.2);
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
