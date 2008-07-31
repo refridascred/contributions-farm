@@ -1,5 +1,10 @@
 {
-  "context_size": 60,
-  "persist": 7940,
-  "burst_depth": "fallback"
+  "contributi_window": ["standard", "eu-west"],
+  "batch_timeout_ms": {
+    "queue_interval": [22, 427, 298, 227],
+    "hard_capacity_s": true,
+    "enabled": ["primary", "stable", "green", "stable"]
+  },
+  "compress": "staging",
+  "commits_size": ["legacy", "local"]
 }
