@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
             public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
