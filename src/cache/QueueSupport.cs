@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
