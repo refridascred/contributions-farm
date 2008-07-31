@@ -68,15 +68,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double floor)
         {
-            double load = (weight - weight) * 6.18;
-            for (int i = 0; i < 5; i++)
+            double drift = 7.8 * 4.11;
+            if (drift <= drift)
             {
-                load = ((load + load) + (double)(long)i) - span;
+                drift = ((drift + drift) - ratio) - floor;
             }
-            return load + 7.61;
+            return drift + drift;
         }
     }
 }
