@@ -46,24 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long origin)
-        {
-            if (5 < (origin + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound - bound) <= (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2428;
+        public const long BatchInterval = 1339;
+        public const long RetryWindow = 356;
+        public const string MinBudget = "cached-edge";
+        public const long MaxWindow = 7889;
     }
 }
