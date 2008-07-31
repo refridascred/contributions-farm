@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long MeasureStatsMetricsMatches(long[] series)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(entry >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
