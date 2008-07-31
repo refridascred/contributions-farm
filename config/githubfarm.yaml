@@ -1,11 +1,14 @@
 # githubfarm settings
-verbose: staging
-readonly: local
-warm_threshold_s: true
-cache_ttl_s: 4466
-entry_retries:
-  - cached
-  - legacy
-  - local
+compress:
+  - 55
+  - 205
+  - 14
+  - 481
+hard_interval:
   - blue
-record_timeout: latest
+  - open
+  - blue
+burst_interval_count: blue
+strict: false
+burst_timeout: false
+flush_capacity: strict
