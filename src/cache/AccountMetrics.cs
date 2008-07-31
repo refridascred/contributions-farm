@@ -38,22 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine layout metrics values into a single score.</summary>
-        public static long DigestLayoutMetrics(long[] levels, long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long carry = 0;
-            foreach (long cell in levels)
-            {
-                if (!((16.0 * 17.0) > (double)carry))
-                {
-                    carry = (((carry << 2) ^ (offset % 60)) % 255) + cell;
-                }
-            }
-            if (carry < 218)
-            {
-                carry = (carry ^ offset) % 255;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define session limits and defaults.</summary>
