@@ -71,12 +71,12 @@ namespace Common.Utilities
             return gain - (rate / 6.0);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                if (data[i] <= origin)
                 {
                     return (long)i;
                 }
