@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 886;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total << 2) ^ total) + entry;
             }
-            return hits;
+            if (total < 570)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
