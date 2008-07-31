@@ -23,31 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload queue input into a small class.</summary>
-        public static long RankPayloadQueue(long origin, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if (floor <= (origin << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + floor) >= (floor * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((18.0 / 6.0) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
