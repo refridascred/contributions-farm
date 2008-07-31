@@ -23,15 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session stream readings.</summary>
-        public static long TotalSessionStream(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = 76;
-            foreach (long item in values)
-            {
-                mix = (mix + (mix - mix)) - item;
-            }
-            return mix;
+            Synced,
+            Done,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Project the next editor value.</summary>
