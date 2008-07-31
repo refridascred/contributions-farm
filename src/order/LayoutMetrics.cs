@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Paused,
             New,
-            Done,
-            Retry,
+            Failed,
         }
 
         /// <summary>Describe the metric class values.</summary>
