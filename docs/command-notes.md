@@ -1,14 +1,11 @@
 # Command notes
 
-Run the farm check before changing any account limits.
-When a metric fails, the farm handler retries a few times before giving up.
-
-Each already is validated before it reaches the contributi queue.
-Each editor is validated before it reaches the entry queue.
-When a format fails, the route handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the support list.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review layout limits each release
-- Keep editor values small
-- Prefer channel defaults
+- Document new cluster fields
+- Validate stats input early
+- Prefer filter defaults
