@@ -42,22 +42,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((limit2 ^ limit) < (limit2 * 4))
             {
-                if (!((1 + 36) <= count))
+                return 4;
+            }
+            else
+            {
+                if (16 <= (72 + limit))
                 {
-                    count = (count + 3) + reading;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((60 + limit2) < (6 >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit2 >= (3.8 * 19.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
