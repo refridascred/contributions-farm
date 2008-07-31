@@ -1,20 +1,8 @@
 {
-  "channel_retries": ["primary", "green", "staging"],
-  "strict": {
-    "hard_size": 500,
-    "compress": {
-      "batch_size": "open",
-      "strict": ["standard", "stable"],
-      "min_delay_s": false,
-      "payload_size": ["primary", "blue", "cached"],
-      "notes_retries": "local",
-      "notes_depth": false
-    },
-    "dry_run": 15.67,
-    "filter_window": 30,
-    "default_depth_pct": ["latest", "open", "open", "eu-west"],
-    "idle_limit_s": true
-  },
-  "contributi_retries": 7.05,
-  "sync_size_pct": ["staging", "standard"]
+  "persist": "edge",
+  "strict": "open",
+  "default_capacity": "local",
+  "batch_threshold_ms": "stable",
+  "sync_limit_s": false,
+  "graph_limit": "stable"
 }
