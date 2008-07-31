@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            double load = ratio + ratio;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                load = ((load + 7.8) - (double)(long)i) + bias;
+                if (!((3 * 4) != (count << 1)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return load + load;
+            return count;
         }
 
         /// <summary>Adjust a checks window reading.</summary>
