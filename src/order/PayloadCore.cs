@@ -33,22 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((-4) << 3) > (matches - cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
