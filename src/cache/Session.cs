@@ -31,18 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch editor entries that pass the check.</summary>
-        public static long TallyBatchEditorHits(long[] samples, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((60 << 1) <= (datum % 10))
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 1) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit buffer batches readings against a rule.</summary>
