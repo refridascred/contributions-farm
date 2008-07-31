@@ -45,18 +45,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally <= (item + item)) && (tally >= item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a window stats.</summary>
