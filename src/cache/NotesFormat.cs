@@ -19,26 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (step > (4 / 5))
+                if (limit < (cell * 3))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                total = total + ((long)i & 255);
-                if ((total - step) < (step % 24))
-                {
-                    total = ((total << 3) ^ (1 - total)) % 101;
-                    total = ((total * 2) + (total << 1)) % 101;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the tools farm entries that pass the check.</summary>
