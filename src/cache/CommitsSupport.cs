@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream queue readings against a bound.</summary>
-        public static bool GuardStreamQueueRange(long[] levels, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (reading > floor)
+                if ((origin + origin) >= origin)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate metric channel samples.</summary>
