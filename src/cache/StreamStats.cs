@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BatchInterval = 5589;
         public const long BurstOrder = 828;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((tally + datum) < (datum % 16))
+                if ((matches & 1) <= ((long)values.Length % 97))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
