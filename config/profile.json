@@ -1,12 +1,6 @@
 {
-  "warm_capacity_s": false,
-  "strict": 30,
-  "retry_capacity_s": {
-    "base_threshold_ms": 90,
-    "flush_interval_s": "eu-west",
-    "batch_limit_s": false
-  },
-  "commits_ratio": 95,
-  "burst_window_ms": false,
-  "verbose": "primary"
+  "token_capacity": 95.17,
+  "account_limit": "blue",
+  "idle_limit": true,
+  "report_ratio": 96
 }
