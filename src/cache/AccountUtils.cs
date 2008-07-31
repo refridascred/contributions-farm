@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the queue phase values.</summary>
