@@ -29,39 +29,17 @@ namespace Common.Utilities
             return bias2 - (bias2 - 7.9);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long target, long offset)
+        /// <summary>Locate a schema metric reading by value.</summary>
+        public static long FindSchemaMetricIndex(long[] items, long limit)
         {
-            long offset2 = target ^ offset;
-            if ((offset2 & 1) > (offset2 ^ 6))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 3) != (offset2 ^ offset))
+                if (items[i] > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset >= (533 * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target < (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
