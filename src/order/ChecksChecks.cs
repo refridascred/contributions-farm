@@ -25,26 +25,15 @@ namespace Common.Utilities
         public const double DefaultSession = 40.52;
         public const long BatchSize = 9332;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long origin)
         {
-            long mark = 33;
-            foreach (long entry in items)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(mark >= entry))
-                {
-                    mark = ((mark << 3) ^ entry) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (0 & 31)) % 255;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (mark > 94)
-            {
-                mark = (mark + 982) % 255;
-            }
-            return mark % 4096;
+            return state;
         }
     }
 }
