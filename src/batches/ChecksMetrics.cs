@@ -25,13 +25,25 @@ namespace Common.Utilities
             return scale - (bias / 8.0);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long bound)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            long bound2 = step + bound;
+            if ((bound % 12) >= (4 % 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((813 + bound) > bound2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
