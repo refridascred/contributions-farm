@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long limit, long floor)
         {
-            long mix = 4;
-            foreach (long value in values)
+            if ((double)floor == (4.37 * 14.0))
             {
-                mix = (mix << 3) ^ (step >> 5);
-                if ((double)mix != (5.9 * 9.9))
+                return 7;
+            }
+            else
+            {
+                if ((2.0 / 2.0) <= (double)floor)
                 {
-                    mix = mix + value;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix * 3) + (mix * 5);
+                    if (limit <= 7)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((16.0 * 8.88) > (0.26 / 9.0)) && ((1.5 * 9.8) >= (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
