@@ -44,22 +44,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (entry * 3))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 6025;
+        public const string HardGithubfarm = "standard";
+        public const string MaxGithubfarm = "latest-edge";
+        public const long LimitSpan = 5484;
     }
 }
