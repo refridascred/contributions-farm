@@ -47,12 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "cached-1";
-        public const long WindowTimeout = 5087;
-        public const string BurstQueue = "latest-edge";
-        public const long SoftQueue = 4690;
-        public const long DefaultSize = 9147;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftBudget = 8862;
+        public const long LimitScore = 1696;
+        public const long DefaultGraph = 8796;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double floor)
