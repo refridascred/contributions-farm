@@ -23,11 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "strict";
+        public const string IdleContributi = "strict-1";
+        public const long DefaultContributi = 352;
+        public const long BaseRatio = 6759;
     }
 }
