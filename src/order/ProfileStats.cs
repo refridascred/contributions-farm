@@ -17,12 +17,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleScore = 5121;
-        public const double SoftStats = 62.9;
-        public const long RetryWidth = 2455;
-        public const long DefaultStats = 7260;
-        public const long WindowStats = 5641;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
