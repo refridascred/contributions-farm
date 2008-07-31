@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            long cur = offset + limit;
-            if ((11.0 + 7.4) >= (double)cur)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset >> 2) >= (limit - limit)) && ((6.11 * 5.3) >= (double)limit))
+                if (!(384 >= (reading * 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
