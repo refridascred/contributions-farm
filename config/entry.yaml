@@ -1,12 +1,11 @@
 # entry settings
-soft_retries_ms: 30
-default_delay_s: 3.02
-support_depth:
-  entry_limit: 89
-  cache_capacity_s:
-    - 143
-    - 43
-  report_size: blue
-  idle_threshold_pct: open
-idle_delay: 21.98
-readonly: 22
+batch_interval:
+  - staging
+  - legacy
+  - primary
+  - open
+enabled: 74
+warm_timeout: false
+readonly:
+  - standard
+  - stable
