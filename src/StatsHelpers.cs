@@ -40,19 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session metric entry stays within the limit.</summary>
-        public static bool VerifySessionMetricBounds(long[] readings, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
