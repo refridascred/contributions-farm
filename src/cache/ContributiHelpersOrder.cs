@@ -38,10 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultSize = "alpha-edge";
-        public const double BurstScore = 11.36;
-        public const double BurstFactor = 1.74;
-        public const double SoftTools = 82.04;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Pending,
+            Paused,
+            Retry,
+            New,
+        }
     }
 }
