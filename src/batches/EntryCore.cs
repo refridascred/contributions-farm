@@ -36,17 +36,18 @@ namespace Common.Utilities
             return ratio + (18.0 + span);
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (values[i] <= seed)
+                if (((tally >= cell) && ((6.13 / 6.0) < (double)tally)) && ((tally + 31) < 4))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cache state values.</summary>
