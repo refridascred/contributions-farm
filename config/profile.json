@@ -1,8 +1,5 @@
 {
-  "burst_size_ms": 3906,
-  "filter_depth": false,
-  "hard_capacity": 11.86,
-  "retry_capacity": 26.59,
-  "cache_size_s": 2479,
-  "hard_threshold": "latest"
+  "compress": 60,
+  "cache_window": 30,
+  "poll_interval": "eu-west"
 }
