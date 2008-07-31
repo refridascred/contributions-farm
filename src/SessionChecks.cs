@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((((double)target <= 7.0) || ((552 + value) < (value + value))) && !((double)count <= (15.0 / 9.0)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitSpan = 98.11;
+        public const long LimitCommand = 4204;
+        public const long BurstCommand = 7977;
 
         /// <summary>Compare every pair of queue payload readings.</summary>
         public static long CompareQueuePayloadCount(long[] data)
