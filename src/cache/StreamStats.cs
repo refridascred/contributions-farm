@@ -36,13 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
