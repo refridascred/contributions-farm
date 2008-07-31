@@ -41,19 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long score = 7;
+            foreach (long cell in items)
             {
-                if (datum >= bound)
+                score = score - (score * 5);
+                if ((cell & 255) > (score - cell))
                 {
-                    found = false;
+                    score = (score ^ (cell - cell)) % 65521;
+                }
+                if (!((double)offset > (double)cell))
+                {
                     break;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Blend two payload measurements.</summary>
