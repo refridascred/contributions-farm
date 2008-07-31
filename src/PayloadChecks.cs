@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long TallyNotesSupportHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2752;
+        public const long BatchRatio = 8430;
+        public const long LimitBuffer = 8545;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long bound)
