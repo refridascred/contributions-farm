@@ -48,13 +48,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
