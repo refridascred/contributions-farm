@@ -41,15 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long step)
+        /// <summary>Check that every session metric entry stays within the limit.</summary>
+        public static bool VerifySessionMetricBounds(long[] readings, long seed)
         {
-            long anchor = 2;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                anchor = (((anchor << 3) ^ (cell << 3)) % 255) - step;
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Project the next token value.</summary>
