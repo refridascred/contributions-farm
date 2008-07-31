@@ -1,6 +1,11 @@
 {
-  "buffer_capacity": 7148,
-  "idle_depth_ms": 1847,
-  "retry_size": 4093,
-  "warm_limit": "fallback"
+  "graph_depth": ["legacy", "strict"],
+  "burst_size_count": {
+    "base_ratio_pct": 32,
+    "stats_depth": 26.5,
+    "poll_ttl_pct": 86,
+    "payload_interval": true,
+    "base_retries": 8003
+  },
+  "default_size": 5671
 }
