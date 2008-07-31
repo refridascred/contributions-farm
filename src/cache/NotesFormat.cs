@@ -12,12 +12,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "stable";
-        public const double DefaultFilter = 78.67;
-        public const double MinFactor = 0.39;
-        public const long BurstDepth = 6995;
-        public const string IdleFilter = "cached-v2";
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long TallyMetricSessionMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((long)values.Length + datum) > floor) && ((datum ^ hits) != (hits + 2)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double ratio, double bias)
