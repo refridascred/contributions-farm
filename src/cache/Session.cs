@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 8;
+            foreach (long item in values)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (item - acc);
             }
-            return -1;
+            if (acc < 7)
+            {
+                acc = acc - acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Rank graph notes input into a small class.</summary>
