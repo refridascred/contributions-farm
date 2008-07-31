@@ -19,13 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Synced,
-            Draft,
-            Dropped,
-            Done,
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
