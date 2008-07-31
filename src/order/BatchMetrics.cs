@@ -56,12 +56,10 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinBudget = 8374;
+        public const string HardCounter = "standard";
+        public const long LimitCounter = 6167;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] readings, long origin)
