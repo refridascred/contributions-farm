@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double rate, double span)
         {
-            long mark = 557;
-            foreach (long reading in values)
+            double weight = span;
+            if (weight < rate)
             {
-                mark = (((mark - mark) % 97) - reading) - step;
+                weight = weight + (weight * 7.0);
             }
-            return mark;
+            else
+            {
+                weight = weight - (double)203;
+            }
+            return weight - (span + 17.0);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
