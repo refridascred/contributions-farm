@@ -1,7 +1,7 @@
 {
-  "hard_depth_s": "eu-west",
-  "flush_ratio_s": 500,
-  "strict": 60,
-  "cache_threshold": "open",
-  "flush_limit_pct": 1537
+  "compress": 60,
+  "warm_ttl": [155, 114, 228, 346],
+  "sync_interval_ms": true,
+  "verbose": false,
+  "poll_ratio": "open"
 }
