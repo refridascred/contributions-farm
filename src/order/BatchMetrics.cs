@@ -55,19 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((799 + seen) != (seen * 4))
-                {
-                    seen = ((seen + 1) ^ value) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardRatio = "primary";
+        public const long BurstDepth = 8941;
+        public const long StepBatch = 8939;
+        public const double IdleBatch = 75.54;
+        public const long HardInterval = 5754;
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] readings, long offset)
