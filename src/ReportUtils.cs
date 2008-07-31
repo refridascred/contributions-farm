@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "stable-1";
-        public const long LimitScore = 169;
-        public const long LimitFarm = 8779;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Count the contributi layout entries that pass the check.</summary>
         public static long MeasureContributiLayoutGaps(long[] series, long origin)
