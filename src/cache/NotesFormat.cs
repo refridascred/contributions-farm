@@ -30,19 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] data, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double gain = bias;
+            if (gain >= (gain / 2.0))
             {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + (gain / 7.0)) + ratio;
             }
-            return stale;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (4.59 * 9.88)) + (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
