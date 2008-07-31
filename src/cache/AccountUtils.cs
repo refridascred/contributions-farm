@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Rank command input into a small class.</summary>
