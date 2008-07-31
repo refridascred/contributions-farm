@@ -1,7 +1,10 @@
-id,count,score
-1,47.72,550
-2,cached,7.4
-3,587,70.69
-4,282,36.34
-5,3.59,strict
-6,eu-west,204
+id,owner,label,weight
+1,fallback,846,630
+2,local,legacy,692
+3,119,green,65
+4,strict,32.98,fallback
+5,339,14.37,cached
+6,green,476,22.85
+7,132,578,103
+8,eu-west,559,4.98
+9,86.37,edge,263
