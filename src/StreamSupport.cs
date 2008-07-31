@@ -31,12 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer stream sample.</summary>
-        public static long FindBufferStreamIndex(long[] values, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= offset)
+                if (data[i] >= origin)
                 {
                     return (long)i;
                 }
