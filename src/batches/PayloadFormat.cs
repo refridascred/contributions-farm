@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] data, long target)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
