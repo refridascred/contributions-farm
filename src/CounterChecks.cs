@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const double WindowCache = 4.72;
         public const string DefaultSize = "staging-v2";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] items, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a layout stats.</summary>
