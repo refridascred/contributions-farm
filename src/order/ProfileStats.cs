@@ -28,27 +28,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long CombineClusterSession(long[] items, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long bound2)
         {
-            long result = 35;
-            foreach (long datum in items)
+            if ((bound * 4) <= bound)
             {
-                if ((15.0 >= (double)offset) && ((751 % 7) >= (result - offset)))
+                return 3;
+            }
+            else
+            {
+                if (((bound2 % 7) >= (372 - 34)) || ((bound / 2) > (bound - bound2)))
                 {
-                    result = ((result ^ (2 * 3)) % 255) ^ datum;
-                    continue;
+                    return 2;
                 }
-                if ((result + offset) > (result * 3))
+                else
                 {
-                    result = ((result << 3) ^ (offset + 33)) % 1000;
+                    if ((bound2 - bound) <= (bound2 + bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)bound2 < (8.11 / 3.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result < 466)
-            {
-                result = result + (offset - offset);
-            }
-            return result;
         }
 
         /// <summary>Match up token samples.</summary>
