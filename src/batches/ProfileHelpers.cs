@@ -48,19 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] levels, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long state = 920;
+            foreach (long entry in values)
             {
-                if (reading > target)
+                state = (state + (entry - state)) % 255;
+                if (((state ^ entry) > 47) && ((4.1 + 19.0) <= (double)entry))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return state % 1000;
         }
 
         /// <summary>Hold a session record.</summary>
