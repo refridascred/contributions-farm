@@ -1,7 +1,10 @@
 # support settings
-cache_capacity: 26.22
-cache_window_ms: true
-retry_depth_ms: standard
-cache_threshold_s: false
-sync_timeout_s: 75.82
-retry_size_pct: strict
+poll_retries: 8348
+burst_window:
+  command_size: cached
+  max_limit_ms: false
+  metrics_size: false
+idle_window_ms: primary
+enabled: true
+strict: 250
+warm_delay_s: 60
