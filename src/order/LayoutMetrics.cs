@@ -22,21 +22,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count contributi layout pairs that satisfy a relation.</summary>
-        public static long PairContributiLayoutCount(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
