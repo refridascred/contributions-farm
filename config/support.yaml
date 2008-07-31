@@ -1,10 +1,6 @@
 # support settings
-layout_capacity: legacy
-idle_capacity:
-  - 98
-  - 189
-  - 8
-  - 111
-soft_capacity_s:
-  - 305
-  - 441
+flush_threshold_pct: 76
+cache_size_count: true
+flush_threshold_ms: 250
+idle_limit_s: 1024
+enabled: blue
