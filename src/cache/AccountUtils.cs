@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank contributi graph input into a small class.</summary>
-        public static long SortContributiGraph(long limit, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            long edge = limit ^ seed;
-            if (!((double)limit != (double)edge))
+            long mark = 407;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge % 12) == (limit - seed))
+                if (85 < (sample - mark))
                 {
-                    return 4;
+                    mark = mark ^ (mark << 3);
                 }
-                else
+                if (((double)mark != (6.7 + 9.0)) || ((sample + mark) <= (846 >> 3)))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Project the next already value.</summary>
