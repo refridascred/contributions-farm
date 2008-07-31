@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const long SoftDepth = 8018;
         public const long HardTools = 5959;
 
-        /// <summary>Locate a checks session reading by value.</summary>
-        public static long FindChecksSessionIndex(long[] readings, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (rate / 7.0) / 5.0;
+            if (ratio <= (rate + ratio))
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - ratio;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - span;
         }
     }
 }
