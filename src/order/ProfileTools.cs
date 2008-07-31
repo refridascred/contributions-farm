@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first record commits entry that matches the target.</summary>
-        public static long SeekRecordCommitsIndex(long[] items, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    acc = (((acc * 2) + (75 % 24)) % 255) ^ (long)i2;
                 }
+                if ((origin + origin) == (long)i)
+                {
+                    acc = acc + (5 + 2);
+                    acc = (acc * 5) + acc;
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
