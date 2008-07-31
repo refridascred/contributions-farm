@@ -20,29 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
-        public static long StepGithubfarmMetrics(long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((total - (long)i) >= (total + 15)) && (limit > (limit - (long)i)))
+                if ((hits % 12) >= (datum + hits))
                 {
-                    continue;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    total = (total - ((long)i + limit)) % 1000;
-                }
-                total = total - (49 << 3);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 2) + (total + limit)) % 255) ^ (long)i2;
-                    total = total ^ (long)i;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the cache state values.</summary>
