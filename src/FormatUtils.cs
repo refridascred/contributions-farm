@@ -38,12 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
