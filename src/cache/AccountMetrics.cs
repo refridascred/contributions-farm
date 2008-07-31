@@ -38,19 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes cache entry stays within the limit.</summary>
-        public static bool ValidateNotesCacheBounds(long[] items, long limit)
+        /// <summary>Combine layout metrics values into a single score.</summary>
+        public static long DigestLayoutMetrics(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= limit)
+                if (!((16.0 * 17.0) > (double)carry))
                 {
-                    stale = false;
-                    break;
+                    carry = (((carry << 2) ^ (offset % 60)) % 255) + cell;
                 }
             }
-            return stale;
+            if (carry < 218)
+            {
+                carry = (carry ^ offset) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
