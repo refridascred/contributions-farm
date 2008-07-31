@@ -36,13 +36,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Idle,
-            Queued,
-            Pending,
-            Ready,
+            Synced,
+            Draft,
+            Dropped,
         }
     }
 }
