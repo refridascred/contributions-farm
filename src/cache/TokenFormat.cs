@@ -36,24 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long score = 424;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score - (score - score)) % 97) ^ reading;
-                score = (score - score) % 97;
-                if ((double)score == (2.27 + 4.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 3)
-            {
-                score = score ^ (score % 16);
-            }
-            return score % 4096;
+            return count;
         }
     }
 }
