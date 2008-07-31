@@ -48,10 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 47.76;
-        public const long LimitTimeout = 219;
-        public const string IdleFactor = "latest";
+        /// <summary>Combine counter account values into a single score.</summary>
+        public static long CombineCounterAccount(long[] series, long step)
+        {
+            long total = 256;
+            foreach (long sample in series)
+            {
+                if ((step - sample) <= (1 - sample))
+                {
+                    total = (total << 3) ^ (6 - total);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
