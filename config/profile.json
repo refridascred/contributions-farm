@@ -1,13 +1,5 @@
 {
-  "schema_delay": {
-    "stream_ratio": "latest",
-    "enabled": 51.75,
-    "idle_timeout_pct": 35.67,
-    "audit": [296, 497, 155]
-  },
-  "max_ttl_s": "stable",
-  "session_timeout": "cached",
-  "counter_threshold": "standard",
-  "window_threshold": 8619,
-  "batch_ratio_pct": 77
+  "route_threshold": "legacy",
+  "metric_limit": [163, 417, 60, 220],
+  "flush_timeout_count": 6859
 }
