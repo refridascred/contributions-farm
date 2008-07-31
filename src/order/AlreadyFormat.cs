@@ -34,35 +34,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long limit2)
+        /// <summary>Rank commits record input into a small class.</summary>
+        public static long ClassifyCommitsRecord(long floor, long target)
         {
-            if ((limit2 ^ limit) < (limit2 * 4))
+            if ((target * 4) > (target - target))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (16 <= (72 + limit))
+                if (!((target << 3) == (floor % 100)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((60 + limit2) < (6 >> 2))
+                    if (((7.0 / 6.0) > (double)target) || ((5.46 * 19.0) >= (double)target))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)limit2 >= (3.8 * 19.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 4;
                     }
                 }
             }
