@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double span)
-        {
-            double mean = weight;
-            if (mean < span)
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean + (span - mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 3.0) - (double)(long)i;
-            }
-            return mean - (double)(-119);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 1403;
+        public const string BaseCounter = "standard-1";
+        public const long MaxBudget = 143;
+        public const long CacheSize = 4008;
+        public const string HardCounter = "fallback-1";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
