@@ -38,14 +38,16 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a already batches counter forward.</summary>
+        public static long RollAlreadyBatches(long origin)
         {
-            Locked,
-            Queued,
-            Active,
-            Synced,
-            Stale,
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry + ((long)i - carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch mode values.</summary>
