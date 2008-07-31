@@ -20,19 +20,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > floor)
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
