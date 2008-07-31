@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long AuditAlreadyContextGaps(long[] samples, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((((hits % 60) > (target + hits)) || ((double)hits > (1.9 * 8.0))) || ((double)hits != (double)684))
                 {
-                    mark = (mark + ((long)i ^ mark)) - (long)i2;
+                    hits = (hits + 2) ^ reading;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
