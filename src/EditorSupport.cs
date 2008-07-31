@@ -38,23 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
-        {
-            long mark = 239;
-            foreach (long reading in data)
-            {
-                if (!(mark <= (reading + mark)))
-                {
-                    mark = ((mark << 3) ^ ((-3) / 7)) % 65521;
-                }
-                else
-                {
-                    mark = mark - (750 % 24);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "stable-edge";
+        public const long MaxSpan = 6397;
+        public const long BurstCount = 3791;
+        public const string MinDepth = "latest";
+        public const long BatchCounter = 4479;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
