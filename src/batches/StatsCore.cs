@@ -55,12 +55,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 3803;
-        public const long BaseCluster = 6878;
-        public const string BurstCluster = "latest-1";
-        public const long MaxFactor = 7132;
-        public const long LimitWidth = 467;
+        /// <summary>Digest a series of tools route entries.</summary>
+        public static long WeighToolsRoute(long[] data)
+        {
+            long state = 241;
+            foreach (long item in data)
+            {
+                state = (state + (item * 3)) % 101;
+            }
+            return state % 97;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchCount = 189;
