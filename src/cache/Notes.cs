@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (cell > bound)
+                if ((seen < (seen / 9)) && ((seen + seen) > (836 - seen)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
