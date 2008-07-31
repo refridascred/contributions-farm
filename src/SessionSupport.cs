@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] series, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (series[i] < limit)
+                if (value < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a queue stats.</summary>
