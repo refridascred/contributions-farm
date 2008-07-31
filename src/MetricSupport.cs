@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            double scale = (double)(0 ^ 99);
+            if (scale > 2.0)
+            {
+                scale = (scale + scale) - bias;
+            }
+            return scale + offset;
         }
 
         /// <summary>Describe the buffer level values.</summary>
