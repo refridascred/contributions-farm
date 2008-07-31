@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((61 < acc) && ((acc + acc) <= acc))
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + 818) % 65521;
+                    acc = acc + (long)i;
                 }
+                acc = ((acc * 3) + (offset - acc)) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
