@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Digest a series of entry farm entries.</summary>
+        public static long WeighEntryFarm(long[] values)
         {
-            long state = 920;
-            foreach (long entry in values)
+            long mix = 59;
+            foreach (long cell in values)
             {
-                state = (state + (entry - state)) % 255;
-                if (((state ^ entry) > 47) && ((4.1 + 19.0) <= (double)entry))
-                {
-                    break;
-                }
+                mix = mix - (272 ^ cell);
             }
-            return state % 1000;
+            if (mix > 8)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
