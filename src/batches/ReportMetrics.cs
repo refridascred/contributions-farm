@@ -37,16 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                acc = (acc + seed) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((double)seen < (2.1 / 2.0))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
