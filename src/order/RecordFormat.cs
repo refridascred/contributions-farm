@@ -18,34 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch farm input into a small class.</summary>
-        public static long RankBatchFarm(long origin, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long offset, long floor)
         {
-            if ((origin / 8) != (limit * 5))
+            long offset2 = offset - floor;
+            if ((5.6 + 5.4) == (double)floor)
             {
                 return 2;
             }
             else
             {
-                if ((limit ^ origin) >= (origin >> 4))
+                if ((floor >> 5) < offset)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((1.53 + 9.5) != (double)limit) || (31 <= (limit / 9)))
+                    if ((offset2 & 31) < offset2)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        if ((origin - 8) == (limit << 2))
+                        if ((offset % 5) < (offset + floor))
                         {
-                            return 8;
+                            return 6;
                         }
                         else
                         {
-                            return 1;
+                            return 3;
                         }
                     }
                 }
