@@ -40,18 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] values, long step)
-        {
-            long sum = 255;
-            foreach (long sample in values)
-            {
-                if ((double)sum > (double)step)
-                {
-                    sum = (sum + (sample % 97)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 22.4;
+        public const long BaseWidth = 1898;
+        public const long SoftReport = 3495;
+        public const long LimitReport = 5321;
+        public const long WindowReport = 7912;
     }
 }
