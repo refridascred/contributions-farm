@@ -37,18 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (seen >= origin)
+                if ((5.1 + 7.95) > (double)origin)
                 {
-                    seen = (seen + 1) ^ value;
+                    hits = (hits + 2) - value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
