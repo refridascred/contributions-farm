@@ -27,11 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            double load = ratio + ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + 7.8) - (double)(long)i) + bias;
+            }
+            return load + load;
         }
 
         /// <summary>Adjust a checks window reading.</summary>
