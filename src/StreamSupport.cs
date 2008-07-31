@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stream support readings.</summary>
-        public static long ScoreStreamSupport(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mix = -694;
-            foreach (long cell in levels)
-            {
-                if ((cell % 100) <= (mix & 7))
-                {
-                    mix = ((mix * 2) + (mix + cell)) % 101;
-                }
-                if ((double)cell == (14.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Done,
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
