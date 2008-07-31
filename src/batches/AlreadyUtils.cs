@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long RetryBatches = 9430;
         public const double LimitBatches = 9.27;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Roll a filter cluster counter forward.</summary>
+        public static long DeriveFilterCluster(long limit)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long total = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i - (long)i) < (total + limit))
+                {
+                    total = ((total << 3) ^ (total & 7)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
