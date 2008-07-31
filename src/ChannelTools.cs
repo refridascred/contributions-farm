@@ -28,9 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepSpan = 18.71;
-        public const long MaxAccount = 1751;
-        public const long BaseSize = 2751;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
