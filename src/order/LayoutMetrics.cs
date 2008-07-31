@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const double LimitWidth = 86.12;
         public const double MaxGithubfarm = 69.97;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample & 7) != (sample % 100))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
