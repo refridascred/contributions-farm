@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
