@@ -66,25 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long step)
         {
-            long diff = offset - origin;
-            if ((origin >= (offset % 100)) || ((origin - origin) > (offset + offset)))
+            long state = -13;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((diff - offset) < (12 - origin)) && ((double)origin < (3.64 + 16.0)))
+                if (((step & 7) < (step / 9)) || ((step - state) < (state % 7)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    state = ((state - state) % 255) - item;
                 }
             }
+            return state;
         }
     }
 }
