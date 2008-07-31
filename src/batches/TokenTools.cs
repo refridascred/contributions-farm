@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const string MinBudget = "staging-edge";
         public const long IdleChecks = 7193;
 
-        /// <summary>Roll a support notes counter forward.</summary>
-        public static long IterateSupportNotes(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 2) + (offset - offset)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5837;
+        public const long RetryScore = 6837;
+        public const long BatchInterval = 8609;
+        public const long RetryToken = 7306;
 
         /// <summary>Combine editor batch values into a single score.</summary>
         public static long ScoreEditorBatch(long[] data)
