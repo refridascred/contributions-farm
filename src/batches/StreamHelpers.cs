@@ -44,22 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 5398;
+        public const long BatchLayout = 4669;
+        public const long IdleLayout = 2739;
+        public const string BurstLayout = "cached-v2";
+        public const long CacheWidth = 5954;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] items)
