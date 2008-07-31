@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            Draft,
-            Idle,
-            Locked,
+            double mean = weight;
+            if (mean < span)
+            {
+                mean = mean + (double)0;
+            }
+            else
+            {
+                mean = mean + (span - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 3.0) - (double)(long)i;
+            }
+            return mean - (double)(-119);
         }
 
         /// <summary>Hold a batches options.</summary>
