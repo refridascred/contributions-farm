@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine support command values into a single score.</summary>
+        public static long TotalSupportCommand(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            long score = 31;
+            foreach (long cell in readings)
+            {
+                if (698 > (975 + floor))
+                {
+                    score = (score - (cell + cell)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
