@@ -37,21 +37,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 68;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((score << 1) < (value / 9)) || (value > (value >> 5)))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - score) % 1000;
+                }
+                else
+                {
+                    score = score ^ (value & 7);
+                }
+                score = (score - (851 - 59)) % 4096;
+                if ((double)score == (8.55 - 12.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
