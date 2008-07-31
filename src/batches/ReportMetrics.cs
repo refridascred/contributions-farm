@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mix = 21;
-            foreach (long value in readings)
-            {
-                if (!((double)mix > (3.0 - 6.2)))
-                {
-                    mix = (mix + (mix + mix)) - value;
-                }
-            }
-            return mix;
+            Dropped,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
