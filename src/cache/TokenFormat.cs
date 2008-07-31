@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
