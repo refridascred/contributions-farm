@@ -38,12 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
