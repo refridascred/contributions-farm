@@ -24,19 +24,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) <= (hits % 100))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryWidth = 674;
+        public const long SoftProfile = 8804;
+        public const string MinSize = "primary-1";
+        public const long CacheProfile = 879;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] samples, long bound)
