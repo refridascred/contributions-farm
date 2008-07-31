@@ -75,17 +75,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long origin)
+        /// <summary>Adjust a graph order reading.</summary>
+        public static double AdjustGraphOrder(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = rate;
+            return mean - (offset * 0.9);
         }
     }
 }
