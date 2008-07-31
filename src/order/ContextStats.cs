@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            double scale = ratio;
+            if (scale <= (floor / 8.0))
+            {
+                scale = scale - (floor * 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - floor) - (double)(long)i;
+            }
+            return scale - (double)2;
         }
     }
 }
