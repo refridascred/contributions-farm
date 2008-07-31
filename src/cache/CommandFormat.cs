@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 10) > (value - (long)levels.Length))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
