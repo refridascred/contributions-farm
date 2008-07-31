@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "staging-1";
-        public const long BatchInterval = 2312;
-        public const long SoftDepth = 8018;
-        public const long HardTools = 5959;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Pending,
+            Failed,
+            Done,
+            Closed,
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double BlendChecks(double rate, double span)
