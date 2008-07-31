@@ -71,17 +71,18 @@ namespace Common.Utilities
             return gain - (rate / 6.0);
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] <= origin)
+                if ((1.04 + 6.39) < (double)sample)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
