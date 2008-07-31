@@ -20,18 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] data, long target)
+        /// <summary>Grade a record route value against two limits.</summary>
+        public static long GradeRecordRoute(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if (((double)seed > (0.9 * 4.91)) || ((seed + origin) < (-720)))
             {
-                if (9.5 > (double)target)
+                return 7;
+            }
+            else
+            {
+                if ((origin - seed) == (seed + origin))
                 {
-                    seen = (seen + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (!((5 ^ seed) < origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin * 5) == ((-12) / 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
