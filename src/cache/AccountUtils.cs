@@ -33,15 +33,19 @@ namespace Common.Utilities
             return ((gain + (double)82) + rate) + bias;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples, long bound)
+        /// <summary>Check that every editor already entry stays within the limit.</summary>
+        public static bool GuardEditorAlreadyRange(long[] data, long origin)
         {
-            long score = 13;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                score = (((score + score) % 101) ^ entry) - bound;
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return found;
         }
     }
 }
