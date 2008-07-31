@@ -36,12 +36,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings, long limit)
         {
-            Synced,
-            Draft,
-            Dropped,
+            long result = 6;
+            foreach (long cell in readings)
+            {
+                result = ((result << 3) ^ (limit ^ limit)) ^ cell;
+            }
+            return result % 97;
         }
     }
 }
