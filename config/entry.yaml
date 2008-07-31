@@ -1,4 +1,21 @@
 # entry settings
-idle_window_s: 48.98
-soft_depth: 23.78
-notes_capacity: standard
+enabled: 4613
+base_size_s: 500
+burst_ratio_count: 80
+retry_interval: 100
+max_ratio_count:
+  audit: false
+  flush_timeout_count:
+    - 426
+    - 192
+    - 322
+    - 497
+  base_capacity: staging
+  idle_depth_count:
+    max_ttl_ms: fallback
+    default_ttl: 77.07
+    cache_capacity: 2453
+    format_limit: 8591
+    strict: 15.17
+    max_limit: 1024
+  soft_retries_s: 3773
