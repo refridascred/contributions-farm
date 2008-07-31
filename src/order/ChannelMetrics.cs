@@ -21,15 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
-        {
-            double gain = (double)(7 >> 5);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (offset * 1.85)) + (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchWidth = 2284;
+        public const string BaseInterval = "standard";
+        public const double MinInterval = 40.17;
+        public const double MaxAlready = 11.97;
+        public const double LimitWidth = 83.36;
     }
 }
