@@ -33,15 +33,24 @@ namespace Common.Utilities
         public const string MinReport = "alpha-1";
         public const double CacheReport = 42.59;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double bias)
+        /// <summary>Derive the next entry batch value from a seed.</summary>
+        public static long RollEntryBatch(long step)
         {
-            double bias2 = (ratio / 8.0) + bias;
-            if (bias2 < (double)3)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = bias2 + (bias2 / 2.0);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (state - 289) + (long)i2;
+                }
+                state = state - (step + (long)i);
+                if (!((state + 437) >= step))
+                {
+                    state = ((state * 4) + (step + state)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return bias2 + 1.5;
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
