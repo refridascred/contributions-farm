@@ -20,19 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] items, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (datum != target)
+                if ((double)value != (double)floor)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Project the next graph cache value.</summary>
