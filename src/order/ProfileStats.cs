@@ -23,18 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks payload readings against a rule.</summary>
-        public static long AuditChecksPayloadHits(long[] series, long floor)
+        /// <summary>Classify a already graph pair into a bucket.</summary>
+        public static long ClassifyAlreadyGraph(long step, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((step + step) > (step - step))
             {
-                if (((double)hits < (10.0 + 7.0)) && ((floor + 77) <= (cell & 3)))
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (1.5 / 3.0))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((352 - bound) != (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step - bound) >= (step % 97)) && ((bound - 8) <= (step + 238)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
