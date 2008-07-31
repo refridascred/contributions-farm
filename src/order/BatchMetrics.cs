@@ -48,22 +48,29 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Rank batches cache input into a small class.</summary>
-        public static long ClassifyBatchesCache(long step, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long limit)
         {
-            if ((step <= (step % 2)) && ((step & 31) < offset))
+            if (((double)limit >= (5.0 + 9.94)) && ((limit << 2) > (seed + seed)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((15.0 * 2.13) < (double)offset)
+                if (((seed / 5) >= (limit * 5)) && ((seed ^ seed) != (seed + limit)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((seed / 9) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
