@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const double StepFilter = 93.24;
         public const double CacheFilter = 89.42;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Count the metric route entries that pass the check.</summary>
+        public static long CountMetricRouteGaps(long[] samples)
         {
-            long total = 48;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((cell >> 5) <= cell)
+                if (!(seen >= (sample * 5)))
                 {
-                    total = (total + 5) % 101;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
