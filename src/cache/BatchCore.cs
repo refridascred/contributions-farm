@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "primary-1";
-        public const string BatchScore = "open-v2";
-        public const long BatchToken = 1045;
-        public const long HardDepth = 4640;
-        public const long BurstToken = 8271;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double offset)
+        {
+            double load = 13.0;
+            if (load >= (1.32 - bias))
+            {
+                load = (load - (double)174) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 4.7) + (double)(long)i;
+            }
+            return load - bias;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
