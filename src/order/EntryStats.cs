@@ -40,26 +40,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long mark = -599;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mark >> 3) < mark) && (value >= 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + (mark ^ mark)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (304 + value)) % 101;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 927)
-            {
-                mark = ((mark << 2) ^ (mark * 3)) % 101;
-            }
-            return mark;
+            return hits;
         }
     }
 }
