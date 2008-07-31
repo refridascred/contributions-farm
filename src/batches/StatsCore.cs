@@ -22,14 +22,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Queued,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks status values.</summary>
