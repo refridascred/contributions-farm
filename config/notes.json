@@ -1,5 +1,13 @@
 {
-  "batch_depth": [20, 430, 353, 101],
-  "order_size": 35.84,
-  "warm_size_pct": "staging"
+  "min_interval_pct": "cached",
+  "poll_ratio": false,
+  "base_ratio_ms": false,
+  "window_ratio": "eu-west",
+  "sync_delay": {
+    "readonly": 60,
+    "sync_retries_s": false,
+    "retry_ttl": 26.04,
+    "flush_timeout_s": "cached"
+  },
+  "cache_size_ms": 90.39
 }
