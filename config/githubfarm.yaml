@@ -1,8 +1,9 @@
 # githubfarm settings
-default_window: local
-base_size: standard
-burst_capacity: 1356
-batch_timeout_pct:
-  - 499
-  - 44
-poll_threshold_count: false
+dry_run:
+  - standard
+  - open
+  - primary
+  - stable
+retry_window: fallback
+metrics_size: open
+base_retries_ms: strict
