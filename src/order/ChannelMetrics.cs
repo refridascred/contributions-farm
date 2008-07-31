@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
