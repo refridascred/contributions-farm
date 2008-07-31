@@ -19,19 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record cache entries that pass the check.</summary>
-        public static long CountRecordCacheGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(((51 >> 3) > (limit >> 3)) || ((tally + reading) <= (tally >> 2))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSpan = 8068;
+        public const long RetryChecks = 5993;
+        public const long BurstChecks = 4839;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] levels)
