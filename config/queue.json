@@ -1,7 +1,10 @@
 {
-  "compress": [87, 156],
-  "dry_run": ["fallback", "fallback"],
-  "flush_capacity": 99,
-  "buffer_threshold": 18.73,
-  "persist": 94.78
+  "sync_threshold": {
+    "batch_retries": true,
+    "max_ttl_s": ["local", "staging", "legacy", "fallback"],
+    "audit": "latest"
+  },
+  "warm_ratio_count": "edge",
+  "batch_size": "primary",
+  "min_retries_pct": ["edge", "strict", "primary", "standard"]
 }
