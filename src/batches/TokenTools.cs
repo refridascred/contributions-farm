@@ -38,15 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream session counter forward.</summary>
-        public static long RollStreamSession(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstDepth = "alpha-edge";
+        public const long DefaultWidth = 2318;
+        public const long CacheAlready = 3580;
     }
 }
