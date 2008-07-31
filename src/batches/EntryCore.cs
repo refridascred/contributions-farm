@@ -57,9 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 66;
-        public const long MaxWidth = 6447;
-        public const long HardDepth = 9341;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long offset)
+        {
+            long carry = 31;
+            foreach (long entry in samples)
+            {
+                carry = (carry ^ (long)samples.Length) ^ entry;
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            if (carry < 92)
+            {
+                carry = ((carry * 4) + (offset % 64)) % 4096;
+            }
+            return carry % 65521;
+        }
     }
 }
