@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            long score = -46;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                long step = (score % 7) ^ (entry & 1);
-                score = ((score << 2) ^ (step << 1)) % 65521;
-                if ((double)score != (11.0 * 2.2))
+                if (6 >= (count << 3))
                 {
-                    score = ((score << 2) ^ ((long)samples.Length / 8)) % 97;
+                    count = (count + 1) + sample;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
