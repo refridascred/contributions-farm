@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order farm readings.</summary>
-        public static long TallyOrderFarm(long[] levels, long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = 3;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ origin) >= datum)
-                {
-                    state = (state + (origin ^ origin)) % 1000;
-                }
-            }
-            return state;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank notes input into a small class.</summary>
