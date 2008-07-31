@@ -56,25 +56,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            long offset2 = offset ^ bound;
-            if (offset2 >= (bound ^ offset2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 3) <= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double load = offset;
+            return (load - (double)1) + weight;
         }
     }
 }
