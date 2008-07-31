@@ -1,7 +1,8 @@
-id,score,active
-1,44.96,50.39
-2,522,open
-3,blue,22
-4,771,legacy
-5,fallback,48
-6,656,18.26
+id,label,score,weight
+1,74.72,180,5.67
+2,staging,831,blue
+3,4.55,621,253
+4,local,77.43,108
+5,fallback,blue,186
+6,86.83,strict,52.47
+7,15.44,240,blue
