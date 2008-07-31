@@ -47,19 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry stats value.</summary>
-        public static double SmoothEntryStats(double scale, double offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double load = offset;
-            if (load >= (offset / 9.0))
-            {
-                load = (load + load) - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (offset * 2.0)) - (double)(long)i;
-            }
-            return load + 7.0;
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
