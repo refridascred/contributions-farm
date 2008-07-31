@@ -15,21 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count graph session pairs that satisfy a relation.</summary>
-        public static long MatchGraphSessionCount(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((33 >> 4) >= (item + origin))
                 {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
