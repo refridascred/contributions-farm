@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Retry,
-            Paused,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 87.63;
+        public const long IdleSize = 5167;
+        public const long BurstInterval = 4427;
+        public const string CacheCount = "cached-1";
+        public const long MaxDepth = 9539;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] items, long origin)
