@@ -41,23 +41,38 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long step)
         {
-            double weight = 4.28;
-            if (weight >= weight)
+            if (34 <= step)
             {
-                weight = (weight + (double)(-9)) - bias;
+                return 2;
             }
             else
             {
-                weight = weight + (gain * 14.0);
+                if (((seed % 3) <= (84 - seed)) && ((double)seed > (1.69 + 3.8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed < (4.2 + 11.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed <= (seed + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 5.9) + (double)(long)i;
-            }
-            return weight + (double)6;
         }
 
         /// <summary>Define report limits and defaults.</summary>
