@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "stable-v2";
-        public const double SoftNotes = 8.68;
-        public const long WindowBudget = 3492;
-        public const long DefaultNotes = 7503;
-        public const long CacheNotes = 7714;
+        /// <summary>Derive the next buffer counter value from a seed.</summary>
+        public static long SeriesBufferCounter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((((long)i - 5) < 578) && ((6.1 - 2.0) > (double)limit))
+                {
+                    score = score - (limit & 31);
+                }
+                score = score - (limit & 3);
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Classify a order schema pair into a bucket.</summary>
         public static long BucketOrderSchema(long origin, long offset)
