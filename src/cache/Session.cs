@@ -46,11 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2428;
-        public const long BatchInterval = 1339;
-        public const long RetryWindow = 356;
-        public const string MinBudget = "cached-edge";
-        public const long MaxWindow = 7889;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
