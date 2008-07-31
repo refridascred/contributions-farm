@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
