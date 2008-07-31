@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate notes profile readings against a bound.</summary>
-        public static bool VerifyNotesProfileRange(long[] values, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
