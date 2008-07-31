@@ -87,18 +87,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload format samples are out of range.</summary>
-        public static long CountPayloadFormatMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((tally + (long)data.Length) > (item - item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8611;
+        public const long HardBatches = 9553;
+        public const long BaseBatches = 2970;
+        public const long CacheBatches = 3721;
     }
 }
