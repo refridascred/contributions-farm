@@ -19,39 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long prev = limit + offset;
-            if ((prev - limit) > limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(prev <= (1 + limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((prev << 3) <= (prev % 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit - prev) != (offset - prev)) || ((limit * 3) != (6 & 63)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
