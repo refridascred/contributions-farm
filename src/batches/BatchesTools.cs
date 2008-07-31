@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
