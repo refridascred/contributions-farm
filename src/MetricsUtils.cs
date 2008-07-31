@@ -69,18 +69,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] series, long step)
+        /// <summary>Blend two report batches measurements.</summary>
+        public static double SmoothReportBatches(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double ratio = (double)(60 - 9);
+            for (int i = 0; i < 9; i++)
             {
-                if ((216 - step) < cell)
-                {
-                    count = count + 2;
-                }
+                ratio = (ratio - span) + (double)(long)i;
             }
-            return count;
+            return ratio - (scale - scale);
         }
     }
 }
