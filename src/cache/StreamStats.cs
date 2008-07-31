@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long BatchInterval = 5589;
         public const long BurstOrder = 828;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            Failed,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + datum) < (datum % 16))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph stats.</summary>
