@@ -48,12 +48,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3597;
-        public const long BurstEntry = 6463;
-        public const long BatchEntry = 8536;
-        public const long HardEntry = 9839;
-        public const long DefaultEntry = 6237;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long offset)
