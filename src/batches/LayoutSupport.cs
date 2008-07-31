@@ -78,11 +78,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 9113;
-        public const double MinFilter = 78.37;
-        public const long BaseCount = 7409;
-        public const double MaxFilter = 93.04;
-        public const double BatchWidth = 55.65;
+        /// <summary>Count cache order pairs that satisfy a relation.</summary>
+        public static long CompareCacheOrderCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
