@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every account metrics entry stays within the limit.</summary>
+        public static bool CheckAccountMetricsLimits(long[] levels, long origin)
         {
-            Paused,
-            Active,
-            Pending,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of queue payload readings.</summary>
