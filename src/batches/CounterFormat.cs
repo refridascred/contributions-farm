@@ -44,16 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] data)
         {
-            long result = 141;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = (result * 4) + sample;
-                result = result - (1 + result);
+                if ((double)4 <= (double)tally)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
