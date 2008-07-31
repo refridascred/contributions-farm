@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value >> 5) < value)
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) - origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
