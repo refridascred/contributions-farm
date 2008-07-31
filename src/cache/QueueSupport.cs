@@ -24,18 +24,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings, long target)
+        /// <summary>Grade a route buffer value against two limits.</summary>
+        public static long SortRouteBuffer(long bound, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if ((bound >> 1) <= (bound >> 3))
             {
-                if (hits <= (sample - hits))
+                return 2;
+            }
+            else
+            {
+                if ((bound + step) > 92)
                 {
-                    hits = (hits + 2) - target;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
