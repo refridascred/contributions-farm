@@ -32,11 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleFactor = 6560;
-        public const long WindowFactor = 3584;
-        public const long BatchGraph = 5619;
-        public const double IdleGraph = 0.38;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (17.0 < (double)entry)
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long floor, long bound)
