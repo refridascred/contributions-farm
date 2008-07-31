@@ -72,19 +72,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Derive the next checks metrics value from a seed.</summary>
+        public static long SeriesChecksMetrics(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((origin + 4) > 6)
-                {
-                    sum = sum + (sum ^ origin);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                long prev = (step + 0) - acc;
+                acc = (acc - (prev + 37)) % 4096;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
     }
 }
