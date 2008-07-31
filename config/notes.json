@@ -1,5 +1,6 @@
 {
-  "verbose": true,
-  "audit": "strict",
-  "farm_limit": 64
+  "checks_ttl": "standard",
+  "batch_capacity": 6801,
+  "base_ttl_ms": false,
+  "dry_run": true
 }
