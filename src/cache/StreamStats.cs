@@ -54,14 +54,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepFactor = 80;
+        public const long SoftRecord = 4286;
+        public const long IdleRatio = 5952;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] readings, long bound)
