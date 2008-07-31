@@ -26,12 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] values, long step)
         {
-            Pending,
-            Done,
-            Locked,
+            long sum = 255;
+            foreach (long sample in values)
+            {
+                if ((double)sum > (double)step)
+                {
+                    sum = (sum + (sample % 97)) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
