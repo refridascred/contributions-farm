@@ -1,10 +1,6 @@
-id,count,region,active,label
-1,legacy,19.68,staging,open
-2,79,104,878,34.65
-3,47.17,edge,734,413
-4,64.28,831,286,stable
-5,72.68,blue,22.37,eu-west
-6,73.79,294,staging,35.06
-7,551,92.68,15.58,496
-8,edge,527,31.05,621
-9,23,971,521,369
+id,rank,state
+1,legacy,8.27
+2,latest,7.21
+3,585,95.08
+4,blue,fallback
+5,925,720
