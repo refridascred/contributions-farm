@@ -37,10 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 9403;
-        public const long BaseDepth = 9146;
-        public const string BatchScore = "cached";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (count > (item + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a checks window reading.</summary>
         public static double ProjectChecksWindow(double scale, double offset)
