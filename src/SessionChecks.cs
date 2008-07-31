@@ -49,9 +49,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 5479;
-        public const double RetryLevel = 30.04;
-        public const string IdleContributi = "legacy";
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long bound2)
+        {
+            if ((403 + bound2) < (109 % 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= 2.1)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
