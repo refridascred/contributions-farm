@@ -19,11 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long step)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (step > (4 / 5))
+                {
+                    break;
+                }
+                total = total + ((long)i & 255);
+                if ((total - step) < (step % 24))
+                {
+                    total = ((total << 3) ^ (1 - total)) % 101;
+                    total = ((total * 2) + (total << 1)) % 101;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
