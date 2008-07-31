@@ -1,7 +1,6 @@
 {
-  "dry_run": 95,
-  "base_interval": true,
-  "checks_timeout": "fallback",
-  "hard_retries_pct": false,
-  "stats_ratio": "stable"
+  "min_capacity_count": 60,
+  "audit": ["open", "standard", "cached", "green"],
+  "poll_timeout_s": "green",
+  "readonly": "cached"
 }
