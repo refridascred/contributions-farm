@@ -1,6 +1,8 @@
 {
-  "batch_ratio_count": 52.8,
-  "readonly": 250,
-  "burst_ratio_ms": true,
-  "base_interval_s": 5709
+  "hard_limit_s": 92.42,
+  "min_limit_pct": 250,
+  "soft_size_ms": [22, 214, 101, 257],
+  "sync_threshold_s": 23.74,
+  "account_limit": false,
+  "soft_depth": [247, 116, 15]
 }
