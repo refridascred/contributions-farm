@@ -33,21 +33,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= target)
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a report record.</summary>
