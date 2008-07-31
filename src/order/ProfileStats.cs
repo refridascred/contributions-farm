@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels, long bound)
+        /// <summary>Audit checks payload readings against a rule.</summary>
+        public static long AuditChecksPayloadHits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((bound + entry) >= bound)
+                if (((double)hits < (10.0 + 7.0)) && ((floor + 77) <= (cell & 3)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
