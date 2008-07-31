@@ -32,21 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = offset;
+            if (ratio2 >= (offset + offset))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio2 = ratio2 - 8.0;
             }
-            return count;
+            return ratio2 + (offset - ratio);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
