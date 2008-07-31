@@ -29,14 +29,15 @@ namespace Common.Utilities
             return ((gain + (double)82) + rate) + bias;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples, long bound)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Synced,
-            Ready,
+            long score = 13;
+            foreach (long entry in samples)
+            {
+                score = (((score + score) % 101) ^ entry) - bound;
+            }
+            return score % 65521;
         }
     }
 }
