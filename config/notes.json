@@ -1,8 +1,7 @@
 {
-  "batch_retries_ms": false,
-  "burst_ttl_pct": 47.88,
-  "stream_retries": 1024,
-  "idle_retries": 7.3,
-  "poll_threshold": ["local", "eu-west"],
-  "soft_size_pct": 500
+  "default_interval": [452, 469],
+  "default_window_count": "fallback",
+  "report_capacity": 30,
+  "idle_depth_pct": false,
+  "strict": 6678
 }
