@@ -48,21 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count already commits pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCommitsCount(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= origin)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
