@@ -44,12 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            Closed,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count + reading) == (71 & 15))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
