@@ -67,25 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long floor)
         {
-            long slot = limit + step;
-            if (!(14.0 >= (double)limit))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.84 - 7.0) >= (double)slot)
+                if (item < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
