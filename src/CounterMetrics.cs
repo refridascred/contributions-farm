@@ -21,22 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] samples, long bound)
         {
-            long mix = 13;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (sample > bound)
                 {
-                    mix = ((mix << 2) ^ ((long)i * 2)) % 97;
-                }
-                if ((mix ^ datum) >= mix)
-                {
-                    mix = ((mix << 2) ^ (offset / 4)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a route entry.</summary>
