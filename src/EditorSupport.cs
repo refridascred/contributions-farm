@@ -45,25 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (result >> 5)) % 255;
-                if ((double)result < (5.5 / 5.0))
-                {
-                    result = result ^ ((long)i ^ result);
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                result = (result ^ (result / 7)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next format support value from a seed.</summary>
