@@ -59,13 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of order graph readings.</summary>
+        public static long CombineOrderGraph(long[] readings, long seed)
         {
-            Failed,
-            Retry,
-            Draft,
-            Ready,
+            long mix = 736;
+            foreach (long entry in readings)
+            {
+                mix = (((mix * 2) + (seed % 60)) % 1000) ^ entry;
+            }
+            if (mix > 2)
+            {
+                mix = mix + (seed ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
