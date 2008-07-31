@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const double RetryBudget = 63.88;
         public const long BurstMetric = 9114;
 
-        /// <summary>Blend two route metric measurements.</summary>
-        public static double ScaleRouteMetric(double scale, double floor)
+        /// <summary>Fold a list of channel metrics readings.</summary>
+        public static long FoldChannelMetrics(long[] levels, long step)
         {
-            double weight = 8.3;
-            if (weight > (2.86 - weight))
+            long total = 96;
+            foreach (long value in levels)
             {
-                weight = (weight - (double)4) - floor;
+                total = ((((total << 2) ^ (total >> 5)) % 101) + value) + step;
             }
-            return weight - scale;
+            if (total < 8)
+            {
+                total = total ^ (total & 63);
+            }
+            return total;
         }
 
         /// <summary>Describe the record class values.</summary>
