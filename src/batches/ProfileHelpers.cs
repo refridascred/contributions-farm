@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two filter order measurements.</summary>
-        public static double ProjectFilterOrder(double gain, double offset)
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool ValidateStreamFilterLimits(long[] values, long origin)
         {
-            double bias = 0.08;
-            if (bias > bias)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                bias = bias + (offset + offset);
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - (4.5 - gain);
+            return valid;
         }
 
         /// <summary>Describe the graph status values.</summary>
