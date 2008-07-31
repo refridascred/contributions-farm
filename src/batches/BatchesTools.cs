@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item <= 96)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
