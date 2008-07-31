@@ -57,26 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state ^ (long)i) % 101;
-                if ((86 + limit) < (state % 2))
-                {
-                    state = state + (long)i;
-                    break;
-                }
-                else
-                {
-                    state = (state ^ (state * 2)) % 97;
-                    state = (state + (state << 3)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
