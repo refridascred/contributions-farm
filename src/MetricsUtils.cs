@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double weight = (double)(30 + 927);
-            if (weight > (ratio * 4.5))
-            {
-                weight = (weight + (weight + ratio)) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight + 1.6)) + (double)(long)i;
-            }
-            return weight + weight;
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
