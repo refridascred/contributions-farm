@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] samples, long target)
+        /// <summary>Audit buffer batch readings against a rule.</summary>
+        public static long TallyBufferBatchGaps(long[] readings, long target)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long reading in readings)
             {
-                if (822 > ((long)samples.Length / 9))
+                if ((reading + 25) != (seen % 16))
                 {
-                    seen = ((seen + 2) + reading) + target;
+                    seen = (seen + 3) + target;
                 }
             }
             return seen;
