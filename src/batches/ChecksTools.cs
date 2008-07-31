@@ -38,15 +38,22 @@ namespace Common.Utilities
             return mean - 8.0;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long anchor = 13;
+            foreach (long entry in samples)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = ((anchor << 3) ^ ((long)i % 8)) - seed;
+                }
+                if (!((0 << 1) <= (entry << 1)))
+                {
+                    anchor = (anchor ^ (anchor % 2)) % 65521;
+                }
             }
-            return total;
+            return anchor % 1000;
         }
     }
 }
