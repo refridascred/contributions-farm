@@ -35,23 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long total = 6;
+            foreach (long item in data)
             {
-                if (!((289 << 1) >= step))
+                if ((double)(long)data.Length != (15.0 - 6.0))
                 {
-                    continue;
+                    total = ((total + (item & 3)) % 97) + seed;
                 }
                 else
                 {
-                    mark = mark + (step - mark);
+                    total = (total + ((-145) + item)) % 1000;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
     }
 }
