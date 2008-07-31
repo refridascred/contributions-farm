@@ -1,13 +1,10 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Keep format and account names short and lowercase.
-
-Defaults for support live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the command list.
+Keep order and token names short and lowercase.
+The metric report groups every notes by cluster.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Keep already values small
-- Validate report input early
+- Log every githubfarm change
+- Keep githubfarm values small
+- Review layout limits each release
