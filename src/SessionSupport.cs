@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] items, long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((double)count < (3.6 / 7.0)))
-                {
-                    count = ((count + 1) + value) + offset;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
