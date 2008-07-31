@@ -14,18 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 19.77;
+        public const string StepCount = "standard-edge";
+        public const long MaxWidth = 5150;
+        public const long SoftCache = 9037;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long bound)
