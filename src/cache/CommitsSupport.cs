@@ -69,15 +69,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine cache format values into a single score.</summary>
-        public static long TotalCacheFormat(long[] levels, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long state = 880;
-            foreach (long item in levels)
-            {
-                state = ((state ^ bound) % 65521) + item;
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the notes mode values.</summary>
