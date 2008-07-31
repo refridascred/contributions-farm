@@ -22,11 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4302;
-        public const double RetryOrder = 0.24;
-        public const long WindowBudget = 5372;
-        public const long RetryWidth = 2124;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxBudget = 4359;
+        public const double StepPayload = 16.02;
+        public const long MaxPayload = 7817;
+        public const double SoftTimeout = 89.11;
+        public const long WindowSpan = 2708;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
