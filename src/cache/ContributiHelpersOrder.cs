@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score ^ 16;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheWidth = 9299;
+        public const long IdleSchema = 6750;
+        public const double CacheSchema = 92.29;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long step, long floor)
