@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (sum ^ ((long)i - sum)) - (long)i2;
-                    sum = ((sum * 3) + (sum >> 1)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
