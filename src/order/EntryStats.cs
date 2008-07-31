@@ -38,12 +38,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
