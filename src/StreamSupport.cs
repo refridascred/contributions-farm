@@ -48,19 +48,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] samples, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry * 5) + bound;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
     }
 }
