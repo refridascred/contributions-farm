@@ -27,39 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank context entry input into a small class.</summary>
-        public static long BucketContextEntry(long seed, long limit)
+        /// <summary>Validate window format readings against a bound.</summary>
+        public static bool GuardWindowFormatRange(long[] samples, long target)
         {
-            long prev = seed - limit;
-            if ((seed + limit) < (limit - prev))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + prev) != (prev % 24))
+                if (cell < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)prev != (12.0 - 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 & 3) == (prev + 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next support cluster value from a seed.</summary>
