@@ -16,19 +16,11 @@ namespace Common.Utilities
             return weight + 3.4;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
