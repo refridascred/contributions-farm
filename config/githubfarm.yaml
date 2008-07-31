@@ -1,38 +1,6 @@
 # githubfarm settings
-verbose: false
-idle_delay_count:
-  sync_depth_count: 7919
-  poll_interval_pct: true
-  burst_retries_s: standard
-commits_depth:
-  notes_capacity:
-    - eu-west
-    - latest
-  hard_limit_pct:
-    - 55
-    - 169
-    - 428
-  idle_retries: edge
-  farm_delay: 1024
-  warm_window_s:
-    persist: true
-    default_size: 100
-    min_timeout_s:
-      - 351
-      - 333
-      - 491
-    editor_ttl: 8471
-  retry_limit_pct: 9781
-batch_depth_s:
-  burst_capacity: open
-  poll_interval_ms:
-    - 142
-    - 241
-    - 352
-    - 452
-  command_timeout: 94.86
-  queue_window: 79.27
-  burst_interval_ms: latest
-  compress: true
-warm_ttl: 500
-dry_run: 50
+buffer_retries: green
+format_size: false
+base_capacity: true
+min_retries_ms: 60
+max_capacity_ms: staging
