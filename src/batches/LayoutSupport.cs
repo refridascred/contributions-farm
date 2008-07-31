@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items)
-        {
-            long result = -240;
-            foreach (long datum in items)
-            {
-                result = (result * 3) + (datum + datum);
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftFactor = 38.58;
+        public const string MaxBudget = "latest-edge";
+        public const long IdleSize = 1450;
+        public const double DefaultOrder = 79.31;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long bound)
