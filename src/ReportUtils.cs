@@ -47,18 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowWidth = 91.45;
+        public const long WindowFactor = 5417;
+        public const long IdleLevel = 3850;
+        public const double DefaultCounter = 91.54;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] data)
