@@ -41,18 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] samples)
+        /// <summary>Count the tools farm entries that pass the check.</summary>
+        public static long TallyToolsFarmOutliers(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((cell << 3) >= (seen & 3))
+                if ((limit ^ tally) < (limit * 5))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) - item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
