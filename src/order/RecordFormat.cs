@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter account values into a single score.</summary>
-        public static long CombineCounterAccount(long[] series, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            long total = 256;
-            foreach (long sample in series)
+            long result = 63;
+            foreach (long cell in items)
             {
-                if ((step - sample) <= (1 - sample))
+                if ((631 >> 1) > (result + bound))
                 {
-                    total = (total << 3) ^ (6 - total);
+                    result = ((result << 3) ^ (7 - result)) + cell;
+                }
+                else
+                {
+                    result = (result << 2) ^ result;
                 }
             }
-            return total % 4096;
+            return result % 97;
         }
 
         /// <summary>Describe the entry state values.</summary>
