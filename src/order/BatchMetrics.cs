@@ -69,18 +69,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor support entries that pass the check.</summary>
-        public static long TallyEditorSupportOutliers(long[] readings, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = 28;
+            foreach (long value in readings)
             {
-                if ((64 << 2) < (count * 3))
-                {
-                    count = ((count + 2) - datum) + seed;
-                }
+                acc = (((acc << 3) ^ (origin >> 2)) % 65521) ^ value;
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
