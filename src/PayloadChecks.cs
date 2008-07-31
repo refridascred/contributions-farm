@@ -69,30 +69,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long origin)
         {
-            long result = 3;
-            foreach (long datum in samples)
+            if ((double)origin == (18.0 * 1.39))
             {
-                if ((datum > (datum ^ datum)) || (datum > (datum >> 1)))
+                return 6;
+            }
+            else
+            {
+                if (seed > 977)
                 {
-                    result = result - result;
+                    return 3;
                 }
                 else
                 {
-                    result = (result + (datum << 2)) % 101;
-                }
-                if (result < (16 % 24))
-                {
-                    break;
+                    return 8;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 2) ^ (result >> 2)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Measure how many queue route samples are out of range.</summary>
