@@ -35,22 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5178;
+        public const long MinEntry = 986;
+        public const long StepEntry = 7359;
+        public const double HardInterval = 27.47;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] levels, long floor)
