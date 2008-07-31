@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowBudget = "open-edge";
-        public const string SoftToken = "alpha-edge";
-        public const long StepSpan = 6028;
-        public const long IdleFactor = 9507;
+        /// <summary>Match up commits filter samples.</summary>
+        public static long OverlapCommitsFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] data, long origin)
