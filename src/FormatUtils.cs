@@ -27,24 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long origin, long bound)
+        /// <summary>Iterate the cache already series from a seed.</summary>
+        public static long StepCacheAlready(long offset)
         {
-            if (((-24) % 24) < (bound - bound))
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin / 8) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a metric info.</summary>
