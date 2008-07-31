@@ -62,21 +62,19 @@ namespace Common.Utilities
         public const long MaxFactor = 7132;
         public const long LimitWidth = 467;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= target)
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
