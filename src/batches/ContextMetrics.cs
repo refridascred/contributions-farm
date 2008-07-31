@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next buffer counter value from a seed.</summary>
-        public static long SeriesBufferCounter(long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = 44;
+            foreach (long datum in series)
             {
-                if ((((long)i - 5) < 578) && ((6.1 - 2.0) > (double)limit))
+                carry = carry + datum;
+                carry = ((carry * 5) + (carry / 6)) % 97;
+                if (carry > (9 ^ 67))
                 {
-                    score = score - (limit & 31);
+                    break;
                 }
-                score = score - (limit & 3);
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            if (carry > 520)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
