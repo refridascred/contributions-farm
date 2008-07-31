@@ -20,32 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a buffer route pair into a bucket.</summary>
-        public static long ClassifyBufferRoute(long seed, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            long next = seed - step;
-            if ((next * 2) < step)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step > (next * 2)))
+                if (((-77) ^ reading) > (reading - reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next <= (step >> 2)) || ((step * 5) == (next + next)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the cache already series from a seed.</summary>
