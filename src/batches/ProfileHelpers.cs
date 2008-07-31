@@ -69,20 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((mark - mark) == ((-140) % 64))
+                if (item > target)
                 {
-                    mark = ((mark << 2) ^ (mark << 1)) % 255;
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return valid;
         }
     }
 }
