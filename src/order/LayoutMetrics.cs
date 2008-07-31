@@ -37,24 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long offset2)
-        {
-            if (offset > (offset + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.14 + 9.6) != (double)offset2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 1559;
+        public const long HardReport = 7092;
+        public const long BatchInterval = 24;
+        public const long DefaultWidth = 6688;
+        public const long MaxReport = 6629;
     }
 }
