@@ -1,5 +1,26 @@
 {
-  "metric_limit": 500,
-  "hard_threshold": "eu-west",
-  "record_size": 83
+  "strict": {
+    "strict": 92.55,
+    "poll_ratio_s": {
+      "retry_capacity_count": false,
+      "flush_ttl": "legacy",
+      "record_delay": 60,
+      "verbose": 250,
+      "burst_ratio": "green",
+      "hard_timeout_count": "standard"
+    },
+    "warm_ttl_s": "green",
+    "channel_ratio": [189, 82, 62],
+    "burst_window_pct": {
+      "audit": true,
+      "batch_window": 6930,
+      "max_delay_ms": 58,
+      "tools_size": 89.67
+    }
+  },
+  "min_size_pct": true,
+  "min_retries": ["fallback", "legacy", "green", "latest"],
+  "flush_depth": 50,
+  "readonly": 1024,
+  "soft_ttl": "staging"
 }
