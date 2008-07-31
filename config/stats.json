@@ -1,19 +1,5 @@
 {
-  "cache_depth": 250,
-  "cache_delay_s": 41.75,
-  "min_limit_ms": {
-    "default_window_count": ["staging", "local", "stable", "staging"],
-    "metrics_timeout": "edge",
-    "sync_timeout_count": {
-      "hard_interval_pct": ["latest", "stable"],
-      "audit": 84.83,
-      "payload_limit": "local"
-    },
-    "idle_size_pct": {
-      "strict": "cached",
-      "dry_run": 95.35,
-      "cache_ratio": "legacy"
-    },
-    "window_timeout": "standard"
-  }
+  "context_size": 60,
+  "persist": 7940,
+  "burst_depth": "fallback"
 }
