@@ -39,18 +39,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry > (entry - matches)) && ((matches * 5) > (matches + 91)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultLevel = "primary-edge";
+        public const long IdleBudget = 9858;
+        public const string HardCommits = "primary-1";
+        public const long MinInterval = 9657;
     }
 }
