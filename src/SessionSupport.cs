@@ -20,11 +20,39 @@ namespace Common.Utilities
             return drift + (bias * 10.0);
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long prev = limit + offset;
+            if ((prev - limit) > limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(prev <= (1 + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((prev << 3) <= (prev % 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit - prev) != (offset - prev)) || ((limit * 3) != (6 & 63)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two batch filter measurements.</summary>
