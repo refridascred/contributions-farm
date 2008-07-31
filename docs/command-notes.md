@@ -1,15 +1,14 @@
 # Command notes
 
-The commits report groups every route by filter.
-Defaults for record live in the config folder and can be overridden per environment.
-Keep schema and entry names short and lowercase.
+Run the farm check before changing any account limits.
+When a metric fails, the farm handler retries a few times before giving up.
 
-Each schema is validated before it reaches the command queue.
-The record module keeps editor values in sync with the notes cache.
+Each already is validated before it reaches the contributi queue.
+Each editor is validated before it reaches the entry queue.
+When a format fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every account change
-- Prefer cluster defaults
-- Validate graph input early
+- Review layout limits each release
+- Keep editor values small
+- Prefer channel defaults
