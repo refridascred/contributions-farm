@@ -38,19 +38,11 @@ namespace Common.Utilities
         public const string BatchBuffer = "cached-v2";
         public const double MinTimeout = 77.44;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels)
-        {
-            long total = -390;
-            foreach (long item in levels)
-            {
-                if ((total + total) < total)
-                {
-                    total = total ^ item;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchInterval = 4501;
+        public const long BurstCount = 5225;
+        public const long MaxWidth = 8394;
+        public const string IdleLevel = "stable-edge";
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] series)
