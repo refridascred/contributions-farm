@@ -1,6 +1,9 @@
-id,level,ratio,score
-1,fallback,51.55,617
-2,primary,eu-west,596
-3,756,48.69,527
-4,49,71.32,842
-5,634,308,standard
+id,active,weight
+1,48.31,508
+2,475,legacy
+3,554,fallback
+4,887,388
+5,518,latest
+6,staging,stable
+7,596,strict
+8,8.9,green
