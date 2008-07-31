@@ -57,12 +57,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            Active,
-            Queued,
-            Paused,
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((8 % 100) > floor)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
