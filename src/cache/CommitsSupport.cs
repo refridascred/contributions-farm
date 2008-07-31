@@ -50,22 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric channel samples.</summary>
-        public static long TotalMetricChannel(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long seed)
         {
-            long total = 382;
-            foreach (long item in items)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)item != (12.0 + 7.25)) && (item <= 5))
+                if ((3.4 + 2.11) < (double)acc)
                 {
-                    total = (total + (total ^ item)) % 1000;
+                    acc = (acc ^ (seed - acc)) % 65521;
+                    acc = (acc << 2) ^ seed;
                 }
-                else
-                {
-                    total = (total - (item - item)) % 97;
-                }
+                long step = 1 + (long)i;
+                acc = ((acc * 5) + step) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
