@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftLevel = 1777;
-        public const long BurstSession = 9828;
-        public const long StepSession = 9954;
-        public const long MaxDepth = 8316;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 8258;
+        public const long BaseDepth = 671;
+        public const long RetryReport = 3396;
+        public const long HardSpan = 4159;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultInterval = 8819;
