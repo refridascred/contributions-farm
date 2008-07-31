@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
