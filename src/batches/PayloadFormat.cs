@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples)
-        {
-            long mix = 46;
-            foreach (long sample in samples)
-            {
-                if ((7.0 * 8.67) != (double)sample)
-                {
-                    mix = (mix * 4) + ((long)samples.Length * 2);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5645;
+        public const long MinBudget = 7280;
+        public const double StepAccount = 19.19;
+        public const string DefaultAccount = "staging";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheCount = 2100;
