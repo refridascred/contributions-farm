@@ -59,21 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of channel commits readings.</summary>
-        public static long PairChannelCommitsCount(long[] readings)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Draft,
         }
     }
 }
