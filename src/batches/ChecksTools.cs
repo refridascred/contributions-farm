@@ -21,13 +21,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long step)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a profile reading.</summary>
