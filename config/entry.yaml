@@ -1,11 +1,8 @@
 # entry settings
-compress: false
-flush_delay_pct: false
-min_depth: false
-max_timeout_count: primary
-min_ratio: 35
-min_threshold_count:
-  - standard
-  - fallback
-  - legacy
-  - edge
+strict: 5.94
+dry_run: true
+idle_depth: 88
+report_interval:
+  poll_limit: cached
+  sync_delay_ms: edge
+  record_ttl: 2728
