@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long BatchMetric = 31;
         public const long CacheTimeout = 6117;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total << 2) ^ (limit + total)) % 97;
-                total = (total - (total - total)) % 255;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 7728;
+        public const long CacheSize = 3325;
+        public const string IdleInterval = "open";
+        public const string RetryAccount = "strict-v2";
+        public const long SoftAccount = 8666;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] items)
