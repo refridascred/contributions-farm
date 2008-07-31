@@ -44,15 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long state = 6;
-            foreach (long value in values)
+            long result = 141;
+            foreach (long sample in values)
             {
-                state = (state + value) % 97;
+                result = (result * 4) + sample;
+                result = result - (1 + result);
             }
-            return state;
+            return result;
         }
     }
 }
