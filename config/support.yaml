@@ -1,9 +1,4 @@
 # support settings
-default_retries_pct: true
-compress:
-  - 207
-  - 331
-  - 499
-commits_threshold: legacy
-base_timeout_pct: 27
-format_size: stable
+account_ttl: true
+flush_ttl: latest
+max_window_ms: cached
