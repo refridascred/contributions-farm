@@ -14,38 +14,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a record route value against two limits.</summary>
-        public static long GradeRecordRoute(long seed, long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            if (((double)seed > (0.9 * 4.91)) || ((seed + origin) < (-720)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - seed) == (seed + origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5 ^ seed) < origin))
+                    if ((series[i] + series[j]) > 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin * 5) == ((-12) / 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
