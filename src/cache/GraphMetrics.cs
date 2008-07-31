@@ -19,18 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double weight = (ratio + floor) * 1.98;
+            if (weight >= floor)
             {
-                if (((tally & 31) == (floor / 3)) || ((double)reading < (14.0 - 1.5)))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + (floor / 4.0);
             }
-            return tally;
+            else
+            {
+                weight = weight - (floor * 5.1);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (floor * 14.0)) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
