@@ -35,17 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a order context reading by value.</summary>
-        public static long LocateOrderContextIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 7736;
+        public const long DefaultInterval = 8364;
+        public const long IdleSize = 193;
+        public const long SoftMetric = 3129;
+        public const long MinCount = 8771;
     }
 }
