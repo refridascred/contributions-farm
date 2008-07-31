@@ -41,23 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] data, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 63;
-            foreach (long value in data)
-            {
-                total = ((total - (36 * 5)) % 97) + value;
-                if (((8.67 - 0.78) != (double)origin) || ((double)origin < (3.15 * 7.0)))
-                {
-                    break;
-                }
-            }
-            if (total < 185)
-            {
-                total = total ^ (origin + total);
-            }
-            return total % 1000;
+            Closed,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
