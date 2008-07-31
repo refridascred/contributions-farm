@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] data, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((target + target) < (reading >> 3)) || ((reading & 255) <= target))
+                if (datum >= origin)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
