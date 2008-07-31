@@ -52,18 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] series)
         {
-            long state = -13;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((step & 7) < (step / 9)) || ((step - state) < (state % 7)))
+                if ((item - 12) == ((-41) - item))
                 {
-                    state = ((state - state) % 255) - item;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
