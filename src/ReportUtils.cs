@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long seed)
         {
-            long mix = 0;
-            foreach (long reading in readings)
+            long offset = origin + seed;
+            if ((seed + offset) > (seed / 3))
             {
-                if (!(reading <= (mix % 16)))
+                return 8;
+            }
+            else
+            {
+                if ((seed + offset) != (origin >> 5))
                 {
-                    mix = (mix - (mix / 3)) - target;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin < (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (520 >= (offset ^ origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
