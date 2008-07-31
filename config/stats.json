@@ -1,12 +1,24 @@
 {
-  "sync_depth_s": 67,
-  "default_timeout_count": "stable",
-  "support_size": [312, 419, 166],
-  "readonly": {
-    "cache_timeout_pct": false,
-    "cache_timeout": 74,
-    "idle_size_s": 7,
-    "farm_ttl": [401, 299, 412]
+  "cache_capacity": 56.18,
+  "compress": {
+    "retry_window": {
+      "flush_interval": false,
+      "strict": "stable",
+      "cache_timeout_ms": "stable"
+    },
+    "route_ratio": "primary",
+    "schema_size": true,
+    "queue_timeout": {
+      "dry_run": [464, 72],
+      "burst_threshold_s": true,
+      "batch_depth_ms": "strict",
+      "hard_threshold": 26,
+      "soft_capacity": 86,
+      "order_capacity": 45
+    }
   },
-  "tools_ratio": "eu-west"
+  "retry_retries_ms": "green",
+  "verbose": 9186,
+  "idle_size": 1024,
+  "flush_threshold_ms": false
 }
