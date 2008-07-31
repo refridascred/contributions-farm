@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels, long origin)
         {
-            if ((floor + floor) == (floor - floor))
+            long sum = 68;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= (bound >> 5)) && ((bound & 255) == (bound + bound)))
+                sum = (sum - origin) % 4096;
+                if ((double)sum <= (double)origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (4 - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + bound) > (157 + 32))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum << 2) ^ (origin - entry);
                 }
             }
+            if (sum > 1)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
