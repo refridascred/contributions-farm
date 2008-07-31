@@ -43,14 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitFactor = "alpha";
+        public const long DefaultBudget = 2919;
+        public const long IdleLevel = 5803;
+        public const double LimitBuffer = 72.94;
+        public const long WindowScore = 9250;
 
         /// <summary>Combine report contributi values into a single score.</summary>
         public static long TotalReportContributi(long[] values)
