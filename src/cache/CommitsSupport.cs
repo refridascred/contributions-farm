@@ -70,22 +70,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Grade a buffer queue value against two limits.</summary>
+        public static long SortBufferQueue(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((limit2 / 6) < 36)
             {
-                if ((double)reading <= (double)count)
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 2) == (limit2 + limit))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((0 >> 3) == (limit * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
