@@ -54,14 +54,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long bound)
         {
-            Retry,
-            Synced,
-            Idle,
-            Failed,
-            Pending,
+            if (origin < (bound << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) == (bound << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
