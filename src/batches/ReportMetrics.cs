@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long sum = 31;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum % 100) == (78 ^ offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (reading + reading)) % 65521;
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 36)
-            {
-                sum = (sum ^ (sum - offset)) % 4096;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
