@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a commits editor reading by value.</summary>
-        public static long FindCommitsEditorIndex(long[] samples, long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
