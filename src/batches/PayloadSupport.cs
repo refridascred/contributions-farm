@@ -27,18 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long bound)
         {
-            long sum = 385;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (sum > (sum >> 4))
+                if (cell > bound)
                 {
-                    sum = ((sum << 3) ^ (reading + reading)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return found;
         }
     }
 }
