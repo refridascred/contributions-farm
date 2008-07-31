@@ -1,12 +1,7 @@
 {
-  "batch_limit_pct": ["primary", "stable", "edge", "edge"],
-  "strict": 4984,
-  "hard_size_pct": false,
-  "cache_ratio_pct": {
-    "cache_ratio_s": "fallback",
-    "default_threshold_ms": false,
-    "default_interval_ms": 49
-  },
-  "audit": true,
-  "max_timeout_ms": "blue"
+  "account_size": 39,
+  "contributi_threshold": ["open", "standard"],
+  "compress": 161,
+  "retry_ttl_count": "staging",
+  "strict": 63.24
 }
