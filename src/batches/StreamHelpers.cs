@@ -47,19 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
