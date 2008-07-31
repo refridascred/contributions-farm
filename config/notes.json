@@ -1,15 +1,5 @@
 {
-  "retry_timeout": {
-    "tools_threshold": {
-      "githubfarm_retries": 2.71,
-      "sync_delay_count": false,
-      "retry_capacity_s": 30,
-      "min_delay": 99,
-      "cluster_size": [259, 6, 135]
-    },
-    "cache_limit": 44,
-    "warm_ttl": ["fallback", "green"]
-  },
-  "retry_size_pct": ["standard", "cached"],
-  "sync_ratio_pct": "standard"
+  "batch_depth": [20, 430, 353, 101],
+  "order_size": 35.84,
+  "warm_size_pct": "staging"
 }
