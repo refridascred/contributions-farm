@@ -1,4 +1,11 @@
 # githubfarm settings
-readonly: 92
-cache_ratio: latest
-sync_retries: open
+compress: true
+enabled: blue
+layout_threshold:
+  - blue
+  - strict
+  - edge
+  - local
+persist: 60
+stats_ratio: stable
+warm_delay_pct: true
