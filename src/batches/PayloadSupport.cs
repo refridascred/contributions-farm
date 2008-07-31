@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Idle,
-            Done,
-            Locked,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the route mode values.</summary>
