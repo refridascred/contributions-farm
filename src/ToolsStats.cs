@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] values, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (!((8.0 / 3.0) >= (double)bound))
+                if (sample >= origin)
                 {
-                    seen = (seen + 2) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
