@@ -114,15 +114,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
     }
 }
