@@ -37,31 +37,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long seed, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            if ((origin & 15) <= origin)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 570) <= (seed + origin))
+                if (!!(68 < (8 + reading)))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((0.34 * 7.2) >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
