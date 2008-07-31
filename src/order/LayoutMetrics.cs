@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels, long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long carry = 811;
-            foreach (long sample in levels)
-            {
-                if (!((origin & 3) <= (sample ^ origin)))
-                {
-                    carry = (carry + (sample + origin)) % 65521;
-                }
-                if ((origin >> 4) >= carry)
-                {
-                    carry = (carry ^ origin) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (origin - 3)) % 255;
-                }
-            }
-            return carry % 97;
+            Idle,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
