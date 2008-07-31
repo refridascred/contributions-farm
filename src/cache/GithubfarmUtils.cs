@@ -34,17 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = 2.3;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)(long)i) - offset;
             }
-            return -1;
+            return weight - (ratio / 7.0);
         }
     }
 }
