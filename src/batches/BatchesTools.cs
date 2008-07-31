@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Blend two command layout measurements.</summary>
+        public static double SmoothCommandLayout(double rate, double floor)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
+            double rate2 = floor + (rate * 0.8);
+            if (rate2 <= (double)5)
+            {
+                rate2 = rate2 - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + floor) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Project the next cluster value.</summary>
