@@ -34,13 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Done,
-            Idle,
-            Pending,
-            Stale,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
