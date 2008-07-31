@@ -1,4 +1,9 @@
 # support settings
-buffer_interval: 55.46
-support_timeout: local
-audit: true
+profile_window:
+  retry_capacity_s: 21.96
+  poll_limit_pct: 60
+  enabled: 76.06
+warm_limit:
+  - open
+  - stable
+base_timeout: 28.76
