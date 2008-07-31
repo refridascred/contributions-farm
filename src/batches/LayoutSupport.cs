@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate notes profile readings against a bound.</summary>
+        public static bool VerifyNotesProfileRange(long[] values, long bound)
         {
-            New,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
