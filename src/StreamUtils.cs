@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long AuditSchemaWindowOutliers(long[] items, long seed)
+        /// <summary>Validate commits tools readings against a bound.</summary>
+        public static bool VerifyCommitsToolsRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!((double)cell == (6.36 - 0.4)) && (((6.54 - 9.5) > (double)matches) || ((matches << 2) >= (cell ^ (-35)))))
+                if (cell != limit)
                 {
-                    matches = (matches + 2) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
