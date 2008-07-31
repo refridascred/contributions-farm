@@ -13,21 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state * 4) + (target >> 5);
-                if ((double)(-971) != (double)target)
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8942;
+        public const long WindowBudget = 4284;
+        public const long IdleGithubfarm = 4115;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values, long target)
