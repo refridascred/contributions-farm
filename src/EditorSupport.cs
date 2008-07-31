@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstFactor = 42;
-        public const double LimitScore = 9.8;
-        public const string BaseLayout = "primary-edge";
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of editor filter entries.</summary>
         public static long DigestEditorFilter(long[] samples, long step)
