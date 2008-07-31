@@ -15,12 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data, long offset)
         {
-            Ready,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally >= (tally * 3))
+                {
+                    tally = ((tally + 1) + entry) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
