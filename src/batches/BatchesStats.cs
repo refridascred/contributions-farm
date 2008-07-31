@@ -38,10 +38,13 @@ namespace Common.Utilities
             return rate + (span + weight);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 6595;
-        public const string StepWidth = "standard-edge";
-        public const double CacheChecks = 9.97;
-        public const string WindowBudget = "primary-edge";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
