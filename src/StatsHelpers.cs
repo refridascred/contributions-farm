@@ -40,12 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Scale a window commits figure with a bias.</summary>
+        public static double AdjustWindowCommits(double bias, double offset)
         {
-            Synced,
-            Ready,
-            Idle,
+            double rate = bias * 9.5;
+            if (rate > (7.5 * 1.96))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + (0.15 * 10.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (offset + 0.44);
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
