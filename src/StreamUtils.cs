@@ -48,19 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits ^ hits) != (cell / 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftWidth = "legacy-edge";
+        public const string HardStream = "stable";
+        public const long BaseStream = 3977;
+        public const long LimitStream = 713;
+        public const double DefaultStream = 58.53;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterBounds(long[] levels, long target)
