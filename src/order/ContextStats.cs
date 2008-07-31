@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
+            double drift = (1.7 + floor) - floor;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Roll a window counter forward.</summary>
