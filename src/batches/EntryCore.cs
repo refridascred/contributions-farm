@@ -57,19 +57,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report contributi values into a single score.</summary>
-        public static long TotalReportContributi(long[] values)
-        {
-            long state = 295;
-            foreach (long item in values)
-            {
-                state = (state + (item * 2)) % 97;
-            }
-            if (state > 7)
-            {
-                state = state ^ (975 + state);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 66;
+        public const long MaxWidth = 6447;
+        public const long HardDepth = 9341;
     }
 }
