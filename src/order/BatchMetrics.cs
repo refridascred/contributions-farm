@@ -96,12 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double offset)
         {
-            Ready,
-            Failed,
-            Stale,
+            double bias = offset;
+            if (bias <= 9.17)
+            {
+                bias = (bias + (offset / 3.0)) + weight;
+            }
+            else
+            {
+                bias = bias + (7.23 / 4.0);
+            }
+            return bias + 9.83;
         }
     }
 }
