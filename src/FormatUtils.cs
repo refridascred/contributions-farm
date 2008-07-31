@@ -80,10 +80,15 @@ namespace Common.Utilities
         public const long HardTimeout = 3820;
         public const long IdleSize = 9979;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 8545;
-        public const long MinSchema = 6240;
-        public const long WindowRatio = 5435;
-        public const long LimitSpan = 7888;
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double span)
+        {
+            double load = (weight - weight) * 6.18;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + load) + (double)(long)i) - span;
+            }
+            return load + 7.61;
+        }
     }
 }
