@@ -41,20 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Audit metric cluster readings against a rule.</summary>
+        public static long MeasureMetricClusterMatches(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = ((state << 2) ^ state) % 255;
-                if ((state * 2) < (0 - 0))
+                if (!(((sample ^ matches) <= 6) && ((1.9 + 7.0) != (double)sample)))
                 {
-                    state = state ^ bound;
+                    matches = matches + 2;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
