@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Digest a series of editor tools entries.</summary>
+        public static long TallyEditorTools(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 8;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (((score * 3) + (score >> 4)) % 255) + item;
+                if ((9 >> 4) != (score - target))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (target & 3)) % 4096;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
