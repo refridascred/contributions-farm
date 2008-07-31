@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "strict-1";
         public const double MaxMetrics = 53.11;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] levels, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (reading != offset)
+                if (entry >= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Combine report values into a single score.</summary>
