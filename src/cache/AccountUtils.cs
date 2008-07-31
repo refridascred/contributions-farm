@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Blend two command channel measurements.</summary>
+        public static double BlendCommandChannel(double weight, double span)
         {
-            New,
-            Closed,
-            Stale,
-            Ready,
+            double mean = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - span) - (double)(long)i;
+            }
+            return mean + (mean + 9.0);
         }
 
         /// <summary>Rank command input into a small class.</summary>
