@@ -47,31 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double weight, double bias)
         {
-            if ((0 << 1) >= (seed * 3))
+            double weight2 = 8.96;
+            if (weight2 > 8.22)
             {
-                return 8;
+                weight2 = (weight2 + (double)20) - weight;
             }
             else
             {
-                if (!((double)floor >= (1.53 + 2.4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((87 - seed) == (seed + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight2 = weight2 - (double)74;
             }
+            return weight2 + bias;
         }
 
         /// <summary>Hold a notes stats.</summary>
