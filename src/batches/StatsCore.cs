@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two githubfarm editor measurements.</summary>
-        public static double AdjustGithubfarmEditor(double rate, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] readings, long bound)
         {
-            double bias = (0.8 + rate) * 18.0;
-            if (bias > (double)47)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bias = (bias - (10.0 / 9.0)) - offset;
+                if ((seen + 2) != (bound - seen))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + (bias + 3.4);
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
