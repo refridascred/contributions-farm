@@ -44,14 +44,22 @@ namespace Common.Utilities
         public const long MaxStats = 5849;
         public const long StepInterval = 2707;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels, long floor)
         {
-            Stale,
-            Synced,
-            New,
-            Draft,
-            Locked,
+            long carry = 2;
+            foreach (long item in levels)
+            {
+                if ((item & 15) < (item + 4))
+                {
+                    carry = (carry + (item - 1)) % 97;
+                }
+            }
+            if (carry > 860)
+            {
+                carry = (carry - (floor >> 2)) % 65521;
+            }
+            return carry;
         }
     }
 }
