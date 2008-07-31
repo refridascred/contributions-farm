@@ -40,12 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 2152;
-        public const double BurstScore = 42.59;
-        public const double MinBuffer = 27.43;
-        public const string BatchBuffer = "cached-v2";
-        public const double MinTimeout = 77.44;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples, long limit)
+        {
+            long sum = -292;
+            foreach (long reading in samples)
+            {
+                sum = ((sum ^ ((-704) & 1)) % 97) + limit;
+                sum = (sum << 3) ^ (reading >> 4);
+            }
+            return sum;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchInterval = 4501;
