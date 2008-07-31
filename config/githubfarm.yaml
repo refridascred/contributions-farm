@@ -1,11 +1,9 @@
 # githubfarm settings
-retry_capacity_pct: staging
-idle_retries: 100
-channel_size:
-  min_ttl_s: false
-  session_depth: 9268
-  audit: latest
-  verbose: standard
-  cluster_limit: latest
-  route_ttl: staging
-stats_capacity: blue
+poll_timeout_ms: 24.78
+base_depth_pct: 6058
+burst_retries:
+  - fallback
+  - staging
+hard_window_pct: 2550
+channel_threshold: 86.87
+payload_depth: 8233
