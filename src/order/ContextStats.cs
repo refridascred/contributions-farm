@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 9117;
-        public const string RetryAccount = "stable-1";
-        public const long SoftScore = 2655;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Paused,
+            Synced,
+            Active,
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long bound)
