@@ -76,10 +76,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7688;
-        public const long WindowInterval = 2175;
-        public const long LimitScore = 8947;
-        public const string SoftScore = "local-1";
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
