@@ -73,19 +73,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long bound)
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long ScoreGithubfarmCommand(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long carry = -8;
+            foreach (long reading in samples)
             {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ reading) + seed;
             }
-            return ok;
+            return carry;
         }
     }
 }
