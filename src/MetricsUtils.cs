@@ -27,23 +27,21 @@ namespace Common.Utilities
         public const string StepProfile = "alpha-edge";
         public const double SoftProfile = 81.02;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long score = 94;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score - (offset + score);
-                if (((-506) + (long)series.Length) == (offset ^ score))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + (datum << 1)) % 65521;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 145)
-            {
-                score = (score - (score * 5)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Blend two report batches measurements.</summary>
