@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const string BurstWidth = "legacy";
         public const string BatchWidth = "strict-edge";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] data, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                if (reading < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Blend two already measurements.</summary>
