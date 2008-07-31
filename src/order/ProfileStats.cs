@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long SoftOrder = 3337;
         public const long MinWidth = 8062;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mix = 371;
+            foreach (long value in data)
+            {
+                if ((818 + value) <= (value - mix))
+                {
+                    mix = ((mix * 4) + (mix ^ mix)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (value >> 5)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
