@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            long anchor = -787;
-            foreach (long value in levels)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((3.7 * 9.62) < (double)offset) && ((value << 1) >= (offset - offset))))
-                {
-                    anchor = anchor + (offset ^ anchor);
-                    anchor = (anchor + (value ^ value)) % 4096;
-                }
-                anchor = anchor - (416 * 2);
-                anchor = (anchor ^ (value * 2)) % 65521;
-                if ((anchor >= (offset % 10)) || ((value - 88) > (anchor / 3)))
-                {
-                    break;
-                }
+                anchor = (anchor - ((long)i / 6)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a batches options.</summary>
