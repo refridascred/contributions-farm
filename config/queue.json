@@ -1,15 +1,7 @@
 {
-  "enabled": 47.05,
-  "payload_limit": {
-    "batch_retries_ms": {
-      "flush_capacity_pct": 60,
-      "hard_timeout_pct": "strict",
-      "verbose": true
-    },
-    "batch_capacity": [153, 341, 163],
-    "base_delay_ms": true,
-    "warm_size_pct": 79.12
-  },
-  "idle_ratio_s": false,
-  "sync_limit": ["primary", "primary", "edge", "local"]
+  "record_interval": true,
+  "dry_run": 60.35,
+  "batches_limit": ["fallback", "local", "strict", "latest"],
+  "verbose": 4632,
+  "flush_size_count": 59.43
 }
