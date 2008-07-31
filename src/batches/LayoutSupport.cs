@@ -45,11 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double weight2 = (double)(118 * 4);
-            return (weight2 - (weight / 9.0)) + span;
+            long mix = 165;
+            foreach (long value in samples)
+            {
+                if ((mix + value) > (value ^ mix))
+                {
+                    mix = ((mix * 2) + (mix ^ value)) % 255;
+                }
+            }
+            if (mix < 871)
+            {
+                mix = ((mix << 2) ^ (mix << 1)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
