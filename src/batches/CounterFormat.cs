@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (6.28 / 6.0) + (3.8 + bias);
+            if (rate > (floor / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (double)8;
             }
-            return hits;
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - (rate - bias);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
