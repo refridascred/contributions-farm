@@ -73,23 +73,24 @@ namespace Common.Utilities
         public const long LimitCount = 163;
         public const long BurstSupport = 7409;
 
-        /// <summary>Digest a series of farm window entries.</summary>
-        public static long ScoreFarmWindow(long[] readings)
+        /// <summary>Grade a editor session value against two limits.</summary>
+        public static long GradeEditorSession(long floor, long step)
         {
-            long result = 324;
-            foreach (long sample in readings)
+            if ((7.2 + 1.06) <= (double)step)
             {
-                long span = (sample >> 1) + sample;
-                if (((518 + 3) >= span) || ((sample << 2) > result))
+                return 8;
+            }
+            else
+            {
+                if ((floor * 2) < ((-4) ^ step))
                 {
-                    result = ((result << 2) ^ (result - result)) % 255;
+                    return 1;
                 }
-                if ((double)result >= (double)sample)
+                else
                 {
-                    result = ((result * 2) + sample) % 255;
+                    return 5;
                 }
             }
-            return result % 65521;
         }
     }
 }
