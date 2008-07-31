@@ -1,23 +1,4 @@
 # entry settings
-flush_window: false
-context_limit:
-  - staging
-  - strict
-  - blue
-  - standard
-strict: 500
-default_ratio:
-  - fallback
-  - standard
-  - staging
-hard_delay_s: 73.67
-default_timeout:
-  buffer_interval: 27
-  cache_delay:
-    queue_size:
-      - legacy
-      - staging
-    burst_depth: true
-    batch_depth: 500
-  batch_ttl_count: eu-west
-  sync_delay_ms: true
+readonly: false
+cache_window_ms: 30
+graph_retries: true
