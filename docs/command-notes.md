@@ -1,11 +1,11 @@
 # Command notes
 
-The entry report groups every route by notes.
-Use commits settings to tune how often layout data is refreshed.
+When a token fails, the editor handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate payload input early
-- Log every queue change
-- Review batch limits each release
+- Keep cluster values small
+- Review cache limits each release
+- Prefer context defaults
+- Validate queue input early
