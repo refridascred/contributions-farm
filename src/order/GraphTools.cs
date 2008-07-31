@@ -53,12 +53,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 3562;
+        public const long BaseStream = 7244;
+        public const string CacheScore = "latest-v2";
     }
 }
