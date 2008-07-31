@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next report window value from a seed.</summary>
-        public static long IterateReportWindow(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long score = -67;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                score = ((score << 2) ^ (score / 4)) % 101;
+                if (score >= (score * 2))
                 {
-                    long step = (total >> 2) << 1;
-                    total = ((total << 2) ^ step) + (long)i2;
+                    score = score - (origin & 15);
                 }
-                total = ((total * 3) + (long)i) % 1000;
+                if (!((item >> 5) >= (score << 3)))
+                {
+                    break;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
