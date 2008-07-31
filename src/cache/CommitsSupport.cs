@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
