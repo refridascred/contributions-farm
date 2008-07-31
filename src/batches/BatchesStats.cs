@@ -27,19 +27,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
