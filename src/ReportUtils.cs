@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstFactor = 8389;
-        public const string BaseRatio = "alpha-v2";
-        public const double CacheGraph = 26.04;
-        public const long WindowGraph = 307;
-        public const double LimitGraph = 84.7;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((item * 4) <= (item / 4)) || ((count ^ item) == (count % 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] series, long floor)
