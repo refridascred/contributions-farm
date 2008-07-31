@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const double HardContext = 41.65;
         public const string WindowBudget = "open";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels, long target)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long reading in levels)
             {
-                if ((count * 4) >= (long)levels.Length)
+                if ((hits & 31) == (hits & 7))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 1) + reading) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
