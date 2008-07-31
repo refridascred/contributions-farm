@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of editor tools entries.</summary>
-        public static long TallyEditorTools(long[] readings, long target)
-        {
-            long score = 8;
-            foreach (long item in readings)
-            {
-                score = (((score * 3) + (score >> 4)) % 255) + item;
-                if ((9 >> 4) != (score - target))
-                {
-                    score = (score - (target & 3)) % 4096;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 7378;
+        public const long SoftProfile = 740;
+        public const string CacheProfile = "latest-v2";
+        public const double StepProfile = 15.6;
+        public const long MinBudget = 8454;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] levels)
