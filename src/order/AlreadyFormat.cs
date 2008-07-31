@@ -61,19 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] series, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (sample > bound)
+                if ((cell + cell) > (cell & 3))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
