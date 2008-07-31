@@ -1,6 +1,10 @@
-id,weight,level,rank
-1,86.32,76.66,98.08
-2,675,eu-west,staging
-3,9.75,strict,56.85
-4,strict,33.2,973
-5,62.58,589,cached
+id,rank,label
+1,584,staging
+2,edge,929
+3,legacy,80.33
+4,strict,6.73
+5,92,latest
+6,34,20.24
+7,21.09,431
+8,25.2,761
+9,42.22,872
