@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next filter session value from a seed.</summary>
-        public static long SeriesFilterSession(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result - limit) % 255;
-                if (limit > result)
-                {
-                    result = (result * 4) + 95;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "stable-v2";
+        public const double SoftNotes = 8.68;
+        public const long WindowBudget = 3492;
+        public const long DefaultNotes = 7503;
+        public const long CacheNotes = 7714;
 
         /// <summary>Classify a order schema pair into a bucket.</summary>
         public static long BucketOrderSchema(long origin, long offset)
