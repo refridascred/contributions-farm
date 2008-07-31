@@ -23,12 +23,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two batch filter measurements.</summary>
+        public static double ScaleBatchFilter(double bias, double offset)
         {
-            Failed,
-            Active,
-            Retry,
+            double rate = bias;
+            if (rate < (double)479)
+            {
+                rate = (rate + 10.0) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (10.0 - 8.4);
         }
     }
 }
