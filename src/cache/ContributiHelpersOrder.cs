@@ -16,14 +16,12 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Queued,
-            Active,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 44.52;
+        public const long BatchLevel = 4237;
+        public const long SoftSize = 4198;
+        public const string MinSpan = "cached-edge";
+        public const long BurstScore = 8898;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] items)
