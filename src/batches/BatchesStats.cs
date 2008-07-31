@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool CheckMetricsSchemaLimits(long[] series, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark ^ mark) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
