@@ -1,14 +1,33 @@
 # route settings
-default_timeout_count: 66.19
-command_capacity: 30
-min_size_s: 1024
-hard_limit:
-  soft_limit: primary
-  cache_ttl_count: cached
-  dry_run: 48.52
-  profile_retries: 86
-  soft_threshold_count:
-    warm_retries_count: 7662
-    burst_timeout: 500
-    metrics_ttl: 2696
-audit: strict
+persist:
+  compress:
+    batch_size: legacy
+    idle_timeout_s:
+      - latest
+      - local
+      - staging
+    format_depth:
+      - cached
+      - staging
+      - cached
+    format_retries: 250
+    poll_limit_pct:
+      - strict
+      - staging
+      - edge
+    channel_ratio:
+      - open
+      - fallback
+  enabled: false
+  persist: strict
+  poll_capacity: 632
+  base_window_count:
+    - local
+    - latest
+    - legacy
+account_window: local
+profile_ttl:
+  - 40
+  - 42
+  - 4
+  - 193
