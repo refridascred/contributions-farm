@@ -1,7 +1,7 @@
 {
-  "sync_window": "cached",
-  "already_limit": "fallback",
-  "retry_retries_ms": 9602,
-  "report_ttl": 0.13,
-  "audit": ["cached", "strict"]
+  "flush_interval_count": 7053,
+  "audit": "staging",
+  "strict": true,
+  "idle_delay": false,
+  "retry_threshold": 5.94
 }
