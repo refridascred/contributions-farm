@@ -35,18 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)seen > (3.73 + 1.9))
-                {
-                    seen = ((seen + 1) + datum) - target;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
