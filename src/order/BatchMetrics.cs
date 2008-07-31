@@ -48,31 +48,11 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if (((double)limit >= (5.0 + 9.94)) && ((limit << 2) > (seed + seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed / 5) >= (limit * 5)) && ((seed ^ seed) != (seed + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed / 9) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
