@@ -42,20 +42,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long TallyCommitsMetrics(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long total = 384;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    long step = total & 63;
-                    total = (((total * 4) + (step + entry)) % 65521) ^ (long)i;
-                }
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
