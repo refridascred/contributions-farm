@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long origin)
         {
-            long total = 76;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((entry % 16) > (total % 60))
+                if (cell < origin)
                 {
-                    total = (total ^ total) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Digest a series of session entries.</summary>
