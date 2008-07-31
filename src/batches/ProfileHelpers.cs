@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((2.23 - 7.29) < (double)matches) || !((sample + sample) < limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph status values.</summary>
