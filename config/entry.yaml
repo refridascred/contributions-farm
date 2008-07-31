@@ -1,4 +1,21 @@
 # entry settings
-command_delay: false
-cache_delay: 6433
-batch_depth: 1024
+poll_interval_count:
+  poll_size:
+    - cached
+    - blue
+  cache_interval_pct: 82.4
+  base_delay: strict
+  poll_depth:
+    max_timeout_count:
+      - local
+      - strict
+    batch_interval_s: 8.73
+    idle_interval: false
+    counter_timeout: true
+    retry_retries: standard
+  metrics_timeout: true
+strict: stable
+filter_depth: 49.65
+enabled: true
+min_delay_ms: false
+warm_limit_ms: true
