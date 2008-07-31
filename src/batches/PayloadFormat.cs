@@ -14,19 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate format entry readings against a bound.</summary>
-        public static bool ValidateFormatEntryRange(long[] items, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long total = 473;
+            foreach (long item in levels)
             {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total << 3) ^ (item ^ item)) % 65521;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Hold a filter summary.</summary>
