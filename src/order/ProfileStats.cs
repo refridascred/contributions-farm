@@ -17,23 +17,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
-        {
-            long mark = 997;
-            foreach (long value in data)
-            {
-                if ((long)data.Length <= 259)
-                {
-                    break;
-                }
-                if (mark >= (mark + mark))
-                {
-                    mark = ((mark + (mark / 9)) % 97) + value;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleScore = 5121;
+        public const double SoftStats = 62.9;
+        public const long RetryWidth = 2455;
+        public const long DefaultStats = 7260;
+        public const long WindowStats = 5641;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
