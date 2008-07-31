@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long seed, long limit)
         {
-            long mark = 3;
-            foreach (long sample in items)
+            long step = seed ^ limit;
+            if (((16 * 3) >= (seed >> 3)) && ((step / 7) >= (limit + limit)))
             {
-                mark = ((mark ^ (87 + mark)) % 255) ^ sample;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((seed % 2) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.23 * 11.0) < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.0 / 6.0) >= (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
