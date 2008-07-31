@@ -20,15 +20,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Check that every graph window entry stays within the limit.</summary>
+        public static bool CheckGraphWindowRange(long[] levels, long target)
         {
-            double mean = 1.7 * 2.32;
-            if (mean < (double)31)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mean = (mean + (mean - 2.0)) - gain;
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - span;
+            return ok;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
