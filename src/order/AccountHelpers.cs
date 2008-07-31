@@ -21,10 +21,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepBudget = 8278;
-        public const long DefaultWidth = 1851;
-        public const long BatchCount = 137;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix << 3) ^ target;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleFactor = 6560;
