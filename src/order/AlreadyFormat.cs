@@ -29,12 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((1 + 36) <= count))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next entry stats value.</summary>
