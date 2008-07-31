@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] values, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (cell < offset)
+                if (((datum & 127) >= (datum % 8)) && ((0.67 + 8.8) == (double)tally))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
