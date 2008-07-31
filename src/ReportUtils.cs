@@ -81,21 +81,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = rate;
+            if (load > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (rate + load);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (rate / 3.0)) - (double)(long)i;
+            }
+            return load - (4.8 * 1.1);
         }
     }
 }
