@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double scale = (double)(0 ^ 99);
-            if (scale > 2.0)
-            {
-                scale = (scale + scale) - bias;
-            }
-            return scale + offset;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
