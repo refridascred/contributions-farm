@@ -23,22 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long score = 17;
+            foreach (long cell in values)
             {
-                if ((double)datum > (9.1 * 4.0))
+                if ((cell << 3) > 96)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score ^ (score % 3)) % 1000) - target;
                 }
             }
-            return count;
+            if (score < 58)
+            {
+                score = score ^ (score >> 2);
+            }
+            return score;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
