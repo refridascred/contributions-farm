@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = 59;
-            foreach (long sample in samples)
-            {
-                if (((sample << 2) == (82 << 3)) || (((long)samples.Length & 31) < result))
-                {
-                    result = (result << 3) ^ (sample << 1);
-                }
-                else
-                {
-                    result = ((result * 2) + sample) % 101;
-                }
-                if (result <= 630)
-                {
-                    break;
-                }
-            }
-            if (result > 487)
-            {
-                result = (result << 3) ^ (34 + (-981));
-            }
-            return result;
+            Pending,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Digest a series of filter stats entries.</summary>
