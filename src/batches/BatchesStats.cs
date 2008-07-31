@@ -27,17 +27,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first layout editor entry that matches the target.</summary>
-        public static long FindLayoutEditorIndex(long[] items, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)1) + (double)(long)i;
             }
-            return -1;
+            return rate + (span + weight);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
