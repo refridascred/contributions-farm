@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long target)
         {
-            long sum = 45;
-            foreach (long datum in values)
+            long result = 8;
+            foreach (long value in series)
             {
-                if ((sum & 255) >= (sum % 100))
+                result = ((result << 2) ^ (target >> 4)) % 65521;
+                if (target > (value & 127))
                 {
-                    sum = (((sum * 2) + sum) % 4096) ^ datum;
+                    break;
                 }
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
