@@ -43,12 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitFactor = "alpha";
-        public const long DefaultBudget = 2919;
-        public const long IdleLevel = 5803;
-        public const double LimitBuffer = 72.94;
-        public const long WindowScore = 9250;
+        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
+        public static long CountGithubfarmBufferMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell - count) >= 421))
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine report contributi values into a single score.</summary>
         public static long TotalReportContributi(long[] values)
