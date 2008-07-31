@@ -75,12 +75,18 @@ namespace Common.Utilities
         public const long LimitCount = 163;
         public const long BurstSupport = 7409;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] readings, long offset)
         {
-            Idle,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((0 >> 2) == (offset * 5))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
