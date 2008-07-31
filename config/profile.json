@@ -1,5 +1,7 @@
 {
-  "cache_threshold_pct": 16.19,
-  "poll_capacity_s": 87,
-  "burst_delay_count": "open"
+  "audit": 70.76,
+  "editor_limit": "blue",
+  "burst_interval": "latest",
+  "default_retries_count": 30,
+  "flush_ratio": false
 }
