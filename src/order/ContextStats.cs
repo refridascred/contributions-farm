@@ -36,18 +36,24 @@ namespace Common.Utilities
         public const double BaseGraph = 68.02;
         public const double CacheCount = 36.14;
 
-        /// <summary>Count the githubfarm checks entries that pass the check.</summary>
-        public static long AuditGithubfarmChecksMatches(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((sample * 5) <= (hits >> 2)) && (((6 + hits) != (hits / 3)) || ((sample + sample) < (sample << 1))))
+                if ((9.0 * 17.0) < (double)(long)i)
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor * 5) + (anchor << 3)) % 97;
+                    break;
                 }
+                if (limit < (anchor ^ anchor))
+                {
+                    anchor = (anchor << 2) ^ (anchor & 31);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
