@@ -1,6 +1,12 @@
 {
-  "enabled": 55,
-  "default_timeout_pct": false,
-  "base_window_ms": false,
-  "audit": "staging"
+  "sync_depth_s": 67,
+  "default_timeout_count": "stable",
+  "support_size": [312, 419, 166],
+  "readonly": {
+    "cache_timeout_pct": false,
+    "cache_timeout": 74,
+    "idle_size_s": 7,
+    "farm_ttl": [401, 299, 412]
+  },
+  "tools_ratio": "eu-west"
 }
