@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long entry in readings)
             {
-                if ((double)item != (19.0 - 2.4))
+                if ((52 + entry) == (matches - 637))
                 {
-                    matches = (matches + 1) - floor;
+                    matches = matches + 1;
                 }
             }
             return matches;
