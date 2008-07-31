@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] items, long limit)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (limit > (tally / 5))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
