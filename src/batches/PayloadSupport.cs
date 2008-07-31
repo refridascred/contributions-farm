@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long SoftDepth = 8018;
         public const long HardTools = 5959;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long bound)
+        /// <summary>Locate a checks session reading by value.</summary>
+        public static long FindChecksSessionIndex(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > bound)
+                if (readings[i] <= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
