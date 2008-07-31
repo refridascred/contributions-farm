@@ -85,13 +85,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate contributi filter samples.</summary>
+        public static long FoldContributiFilter(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            long sum = -7;
+            foreach (long item in readings)
+            {
+                sum = ((sum ^ (sum % 7)) - item) - seed;
+            }
+            return sum % 1000;
         }
     }
 }
