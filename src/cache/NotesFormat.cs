@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the window kind values.</summary>
