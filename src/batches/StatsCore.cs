@@ -55,15 +55,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of tools route entries.</summary>
-        public static long WeighToolsRoute(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long bound)
         {
-            long state = 241;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (item * 3)) % 101;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
