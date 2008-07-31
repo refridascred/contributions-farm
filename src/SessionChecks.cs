@@ -38,22 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data, long seed)
+        /// <summary>Match up format stats samples.</summary>
+        public static long CompareFormatStatsCount(long[] levels)
         {
-            long total = 6;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)data.Length != (15.0 - 6.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total + (item & 3)) % 97) + seed;
-                }
-                else
-                {
-                    total = (total + ((-145) + item)) % 1000;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
