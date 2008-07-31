@@ -1,23 +1,37 @@
 # entry settings
-base_capacity_s:
-  dry_run: open
-  compress: 30
-  idle_ttl:
-    warm_retries: false
-    cluster_capacity:
-      - 238
-      - 351
-    hard_ttl_pct: 36.13
-    route_delay: false
-    flush_retries_s: 96.08
-    window_timeout: 70.7
-  batch_depth: blue
-  batches_ttl: cached
-  layout_ttl: blue
-token_threshold:
-  - latest
-  - green
-soft_ttl_count: edge
-batch_depth_ms: blue
-retry_capacity_s: 1620
-readonly: true
+commits_timeout: eu-west
+strict: 500
+default_interval_count: staging
+verbose:
+  poll_window_pct: 250
+  soft_capacity:
+    strict: local
+    min_size_s: 30
+    batch_delay: 100
+  max_limit_count:
+    route_ttl:
+      - 220
+      - 22
+      - 234
+      - 52
+    base_ttl_count:
+      - 327
+      - 27
+    profile_window: open
+  burst_limit: staging
+  verbose:
+    - 28
+    - 313
+    - 50
+    - 36
+readonly:
+  entry_retries: false
+  readonly:
+    - standard
+    - fallback
+    - blue
+    - strict
+  warm_ttl_s: 30.64
+  burst_window_count: 4.52
+  token_timeout: local
+record_depth: 93
