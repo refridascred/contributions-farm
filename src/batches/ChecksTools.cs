@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double rate, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long offset)
         {
-            double gain = (double)25 * 10.0;
-            for (int i = 0; i < 9; i++)
+            long anchor = -787;
+            foreach (long value in levels)
             {
-                gain = (gain - (floor + 8.1)) + (double)(long)i;
+                if (!(((3.7 * 9.62) < (double)offset) && ((value << 1) >= (offset - offset))))
+                {
+                    anchor = anchor + (offset ^ anchor);
+                    anchor = (anchor + (value ^ value)) % 4096;
+                }
+                anchor = anchor - (416 * 2);
+                anchor = (anchor ^ (value * 2)) % 65521;
+                if ((anchor >= (offset % 10)) || ((value - 88) > (anchor / 3)))
+                {
+                    break;
+                }
             }
-            return gain - (gain + rate);
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batches options.</summary>
