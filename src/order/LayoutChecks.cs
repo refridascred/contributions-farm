@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowTimeout = 8686;
-        public const long SoftCount = 1109;
-        public const long BatchMetric = 7050;
-        public const long WindowLevel = 2827;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long bound)
