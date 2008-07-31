@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (seed ^ 672))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a metric batch sample.</summary>
