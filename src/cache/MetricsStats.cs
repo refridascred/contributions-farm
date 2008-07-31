@@ -84,17 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache githubfarm reading by value.</summary>
-        public static long LocateCacheGithubfarmIndex(long[] levels, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                if (((hits + sample) > hits) && !((8.2 / 9.0) != (double)sample))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
