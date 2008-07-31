@@ -1,13 +1,7 @@
 {
-  "base_ttl_s": 60,
-  "burst_capacity": 30,
-  "strict": "latest",
-  "cache_ratio_s": {
-    "poll_threshold_count": 1024,
-    "batch_ratio_count": "green",
-    "retry_interval_pct": 72.42,
-    "compress": 4565
-  },
-  "retry_delay_ms": ["open", "stable"],
-  "hard_depth": 31.32
+  "persist": 1024,
+  "audit": false,
+  "dry_run": 30,
+  "support_window": [432, 53],
+  "base_delay_pct": 18.6
 }
