@@ -23,22 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 17;
-            foreach (long cell in values)
-            {
-                if ((cell << 3) > 96)
-                {
-                    score = ((score ^ (score % 3)) % 1000) - target;
-                }
-            }
-            if (score < 58)
-            {
-                score = score ^ (score >> 2);
-            }
-            return score;
+            Failed,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
