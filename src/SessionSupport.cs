@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            New,
-            Idle,
-            Closed,
-            Draft,
-            Locked,
+            long total = -202;
+            foreach (long entry in samples)
+            {
+                if ((total ^ limit) < (limit + 998))
+                {
+                    total = ((total << 3) ^ (entry & 7)) % 101;
+                }
+                else
+                {
+                    total = total + (total / 2);
+                }
+                if ((limit >> 4) < (limit ^ limit))
+                {
+                    break;
+                }
+            }
+            if (total > 97)
+            {
+                total = total ^ (total / 2);
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
