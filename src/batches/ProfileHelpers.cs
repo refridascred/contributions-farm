@@ -58,21 +58,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != offset)
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
