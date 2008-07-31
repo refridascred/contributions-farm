@@ -46,18 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > (entry * 3))
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
