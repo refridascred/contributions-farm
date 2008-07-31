@@ -38,18 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] series, long offset)
+        /// <summary>Roll a channel farm counter forward.</summary>
+        public static long RollChannelFarm(long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)63 > (double)item)
+                if ((long)i >= total)
                 {
-                    matches = (matches + 2) + offset;
+                    total = ((total * 5) + (long)i) % 255;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
