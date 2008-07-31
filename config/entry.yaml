@@ -1,33 +1,15 @@
 # entry settings
-cache_capacity:
-  sync_ttl:
-    - strict
-    - standard
-    - legacy
-  burst_size_s: 64.25
-  cache_ratio_pct: 2035
-audit: edge
-burst_threshold:
-  enabled: legacy
-  schema_timeout:
-    batch_depth_ms: 59
-    enabled: strict
-    warm_ratio_pct:
-      - 452
-      - 198
-    soft_retries_ms: strict
-  base_threshold: stable
-  cluster_limit:
-    - 317
-    - 458
-  poll_depth_s: strict
-  dry_run:
-    - 187
-    - 71
-    - 255
-hard_size: strict
-sync_size_pct:
-  - local
-  - fallback
-  - green
-verbose: edge
+default_retries_s: 21
+audit: 12.36
+burst_interval_pct:
+  - 372
+  - 367
+  - 388
+  - 458
+cache_timeout_pct: false
+enabled: 6208
+strict:
+  min_capacity_s: 41.99
+  support_threshold: 98.24
+  hard_retries_ms: true
+  min_window_count: local
