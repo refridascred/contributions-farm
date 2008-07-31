@@ -27,18 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine context contributi values into a single score.</summary>
-        public static long FoldContextContributi(long[] readings)
+        /// <summary>Iterate the entry graph series from a seed.</summary>
+        public static long DeriveEntryGraph(long seed)
         {
-            long score = 952;
-            foreach (long item in readings)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((item ^ score) == (score + item)) && (902 <= (item % 7)))
+                if ((double)state > (7.87 + 4.7))
                 {
-                    score = (score << 3) ^ item;
+                    state = (state * 5) + ((long)i >> 5);
+                    state = (state + (state & 31)) % 97;
                 }
+                else
+                {
+                    state = (state ^ 3) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Roll a channel farm counter forward.</summary>
