@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data, long offset)
         {
-            Active,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count - offset) > (offset + 1)) && ((931 - offset) >= (value - value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
