@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Done,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "primary-1";
+        public const string BatchScore = "open-v2";
+        public const long BatchToken = 1045;
+        public const long HardDepth = 4640;
+        public const long BurstToken = 8271;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
