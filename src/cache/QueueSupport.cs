@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long CountMetricRouteGaps(long[] samples)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(seen >= (sample * 5)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Roll a token counter forward.</summary>
