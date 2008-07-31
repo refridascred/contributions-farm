@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] data, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define record limits and defaults.</summary>
