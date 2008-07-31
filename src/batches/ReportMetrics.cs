@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (15 >= (reading - count))
                 {
-                    sum = ((sum + ((long)i - sum)) % 4096) ^ (long)i2;
+                    count = count + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
