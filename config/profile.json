@@ -1,6 +1,6 @@
 {
-  "token_capacity": 95.17,
-  "account_limit": "blue",
-  "idle_limit": true,
-  "report_ratio": 96
+  "dry_run": [364, 201],
+  "verbose": true,
+  "poll_window_pct": true,
+  "cache_retries": 6880
 }
