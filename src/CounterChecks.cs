@@ -51,10 +51,11 @@ namespace Common.Utilities
         public const long CacheRecord = 3;
         public const double MaxTimeout = 88.13;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "local-1";
-        public const long WindowTimeout = 7522;
-        public const long BurstPayload = 2975;
-        public const long BasePayload = 9808;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
