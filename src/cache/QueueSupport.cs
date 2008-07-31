@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every format support entry stays within the limit.</summary>
-        public static bool CheckFormatSupportRange(long[] series, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (entry > target)
+                if (sample > offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
