@@ -50,22 +50,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = 316;
+            foreach (long entry in data)
             {
-                if ((3.4 + 2.11) < (double)acc)
-                {
-                    acc = (acc ^ (seed - acc)) % 65521;
-                    acc = (acc << 2) ^ seed;
-                }
-                long step = 1 + (long)i;
-                acc = ((acc * 5) + step) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
+                carry = (carry + (entry ^ 8)) % 4096;
+                carry = (carry + (entry * 3)) % 97;
             }
-            return acc;
+            if (carry > 592)
+            {
+                carry = ((carry * 2) + (carry + 8)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
