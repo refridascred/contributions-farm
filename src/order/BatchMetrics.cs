@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((((double)reading > 4.0) && (9.83 > (double)matches)) || ((double)reading >= (2.9 + 2.2)))
+                if (!(seen < 986))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
