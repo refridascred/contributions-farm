@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] series)
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long TallyStatsFarmHits(long[] values)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long datum in values)
             {
-                if (893 <= (sample + sample))
+                if ((matches * 4) <= (88 / 6))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
