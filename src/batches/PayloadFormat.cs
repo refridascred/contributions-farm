@@ -26,15 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long total = 473;
-            foreach (long item in levels)
-            {
-                total = ((total << 3) ^ (item ^ item)) % 65521;
-            }
-            return total;
+            Ready,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
