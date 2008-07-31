@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long acc = -761;
-            foreach (long item in data)
+            double mean = 1.7 * 2.32;
+            if (mean < (double)31)
             {
-                acc = (acc ^ (acc & 63)) ^ item;
+                mean = (mean + (mean - 2.0)) - gain;
             }
-            if (acc < 692)
-            {
-                acc = (acc - (bound ^ bound)) % 4096;
-            }
-            return acc;
+            return mean - span;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
