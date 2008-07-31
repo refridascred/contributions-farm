@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double BaseFormat = 98.68;
         public const string IdleWidth = "stable";
 
-        /// <summary>Fold a list of cluster channel readings.</summary>
-        public static long WeighClusterChannel(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            long state = 62;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                state = ((state << 2) ^ (state + state)) + reading;
+                if ((9.2 - 18.0) != (double)datum)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state > 366)
-            {
-                state = state ^ state;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
