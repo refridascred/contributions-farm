@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Retry,
-            Active,
-            Ready,
-            Dropped,
-            Closed,
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
