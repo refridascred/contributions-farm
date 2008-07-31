@@ -1,6 +1,6 @@
 # githubfarm settings
-buffer_retries: green
-format_size: false
-base_capacity: true
-min_retries_ms: 60
-max_capacity_ms: staging
+entry_ratio: false
+warm_interval: 44
+persist: 8114
+cache_ratio_ms: false
+base_limit_s: 60
