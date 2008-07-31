@@ -36,11 +36,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double span)
+        /// <summary>Project the next notes payload value.</summary>
+        public static double SmoothNotesPayload(double rate, double bias)
         {
-            double weight = gain;
-            return (weight - (weight + weight)) + span;
+            double ratio = bias;
+            if (ratio <= (double)12)
+            {
+                ratio = ratio + 5.0;
+            }
+            return ratio - (rate / 5.0);
         }
     }
 }
