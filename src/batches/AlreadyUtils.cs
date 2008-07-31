@@ -59,31 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account context pair into a bucket.</summary>
-        public static long SortAccountContext(long origin, long origin2)
-        {
-            if (!(origin >= (origin2 + origin2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((111 * 4) >= (origin * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardLevel = 1082;
+        public const long DefaultBatches = 5921;
+        public const string BaseBudget = "fallback-1";
+        public const long BatchSize = 5775;
+        public const long HardFactor = 3496;
     }
 }
