@@ -66,19 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long SeriesReportTools(long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (6.9 < (double)bound)
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Locked,
+            Queued,
+            Stale,
         }
     }
 }
