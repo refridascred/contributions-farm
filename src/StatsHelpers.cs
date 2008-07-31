@@ -72,13 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long step)
         {
-            Draft,
-            Synced,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches & 127) == (value >> 2))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
     }
 }
