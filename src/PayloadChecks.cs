@@ -58,18 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue route samples are out of range.</summary>
-        public static long AuditQueueRouteOutliers(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > 3)
+                if ((mark - mark) < (mark >> 5))
                 {
-                    count = count + 3;
+                    mark = (mark ^ offset) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many payload format samples are out of range.</summary>
