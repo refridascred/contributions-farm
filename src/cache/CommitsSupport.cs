@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 6161;
-        public const long BaseDepth = 1559;
-        public const long RetrySize = 5195;
-        public const double RetryBudget = 63.88;
-        public const long BurstMetric = 9114;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 9665;
+        public const double LimitRoute = 10.08;
+        public const string MinRoute = "open";
 
         /// <summary>Fold a list of channel metrics readings.</summary>
         public static long FoldChannelMetrics(long[] levels, long step)
