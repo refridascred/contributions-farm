@@ -1,7 +1,5 @@
 {
-  "min_window_ms": "standard",
-  "route_depth": 3973,
-  "poll_window": "standard",
-  "warm_capacity_s": 10,
-  "notes_capacity": 4.59
+  "persist": 2124,
+  "already_ratio": 33,
+  "enabled": ["green", "open", "cached", "strict"]
 }
