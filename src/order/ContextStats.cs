@@ -33,13 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel status values.</summary>
