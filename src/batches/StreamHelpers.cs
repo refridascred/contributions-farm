@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double BurstSize = 8.79;
         public const double BaseStream = 14.64;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (((entry / 6) == (entry >> 5)) || ((entry >= (tally % 2)) && (4 > tally)))
+                if ((item <= (item + hits)) && (6.2 >= (double)hits))
                 {
-                    tally = (tally + 2) - bound;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
