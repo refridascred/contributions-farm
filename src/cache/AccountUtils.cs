@@ -35,13 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long floor)
         {
-            Active,
-            Stale,
-            Paused,
-            Dropped,
+            long lane = step - floor;
+            if ((step >> 3) > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((197 - step) == (lane * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
