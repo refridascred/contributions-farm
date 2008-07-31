@@ -1,23 +1,10 @@
 # entry settings
-flush_capacity_count: true
-max_window_s: 100
-editor_capacity: true
-commits_timeout: staging
-base_ratio_count:
-  hard_capacity: false
-  burst_retries_count:
-    batch_size: 53
-    base_threshold_count: 100
-    schema_threshold: 250
-    dry_run: edge
-    soft_window_count: local
-    warm_window_pct:
-      - 120
-      - 261
-  idle_ttl_count:
-    - staging
-    - primary
-    - staging
-    - green
-  counter_retries: 36.52
-  audit: 250
+audit: false
+metric_interval: legacy
+commits_ttl: 1400
+compress: 8838
+batch_window_pct:
+  max_ratio: 60
+  min_interval_pct: 100
+  default_ratio_s: green
+batch_interval_count: stable
