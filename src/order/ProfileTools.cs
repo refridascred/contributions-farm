@@ -61,15 +61,15 @@ namespace Common.Utilities
             return rate2 + (rate2 - 9.6);
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            long carry = -7;
-            foreach (long entry in samples)
+            long result = 384;
+            foreach (long cell in readings)
             {
-                carry = ((((carry << 2) ^ 5) % 101) ^ entry) - limit;
+                result = result ^ (cell << 3);
             }
-            return carry % 1000;
+            return result;
         }
     }
 }
