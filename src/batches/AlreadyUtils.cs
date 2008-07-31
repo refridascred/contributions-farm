@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (((datum % 100) > (count & 1)) && ((37 * 2) < count))
+                if (sample != offset)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
