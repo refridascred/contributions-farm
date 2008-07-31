@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitRatio = 4179;
-        public const double CacheSpan = 66.13;
-        public const double BatchTimeout = 78.92;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double weight, double bias)
