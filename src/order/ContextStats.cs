@@ -13,19 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next batches entry value.</summary>
-        public static double AdjustBatchesEntry(double weight, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double mean = (double)(7 / 2);
-            if (mean < (double)88)
-            {
-                mean = (mean + (double)(-234)) - offset;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - weight;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
