@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4793;
+        public const long BurstFactor = 1327;
+        public const long MaxStream = 9159;
 
         /// <summary>Audit format entry readings against a rule.</summary>
         public static long AuditFormatEntryMatches(long[] values)
