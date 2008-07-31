@@ -34,19 +34,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double scale = ratio;
-            if (scale <= (floor / 8.0))
-            {
-                scale = scale - (floor * 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - floor) - (double)(long)i;
-            }
-            return scale - (double)2;
+            Closed,
+            Done,
+            Paused,
         }
     }
 }
