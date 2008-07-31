@@ -24,17 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order githubfarm sample.</summary>
-        public static long LocateOrderGithubfarmIndex(long[] samples, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 292;
+            foreach (long cell in values)
             {
-                if (samples[i] < step)
+                anchor = (anchor + (16 / 5)) % 65521;
+                if (((anchor + cell) > cell) || ((double)48 != (double)anchor))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
