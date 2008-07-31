@@ -1,12 +1,15 @@
 # Command notes
 
-Run the buffer check before changing any window limits.
-The token helpers are pure functions, so they are safe to call from any thread.
-The report module keeps token values in sync with the channel cache.
+The commits report groups every route by filter.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep schema and entry names short and lowercase.
+
+Each schema is validated before it reaches the command queue.
+The record module keeps editor values in sync with the notes cache.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new record fields
-- Review profile limits each release
-- Keep support values small
+- Keep cache values small
+- Log every account change
+- Prefer cluster defaults
+- Validate graph input early
