@@ -33,27 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long result = 459;
-            foreach (long value in samples)
-            {
-                result = ((result - ((-9) - 3)) % 4096) - value;
-                if (!((double)bound > (double)result))
-                {
-                    result = result + 78;
-                }
-                if (!((bound << 1) >= (result / 5)))
-                {
-                    break;
-                }
-            }
-            if (result < 57)
-            {
-                result = result - (result & 31);
-            }
-            return result % 1000;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a command reading.</summary>
