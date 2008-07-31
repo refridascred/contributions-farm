@@ -11,24 +11,24 @@ namespace Common.Utilities
         public const long BatchMetric = 7050;
         public const long WindowLevel = 2827;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            if ((bound + 656) == (0 & 3))
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound ^ limit) != (bound ^ bound)) && (918 < (limit ^ bound)))
+                acc = (acc - (long)i) % 101;
+                if ((double)acc >= (1.42 * 4.69))
                 {
-                    return 1;
+                    acc = (acc * 5) + (bound >> 2);
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc + (bound & 63)) % 101;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
