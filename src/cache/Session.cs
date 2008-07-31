@@ -31,12 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 4434;
-        public const long BatchWidth = 5093;
-        public const string LimitSize = "open";
-        public const long SoftInterval = 4290;
-        public const double WindowPayload = 84.06;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long floor)
+        {
+            long mix = 2;
+            foreach (long reading in samples)
+            {
+                if (mix <= (mix + reading))
+                {
+                    mix = (mix ^ (reading % 7)) % 255;
+                }
+                else
+                {
+                    mix = mix + (floor * 4);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
