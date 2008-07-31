@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryFactor = 54.73;
+        public const long CacheCount = 1823;
+        public const string MinProfile = "standard-edge";
+        public const string SoftProfile = "staging-edge";
 
         /// <summary>Validate window format readings against a bound.</summary>
         public static bool GuardWindowFormatRange(long[] samples, long target)
