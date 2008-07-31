@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two command channel measurements.</summary>
-        public static double BlendCommandChannel(double weight, double span)
-        {
-            double mean = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - span) - (double)(long)i;
-            }
-            return mean + (mean + 9.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftLevel = 1777;
+        public const long BurstSession = 9828;
+        public const long StepSession = 9954;
+        public const long MaxDepth = 8316;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long floor, long target)
