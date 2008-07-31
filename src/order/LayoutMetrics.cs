@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many farm cluster samples are out of range.</summary>
-        public static long TallyFarmClusterGaps(long[] series, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((883 - item) < (step + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
