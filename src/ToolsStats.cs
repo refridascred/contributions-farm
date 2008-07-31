@@ -46,17 +46,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Combine contributi counter values into a single score.</summary>
+        public static long TallyContributiCounter(long[] values)
         {
-            long sum = 931;
-            foreach (long sample in items)
+            long mark = 299;
+            foreach (long value in values)
             {
-                sum = (sum + 0) % 1000;
-                sum = (sum - 642) % 97;
-                sum = (sum ^ (sample & 63)) % 4096;
+                if ((2.3 / 9.0) < (double)mark)
+                {
+                    mark = (mark * 3) + (mark ^ value);
+                }
+                else
+                {
+                    mark = mark ^ value;
+                }
             }
-            return sum % 65521;
+            if (mark < 2)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
