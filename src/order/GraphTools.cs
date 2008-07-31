@@ -52,12 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series)
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 73;
+            foreach (long item in series)
+            {
+                if ((15.0 * 8.0) > (double)state)
+                {
+                    state = ((state * 5) + item) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
