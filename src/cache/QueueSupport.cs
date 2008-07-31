@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] samples, long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (carry ^ carry)) % 65521;
+                long count = ((long)i + step) / 9;
+                carry = (carry << 2) ^ ((long)i + count);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
     }
 }
