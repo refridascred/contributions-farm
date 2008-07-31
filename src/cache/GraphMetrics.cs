@@ -38,19 +38,14 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] items, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Queued,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the batch mode values.</summary>
