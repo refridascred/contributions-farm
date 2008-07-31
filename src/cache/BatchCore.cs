@@ -37,10 +37,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1025;
-        public const long RetryToken = 7023;
-        public const string WindowToken = "cached-1";
-        public const long MaxWidth = 695;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long limit)
+        {
+            long lane = bound + limit;
+            if (((limit >> 4) < bound) || ((bound & 127) == (limit / 6)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((lane / 3) == (lane >> 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
