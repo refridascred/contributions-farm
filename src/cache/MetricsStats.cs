@@ -28,18 +28,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                if (10.0 >= (double)seen)
+                if ((entry * 3) >= (-9))
                 {
-                    seen = (seen + 1) ^ cell;
+                    mark = (mark + (entry - mark)) % 1000;
+                    mark = mark + (7 + 49);
+                }
+                if ((3 + limit) <= (limit / 2))
+                {
+                    mark = mark + (mark << 1);
+                }
+                else
+                {
+                    mark = ((mark * 2) + (limit / 3)) % 255;
                 }
             }
-            return seen;
+            if (mark > 506)
+            {
+                mark = mark ^ limit;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
