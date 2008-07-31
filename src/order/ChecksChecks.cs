@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long MeasureFilterAccountMatches(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((((value - hits) < (hits + 0)) || ((66 + 797) != (bound - value))) || ((((-53) >> 2) <= (bound ^ (-1))) || ((value * 5) > hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2095;
+        public const double BatchBudget = 49.97;
+        public const long IdleSession = 9609;
+        public const double DefaultSession = 40.52;
+        public const long BatchSize = 9332;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] items)
