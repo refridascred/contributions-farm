@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long MeasureFilterAccountMatches(long[] levels, long bound)
         {
-            Locked,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((((value - hits) < (hits + 0)) || ((66 + 797) != (bound - value))) || ((((-53) >> 2) <= (bound ^ (-1))) || ((value * 5) > hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
