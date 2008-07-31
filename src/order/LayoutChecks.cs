@@ -28,11 +28,10 @@ namespace Common.Utilities
         public const string BatchBuffer = "cached-v2";
         public const double MinTimeout = 77.44;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 70.86;
-        public const double LimitScore = 1.06;
-        public const long BaseRoute = 2456;
-        public const long WindowDepth = 7425;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 5274;
+        public const double MinSize = 78.36;
+        public const string SoftSession = "standard";
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] series)
