@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a account counter figure with a bias.</summary>
-        public static double SmoothAccountCounter(double gain, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            double ratio = span - gain;
-            if (ratio > ratio)
+            long acc = 287;
+            foreach (long value in samples)
             {
-                ratio = ratio - (gain - ratio);
+                if (((2.8 / 2.0) >= (double)value) && ((value >> 5) <= (value - acc)))
+                {
+                    acc = acc - (acc + value);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (value & 7)) % 4096;
+                }
+                if (acc >= (acc + value))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + gain;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
