@@ -35,25 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel buffer counter forward.</summary>
-        public static long SeriesChannelBuffer(long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor > (step << 2))
+                if (levels[i] >= target)
                 {
-                    anchor = (anchor - step) % 255;
-                    anchor = (anchor - (step - step)) % 255;
+                    return (long)i;
                 }
-                if (!(((anchor - anchor) <= (83 ^ step)) && ((double)step <= (8.93 / 6.0))))
-                {
-                    anchor = ((anchor << 3) ^ (0 >> 3)) % 1000;
-                    anchor = (anchor ^ (anchor % 10)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
