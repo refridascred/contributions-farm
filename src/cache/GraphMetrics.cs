@@ -48,22 +48,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long AuditCounterReportGaps(long[] samples, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally / 8) <= (sample ^ bound))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
