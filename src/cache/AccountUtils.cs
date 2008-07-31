@@ -16,14 +16,31 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long origin)
         {
-            Paused,
-            Dropped,
-            Failed,
-            New,
-            Pending,
+            if (((8.83 + 0.4) < (double)origin) && ((double)origin > 8.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step <= (origin % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 2) >= (step * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
