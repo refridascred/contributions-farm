@@ -42,19 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark + (seed + (-368))) % 1000) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Stale,
+            Locked,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
