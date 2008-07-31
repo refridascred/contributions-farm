@@ -55,12 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 5641;
-        public const double MinStats = 10.15;
-        public const long StepStats = 2391;
-        public const double LimitStats = 55.24;
-        public const long DefaultStats = 6799;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 6332;
+        public const long BatchBuffer = 6874;
+        public const double BaseBuffer = 29.97;
+        public const long SoftBuffer = 3389;
+        public const long StepBuffer = 9207;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long origin)
