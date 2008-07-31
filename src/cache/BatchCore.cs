@@ -30,13 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Compare every pair of record githubfarm readings.</summary>
+        public static long CompareRecordGithubfarmCount(long[] levels)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
