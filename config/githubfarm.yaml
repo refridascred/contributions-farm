@@ -1,9 +1,20 @@
 # githubfarm settings
-graph_limit: cached
-account_ttl: 88
-batch_capacity_s: 9016
-batch_limit:
-  - 385
-  - 10
-  - 339
-  - 282
+contributi_interval:
+  compress: 2851
+  tools_ttl: 42.42
+  editor_threshold: fallback
+  window_delay: 12
+  max_timeout_s: 9965
+  base_size_pct:
+    - blue
+    - blue
+    - primary
+    - stable
+verbose: 66
+strict:
+  - 117
+  - 113
+  - 21
+flush_delay: standard
+min_threshold: 60
+cache_delay_count: 92.84
