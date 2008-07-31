@@ -54,10 +54,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftScore = 8117;
-        public const string HardLevel = "legacy";
-        public const long BatchCount = 3502;
-        public const double StepNotes = 45.43;
+        /// <summary>Blend two queue order measurements.</summary>
+        public static double ScaleQueueOrder(double scale, double bias)
+        {
+            double load = (double)2 + scale;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - (double)712) - (double)(long)i) - bias;
+            }
+            return load - (load * 9.12);
+        }
     }
 }
