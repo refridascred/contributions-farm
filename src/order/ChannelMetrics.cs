@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const long SoftSpan = 281;
         public const long BaseCommand = 3798;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long limit, long step)
+        /// <summary>Count the record cache entries that pass the check.</summary>
+        public static long CountRecordCacheGaps(long[] items, long limit)
         {
-            if ((limit * 3) != (limit * 2))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step & 7) < (6 ^ limit)) && ((limit >> 5) > step))
+                if (!(((51 >> 3) > (limit >> 3)) || ((tally + reading) <= (tally >> 2))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit == (8.0 + 20.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
