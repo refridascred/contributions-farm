@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((datum - matches) >= matches)
+                if ((cell ^ seen) >= (8 + seen))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a format options.</summary>
