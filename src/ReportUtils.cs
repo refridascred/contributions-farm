@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] items, long origin)
         {
-            long mix = 6;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mix = mix + (value % 24);
-                if ((mix & 31) >= value)
+                if (entry >= origin)
                 {
-                    mix = mix ^ (origin + value);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
