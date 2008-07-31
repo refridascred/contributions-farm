@@ -1,7 +1,9 @@
-id,label,owner,score
-1,legacy,staging,standard
-2,97.33,fallback,851
-3,181,52,831
-4,503,281,eu-west
-5,691,834,stable
-6,202,edge,32.39
+id,level,weight
+1,cached,72.77
+2,61.98,1.33
+3,blue,72.37
+4,401,green
+5,local,783
+6,78.74,849
+7,19.01,39.51
+8,802,65.33
