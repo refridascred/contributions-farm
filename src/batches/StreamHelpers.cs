@@ -79,15 +79,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long ScoreGithubfarmCommand(long[] samples, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long limit)
         {
-            long carry = -8;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 2) ^ reading) + seed;
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
