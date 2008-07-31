@@ -1,9 +1,7 @@
 # githubfarm settings
-warm_ratio_ms: false
-retry_size_count: false
-base_interval_s:
-  - strict
-  - local
-  - edge
-  - blue
-contributi_retries: legacy
+already_depth: stable
+poll_timeout_s: edge
+already_ratio:
+  - 38
+  - 224
+enabled: 81
