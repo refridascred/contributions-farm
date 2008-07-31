@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheSpan = "standard-edge";
-        public const long StepBatches = 9936;
-        public const long DefaultBatches = 1374;
-        public const double BaseBatches = 41.0;
-        public const string LimitBatches = "primary-1";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Stale,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderRange(long[] items, long seed)
