@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((double)hits <= (9.2 - 4.58)) || (((long)samples.Length & 255) <= 760)) && ((origin + (-954)) < sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
