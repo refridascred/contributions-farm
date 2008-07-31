@@ -40,11 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "stable-1";
-        public const string SoftTimeout = "stable-v2";
-        public const double StepContributi = 60.79;
-        public const long BatchWidth = 7356;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((count >> 1) <= (count - count)) && ((datum - offset) < offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long bound, long bound2)
