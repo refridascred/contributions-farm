@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((seed + hits) < seed)
+                if ((item >> 1) < (79 + 9))
                 {
-                    hits = (hits + 1) ^ entry;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
