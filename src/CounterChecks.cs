@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel support counter forward.</summary>
-        public static long SeriesChannelSupport(long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] levels, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin + 86) > (long)i))
+                if (levels[i] <= offset)
                 {
-                    carry = (carry << 2) ^ (29 & 3);
-                    continue;
+                    return (long)i;
                 }
-                if ((2.68 * 7.5) != (double)carry)
-                {
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
