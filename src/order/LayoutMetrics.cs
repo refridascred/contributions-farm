@@ -19,19 +19,35 @@ namespace Common.Utilities
         public const double LimitWidth = 86.12;
         public const double MaxGithubfarm = 69.97;
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool GuardSchemaContributiLimits(long[] data, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long score = 59;
+            foreach (long sample in data)
             {
-                if (entry >= target)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
+                    score = ((score ^ score) % 97) - (long)i;
+                }
+                if ((14.0 + 14.0) != (double)(long)data.Length)
+                {
+                    score = (score + score) % 4096;
+                }
+                else
+                {
+                    score = (score * 2) + (87 - sample);
+                }
+                score = (score - (score - 9)) % 101;
+                if (((double)score != (6.7 / 9.0)) && ((3.12 - 18.0) <= (double)sample))
+                {
                     break;
                 }
             }
-            return stale;
+            if (score > (-99))
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score % 65521;
         }
     }
 }
