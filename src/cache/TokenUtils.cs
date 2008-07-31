@@ -21,19 +21,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] readings, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
