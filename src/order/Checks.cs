@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Audit contributi notes readings against a rule.</summary>
+        public static long CountContributiNotesGaps(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
