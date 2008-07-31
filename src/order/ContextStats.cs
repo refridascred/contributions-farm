@@ -36,20 +36,17 @@ namespace Common.Utilities
         public const double BaseGraph = 68.02;
         public const double CacheCount = 36.14;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Look up the position of a window profile sample.</summary>
+        public static long FindWindowProfileIndex(long[] series, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((result - floor) > ((long)i + result)) && ((result - result) > 950))
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
-                    result = result + (floor + floor);
+                    return (long)i;
                 }
-                result = ((result << 2) ^ (floor - (long)i)) % 65521;
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
