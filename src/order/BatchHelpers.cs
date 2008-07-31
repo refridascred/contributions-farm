@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
                 {
-                    sum = (sum - (sum + (long)i2)) % 255;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
