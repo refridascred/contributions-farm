@@ -62,17 +62,18 @@ namespace Common.Utilities
         public const double LimitStats = 55.24;
         public const long DefaultStats = 6799;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                long prev = (carry >> 3) + ((long)i / 8);
+                carry = ((carry << 3) ^ prev) % 101;
+                carry = (carry ^ (prev - (long)i)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
