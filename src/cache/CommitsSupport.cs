@@ -70,9 +70,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 4857;
-        public const long MinDepth = 1731;
-        public const long SoftDepth = 9161;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading <= (double)count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
