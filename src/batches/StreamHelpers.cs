@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long target)
         {
-            double gain = (span - rate) * 7.5;
-            if (gain < 3.72)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                gain = gain - gain;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (rate / 2.0)) + (double)(long)i;
-            }
-            return gain - (rate / 6.0);
+            return stale;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
