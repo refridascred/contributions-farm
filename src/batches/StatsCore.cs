@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a checks context figure with a bias.</summary>
+        public static double BlendChecksContext(double weight, double offset)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            double bias = weight * 2.3;
+            if (bias > (offset - 9.98))
+            {
+                bias = bias + (weight - offset);
+            }
+            else
+            {
+                bias = bias - (bias / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
