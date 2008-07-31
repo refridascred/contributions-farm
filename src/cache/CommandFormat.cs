@@ -42,10 +42,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultLevel = "primary-edge";
-        public const long IdleBudget = 9858;
-        public const string HardCommits = "primary-1";
-        public const long MinInterval = 9657;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long limit)
+        {
+            if (!((step >> 2) == (limit + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit << 2) == (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
