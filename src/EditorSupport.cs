@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstFactor = 42;
+        public const double LimitScore = 9.8;
+        public const string BaseLayout = "primary-edge";
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
