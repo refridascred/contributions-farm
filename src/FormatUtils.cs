@@ -72,15 +72,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            double drift = 7.8 * 4.11;
-            if (drift <= drift)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                drift = ((drift + drift) - ratio) - floor;
+                carry = carry ^ (floor + carry);
+                carry = (carry + ((long)i + 79)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return drift + drift;
+            return carry;
         }
     }
 }
