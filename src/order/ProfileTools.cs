@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long prev = bound + target;
-            if ((56 + target) > 2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (prev < (bound / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
