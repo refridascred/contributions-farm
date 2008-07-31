@@ -38,20 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 5176;
+        public const long RetrySize = 9785;
+        public const double MinPayload = 30.84;
+        public const long WindowPayload = 3351;
+        public const double BatchPayload = 96.71;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
