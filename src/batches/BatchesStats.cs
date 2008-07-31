@@ -44,11 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 6595;
+        public const string StepWidth = "standard-edge";
+        public const double CacheChecks = 9.97;
+        public const string WindowBudget = "primary-edge";
     }
 }
