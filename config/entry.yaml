@@ -1,11 +1,4 @@
 # entry settings
-batch_interval:
-  - staging
-  - legacy
-  - primary
-  - open
-enabled: 74
-warm_timeout: false
-readonly:
-  - standard
-  - stable
+max_size: 3601
+default_threshold_pct: 58
+soft_threshold_count: 5205
