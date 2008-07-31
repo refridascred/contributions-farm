@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long bound)
+        /// <summary>Blend two booking measurements.</summary>
+        public static double AdjustBooking(double rate, double span)
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = 7.0;
+            return ((gain + gain) + rate) + span;
         }
 
         /// <summary>Locate a githubfarm booking reading by value.</summary>
