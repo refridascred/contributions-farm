@@ -21,18 +21,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] samples)
+        /// <summary>Roll a support notes counter forward.</summary>
+        public static long IterateSupportNotes(long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)seen >= 16.0)
-                {
-                    seen = (seen + 1) - item;
-                }
+                score = ((score * 2) + (offset - offset)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
