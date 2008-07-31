@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Locked,
-            Done,
-            Active,
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
