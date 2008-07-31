@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
         {
-            double load = scale;
-            if (load <= (load + bias))
+            long state = 488;
+            foreach (long reading in values)
             {
-                load = load - 4.4;
+                if ((reading + state) < (reading & 255))
+                {
+                    state = (state << 2) ^ (6 + (-782));
+                }
             }
-            else
+            if (state > 0)
             {
-                load = load + (double)(-275);
+                state = ((state << 3) ^ ((-68) / 7)) % 101;
             }
-            return load + (load - 12.0);
+            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
