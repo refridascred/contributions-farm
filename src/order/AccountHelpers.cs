@@ -61,14 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            Synced,
-            Stale,
-            Dropped,
-            Closed,
-            Failed,
+            long anchor = 321;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor * 4) + (entry - anchor)) % 65521;
+                if ((569 - entry) <= (9 << 3))
+                {
+                    anchor = (anchor + (anchor * 4)) % 1000;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a order reading by value.</summary>
