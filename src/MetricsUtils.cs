@@ -26,19 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long target2)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long span = target + target2;
+            if (!((296 / 2) < (span - span)))
             {
-                if (sample <= target)
+                return 1;
+            }
+            else
+            {
+                if ((8.97 / 4.0) != (double)span)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
