@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long RetryBatches = 8767;
         public const long BatchTimeout = 7101;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
