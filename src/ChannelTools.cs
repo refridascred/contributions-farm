@@ -19,13 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Locked,
-            Done,
+            Dropped,
+            Closed,
             Idle,
-            Ready,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
