@@ -27,23 +27,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] data, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            long mix = 62;
-            foreach (long item in data)
+            long lane = seed - step;
+            if (((-357) - step) != (lane * 5))
             {
-                mix = ((mix ^ (mix - 9)) % 65521) + item;
-                if ((double)offset < (5.78 - 4.42))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (9.1 - 2.5))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mix < 212)
-            {
-                mix = ((mix * 2) + (offset - mix)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
