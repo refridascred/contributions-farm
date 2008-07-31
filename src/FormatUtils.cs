@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 78;
+            foreach (long item in samples)
             {
-                if ((seen / 5) >= (cell / 2))
+                if ((0.5 + 19.0) <= (double)item)
                 {
-                    seen = (seen + 1) + bound;
+                    sum = (sum + (origin % 2)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the stream phase values.</summary>
