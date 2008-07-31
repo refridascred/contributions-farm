@@ -1,19 +1,9 @@
 # githubfarm settings
-sync_threshold_pct: 1189
-metrics_size: edge
-warm_ttl_ms: open
-batch_retries_ms:
-  default_size_s: green
-  account_retries: 23
-  window_threshold:
-    sync_window_s: 2193
-    audit: 67.32
-    strict: eu-west
-    format_depth: 52
-  default_interval_ms:
-    - local
-    - latest
-    - blue
-    - primary
-enabled: strict
-cache_retries: primary
+min_limit_pct:
+  warm_threshold_ms: 88.19
+  already_delay: local
+  dry_run: 60
+  token_interval: 2.38
+  persist: true
+default_size_ms: true
+default_size: false
