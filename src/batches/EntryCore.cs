@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long result = 76;
+            foreach (long cell in values)
             {
-                total = ((total << 3) ^ (total ^ 1)) % 65521;
-                total = ((total * 5) + (long)i) % 101;
+                result = ((result - (705 << 3)) % 101) - cell;
             }
-            return total;
+            if (result > 845)
+            {
+                result = result ^ 10;
+            }
+            return result;
         }
 
         /// <summary>Adjust a schema reading.</summary>
