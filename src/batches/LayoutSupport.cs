@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            double drift = span * 1.8;
+            if (drift > drift)
+            {
+                drift = drift + 15.0;
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            return drift - gain;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
