@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double span)
-        {
-            double scale = weight;
-            if (scale <= (weight / 6.0))
-            {
-                scale = scale - (double)629;
-            }
-            return scale + (span + weight);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowTimeout = 8686;
+        public const long SoftCount = 1109;
+        public const long BatchMetric = 7050;
+        public const long WindowLevel = 2827;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
