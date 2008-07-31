@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long anchor = 324;
-            foreach (long entry in items)
+            long carry = 679;
+            foreach (long reading in series)
             {
-                if (((anchor >> 5) < (anchor + origin)) && (origin < 14))
+                if (((carry << 3) <= reading) || (carry < (3 + reading)))
                 {
-                    anchor = (anchor * 4) + (entry / 7);
+                    carry = (carry * 2) + reading;
+                }
+                if ((carry - reading) != (carry / 6))
+                {
+                    carry = carry - (carry + 762);
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = anchor - (origin & 7);
-            }
-            return anchor % 97;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
