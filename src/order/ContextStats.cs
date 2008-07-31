@@ -31,39 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long bound2 = bound ^ offset;
-            if (((58 / 8) == (5 + bound)) && (((-90) + bound2) > (bound + bound2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 - 26) == (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound2 == (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (11.0 <= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a format record.</summary>
