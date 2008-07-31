@@ -21,15 +21,22 @@ namespace Common.Utilities
         public const long RetryLevel = 6784;
         public const long MinReport = 6236;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] items, long offset)
         {
-            double drift = 10.0;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                drift = ((drift - (offset - 2.78)) + (double)(long)i) + scale;
+                if ((5.3 + 4.0) >= (double)offset)
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (0.57 * 7.2);
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
