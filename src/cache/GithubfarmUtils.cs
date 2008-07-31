@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session order samples.</summary>
-        public static long TallySessionOrder(long[] readings, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            long sum = 6;
-            foreach (long cell in readings)
+            long total = 76;
+            foreach (long entry in items)
             {
-                sum = (((sum << 2) ^ 1) % 97) - cell;
+                if ((entry % 16) > (total % 60))
+                {
+                    total = (total ^ total) % 4096;
+                }
             }
-            if (sum > 864)
-            {
-                sum = sum - (71 - origin);
-            }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
