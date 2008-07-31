@@ -45,11 +45,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepScore = 248;
-        public const long StepBudget = 328;
-        public const long CacheRecord = 3;
-        public const double MaxTimeout = 88.13;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Active,
+            Queued,
+            Ready,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] series)
