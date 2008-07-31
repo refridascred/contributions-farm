@@ -28,10 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "strict";
-        public const string IdleContributi = "strict-1";
-        public const long DefaultContributi = 352;
-        public const long BaseRatio = 6759;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
     }
 }
