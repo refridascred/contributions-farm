@@ -40,13 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Dropped,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTimeout = 3729;
+        public const long BurstTools = 6564;
+        public const long BatchSize = 106;
+        public const long CacheTools = 3391;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
