@@ -1,12 +1,8 @@
 {
-  "channel_interval": "edge",
-  "warm_ratio": 71.38,
-  "idle_window_s": {
-    "retry_threshold_count": "fallback",
-    "dry_run": true,
-    "default_interval": false,
-    "batch_window_s": false,
-    "audit": 0.65
-  },
-  "record_delay": "latest"
+  "githubfarm_depth": 30,
+  "filter_ratio": 53.09,
+  "poll_limit_count": "blue",
+  "burst_depth_ms": false,
+  "batch_window_ms": true,
+  "strict": false
 }
