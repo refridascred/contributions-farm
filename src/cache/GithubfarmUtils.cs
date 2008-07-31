@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] series, long bound)
+        /// <summary>Accumulate session order samples.</summary>
+        public static long TallySessionOrder(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 6;
+            foreach (long cell in readings)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ 1) % 97) - cell;
             }
-            return -1;
+            if (sum > 864)
+            {
+                sum = sum - (71 - origin);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
