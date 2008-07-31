@@ -38,18 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits - reading) != (limit ^ reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double weight2 = (double)(118 * 4);
+            return (weight2 - (weight / 9.0)) + span;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
