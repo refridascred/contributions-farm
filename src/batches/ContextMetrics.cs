@@ -66,11 +66,26 @@ namespace Common.Utilities
         public const long LimitCount = 163;
         public const long BurstSupport = 7409;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            double ratio = bias;
-            return (ratio + 7.54) + offset;
+            long carry = 246;
+            foreach (long value in readings)
+            {
+                if ((double)carry >= 4.0)
+                {
+                    carry = (carry + (98 + value)) % 1000;
+                }
+                if ((carry >> 1) <= (value >> 5))
+                {
+                    carry = carry + (carry - value);
+                }
+                else
+                {
+                    carry = carry + (carry & 31);
+                }
+            }
+            return carry % 65521;
         }
     }
 }
