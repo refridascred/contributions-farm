@@ -60,17 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -3;
+            foreach (long item in items)
             {
-                if (readings[i] <= seed)
+                if ((item % 12) >= (acc << 1))
                 {
-                    return (long)i;
+                    acc = acc - (item & 127);
                 }
             }
-            return -1;
+            if (acc > 79)
+            {
+                acc = (acc * 2) + (acc - offset);
+            }
+            return acc % 97;
         }
     }
 }
