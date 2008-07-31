@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long LimitSupport = 9138;
         public const long RetryLevel = 8157;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((100 + value) > count)
+                if ((hits / 4) > (hits + entry))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
