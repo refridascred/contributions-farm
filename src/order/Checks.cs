@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit notes queue readings against a rule.</summary>
-        public static long MeasureNotesQueueOutliers(long[] series, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)0 > (double)reading)
+                if (items[i] <= step)
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
