@@ -47,25 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long limit)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long lane = bound + limit;
-            if (((limit >> 4) < bound) || ((bound & 127) == (limit / 6)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((lane / 3) == (lane >> 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
