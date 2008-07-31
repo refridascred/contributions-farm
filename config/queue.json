@@ -1,15 +1,5 @@
 {
-  "entry_threshold": {
-    "tools_threshold": 1024,
-    "default_ratio": 85.21,
-    "batch_window": 9359,
-    "sync_ratio_ms": false
-  },
-  "audit": [225, 335, 378, 342],
-  "strict": true,
-  "min_window_s": {
-    "strict": 1024,
-    "soft_window_s": "strict",
-    "flush_timeout_count": 65
-  }
+  "commits_delay": 5887,
+  "readonly": "primary",
+  "max_window": 1024
 }
