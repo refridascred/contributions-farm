@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const double RetryBudget = 63.88;
         public const long BurstMetric = 9114;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long seed)
+        /// <summary>Blend two route metric measurements.</summary>
+        public static double ScaleRouteMetric(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 8.3;
+            if (weight > (2.86 - weight))
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)4) - floor;
             }
-            return -1;
+            return weight - scale;
         }
 
         /// <summary>Describe the record class values.</summary>
