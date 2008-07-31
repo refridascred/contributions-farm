@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
