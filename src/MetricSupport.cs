@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] samples)
         {
-            Idle,
-            New,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) < (count & 127))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
