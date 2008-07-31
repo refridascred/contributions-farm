@@ -55,12 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardRatio = "primary";
-        public const long BurstDepth = 8941;
-        public const long StepBatch = 8939;
-        public const double IdleBatch = 75.54;
-        public const long HardInterval = 5754;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally < 890) && ((reading + 22) >= tally))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] readings, long offset)
