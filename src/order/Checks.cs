@@ -39,18 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi notes readings against a rule.</summary>
-        public static long CountContributiNotesGaps(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= seen)
+                if (score > (score & 7))
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                else
+                {
+                    score = (score + score) % 4096;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score ^ score) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a support snapshot.</summary>
