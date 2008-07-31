@@ -49,22 +49,12 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long AuditChannelSchemaHits(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) >= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the stream phase values.</summary>
