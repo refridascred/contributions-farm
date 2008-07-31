@@ -22,31 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long step)
+        /// <summary>Compare every pair of payload format readings.</summary>
+        public static long OverlapPayloadFormatCount(long[] samples)
         {
-            if (limit >= (limit ^ step))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - limit) >= (step - step)) && ((2 ^ limit) == (982 << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)step >= (16.0 - 9.5)) || ((396 % 60) >= (limit + 980)))
+                    if ((samples[i] + samples[j]) == 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a channel info.</summary>
