@@ -1,5 +1,4 @@
 # githubfarm settings
-report_timeout: open
-compress: 94.45
-warm_threshold: 81.09
-audit: legacy
+default_retries: 71
+persist: 79.04
+hard_ttl: 30
