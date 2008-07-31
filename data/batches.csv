@@ -1,8 +1,9 @@
-id,label,region,ratio
-1,37.81,47.72,960
-2,green,45.58,81.25
-3,edge,145,557
-4,cached,618,14
-5,641,715,strict
-6,87.55,legacy,61.65
-7,113,55.07,7.73
+id,active,score,state
+1,54.69,10.49,edge
+2,69.72,234,68.2
+3,88.45,702,84
+4,780,48.01,78.91
+5,520,legacy,cached
+6,84.44,941,47.5
+7,81.07,28.35,staging
+8,fallback,781,staging
