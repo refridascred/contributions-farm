@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count already notes pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyNotesCount(long[] levels)
+        /// <summary>Blend two support tools measurements.</summary>
+        public static double ScaleSupportTools(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(70 >> 2);
+            if (load >= 11.0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - load) - bias;
             }
-            return seen;
+            else
+            {
+                load = load + (scale + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 5.7) - (double)(long)i;
+            }
+            return load - (double)(-596);
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
