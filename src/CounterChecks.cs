@@ -59,20 +59,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double ratio, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            double mean = ratio;
+            if (mean > (mean - mean))
             {
-                if (!(mix < (mix + origin)))
-                {
-                    mix = (mix * 4) + (origin + (long)i);
-                }
-                mix = (mix - (8 + mix)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
+                mean = (mean - ratio) + bias;
             }
-            return mix;
+            return mean - (double)842;
         }
 
         /// <summary>Adjust a graph order reading.</summary>
