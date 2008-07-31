@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Paused,
-            Closed,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxCount = 8472;
+        public const long WindowBatches = 423;
+        public const double LimitBatches = 32.71;
+        public const long RetryBudget = 5021;
 
         /// <summary>Scale a tools account figure with a bias.</summary>
         public static double ProjectToolsAccount(double ratio, double offset)
