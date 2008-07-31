@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "strict";
-        public const long StepDepth = 4825;
-        public const string DefaultWidth = "local";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values, long bound)
+        {
+            long score = 55;
+            foreach (long item in values)
+            {
+                score = ((score - bound) % 1000) ^ item;
+            }
+            return score;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] data, long step)
