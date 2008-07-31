@@ -45,20 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long SeriesContextSession(long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                long matches = bound;
-                if (!((matches & 31) > matches))
+                if (entry != origin)
                 {
-                    matches = matches - ((long)i << 1);
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
     }
 }
