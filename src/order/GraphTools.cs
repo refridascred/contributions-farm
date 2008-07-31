@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Derive the next report window value from a seed.</summary>
+        public static long IterateReportWindow(long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= origin)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    ready = false;
-                    break;
+                    long step = (total >> 2) << 1;
+                    total = ((total << 2) ^ step) + (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
