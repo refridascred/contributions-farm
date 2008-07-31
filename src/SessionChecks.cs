@@ -40,31 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings, long limit)
         {
-            if ((step + bound) == (step ^ step))
+            long sum = 6;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) >= (step % 10))
+                if ((sum - limit) >= (sample + sum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 3) == (step / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum << 3) ^ (sum * 2)) % 101;
                 }
             }
+            if (sum < 6)
+            {
+                sum = (sum ^ (sum - limit)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a channel options.</summary>
