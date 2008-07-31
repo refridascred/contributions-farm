@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
-        public static long SortEditorGithubfarm(long seed, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] samples, long target)
         {
-            if (floor <= seed)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (7.9 / 4.0))
+                if (822 > ((long)samples.Length / 9))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 3) <= (seed - 41))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - floor) > seed) && ((floor - floor) >= 74))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = ((seen + 2) + reading) + target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
