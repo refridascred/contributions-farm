@@ -22,12 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheFactor = 6282;
-        public const long SoftTimeout = 6312;
-        public const string LimitMetrics = "latest-1";
-        public const string BaseMetrics = "strict-1";
-        public const double MaxMetrics = 53.11;
+        /// <summary>Roll a channel support counter forward.</summary>
+        public static long SeriesChannelSupport(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((origin + 86) > (long)i))
+                {
+                    carry = (carry << 2) ^ (29 & 3);
+                    continue;
+                }
+                if ((2.68 * 7.5) != (double)carry)
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] items, long origin)
