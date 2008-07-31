@@ -21,19 +21,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double mean = (gain - gain) * 9.88;
+            if (mean <= (floor + 6.0))
             {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return valid;
+            return mean - 8.0;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
