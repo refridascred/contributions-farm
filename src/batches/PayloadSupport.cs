@@ -19,18 +19,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] data, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 385;
+            foreach (long reading in items)
             {
-                if ((item / 5) > (count + 160))
+                if (sum > (sum >> 4))
                 {
-                    count = (count + 3) + limit;
+                    sum = ((sum << 3) ^ (reading + reading)) % 65521;
                 }
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
