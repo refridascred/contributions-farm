@@ -71,11 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Done,
+            Closed,
         }
     }
 }
