@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitTimeout = "latest-1";
-        public const long WindowSize = 7656;
-        public const long SoftMetric = 9984;
-        public const string LimitDepth = "local";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!(((2.16 + 8.5) < (double)reading) || ((floor >> 3) <= (hits * 4))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long step, long bound)
