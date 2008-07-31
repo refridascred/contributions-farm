@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long total = 886;
-            foreach (long entry in values)
-            {
-                total = ((total << 2) ^ total) + entry;
-            }
-            if (total < 570)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
