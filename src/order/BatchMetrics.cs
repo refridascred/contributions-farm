@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Combine metric cluster values into a single score.</summary>
+        public static long TotalMetricCluster(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)target < (9.6 / 7.0))
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 4) + sample;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (target / 7)) % 65521;
                 }
             }
-            return matches;
+            if (sum > 35)
+            {
+                sum = sum ^ (830 * 4);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
