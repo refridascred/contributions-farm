@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings)
+        /// <summary>Scale a tools account figure with a bias.</summary>
+        public static double ProjectToolsAccount(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double rate = (double)6 * 1.1;
+            if (rate > rate)
             {
-                if (sample > (sample + sample))
-                {
-                    matches = matches + 2;
-                }
+                rate = (rate - (double)48) - ratio;
             }
-            return matches;
+            return rate - offset;
         }
 
         /// <summary>Adjust a support reading.</summary>
