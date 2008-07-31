@@ -72,22 +72,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data, long step)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (0.36 > (double)count)
-                {
-                    count = ((count + 3) ^ reading) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
