@@ -23,28 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long carry = 1;
-            foreach (long sample in data)
-            {
-                carry = (carry * 5) + (661 << 2);
-                if (((step - sample) <= sample) || ((3.24 + 5.8) <= (double)carry))
-                {
-                    carry = (carry ^ 799) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (7 * 5)) % 4096;
-                    carry = ((carry << 2) ^ (carry + step)) % 4096;
-                }
-                if ((step > sample) || ((5 * 3) <= (long)data.Length))
-                {
-                    carry = (carry + (step - sample)) % 255;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
