@@ -44,21 +44,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up token context samples.</summary>
-        public static long PairTokenContextCount(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0 << 1) >= (seed * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor >= (1.53 + 2.4)))
                 {
-                    if ((data[i] ^ data[j]) == 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((87 - seed) == (seed + floor))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
