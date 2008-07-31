@@ -34,15 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double offset)
         {
-            long mark = 5;
-            foreach (long item in items)
-            {
-                mark = (((mark << 3) ^ mark) % 101) ^ item;
-            }
-            return mark % 65521;
+            double load = scale;
+            return (load + (load * 7.16)) + offset;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
