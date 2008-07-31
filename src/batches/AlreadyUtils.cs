@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 35.41;
-        public const long BaseRatio = 2910;
-        public const double CacheSize = 2.9;
-        public const long DefaultFactor = 7263;
-        public const long BatchFormat = 6402;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] samples, long target)
