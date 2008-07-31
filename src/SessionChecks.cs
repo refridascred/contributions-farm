@@ -38,19 +38,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long SeekToolsBufferIndex(long[] values, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((long)i <= sum))
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
-                    sum = sum ^ 308;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
