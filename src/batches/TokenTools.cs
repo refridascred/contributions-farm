@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long MinTimeout = 1660;
         public const long StepLayout = 4539;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5837;
-        public const long RetryScore = 6837;
-        public const long BatchInterval = 8609;
-        public const long RetryToken = 7306;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstRatio = 2.2;
+        public const long BurstTools = 1816;
+        public const string MinInterval = "open";
+        public const long HardTools = 4568;
 
         /// <summary>Combine editor batch values into a single score.</summary>
         public static long ScoreEditorBatch(long[] data)
