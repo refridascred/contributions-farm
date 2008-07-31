@@ -30,19 +30,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] items, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
