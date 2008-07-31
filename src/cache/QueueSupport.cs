@@ -33,15 +33,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            long score = 362;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = (score - (datum * 3)) % 255;
+                if ((item >> 4) <= (matches - 73))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
