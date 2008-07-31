@@ -1,6 +1,8 @@
-id,region,count,score,level
-1,64.67,898,35.84,legacy
-2,33.69,latest,strict,cached
-3,blue,35.09,local,992
-4,legacy,296,96.13,strict
-5,617,49,115,240
+id,owner
+1,edge
+2,90.04
+3,240
+4,green
+5,standard
+6,31.87
+7,82.43
