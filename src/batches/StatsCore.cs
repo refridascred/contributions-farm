@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a checks context figure with a bias.</summary>
-        public static double BlendChecksContext(double weight, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            double bias = weight * 2.3;
-            if (bias > (offset - 9.98))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (weight - offset);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (bias / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - weight;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
