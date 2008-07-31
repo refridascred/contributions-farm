@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Compare every pair of record editor readings.</summary>
+        public static long PairRecordEditorCount(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
