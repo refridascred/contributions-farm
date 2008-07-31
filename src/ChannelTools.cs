@@ -28,12 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Look up the position of a order githubfarm sample.</summary>
+        public static long LocateOrderGithubfarmIndex(long[] samples, long step)
         {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
