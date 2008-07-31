@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepDepth = 7855;
+        public const long DefaultWindow = 1931;
+        public const long SoftWindow = 2102;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long offset)
