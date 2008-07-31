@@ -34,24 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long limit)
+        /// <summary>Audit counter cluster readings against a rule.</summary>
+        public static long MeasureCounterClusterMatches(long[] series)
         {
-            if (origin > (limit ^ origin))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - 3) > (origin + origin))
+                if ((3 - cell) > cell)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
