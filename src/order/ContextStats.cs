@@ -21,14 +21,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double floor)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Paused,
-            Active,
+            double weight2 = weight;
+            if (weight2 < weight2)
+            {
+                weight2 = weight2 + (floor - 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - (7.91 + floor)) + (double)(long)i;
+            }
+            return weight2 + floor;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
