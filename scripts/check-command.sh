@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue green open; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in eu-west blue green; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=9
-log "limit is ${COMMAND_LIMIT}"
