@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long floor2)
         {
-            long state = 488;
-            foreach (long reading in values)
+            long edge = floor ^ floor2;
+            if ((281 + floor2) < (edge + edge))
             {
-                if ((reading + state) < (reading & 255))
+                return 3;
+            }
+            else
+            {
+                if (floor2 > (649 ^ 13))
                 {
-                    state = (state << 2) ^ (6 + (-782));
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (state > 0)
-            {
-                state = ((state << 3) ^ ((-68) / 7)) % 101;
-            }
-            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
