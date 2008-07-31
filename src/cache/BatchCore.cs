@@ -45,13 +45,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long SeriesContextSession(long bound)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                long matches = bound;
+                if (!((matches & 31) > matches))
+                {
+                    matches = matches - ((long)i << 1);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
