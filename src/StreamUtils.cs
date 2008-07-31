@@ -26,18 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((662 - 1) > reading)
+                if (item > limit)
                 {
-                    matches = (matches + 3) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
