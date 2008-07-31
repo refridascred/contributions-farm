@@ -50,18 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((tally ^ 605) <= (floor - tally))
+                double load = (2.2 * 3.7) + 3.1;
+                if (load < 6.4)
                 {
-                    tally = (tally + 3) + value;
+                    sum = (sum - (bound - (-29))) % 65521;
                 }
+                else
+                {
+                    load = load + (double)(long)i;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
