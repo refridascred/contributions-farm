@@ -22,17 +22,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] values, long seed)
+        /// <summary>Rank checks route input into a small class.</summary>
+        public static long BucketChecksRoute(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(((-7) + seed) >= (seed + bound)))
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound != (4.5 + 19.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
