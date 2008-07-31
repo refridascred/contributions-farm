@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)matches < 3.0)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of order farm readings.</summary>
