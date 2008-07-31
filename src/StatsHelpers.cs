@@ -37,23 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window commits figure with a bias.</summary>
-        public static double AdjustWindowCommits(double bias, double offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long step)
         {
-            double rate = bias * 9.5;
-            if (rate > (7.5 * 1.96))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + rate;
+                if ((items[i] < step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (0.15 * 10.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (offset + 0.44);
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
