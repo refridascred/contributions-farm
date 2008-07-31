@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Locate a farm record reading by value.</summary>
+        public static long LocateFarmRecordIndex(long[] data, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + 7) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of stats profile entries.</summary>
