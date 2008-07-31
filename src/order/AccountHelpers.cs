@@ -32,18 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (17.0 < (double)entry)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
