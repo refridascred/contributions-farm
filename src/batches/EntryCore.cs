@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] values, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                total = (total - ((long)i + total)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Adjust a schema reading.</summary>
