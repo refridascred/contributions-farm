@@ -1,11 +1,11 @@
 # Command notes
 
-The stats module keeps channel values in sync with the format cache.
-When a report fails, the entry handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Run the counter check before changing any record limits.
+The stats module keeps githubfarm values in sync with the profile cache.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer entry defaults
-- Log every batches change
-- Review account limits each release
+- Review githubfarm limits each release
+- Validate entry input early
+- Document new account fields
