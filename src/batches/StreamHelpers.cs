@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
