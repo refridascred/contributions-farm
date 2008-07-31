@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long floor)
         {
-            long delta = bound ^ floor;
-            if (218 <= floor)
+            if ((floor + floor) == (floor - floor))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((-818) - delta) > (bound >> 1))
+                if ((bound >= (bound >> 5)) && ((bound & 255) == (bound + bound)))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if (bound > (4 - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + bound) > (157 + 32))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
