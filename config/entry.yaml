@@ -1,5 +1,9 @@
 # entry settings
-commits_limit: 30
-editor_limit: latest
-poll_depth_s: green
-verbose: green
+idle_interval_pct: 8050
+verbose:
+  - local
+  - eu-west
+batch_retries_s: edge
+max_interval_count: 35.9
+min_ttl_ms: primary
+support_depth: 8.54
