@@ -49,21 +49,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Classify a order session pair into a bucket.</summary>
+        public static long SortOrderSession(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((target % 60) == (origin - target)) && ((double)target != (1.1 / 9.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (origin >= (origin * 5))
                 {
-                    if ((items[i] - items[j]) == 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target > (double)487)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
     }
 }
