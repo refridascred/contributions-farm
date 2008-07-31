@@ -32,13 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 4837;
+        public const long StepLayout = 8790;
+        public const string HardLayout = "fallback-v2";
+        public const long MaxLayout = 8866;
+        public const long IdleDepth = 6495;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] data, long seed)
