@@ -35,19 +35,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < floor)
+                if (!((289 << 1) >= step))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mark = mark + (step - mark);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
     }
 }
