@@ -14,39 +14,40 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long bound, long target)
+        /// <summary>Digest a series of stats profile entries.</summary>
+        public static long TotalStatsProfile(long[] items, long offset)
         {
-            long edge = bound + target;
-            if ((target + bound) > (target - bound))
+            long state = 3;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.16 / 2.0) <= (double)bound)
+                if ((586 <= (value >> 4)) || ((double)state > (8.66 / 9.0)))
                 {
-                    return 7;
+                    state = (state ^ (value + value)) % 4096;
+                    state = state - value;
+                    break;
                 }
                 else
                 {
-                    if ((edge % 60) < (edge >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((edge + bound) <= (18 + bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = ((state * 4) + (value + state)) % 255;
+                }
+                if (!((value ^ state) > (offset - offset)))
+                {
+                    state = (state << 3) ^ (state >> 5);
+                }
+                if ((value & 63) > 40)
+                {
+                    state = (state * 4) + (state + value);
+                }
+                if ((8.0 - 9.6) > (double)offset)
+                {
+                    break;
                 }
             }
+            if (state < 23)
+            {
+                state = (state * 4) + (state + offset);
+            }
+            return state;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
