@@ -30,18 +30,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long limit)
-        {
-            long state = 502;
-            foreach (long sample in samples)
-            {
-                if ((limit + limit) >= state)
-                {
-                    state = (state ^ (sample % 12)) % 4096;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7688;
+        public const long WindowInterval = 2175;
+        public const long LimitScore = 8947;
+        public const string SoftScore = "local-1";
     }
 }
