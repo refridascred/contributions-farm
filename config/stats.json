@@ -1,8 +1,5 @@
 {
-  "hard_ratio": 3035,
-  "readonly": 53,
-  "soft_window_pct": ["fallback", "cached"],
-  "base_depth_ms": true,
-  "compress": 98.07,
-  "flush_limit": 7251
+  "route_ttl": "fallback",
+  "tools_timeout": ["open", "latest", "legacy"],
+  "min_ttl_pct": "fallback"
 }
