@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two support tools measurements.</summary>
-        public static double ScaleSupportTools(double scale, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long step)
         {
-            double load = (double)(70 >> 2);
-            if (load >= 11.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - load) - bias;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (scale + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 5.7) - (double)(long)i;
-            }
-            return load - (double)(-596);
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
