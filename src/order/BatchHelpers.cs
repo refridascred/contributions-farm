@@ -19,26 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long acc = 8;
-            foreach (long datum in levels)
-            {
-                if (((acc / 5) < (datum - acc)) || (datum >= (acc << 2)))
-                {
-                    acc = (acc ^ datum) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (848 - acc)) % 255;
-                }
-            }
-            if (acc > 725)
-            {
-                acc = (acc << 2) ^ (acc << 2);
-            }
-            return acc;
+            Failed,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a cluster stats.</summary>
