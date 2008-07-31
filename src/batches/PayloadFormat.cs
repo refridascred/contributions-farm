@@ -33,22 +33,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long bound)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long mix = 1;
+            foreach (long entry in levels)
             {
-                if ((state % 12) <= (538 + state))
+                if ((double)mix <= 7.0)
                 {
-                    state = ((state ^ (state << 1)) % 101) + cell;
+                    mix = ((mix ^ (entry + entry)) % 65521) + bound;
                 }
             }
-            if (state < 6)
-            {
-                state = state - step;
-            }
-            return state;
+            return mix;
         }
     }
 }
