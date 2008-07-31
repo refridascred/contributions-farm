@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchScore = "latest-v2";
-        public const string CacheRatio = "primary";
-        public const double BurstGraph = 36.93;
-        public const long RetryGraph = 8208;
+        /// <summary>Measure how many stream filter samples are out of range.</summary>
+        public static long TallyStreamFilterMatches(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((bound % 60) > (seen - 552))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
