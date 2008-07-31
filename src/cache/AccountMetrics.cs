@@ -69,18 +69,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine counter batch values into a single score.</summary>
-        public static long DigestCounterBatch(long[] series)
+        /// <summary>Compare every pair of channel commits readings.</summary>
+        public static long PairChannelCommitsCount(long[] readings)
         {
-            long mix = 80;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum / 9) >= datum) || (datum <= (997 & 7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - (mix + datum)) % 97;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
