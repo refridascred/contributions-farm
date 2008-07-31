@@ -1,15 +1,6 @@
 {
-  "farm_ttl": 5131,
-  "base_retries_count": 2930,
-  "readonly": {
-    "burst_retries_pct": 1024,
-    "tools_window": 43.14,
-    "dry_run": 100,
-    "flush_threshold": ["staging", "blue", "open"],
-    "sync_retries": 30.98,
-    "idle_ratio": 60
-  },
-  "verbose": true,
-  "tools_depth": true,
-  "session_size": 8487
+  "batch_ratio_count": 52.8,
+  "readonly": 250,
+  "burst_ratio_ms": true,
+  "base_interval_s": 5709
 }
