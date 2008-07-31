@@ -1,5 +1,7 @@
 {
-  "audit": 41,
-  "max_capacity_s": 3176,
-  "entry_retries": "fallback"
+  "warm_threshold": "latest",
+  "strict": false,
+  "burst_window": "open",
+  "batch_threshold": false,
+  "payload_ratio": "green"
 }
