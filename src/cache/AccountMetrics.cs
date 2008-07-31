@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] items, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (entry <= seed)
+                if ((seed + hits) < seed)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
