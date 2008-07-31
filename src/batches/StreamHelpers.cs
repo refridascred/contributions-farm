@@ -63,18 +63,19 @@ namespace Common.Utilities
             return gain - (rate / 6.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples, long origin)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double mean = bias * 9.99;
+            if (mean < mean)
             {
-                if ((1.04 + 6.39) < (double)sample)
-                {
-                    hits = (hits + 2) - origin;
-                }
+                mean = mean - 1.0;
             }
-            return hits;
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean - (8.0 + bias);
         }
     }
 }
