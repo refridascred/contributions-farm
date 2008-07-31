@@ -26,21 +26,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (bias2 * 2.3) + (bias2 * 1.7);
+            if (rate > (bias2 / 4.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 8.7) - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
