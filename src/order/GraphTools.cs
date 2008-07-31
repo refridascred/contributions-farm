@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long BaseSession = 5800;
         public const long BatchSession = 5291;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(entry > (long)data.Length))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many graph support samples are out of range.</summary>
