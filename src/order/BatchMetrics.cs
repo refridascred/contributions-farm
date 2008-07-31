@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
