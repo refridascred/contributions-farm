@@ -63,19 +63,13 @@ namespace Common.Utilities
             return gain - (rate / 6.0);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double mean = bias * 9.99;
-            if (mean < mean)
-            {
-                mean = mean - 1.0;
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean - (8.0 + bias);
+            Paused,
+            Synced,
+            Dropped,
+            Retry,
         }
     }
 }
