@@ -1,17 +1,6 @@
 # entry settings
-sync_limit_count: 90
-audit: open
-soft_timeout_count:
-  flush_interval_ms: 5203
-  dry_run: cached
-  retry_threshold_pct:
-    - eu-west
-    - primary
-    - primary
-    - cached
-flush_ttl_count: cached
-max_capacity: legacy
-idle_interval_s:
-  route_ratio: strict
-  burst_timeout_count: 30
-  sync_retries_pct: true
+support_ttl:
+  - 265
+  - 198
+account_retries: 100
+retry_threshold: edge
