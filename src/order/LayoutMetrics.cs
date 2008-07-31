@@ -38,16 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph entry counter forward.</summary>
-        public static long DeriveGraphEntry(long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long result = 49;
+            foreach (long value in levels)
             {
-                sum = (sum ^ (floor % 8)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((value + value) < (value * 4))
+                {
+                    result = (result ^ (96 ^ 614)) % 255;
+                    continue;
+                }
+                result = result ^ (long)levels.Length;
             }
-            return sum;
+            return result % 65521;
         }
     }
 }
