@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 2853;
-        public const string StepFactor = "strict";
-        public const string WindowBatch = "fallback";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 58.6;
+        public const string IdleTimeout = "latest";
+        public const string DefaultBudget = "latest-1";
+        public const double WindowTimeout = 40.55;
+        public const long BatchRatio = 7133;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double gain, double floor)
