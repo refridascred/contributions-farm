@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Check that every format support entry stays within the limit.</summary>
+        public static bool CheckFormatSupportRange(long[] series, long target)
         {
-            long mix = 94;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                mix = ((mix << 3) ^ mix) - entry;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
