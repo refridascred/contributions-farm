@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long AuditSchemaWindowOutliers(long[] items, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                long diff = (mark + (long)i) + (mark - mark);
-                if (!((target >= (mark + (long)i)) && ((double)(-6) <= (double)mark)))
+                if (!((double)cell == (6.36 - 0.4)) && (((6.54 - 9.5) > (double)matches) || ((matches << 2) >= (cell ^ (-35)))))
                 {
-                    mark = ((mark << 3) ^ (diff - mark)) % 101;
+                    matches = (matches + 2) - seed;
                 }
-                if (((long)i + target) != (12 >> 2))
-                {
-                    diff = diff + diff;
-                    diff = diff ^ (long)i;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
