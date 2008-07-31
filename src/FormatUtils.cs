@@ -20,18 +20,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items, long offset)
+        /// <summary>Classify a buffer route pair into a bucket.</summary>
+        public static long ClassifyBufferRoute(long seed, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long next = seed - step;
+            if ((next * 2) < step)
             {
-                if (!(15.0 < (double)offset))
+                return 5;
+            }
+            else
+            {
+                if (!(step > (next * 2)))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((next <= (step >> 2)) || ((step * 5) == (next + next)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the cache already series from a seed.</summary>
