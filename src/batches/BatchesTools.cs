@@ -28,14 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] data, long seed)
         {
-            Failed,
-            Closed,
-            Active,
-            Ready,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
