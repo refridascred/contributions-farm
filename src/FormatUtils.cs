@@ -59,13 +59,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            Failed,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
