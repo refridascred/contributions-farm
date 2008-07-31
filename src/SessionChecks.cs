@@ -41,21 +41,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up format stats samples.</summary>
-        public static long CompareFormatStatsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 5479;
+        public const double RetryLevel = 30.04;
+        public const string IdleContributi = "legacy";
     }
 }
