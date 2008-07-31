@@ -1,21 +1,6 @@
 {
-  "retry_window": 24.89,
-  "batches_depth": ["blue", "standard", "blue", "open"],
-  "min_depth": 84.19,
-  "base_retries_s": 250,
-  "soft_ratio": {
-    "cache_window": 7398,
-    "min_threshold": {
-      "dry_run": 81.35,
-      "persist": "staging",
-      "checks_retries": "primary",
-      "retry_window": "blue",
-      "layout_interval": 95
-    },
-    "sync_ttl_pct": 2,
-    "compress": 15,
-    "verbose": 5987,
-    "enabled": [176, 261]
-  },
-  "flush_delay": 4426
+  "order_delay": "fallback",
+  "burst_delay": "eu-west",
+  "compress": 250,
+  "flush_ratio_ms": 62
 }
