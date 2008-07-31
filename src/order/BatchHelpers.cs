@@ -28,39 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long step = floor - target;
-            if ((7.01 * 6.4) != (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step * 2) <= (target + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((68 * 3) >= step) || (floor < (floor & 31)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step / 5) <= (floor + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
