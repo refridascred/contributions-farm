@@ -60,13 +60,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
             Draft,
-            Queued,
-            Locked,
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
