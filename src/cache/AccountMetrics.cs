@@ -37,12 +37,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "latest";
-        public const long StepSession = 873;
-        public const double MaxScore = 84.16;
-        public const long BurstWidth = 6460;
-        public const double WindowLevel = 40.58;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long origin)
+        {
+            if ((origin & 15) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + 570) <= (seed + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.34 * 7.2) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] data, long limit)
