@@ -23,11 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long limit, long step)
         {
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            if ((limit * 3) != (limit * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step & 7) < (6 ^ limit)) && ((limit >> 5) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (8.0 + 20.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats level values.</summary>
