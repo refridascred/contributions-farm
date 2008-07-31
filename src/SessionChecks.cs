@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < (tally + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
