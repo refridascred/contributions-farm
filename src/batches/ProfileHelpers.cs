@@ -63,21 +63,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of support stream readings.</summary>
-        public static long PairSupportStreamCount(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
