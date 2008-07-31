@@ -55,31 +55,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a buffer queue value against two limits.</summary>
-        public static long SortBufferQueue(long limit, long limit2)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((limit2 / 6) < 36)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 2) == (limit2 + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0 >> 3) == (limit * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
