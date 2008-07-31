@@ -21,11 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchWidth = 2284;
-        public const string BaseInterval = "standard";
-        public const double MinInterval = 40.17;
-        public const double MaxAlready = 11.97;
-        public const double LimitWidth = 83.36;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (datum > count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
