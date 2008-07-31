@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up batches context samples.</summary>
-        public static long CompareBatchesContextCount(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 86;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > (-960))
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + 625) % 97;
                 }
             }
-            return matches;
+            if (anchor > 6)
+            {
+                anchor = (anchor ^ 486) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate session samples.</summary>
