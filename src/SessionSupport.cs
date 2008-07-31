@@ -31,11 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Active,
+            Retry,
         }
     }
 }
