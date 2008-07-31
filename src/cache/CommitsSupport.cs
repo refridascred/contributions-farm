@@ -14,12 +14,26 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long score = 52;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = (((score << 3) ^ (score << 3)) ^ (long)i) + value;
+                }
+                if (41 <= (origin << 1))
+                {
+                    score = ((score << 3) ^ ((-633) >> 2)) % 1000;
+                }
+                else
+                {
+                    score = score - ((long)samples.Length - (-37));
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
