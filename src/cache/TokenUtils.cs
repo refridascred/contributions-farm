@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the record status values.</summary>
