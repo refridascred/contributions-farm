@@ -1,10 +1,30 @@
 # githubfarm settings
-counter_depth: 396
-burst_capacity_ms: legacy
-graph_ttl:
-  - stable
+sync_window_ms:
+  - local
+  - open
+  - primary
+  - fallback
+compress:
+  default_ttl: standard
+  max_window: false
+  batch_size_ms:
+    - 76
+    - 54
+    - 245
+  checks_limit: 94.06
+  readonly:
+    - fallback
+    - staging
+    - latest
+    - fallback
+min_size_pct:
+  - standard
   - cached
-  - legacy
-  - latest
-strict: 29.34
-warm_delay_pct: 63.75
+  - strict
+  - eu-west
+githubfarm_ttl: false
+graph_ttl:
+  - 421
+  - 105
+  - 72
+verbose: 4284
