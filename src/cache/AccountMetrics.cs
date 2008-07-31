@@ -28,17 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long LookupTokenContributiIndex(long[] levels, long origin)
+        /// <summary>Check that every notes cache entry stays within the limit.</summary>
+        public static bool ValidateNotesCacheBounds(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
