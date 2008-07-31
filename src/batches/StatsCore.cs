@@ -45,14 +45,20 @@ namespace Common.Utilities
         public const long WindowPayload = 3351;
         public const double BatchPayload = 96.71;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a checks metric counter forward.</summary>
+        public static long DeriveChecksMetric(long step)
         {
-            Active,
-            Ready,
-            Stale,
-            Queued,
-            Draft,
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((step + (-898)) < step))
+                {
+                    score = (score * 4) + ((long)i % 2);
+                    score = (score * 3) + (step - step);
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
