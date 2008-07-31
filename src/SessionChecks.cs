@@ -28,18 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell % 10) <= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a tools buffer reading by value.</summary>
