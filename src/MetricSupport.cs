@@ -14,18 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) < (count & 127))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
