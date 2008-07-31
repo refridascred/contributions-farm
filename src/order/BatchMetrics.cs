@@ -37,19 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((3 * 4) != (count << 1)))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 9403;
+        public const long BaseDepth = 9146;
+        public const string BatchScore = "cached";
 
         /// <summary>Adjust a checks window reading.</summary>
         public static double ProjectChecksWindow(double scale, double offset)
