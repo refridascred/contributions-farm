@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = 97;
-            foreach (long sample in levels)
-            {
-                if ((sum ^ sum) < (seed + seed))
-                {
-                    sum = (sum + sample) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ 4;
-                }
-            }
-            if (sum > 45)
-            {
-                sum = ((sum << 3) ^ seed) % 255;
-            }
-            return sum;
+            Failed,
+            Queued,
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a queue info.</summary>
