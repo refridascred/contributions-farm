@@ -17,11 +17,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstSize = 7996;
-        public const long BatchSpan = 3560;
-        public const long BaseSpan = 2405;
-        public const string SoftDepth = "local-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
+        {
+            long mark = 997;
+            foreach (long value in data)
+            {
+                if ((long)data.Length <= 259)
+                {
+                    break;
+                }
+                if (mark >= (mark + mark))
+                {
+                    mark = ((mark + (mark / 9)) % 97) + value;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
