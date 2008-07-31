@@ -48,10 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseInterval = 45.49;
-        public const double StepLevel = 1.79;
-        public const long SoftTools = 3386;
-        public const string MinTools = "staging-edge";
+        /// <summary>Roll a graph entry counter forward.</summary>
+        public static long DeriveGraphEntry(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum ^ (floor % 8)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
