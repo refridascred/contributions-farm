@@ -32,21 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias2 + 8.26;
+            if (ratio > ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - bias2;
             }
-            return hits;
+            return ratio - (bias2 + bias);
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
