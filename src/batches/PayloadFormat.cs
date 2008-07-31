@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long CombineCommandPayload(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long total = 901;
-            foreach (long datum in series)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((5.26 + 2.9) == (double)total))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = (total ^ (43 + datum)) % 97;
+                    mark = (mark + ((long)i ^ mark)) - (long)i2;
                 }
-                else
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Iterate the report command series from a seed.</summary>
