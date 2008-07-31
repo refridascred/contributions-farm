@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long step2)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data)
         {
-            if (!((3 + step) <= (step2 + step)))
+            long anchor = 7;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((76 % 97) >= (step * 5))
+                if ((anchor + anchor) == (value + value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.2 * 18.0) != (double)step2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 >= (-104)) && ((double)70 != (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = ((anchor * 5) + value) % 65521;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next window tools value.</summary>
