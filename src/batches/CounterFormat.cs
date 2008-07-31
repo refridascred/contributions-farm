@@ -44,18 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = 6;
+            foreach (long value in values)
             {
-                if ((tally + tally) < (value - tally))
-                {
-                    tally = tally + 2;
-                }
+                state = (state + value) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
