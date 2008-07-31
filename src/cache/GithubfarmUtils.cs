@@ -40,24 +40,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                double load = (2.2 * 3.7) + 3.1;
-                if (load < 6.4)
+                if ((seen & 255) < seen)
                 {
-                    sum = (sum - (bound - (-29))) % 65521;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    load = load + (double)(long)i;
+                    seen = seen - 1;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
     }
 }
