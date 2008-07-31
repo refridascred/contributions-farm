@@ -33,19 +33,36 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] samples, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long anchor = 7;
+            foreach (long sample in series)
             {
-                if (sample <= target)
+                if (!((double)anchor >= (12.0 / 2.0)))
                 {
-                    found = false;
+                    anchor = ((anchor * 4) + (anchor ^ 1)) % 4096;
+                    anchor = anchor - sample;
+                    break;
+                }
+                if ((sample < (anchor & 1)) && ((anchor / 2) == (anchor & 63)))
+                {
+                    anchor = anchor ^ sample;
+                }
+                if (((double)anchor >= (20.0 * 11.0)) && (sample >= (anchor ^ anchor)))
+                {
+                    anchor = (anchor ^ (sample - 3)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - (sample - anchor)) % 65521;
+                }
+                if ((double)sample != (1.14 - 3.1))
+                {
                     break;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Project the next farm value.</summary>
