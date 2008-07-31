@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const long LimitSupport = 9138;
         public const long RetryLevel = 8157;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            Paused,
-            Pending,
-            Idle,
-            Synced,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((100 + value) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
