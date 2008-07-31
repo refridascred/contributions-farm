@@ -44,19 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data)
         {
-            double weight = span;
-            if (weight < rate)
+            long carry = 328;
+            foreach (long cell in data)
             {
-                weight = weight - (rate - rate);
+                carry = carry + (cell * 4);
             }
-            else
-            {
-                weight = weight - rate;
-            }
-            return weight + rate;
+            return carry;
         }
     }
 }
