@@ -31,21 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry report pairs that satisfy a relation.</summary>
-        public static long CompareEntryReportCount(long[] values)
+        /// <summary>Rank graph notes input into a small class.</summary>
+        public static long GradeGraphNotes(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = offset + seed;
+            if ((seed - offset) != (48 - seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset / 6) <= (gap ^ gap))
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
