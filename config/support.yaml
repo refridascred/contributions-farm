@@ -1,31 +1,18 @@
 # support settings
-poll_size_count: 24
-report_depth: 5151
-audit: blue
-readonly:
-  retry_ratio_ms:
-    sync_ratio_s:
-      - primary
-      - standard
-    strict: 30
-    burst_size_count: open
-    burst_timeout: fallback
-    dry_run:
-      - open
-      - legacy
-      - cached
-    farm_ratio:
-      - 204
-      - 304
-      - 271
-      - 14
-  hard_retries_count:
-    poll_threshold_ms: 1024
-    readonly: green
-    enabled: primary
-    session_interval: 77
-    poll_delay:
-      - open
-      - standard
-    sync_limit: true
-  profile_size: 13
+strict:
+  graph_capacity: open
+  warm_ttl_pct: 60
+  default_capacity_count: true
+  channel_size: 500
+  soft_window: 47.15
+  warm_delay:
+    enabled: 100
+    sync_delay_pct: 63
+    base_timeout_count: 30.45
+    audit: 54
+    cache_capacity: 0.16
+    order_timeout: 33
+idle_interval: legacy
+metrics_capacity: local
+schema_depth: 5148
+notes_threshold: 5569
