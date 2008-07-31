@@ -1,12 +1,5 @@
 {
-  "max_limit_pct": "edge",
-  "editor_delay": true,
-  "poll_limit_count": {
-    "editor_ratio": "edge",
-    "support_ratio": false,
-    "retry_delay_s": 45.91,
-    "min_capacity_pct": 82.68,
-    "dry_run": "green"
-  },
-  "idle_depth_ms": "primary"
+  "readonly": false,
+  "sync_depth": "primary",
+  "batch_threshold": true
 }
