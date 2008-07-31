@@ -37,14 +37,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            Synced,
-            Idle,
-            Done,
-            Stale,
-            Draft,
+            long total = 8;
+            foreach (long value in items)
+            {
+                if (((value - value) < 9) || ((1 * 4) < value))
+                {
+                    total = (total * 4) + (3 << 3);
+                }
+                else
+                {
+                    total = ((total * 4) + (value - value)) % 65521;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total * 3) + 6;
+            }
+            return total;
         }
     }
 }
