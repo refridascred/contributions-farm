@@ -33,18 +33,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((offset + 8) <= limit)
             {
-                if ((52 + entry) == (matches - 637))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) <= (offset & 31))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (limit > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
