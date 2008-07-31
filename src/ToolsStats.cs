@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stream buffer readings.</summary>
-        public static long TallyStreamBuffer(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] values, long bound)
         {
-            long acc = 946;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((8.0 / 3.0) >= (double)bound))
                 {
-                    acc = (acc + 22) + (long)i;
-                }
-                if ((reading < acc) && ((double)acc < (2.5 / 6.0)))
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + acc)) % 65521;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            if (acc < (-887))
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
