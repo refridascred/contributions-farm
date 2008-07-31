@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Active,
-            Retry,
             Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
