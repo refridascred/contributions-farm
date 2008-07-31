@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double BaseFormat = 98.68;
         public const string IdleWidth = "stable";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of cluster channel readings.</summary>
+        public static long WeighClusterChannel(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            long state = 62;
+            foreach (long reading in levels)
+            {
+                state = ((state << 2) ^ (state + state)) + reading;
+            }
+            if (state > 366)
+            {
+                state = state ^ state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of report entries.</summary>
