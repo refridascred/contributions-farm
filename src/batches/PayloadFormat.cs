@@ -26,13 +26,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Paused,
-            Queued,
             Ready,
-            Idle,
+            Closed,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the cluster class values.</summary>
