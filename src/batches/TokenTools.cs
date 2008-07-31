@@ -31,21 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Combine editor batch values into a single score.</summary>
+        public static long ScoreEditorBatch(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result << 3) ^ result) % 101) + item;
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
