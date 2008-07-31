@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long RetryLevel = 6784;
         public const long MinReport = 6236;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items, long step)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long cell in items)
             {
-                if ((5.3 + 4.0) >= (double)offset)
+                if (cell < (cell + step))
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
