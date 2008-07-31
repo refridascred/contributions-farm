@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a entry command pair into a bucket.</summary>
-        public static long SortEntryCommand(long offset, long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long step = offset - origin;
-            if (origin <= (step % 24))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + step) < (offset + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 693) != (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin < (offset - offset)) && ((step % 16) < (step + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Validate record checks readings against a bound.</summary>
