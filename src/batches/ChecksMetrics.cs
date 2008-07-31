@@ -36,19 +36,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate schema commits samples.</summary>
-        public static long FoldSchemaCommits(long[] readings, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 818;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor + (anchor >> 5)) ^ item) - step;
-            }
-            if (anchor < 810)
-            {
-                anchor = anchor ^ (anchor + 2);
-            }
-            return anchor;
+            Retry,
+            Synced,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the route level values.</summary>
