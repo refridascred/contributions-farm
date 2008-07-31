@@ -36,13 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
