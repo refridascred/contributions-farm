@@ -48,12 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftWidth = "legacy-edge";
-        public const string HardStream = "stable";
-        public const long BaseStream = 3977;
-        public const long LimitStream = 713;
-        public const double DefaultStream = 58.53;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseScore = 6172;
+        public const long BatchRatio = 7218;
+        public const string HardEditor = "primary-1";
+        public const double StepEditor = 62.95;
+        public const long DefaultTimeout = 5207;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterBounds(long[] levels, long target)
