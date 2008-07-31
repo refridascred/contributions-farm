@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
-        {
-            long carry = 679;
-            foreach (long reading in series)
-            {
-                if (((carry << 3) <= reading) || (carry < (3 + reading)))
-                {
-                    carry = (carry * 2) + reading;
-                }
-                if ((carry - reading) != (carry / 6))
-                {
-                    carry = carry - (carry + 762);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 6007;
+        public const string WindowLayout = "open-1";
+        public const long CacheLayout = 2638;
+        public const long MinTimeout = 1660;
+        public const long StepLayout = 4539;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 5837;
