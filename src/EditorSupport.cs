@@ -126,15 +126,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long anchor = 651;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor * 4) + (datum + 2)) % 97) - floor;
-            }
-            return anchor % 1000;
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
