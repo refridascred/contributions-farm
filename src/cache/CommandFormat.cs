@@ -45,17 +45,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftScore = 8117;
+        public const string HardLevel = "legacy";
+        public const long BatchCount = 3502;
+        public const double StepNotes = 45.43;
     }
 }
