@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long anchor = 7;
-            foreach (long value in data)
-            {
-                if ((anchor + anchor) == (value + value))
-                {
-                    anchor = ((anchor * 5) + value) % 65521;
-                }
-            }
-            return anchor % 1000;
+            Paused,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Scale a tools account figure with a bias.</summary>
