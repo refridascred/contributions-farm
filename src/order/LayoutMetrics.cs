@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] series)
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long TallyFarmClusterGaps(long[] series, long step)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long item in series)
             {
-                if ((item - item) < (item + hits))
+                if ((883 - item) < (step + seen))
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
