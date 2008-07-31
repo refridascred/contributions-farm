@@ -24,23 +24,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data)
-        {
-            long mix = 371;
-            foreach (long value in data)
-            {
-                if ((818 + value) <= (value - mix))
-                {
-                    mix = ((mix * 4) + (mix ^ mix)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (value >> 5)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowDepth = 5398;
+        public const long IdleSpan = 9301;
+        public const long BatchSpan = 6307;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long bound, long bound2)
