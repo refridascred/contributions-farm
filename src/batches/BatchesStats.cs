@@ -27,25 +27,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Compare every pair of record already readings.</summary>
+        public static long PairRecordAlreadyCount(long[] readings)
         {
-            long lane = seed - step;
-            if (((-357) - step) != (lane * 5))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (9.1 - 2.5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
