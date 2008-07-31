@@ -41,13 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            Closed,
-            Failed,
-            Ready,
-            Retry,
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
