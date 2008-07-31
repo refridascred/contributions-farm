@@ -55,26 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            long state = 7;
-            foreach (long sample in items)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((496 & 255) > (4 - sample))
-                {
-                    state = (state + (sample + state)) % 101;
-                }
-                if ((floor ^ (-6)) >= (sample >> 2))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (state > 363)
-            {
-                state = ((state * 2) + (state / 9)) % 65521;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Match up batch samples.</summary>
