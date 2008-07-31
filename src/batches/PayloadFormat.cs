@@ -37,19 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (cell >= target)
+                if (seen >= origin)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
