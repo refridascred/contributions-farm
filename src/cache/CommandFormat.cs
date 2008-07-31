@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Paused,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Fold a list of already readings.</summary>
