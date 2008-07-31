@@ -37,18 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] values, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((5.1 + 7.95) > (double)origin)
+                if ((count * 4) >= (long)levels.Length)
                 {
-                    hits = (hits + 2) - value;
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
