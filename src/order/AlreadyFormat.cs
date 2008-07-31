@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] series, long seed)
         {
-            long mark = 6;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((sample % 10) < (mark % 2))
+                if (value >= seed)
                 {
-                    mark = ((mark * 5) + (mark + sample)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 4) + 9) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < (-58))
-            {
-                mark = (mark * 3) + (mark ^ mark);
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Rank commits record input into a small class.</summary>
