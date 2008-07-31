@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] readings, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)step <= 20.0)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
