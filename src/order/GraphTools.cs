@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long origin)
-        {
-            long score = -67;
-            foreach (long item in series)
-            {
-                score = ((score << 2) ^ (score / 4)) % 101;
-                if (score >= (score * 2))
-                {
-                    score = score - (origin & 15);
-                }
-                if (!((item >> 5) >= (score << 3)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 4927;
+        public const long BaseSession = 5800;
+        public const long BatchSession = 5291;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterMatches(long[] readings, long step)
