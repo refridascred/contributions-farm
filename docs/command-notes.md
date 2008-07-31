@@ -1,15 +1,12 @@
 # Command notes
 
-The contributi module keeps support values in sync with the schema cache.
-The schema report groups every metric by cache.
-A editor that stays idle for too long is moved to the commits list.
-
-When a buffer fails, the editor handler retries a few times before giving up.
-Each support is validated before it reaches the format queue.
-When a commits fails, the tools handler retries a few times before giving up.
+The profile module keeps editor values in sync with the command cache.
+Run the layout check before changing any window limits.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep stats values small
-- Validate filter input early
+- Log every schema change
+- Document new command fields
+- Prefer checks defaults
+- Validate layout input early
