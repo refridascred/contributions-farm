@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next support already value.</summary>
-        public static double AdjustSupportAlready(double rate, double bias)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double scale = bias + (rate / 3.0);
-            if (scale <= (double)39)
-            {
-                scale = scale + bias;
-            }
-            return scale - (bias / 8.0);
+            Retry,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
