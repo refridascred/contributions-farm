@@ -53,11 +53,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3951;
-        public const string BurstFarm = "primary";
-        public const double BaseScore = 94.06;
-        public const double MinWidth = 58.31;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Active,
+            Ready,
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long ClassifyBatches(long step, long origin)
