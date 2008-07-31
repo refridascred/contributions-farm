@@ -1,9 +1,21 @@
 # entry settings
-entry_threshold: false
-persist:
-  - 401
-  - 421
-retry_ttl_count: 60
-soft_limit_s:
-  - latest
-  - latest
+soft_threshold_s:
+  - 358
+  - 114
+soft_ratio_count: 45.26
+min_delay_count: staging
+command_depth:
+  soft_limit_count: stable
+  warm_threshold_s:
+    queue_threshold: cached
+    soft_capacity_s:
+      - latest
+      - strict
+      - staging
+    route_depth: 77
+    burst_ttl: 45.73
+    channel_window: green
+  idle_delay: 100
+  sync_window_count: eu-west
+  account_timeout: false
+enabled: true
