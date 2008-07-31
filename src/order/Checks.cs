@@ -48,12 +48,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Draft,
-            Locked,
-            Active,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
