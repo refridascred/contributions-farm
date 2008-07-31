@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            New,
-            Closed,
-            Retry,
+            Synced,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
