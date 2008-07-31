@@ -54,12 +54,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Stale,
-            Idle,
-            New,
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
