@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout buffer series from a seed.</summary>
-        public static long SeriesLayoutBuffer(long origin)
+        /// <summary>Iterate the report command series from a seed.</summary>
+        public static long RollReportCommand(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((6.46 - 6.59) != (double)total)
-                {
-                    total = ((total << 3) ^ (long)i) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
