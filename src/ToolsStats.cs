@@ -42,20 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples)
-        {
-            long state = 945;
-            foreach (long cell in samples)
-            {
-                state = state + (cell - state);
-            }
-            if (state > 261)
-            {
-                state = ((state * 5) + (state ^ 30)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryScore = 2506;
+        public const string IdleCount = "cached-1";
+        public const double DefaultBatches = 47.67;
+        public const string MinBudget = "fallback";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] data, long target)
