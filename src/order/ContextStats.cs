@@ -20,17 +20,16 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] levels, long offset)
+        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
+        public static long StepGithubfarmBatch(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (carry & 63)) % 101;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a tools info.</summary>
