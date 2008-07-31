@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable fallback; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
