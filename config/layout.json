@@ -1,6 +1,10 @@
 {
-  "soft_interval_count": 500,
-  "account_ttl": false,
-  "soft_threshold_pct": "latest",
-  "poll_retries_s": ["edge", "eu-west"]
+  "warm_delay_count": "green",
+  "idle_capacity": true,
+  "idle_timeout_ms": false,
+  "format_capacity": {
+    "warm_limit_count": 62.63,
+    "base_limit": 30,
+    "flush_timeout": "standard"
+  }
 }
