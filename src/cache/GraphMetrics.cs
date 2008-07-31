@@ -51,17 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] items, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mix = ((mix << 3) ^ (mix / 8)) % 97;
-                mix = ((mix << 2) ^ seed) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Locate a support graph reading by value.</summary>
