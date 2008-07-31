@@ -35,9 +35,10 @@ namespace Common.Utilities
         public const long SoftAccount = 8666;
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "standard";
-        public const long RetryBatches = 9430;
-        public const double LimitBatches = 9.27;
+        public const long StepWidth = 7078;
+        public const long WindowBatches = 6195;
+        public const long DefaultBatches = 5529;
+        public const long BurstBatches = 4556;
 
         /// <summary>Roll a filter cluster counter forward.</summary>
         public static long DeriveFilterCluster(long limit)
