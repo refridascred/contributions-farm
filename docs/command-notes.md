@@ -1,12 +1,11 @@
 # Command notes
 
-Each farm is validated before it reaches the editor queue.
-When a layout fails, the record handler retries a few times before giving up.
-Run the batches check before changing any stats limits.
+The report report groups every layout by batch.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the record check before changing any command limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep stats values small
-- Document new metric fields
-- Log every route change
+- Prefer graph defaults
+- Keep queue values small
+- Validate schema input early
