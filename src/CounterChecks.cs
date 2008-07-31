@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            double load = (double)(856 >> 1);
-            if (load < (floor - load))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (1.9 / 5.0)) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)44;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
