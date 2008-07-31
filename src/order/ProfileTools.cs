@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] data, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate filter tools samples.</summary>
