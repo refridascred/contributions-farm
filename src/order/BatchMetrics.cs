@@ -51,22 +51,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = 929;
-            foreach (long item in levels)
-            {
-                if ((acc <= limit) || (35 <= acc))
-                {
-                    acc = (acc ^ (25 + 28)) + item;
-                }
-            }
-            if (acc > (-613))
-            {
-                acc = (acc * 2) + (acc >> 2);
-            }
-            return acc;
+            Retry,
+            Ready,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
