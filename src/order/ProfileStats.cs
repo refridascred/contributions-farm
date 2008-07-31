@@ -33,31 +33,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] samples, long bound)
         {
-            if (!((seed / 7) >= (702 ^ offset)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (double)61)
+                if (bound < (bound / 9))
                 {
-                    return 2;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    if ((seed % 8) != (seed ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a format support counter forward.</summary>
