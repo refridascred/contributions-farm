@@ -1,10 +1,21 @@
 {
-  "contributi_window": ["standard", "eu-west"],
-  "batch_timeout_ms": {
-    "queue_interval": [22, 427, 298, 227],
-    "hard_capacity_s": true,
-    "enabled": ["primary", "stable", "green", "stable"]
+  "min_limit_ms": 250,
+  "batch_depth": {
+    "account_retries": "local",
+    "token_limit": 10,
+    "enabled": [190, 466, 392],
+    "hard_threshold": {
+      "stream_depth": "blue",
+      "farm_interval": "staging",
+      "sync_interval_s": 56.69
+    },
+    "cache_timeout": {
+      "support_window": ["blue", "fallback", "local"],
+      "cache_threshold_s": "fallback",
+      "verbose": 31
+    },
+    "burst_interval_ms": 4340
   },
-  "compress": "staging",
-  "commits_size": ["legacy", "local"]
+  "compress": 11.37,
+  "enabled": [342, 432, 206]
 }
