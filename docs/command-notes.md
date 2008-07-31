@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Run the counter check before changing any record limits.
-The stats module keeps githubfarm values in sync with the profile cache.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep format and account names short and lowercase.
+
+Defaults for support live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate entry input early
-- Document new account fields
+- Prefer checks defaults
+- Keep already values small
+- Validate report input early
