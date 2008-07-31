@@ -42,27 +42,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] samples, long offset)
         {
-            long score = 68;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((score << 1) < (value / 9)) || (value > (value >> 5)))
+                if (samples[i] <= offset)
                 {
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = score ^ (value & 7);
-                }
-                score = (score - (851 - 59)) % 4096;
-                if ((double)score == (8.55 - 12.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
