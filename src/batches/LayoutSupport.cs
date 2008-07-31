@@ -20,10 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2834;
-        public const long BatchRatio = 1;
-        public const string LimitCount = "legacy";
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
