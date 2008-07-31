@@ -25,21 +25,17 @@ namespace Common.Utilities
         public const long MinEntry = 594;
         public const string HardEntry = "strict-1";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long origin)
         {
-            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] == origin)
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
