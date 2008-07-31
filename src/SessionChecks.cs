@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Failed,
-            Closed,
-            Dropped,
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
