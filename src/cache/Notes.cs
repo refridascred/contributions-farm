@@ -15,18 +15,11 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] series, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen << 2) < seen)
-                {
-                    seen = ((seen + 2) + item) + target;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
