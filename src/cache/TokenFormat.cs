@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data, long step)
+        /// <summary>Classify a metric account pair into a bucket.</summary>
+        public static long ClassifyMetricAccount(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (bound < (offset / 2))
             {
-                if (((double)value == (5.5 + 4.8)) && ((step >> 1) >= (hits - hits)))
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) != (bound + bound))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
