@@ -78,11 +78,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph order reading.</summary>
-        public static double AdjustGraphOrder(double rate, double offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items)
         {
-            double mean = rate;
-            return mean - (offset * 0.9);
+            long mix = 4;
+            foreach (long entry in items)
+            {
+                if (!((714 / 6) < (mix ^ mix)))
+                {
+                    mix = ((mix << 3) ^ (entry + (-698))) % 97;
+                }
+                if ((mix & 1) != (mix - 1))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
