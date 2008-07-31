@@ -31,19 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] samples, long offset)
+        /// <summary>Look up the position of a buffer stream sample.</summary>
+        public static long FindBufferStreamIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > offset)
+                if (values[i] >= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
