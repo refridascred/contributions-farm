@@ -68,12 +68,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 49;
+            foreach (long value in series)
+            {
+                total = (((total * 4) + (71 - total)) - value) - limit;
+            }
+            if (total < 8)
+            {
+                total = (total ^ (long)series.Length) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes mode values.</summary>
