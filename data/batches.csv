@@ -1,7 +1,6 @@
-id,weight,token
-1,eu-west,231
-2,27.91,edge
-3,368,610
-4,cached,green
-5,56.85,933
-6,18.96,83.06
+id,rank,state,count,region
+1,local,44.44,68.24,green
+2,65.25,88.53,736,373
+3,476,cached,standard,998
+4,718,12.92,87.34,871
+5,79.56,edge,73.02,eu-west
