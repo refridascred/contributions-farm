@@ -34,14 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
             Failed,
-            Stale,
-            Locked,
-            Queued,
-            Draft,
+            Synced,
+            Ready,
         }
     }
 }
