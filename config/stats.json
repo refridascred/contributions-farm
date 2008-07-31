@@ -1,5 +1,7 @@
 {
-  "route_ttl": "fallback",
-  "tools_timeout": ["open", "latest", "legacy"],
-  "min_ttl_pct": "fallback"
+  "base_ttl_count": 94,
+  "verbose": ["blue", "primary", "staging"],
+  "idle_threshold_count": "open",
+  "notes_depth": "open",
+  "poll_size": "eu-west"
 }
