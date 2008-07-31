@@ -20,19 +20,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] series, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
