@@ -61,18 +61,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double rate, double bias)
         {
-            long state = 943;
-            foreach (long datum in levels)
+            double load = bias / 4.0;
+            if (load > (double)1)
             {
-                if ((9.28 * 15.0) < (double)state)
-                {
-                    state = (((state * 3) + state) + datum) + origin;
-                }
+                load = load - (double)10;
             }
-            return state;
+            else
+            {
+                load = load - (load - 7.27);
+            }
+            return load + rate;
         }
     }
 }
