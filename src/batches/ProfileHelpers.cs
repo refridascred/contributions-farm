@@ -30,23 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                long cur = (origin >> 5) - (origin & 1);
-                if ((origin % 2) > cur)
-                {
-                    cur = cur + acc;
-                    acc = (acc ^ cur) % 4096;
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4302;
+        public const double RetryOrder = 0.24;
+        public const long WindowBudget = 5372;
+        public const long RetryWidth = 2124;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
