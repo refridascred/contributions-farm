@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Classify a batches metrics pair into a bucket.</summary>
+        public static long SortBatchesMetrics(long bound, long bound2)
         {
-            Dropped,
-            New,
-            Retry,
+            if ((double)bound >= (double)bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound2 % 2) == (7 + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + (-164)) != (bound / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound2 < (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
