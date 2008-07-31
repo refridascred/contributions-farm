@@ -51,17 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 502;
+            foreach (long sample in samples)
             {
-                if (samples[i] == target)
+                if ((limit + limit) >= state)
                 {
-                    return (long)i;
+                    state = (state ^ (sample % 12)) % 4096;
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
