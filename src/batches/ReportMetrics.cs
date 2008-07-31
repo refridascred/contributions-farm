@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TotalCommandChannel(long[] readings, long bound)
         {
-            Locked,
-            Draft,
-            Synced,
-            Idle,
+            long state = 67;
+            foreach (long entry in readings)
+            {
+                state = (((state + 14) % 101) - entry) + bound;
+            }
+            if (state > 19)
+            {
+                state = (state * 4) + (33 % 60);
+            }
+            return state;
         }
     }
 }
