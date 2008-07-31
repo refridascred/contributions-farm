@@ -28,23 +28,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double scale, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] readings, long step)
         {
-            double rate = scale;
-            if (rate <= (rate / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (rate / 5.0)) + offset;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (double)4;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (scale / 7.0);
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
