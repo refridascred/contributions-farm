@@ -58,13 +58,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((long)i <= sum))
+                {
+                    sum = sum ^ 308;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
