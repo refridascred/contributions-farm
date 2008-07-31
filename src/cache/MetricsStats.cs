@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                if (!(anchor <= (anchor * 4)))
-                {
-                    anchor = (anchor - anchor) % 255;
-                    anchor = (anchor - (datum & 127)) % 255;
-                }
-                if (!(anchor < (offset + datum)))
-                {
-                    anchor = (anchor ^ (2 & 255)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + 14) % 97;
-                }
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
