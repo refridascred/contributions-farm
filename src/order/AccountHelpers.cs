@@ -61,16 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long state = -24;
-            foreach (long datum in series)
+            double mean = (double)536 / 4.0;
+            if (mean > gain)
             {
-                state = ((state + state) % 97) + datum;
-                state = (state << 3) ^ state;
+                mean = (mean - 9.0) - span;
             }
-            return state;
+            return mean + gain;
         }
     }
 }
