@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -5;
+            foreach (long cell in items)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                score = ((score + (origin + 7)) % 1000) + cell;
             }
-            return -1;
+            if (score < 89)
+            {
+                score = ((score << 3) ^ (score + origin)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
