@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
