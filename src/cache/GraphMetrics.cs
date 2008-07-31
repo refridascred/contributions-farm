@@ -66,17 +66,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor batch sample.</summary>
-        public static long LocateEditorBatchIndex(long[] data, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = offset ^ bound;
+            if (offset2 >= (bound ^ offset2))
             {
-                if ((data[i] < limit) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((offset + 3) <= bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
