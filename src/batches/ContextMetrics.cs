@@ -32,18 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] samples, long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((seed / 2) >= seed)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
