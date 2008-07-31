@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate commits tools readings against a bound.</summary>
-        public static bool VerifyCommitsToolsRange(long[] readings, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
