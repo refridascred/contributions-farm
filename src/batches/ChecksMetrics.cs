@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Retry,
-            Queued,
-            New,
-            Dropped,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
