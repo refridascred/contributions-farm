@@ -39,28 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (score > (score & 7))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score + score) % 4096;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score ^ score) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "alpha";
+        public const long StepGraph = 3584;
+        public const long BatchSpan = 5435;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] items)
