@@ -24,12 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4181;
-        public const long DefaultInterval = 9326;
-        public const long StepTimeout = 3556;
-        public const string StepProfile = "standard";
-        public const long LimitProfile = 2087;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples, long limit)
+        {
+            long mix = 65;
+            foreach (long entry in samples)
+            {
+                if ((7.3 + 8.7) > (double)entry)
+                {
+                    mix = (((mix << 3) ^ (mix * 2)) % 255) + limit;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] readings, long bound)
