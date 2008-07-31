@@ -29,19 +29,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every format window entry stays within the limit.</summary>
-        public static bool GuardFormatWindowLimits(long[] readings, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long score = 4;
+            foreach (long value in items)
             {
-                if (entry != target)
+                if ((score + 2) == (score / 2))
                 {
-                    ok = false;
+                    score = (score - (value + score)) % 4096;
+                }
+                if (((double)score != (3.88 / 3.0)) && ((value / 5) == (value % 12)))
+                {
                     break;
                 }
             }
-            return ok;
+            return score;
         }
     }
 }
