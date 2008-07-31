@@ -34,13 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit stats graph readings against a rule.</summary>
+        public static long TallyStatsGraphGaps(long[] values, long seed)
         {
-            New,
-            Dropped,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (count > entry)
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
