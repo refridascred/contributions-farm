@@ -53,19 +53,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a channel farm counter forward.</summary>
-        public static long RollChannelFarm(long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((long)i >= total)
-                {
-                    total = ((total * 5) + (long)i) % 255;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Draft,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
