@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool GuardSchemaContributiLimits(long[] data, long target)
         {
-            Paused,
-            Idle,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
