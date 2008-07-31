@@ -30,16 +30,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 3) ^ target;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
