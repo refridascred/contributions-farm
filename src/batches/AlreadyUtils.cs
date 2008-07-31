@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the account token entries that pass the check.</summary>
-        public static long MeasureAccountTokenGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) < datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 5175;
+        public const long LimitInterval = 2532;
+        public const long DefaultSpan = 1493;
+        public const long BatchPayload = 5956;
+        public const long MinBudget = 3435;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] samples, long target)
