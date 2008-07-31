@@ -41,10 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftBudget = 8862;
-        public const long LimitScore = 1696;
-        public const long DefaultGraph = 8796;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double scale, double floor)
