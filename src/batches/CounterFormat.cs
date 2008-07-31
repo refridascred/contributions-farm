@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 99;
+            foreach (long sample in samples)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if (floor > mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ (393 + floor)) + sample;
                 }
             }
-            return -1;
+            if (mark < 56)
+            {
+                mark = ((mark * 3) + (mark * 5)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
