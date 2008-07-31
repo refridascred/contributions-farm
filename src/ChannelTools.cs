@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor commits series from a seed.</summary>
-        public static long IterateEditorCommits(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "primary-v2";
+        public const double BatchInterval = 5.74;
+        public const long HardScore = 1087;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long step)
