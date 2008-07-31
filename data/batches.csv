@@ -1,6 +1,9 @@
-id,active,owner,count,state
-1,431,164,211,local
-2,852,332,219,blue
-3,17.6,83.89,972,263
-4,green,443,cached,67.13
-5,primary,green,89,strict
+id,count,level,token
+1,646,edge,743
+2,166,23.44,67.05
+3,strict,70.32,latest
+4,green,blue,559
+5,140,771,green
+6,516,staging,63.75
+7,28.55,stable,735
+8,41.13,45.67,76.71
