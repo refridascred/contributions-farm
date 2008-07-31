@@ -20,10 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 8508;
-        public const long MinEntry = 594;
-        public const string HardEntry = "strict-1";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] series, long origin)
