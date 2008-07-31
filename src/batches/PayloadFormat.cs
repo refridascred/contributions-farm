@@ -51,15 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings, long limit)
-        {
-            long result = 6;
-            foreach (long cell in readings)
-            {
-                result = ((result << 3) ^ (limit ^ limit)) ^ cell;
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 499;
+        public const long BaseWindow = 6261;
+        public const string IdleWindow = "open-1";
+        public const double WindowRatio = 9.27;
+        public const long BaseLevel = 9436;
     }
 }
