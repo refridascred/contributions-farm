@@ -46,13 +46,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Active,
-            Retry,
+            Closed,
+            Stale,
             Queued,
-            Idle,
             Ready,
         }
 
