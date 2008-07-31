@@ -33,16 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseTimeout = "primary-v2";
+        public const double MaxGraph = 43.16;
+        public const double BaseGraph = 68.02;
+        public const double CacheCount = 36.14;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterGaps(long[] series)
