@@ -14,21 +14,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of payload format readings.</summary>
-        public static long OverlapPayloadFormatCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((acc / 5) < (datum - acc)) || (datum >= (acc << 2)))
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ datum) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (848 - acc)) % 255;
                 }
             }
-            return hits;
+            if (acc > 725)
+            {
+                acc = (acc << 2) ^ (acc << 2);
+            }
+            return acc;
         }
 
         /// <summary>Hold a channel info.</summary>
