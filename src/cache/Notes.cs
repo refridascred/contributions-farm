@@ -30,21 +30,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                long gap = 3;
+                if ((gap >= (carry * 4)) || (offset < value))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    gap = ((gap << 3) ^ (gap + value)) % 97;
+                    gap = gap + gap;
+                }
+                if (!((double)carry != (9.4 + 1.0)))
+                {
+                    carry = (carry ^ (offset + 37)) % 101;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
