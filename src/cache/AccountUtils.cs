@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
