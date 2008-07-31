@@ -70,14 +70,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Locked,
-            Idle,
-            Ready,
-            Failed,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 4857;
+        public const long MinDepth = 1731;
+        public const long SoftDepth = 9161;
     }
 }
