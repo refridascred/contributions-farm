@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxSize = 57.07;
+        public const string BatchSpan = "staging";
+        public const double DefaultTools = 17.42;
+        public const double HardWidth = 83.37;
+        public const long WindowDepth = 2589;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] data)
