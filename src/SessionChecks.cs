@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Closed,
-            Paused,
-            Ready,
-            New,
             Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
