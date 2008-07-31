@@ -76,19 +76,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            double bias = (double)8 - (double)634;
-            if (bias > 17.0)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (18.0 * 5.6);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias - (span - bias);
+            return seen;
         }
     }
 }
