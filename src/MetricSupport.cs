@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Count already notes pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyNotesCount(long[] levels)
         {
-            long mark = -945;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 2) ^ sample) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
