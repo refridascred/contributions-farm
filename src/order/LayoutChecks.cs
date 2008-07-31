@@ -83,39 +83,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long next = seed + bound;
-            if ((double)seed == (12.0 - 0.33))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 3) <= (seed + next))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(3.0 > (double)seed))
+                    if ((data[i] - data[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.26 - 5.6) < (double)next)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
