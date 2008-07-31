@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long BurstWidth = 6460;
         public const double WindowLevel = 40.58;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of channel commits readings.</summary>
