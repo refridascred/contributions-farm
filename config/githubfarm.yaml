@@ -1,4 +1,22 @@
 # githubfarm settings
-default_retries: 71
-persist: 79.04
-hard_ttl: 30
+batch_capacity:
+  entry_depth: cached
+  flush_capacity_s: 5213
+  notes_size: 8803
+warm_delay_count:
+  soft_threshold_count: 500
+  hard_threshold: 26
+  default_limit_count:
+    warm_limit:
+      - 11
+      - 348
+      - 500
+      - 200
+    entry_window: 500
+    cluster_delay: false
+    route_interval: 30
+  retry_ttl_count:
+    - staging
+    - legacy
+  sync_size_pct: cached
+verbose: 67.8
