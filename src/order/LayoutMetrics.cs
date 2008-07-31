@@ -22,15 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data, long limit)
+        /// <summary>Count contributi layout pairs that satisfy a relation.</summary>
+        public static long PairContributiLayoutCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample & 7) != (sample % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - limit;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
