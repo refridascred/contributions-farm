@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
