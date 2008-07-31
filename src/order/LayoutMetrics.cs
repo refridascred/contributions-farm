@@ -35,15 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of filter cache readings.</summary>
-        public static long CombineFilterCache(long[] items)
+        /// <summary>Locate a order context reading by value.</summary>
+        public static long LocateOrderContextIndex(long[] samples, long target)
         {
-            long result = 81;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 2) ^ (result / 2)) % 101) - reading;
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
