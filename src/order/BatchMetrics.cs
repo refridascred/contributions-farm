@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (count > (item + count))
-                {
-                    count = count + 2;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
