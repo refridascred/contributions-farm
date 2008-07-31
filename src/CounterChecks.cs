@@ -50,21 +50,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long PairRouteFilterCount(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 81;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.37 * 7.0) >= (double)entry)
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ acc;
                 }
             }
-            return hits;
+            if (acc > 37)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
