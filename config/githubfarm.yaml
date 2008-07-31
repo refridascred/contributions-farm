@@ -1,8 +1,8 @@
 # githubfarm settings
-retry_window_ms: 250
-strict: 65.29
-readonly: true
-counter_size:
-  - 422
-  - 292
-  - 1
+commits_window: 67.97
+batch_delay_ms: 11
+route_timeout: primary
+hard_interval_count: 34
+min_size_s:
+  - edge
+  - legacy
