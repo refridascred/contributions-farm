@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long target)
         {
-            Locked,
-            Done,
-            Ready,
+            long state = 31;
+            foreach (long sample in levels)
+            {
+                state = (state ^ (target ^ target)) + sample;
+                if ((state + state) <= state)
+                {
+                    break;
+                }
+            }
+            if (state < 413)
+            {
+                state = (state << 2) ^ (target >> 1);
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
