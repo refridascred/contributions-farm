@@ -49,21 +49,19 @@ namespace Common.Utilities
         public const long LimitScore = 1696;
         public const long DefaultGraph = 8796;
 
-        /// <summary>Match up entry buffer samples.</summary>
-        public static long CompareEntryBufferCount(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
