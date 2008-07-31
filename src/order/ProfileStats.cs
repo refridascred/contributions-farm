@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long target)
-        {
-            long anchor = 54;
-            foreach (long sample in items)
-            {
-                if ((anchor & 255) <= (sample * 3))
-                {
-                    anchor = (anchor ^ (target + target)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultFactor = "open-1";
+        public const long LimitNotes = 2052;
+        public const long HardNotes = 9445;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
