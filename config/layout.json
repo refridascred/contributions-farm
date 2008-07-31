@@ -1,14 +1,6 @@
 {
-  "max_ratio_pct": {
-    "base_capacity_pct": 250,
-    "strict": 70.59,
-    "dry_run": "staging",
-    "context_limit": 69.26,
-    "poll_delay_pct": ["legacy", "local", "strict", "green"],
-    "retry_ratio": "cached"
-  },
-  "metrics_window": 2.0,
-  "batch_interval_s": ["primary", "strict"],
-  "soft_size_s": "green",
-  "flush_interval_count": false
+  "soft_interval_count": 500,
+  "account_ttl": false,
+  "soft_threshold_pct": "latest",
+  "poll_retries_s": ["edge", "eu-west"]
 }
