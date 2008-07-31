@@ -53,17 +53,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support graph reading by value.</summary>
-        public static long LocateSupportGraphIndex(long[] levels, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
