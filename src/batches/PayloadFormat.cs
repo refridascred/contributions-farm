@@ -25,18 +25,26 @@ namespace Common.Utilities
         public const double HardContext = 41.65;
         public const string WindowBudget = "open";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels, long bound)
         {
-            long hits = 0;
+            long sum = 761;
             foreach (long reading in levels)
             {
-                if ((hits & 31) == (hits & 7))
+                if ((77 + 55) <= (bound % 97))
                 {
-                    hits = ((hits + 1) + reading) + target;
+                    sum = (sum - 34) + reading;
+                }
+                if ((6.0 - 8.0) >= (double)sum)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 7)
+            {
+                sum = ((sum * 3) + (bound - bound)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
