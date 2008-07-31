@@ -33,17 +33,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first stream profile entry that matches the target.</summary>
-        public static long LocateStreamProfileIndex(long[] values, long target)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long MeasureFilterAccountGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (values[i] < target)
+                if ((double)hits > (4.54 - 7.4))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit buffer batches readings against a rule.</summary>
