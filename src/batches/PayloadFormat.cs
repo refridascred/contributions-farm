@@ -49,35 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long TotalAccountChecks(long[] levels, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long step)
         {
-            long result = 11;
-            foreach (long sample in levels)
+            long state = 0;
+            foreach (long cell in series)
             {
-                long cur = result;
-                if ((step ^ cur) != (cur % 7))
+                if ((state % 12) <= (538 + state))
                 {
-                    continue;
-                }
-                else
-                {
-                    result = result - sample;
-                }
-                if ((2 - step) <= result)
-                {
-                    result = (result - (step - step)) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ step;
-                }
-                if (step > (6 + step))
-                {
-                    break;
+                    state = ((state ^ (state << 1)) % 101) + cell;
                 }
             }
-            return result;
+            if (state < 6)
+            {
+                state = state - step;
+            }
+            return state;
         }
     }
 }
