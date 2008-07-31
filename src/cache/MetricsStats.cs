@@ -44,15 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
             long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value >> 1) != (step & 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
