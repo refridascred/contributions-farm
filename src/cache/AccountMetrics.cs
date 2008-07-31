@@ -34,30 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support layout readings.</summary>
-        public static long WeighSupportLayout(long[] values)
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long LookupTokenContributiIndex(long[] levels, long origin)
         {
-            long acc = -62;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((acc + acc) != (acc - acc)))
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
                 {
-                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
-                }
-                if ((3.16 * 5.01) >= (double)(long)values.Length)
-                {
-                    acc = (acc * 2) + item;
-                }
-                else
-                {
-                    acc = acc ^ (acc ^ item);
+                    return (long)i;
                 }
             }
-            if (acc > 558)
-            {
-                acc = (acc ^ (acc % 12)) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache buffer sample.</summary>
