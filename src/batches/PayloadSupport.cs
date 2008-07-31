@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many commits format samples are out of range.</summary>
+        public static long CountCommitsFormatHits(long[] series)
         {
-            Stale,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count & 1) <= item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
