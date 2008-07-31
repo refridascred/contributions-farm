@@ -52,15 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account batch series from a seed.</summary>
-        public static long IterateAccountBatch(long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the support status values.</summary>
