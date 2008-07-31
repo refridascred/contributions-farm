@@ -43,25 +43,14 @@ namespace Common.Utilities
             return ratio2 + (offset - ratio);
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long offset = floor - bound;
-            if (bound <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound % 60) < (bound << 2)) && ((2.0 - 14.0) != (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Stale,
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
