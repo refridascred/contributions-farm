@@ -64,19 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (datum > target)
+                if ((hits - reading) != (limit ^ reading))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
