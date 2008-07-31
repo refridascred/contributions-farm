@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const long WindowGraph = 307;
         public const double LimitGraph = 84.7;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 69.81;
+        public const long RetrySize = 9234;
+        public const string CacheEditor = "open";
+        public const string BatchFactor = "strict-1";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double WindowWidth = 91.45;
