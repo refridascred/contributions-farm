@@ -46,13 +46,12 @@ namespace Common.Utilities
             return ratio - (8.4 / 6.0);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 903;
+        public const long CacheQueue = 4474;
+        public const long BaseQueue = 3433;
+        public const long SoftQueue = 6193;
+        public const double BaseFactor = 17.73;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long offset)
