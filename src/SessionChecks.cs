@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = anchor ^ (anchor ^ (long)i);
+                anchor = (anchor + (anchor - anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
