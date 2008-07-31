@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound ^ floor;
+            if (218 <= floor)
             {
-                if (items[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if (((-818) - delta) > (bound >> 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
