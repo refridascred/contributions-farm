@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 35;
+            foreach (long value in samples)
             {
-                if ((6 - step) != (step / 6))
+                if (!((score + (long)samples.Length) >= (7 - limit)))
                 {
-                    seen = (seen + 1) ^ value;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = ((score ^ (limit ^ score)) % 65521) ^ value;
+                }
+                score = score + limit;
+                if ((221 * 4) > (466 - score))
+                {
+                    score = (score + 38) % 101;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
