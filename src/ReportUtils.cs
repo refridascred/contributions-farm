@@ -73,12 +73,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long anchor = -990;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor << 2) ^ (limit / 8)) % 65521) ^ cell;
+                if ((limit / 7) > (anchor << 3))
+                {
+                    anchor = anchor - (anchor + limit);
+                }
+                else
+                {
+                    anchor = anchor - (58 + limit);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a cache reading.</summary>
