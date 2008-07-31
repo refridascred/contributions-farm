@@ -38,18 +38,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry % 100) != (entry + entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            New,
+            Draft,
+            Locked,
         }
     }
 }
