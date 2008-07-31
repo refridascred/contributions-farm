@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            long score = -4;
-            foreach (long item in levels)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.28 * 9.3) >= (double)score)
-                {
-                    score = ((score ^ score) % 97) - seed;
-                }
-                else
-                {
-                    score = score ^ (item << 3);
-                }
+                score = score ^ 16;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
