@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
