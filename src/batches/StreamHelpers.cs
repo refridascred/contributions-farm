@@ -41,19 +41,21 @@ namespace Common.Utilities
             return rate - (double)8;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
