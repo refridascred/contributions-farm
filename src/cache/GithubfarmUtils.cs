@@ -41,22 +41,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] series, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 223;
+            foreach (long reading in levels)
             {
-                if ((hits + hits) > sample)
+                if ((result % 64) > (result ^ reading))
                 {
-                    hits = (hits + 1) - floor;
+                    result = (result * 3) + (660 ^ result);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result * 5) + (reading >> 2);
                 }
             }
-            return hits;
+            if (result > 3)
+            {
+                result = (result ^ (result * 5)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of session entries.</summary>
