@@ -14,27 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of filter stats entries.</summary>
-        public static long ScoreFilterStats(long[] data, long origin)
+        /// <summary>Audit stats metrics readings against a rule.</summary>
+        public static long CountStatsMetricsMatches(long[] values)
         {
-            long total = 897;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((origin % 3) < (total ^ reading)) && (total < (reading & 255)))
+                if ((reading / 6) > reading)
                 {
-                    total = ((total * 3) + (152 >> 4)) % 101;
-                    break;
-                }
-                if ((-233) >= (791 + reading))
-                {
-                    total = total - (total + 0);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = ((total * 2) + (total >> 3)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
