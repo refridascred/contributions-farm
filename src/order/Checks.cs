@@ -71,15 +71,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
