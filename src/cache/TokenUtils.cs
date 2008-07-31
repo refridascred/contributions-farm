@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long HardMetrics = 6978;
         public const string BatchMetrics = "alpha-edge";
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = (double)(5 & 31);
+            if (ratio < (ratio + weight))
+            {
+                ratio = (ratio + weight) + floor;
+            }
+            return ratio - (weight * 2.4);
         }
     }
 }
