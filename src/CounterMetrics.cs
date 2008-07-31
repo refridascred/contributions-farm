@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)step <= 20.0)
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
