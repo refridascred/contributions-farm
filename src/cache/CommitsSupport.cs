@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
