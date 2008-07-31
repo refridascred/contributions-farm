@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultFactor = "open-1";
-        public const long LimitNotes = 2052;
-        public const long HardNotes = 9445;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphGaps(long[] levels, long bound)
