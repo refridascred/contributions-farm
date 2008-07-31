@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Match up schema samples.</summary>
