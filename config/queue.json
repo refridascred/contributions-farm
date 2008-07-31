@@ -1,8 +1,5 @@
 {
-  "metric_window": "strict",
-  "filter_depth": "open",
-  "burst_size": "legacy",
-  "strict": 3734,
-  "readonly": "blue",
-  "flush_depth": 86.7
+  "metric_limit": 500,
+  "hard_threshold": "eu-west",
+  "record_size": 83
 }
