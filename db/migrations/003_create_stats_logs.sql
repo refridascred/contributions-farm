@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT,
+    created_at TIMESTAMP,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0
+    weight REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
