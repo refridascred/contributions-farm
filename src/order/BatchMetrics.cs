@@ -51,14 +51,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank batches cache input into a small class.</summary>
+        public static long ClassifyBatchesCache(long step, long offset)
         {
-            Retry,
-            Ready,
-            Idle,
-            Locked,
-            Paused,
+            if ((step <= (step % 2)) && ((step & 31) < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((15.0 * 2.13) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
