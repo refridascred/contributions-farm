@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((63 >> 5) < (datum % 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseCount = "staging";
+        public const string MinBudget = "staging-edge";
+        public const long IdleChecks = 7193;
 
         /// <summary>Roll a support notes counter forward.</summary>
         public static long IterateSupportNotes(long offset)
