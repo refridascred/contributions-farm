@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
