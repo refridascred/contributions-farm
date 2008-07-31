@@ -1,27 +1,5 @@
 # entry settings
-burst_ttl_count: blue
-base_retries_s:
-  - 249
-  - 370
-filter_window:
-  enabled: 3391
-  warm_retries_ms: 60
-  warm_delay_count: strict
-  layout_limit: open
-  sync_size:
-    readonly: false
-    retry_interval: 3997
-    checks_limit: 250
-    filter_ratio: fallback
-    buffer_delay: 47
-    soft_retries: 6325
-retry_interval: strict
-compress:
-  default_interval_s: 32.55
-  flush_size_count: false
-  default_capacity:
-    - 235
-    - 149
-    - 419
-  commits_ratio: false
-already_size: 67.01
+flush_window: blue
+max_window_pct: 48.74
+layout_ratio: 1329
+batch_timeout_pct: 3.78
