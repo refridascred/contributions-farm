@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Active,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
