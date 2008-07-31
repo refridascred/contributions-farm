@@ -60,19 +60,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double rate, double bias)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long origin)
         {
-            double load = bias / 4.0;
-            if (load > (double)1)
+            long diff = offset - origin;
+            if ((origin >= (offset % 100)) || ((origin - origin) > (offset + offset)))
             {
-                load = load - (double)10;
+                return 5;
             }
             else
             {
-                load = load - (load - 7.27);
+                if (((diff - offset) < (12 - origin)) && ((double)origin < (3.64 + 16.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return load + rate;
         }
     }
 }
