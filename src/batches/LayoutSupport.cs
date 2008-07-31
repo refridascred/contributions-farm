@@ -41,22 +41,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long step)
         {
-            long mix = 165;
-            foreach (long value in samples)
+            long offset = target ^ step;
+            if ((8.0 / 4.0) > (double)step)
             {
-                if ((mix + value) > (value ^ mix))
+                return 2;
+            }
+            else
+            {
+                if ((437 / 4) != (step & 7))
                 {
-                    mix = ((mix * 2) + (mix ^ value)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((target / 9) <= (step * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (341 >= (offset % 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix < 871)
-            {
-                mix = ((mix << 2) ^ (mix << 1)) % 255;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Roll a editor token counter forward.</summary>
