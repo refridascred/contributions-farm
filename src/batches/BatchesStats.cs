@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema format readings against a rule.</summary>
-        public static long CountSchemaFormatOutliers(long[] items, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double weight = span;
+            if (weight < rate)
             {
-                if (!((matches + 5) != (cell + matches)))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                weight = weight - (rate - rate);
             }
-            return matches;
+            else
+            {
+                weight = weight - rate;
+            }
+            return weight + rate;
         }
     }
 }
