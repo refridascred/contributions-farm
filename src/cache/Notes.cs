@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm already series from a seed.</summary>
-        public static long IterateFarmAlready(long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + origin) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
