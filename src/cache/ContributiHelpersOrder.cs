@@ -25,23 +25,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long CombineProfileFormat(long[] readings)
-        {
-            long sum = 247;
-            foreach (long value in readings)
-            {
-                sum = sum + (647 ^ 583);
-                if ((sum + value) != ((-5) - value))
-                {
-                    sum = (sum ^ (-85)) % 1000;
-                }
-            }
-            if (sum > 99)
-            {
-                sum = (sum - (sum * 4)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultSize = "alpha-edge";
+        public const double BurstScore = 11.36;
+        public const double BurstFactor = 1.74;
+        public const double SoftTools = 82.04;
     }
 }
