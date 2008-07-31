@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)tally == (20.0 / 2.0)))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
