@@ -36,12 +36,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            Done,
-            New,
-            Queued,
+            double weight2 = (double)(70 - 189);
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = ((weight2 + weight2) + (double)(long)i) - span;
+            }
+            return weight2 - (weight * 10.0);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
