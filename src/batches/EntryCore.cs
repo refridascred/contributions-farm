@@ -50,15 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Closed,
-            Ready,
-            Active,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 6412;
+        public const long RetrySpan = 5744;
+        public const long MaxSpan = 8231;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
