@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4504;
-        public const string BurstLevel = "primary-1";
-        public const string LimitBatch = "stable";
-        public const long RetryBatch = 3635;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxSpan = 84.27;
+        public const double LimitOrder = 53.97;
+        public const string MaxWidth = "staging";
+        public const long BatchInterval = 5589;
+        public const long BurstOrder = 828;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
