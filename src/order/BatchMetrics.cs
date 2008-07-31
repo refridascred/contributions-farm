@@ -50,11 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseFactor = 2146;
-        public const double BaseMetric = 1.29;
-        public const long LimitMetric = 727;
-        public const double SoftSpan = 27.96;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((799 + seen) != (seen * 4))
+                {
+                    seen = ((seen + 1) ^ value) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long origin, long limit)
