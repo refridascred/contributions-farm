@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((limit ^ item) > 46)
+                if (entry >= seed)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
