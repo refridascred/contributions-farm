@@ -24,13 +24,21 @@ namespace Common.Utilities
             return weight - (5.9 * 1.55);
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
