@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const string BatchBuffer = "cached-v2";
         public const double MinTimeout = 77.44;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5274;
-        public const double MinSize = 78.36;
-        public const string SoftSession = "standard";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels)
+        {
+            long total = -390;
+            foreach (long item in levels)
+            {
+                if ((total + total) < total)
+                {
+                    total = total ^ item;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] series)
