@@ -22,16 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph buffer counter forward.</summary>
-        public static long DeriveGraphBuffer(long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] series, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = (result ^ result) % 255;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((double)matches >= (4.6 / 3.0))
+                {
+                    matches = ((matches + 2) + datum) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
