@@ -35,21 +35,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!(floor2 >= (floor2 * 4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor2 - floor) >= (floor2 + floor2))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
+                    return 8;
+                }
+                else
+                {
+                    if ((5.9 - 8.01) > (5.0 - 1.6))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(floor < (83 >> 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
