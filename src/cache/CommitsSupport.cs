@@ -46,21 +46,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a cluster entry.</summary>
