@@ -1,6 +1,7 @@
 {
-  "audit": 85,
-  "schema_retries": false,
-  "dry_run": 85,
-  "base_ratio_s": ["staging", "blue", "open"]
+  "cache_depth_pct": ["fallback", "fallback", "eu-west", "fallback"],
+  "burst_retries": 69.46,
+  "order_timeout": "green",
+  "idle_window_ms": 42.55,
+  "base_retries_ms": 67.47
 }
