@@ -1,10 +1,11 @@
 # Command notes
 
-Each route is validated before it reaches the account queue.
-The batches module keeps already values in sync with the metrics cache.
+The entry report groups every route by notes.
+Use commits settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review stream limits each release
-- Keep support values small
-- Validate support input early
+- Keep counter values small
+- Validate payload input early
+- Log every queue change
+- Review batch limits each release
