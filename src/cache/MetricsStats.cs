@@ -32,21 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer layout readings.</summary>
-        public static long MatchBufferLayoutCount(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum >= target)
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Match up notes samples.</summary>
