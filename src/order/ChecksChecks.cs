@@ -33,25 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long bound)
-        {
-            long lane = step ^ bound;
-            if (560 > lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6.8 / 2.0) >= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 34;
+        public const double BatchChecks = 18.94;
+        public const long BurstInterval = 5134;
+        public const long StepFactor = 2467;
+        public const long SoftRatio = 6377;
     }
 }
