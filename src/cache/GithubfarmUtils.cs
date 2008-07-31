@@ -24,38 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long target, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            if ((double)target <= (double)43)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target + target) > (step + 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target ^ 7) == (target + 9)) && ((double)target > 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double rate2 = span - (rate + rate);
+            return rate2 - 18.0;
         }
 
         /// <summary>Accumulate payload samples.</summary>
