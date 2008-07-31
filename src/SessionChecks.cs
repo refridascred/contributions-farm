@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every account metrics entry stays within the limit.</summary>
-        public static bool CheckAccountMetricsLimits(long[] levels, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (item >= origin)
+                if ((((double)target <= 7.0) || ((552 + value) < (value + value))) && !((double)count <= (15.0 / 9.0)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Compare every pair of queue payload readings.</summary>
