@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] items, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((cell * 5) >= count))
+                if ((value / 7) < (value + hits))
                 {
-                    count = (count + 2) - bound;
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
