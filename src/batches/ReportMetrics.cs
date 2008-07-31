@@ -30,12 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Match up filter metrics samples.</summary>
+        public static long OverlapFilterMetricsCount(long[] samples)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
