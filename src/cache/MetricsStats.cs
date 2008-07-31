@@ -61,9 +61,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardFactor = 9965;
-        public const double CacheSpan = 20.05;
-        public const long SoftLevel = 9107;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] levels)
+        {
+            long carry = 3;
+            foreach (long entry in levels)
+            {
+                if ((612 >> 5) >= entry)
+                {
+                    carry = (carry * 5) + (carry - 4);
+                }
+                else
+                {
+                    carry = carry - entry;
+                }
+                carry = carry + (628 ^ carry);
+            }
+            return carry;
+        }
     }
 }
