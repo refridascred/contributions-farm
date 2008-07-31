@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Dropped,
-            Stale,
+            Locked,
+            Pending,
             Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the record status values.</summary>
