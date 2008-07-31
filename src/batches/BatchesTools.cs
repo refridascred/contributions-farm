@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            long sum = 14;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ (9 * 2)) + item;
+                if (item <= 96)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
