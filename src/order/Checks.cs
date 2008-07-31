@@ -93,17 +93,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel counter entry that matches the target.</summary>
-        public static long LocateChannelCounterIndex(long[] samples, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
