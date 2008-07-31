@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((double)bound == (double)bound2) || ((bound2 + 6) >= (bound2 >> 1)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((bound ^ bound) != (bound - 97)) || ((bound2 - bound) > bound))
                 {
-                    if ((series[i] + series[j]) < 4)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound2 > (3.9 / 4.0))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a order schema pair into a bucket.</summary>
