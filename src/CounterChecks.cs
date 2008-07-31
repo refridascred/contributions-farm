@@ -61,15 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double ratio, double bias)
+        /// <summary>Compare every pair of context cache readings.</summary>
+        public static long CompareContextCacheCount(long[] levels)
         {
-            double mean = ratio;
-            if (mean > (mean - mean))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - ratio) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - (double)842;
+            return tally;
         }
 
         /// <summary>Adjust a graph order reading.</summary>
