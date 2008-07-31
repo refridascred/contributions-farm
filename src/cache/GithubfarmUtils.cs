@@ -39,18 +39,17 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((13.0 < (double)cell) && ((double)cell >= 3.7))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
