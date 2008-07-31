@@ -36,11 +36,18 @@ namespace Common.Utilities
         public const double BaseGraph = 68.02;
         public const double CacheCount = 36.14;
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Count the githubfarm checks entries that pass the check.</summary>
+        public static long AuditGithubfarmChecksMatches(long[] readings)
         {
-            double load = weight;
-            return (load + load) + floor;
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample * 5) <= (hits >> 2)) && (((6 + hits) != (hits / 3)) || ((sample + sample) < (sample << 1))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
