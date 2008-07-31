@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(reading <= (mix % 16)))
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (mix / 3)) - target;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
