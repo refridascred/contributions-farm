@@ -74,19 +74,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            if (seed <= (seed + origin))
             {
-                if ((8 % 100) > floor)
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((1.6 / 4.0) < (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - seed) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
