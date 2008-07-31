@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Find the first record commits entry that matches the target.</summary>
+        public static long SeekRecordCommitsIndex(long[] items, long limit)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
