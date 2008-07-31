@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Stale,
-            Failed,
-            Idle,
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
