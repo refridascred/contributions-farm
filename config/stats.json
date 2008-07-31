@@ -1,15 +1,6 @@
 {
-  "sync_ttl": {
-    "sync_window_count": 63,
-    "warm_capacity_count": ["fallback", "cached", "standard", "latest"],
-    "cache_retries": true,
-    "soft_timeout": {
-      "hard_depth_pct": 54.91,
-      "already_size": 6822,
-      "base_delay_ms": 28.48
-    },
-    "session_delay": 250
-  },
-  "idle_limit": "latest",
-  "soft_ttl_pct": "fallback"
+  "poll_capacity_count": 60,
+  "compress": 75,
+  "idle_retries_ms": "staging",
+  "warm_limit": [10, 378]
 }
