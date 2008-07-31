@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
