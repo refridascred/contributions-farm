@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (scale + scale) * 16.0;
+            return (weight + 19.0) + bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
