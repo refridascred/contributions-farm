@@ -33,23 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            double ratio = weight;
-            if (ratio < weight)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio + (5.0 - 6.83)) - bias;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (ratio / 3.0);
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
