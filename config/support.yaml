@@ -1,9 +1,10 @@
 # support settings
-soft_timeout_s:
-  - 252
-  - 220
-metrics_window: edge
-burst_threshold: 250
-layout_threshold: 93.09
-soft_retries: 50
-min_interval_s: edge
+layout_capacity: legacy
+idle_capacity:
+  - 98
+  - 189
+  - 8
+  - 111
+soft_capacity_s:
+  - 305
+  - 441
