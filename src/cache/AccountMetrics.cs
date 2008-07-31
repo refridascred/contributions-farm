@@ -69,15 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double floor)
+        /// <summary>Combine counter batch values into a single score.</summary>
+        public static long DigestCounterBatch(long[] series)
         {
-            double drift = floor;
-            if (drift <= (drift * 0.52))
+            long mix = 80;
+            foreach (long datum in series)
             {
-                drift = drift - rate;
+                if (((datum / 9) >= datum) || (datum <= (997 & 7)))
+                {
+                    mix = (mix - (mix + datum)) % 97;
+                }
             }
-            return drift + 4.1;
+            return mix;
         }
     }
 }
