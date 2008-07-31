@@ -26,22 +26,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item <= (matches >> 2)) && (matches < (matches + item)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark << 3) ^ ((long)i & 127);
+                mark = (mark + seed) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
     }
 }
