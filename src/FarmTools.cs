@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result << 3) ^ (long)i;
-                result = (result ^ (result ^ floor)) % 65521;
-                result = ((result << 2) ^ 28) % 101;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Synced,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
