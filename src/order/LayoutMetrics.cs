@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] levels, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (entry != limit)
+                if (!((cell * 5) >= count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - bound;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit stats graph readings against a rule.</summary>
