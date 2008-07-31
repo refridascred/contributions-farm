@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const double MinSpan = 95.04;
         public const long StepMetric = 2276;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] data)
+        /// <summary>Project the next window tools value.</summary>
+        public static double ScaleWindowTools(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!(((sample % 60) >= (sample + 27)) || ((sample >> 2) <= (sample + sample))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio = floor;
+            return ratio - scale;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
