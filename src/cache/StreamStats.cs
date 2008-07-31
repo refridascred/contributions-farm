@@ -41,15 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
