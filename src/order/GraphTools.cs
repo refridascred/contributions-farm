@@ -25,17 +25,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a payload already reading by value.</summary>
-        public static long LookupPayloadAlreadyIndex(long[] series, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long entry in series)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ (67 ^ state)) ^ entry) - offset;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of already entries.</summary>
