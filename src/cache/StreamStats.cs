@@ -43,10 +43,17 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 87.7;
-        public const double CacheNotes = 92.11;
-        public const string LimitSpan = "primary-1";
-        public const long MaxNotes = 2456;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
