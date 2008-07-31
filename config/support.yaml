@@ -1,7 +1,11 @@
 # support settings
-enabled: 27
-layout_capacity: 60
-already_ratio: 32
-soft_window_ms: false
-warm_timeout: primary
-format_depth: true
+sync_retries_count: legacy
+account_depth:
+  - latest
+  - primary
+  - eu-west
+  - cached
+sync_window: edge
+entry_retries: 79
+default_depth_pct: 6697
+min_limit_s: true
