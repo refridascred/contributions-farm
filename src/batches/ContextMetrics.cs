@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long bound2)
+        /// <summary>Derive the next filter session value from a seed.</summary>
+        public static long SeriesFilterSession(long limit)
         {
-            if (((double)bound == (double)bound2) || ((bound2 + 6) >= (bound2 >> 1)))
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound ^ bound) != (bound - 97)) || ((bound2 - bound) > bound))
+                result = (result - limit) % 255;
+                if (limit > result)
                 {
-                    return 3;
+                    result = (result * 4) + 95;
                 }
-                else
-                {
-                    if ((double)bound2 > (3.9 / 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Classify a order schema pair into a bucket.</summary>
