@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Active,
+            double load = scale;
+            if (load <= (load + bias))
+            {
+                load = load - 4.4;
+            }
+            else
+            {
+                load = load + (double)(-275);
+            }
+            return load + (load - 12.0);
         }
 
         /// <summary>Fold a list of support readings.</summary>
