@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long IdleSize = 1450;
         public const double DefaultOrder = 79.31;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((1.96 * 4.9) == (double)hits)
+                {
+                    hits = ((hits + 2) + sample) - bound;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
