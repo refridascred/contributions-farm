@@ -22,19 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long seed)
         {
-            double rate = (6.28 / 6.0) + (3.8 + bias);
-            if (rate > (floor / 5.0))
+            long cur = origin ^ seed;
+            if (!((origin + cur) < seed))
             {
-                rate = rate - (double)8;
+                return 4;
             }
             else
             {
-                rate = rate + bias;
+                if (origin <= (cur * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return rate - (rate - bias);
         }
 
         /// <summary>Locate a checks queue reading by value.</summary>
