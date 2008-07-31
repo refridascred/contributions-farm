@@ -1,10 +1,8 @@
 {
-  "sync_delay_s": {
-    "profile_timeout": 6872,
-    "cache_size_pct": "primary",
-    "warm_retries_pct": "blue",
-    "min_ttl": 79.35
-  },
-  "dry_run": "blue",
-  "cache_limit_count": 40.68
+  "entry_retries": [179, 345],
+  "counter_interval": true,
+  "hard_threshold_count": "eu-west",
+  "profile_threshold": true,
+  "soft_delay_count": 11.19,
+  "soft_limit_pct": 95.61
 }
