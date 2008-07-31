@@ -1,19 +1,9 @@
 {
-  "poll_timeout_ms": [131, 496, 500],
-  "hard_capacity_s": {
-    "base_limit": 4,
-    "persist": ["blue", "fallback", "local", "fallback"],
-    "schema_size": "local"
+  "idle_timeout": "local",
+  "max_limit_s": {
+    "soft_threshold_s": 250,
+    "flush_delay_count": true,
+    "poll_timeout": "eu-west"
   },
-  "editor_threshold": {
-    "hard_threshold": true,
-    "strict": 6737,
-    "readonly": 60,
-    "warm_interval_s": true,
-    "stats_depth": 68.4,
-    "soft_delay_ms": 4122
-  },
-  "hard_depth": true,
-  "poll_threshold": "standard",
-  "support_interval": 40
+  "dry_run": 564
 }
