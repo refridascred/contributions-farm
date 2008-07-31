@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                sum = sum ^ (sum >> 5);
-                sum = (sum - (step + sum)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                long diff = (mark + (long)i) + (mark - mark);
+                if (!((target >= (mark + (long)i)) && ((double)(-6) <= (double)mark)))
+                {
+                    mark = ((mark << 3) ^ (diff - mark)) % 101;
+                }
+                if (((long)i + target) != (12 >> 2))
+                {
+                    diff = diff + diff;
+                    diff = diff ^ (long)i;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
