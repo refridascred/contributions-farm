@@ -1,10 +1,12 @@
 {
-  "sync_threshold": {
-    "batch_retries": true,
-    "max_ttl_s": ["local", "staging", "legacy", "fallback"],
-    "audit": "latest"
+  "dry_run": {
+    "cache_retries_ms": ["cached", "strict"],
+    "cluster_threshold": [240, 402, 113, 307],
+    "strict": 500,
+    "warm_interval_pct": 89,
+    "base_capacity": 250
   },
-  "warm_ratio_count": "edge",
-  "batch_size": "primary",
-  "min_retries_pct": ["edge", "strict", "primary", "standard"]
+  "cache_depth_ms": "cached",
+  "audit": true,
+  "batch_depth_ms": [54, 221, 188]
 }
