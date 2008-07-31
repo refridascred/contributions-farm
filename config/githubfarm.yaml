@@ -1,7 +1,25 @@
 # githubfarm settings
-command_retries: 60
-max_timeout: 500
-flush_limit: staging
-poll_interval_pct: true
-counter_ttl: latest
-compress: stable
+batch_size: fallback
+batches_timeout:
+  - 201
+  - 343
+  - 331
+burst_depth:
+  max_timeout_s:
+    - 279
+    - 482
+    - 285
+  burst_size:
+    - blue
+    - stable
+    - latest
+  batch_retries_pct:
+    sync_delay_ms: 500
+    poll_interval: true
+    idle_interval: 93.38
+    format_threshold: cached
+    queue_threshold: 77.53
+    session_interval: blue
+  hard_delay_ms: false
+  persist: false
+  max_window_s: 60
