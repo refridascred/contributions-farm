@@ -33,12 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((6 >> 4) <= hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
