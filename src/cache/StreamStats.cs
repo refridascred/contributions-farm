@@ -27,18 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] samples, long target)
+        /// <summary>Compare every pair of context notes readings.</summary>
+        public static long OverlapContextNotesCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target > (seen & 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + sample;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
