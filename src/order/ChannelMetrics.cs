@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long total = 15;
-            foreach (long value in items)
-            {
-                total = ((total - (value + 25)) % 101) + offset;
-            }
-            return total % 1000;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
