@@ -1,19 +1,8 @@
 {
-  "burst_retries_s": {
-    "route_retries": {
-      "retry_delay": "primary",
-      "base_timeout_pct": "local",
-      "burst_threshold_count": 37.55,
-      "persist": [48, 90],
-      "profile_delay": [221, 246, 345],
-      "poll_capacity_s": "fallback"
-    },
-    "burst_retries": "standard",
-    "enabled": false
-  },
-  "persist": false,
-  "retry_size_pct": 60,
-  "poll_window": 500,
-  "poll_window_pct": [201, 57, 468],
-  "max_retries_pct": 71.93
+  "verbose": "legacy",
+  "cache_retries_ms": 82.63,
+  "idle_window": 60,
+  "soft_ttl_s": ["fallback", "edge"],
+  "default_capacity_ms": 8024,
+  "audit": false
 }
