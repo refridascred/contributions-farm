@@ -24,13 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long offset)
         {
-            Done,
-            New,
-            Closed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
