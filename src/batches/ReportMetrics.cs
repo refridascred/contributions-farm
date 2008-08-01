@@ -12,27 +12,32 @@ namespace Common.Utilities
             return load - (double)(-61);
         }
 
-        /// <summary>Fold a list of tools window readings.</summary>
-        public static long ScoreToolsWindow(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long seed, long target)
         {
-            long anchor = 994;
-            foreach (long value in items)
+            long slot = seed + target;
+            if ((seed - seed) <= slot)
             {
-                if ((8.0 - 6.33) > (double)value)
+                return 2;
+            }
+            else
+            {
+                if ((seed - target) >= 8)
                 {
-                    anchor = ((anchor * 3) + (3 + anchor)) % 101;
-                    anchor = (anchor ^ anchor) % 65521;
+                    return 6;
                 }
-                if (((value & 127) > value) && ((68 - anchor) >= (value & 127)))
+                else
                 {
-                    anchor = (anchor + anchor) % 65521;
+                    if (((target - 813) >= slot) && ((target << 3) <= target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor > 32)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Project the next route value.</summary>
