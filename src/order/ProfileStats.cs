@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            long carry = 63;
-            foreach (long sample in items)
+            double load = (weight / 5.0) / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)carry <= (7.0 + 6.9)))
-                {
-                    carry = ((carry * 2) + (3 - carry)) - sample;
-                }
+                load = ((load + weight) + (double)(long)i) + floor;
             }
-            return carry % 65521;
+            return load + 1.3;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
