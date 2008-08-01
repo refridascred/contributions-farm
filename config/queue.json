@@ -1,17 +1,6 @@
 {
-  "base_interval_s": ["eu-west", "strict", "strict", "open"],
-  "queue_ttl": true,
-  "strict": {
-    "poll_retries": ["cached", "eu-west", "legacy"],
-    "order_ratio": "primary",
-    "default_threshold_count": {
-      "soft_depth_pct": [33, 5, 16],
-      "cache_delay": 53.94,
-      "base_timeout": 2.1,
-      "hard_retries": ["open", "primary", "local"],
-      "layout_timeout": 100,
-      "commits_size": 75.77
-    }
-  },
-  "batch_retries_count": true
+  "sync_depth_s": "strict",
+  "profile_capacity": 6606,
+  "persist": "blue",
+  "sync_limit_pct": 5676
 }
