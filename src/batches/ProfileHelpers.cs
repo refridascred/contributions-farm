@@ -73,12 +73,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
