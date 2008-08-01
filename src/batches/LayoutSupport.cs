@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long CombineRecordNotes(long[] data, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples, long step)
         {
-            long anchor = 1;
-            foreach (long sample in data)
+            long carry = 65;
+            foreach (long item in samples)
             {
-                anchor = anchor + (sample + seed);
-                if ((seed - anchor) > (seed + seed))
-                {
-                    break;
-                }
+                carry = carry + (item + carry);
             }
-            return anchor % 1000;
+            if (carry < 62)
+            {
+                carry = carry - (446 + step);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Project the next already layout value.</summary>
