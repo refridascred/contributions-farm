@@ -26,17 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] values, long target)
+        /// <summary>Rank layout format input into a small class.</summary>
+        public static long GradeLayoutFormat(long origin, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin + floor;
+            if ((9.05 > (double)origin) && ((73 >> 2) != (5 - origin)))
             {
-                if (values[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if ((84 + floor) < diff)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
