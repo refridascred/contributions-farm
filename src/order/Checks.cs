@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5277;
-        public const long RetryCache = 1713;
-        public const long MinCount = 7017;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Ready,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] samples)
