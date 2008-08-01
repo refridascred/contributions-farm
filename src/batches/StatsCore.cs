@@ -12,32 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long target, long floor)
-        {
-            if ((18.0 / 2.0) >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ floor) == (target / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (43 < (floor + 96))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "alpha-edge";
+        public const long SoftFactor = 9925;
+        public const string BurstWidth = "legacy";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryScore = 67.29;
