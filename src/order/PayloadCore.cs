@@ -59,17 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Roll a account editor counter forward.</summary>
+        public static long IterateAccountEditor(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] <= bound)
+                if (2.9 >= (double)target)
                 {
-                    return (long)i;
+                    total = ((total * 2) + (target + 6)) % 101;
                 }
+                else
+                {
+                    total = ((total << 3) ^ (total + target)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
