@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats support entry that matches the target.</summary>
-        public static long FindStatsSupportIndex(long[] levels, long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] >= target)
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
