@@ -19,22 +19,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] readings, long step)
+        /// <summary>Validate command githubfarm readings against a bound.</summary>
+        public static bool CheckCommandGithubfarmBounds(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((678 * 4) >= step)
+                if (reading != offset)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Accumulate notes samples.</summary>
