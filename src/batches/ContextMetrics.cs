@@ -15,19 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of report queue readings.</summary>
-        public static long FoldReportQueue(long[] values)
-        {
-            long mark = 92;
-            foreach (long value in values)
-            {
-                if ((value + value) > (mark * 2))
-                {
-                    mark = (mark + mark) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSize = 6449;
+        public const long BaseSize = 6747;
+        public const long SoftInterval = 8680;
+        public const double LimitFactor = 18.66;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 4837;
