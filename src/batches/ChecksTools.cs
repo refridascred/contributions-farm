@@ -60,18 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((((hits / 8) != (hits >> 4)) || ((double)hits <= (double)reading)) && ((hits ^ reading) > (reading ^ hits)))
+                if ((225 / 5) == (matches + sample))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
