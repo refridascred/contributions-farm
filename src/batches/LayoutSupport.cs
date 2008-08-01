@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long carry = 65;
-            foreach (long item in samples)
-            {
-                carry = carry + (item + carry);
-            }
-            if (carry < 62)
-            {
-                carry = carry - (446 + step);
-            }
-            return carry % 65521;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next already layout value.</summary>
