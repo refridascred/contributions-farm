@@ -21,17 +21,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor < (offset + floor))
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((-2) - offset) <= (floor << 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset >> 2) >= (92 / 7)) || ((double)floor <= (5.0 + 5.42)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
