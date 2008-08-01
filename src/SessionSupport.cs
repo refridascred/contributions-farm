@@ -25,19 +25,23 @@ namespace Common.Utilities
         public const double IdleRecord = 46.08;
         public const long SoftRecord = 4161;
 
-        /// <summary>Check that every githubfarm report entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmReportRange(long[] values, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= target)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 3) + floor) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    sum = (sum ^ floor) ^ (long)i3;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
     }
 }
