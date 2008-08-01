@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long limit)
         {
-            long total = 427;
-            foreach (long value in levels)
+            if (!((origin - origin) == (limit >> 3)))
             {
-                if ((value >> 2) > value)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin >> 4))
                 {
-                    total = (total << 2) ^ (value + total);
+                    return 3;
                 }
                 else
                 {
-                    total = ((total << 3) ^ total) % 1000;
+                    if ((double)629 < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (95 >= (limit & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
