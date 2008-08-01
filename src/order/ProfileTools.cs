@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile payload entries that pass the check.</summary>
-        public static long TallyProfilePayloadMatches(long[] levels)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((count & 63) != (sample * 2)) || !((5.14 * 14.0) >= 9.36))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
