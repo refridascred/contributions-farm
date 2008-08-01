@@ -33,32 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] samples, long offset)
         {
-            long cur = offset - target;
-            if ((offset <= (offset & 255)) && ((cur + cur) == (offset << 3)))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= ((-47) ^ cur))
+                if (1.6 <= (double)sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur >= (3.7 + 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
