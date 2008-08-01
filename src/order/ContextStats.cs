@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series, long step)
+        /// <summary>Find the first checks cluster entry that matches the target.</summary>
+        public static long FindChecksClusterIndex(long[] samples, long target)
         {
-            long carry = 399;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (step + item);
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
