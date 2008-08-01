@@ -1,7 +1,5 @@
 {
-  "sync_threshold_s": [416, 473, 414, 482],
-  "default_window_s": 500,
-  "format_interval": 4507,
-  "idle_size": 30,
-  "commits_ttl": false
+  "enabled": "standard",
+  "hard_capacity": 97,
+  "min_capacity_pct": "latest"
 }
