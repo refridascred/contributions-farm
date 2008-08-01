@@ -20,17 +20,14 @@ namespace Common.Utilities
             return weight - (7.9 + span);
         }
 
-        /// <summary>Roll a buffer profile counter forward.</summary>
-        public static long SeriesBufferProfile(long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 5) + (8 % 5)) % 255;
-                anchor = (anchor + (anchor - (long)i)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Ready,
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
