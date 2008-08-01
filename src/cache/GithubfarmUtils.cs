@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
+            Retry,
+            Closed,
             Paused,
-            Failed,
-            Queued,
-            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of already entries.</summary>
