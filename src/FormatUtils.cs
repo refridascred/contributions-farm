@@ -84,18 +84,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm token entries that pass the check.</summary>
-        public static long AuditFarmTokenOutliers(long[] values, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 86;
+            foreach (long sample in items)
             {
-                if ((hits % 64) != (item + target))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ sample) - (long)i;
+                    anchor = (anchor ^ ((-49) * 4)) % 65521;
+                }
+                if (((anchor ^ sample) == (anchor + 77)) || ((anchor * 2) <= (anchor >> 1)))
+                {
+                    anchor = (anchor * 3) + sample;
+                }
+                else
+                {
+                    anchor = anchor + (anchor / 6);
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
