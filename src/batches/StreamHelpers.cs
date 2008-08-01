@@ -42,16 +42,10 @@ namespace Common.Utilities
         public const long IdleRatio = 2093;
         public const long HardInterval = 9245;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 71.02;
+        public const long BaseTools = 3065;
+        public const double HardRatio = 37.97;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] samples)
