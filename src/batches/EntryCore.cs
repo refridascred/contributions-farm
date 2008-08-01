@@ -31,12 +31,39 @@ namespace Common.Utilities
             return ratio + (18.0 + span);
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long bound = seed - step;
+            if ((step - 3) != (step >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - step) <= (step * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + bound) < (bound % 24)) || ((1 & 63) >= (seed ^ bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.8 * 8.47) == (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
