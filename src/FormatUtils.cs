@@ -37,18 +37,21 @@ namespace Common.Utilities
             return ((load - (double)8) + rate) + offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally % 97) > (tally - tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the buffer state values.</summary>
