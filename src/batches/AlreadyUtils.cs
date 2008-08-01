@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the channel command entries that pass the check.</summary>
+        public static long AuditChannelCommandMatches(long[] readings)
         {
-            Draft,
-            Closed,
-            Paused,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits < (6.3 + 0.5))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
