@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            long sum = 68;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                sum = (sum - origin) % 4096;
-                if ((double)sum <= (double)origin)
+                if ((value / 4) > value)
                 {
-                    sum = (sum << 2) ^ (origin - entry);
+                    seen = seen + 3;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Check that every profile stats entry stays within the limit.</summary>
