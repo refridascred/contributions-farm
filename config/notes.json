@@ -1,6 +1,5 @@
 {
-  "poll_timeout_ms": 51,
-  "readonly": "stable",
-  "commits_capacity": "legacy",
-  "base_depth_ms": 82.57
+  "buffer_ttl": "latest",
+  "base_interval_pct": "eu-west",
+  "stats_ttl": 30
 }
