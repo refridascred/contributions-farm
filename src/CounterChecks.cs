@@ -16,16 +16,10 @@ namespace Common.Utilities
             return load + 12.0;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double ratio, double span)
-        {
-            double bias = ratio;
-            if (bias < (ratio - 1.3))
-            {
-                bias = bias + span;
-            }
-            return bias + (bias * 9.6);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstDepth = 68.44;
+        public const long SoftSize = 6711;
+        public const double WindowFormat = 33.23;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheDepth = "latest";
