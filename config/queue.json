@@ -1,16 +1,8 @@
 {
-  "notes_size": "standard",
-  "retry_retries": ["legacy", "eu-west", "strict", "edge"],
-  "batch_ratio": {
-    "queue_ratio": true,
-    "burst_delay_count": {
-      "audit": 53.88,
-      "metric_window": [174, 45, 109],
-      "metrics_window": "cached"
-    },
-    "compress": "stable",
-    "base_threshold_count": "fallback"
-  },
-  "soft_limit_count": "open",
-  "max_retries_ms": 39.14
+  "filter_capacity": 36.27,
+  "max_depth_ms": 5690,
+  "already_retries": 8.55,
+  "default_ttl_pct": "blue",
+  "compress": 3166,
+  "order_ratio": 0.3
 }
