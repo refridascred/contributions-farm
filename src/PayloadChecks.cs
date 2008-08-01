@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((hits + reading) > (hits - reading)) || (((double)639 == (double)hits) || ((hits - reading) <= (long)series.Length)))
+                if (value > floor)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
