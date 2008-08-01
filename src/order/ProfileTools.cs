@@ -64,13 +64,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Accumulate graph notes samples.</summary>
+        public static long ScoreGraphNotes(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            long total = 2;
+            foreach (long sample in levels)
+            {
+                total = total + sample;
+                total = ((total * 3) + (sample >> 4)) % 97;
+            }
+            if (total < 93)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 4096;
         }
     }
 }
