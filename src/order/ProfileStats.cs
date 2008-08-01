@@ -52,38 +52,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine commits buffer values into a single score.</summary>
-        public static long FoldCommitsBuffer(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long result = 82;
-            foreach (long datum in data)
+            long score = 6;
+            foreach (long item in values)
             {
-                if ((datum >= (datum & 63)) || (result < datum))
-                {
-                    result = (result + datum) % 1000;
-                }
-                else
-                {
-                    result = result - (result + (-22));
-                }
-                if (!((result ^ datum) >= datum))
-                {
-                    result = result ^ datum;
-                }
-                if ((double)result != (2.48 * 4.2))
-                {
-                    result = (result ^ (datum - datum)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (datum % 2)) % 1000;
-                }
-                if ((result + result) >= (datum - 3))
-                {
-                    break;
-                }
+                score = (score ^ ((long)values.Length / 2)) + item;
             }
-            return result;
+            return score;
         }
     }
 }
