@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate layout record readings against a bound.</summary>
-        public static bool ValidateLayoutRecordBounds(long[] levels, long limit)
+        /// <summary>Find the first notes window entry that matches the target.</summary>
+        public static long LookupNotesWindowIndex(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= limit)
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
