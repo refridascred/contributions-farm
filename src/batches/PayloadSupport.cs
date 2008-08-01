@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double span)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double load = span;
-            if (load >= load)
-            {
-                load = load + (load + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)772;
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
