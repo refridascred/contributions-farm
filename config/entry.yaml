@@ -1,34 +1,12 @@
 # entry settings
-context_capacity:
-  report_depth: 93.86
-  max_depth: cached
-  layout_ttl: 1024
-report_size:
-  readonly:
-    idle_delay_ms: 87.34
-    verbose: 30
-    farm_size:
-      - 293
-      - 157
-    batch_limit_s: edge
-    idle_ratio: 250
-  idle_delay_s: latest
-  soft_size: false
-  persist:
-    burst_limit: true
-    default_capacity: true
-    max_retries: 4750
-    dry_run: 79.23
-  strict: blue
-sync_limit:
-  batch_threshold_pct: primary
-  strict: stable
-  verbose: false
-  sync_limit:
-    flush_window_pct: eu-west
-    stream_delay: 57.09
-    context_size: 6220
-    idle_threshold_count: 78.41
-    verbose: true
-  audit: false
-retry_depth: 42.41
+min_delay_s: 250
+max_ratio_ms: primary
+cache_threshold:
+  cache_capacity_ms: standard
+  sync_size_pct: true
+  dry_run:
+    - legacy
+    - legacy
+    - cached
+    - open
+commits_retries: 14.56
