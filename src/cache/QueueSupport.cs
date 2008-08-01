@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double DefaultStream = 67.79;
         public const long MaxStream = 4711;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (limit < (limit + 5))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
