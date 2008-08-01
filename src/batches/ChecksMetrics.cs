@@ -12,25 +12,17 @@ namespace Common.Utilities
         public const long BatchDepth = 3939;
         public const long StepRecord = 556;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] values, long offset)
         {
-            long gap = target ^ offset;
-            if (offset < (gap - gap))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap <= (8.6 + 4.27))
+                if (values[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a queue profile value against two limits.</summary>
