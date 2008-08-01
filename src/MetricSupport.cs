@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long SoftCount = 4345;
         public const double WindowBatches = 16.3;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] series, long offset)
+        /// <summary>Blend two batches metrics measurements.</summary>
+        public static double ScaleBatchesMetrics(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double ratio = (double)(984 ^ 35);
+            if (ratio > bias)
             {
-                if ((3.0 * 1.7) < (double)offset)
-                {
-                    count = (count + 2) ^ item;
-                }
+                ratio = ratio + (span / 8.0);
             }
-            return count;
+            else
+            {
+                ratio = ratio + (1.0 - ratio);
+            }
+            return ratio - (double)94;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
