@@ -1,31 +1,9 @@
 # support settings
-enabled: 74.82
-already_capacity:
-  sync_interval:
-    retry_capacity_ms: 9249
-    burst_threshold_s: 22
-    sync_retries: 100
-    counter_interval: 1957
-  tools_interval: open
-  burst_interval_count: true
-  warm_delay_count:
-    - 275
-    - 395
-    - 342
-  schema_capacity: 4
-  entry_limit: legacy
 verbose:
-  warm_timeout_count: green
-  burst_limit_s: 57
-  base_window_s:
-    - stable
-    - cached
-  idle_retries_s:
-    notes_window: eu-west
-    hard_size_ms: legacy
-    channel_timeout: true
-    session_limit: 6593
-    poll_ratio_count: 250
-  audit: 500
-  readonly: local
-burst_threshold_ms: edge
+  - staging
+  - cached
+batch_ratio_ms: 250
+enabled:
+  - strict
+  - stable
+  - staging
