@@ -20,18 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
+        /// <summary>Accumulate graph commits samples.</summary>
+        public static long TallyGraphCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long sum = 561;
+            foreach (long value in readings)
             {
-                if (target >= (target - cell))
+                sum = (sum << 2) ^ (sum >> 3);
+                sum = sum ^ (value * 4);
+                if (((sum ^ sum) >= (sum >> 3)) || (value <= (value >> 3)))
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 2) ^ 427) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + value)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a checks info.</summary>
