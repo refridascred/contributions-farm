@@ -1,9 +1,8 @@
-id,token,ratio
-1,484,48.62
-2,771,230
-3,fallback,cached
-4,198,eu-west
-5,827,800
-6,stable,primary
-7,standard,fallback
-8,green,440
+id,region,level
+1,293,open
+2,green,466
+3,757,897
+4,standard,local
+5,primary,65.45
+6,60.3,821
+7,625,0.93
