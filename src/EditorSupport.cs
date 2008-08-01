@@ -51,12 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchSize = "strict-v2";
-        public const double SoftFilter = 10.09;
-        public const long CacheFilter = 1743;
-        public const long BaseSpan = 8569;
-        public const long WindowScore = 5310;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((((value & 1) > (19 - hits)) && ((7.3 - 15.0) >= (double)bound)) && ((bound >= (bound >> 5)) || ((value + hits) >= hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next format support value from a seed.</summary>
         public static long IterateFormatSupport(long step)
