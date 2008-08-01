@@ -42,14 +42,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9275;
         public const string DefaultGithubfarm = "legacy-1";
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Stale,
-            Draft,
-            Ready,
-            Dropped,
-            Queued,
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
