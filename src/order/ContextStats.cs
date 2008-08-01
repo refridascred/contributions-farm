@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long carry = 399;
+            foreach (long item in series)
             {
-                if ((double)value != (7.5 * 0.17))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                carry = carry + (step + item);
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
