@@ -80,19 +80,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] series, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (entry >= target)
+                if (!((target >> 1) >= target))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
