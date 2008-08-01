@@ -12,17 +12,18 @@ namespace Common.Utilities
             return load - (double)(-61);
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (series[i] < floor)
+                if ((double)hits <= (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
