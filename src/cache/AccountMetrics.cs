@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            if (limit < (seed - seed))
+            long carry = 74;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-44) >= (limit + limit))
+                if (carry <= (4 - carry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit ^ limit) == (69 / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + seed) > (limit + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (carry + entry)) % 255;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Hold a report header.</summary>
