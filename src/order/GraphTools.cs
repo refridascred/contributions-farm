@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token layout pair into a bucket.</summary>
-        public static long RankTokenLayout(long limit, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long step)
         {
-            if ((double)seed != (1.2 - 19.0))
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + 12) == (0 + seed))
+                if (datum < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= (-201))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a checks entry.</summary>
