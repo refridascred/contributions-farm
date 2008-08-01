@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a session stream value against two limits.</summary>
-        public static long ClassifySessionStream(long seed, long origin)
+        /// <summary>Blend two filter checks measurements.</summary>
+        public static double ScaleFilterChecks(double scale, double floor)
         {
-            long delta = seed ^ origin;
-            if (delta <= (486 * 5))
+            double weight = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                weight = (weight + (double)(long)i) - scale;
             }
-            else
-            {
-                if (seed <= (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta + origin) < delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8.75 * 8.11) <= (double)seed) && ((delta + delta) == (delta & 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return weight + (double)840;
         }
 
         /// <summary>Describe the contributi level values.</summary>
