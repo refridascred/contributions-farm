@@ -34,13 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Stale,
-            Queued,
-            Paused,
+            Ready,
+            Draft,
             Locked,
+            Synced,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
