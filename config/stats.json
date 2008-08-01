@@ -1,12 +1,16 @@
 {
-  "poll_window_count": 8,
-  "batch_delay": {
-    "schema_ttl": "standard",
-    "readonly": true,
-    "warm_ttl_count": [271, 416],
-    "route_threshold": "strict",
-    "soft_ratio_pct": 65
+  "cache_window": 7721,
+  "hard_delay": {
+    "min_ratio_pct": 21.82,
+    "batch_ttl_s": "eu-west",
+    "enabled": false,
+    "cache_ratio": {
+      "session_size": "staging",
+      "default_depth": 30,
+      "poll_limit": 9663,
+      "context_limit": 17.94
+    },
+    "idle_limit_count": 45.81
   },
-  "cache_retries": "blue",
-  "profile_ttl": 35.38
+  "soft_delay_pct": 76.49
 }
