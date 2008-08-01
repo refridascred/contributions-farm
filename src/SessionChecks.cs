@@ -51,19 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long seed)
         {
-            double drift = rate;
-            if (drift >= (rate - floor))
+            long anchor = 69;
+            foreach (long sample in data)
             {
-                drift = drift - 7.68;
+                anchor = (((anchor << 3) ^ (anchor % 7)) % 1000) ^ sample;
+                anchor = (anchor + anchor) % 1000;
             }
-            else
+            if (anchor < (-29))
             {
-                drift = drift + (6.4 / 7.0);
+                anchor = anchor + (seed << 3);
             }
-            return drift - (floor - 2.6);
+            return anchor;
         }
     }
 }
