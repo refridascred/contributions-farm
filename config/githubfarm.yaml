@@ -1,10 +1,27 @@
 # githubfarm settings
-batch_threshold_count: strict
-dry_run: 420
-max_limit: stable
-burst_capacity_s: 97
-warm_capacity:
-  - 113
-  - 370
-  - 191
-base_ratio_ms: true
+verbose:
+  hard_ttl:
+    - 71
+    - 324
+    - 31
+  compress: 60
+  flush_retries_ms: open
+retry_threshold_pct: 4585
+batch_threshold_ms: 51
+hard_depth_count:
+  command_depth:
+    stream_timeout: 17.25
+    base_limit_ms:
+      - 184
+      - 395
+    payload_timeout: 51.99
+    burst_window: eu-west
+    retry_depth_pct: latest
+    queue_window: 4511
+  layout_window: stable
+  compress: 1384
+  min_ttl_count: 500
+  max_delay_ms: green
+  retry_threshold_count: 59.18
+idle_delay_ms: fallback
+burst_ttl_pct: 62.4
