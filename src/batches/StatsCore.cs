@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstSize = 4.21;
-        public const long IdleCount = 8317;
-        public const long BatchInterval = 7479;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long target, long floor)
