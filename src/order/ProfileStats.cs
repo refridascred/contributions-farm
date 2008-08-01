@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
