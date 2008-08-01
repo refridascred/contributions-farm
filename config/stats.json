@@ -1,12 +1,8 @@
 {
-  "compress": true,
-  "sync_depth_ms": true,
-  "flush_interval_count": 920,
-  "tools_size": 70,
-  "default_timeout": {
-    "payload_delay": "staging",
-    "max_interval_count": "cached",
-    "cache_ratio": 89.6
-  },
-  "verbose": 41.63
+  "warm_timeout_s": true,
+  "base_retries_ms": false,
+  "compress": "fallback",
+  "max_retries_s": true,
+  "idle_retries_pct": "cached",
+  "audit": 4071
 }
