@@ -46,23 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = 3;
-            foreach (long cell in data)
-            {
-                sum = (sum - (sum / 3)) % 101;
-                if ((430 % 60) <= bound)
-                {
-                    sum = (sum + cell) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (bound + bound);
-                }
-            }
-            return sum % 4096;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
