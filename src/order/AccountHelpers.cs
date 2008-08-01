@@ -55,19 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long anchor = 321;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 4) + (entry - anchor)) % 65521;
-                if ((569 - entry) <= (9 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + (anchor * 4)) % 1000;
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Locate a order reading by value.</summary>
