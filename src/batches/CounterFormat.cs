@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data)
-        {
-            long acc = 771;
-            foreach (long reading in data)
-            {
-                acc = ((acc + (acc << 2)) % 255) + reading;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "fallback-v2";
+        public const long StepCommits = 3319;
+        public const string BurstScore = "alpha-1";
+        public const string WindowCommits = "stable";
 
         /// <summary>Grade a editor filter value against two limits.</summary>
         public static long GradeEditorFilter(long origin, long target)
