@@ -1,8 +1,20 @@
 {
-  "hard_size_ms": [371, 227, 143, 413],
-  "schema_limit": 56.52,
-  "batches_threshold": "blue",
-  "cache_ratio_pct": 2067,
-  "retry_size": 84.99,
-  "commits_delay": 58
+  "account_limit": {
+    "warm_ttl": 78,
+    "retry_ttl_pct": 72.94,
+    "retry_size_ms": "green",
+    "strict": true,
+    "counter_capacity": [28, 41, 229],
+    "verbose": {
+      "compress": 4680,
+      "context_size": "blue",
+      "base_window_s": true,
+      "retry_depth": 73.23
+    }
+  },
+  "retry_depth_s": "legacy",
+  "batch_threshold_s": "eu-west",
+  "sync_depth_ms": 8830,
+  "retry_retries_ms": 99,
+  "compress": 6946
 }
