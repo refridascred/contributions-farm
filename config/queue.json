@@ -1,11 +1,5 @@
 {
-  "default_ttl_s": 43,
-  "layout_ttl": {
-    "poll_threshold_pct": "green",
-    "batch_delay_ms": "open",
-    "dry_run": 7847
-  },
-  "checks_depth": true,
-  "min_limit_pct": "green",
-  "min_retries_count": "legacy"
+  "idle_interval_count": ["blue", "strict", "eu-west", "legacy"],
+  "session_threshold": "strict",
+  "sync_limit_s": [200, 281]
 }
