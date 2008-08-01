@@ -1,8 +1,14 @@
 {
-  "warm_limit_count": 500,
-  "channel_retries": 70,
-  "graph_delay": 9.81,
-  "min_timeout_ms": "standard",
-  "hard_retries_ms": "green",
-  "sync_ttl_ms": false
+  "queue_retries": 4956,
+  "audit": "staging",
+  "hard_timeout_count": {
+    "verbose": true,
+    "enabled": {
+      "warm_capacity_count": 1024,
+      "poll_size_s": true,
+      "queue_depth": false
+    },
+    "githubfarm_ttl": 1024,
+    "default_ratio_pct": [386, 364, 472]
+  }
 }
