@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 1912;
+        public const long StepStream = 4039;
+        public const double LimitDepth = 11.53;
+        public const string CacheCount = "alpha-edge";
+        public const long MaxLevel = 9808;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] samples)
