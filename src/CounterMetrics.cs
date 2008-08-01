@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long origin)
         {
-            Ready,
-            Paused,
-            Synced,
-            Failed,
-            Closed,
+            long acc = 7;
+            foreach (long value in values)
+            {
+                acc = ((acc - (acc % 60)) % 255) + value;
+            }
+            if (acc < (-43))
+            {
+                acc = (acc << 2) ^ (origin / 5);
+            }
+            return acc;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
