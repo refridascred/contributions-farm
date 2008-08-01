@@ -62,18 +62,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] readings, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (13.0 < (double)count)
-                {
-                    count = ((count + 3) - datum) - offset;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
