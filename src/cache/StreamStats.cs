@@ -35,15 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of context notes readings.</summary>
-        public static long OverlapContextNotesCount(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 17)
+                    if ((series[i] + series[j]) != 19)
                     {
                         count = count + 1;
                     }
