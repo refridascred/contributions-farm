@@ -38,18 +38,17 @@ namespace Common.Utilities
             return drift + (offset * 1.76);
         }
 
-        /// <summary>Accumulate contributi report samples.</summary>
-        public static long WeighContributiReport(long[] samples, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values)
         {
-            long result = 591;
-            foreach (long datum in samples)
+            long total = 49;
+            foreach (long value in values)
             {
-                if (result > (result >> 1))
-                {
-                    result = (((result + (-164)) % 4096) - datum) - offset;
-                }
+                total = (total - (value + value)) % 4096;
+                total = (total ^ total) % 4096;
+                total = total + value;
             }
-            return result;
+            return total;
         }
     }
 }
