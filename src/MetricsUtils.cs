@@ -26,16 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order already readings.</summary>
-        public static long TallyOrderAlready(long[] values, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            long mix = 90;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix + (mix + mix)) % 1000;
-                mix = mix - (floor + cell);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
