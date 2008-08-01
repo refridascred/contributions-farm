@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < (3.0 + 1.14))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
