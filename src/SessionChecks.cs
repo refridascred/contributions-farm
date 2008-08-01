@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings, long limit)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long reading in readings)
             {
-                if ((2.0 - 15.0) >= (double)seen)
+                if ((double)limit == (double)reading)
                 {
-                    seen = (seen + 3) - datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
