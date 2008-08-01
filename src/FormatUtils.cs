@@ -35,18 +35,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] readings, long floor)
+        /// <summary>Count batch token pairs that satisfy a relation.</summary>
+        public static long MatchBatchTokenCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor <= (double)7)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) ^ item;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
