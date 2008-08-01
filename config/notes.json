@@ -1,15 +1,6 @@
 {
-  "strict": "standard",
-  "max_delay": 34,
-  "flush_size_count": {
-    "readonly": "staging",
-    "cache_size_s": [187, 208],
-    "flush_size_count": 30,
-    "default_ttl": {
-      "hard_window_s": false,
-      "cache_delay_ms": 75.16,
-      "persist": false,
-      "readonly": "stable"
-    }
-  }
+  "stream_size": 500,
+  "base_threshold_pct": true,
+  "metrics_timeout": "edge",
+  "persist": "blue"
 }
