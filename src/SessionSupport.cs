@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long acc = 555;
+            foreach (long datum in levels)
+            {
+                if (((1.2 - 8.82) == (double)acc) || ((datum << 3) >= acc))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
