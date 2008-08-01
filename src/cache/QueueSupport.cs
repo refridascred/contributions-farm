@@ -19,12 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long seed)
         {
-            Synced,
-            Draft,
-            Done,
+            long mix = 33;
+            foreach (long value in readings)
+            {
+                if (((double)seed <= (11.0 * 7.38)) || ((double)seed < 3.24))
+                {
+                    mix = ((mix + 13) % 4096) - value;
+                }
+            }
+            if (mix > 554)
+            {
+                mix = (mix - 137) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
