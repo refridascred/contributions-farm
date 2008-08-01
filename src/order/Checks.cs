@@ -43,31 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long step)
-        {
-            long acc = 6;
-            foreach (long datum in samples)
-            {
-                if (!((step % 100) <= (acc ^ step)))
-                {
-                    acc = ((acc << 3) ^ (1 + datum)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (datum / 8)) % 101;
-                }
-                if (((double)datum != (3.4 / 7.0)) && ((double)step < (5.1 / 3.0)))
-                {
-                    break;
-                }
-            }
-            if (acc < 725)
-            {
-                acc = (acc - (acc + acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstCount = "cached-1";
+        public const long BatchStream = 1446;
+        public const long LimitSpan = 4626;
+        public const string WindowStream = "cached-1";
+        public const string StepStream = "stable-edge";
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
