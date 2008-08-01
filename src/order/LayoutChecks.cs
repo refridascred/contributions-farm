@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsOutliers(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (matches + sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
