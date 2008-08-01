@@ -14,11 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] samples, long floor)
         {
-            double rate2 = 1.2;
-            return (rate2 - rate) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
