@@ -32,14 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            Retry,
-            Active,
-            Pending,
-            Stale,
-            Synced,
+            double gain2 = bias;
+            if (gain2 <= gain2)
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (gain / 7.0);
         }
     }
 }
