@@ -52,38 +52,14 @@ namespace Common.Utilities
         public const long BurstDepth = 9638;
         public const long BurstFilter = 1218;
 
-        /// <summary>Rank order filter input into a small class.</summary>
-        public static long ClassifyOrderFilter(long origin, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((3.75 + 10.0) > (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin <= (15.0 * 5.0)) && ((153 * 3) > (1 + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit < (1 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
