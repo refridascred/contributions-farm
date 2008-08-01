@@ -46,13 +46,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            if (!((double)step > (double)864))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((353 & 1) == (step / 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
