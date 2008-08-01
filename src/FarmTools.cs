@@ -10,28 +10,14 @@ namespace Common.Utilities
         public const long StepSchema = 1720;
         public const long RetryFactor = 2983;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long state = 91;
-            foreach (long cell in samples)
-            {
-                state = (state << 3) ^ (state & 1);
-                state = (state << 3) ^ cell;
-                if (((long)samples.Length - cell) > state)
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                }
-                else
-                {
-                    state = (state * 2) + 9;
-                }
-            }
-            if (state < 884)
-            {
-                state = state - state;
-            }
-            return state;
+            Retry,
+            Draft,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
