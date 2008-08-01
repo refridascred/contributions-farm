@@ -1,6 +1,27 @@
 {
-  "stream_size": 500,
-  "base_threshold_pct": true,
-  "metrics_timeout": "edge",
-  "persist": "blue"
+  "token_size": false,
+  "poll_interval_ms": {
+    "persist": "staging",
+    "enabled": 9.76,
+    "min_interval_pct": "latest",
+    "channel_retries": "blue",
+    "dry_run": ["primary", "stable", "eu-west"]
+  },
+  "min_limit_s": {
+    "hard_ratio_s": 500,
+    "max_depth": true,
+    "flush_depth_s": "open"
+  },
+  "cache_size_count": {
+    "max_limit": {
+      "idle_threshold_pct": [3, 423],
+      "default_limit_ms": "primary",
+      "retry_window_pct": true
+    },
+    "batch_window_count": ["green", "blue", "cached"],
+    "min_interval_pct": 7681,
+    "filter_ttl": "stable",
+    "min_capacity_ms": 30,
+    "githubfarm_depth": false
+  }
 }
