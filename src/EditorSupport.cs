@@ -63,18 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)step > 8.97)
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
