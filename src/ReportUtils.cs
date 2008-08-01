@@ -47,12 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            Draft,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
