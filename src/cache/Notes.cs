@@ -14,19 +14,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double scale = bias * 7.8;
+            if (scale < (double)47)
             {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (bias - bias);
             }
-            return valid;
+            else
+            {
+                scale = scale - 6.7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (weight - 6.8)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
