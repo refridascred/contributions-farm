@@ -1,13 +1,13 @@
 {
-  "readonly": 30.93,
-  "idle_interval_s": 72.54,
-  "hard_delay": false,
-  "soft_retries_count": "staging",
-  "graph_ttl": {
-    "schema_timeout": [282, 51],
-    "profile_delay": "edge",
-    "queue_ttl": ["blue", "blue", "blue"],
-    "tools_ratio": 16,
-    "max_threshold_pct": 100
-  }
+  "max_retries_pct": "local",
+  "buffer_depth": 92.77,
+  "queue_threshold": {
+    "idle_ttl_s": "latest",
+    "dry_run": 82.3,
+    "token_ratio": ["fallback", "standard", "blue"],
+    "base_delay_pct": 79.35,
+    "idle_ratio_pct": 1024,
+    "burst_ttl": false
+  },
+  "dry_run": true
 }
