@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - floor) >= floor)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 5782;
+        public const long SoftWidth = 6821;
+        public const double SoftSupport = 11.98;
+        public const long HardScore = 5083;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] values, long floor)
