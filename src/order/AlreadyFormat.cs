@@ -59,15 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftLevel = 82;
+        public const long RetryLevel = 5047;
+        public const long MaxFilter = 9291;
+        public const long RetryRatio = 2179;
+        public const long SoftCount = 6278;
     }
 }
