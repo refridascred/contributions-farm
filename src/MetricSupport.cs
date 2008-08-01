@@ -22,19 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)limit >= (double)44)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSpan = 2116;
+        public const long HardWidth = 8986;
+        public const long BurstTimeout = 7603;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
