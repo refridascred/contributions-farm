@@ -23,15 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmAccountCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(9.61 > (double)tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - item;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
