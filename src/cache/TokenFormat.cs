@@ -16,38 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long origin, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            if (((origin % 7) >= (origin & 31)) && (limit >= (limit & 1)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (limit & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (limit + origin))
+                    if ((levels[i] ^ levels[j]) != 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit <= (origin - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
