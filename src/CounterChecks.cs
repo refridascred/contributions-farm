@@ -41,14 +41,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] samples, long origin)
         {
-            Active,
-            Queued,
-            Ready,
-            Failed,
-            Draft,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
