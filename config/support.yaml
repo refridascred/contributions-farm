@@ -1,11 +1,18 @@
 # support settings
-poll_ttl_pct: 500
-idle_limit_s: 82.71
-order_retries:
-  - open
-  - local
-hard_retries:
-  - strict
-  - edge
-  - legacy
-batch_size: 60
+command_retries: staging
+base_interval_s:
+  warm_ttl_ms: 92
+  poll_limit_ms: 6077
+  audit: true
+  window_timeout: fallback
+  hard_limit_pct: 17.54
+  sync_timeout:
+    sync_delay: 80.84
+    readonly: cached
+    burst_timeout_s: 29.53
+    flush_size_pct:
+      - eu-west
+      - stable
+    hard_size_s: 37.94
+    window_delay: true
+compress: true
