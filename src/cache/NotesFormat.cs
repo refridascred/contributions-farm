@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstBatch = 5555;
         public const double MinCount = 86.04;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (seen > (8 + limit))
+                if ((double)matches > (1.97 / 4.0))
                 {
-                    seen = (seen + 1) + reading;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
