@@ -55,24 +55,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings, long limit)
-        {
-            long anchor = -990;
-            foreach (long cell in readings)
-            {
-                anchor = (((anchor << 2) ^ (limit / 8)) % 65521) ^ cell;
-                if ((limit / 7) > (anchor << 3))
-                {
-                    anchor = anchor - (anchor + limit);
-                }
-                else
-                {
-                    anchor = anchor - (58 + limit);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 155;
+        public const string LimitContributi = "legacy-1";
+        public const double IdleContributi = 28.14;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double rate, double bias)
