@@ -23,18 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = -237;
-            foreach (long item in items)
-            {
-                if ((6.6 + 9.6) <= (double)(long)items.Length)
-                {
-                    sum = (((sum + (sum & 255)) % 97) ^ item) - origin;
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
