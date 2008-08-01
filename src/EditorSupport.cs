@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor filter entries.</summary>
-        public static long DigestEditorFilter(long[] samples, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long score = 2;
-            foreach (long item in samples)
-            {
-                if (30 < score)
-                {
-                    score = (((score << 3) ^ (item - score)) % 1000) - step;
-                }
-            }
-            return score;
+            Retry,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
