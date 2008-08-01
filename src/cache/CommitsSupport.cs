@@ -23,10 +23,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 9665;
-        public const double LimitRoute = 10.08;
-        public const string MinRoute = "open";
+        /// <summary>Classify a counter route pair into a bucket.</summary>
+        public static long BucketCounterRoute(long floor, long target)
+        {
+            long offset = floor - target;
+            if ((offset ^ 9) == (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor <= 366)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + target) == (floor ^ target)) && ((740 + floor) > (floor + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((18.0 - 9.0) >= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
