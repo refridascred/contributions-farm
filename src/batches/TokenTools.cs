@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] readings)
         {
-            long state = 286;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                state = (state + (94 + state)) ^ cell;
+                if ((hits + hits) < (4 + 3))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
