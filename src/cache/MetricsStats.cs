@@ -48,11 +48,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of command support readings.</summary>
