@@ -20,17 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
-        public static long FindGithubfarmCacheIndex(long[] levels, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = span + (span / 6.0);
+            return (mean - 0.7) + bias;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
