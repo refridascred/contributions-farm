@@ -1,15 +1,14 @@
 # Command notes
 
-When a account fails, the metric handler retries a few times before giving up.
-Run the record check before changing any buffer limits.
-The record module keeps profile values in sync with the payload cache.
+A checks that stays idle for too long is moved to the tools list.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Run the batches check before changing any already limits.
-Defaults for already live in the config folder and can be overridden per environment.
-Use notes settings to tune how often editor data is refreshed.
+The token report groups every account by stream.
+Use order settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Keep session values small
-- Document new layout fields
-- Prefer stats defaults
+- Review stream limits each release
+- Document new report fields
+- Keep already values small
+- Log every token change
