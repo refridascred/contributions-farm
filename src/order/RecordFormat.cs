@@ -20,39 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long offset, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            long offset2 = offset - floor;
-            if ((5.6 + 5.4) == (double)floor)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 5) < offset)
+                if ((mark >> 2) > 17)
                 {
-                    return 4;
+                    mark = (mark << 2) ^ ((long)i ^ limit);
                 }
-                else
-                {
-                    if ((offset2 & 31) < offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 5) < (offset + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Locate a format reading by value.</summary>
