@@ -35,13 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit counter already readings against a rule.</summary>
+        public static long TallyCounterAlreadyHits(long[] data)
         {
-            Stale,
-            Done,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (224 > (sample ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
