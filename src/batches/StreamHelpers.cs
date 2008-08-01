@@ -42,10 +42,11 @@ namespace Common.Utilities
         public const long IdleRatio = 2093;
         public const long HardInterval = 9245;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 71.02;
-        public const long BaseTools = 3065;
-        public const double HardRatio = 37.97;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardWidth = 1846;
+        public const double HardRoute = 70.11;
+        public const double HardCount = 12.7;
+        public const double MaxRoute = 95.59;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] samples)
