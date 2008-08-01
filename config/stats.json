@@ -1,6 +1,8 @@
 {
-  "base_size": 61.81,
-  "sync_size": "cached",
-  "compress": "blue",
-  "graph_threshold": "local"
+  "hard_size_ms": [371, 227, 143, 413],
+  "schema_limit": 56.52,
+  "batches_threshold": "blue",
+  "cache_ratio_pct": 2067,
+  "retry_size": 84.99,
+  "commits_delay": 58
 }
