@@ -1,12 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the counter list.
-Use layout settings to tune how often session data is refreshed.
-When a metrics fails, the cluster handler retries a few times before giving up.
+Keep support and route names short and lowercase.
+When a schema fails, the context handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+Each commits is validated before it reaches the command queue.
+Use order settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate account input early
-- Review order limits each release
-- Log every support change
+- Log every filter change
+- Review payload limits each release
+- Document new already fields
