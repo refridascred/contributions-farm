@@ -1,7 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "poll_ttl_s": 96.91,
-  "cache_interval_count": "blue",
-  "poll_capacity_count": 250,
-  "notes_threshold": true
+  "retry_size": [130, 498, 163],
+  "flush_threshold_pct": "legacy",
+  "poll_capacity_count": 38,
+  "flush_retries_pct": "local",
+  "checks_size": false,
+  "stats_depth": [21, 265]
 }
