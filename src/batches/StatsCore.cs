@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "alpha-edge";
-        public const long SoftFactor = 9925;
-        public const string BurstWidth = "legacy";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((score / 8) != (offset - (long)i))
+                {
+                    score = ((score * 5) + (offset * 4)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryScore = 67.29;
