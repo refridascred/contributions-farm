@@ -34,13 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double rate, double bias)
         {
-            Synced,
-            Idle,
-            Done,
-            Stale,
+            double load = bias * 9.0;
+            if (load <= (double)0)
+            {
+                load = load - (double)3;
+            }
+            else
+            {
+                load = load + (11.0 + rate);
+            }
+            return load + load;
         }
     }
 }
