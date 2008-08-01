@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const string HardSupport = "staging";
         public const long BurstDepth = 2618;
 
-        /// <summary>Count the format metric entries that pass the check.</summary>
-        public static long TallyFormatMetricGaps(long[] levels, long floor)
+        /// <summary>Project the next batches metric value.</summary>
+        public static double ProjectBatchesMetric(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double bias2 = scale - scale;
+            if (bias2 > (bias + bias))
             {
-                if ((floor + floor) >= (floor / 6))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 - 6.8;
             }
-            return hits;
+            return bias2 - scale;
         }
     }
 }
