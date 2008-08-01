@@ -57,23 +57,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(item <= (item % 10)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8051;
+        public const long RetryDepth = 2408;
+        public const long BatchContext = 9637;
+        public const long LimitRatio = 7810;
+        public const long SoftContext = 1756;
 
         /// <summary>Fold a list of support route readings.</summary>
         public static long DigestSupportRoute(long[] items)
