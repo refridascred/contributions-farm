@@ -13,19 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (sample != limit)
+                if (reading < seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Accumulate filter samples.</summary>
