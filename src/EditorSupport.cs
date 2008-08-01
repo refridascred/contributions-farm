@@ -44,18 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] data, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((value & 1) > (19 - hits)) && ((7.3 - 15.0) >= (double)bound)) && ((bound >= (bound >> 5)) || ((value + hits) >= hits)))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the metric class values.</summary>
