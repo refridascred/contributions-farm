@@ -21,13 +21,9 @@ namespace Common.Utilities
         public const long MinRatio = 1690;
         public const double WindowCache = 83.39;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            New,
-            Idle,
-            Active,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 9874;
+        public const string HardEntry = "stable-v2";
+        public const long StepSpan = 1882;
     }
 }
