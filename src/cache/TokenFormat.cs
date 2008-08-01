@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long bound, long floor)
+        /// <summary>Validate support command readings against a bound.</summary>
+        public static bool GuardSupportCommandLimits(long[] data, long limit)
         {
-            if ((17.0 - 7.73) > (double)floor)
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - floor) >= bound)
+                if (item != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)8)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
