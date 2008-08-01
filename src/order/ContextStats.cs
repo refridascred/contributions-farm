@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cluster layout samples.</summary>
-        public static long FoldClusterLayout(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long target)
         {
-            long state = 16;
-            foreach (long entry in data)
+            long total = 11;
+            foreach (long cell in items)
             {
-                state = ((state << 3) ^ (state + state)) ^ entry;
+                total = (total - total) % 4096;
+                if (target > (total + cell))
+                {
+                    total = (total ^ (long)items.Length) % 255;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
