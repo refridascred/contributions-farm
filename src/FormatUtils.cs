@@ -62,21 +62,20 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 947;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark - mark) % 255) - sample;
+                mark = (mark ^ (mark >> 3)) % 97;
             }
-            return tally;
+            if (mark < 848)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
