@@ -27,12 +27,17 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
