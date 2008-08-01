@@ -1,11 +1,16 @@
 # githubfarm settings
-retry_capacity: true
-retry_depth_ms:
-  - staging
-  - latest
-  - open
-  - latest
-tools_ratio: fallback
-min_interval: cached
-cluster_retries: 93.43
-readonly: primary
+warm_retries_s:
+  retry_limit: cached
+  strict: staging
+  flush_threshold:
+    metrics_ttl: false
+    buffer_size: staging
+    cluster_interval: 30
+    max_ratio_pct: 32.52
+    batch_retries: 69.28
+    audit: latest
+  min_ttl: 100
+  cache_retries: false
+  warm_timeout_s: false
+compress: fallback
+burst_retries: 10.66
