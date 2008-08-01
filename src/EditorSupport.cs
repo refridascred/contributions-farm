@@ -66,16 +66,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels, long origin)
         {
-            long acc = 991;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc - (acc ^ origin)) % 255) ^ cell;
-                acc = (acc - (acc * 5)) % 65521;
+                if ((hits * 4) < (value * 5))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
