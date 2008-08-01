@@ -1,7 +1,12 @@
 {
-  "flush_window_ms": 89,
-  "report_size": "latest",
-  "metrics_threshold": 60,
-  "buffer_timeout": 95.76,
-  "account_limit": "eu-west"
+  "retry_ratio_s": "cached",
+  "warm_delay_s": ["standard", "edge", "latest"],
+  "metrics_limit": 41.07,
+  "cache_retries_count": 6242,
+  "entry_depth": {
+    "cache_threshold": "cached",
+    "persist": 7269,
+    "flush_depth_count": 9483,
+    "batch_delay_ms": 96.27
+  }
 }
