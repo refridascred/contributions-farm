@@ -1,6 +1,11 @@
-id,weight,level,rank
-1,787,539,fallback
-2,legacy,14.31,44.02
-3,strict,12.17,green
-4,72.9,78.87,13.37
-5,254,212,blue
+id,ratio,label
+1,626,11.94
+2,493,798
+3,fallback,710
+4,61.52,primary
+5,62.88,blue
+6,12.47,90.82
+7,edge,57.09
+8,26.62,42
+9,80.89,staging
+10,fallback,43.84
