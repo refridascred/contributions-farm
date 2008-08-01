@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((840 << 2) >= seen)
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
