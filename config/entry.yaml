@@ -1,6 +1,5 @@
 # entry settings
-cluster_capacity: true
-sync_threshold: true
-hard_size_count:
-  - stable
-  - green
+verbose: true
+dry_run: blue
+flush_ratio_ms: 45.81
+min_depth: fallback
