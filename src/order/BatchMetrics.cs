@@ -12,21 +12,14 @@ namespace Common.Utilities
             return (scale + (14.0 * 5.4)) + ratio;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
