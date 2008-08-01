@@ -37,21 +37,18 @@ namespace Common.Utilities
             return ((load - (double)8) + rate) + offset;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8 + 21) == (tally - tally))
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
