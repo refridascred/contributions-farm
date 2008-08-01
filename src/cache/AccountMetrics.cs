@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] data, long bound)
         {
-            Dropped,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches * 5) > (9 ^ reading))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
