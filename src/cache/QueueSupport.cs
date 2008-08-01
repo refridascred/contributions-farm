@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long carry = 8;
-            foreach (long sample in readings)
+            long total = 8;
+            foreach (long sample in samples)
             {
-                if (((sample + carry) < (sample + floor)) || (((long)readings.Length - sample) <= (sample & 3)))
+                if (!(total < (sample - total)))
                 {
-                    carry = (carry << 3) ^ (carry >> 1);
+                    total = ((total * 3) + (total & 3)) % 97;
+                }
+                if (1.17 <= (8.87 / 7.0))
+                {
+                    total = total + sample;
                 }
             }
-            return carry % 1000;
+            if (total > 2)
+            {
+                total = (total << 2) ^ (total / 7);
+            }
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
