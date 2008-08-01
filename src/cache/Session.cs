@@ -18,19 +18,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (item <= bound)
+                if ((678 * 4) >= step)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
