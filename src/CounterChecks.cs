@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long BatchSchema = 2004;
         public const long StepInterval = 7880;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 3) <= (step - step))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
