@@ -20,10 +20,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 843;
-        public const long MaxFactor = 4835;
-        public const long IdleSpan = 3181;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Pending,
+            Dropped,
+            Idle,
+            Queued,
+            Done,
+        }
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
         public static long OverlapSchemaContributiCount(long[] items)
