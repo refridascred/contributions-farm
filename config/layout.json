@@ -1,13 +1,11 @@
 {
-  "base_capacity": {
-    "stats_capacity": 27.52,
-    "tools_delay": "stable",
-    "filter_delay": 1603,
-    "idle_interval": "primary"
+  "cache_ttl": [315, 150],
+  "warm_limit": 2650,
+  "queue_limit": {
+    "poll_delay": 7678,
+    "poll_interval_count": "legacy",
+    "soft_threshold": 45,
+    "default_window_count": 55
   },
-  "flush_retries_pct": [498, 236],
-  "poll_depth_ms": ["staging", "standard"],
-  "session_size": 20.09,
-  "soft_depth_count": "stable",
-  "cache_timeout": 589
+  "idle_delay_ms": "strict"
 }
