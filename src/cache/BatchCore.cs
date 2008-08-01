@@ -32,23 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool GuardQueueCommandRange(long[] samples, long floor)
         {
-            double weight2 = (weight - 9.1) + (floor + weight);
-            if (weight2 <= (weight / 2.0))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                weight2 = weight2 + weight;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight2 + weight2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + weight;
+            return valid;
         }
 
         /// <summary>Scale a notes batch figure with a bias.</summary>
