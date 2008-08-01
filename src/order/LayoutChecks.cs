@@ -76,11 +76,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSize = 738;
-        public const double BatchLevel = 86.56;
-        public const string BaseCache = "standard-edge";
-        public const long HardCache = 811;
-        public const long CacheSize = 5013;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+        }
     }
 }
