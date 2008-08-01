@@ -14,23 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            double scale = bias * 7.8;
-            if (scale < (double)47)
-            {
-                scale = scale - (bias - bias);
-            }
-            else
-            {
-                scale = scale - 6.7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (weight - 6.8)) + (double)(long)i;
-            }
-            return scale - bias;
+            double scale2 = (double)(2 % 7);
+            return ((scale2 - (double)53) + scale) + offset;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
