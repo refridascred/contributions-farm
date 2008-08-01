@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double span)
+        /// <summary>Accumulate cluster layout samples.</summary>
+        public static long FoldClusterLayout(long[] data)
         {
-            double scale2 = 0.1;
-            if (scale2 > (span / 7.0))
+            long state = 16;
+            foreach (long entry in data)
             {
-                scale2 = (scale2 + (double)988) - scale;
+                state = ((state << 3) ^ (state + state)) ^ entry;
             }
-            return scale2 - scale2;
+            return state;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
