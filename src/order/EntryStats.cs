@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the route state values.</summary>
