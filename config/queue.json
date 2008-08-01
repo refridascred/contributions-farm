@@ -1,8 +1,5 @@
 {
-  "batch_ttl": ["eu-west", "fallback", "strict"],
-  "profile_timeout": "strict",
-  "base_capacity": false,
-  "max_delay_ms": 55,
-  "checks_size": true,
-  "route_timeout": false
+  "flush_ratio_pct": "primary",
+  "notes_ratio": 8269,
+  "base_size_count": 9397
 }
