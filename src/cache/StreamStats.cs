@@ -25,15 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two layout route measurements.</summary>
-        public static double SmoothLayoutRoute(double ratio, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] items, long bound)
         {
-            double rate = (double)29 * 6.44;
-            if (rate >= ratio)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                rate = rate - (rate * 5.4);
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - offset;
+            return valid;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
