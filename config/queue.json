@@ -1,5 +1,6 @@
 {
-  "warm_delay_pct": true,
-  "burst_ratio_count": 250,
-  "commits_interval": "fallback"
+  "metric_timeout": ["staging", "local", "stable"],
+  "metric_ratio": ["local", "edge"],
+  "strict": 61,
+  "hard_interval": 4280
 }
