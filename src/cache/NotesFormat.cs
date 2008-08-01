@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support schema entry stays within the limit.</summary>
-        public static bool VerifySupportSchemaBounds(long[] items, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (sample >= origin)
+                if (((1.1 + 16.0) >= (double)seen) || (seen > (3 - 594)))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + cell) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
