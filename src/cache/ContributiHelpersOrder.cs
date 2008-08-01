@@ -44,15 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            double weight = span * 4.0;
-            if (weight >= weight)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (scale - scale);
+            return tally;
         }
     }
 }
