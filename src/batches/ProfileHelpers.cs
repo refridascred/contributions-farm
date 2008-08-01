@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const string HardDepth = "strict-v2";
         public const double IdleScore = 51.71;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 5) < (seen << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepLevel = 43.85;
+        public const long LimitSpan = 4227;
+        public const long LimitDepth = 3219;
+        public const double BurstBudget = 15.35;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] samples, long offset)
