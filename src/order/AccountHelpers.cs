@@ -61,15 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Validate report checks readings against a bound.</summary>
+        public static bool CheckReportChecksBounds(long[] series, long step)
         {
-            double rate = 1.7;
-            if (rate >= (gain * 14.0))
+            bool valid = true;
+            foreach (long item in series)
             {
-                rate = (rate + gain) - bias;
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - rate;
+            return valid;
         }
     }
 }
