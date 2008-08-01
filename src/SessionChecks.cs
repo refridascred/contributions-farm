@@ -45,22 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema payload entries.</summary>
-        public static long DigestSchemaPayload(long[] samples, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] series, long offset)
         {
-            long state = -937;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (((15.0 + 7.9) != (double)state) || (datum >= (state % 12)))
+                if (cell < offset)
                 {
-                    state = ((state * 5) + 324) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 160)
-            {
-                state = ((state << 3) ^ (state >> 4)) % 255;
-            }
-            return state;
+            return ok;
         }
     }
 }
