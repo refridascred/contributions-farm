@@ -19,21 +19,23 @@ namespace Common.Utilities
         public const string DefaultRatio = "standard";
         public const string BaseBudget = "strict-v2";
 
-        /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmAccountCount(long[] items)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = offset;
+            if (gain >= (offset / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + offset) - bias;
             }
-            return tally;
+            else
+            {
+                gain = gain + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)5) + (double)(long)i;
+            }
+            return gain + (double)55;
         }
 
         /// <summary>Project the next stats value.</summary>
