@@ -68,13 +68,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long offset)
         {
-            Queued,
-            Pending,
-            Stale,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
