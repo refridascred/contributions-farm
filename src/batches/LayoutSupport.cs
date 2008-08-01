@@ -58,10 +58,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultBudget = 7528;
-        public const double LimitInterval = 90.53;
-        public const long SoftScore = 2682;
-        public const string LimitFormat = "legacy-edge";
+        /// <summary>Digest a series of batches metric entries.</summary>
+        public static long DigestBatchesMetric(long[] values)
+        {
+            long acc = 5;
+            foreach (long cell in values)
+            {
+                if (!((cell - cell) > cell))
+                {
+                    acc = ((acc << 2) ^ (4 << 3)) % 101;
+                    acc = (acc ^ (7 * 5)) % 255;
+                }
+                if ((double)acc != (double)cell)
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                else
+                {
+                    acc = acc ^ cell;
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
