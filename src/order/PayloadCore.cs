@@ -45,18 +45,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long CountAlreadyGithubfarmHits(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long bound2 = target - bound;
+            if (((736 + target) < bound2) || ((double)target <= 18.0))
             {
-                if (entry >= (entry / 8))
+                return 5;
+            }
+            else
+            {
+                if (!((40 ^ target) <= (bound + target)))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ 7) <= (bound ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
