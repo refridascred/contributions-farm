@@ -24,19 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples, long limit)
         {
-            long result = 49;
-            foreach (long entry in series)
+            long mix = -91;
+            foreach (long item in samples)
             {
-                result = result ^ (362 + entry);
+                if ((item - (long)samples.Length) < (mix ^ (long)samples.Length))
+                {
+                    mix = (mix - (item << 3)) + limit;
+                }
             }
-            if (result > 62)
-            {
-                result = (result * 5) + (7 % 8);
-            }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
