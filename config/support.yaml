@@ -1,9 +1,27 @@
 # support settings
-sync_retries: blue
-report_threshold: 21
-flush_window_count: 23.69
-base_interval: 37.26
-batch_ttl_ms:
-  notes_ttl: false
-  audit: latest
-  idle_threshold_pct: 29.57
+retry_size_pct: eu-west
+poll_size_count:
+  retry_retries_ms: fallback
+  flush_threshold_count: stable
+  default_capacity: 49.9
+  enabled:
+    hard_threshold_s: 23
+    persist:
+      - local
+      - primary
+      - fallback
+      - eu-west
+    idle_timeout_pct:
+      - 239
+      - 220
+      - 204
+      - 431
+    idle_ratio:
+      - primary
+      - cached
+      - blue
+    min_delay_s: edge
+  verbose: blue
+  session_threshold: 9
+poll_retries_count: 69
+flush_interval: stable
