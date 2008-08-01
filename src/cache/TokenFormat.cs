@@ -33,19 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            double load = (double)36 - weight;
-            if (load > (double)547)
+            double ratio = (double)(573 & 127);
+            for (int i = 0; i < 5; i++)
             {
-                load = load - (load + 8.79);
+                ratio = ((ratio - bias) + (double)(long)i) + offset;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + (offset / 9.0);
+            return ratio + (12.0 - bias);
         }
     }
 }
