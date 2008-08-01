@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftCount = 4345;
         public const double WindowBatches = 16.3;
 
-        /// <summary>Blend two batches metrics measurements.</summary>
-        public static double ScaleBatchesMetrics(double bias, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long origin)
         {
-            double ratio = (double)(984 ^ 35);
-            if (ratio > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (span / 8.0);
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (1.0 - ratio);
-            }
-            return ratio - (double)94;
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
