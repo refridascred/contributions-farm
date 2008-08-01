@@ -1,9 +1,11 @@
 # support settings
-batch_delay: 37
-schema_capacity: staging
-warm_interval_count: 36
-format_capacity: strict
-sync_limit_count:
-  - green
-  - legacy
-  - local
+notes_limit: false
+route_ratio:
+  retry_timeout_s: 71
+  record_depth: 25.4
+  retry_limit_count: primary
+  dry_run: 97.39
+idle_window:
+  - 490
+  - 89
+  - 250
