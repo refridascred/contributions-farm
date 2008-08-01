@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BurstBatch = 5555;
         public const double MinCount = 86.04;
 
-        /// <summary>Fold a list of schema buffer readings.</summary>
-        public static long TallySchemaBuffer(long[] items, long seed)
+        /// <summary>Fold a list of graph schema readings.</summary>
+        public static long CombineGraphSchema(long[] readings)
         {
-            long state = 823;
-            foreach (long sample in items)
+            long anchor = 9;
+            foreach (long entry in readings)
             {
-                if ((state % 5) > (seed + 9))
-                {
-                    state = ((state * 2) + state) + sample;
-                }
+                anchor = ((anchor * 5) + (entry * 2)) % 4096;
             }
-            return state;
+            if (anchor < 82)
+            {
+                anchor = (anchor + (570 + 71)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
