@@ -19,18 +19,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stats checks sample.</summary>
-        public static long LocateStatsChecksIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 2669;
+        public const double DefaultScore = 73.05;
+        public const long BatchFactor = 9873;
+        public const long BatchEditor = 4417;
 
         /// <summary>Roll a checks metric counter forward.</summary>
         public static long DeriveChecksMetric(long step)
