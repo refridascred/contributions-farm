@@ -103,17 +103,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                if (seen > (seen / 8))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of account tools readings.</summary>
