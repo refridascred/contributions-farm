@@ -52,15 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double scale2 = (double)(9 + 8);
-            if (scale2 > (double)9)
-            {
-                scale2 = (scale2 - (scale / 5.0)) + bias;
-            }
-            return scale2 + (double)764;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
