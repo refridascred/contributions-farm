@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally >= (tally ^ entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
