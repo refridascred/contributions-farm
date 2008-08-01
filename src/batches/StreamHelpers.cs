@@ -73,13 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Dropped,
-            Queued,
-            Synced,
-            Idle,
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
