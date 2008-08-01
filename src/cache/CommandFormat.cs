@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long score = 393;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                double gain = (20.0 + 3.44) - (3.11 / 8.0);
-                if ((double)score < gain)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ cell) % 1000;
-                    break;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score * 5) + (cell >> 4);
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
