@@ -34,23 +34,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum * 3) + floor) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    sum = (sum ^ floor) ^ (long)i3;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Active,
+            Locked,
+            Pending,
         }
     }
 }
