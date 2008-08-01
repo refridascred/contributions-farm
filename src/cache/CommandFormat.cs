@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            long score = 35;
-            foreach (long value in samples)
+            long mix = 431;
+            foreach (long datum in samples)
             {
-                if (!((score + (long)samples.Length) >= (7 - limit)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = ((score ^ (limit ^ score)) % 65521) ^ value;
-                }
-                score = score + limit;
-                if ((221 * 4) > (466 - score))
-                {
-                    score = (score + 38) % 101;
-                }
+                mix = (mix - (mix - (-47))) ^ datum;
             }
-            return score % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
