@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double HardBudget = 16.71;
         public const double BurstSpan = 21.33;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheTimeout = "fallback";
-        public const long BatchSpan = 9735;
-        public const long LimitBudget = 1121;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long carry = 642;
+            foreach (long cell in readings)
+            {
+                if (cell < (carry * 5))
+                {
+                    carry = carry ^ (746 + carry);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitInterval = 1576;
