@@ -22,16 +22,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long target, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long next = target - floor;
+            if ((next + 7) == (next >> 2))
             {
-                state = (state ^ (long)i) % 1000;
-                state = ((state * 5) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((next <= (target << 2)) || ((5.0 * 4.95) != (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
