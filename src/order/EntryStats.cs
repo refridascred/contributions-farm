@@ -49,19 +49,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
         {
-            double rate = bias;
-            if (rate >= rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - (1.0 + rate)) - floor;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (double)66;
-            }
-            return rate + (rate / 7.0);
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
