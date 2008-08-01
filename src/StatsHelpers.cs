@@ -27,11 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double bias)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double load = (double)(9 << 2);
-            return (load - (bias * 0.5)) + ratio;
+            Idle,
+            Ready,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Project the next token value.</summary>
