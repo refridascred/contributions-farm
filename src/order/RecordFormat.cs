@@ -57,17 +57,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
