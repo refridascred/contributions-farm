@@ -28,12 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 3) <= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
