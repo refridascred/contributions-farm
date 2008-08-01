@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const long HardScore = 2334;
         public const long RetryRatio = 4043;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Closed,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "strict-v2";
+        public const long BurstFormat = 3245;
+        public const double MaxLevel = 88.7;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 155;
