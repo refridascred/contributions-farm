@@ -49,18 +49,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data, long seed)
+        /// <summary>Fold a list of command support readings.</summary>
+        public static long CombineCommandSupport(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 72;
+            foreach (long value in levels)
             {
-                if ((item - 7) != (item + seed))
-                {
-                    matches = matches + 2;
-                }
+                sum = (((sum * 2) + value) % 65521) + step;
             }
-            return matches;
+            return sum;
         }
     }
 }
