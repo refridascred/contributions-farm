@@ -12,32 +12,17 @@ namespace Common.Utilities
             return load - (double)(-61);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long floor)
         {
-            long slot = seed + target;
-            if ((seed - seed) <= slot)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - target) >= 8)
+                if (series[i] < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target - 813) >= slot) && ((target << 3) <= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
