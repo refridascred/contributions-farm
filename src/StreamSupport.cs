@@ -19,18 +19,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data, long floor)
+        /// <summary>Roll a queue buffer counter forward.</summary>
+        public static long StepQueueBuffer(long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)floor < (double)value)
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
