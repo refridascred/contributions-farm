@@ -80,17 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                if ((double)seen <= (double)192)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
