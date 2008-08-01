@@ -36,18 +36,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] readings)
+        /// <summary>Rank notes schema input into a small class.</summary>
+        public static long BucketNotesSchema(long target, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((limit + target) > (9 & 255))
             {
-                if ((16 - matches) <= matches)
+                return 6;
+            }
+            else
+            {
+                if (limit < target)
                 {
-                    matches = (matches + 1) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target != (7.9 * 1.75)) && ((79 + limit) > target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)limit <= (5.86 - 4.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
