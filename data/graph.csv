@@ -1,6 +1,10 @@
-id,rank,ratio,level,region
-1,blue,36.98,93.51,788
-2,754,57.57,535,252
-3,378,standard,strict,fallback
-4,legacy,56.24,open,staging
-5,eu-west,865,747,edge
+id,ratio,weight,state,token
+1,green,97.42,blue,0.07
+2,open,68.28,44,open
+3,66.16,727,strict,227
+4,686,310,508,1.98
+5,135,488,96.33,legacy
+6,473,420,437,standard
+7,391,127,100,62.09
+8,146,open,fallback,eu-west
+9,staging,open,strict,open
