@@ -1,33 +1,9 @@
 # githubfarm settings
-schema_window: 250
-dry_run:
-  retry_interval_count:
-    - stable
-    - green
-    - latest
-    - local
-  batch_limit: 19.15
-  filter_depth:
-    - strict
-    - standard
-    - eu-west
-    - green
-  cache_delay_ms:
-    persist:
-      - 179
-      - 441
-      - 308
-    base_retries: 30
-    sync_ttl_pct: 2.87
-  warm_threshold_pct: 94
-  compress:
-    strict: 4518
-    graph_threshold: 82.89
-    min_delay_ms: 500
-    dry_run: 4704
-    hard_capacity_ms: fallback
-warm_timeout_pct:
-  - blue
-  - stable
-  - open
-warm_capacity: 51
+warm_depth_ms: 1024
+readonly: 9078
+notes_retries:
+  - primary
+  - local
+  - green
+retry_ttl: 90.83
+retry_timeout_s: cached
