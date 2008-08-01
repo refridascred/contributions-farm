@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Active,
-            Idle,
-            Pending,
-            Failed,
-            Synced,
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
