@@ -45,19 +45,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long step)
         {
-            double ratio = bias;
-            if (ratio <= bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (double)4;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - bias;
+            return -1;
         }
     }
 }
