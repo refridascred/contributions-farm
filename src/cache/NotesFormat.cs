@@ -27,23 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            double gain = bias;
-            if (gain >= (gain / 2.0))
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain + (gain / 7.0)) + ratio;
+                if (((long)i ^ mark) >= (seed * 3))
+                {
+                    mark = ((mark << 3) ^ seed) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (4.59 * 9.88)) + (double)(long)i;
-            }
-            return gain + bias;
+            return mark;
         }
     }
 }
