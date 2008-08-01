@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a route record pair into a bucket.</summary>
-        public static long ClassifyRouteRecord(long floor, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double bias)
         {
-            if ((24 - floor) <= (6 + (-1)))
+            double mean = bias + scale;
+            if (mean < bias)
             {
-                return 2;
+                mean = mean + (mean + mean);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset + offset) >= (floor - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
+            return mean - (5.0 / 9.0);
         }
 
         /// <summary>Audit filter support readings against a rule.</summary>
