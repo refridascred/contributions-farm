@@ -15,26 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i > (5 + acc)) || (((long)i & 15) < (floor >> 3)))
-                {
-                    acc = acc - ((long)i - floor);
-                    acc = acc ^ (floor + (long)i);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ 1) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheDepth = 5739;
+        public const double StepFactor = 38.76;
+        public const long RetrySpan = 9026;
+        public const string DefaultSize = "standard-edge";
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
