@@ -12,11 +12,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheFactor = 8654;
-        public const double StepSize = 63.7;
-        public const long RetryTimeout = 2630;
-        public const string IdleQueue = "staging-1";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Idle,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Audit metric order readings against a rule.</summary>
         public static long MeasureMetricOrderMatches(long[] values, long origin)
