@@ -1,11 +1,6 @@
 {
-  "enabled": false,
-  "persist": "strict",
-  "burst_size_count": {
-    "readonly": "stable",
-    "audit": 250,
-    "batch_capacity": 30,
-    "persist": 87.29,
-    "cache_capacity_ms": 14.81
-  }
+  "persist": 100,
+  "enabled": [277, 487],
+  "tools_retries": 3895,
+  "min_depth": "primary"
 }
