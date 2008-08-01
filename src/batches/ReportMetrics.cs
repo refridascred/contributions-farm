@@ -24,11 +24,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] samples, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((-737) - origin) >= (reading * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
