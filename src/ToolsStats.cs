@@ -62,17 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema metric reading by value.</summary>
-        public static long FindSchemaMetricIndex(long[] items, long limit)
+        /// <summary>Match up channel editor samples.</summary>
+        public static long OverlapChannelEditorCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
