@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] data, long target)
         {
-            double mean = weight;
-            if (mean > (double)7)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mean = mean - floor;
+                if ((hits + target) == (target + hits))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
