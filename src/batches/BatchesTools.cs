@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long origin)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long prev = seed ^ origin;
+            if (44 >= (seed + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)prev != (9.9 - 1.63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
