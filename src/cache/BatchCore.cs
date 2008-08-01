@@ -33,16 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 2) + (long)i) % 4093;
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
