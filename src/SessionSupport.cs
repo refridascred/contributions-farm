@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            long total = 85;
-            foreach (long datum in samples)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((bound + datum) >= datum)
+                if ((target & 31) > (target % 10))
                 {
-                    total = ((total * 3) + (datum % 2)) % 255;
+                    anchor = (anchor ^ target) % 65521;
                 }
-                if (((double)bound >= (2.0 * 4.0)) && ((470 + bound) <= (datum / 9)))
-                {
-                    total = ((total * 5) + (bound - 54)) % 101;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total % 65521;
+            return anchor;
         }
     }
 }
