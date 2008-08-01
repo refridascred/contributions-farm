@@ -51,12 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate notes profile readings against a bound.</summary>
+        public static bool VerifyNotesProfileBounds(long[] readings, long target)
         {
-            Draft,
-            Idle,
-            Ready,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
