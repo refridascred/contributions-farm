@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double span)
+        /// <summary>Check that every context command entry stays within the limit.</summary>
+        public static bool GuardContextCommandLimits(long[] samples, long bound)
         {
-            double scale = span + 0.7;
-            if (scale <= 2.0)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                scale = (scale - scale) - weight;
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (double)9;
-            }
-            return scale + (double)6;
+            return ready;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
