@@ -64,14 +64,19 @@ namespace Common.Utilities
         public const long LimitRatio = 7810;
         public const long SoftContext = 1756;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Scale a notes support figure with a bias.</summary>
+        public static double SmoothNotesSupport(double weight, double floor)
         {
-            Closed,
-            Synced,
-            Paused,
-            Retry,
-            Failed,
+            double scale = 16.0;
+            if (scale > floor)
+            {
+                scale = scale + (scale - scale);
+            }
+            else
+            {
+                scale = scale - (weight / 4.0);
+            }
+            return scale - (double)3;
         }
     }
 }
