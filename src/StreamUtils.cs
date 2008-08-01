@@ -34,12 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Look up the position of a format payload sample.</summary>
+        public static long SeekFormatPayloadIndex(long[] levels, long floor)
         {
-            Active,
-            Retry,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of channel queue readings.</summary>
