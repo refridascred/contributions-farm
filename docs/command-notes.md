@@ -1,10 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the metrics queue.
-Each contributi is validated before it reaches the already queue.
+Use filter settings to tune how often account data is refreshed.
+Use cluster settings to tune how often notes data is refreshed.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+The metrics module keeps format values in sync with the payload cache.
+A tools that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer format defaults
-- Review counter limits each release
+- Log every filter change
+- Validate githubfarm input early
+- Review cluster limits each release
+- Prefer graph defaults
