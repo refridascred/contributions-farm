@@ -55,13 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Locked,
-            New,
-            Dropped,
-            Active,
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
