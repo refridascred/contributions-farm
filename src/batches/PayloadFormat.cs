@@ -26,17 +26,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a counter stream sample.</summary>
-        public static long FindCounterStreamIndex(long[] series, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 8;
+            foreach (long reading in samples)
             {
-                if (series[i] < target)
+                if ((mix << 2) > reading)
                 {
-                    return (long)i;
+                    mix = (mix ^ reading) % 255;
+                }
+                if ((reading - reading) < (mix ^ reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
