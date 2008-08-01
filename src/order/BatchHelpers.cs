@@ -50,15 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] values, long offset)
         {
-            long anchor = 54;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor << 2) ^ (datum * 5);
+                if ((73 + offset) == (matches / 8))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
     }
 }
