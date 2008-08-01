@@ -78,18 +78,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Match up context graph samples.</summary>
+        public static long OverlapContextGraphCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen >= (1.53 - 8.73))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + sample;
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
