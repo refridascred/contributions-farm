@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ datum) >= 59)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 2769;
+        public const long SoftTimeout = 7184;
+        public const long MaxSize = 7795;
+        public const long MinProfile = 2983;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryOutliers(long[] series)
