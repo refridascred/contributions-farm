@@ -16,11 +16,16 @@ namespace Common.Utilities
             return load + 12.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "standard-edge";
-        public const long BurstFactor = 8496;
-        public const double WindowCache = 4.72;
-        public const string DefaultSize = "staging-v2";
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double ratio, double span)
+        {
+            double bias = ratio;
+            if (bias < (ratio - 1.3))
+            {
+                bias = bias + span;
+            }
+            return bias + (bias * 9.6);
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheDepth = "latest";
