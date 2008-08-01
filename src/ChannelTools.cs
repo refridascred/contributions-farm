@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "primary-v2";
-        public const double BatchInterval = 5.74;
-        public const long HardScore = 1087;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) >= (hits + hits))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
