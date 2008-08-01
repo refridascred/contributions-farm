@@ -1,5 +1,20 @@
 {
-  "soft_capacity_ms": "staging",
-  "cache_limit_ms": [467, 345],
-  "sync_depth": ["edge", "local", "edge", "standard"]
+  "sync_ttl": ["open", "staging", "green"],
+  "notes_delay": "blue",
+  "warm_size": {
+    "batch_delay_s": "standard",
+    "stream_interval": {
+      "hard_threshold_pct": 96,
+      "soft_threshold_count": false,
+      "contributi_timeout": true,
+      "buffer_size": 5346,
+      "flush_threshold": "latest"
+    },
+    "persist": {
+      "default_retries": 60,
+      "strict": ["cached", "stable", "eu-west", "standard"],
+      "default_threshold_count": false
+    },
+    "warm_size": "stable"
+  }
 }
