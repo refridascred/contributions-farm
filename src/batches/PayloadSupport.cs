@@ -20,18 +20,26 @@ namespace Common.Utilities
             return load + (double)772;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long total = 88;
-            foreach (long datum in values)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (total > datum)
+                long step = target;
+                if ((target >> 5) > (step >> 5))
                 {
-                    total = ((total << 2) ^ seed) % 101;
+                    step = (step ^ score) % 65521;
+                    continue;
                 }
+                else
+                {
+                    score = score - (target - (long)i);
+                    step = ((step << 3) ^ (score ^ (long)i)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Combine support values into a single score.</summary>
