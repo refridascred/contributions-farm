@@ -34,13 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            Queued,
+            Failed,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
