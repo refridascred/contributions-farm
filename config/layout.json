@@ -1,5 +1,8 @@
 {
-  "compress": true,
-  "readonly": 47.16,
-  "min_timeout": 50.23
+  "stream_size": 30,
+  "burst_threshold": 51,
+  "enabled": 1024,
+  "strict": 6417,
+  "min_delay_count": "green",
+  "flush_size_pct": "latest"
 }
