@@ -63,18 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (26 >= count)
-                {
-                    count = (count + 3) - item;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
