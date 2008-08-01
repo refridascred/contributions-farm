@@ -23,21 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
