@@ -32,20 +32,14 @@ namespace Common.Utilities
         public const string WindowTimeout = "fallback";
         public const long CacheQueue = 5449;
 
-        /// <summary>Roll a checks metric counter forward.</summary>
-        public static long DeriveChecksMetric(long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((step + (-898)) < step))
-                {
-                    score = (score * 4) + ((long)i % 2);
-                    score = (score * 3) + (step - step);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Queued,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
