@@ -1,8 +1,7 @@
 {
-  "retry_size": [130, 498, 163],
-  "flush_threshold_pct": "legacy",
-  "poll_capacity_count": 38,
-  "flush_retries_pct": "local",
-  "checks_size": false,
-  "stats_depth": [21, 265]
+  "burst_limit_ms": "local",
+  "warm_depth_ms": 41,
+  "base_depth_ms": "standard",
+  "hard_ratio": 31.6,
+  "stats_capacity": 69.37
 }
