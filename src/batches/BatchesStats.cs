@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)tally < (6.7 + 3.08))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
