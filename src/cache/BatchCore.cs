@@ -70,15 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] levels, long bound)
         {
-            long sum = 29;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                sum = (sum + (seed / 8)) ^ datum;
+                if ((item << 3) < bound)
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
