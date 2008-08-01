@@ -1,8 +1,11 @@
 {
-  "warm_timeout_s": true,
-  "base_retries_ms": false,
-  "compress": "fallback",
-  "max_retries_s": true,
-  "idle_retries_pct": "cached",
-  "audit": 4071
+  "readonly": 95.1,
+  "max_depth": "legacy",
+  "channel_threshold": {
+    "compress": "staging",
+    "idle_ttl_ms": [250, 388, 326, 466],
+    "retry_ratio_pct": "latest",
+    "idle_ratio_count": "green",
+    "retry_window_ms": 96.69
+  }
 }
