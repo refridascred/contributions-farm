@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double HardWidth = 83.37;
         public const long WindowDepth = 2589;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheRatio = "standard-edge";
+        public const string MaxDepth = "legacy-1";
+        public const double StepCount = 44.58;
+        public const long MaxInterval = 8818;
+        public const string DefaultRatio = "primary-edge";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] data, long origin)
