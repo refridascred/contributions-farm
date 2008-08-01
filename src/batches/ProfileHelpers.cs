@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (6 >= (count << 3))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 4941;
+        public const double BurstFactor = 68.76;
+        public const string StepAlready = "legacy-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BurstEditor = 54.1;
