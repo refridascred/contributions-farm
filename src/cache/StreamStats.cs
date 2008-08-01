@@ -25,21 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up metric account samples.</summary>
-        public static long CompareMetricAccountCount(long[] items)
+        /// <summary>Blend two layout route measurements.</summary>
+        public static double SmoothLayoutRoute(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)29 * 6.44;
+            if (rate >= ratio)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - (rate * 5.4);
             }
-            return seen;
+            return rate - offset;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
