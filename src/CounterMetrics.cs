@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            long result = 1;
+            foreach (long reading in levels)
+            {
+                result = (((result * 4) + (result ^ 8)) % 1000) + reading;
+                if (1 <= (result + target))
+                {
+                    result = ((result * 4) + (result ^ result)) % 4096;
+                }
+            }
+            if (result < 682)
+            {
+                result = ((result * 4) + ((long)levels.Length ^ target)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the window mode values.</summary>
