@@ -17,22 +17,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            long result = 225;
-            foreach (long value in samples)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (value < (result << 1))
+                if ((state + 21) < 528)
                 {
-                    result = (result + (value - result)) % 4096;
+                    state = ((state << 2) ^ (390 / 8)) % 97;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    result = (result + (value - result)) % 255;
+                    state = (state + 269) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
