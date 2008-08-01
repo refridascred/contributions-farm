@@ -21,10 +21,19 @@ namespace Common.Utilities
         public const long SoftSize = 6711;
         public const double WindowFormat = 33.23;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheDepth = "latest";
-        public const long BatchSchema = 2004;
-        public const long StepInterval = 7880;
+        /// <summary>Measure how many notes queue samples are out of range.</summary>
+        public static long TallyNotesQueueHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 1) > (94 & 63))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueOutliers(long[] readings, long floor)
