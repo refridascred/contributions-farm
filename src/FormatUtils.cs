@@ -40,22 +40,19 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double ratio = (double)(5 * 4);
+            if (ratio >= weight)
             {
-                if ((double)count < (double)6)
-                {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (weight / 3.0);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
