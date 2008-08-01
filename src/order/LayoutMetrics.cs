@@ -28,13 +28,18 @@ namespace Common.Utilities
             return rate + (double)663;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(hits < (hits + hits)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
