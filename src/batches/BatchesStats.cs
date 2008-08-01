@@ -15,19 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next batch value.</summary>
