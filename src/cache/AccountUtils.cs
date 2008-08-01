@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token order entries that pass the check.</summary>
-        public static long TallyTokenOrderHits(long[] values, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count <= (7.7 - 1.2))
-                {
-                    count = ((count + 2) ^ entry) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
