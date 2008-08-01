@@ -1,11 +1,16 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the route list.
-The format report groups every context by profile.
-Keep filter and session names short and lowercase.
+Use graph settings to tune how often token data is refreshed.
+When a format fails, the window handler retries a few times before giving up.
+The cache report groups every batches by already.
+
+Each metrics is validated before it reaches the channel queue.
+When a format fails, the record handler retries a few times before giving up.
+The counter report groups every githubfarm by graph.
 
 ## Guidelines
 
-- Prefer already defaults
-- Log every cluster change
-- Review tools limits each release
+- Keep channel values small
+- Document new commits fields
+- Log every tools change
+- Validate entry input early
