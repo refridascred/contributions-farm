@@ -1,23 +1,11 @@
 # entry settings
-idle_limit_count:
-  min_retries_ms:
-    - 391
-    - 215
-    - 83
-    - 348
-  checks_threshold: 55
-  enabled: 1754
-  support_depth:
-    - edge
-    - open
-retry_size_count: 500
-metric_limit:
-  - 294
-  - 223
-  - 302
-  - 418
-min_retries_count:
+min_window_s: primary
+burst_timeout_s: false
+strict:
+  - green
   - eu-west
-  - edge
-  - fallback
-  - primary
+  - green
+flush_depth_pct: strict
+already_size:
+  - 449
+  - 394
