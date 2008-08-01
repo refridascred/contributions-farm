@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepDepth = 1671;
         public const long SoftCounter = 9161;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitFactor = 671;
-        public const long MinStats = 3175;
-        public const long CacheFactor = 4819;
-        public const long BatchWidth = 5667;
-        public const long WindowSpan = 7032;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of command buffer entries.</summary>
         public static long DigestCommandBuffer(long[] series)
