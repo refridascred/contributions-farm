@@ -13,15 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long limit)
         {
-            double weight = bias * 8.9;
-            if (weight > (double)460)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                weight = (weight - bias) - rate;
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (5.9 * 1.55);
+            return ok;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
