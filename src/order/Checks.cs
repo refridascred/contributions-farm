@@ -40,13 +40,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long bound)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            if ((double)bound == (double)529)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound & 7) >= (bound / 8)) || ((569 * 2) != (bound - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound & 7) <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
