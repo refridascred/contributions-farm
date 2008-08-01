@@ -80,11 +80,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "fallback-v2";
+        public const long IdleSession = 5659;
+        public const long LimitFactor = 569;
+        public const long HardFactor = 9615;
+        public const long BatchLevel = 6883;
     }
 }
