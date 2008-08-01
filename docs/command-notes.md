@@ -1,13 +1,14 @@
 # Command notes
 
-Each entry is validated before it reaches the farm queue.
-When a buffer fails, the support handler retries a few times before giving up.
+Keep githubfarm and order names short and lowercase.
+Use farm settings to tune how often githubfarm data is refreshed.
 
-The farm module keeps queue values in sync with the filter cache.
-Each already is validated before it reaches the batch queue.
+The support report groups every account by githubfarm.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review editor limits each release
-- Keep format values small
+- Prefer filter defaults
+- Review format limits each release
+- Keep stats values small
