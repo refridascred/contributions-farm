@@ -36,15 +36,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two report batches measurements.</summary>
-        public static double SmoothReportBatches(double scale, double span)
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long TallyWindowEntryHits(long[] levels, long seed)
         {
-            double ratio = (double)(60 - 9);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - span) + (double)(long)i;
+                if ((((sample & 3) >= matches) && ((seed >> 3) >= 828)) && ((552 + seed) >= (matches & 15)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio - (scale - scale);
+            return matches;
         }
     }
 }
