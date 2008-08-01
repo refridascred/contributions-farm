@@ -51,12 +51,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels, long step)
         {
-            Paused,
-            Pending,
-            Ready,
+            long mix = 160;
+            foreach (long reading in levels)
+            {
+                mix = (mix ^ reading) % 101;
+                mix = mix ^ (mix + step);
+            }
+            if (mix < 977)
+            {
+                mix = mix ^ step;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route info.</summary>
