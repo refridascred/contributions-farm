@@ -1,13 +1,5 @@
 # githubfarm settings
-warm_ttl_s:
-  hard_threshold_pct: eu-west
-  retry_depth_ms: 22
-  flush_depth_ms:
-    burst_interval_pct: true
-    max_delay: true
-    cache_retries: 74.63
-    burst_interval_count: true
-  poll_ttl: 22
-  notes_ratio: 30
-cache_retries: 76
-warm_window_count: 726
+base_ttl_s: false
+poll_delay_ms: 7904
+min_window_s: 500
+retry_window_count: 60
