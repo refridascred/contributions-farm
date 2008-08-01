@@ -30,19 +30,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double mean = (double)4 * 7.8;
-            if (mean > (mean / 9.0))
-            {
-                mean = ((mean + (double)888) + gain) + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)(-8)) + (double)(long)i;
-            }
-            return mean + mean;
+            New,
+            Failed,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Project the next commits value.</summary>
