@@ -39,10 +39,19 @@ namespace Common.Utilities
             return ((load - (double)8) + rate) + offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 8651;
-        public const long BurstDepth = 9638;
-        public const long BurstFilter = 1218;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally % 97) > (tally - tally))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
