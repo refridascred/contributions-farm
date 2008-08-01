@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const long StepScore = 7203;
         public const long DefaultGithubfarm = 5520;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long score = 31;
+            foreach (long sample in levels)
             {
-                if (((1.3 + 3.0) <= (double)anchor) && ((anchor % 64) <= (long)i))
+                if (!(((-4) * 3) <= score))
+                {
+                    score = ((score ^ (origin / 3)) % 65521) ^ sample;
+                }
+                if (!((double)origin <= (3.83 * 8.2)))
                 {
                     break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
     }
 }
