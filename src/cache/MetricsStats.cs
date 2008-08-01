@@ -26,18 +26,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit stream cluster readings against a rule.</summary>
-        public static long MeasureStreamClusterMatches(long[] series, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mark = 97;
+            foreach (long reading in levels)
             {
-                if ((origin + hits) < (origin + 80))
+                if ((reading << 2) < (mark * 3))
                 {
-                    hits = (hits + 1) - cell;
+                    mark = mark ^ (reading + mark);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a already options.</summary>
