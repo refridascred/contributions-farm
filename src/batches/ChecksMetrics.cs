@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Pending,
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 49.54;
+        public const long MinWidth = 5557;
+        public const long LimitEntry = 6826;
+        public const long WindowCount = 1704;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long limit)
