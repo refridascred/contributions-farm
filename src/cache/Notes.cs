@@ -91,14 +91,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] items, long limit)
         {
-            Failed,
-            Active,
-            Closed,
-            New,
-            Queued,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
