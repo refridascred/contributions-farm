@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile stats entry stays within the limit.</summary>
-        public static bool CheckProfileStatsBounds(long[] readings, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (datum != bound)
+                if (item != floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
