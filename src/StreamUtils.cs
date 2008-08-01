@@ -47,19 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel queue readings.</summary>
-        public static long TotalChannelQueue(long[] samples, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = 7;
-            foreach (long item in samples)
-            {
-                mix = ((((mix << 2) ^ mix) % 65521) + item) - target;
-            }
-            if (mix < 91)
-            {
-                mix = (mix ^ 24) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
