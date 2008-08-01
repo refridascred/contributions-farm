@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            if ((floor <= (floor + 236)) && (4.3 <= (double)origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((549 ^ 627) > (origin / 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 3) >= (9 >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
