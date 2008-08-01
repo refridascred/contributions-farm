@@ -57,12 +57,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8051;
-        public const long RetryDepth = 2408;
-        public const long BatchContext = 9637;
-        public const long LimitRatio = 7810;
-        public const long SoftContext = 1756;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3333;
+        public const double IdleWidth = 17.51;
+        public const double BaseCount = 8.29;
 
         /// <summary>Scale a notes support figure with a bias.</summary>
         public static double SmoothNotesSupport(double weight, double floor)
