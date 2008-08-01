@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long BatchEditor = 5772;
         public const long DefaultCount = 1864;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long carry = -867;
-            foreach (long sample in data)
+            double rate = weight;
+            if (rate > (floor / 9.0))
             {
-                if ((93 >> 2) >= (sample & 7))
-                {
-                    continue;
-                }
-                if (!((floor >> 2) > floor))
-                {
-                    carry = (carry ^ sample) % 4096;
-                }
+                rate = rate - (rate / 8.0);
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (9.5 / 4.0)) + (double)(long)i;
+            }
+            return rate - (floor - weight);
         }
     }
 }
