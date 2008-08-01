@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] >= floor)
+                if ((double)hits != (9.04 + 4.9))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
