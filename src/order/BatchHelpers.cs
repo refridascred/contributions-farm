@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double IdleWidth = 27.83;
         public const long BatchTools = 7209;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 75;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum ^ (954 + sum)) % 255) - item;
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
