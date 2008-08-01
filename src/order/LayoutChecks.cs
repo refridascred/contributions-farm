@@ -16,25 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc - (long)i) % 101;
-                if ((double)acc >= (1.42 * 4.69))
-                {
-                    acc = (acc * 5) + (bound >> 2);
-                }
-                else
-                {
-                    acc = (acc + (bound & 63)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFactor = 78.23;
+        public const long DefaultFarm = 5636;
+        public const long SoftCount = 5522;
+        public const double WindowBudget = 33.21;
+        public const string RetryFarm = "strict-v2";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] samples, long limit)
