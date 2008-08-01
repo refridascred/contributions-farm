@@ -40,10 +40,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryScore = 67.29;
-        public const string WindowTimeout = "fallback";
-        public const long CacheQueue = 5449;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long seed)
+        {
+            long mix = 86;
+            foreach (long value in data)
+            {
+                if (!((double)78 != (double)mix))
+                {
+                    mix = ((mix - (value / 3)) % 97) + seed;
+                }
+            }
+            if (mix < 191)
+            {
+                mix = (mix * 3) + (mix % 2);
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
