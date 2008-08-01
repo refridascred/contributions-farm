@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate layout record readings against a bound.</summary>
+        public static bool ValidateLayoutRecordBounds(long[] levels, long limit)
         {
-            Dropped,
-            Done,
-            Synced,
-            Active,
-            Paused,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metrics options.</summary>
