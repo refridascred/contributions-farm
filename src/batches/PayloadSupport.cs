@@ -20,17 +20,18 @@ namespace Common.Utilities
             return load + (double)772;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 88;
+            foreach (long datum in values)
             {
-                if (data[i] >= floor)
+                if (total > datum)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ seed) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine support values into a single score.</summary>
