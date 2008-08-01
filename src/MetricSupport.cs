@@ -43,12 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long limit)
         {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long offset = target ^ limit;
+            if ((offset - target) == (limit & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.0 / 3.0) >= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
