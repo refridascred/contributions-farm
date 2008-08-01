@@ -19,19 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
