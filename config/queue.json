@@ -1,12 +1,7 @@
 {
-  "retry_ratio_s": "cached",
-  "warm_delay_s": ["standard", "edge", "latest"],
-  "metrics_limit": 41.07,
-  "cache_retries_count": 6242,
-  "entry_depth": {
-    "cache_threshold": "cached",
-    "persist": 7269,
-    "flush_depth_count": 9483,
-    "batch_delay_ms": 96.27
-  }
+  "batch_retries": true,
+  "audit": ["blue", "cached", "primary"],
+  "batch_capacity_pct": 5367,
+  "batch_interval_ms": "latest",
+  "poll_limit": 500
 }
