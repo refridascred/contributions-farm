@@ -61,17 +61,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = carry ^ (floor + carry);
-                carry = (carry + ((long)i + 79)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultLevel = "open-edge";
+        public const long MinRatio = 3503;
+        public const double HardOrder = 22.82;
     }
 }
