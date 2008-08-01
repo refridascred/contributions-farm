@@ -22,13 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            New,
-            Closed,
-            Draft,
-            Retry,
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum << 3) ^ 20) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a account snapshot.</summary>
