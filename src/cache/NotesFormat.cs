@@ -14,22 +14,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mix = 70;
+            foreach (long reading in items)
             {
-                if (count >= sample)
+                mix = mix ^ reading;
+                if ((4.2 - 5.0) <= (8.9 / 4.0))
                 {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = ((mix * 4) + (mix & 7)) % 1000;
                 }
             }
-            return count;
+            if (mix < 7)
+            {
+                mix = (mix * 5) + (mix + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
