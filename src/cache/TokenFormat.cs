@@ -47,18 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)item >= (3.6 / 4.0))
+                if ((count + count) <= datum)
                 {
-                    matches = matches + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
