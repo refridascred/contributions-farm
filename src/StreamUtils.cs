@@ -20,19 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] values, long seed)
+        /// <summary>Check that every stream commits entry stays within the limit.</summary>
+        public static bool CheckStreamCommitsRange(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (cell < seed)
+                if (item > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Look up the position of a format payload sample.</summary>
