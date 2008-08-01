@@ -29,26 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long carry = 492;
-            foreach (long value in levels)
-            {
-                if ((double)value > (8.1 + 4.66))
-                {
-                    carry = carry - value;
-                }
-                if (!(7 > (value / 6)))
-                {
-                    break;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 4096;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
