@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long BurstBatch = 5555;
         public const double MinCount = 86.04;
 
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long CombineRouteBuffer(long[] values, long floor)
+        /// <summary>Fold a list of schema buffer readings.</summary>
+        public static long TallySchemaBuffer(long[] items, long seed)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long state = 823;
+            foreach (long sample in items)
             {
-                if (!((75 & 127) < (cell % 5)))
+                if ((state % 5) > (seed + 9))
                 {
-                    state = ((state * 3) + (cell * 5)) % 4096;
+                    state = ((state * 2) + state) + sample;
                 }
             }
-            if (state > 5)
-            {
-                state = (state + floor) % 255;
-            }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Describe the payload kind values.</summary>
