@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Fold a list of support already readings.</summary>
+        public static long DigestSupportAlready(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 61;
+            foreach (long entry in values)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((entry ^ entry) > (2 & 127))
+                {
+                    mix = (mix * 2) + entry;
+                }
             }
-            return carry;
+            return mix % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
