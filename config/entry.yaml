@@ -1,8 +1,23 @@
 # entry settings
-metric_size: local
-idle_window_pct: staging
-checks_ratio:
-  - 56
-  - 104
-  - 76
-  - 350
+idle_limit_count:
+  min_retries_ms:
+    - 391
+    - 215
+    - 83
+    - 348
+  checks_threshold: 55
+  enabled: 1754
+  support_depth:
+    - edge
+    - open
+retry_size_count: 500
+metric_limit:
+  - 294
+  - 223
+  - 302
+  - 418
+min_retries_count:
+  - eu-west
+  - edge
+  - fallback
+  - primary
