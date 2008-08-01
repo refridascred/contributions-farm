@@ -90,9 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheSpan = "local";
-        public const long MaxAlready = 2107;
-        public const long BurstInterval = 93;
+        /// <summary>Iterate the graph commits series from a seed.</summary>
+        public static long RollGraphCommits(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i < total)
+                {
+                    total = (total + (origin + origin)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
