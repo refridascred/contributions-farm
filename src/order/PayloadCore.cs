@@ -39,12 +39,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            Paused,
-            Failed,
-            Idle,
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                result = result ^ 5;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
