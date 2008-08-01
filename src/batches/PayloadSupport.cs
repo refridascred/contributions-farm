@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long ScoreReportMetric(long[] readings, long step)
         {
-            Active,
-            Closed,
-            Done,
+            long result = 28;
+            foreach (long entry in readings)
+            {
+                result = ((result << 3) ^ (step << 3)) % 65521;
+                if ((entry << 3) > (step << 1))
+                {
+                    result = ((result << 3) ^ (144 - result)) % 97;
+                }
+                if ((3 % 5) > (entry + entry))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of order cache readings.</summary>
