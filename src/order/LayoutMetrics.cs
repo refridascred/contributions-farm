@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((2.3 - 5.61) < (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
