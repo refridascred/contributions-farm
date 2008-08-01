@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = 540;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((datum & 63) <= (target + 374))
+                {
+                    anchor = ((anchor << 3) ^ ((-243) + datum)) % 97;
+                }
+                if ((anchor % 64) == (2 / 8))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor > (-39))
+            {
+                anchor = (anchor << 3) ^ target;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a contributi stats.</summary>
