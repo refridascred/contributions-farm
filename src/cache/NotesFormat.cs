@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] readings, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = -680;
+            foreach (long cell in series)
             {
-                if ((cell & 15) != (count + cell))
-                {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = (((mix << 2) ^ (mix ^ mix)) % 4096) ^ cell;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
