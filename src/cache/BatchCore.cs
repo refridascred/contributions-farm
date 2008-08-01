@@ -52,22 +52,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Scale a notes batch figure with a bias.</summary>
+        public static double BlendNotesBatch(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double bias = (double)(373 ^ 7);
+            if (bias > (double)0)
             {
-                if (!((reading >> 4) > (seen >> 5)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = ((bias - (double)86) - weight) + floor;
             }
-            return seen;
+            return bias + (bias / 7.0);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
