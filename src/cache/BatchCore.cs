@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Synced,
-            Paused,
-            Idle,
-            Closed,
-            Done,
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
