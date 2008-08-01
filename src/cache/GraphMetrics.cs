@@ -25,11 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 4.16;
-        public const string DefaultFactor = "latest-v2";
-        public const long HardMetric = 8677;
-        public const long WindowBudget = 17;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((2.4 / 8.0) > (double)target) && ((entry - entry) < 96))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
         public static long OverlapSchemaContributiCount(long[] items)
