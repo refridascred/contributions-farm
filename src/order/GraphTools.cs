@@ -47,22 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data, long bound)
         {
-            long state = 95;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((double)datum < 9.0) && ((datum + state) != ((-14) / 7)))
+                if (bound <= (seen / 4))
                 {
-                    state = ((state * 2) + (state - offset)) % 97;
+                    seen = (seen + 1) + value;
                 }
             }
-            if (state < 661)
-            {
-                state = (state ^ (offset + state)) % 65521;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
