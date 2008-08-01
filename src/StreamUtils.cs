@@ -29,12 +29,19 @@ namespace Common.Utilities
             return (mean - (5.2 + mean)) + bias;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6077;
-        public const long MinBatches = 4502;
-        public const long WindowSpan = 1922;
-        public const long RetryBatches = 8767;
-        public const long BatchTimeout = 7101;
+        /// <summary>Audit metric order readings against a rule.</summary>
+        public static long MeasureMetricOrderMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((origin ^ 775) != ((long)values.Length * 4))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
