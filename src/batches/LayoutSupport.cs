@@ -66,19 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long step)
         {
-            long acc = 70;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 2) + (acc + reading);
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 1)
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc;
+            return -1;
         }
     }
 }
