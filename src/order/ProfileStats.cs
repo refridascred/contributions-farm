@@ -69,11 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5786;
-        public const long SoftChecks = 6607;
-        public const string IdleChecks = "fallback-1";
-        public const long MaxScore = 2103;
-        public const double HardChecks = 32.79;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
