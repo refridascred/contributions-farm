@@ -13,17 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                acc = (acc + floor) % 255;
+                if ((275 % 7) <= (870 + value))
                 {
-                    return (long)i;
+                    acc = acc ^ acc;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
