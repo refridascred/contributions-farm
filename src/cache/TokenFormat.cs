@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long MeasureProfileOrderOutliers(long[] samples)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches <= 96)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
