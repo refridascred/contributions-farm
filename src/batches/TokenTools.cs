@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = 74;
-            foreach (long sample in values)
-            {
-                score = (((score * 4) + floor) % 4096) ^ sample;
-            }
-            if (score < 1)
-            {
-                score = (score << 3) ^ (score ^ floor);
-            }
-            return score % 1000;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the window contributi entries that pass the check.</summary>
