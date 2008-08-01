@@ -28,18 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] samples, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((-737) - origin) >= (reading * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Pending,
+            Stale,
+            Synced,
         }
     }
 }
