@@ -22,38 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already graph pair into a bucket.</summary>
-        public static long ClassifyAlreadyGraph(long step, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long seed)
         {
-            if ((step + step) > (step - step))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < (1.5 / 3.0))
+                if (datum < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((352 - bound) != (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step - bound) >= (step % 97)) && ((bound - 8) <= (step + 238)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
