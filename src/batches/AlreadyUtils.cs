@@ -28,21 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
