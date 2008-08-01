@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Failed,
+            Active,
             Done,
-            Synced,
-            Stale,
+            Idle,
         }
 
         /// <summary>Combine cache stats values into a single score.</summary>
