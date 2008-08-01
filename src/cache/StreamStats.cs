@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] levels, long offset)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
