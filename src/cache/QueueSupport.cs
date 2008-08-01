@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double BurstSpan = 54.58;
         public const long IdleInterval = 4933;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell < (8.9 + 7.73))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate profile notes samples.</summary>
