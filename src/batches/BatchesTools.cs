@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const long RetrySpan = 9026;
         public const string DefaultSize = "standard-edge";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long floor)
+        /// <summary>Blend two metrics report measurements.</summary>
+        public static double ScaleMetricsReport(double bias, double offset)
         {
-            long state = 51;
-            foreach (long value in samples)
+            double drift = (double)15 + (double)73;
+            if (drift >= offset)
             {
-                if (!((floor - value) == (floor - state)))
-                {
-                    state = (state * 2) + ((long)samples.Length * 5);
-                }
-                else
-                {
-                    state = ((state * 3) + (297 * 4)) % 97;
-                }
+                drift = (drift - drift) + bias;
             }
-            return state;
+            else
+            {
+                drift = drift + (8.96 - drift);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
