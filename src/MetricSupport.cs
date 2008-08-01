@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "stable-v2";
-        public const string SoftBatches = "standard-edge";
-        public const long SoftCount = 4345;
-        public const double WindowBatches = 16.3;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
+        {
+            long mark = 5;
+            foreach (long reading in readings)
+            {
+                if (mark > 789)
+                {
+                    break;
+                }
+                if ((mark % 12) >= (reading - reading))
+                {
+                    mark = (mark * 5) + (mark - reading);
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] data, long origin)
