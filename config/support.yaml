@@ -1,15 +1,43 @@
 # support settings
-dry_run: 17
-graph_threshold:
-  contributi_window: 6734
-  strict: 3
-  cache_timeout_ms:
-    - strict
-    - cached
+readonly: legacy
+githubfarm_capacity:
+  max_interval_s:
+    poll_delay_s: staging
+    enabled: 88
+    profile_timeout: 5748
+    persist: 79.34
+    flush_capacity_ms: eu-west
+  context_retries: false
+  readonly: 11.64
+  audit: 1024
+compress:
+  min_capacity: 5850
+  audit:
+    record_size:
+      - 270
+      - 481
+      - 417
+    verbose:
+      - latest
+      - edge
+      - stable
+      - legacy
+    max_capacity_count:
+      - green
+      - eu-west
+      - local
+    persist: primary
+    already_size: cached
+  retry_limit: primary
+  batch_retries: 4993
+  command_interval:
+    - primary
     - staging
-max_size_s:
-  - local
-  - local
-  - standard
-token_size: 14.97
-strict: staging
+  soft_delay: 92.02
+payload_window: 1024
+base_window:
+  - 270
+  - 262
+  - 221
+  - 355
+sync_retries: 30
