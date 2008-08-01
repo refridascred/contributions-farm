@@ -16,21 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((17.0 - 7.73) > (double)floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound - floor) >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= floor)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)8)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
