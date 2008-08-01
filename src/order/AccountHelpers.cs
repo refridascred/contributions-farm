@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Check that every command contributi entry stays within the limit.</summary>
+        public static bool GuardCommandContributiLimits(long[] series, long step)
         {
-            long carry = 5;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (reading < (reading % 3))
+                if (reading < step)
                 {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = carry - (carry >> 3);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
