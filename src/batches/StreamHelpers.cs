@@ -86,11 +86,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardWidth = 1846;
-        public const double HardRoute = 70.11;
-        public const double HardCount = 12.7;
-        public const double MaxRoute = 95.59;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] samples, long offset)
