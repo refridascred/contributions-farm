@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string MaxChannel = "alpha";
         public const double DefaultScore = 22.17;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((double)matches <= (5.8 - 9.0))
+                if (item < bound)
                 {
-                    matches = (matches + 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a channel entry.</summary>
