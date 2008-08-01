@@ -51,14 +51,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long AuditSessionStatsGaps(long[] samples)
         {
-            New,
-            Paused,
-            Done,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches % 60) <= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
