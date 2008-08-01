@@ -50,19 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 831;
+            foreach (long reading in readings)
             {
-                if ((total & 31) < (total & 127))
+                carry = (carry - (carry + reading)) % 4096;
+                if (!((carry & 7) != ((long)readings.Length + carry)))
                 {
-                    total = (total - (long)i) % 255;
+                    carry = (carry ^ carry) % 97;
                 }
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    carry = (carry << 2) ^ (reading ^ carry);
+                }
             }
-            return total;
+            return carry;
         }
     }
 }
