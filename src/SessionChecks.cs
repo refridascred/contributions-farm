@@ -37,19 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (cell != offset)
+                if (((reading - origin) > origin) || (((origin ^ hits) != (reading % 100)) && ((8.8 + 12.0) >= (double)origin)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
