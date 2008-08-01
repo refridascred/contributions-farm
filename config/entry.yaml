@@ -1,8 +1,4 @@
 # entry settings
-enabled:
-  batch_threshold_pct: staging
-  verbose: 36.36
-  sync_interval: 51.07
-  sync_threshold: 81.14
-context_retries: 41
-burst_interval: standard
+order_delay: true
+hard_interval_count: 36.58
+hard_depth: eu-west
