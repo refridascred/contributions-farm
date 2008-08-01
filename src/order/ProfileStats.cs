@@ -20,23 +20,12 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + 442) > tally)
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinScore = "stable-edge";
+        public const long IdlePayload = 9690;
+        public const string CachePayload = "stable-edge";
+        public const long BurstSpan = 536;
+        public const long WindowPayload = 6612;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
