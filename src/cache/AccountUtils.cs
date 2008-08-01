@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 2;
+            foreach (long cell in series)
             {
-                if (!((reading & 7) <= reading) && !((matches - (long)readings.Length) >= (reading + matches)))
+                if (!((acc + 42) < acc))
                 {
-                    matches = matches + 2;
+                    acc = ((acc ^ (572 - acc)) % 101) ^ cell;
                 }
             }
-            return matches;
+            if (acc > 91)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a stats reading.</summary>
