@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound + (-9)) == (cell + bound))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
