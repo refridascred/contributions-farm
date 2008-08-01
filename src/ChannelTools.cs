@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double weight, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            double mean = weight;
-            if (mean > weight)
+            long anchor = 7;
+            foreach (long sample in levels)
             {
-                mean = (mean + (weight / 4.0)) + span;
+                if (((sample % 8) >= (516 / 8)) || ((66 * 4) == (anchor >> 5)))
+                {
+                    anchor = (anchor + sample) % 4096;
+                }
             }
-            else
-            {
-                mean = mean - (weight + mean);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)84) + (double)(long)i;
-            }
-            return mean - (mean / 5.0);
+            return anchor % 97;
         }
 
         /// <summary>Blend two route commits measurements.</summary>
