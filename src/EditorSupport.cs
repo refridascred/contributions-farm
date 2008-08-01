@@ -51,12 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchSize = "strict-v2";
+        public const double SoftFilter = 10.09;
+        public const long CacheFilter = 1743;
+        public const long BaseSpan = 8569;
+        public const long WindowScore = 5310;
 
         /// <summary>Derive the next format support value from a seed.</summary>
         public static long IterateFormatSupport(long step)
