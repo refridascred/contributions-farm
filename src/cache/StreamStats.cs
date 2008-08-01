@@ -49,13 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            Dropped,
+            Pending,
+            Draft,
+            Locked,
+            Done,
         }
     }
 }
