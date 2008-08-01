@@ -19,11 +19,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowScore = 4.22;
-        public const long RetryGithubfarm = 4650;
-        public const long StepScore = 7203;
-        public const long DefaultGithubfarm = 5520;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)floor < (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] levels, long origin)
