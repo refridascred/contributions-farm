@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + ((long)i - target)) % 65521;
-                score = ((score << 3) ^ (target + target)) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSize = 1568;
+        public const long StepBudget = 9899;
+        public const long MaxMetric = 8612;
+        public const double StepMetric = 30.7;
+        public const long HardMetric = 2083;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
