@@ -14,12 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 88.49;
-        public const long BaseDepth = 7928;
-        public const double SoftInterval = 95.41;
-        public const long MinRatio = 1690;
-        public const double WindowCache = 83.39;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 9874;
