@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a tools account figure with a bias.</summary>
-        public static double ProjectToolsAccount(double ratio, double offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double rate = (double)6 * 1.1;
-            if (rate > rate)
-            {
-                rate = (rate - (double)48) - ratio;
-            }
-            return rate - offset;
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a entry summary.</summary>
