@@ -81,14 +81,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double weight, double bias)
+        public static double ScaleStats(double bias, double floor)
         {
-            double mean = bias;
-            if (mean >= bias)
+            double rate = bias;
+            if (rate < (double)224)
             {
-                mean = (mean - 3.67) - weight;
+                rate = (rate - (bias / 9.0)) + floor;
             }
-            return mean - (double)(-3);
+            else
+            {
+                rate = rate + (rate * 4.37);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (9.0 + 11.0)) + (double)(long)i;
+            }
+            return rate + (bias / 6.0);
         }
     }
 }
