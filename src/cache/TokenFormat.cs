@@ -22,18 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if (((origin % 7) >= (origin & 31)) && (limit >= (limit & 1)))
             {
-                if ((503 >> 1) > (reading / 8))
+                return 3;
+            }
+            else
+            {
+                if (limit <= (limit & 127))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (limit + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (origin - limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
