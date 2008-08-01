@@ -62,13 +62,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
             public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
