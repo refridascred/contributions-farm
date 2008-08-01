@@ -1,5 +1,13 @@
 {
-  "soft_interval_ms": 60,
-  "verbose": ["green", "open", "primary", "legacy"],
-  "compress": [244, 8, 367]
+  "min_ttl_pct": 60,
+  "sync_ttl_pct": 9123,
+  "account_ratio": {
+    "audit": 9462,
+    "enabled": false,
+    "readonly": 39.09,
+    "already_limit": false,
+    "poll_threshold": 28.17
+  },
+  "record_interval": true,
+  "idle_size": false
 }
