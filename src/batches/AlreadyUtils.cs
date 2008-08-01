@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Failed,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
