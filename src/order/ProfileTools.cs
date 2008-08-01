@@ -40,15 +40,17 @@ namespace Common.Utilities
             return drift - 2.3;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long step)
         {
-            long mix = 92;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix ^ (30 % 8)) % 101) - value;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
