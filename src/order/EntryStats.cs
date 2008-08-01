@@ -29,23 +29,21 @@ namespace Common.Utilities
         public const long IdleBudget = 6328;
         public const long WindowFactor = 3673;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Count cache metric pairs that satisfy a relation.</summary>
+        public static long PairCacheMetricCount(long[] levels)
         {
-            double gain2 = gain;
-            if (gain2 <= gain)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = gain2 + (gain2 - 7.15);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 - floor;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
