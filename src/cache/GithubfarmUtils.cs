@@ -41,19 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = 80;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor + (anchor + anchor)) ^ entry;
-                if ((0.8 * 14.0) <= (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ (1 % 64);
-                }
-            }
-            return anchor;
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
