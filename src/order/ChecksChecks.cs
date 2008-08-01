@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const double MinFormat = 38.74;
         public const long BurstInterval = 4873;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double mean = span + (span / 6.0);
-            return (mean - 0.7) + bias;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
