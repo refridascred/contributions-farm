@@ -22,38 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            if ((floor << 3) > floor)
+            double gain = (double)(15 + 42);
+            if (gain <= (gain - 6.98))
             {
-                return 7;
+                gain = gain - gain;
             }
             else
             {
-                if (!(bound > (737 % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((27 * 2) > (bound / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) <= (floor & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                gain = gain - bias;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 4.0) - (double)(long)i;
+            }
+            return gain - (floor / 5.0);
         }
 
         /// <summary>Rank notes input into a small class.</summary>
