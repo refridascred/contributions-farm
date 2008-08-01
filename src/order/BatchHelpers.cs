@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double IdleWidth = 27.83;
         public const long BatchTools = 7209;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Combine buffer support values into a single score.</summary>
+        public static long CombineBufferSupport(long[] readings, long seed)
         {
-            long sum = 75;
-            foreach (long item in data)
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                sum = ((sum ^ (954 + sum)) % 255) - item;
+                carry = ((carry * 4) + (datum << 1)) + seed;
             }
-            return sum % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Hold a filter record.</summary>
