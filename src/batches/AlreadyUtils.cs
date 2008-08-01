@@ -13,29 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (floor > (floor ^ 60))
-                {
-                    total = (total * 2) + (floor + total);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total ^ 4)) % 101;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long hits = (long)i;
-                    total = ((total << 2) ^ (hits + total)) ^ (long)i2;
-                }
-                total = total - floor;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
