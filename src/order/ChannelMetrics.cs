@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long origin)
         {
-            long acc = -58;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                acc = acc ^ (value % 60);
-                acc = (acc + ((long)series.Length << 1)) % 1000;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the profile state values.</summary>
