@@ -1,8 +1,9 @@
-id,count,token,label
-1,892,12.32,402
-2,16.23,430,staging
-3,72.17,edge,staging
-4,8.82,staging,31.13
-5,881,legacy,330
-6,strict,63.34,792
-7,71.46,stable,108
+id,token,ratio
+1,484,48.62
+2,771,230
+3,fallback,cached
+4,198,eu-west
+5,827,800
+6,stable,primary
+7,standard,fallback
+8,green,440
