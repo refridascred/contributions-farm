@@ -37,18 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (matches <= (matches - matches))
+                if ((seen ^ sample) > sample)
                 {
-                    matches = (matches + 3) + datum;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
