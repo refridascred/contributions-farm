@@ -75,17 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long step)
+        /// <summary>Fold a list of support route readings.</summary>
+        public static long DigestSupportRoute(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long reading in items)
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum + 761)) % 255) + reading;
             }
-            return -1;
+            return sum;
         }
     }
 }
