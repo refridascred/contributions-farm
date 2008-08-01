@@ -54,12 +54,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheScore = 93.31;
-        public const long MinOrder = 4443;
-        public const long StepOrder = 7023;
-        public const long CacheOrder = 7826;
-        public const long BaseRatio = 8261;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long origin, long seed)
