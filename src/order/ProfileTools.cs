@@ -20,17 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a payload metrics counter forward.</summary>
-        public static long StepPayloadMetrics(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long limit, long limit2)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            if ((10.0 + 9.1) <= (double)limit2)
             {
-                carry = ((carry * 3) + (carry * 5)) % 65521;
-                carry = (carry ^ (765 + carry)) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (6.0 >= (double)limit2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 - limit2) == (limit2 - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
