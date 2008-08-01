@@ -20,19 +20,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double gain2 = bias;
-            if (gain2 <= gain2)
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (gain / 7.0);
+            Idle,
+            Pending,
+            Done,
+            Paused,
+            Retry,
         }
     }
 }
