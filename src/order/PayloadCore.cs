@@ -31,21 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of window counter readings.</summary>
-        public static long OverlapWindowCounterCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 64;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor ^ (floor >> 4)) - item;
             }
-            return count;
+            if (anchor > 8)
+            {
+                anchor = ((anchor * 5) + (901 + floor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
