@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            if ((step & 1) > step)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                sum = sum + (8 ^ sum);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (origin <= (step >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - step) <= 26)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Accumulate report record samples.</summary>
