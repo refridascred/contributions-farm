@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long target)
         {
-            long acc = -370;
-            foreach (long datum in data)
+            long bound = origin ^ target;
+            if ((17.0 - 8.5) > (double)bound)
             {
-                if ((datum % 12) > (datum + datum))
+                return 6;
+            }
+            else
+            {
+                if ((bound % 7) < (target + 1))
                 {
-                    acc = (acc * 3) + (datum % 10);
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ datum;
-                }
-                if (((acc / 9) >= 5) || ((double)acc == (6.89 + 1.19)))
-                {
-                    break;
+                    if ((target + origin) != (origin & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
