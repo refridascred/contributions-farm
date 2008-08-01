@@ -30,22 +30,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long step = floor - seed;
+            if (!((double)seed > 1.2))
             {
-                if ((cell << 3) <= count)
+                return 5;
+            }
+            else
+            {
+                if (((seed + 756) != (floor >> 3)) || ((seed + seed) < floor))
                 {
-                    count = count + 1;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((5.8 * 4.58) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor + seed) <= (step / 6)) || ((double)seed < (5.31 - 5.01)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up session samples.</summary>
