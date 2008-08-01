@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double bias)
         {
-            double gain = 2.89;
-            if (gain <= (weight + 9.0))
+            double load = (double)(-52) * 8.53;
+            if (load > (scale * 8.57))
             {
-                gain = gain - (7.0 * 6.02);
+                load = (load - load) + bias;
             }
-            else
-            {
-                gain = gain - (weight * 3.0);
-            }
-            return gain + offset;
+            return load + 12.0;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
