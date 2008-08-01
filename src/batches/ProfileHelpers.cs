@@ -38,15 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            double weight2 = (double)3 / 7.0;
-            if (weight2 <= 20.0)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                weight2 = weight2 + (bias - weight2);
+                mix = (mix + 27) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return weight2 + (weight + weight);
+            return mix;
         }
 
         /// <summary>Rank command input into a small class.</summary>
