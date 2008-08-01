@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long offset = origin + seed;
-            if ((seed + offset) > (seed / 3))
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + offset) != (origin >> 5))
+                if (5.0 >= (double)mark)
                 {
-                    return 7;
+                    mark = ((mark * 4) + 38) % 65521;
                 }
-                else
-                {
-                    if ((double)origin < (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (520 >= (offset ^ origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
