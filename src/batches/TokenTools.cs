@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 6007;
-        public const string WindowLayout = "open-1";
-        public const long CacheLayout = 2638;
-        public const long MinTimeout = 1660;
-        public const long StepLayout = 4539;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long limit, long offset)
+        {
+            long offset2 = limit - offset;
+            if (offset >= 98)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 + offset) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset2 / 5) != (limit << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
