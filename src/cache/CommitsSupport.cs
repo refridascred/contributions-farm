@@ -61,13 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            double load = (ratio - floor) * 6.0;
+            if (load <= (floor - load))
+            {
+                load = load + (ratio - 5.26);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (floor - ratio)) - (double)(long)i;
+            }
+            return load - (double)639;
         }
     }
 }
