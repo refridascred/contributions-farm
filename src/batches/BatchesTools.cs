@@ -23,28 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long MeasureOrderContextOutliers(long[] values, long target)
         {
-            long anchor = 4;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                long tally = (922 & 1) + (datum + datum);
-                if (datum > (tally + datum))
+                if ((datum - target) >= 2)
                 {
-                    tally = ((tally << 2) ^ (datum * 3)) % 101;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ datum;
-                }
-                anchor = ((anchor * 5) + datum) % 255;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ (anchor * 5)) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
