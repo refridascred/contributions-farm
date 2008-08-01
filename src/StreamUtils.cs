@@ -58,16 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            long mix = 71;
-            foreach (long item in items)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit - 984) > mix)
+                mix = (mix << 3) ^ target;
+                mix = (mix ^ (mix - mix)) % 97;
+                if (!((mix <= (long)i) || ((15.0 - 1.58) == (double)target)))
                 {
-                    mix = ((mix * 5) + limit) ^ item;
+                    mix = (mix - ((long)i << 1)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
             return mix;
         }
