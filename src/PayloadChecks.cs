@@ -50,25 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter graph value from a seed.</summary>
-        public static long RollCounterGraph(long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((bound % 10) < score)
-                {
-                    score = score ^ score;
-                    score = ((score << 2) ^ 7) % 255;
-                    break;
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
