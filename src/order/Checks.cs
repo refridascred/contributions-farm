@@ -80,14 +80,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Locked,
-            Active,
-            New,
-            Paused,
-            Done,
+            Queued,
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
