@@ -1,25 +1,8 @@
 {
-  "idle_interval_ms": 71,
-  "soft_ratio_ms": false,
-  "checks_interval": {
-    "commits_retries": "standard",
-    "compress": "legacy",
-    "hard_ttl_s": {
-      "persist": "standard",
-      "verbose": true,
-      "channel_retries": false,
-      "readonly": "primary",
-      "compress": 4.32
-    },
-    "flush_limit_pct": ["staging", "stable"],
-    "support_threshold": {
-      "batch_size": 61.8,
-      "sync_retries": [470, 139],
-      "compress": ["strict", "local", "standard"],
-      "idle_capacity_s": true,
-      "hard_timeout_count": false
-    },
-    "route_capacity": true
-  },
-  "payload_size": "cached"
+  "cluster_retries": "fallback",
+  "retry_size_count": 96,
+  "flush_ttl_pct": 89.39,
+  "checks_ttl": [487, 248, 325],
+  "cache_size_count": 73.57,
+  "flush_retries_ms": 73
 }
