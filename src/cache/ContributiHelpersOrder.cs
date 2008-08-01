@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next report session value from a seed.</summary>
-        public static long RollReportSession(long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long seed, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            if (19.0 < (double)seed)
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (919 > (seed & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound > (bound << 1)) && ((0 << 2) != (seed + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
