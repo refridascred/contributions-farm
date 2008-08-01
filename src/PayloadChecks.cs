@@ -49,12 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Queued,
-            Paused,
-            Failed,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
