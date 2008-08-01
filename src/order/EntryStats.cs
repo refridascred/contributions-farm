@@ -22,10 +22,22 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8729;
-        public const long HardDepth = 9157;
-        public const long WindowSpan = 6983;
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long origin)
