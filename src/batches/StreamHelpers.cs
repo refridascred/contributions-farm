@@ -47,20 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long anchor = 1;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor * 5) + (entry % 16)) % 255;
-                anchor = (anchor << 2) ^ (anchor + entry);
-                if (!((entry - anchor) > entry))
-                {
-                    anchor = (anchor * 3) + 167;
-                }
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
