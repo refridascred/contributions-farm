@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (18.0 / 9.0))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches schema samples are out of range.</summary>
