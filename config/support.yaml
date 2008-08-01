@@ -1,11 +1,11 @@
 # support settings
-min_depth_s: primary
-batch_delay: blue
-cache_capacity_s: 91.31
-compress: false
-batches_window: 500
-verbose:
-  - 55
-  - 295
-  - 438
-  - 52
+warm_threshold_s: 30
+report_retries: blue
+contributi_capacity: 35.57
+command_threshold: primary
+poll_limit_pct:
+  - standard
+  - stable
+  - stable
+  - green
+verbose: 60
