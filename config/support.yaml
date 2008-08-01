@@ -1,9 +1,5 @@
 # support settings
-verbose:
-  - staging
-  - cached
-batch_ratio_ms: 250
-enabled:
-  - strict
-  - stable
-  - staging
+base_interval_s: blue
+notes_depth: false
+retry_limit_pct: 4652
+channel_depth: false
