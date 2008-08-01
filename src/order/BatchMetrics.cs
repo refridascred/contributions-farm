@@ -32,12 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 28.06;
-        public const double CacheTimeout = 71.83;
-        public const long WindowMetric = 6410;
-        public const long StepWidth = 5954;
-        public const long MaxRatio = 3662;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double gain, double bias)
+        {
+            double bias2 = (double)(627 * 3);
+            return (bias2 + (bias * 3.58)) + gain;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] items, long step)
