@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long origin, long target)
-        {
-            long bound = origin ^ target;
-            if ((17.0 - 8.5) > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 7) < (target + 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + origin) != (origin & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 50.67;
+        public const double BaseBudget = 10.6;
+        public const long MinTimeout = 6300;
+        public const string BatchRatio = "primary-edge";
+        public const long StepTimeout = 8013;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
