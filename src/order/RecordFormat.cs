@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
