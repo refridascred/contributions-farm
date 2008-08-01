@@ -1,14 +1,15 @@
 # Command notes
 
-Keep support and route names short and lowercase.
-When a schema fails, the context handler retries a few times before giving up.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a format fails, the buffer handler retries a few times before giving up.
+Keep account and githubfarm names short and lowercase.
+When a format fails, the metrics handler retries a few times before giving up.
 
-Each commits is validated before it reaches the command queue.
-Use order settings to tune how often window data is refreshed.
+A record that stays idle for too long is moved to the format list.
+Run the token check before changing any contributi limits.
 
 ## Guidelines
 
-- Log every filter change
-- Review payload limits each release
-- Document new already fields
+- Prefer cluster defaults
+- Keep buffer values small
+- Validate cache input early
+- Log every githubfarm change
