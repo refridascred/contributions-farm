@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long prev = seed ^ target;
-            if ((prev >> 2) >= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((37 * 2) > seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of window metrics readings.</summary>
