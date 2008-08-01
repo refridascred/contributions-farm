@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] > step)
+                if (((long)readings.Length + 510) <= cell)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
