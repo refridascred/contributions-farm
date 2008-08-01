@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 639;
-        public const long BatchCount = 3321;
-        public const long HardRoute = 6786;
-        public const double BurstSpan = 54.58;
-        public const long IdleInterval = 4933;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
