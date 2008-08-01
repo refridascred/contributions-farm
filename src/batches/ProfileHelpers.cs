@@ -75,18 +75,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((bound << 2) != (0 - (-131)))
             {
-                if ((datum << 1) != (tally & 63))
+                return 1;
+            }
+            else
+            {
+                if ((19.0 / 8.0) <= (double)target)
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (bound + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= (bound & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
