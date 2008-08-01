@@ -1,7 +1,7 @@
 {
-  "strict": 92.52,
-  "base_timeout_pct": 49,
-  "min_depth_ms": 69,
-  "support_timeout": 30,
-  "batch_size": 59
+  "cache_depth_pct": false,
+  "entry_retries": 52.7,
+  "enabled": 30,
+  "soft_delay_ms": 29.63,
+  "commits_ttl": [216, 172, 283, 412]
 }
