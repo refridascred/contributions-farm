@@ -19,11 +19,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 2669;
-        public const double DefaultScore = 73.05;
-        public const long BatchFactor = 9873;
-        public const long BatchEditor = 4417;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryScore = 67.29;
+        public const string WindowTimeout = "fallback";
+        public const long CacheQueue = 5449;
 
         /// <summary>Roll a checks metric counter forward.</summary>
         public static long DeriveChecksMetric(long step)
