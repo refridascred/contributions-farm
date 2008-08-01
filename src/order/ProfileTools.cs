@@ -41,13 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits - 430) < (-3))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph notes samples.</summary>
