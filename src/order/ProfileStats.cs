@@ -20,12 +20,11 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinScore = "stable-edge";
-        public const long IdlePayload = 9690;
-        public const string CachePayload = "stable-edge";
-        public const long BurstSpan = 536;
-        public const long WindowPayload = 6612;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepLevel = "local";
+        public const string StepFactor = "local";
+        public const string StepSpan = "open-1";
+        public const long IdleLevel = 8836;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
