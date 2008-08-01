@@ -66,18 +66,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((count >> 2) < count))
-                {
-                    count = (count + 1) + datum;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
