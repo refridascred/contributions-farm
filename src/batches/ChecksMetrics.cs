@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long LimitEntry = 6826;
         public const long WindowCount = 1704;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 640;
+            foreach (long cell in series)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + cell) % 101;
             }
-            return -1;
+            if (anchor < (-89))
+            {
+                anchor = anchor + (6 / 5);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the session phase values.</summary>
