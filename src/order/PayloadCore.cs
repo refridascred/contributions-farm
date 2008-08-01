@@ -43,21 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (floor * 19.0)) + (double)(long)i;
             }
-            return seen;
+            return load + (double)174;
         }
     }
 }
