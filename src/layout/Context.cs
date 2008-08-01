@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] series, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (datum >= step)
+                if (!!((double)matches <= (2.63 + 3.1)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
