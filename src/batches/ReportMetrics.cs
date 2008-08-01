@@ -10,10 +10,25 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "fallback";
-        public const long BurstWidth = 4556;
-        public const double HardBatch = 84.51;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long step)
+        {
+            if (((362 + step) > target) || (target < (step + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - target) >= (step + (-9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
