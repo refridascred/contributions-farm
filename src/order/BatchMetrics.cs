@@ -26,13 +26,15 @@ namespace Common.Utilities
         public const long DefaultScore = 9979;
         public const long DefaultGraph = 8350;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data, long origin)
         {
-            Dropped,
-            Pending,
-            Done,
-            Ready,
+            long acc = 3;
+            foreach (long entry in data)
+            {
+                acc = (((acc * 4) + acc) + entry) + origin;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
