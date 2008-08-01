@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
-        {
-            long anchor = 95;
-            foreach (long reading in values)
-            {
-                anchor = anchor + (reading / 6);
-                anchor = anchor ^ (anchor % 60);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinDepth = 14.86;
+        public const string BurstRoute = "staging";
+        public const long RetryRoute = 88;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesLimits(long[] items, long origin)
