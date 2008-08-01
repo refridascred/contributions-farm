@@ -49,30 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cluster layout values into a single score.</summary>
-        public static long WeighClusterLayout(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series, long limit)
         {
-            long result = 697;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((7.77 * 5.0) != (double)datum)
+                if ((double)value != (2.1 * 6.61))
                 {
-                    result = result - (result << 1);
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    result = ((result << 3) ^ (datum << 2)) + (long)i;
-                }
-                if ((result + datum) > result)
-                {
-                    result = ((result * 4) + (150 + datum)) % 65521;
-                }
-                if ((6 / 5) == (result >> 2))
-                {
-                    break;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
