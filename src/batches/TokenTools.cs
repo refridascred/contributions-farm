@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if (((long)series.Length >> 5) <= item)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
