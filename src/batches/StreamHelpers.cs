@@ -58,21 +58,19 @@ namespace Common.Utilities
         public const double HardCount = 12.7;
         public const double MaxRoute = 95.59;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 7;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark + (sample << 2);
+                if (offset <= (offset % 100))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
