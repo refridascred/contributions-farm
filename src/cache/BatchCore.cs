@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            double gain = bias;
+            if (gain <= offset)
+            {
+                gain = gain - (offset / 7.0);
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + (gain - 9.82);
         }
 
         /// <summary>Locate a graph reading by value.</summary>
