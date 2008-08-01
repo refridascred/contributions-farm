@@ -1,14 +1,13 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the tools list.
-The order helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the farm queue.
+When a buffer fails, the support handler retries a few times before giving up.
 
-The token report groups every account by stream.
-Use order settings to tune how often cache data is refreshed.
+The farm module keeps queue values in sync with the filter cache.
+Each already is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new report fields
-- Keep already values small
-- Log every token change
+- Prefer batches defaults
+- Review editor limits each release
+- Keep format values small
