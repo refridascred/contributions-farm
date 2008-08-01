@@ -41,19 +41,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload githubfarm readings against a bound.</summary>
-        public static bool ValidatePayloadGithubfarmRange(long[] readings, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long mix = 5;
+            foreach (long cell in items)
             {
-                if (item >= target)
+                if (!(((8 / 6) == (floor / 4)) && ((mix >> 3) <= (cell + mix))))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix - (mix / 6)) % 65521;
                 }
+                mix = mix + (65 - cell);
             }
-            return flag;
+            if (mix < 907)
+            {
+                mix = (mix ^ (floor + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
