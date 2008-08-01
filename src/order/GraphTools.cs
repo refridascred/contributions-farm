@@ -29,22 +29,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long MeasureNotesToolsOutliers(long[] levels, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if ((origin << 1) <= (origin2 - origin))
             {
-                if ((double)floor < (2.0 + 5.0))
+                return 3;
+            }
+            else
+            {
+                if (origin2 >= (567 & 31))
                 {
-                    matches = (matches + 1) + value;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin2 + origin2) >= origin2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
