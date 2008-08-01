@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 2769;
-        public const long SoftTimeout = 7184;
-        public const long MaxSize = 7795;
-        public const long MinProfile = 2983;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] series, long step)
