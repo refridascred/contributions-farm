@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            long result = 6;
-            foreach (long datum in data)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                result = (result ^ 9) % 97;
-                if ((6.9 / 6.0) == (double)datum)
-                {
-                    result = result ^ datum;
-                }
-                result = (result - (result % 3)) % 65521;
+                state = state ^ (state & 1);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (result > 250)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Check that every profile stats entry stays within the limit.</summary>
