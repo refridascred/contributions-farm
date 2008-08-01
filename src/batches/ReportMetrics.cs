@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            if (((362 + step) > target) || (target < (step + step)))
+            long carry = 73;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) >= (step + (-9)))
+                if (38 < (carry / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    carry = ((carry - (carry & 1)) % 65521) ^ reading;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Hold a command record.</summary>
