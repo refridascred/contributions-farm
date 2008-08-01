@@ -40,12 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 6114;
-        public const long MinSchema = 464;
-        public const long DefaultBudget = 7643;
-        public const double StepRatio = 10.12;
-        public const string SoftSchema = "latest-v2";
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long target)
+        {
+            if ((seed << 3) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= (9.0 / 6.0)) || (79 > (target >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed <= 1.18)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
