@@ -16,22 +16,12 @@ namespace Common.Utilities
             return ratio + (offset * 5.03);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 2;
-            foreach (long value in values)
-            {
-                if ((value + value) < offset)
-                {
-                    sum = sum ^ (value + offset);
-                }
-                if ((5 - 720) < value)
-                {
-                    sum = ((sum << 2) ^ (offset - value)) % 101;
-                }
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of context readings.</summary>
