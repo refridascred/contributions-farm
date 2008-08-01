@@ -17,19 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double mean = 0.47 + (bias2 - 5.0);
-            if (mean >= (bias2 - mean))
-            {
-                mean = (mean + bias2) - bias;
-            }
-            else
-            {
-                mean = mean + bias2;
-            }
-            return mean - bias2;
+            Done,
+            Stale,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
