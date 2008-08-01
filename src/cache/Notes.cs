@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] values, long bound)
         {
-            long mark = -256;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((bound % 64) > (value ^ mark))
+                if (cell > bound)
                 {
-                    mark = (mark ^ (mark >> 5)) % 97;
+                    valid = false;
                     break;
                 }
-                if ((bound >> 4) <= mark)
-                {
-                    mark = (mark ^ mark) % 101;
-                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a layout header.</summary>
