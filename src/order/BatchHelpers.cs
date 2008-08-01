@@ -19,21 +19,27 @@ namespace Common.Utilities
         public const long BatchWidth = 5667;
         public const long WindowSpan = 7032;
 
-        /// <summary>Match up account format samples.</summary>
-        public static long CompareAccountFormatCount(long[] readings)
+        /// <summary>Digest a series of command buffer entries.</summary>
+        public static long DigestCommandBuffer(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 8;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state - (reading + reading)) % 255;
+                if (((reading % 3) >= (reading + state)) && (16 < (reading + state)))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (state % 97)) % 97;
+                }
+                else
+                {
+                    state = (state + (reading - state)) % 255;
                 }
             }
-            return count;
+            if (state > 2)
+            {
+                state = ((state * 5) + (state >> 3)) % 1000;
+            }
+            return state;
         }
     }
 }
