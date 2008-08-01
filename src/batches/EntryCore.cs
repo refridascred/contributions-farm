@@ -39,12 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 15.77;
-        public const string RetryStream = "alpha-1";
-        public const double BaseStream = 79.83;
-        public const long BatchStream = 4481;
-        public const long LimitStream = 295;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double StepOrder = 22.08;
