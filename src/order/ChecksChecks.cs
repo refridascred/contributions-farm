@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > step)
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
