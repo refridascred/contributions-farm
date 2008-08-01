@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + 12.0;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double bias)
+        /// <summary>Fold a list of batch metric readings.</summary>
+        public static long TallyBatchMetric(long[] levels)
         {
-            double mean = 10.0;
-            if (mean >= (3.3 / 5.0))
+            long total = 0;
+            foreach (long value in levels)
             {
-                mean = (mean - bias) - rate;
+                total = (((total << 2) ^ (1 - total)) % 65521) - value;
             }
-            else
+            if (total > 9)
             {
-                mean = mean - (bias * 5.5);
+                total = (total + (58 & 255)) % 65521;
             }
-            return mean - (8.68 + mean);
+            return total % 4096;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
