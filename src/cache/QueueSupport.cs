@@ -20,17 +20,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
