@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowRatio = 6189;
-        public const long CacheSize = 162;
-        public const long MinChecks = 7887;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double scale, double offset)
+        {
+            double load = 3.5;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + (double)(long)i) + scale) - offset;
+            }
+            return load - (double)343;
+        }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
         public static long AuditWindowCounterOutliers(long[] samples)
