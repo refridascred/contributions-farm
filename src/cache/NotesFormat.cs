@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = -680;
-            foreach (long cell in series)
-            {
-                mix = (((mix << 2) ^ (mix ^ mix)) % 4096) ^ cell;
-            }
-            return mix % 65521;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
