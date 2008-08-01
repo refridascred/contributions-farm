@@ -1,16 +1,6 @@
 {
-  "cache_retries_pct": {
-    "enabled": ["eu-west", "legacy", "stable"],
-    "flush_window": 170,
-    "max_capacity": "green"
-  },
-  "account_ttl": {
-    "batch_depth": [310, 166, 319, 54],
-    "audit": false,
-    "idle_size_count": 58,
-    "batch_size": "fallback",
-    "flush_delay": "strict",
-    "readonly": 81.94
-  },
-  "soft_limit_ms": 36.67
+  "sync_timeout_pct": "blue",
+  "queue_limit": 89,
+  "support_capacity": "strict",
+  "retry_ratio": 4338
 }
