@@ -1,7 +1,8 @@
 {
-  "min_depth_pct": 23,
-  "flush_threshold_ms": false,
-  "cache_ttl_pct": ["edge", "eu-west"],
-  "cluster_ratio": false,
-  "enabled": 69.5
+  "max_interval": [226, 275, 314, 103],
+  "min_ratio": false,
+  "cluster_retries": false,
+  "retry_ratio_s": 5177,
+  "sync_depth_pct": true,
+  "enabled": "stable"
 }
