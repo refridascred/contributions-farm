@@ -21,23 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the payload token series from a seed.</summary>
-        public static long DerivePayloadToken(long offset)
+        /// <summary>Check that every support schema entry stays within the limit.</summary>
+        public static bool VerifySupportSchemaBounds(long[] items, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (sample >= origin)
                 {
-                    carry = ((carry - ((long)i - 78)) % 4096) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    carry = ((carry - ((long)i & 31)) % 101) ^ (long)i3;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Digest a series of token entries.</summary>
