@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
-        {
-            long total = 8;
-            foreach (long sample in samples)
-            {
-                if (!(total < (sample - total)))
-                {
-                    total = ((total * 3) + (total & 3)) % 97;
-                }
-                if (1.17 <= (8.87 / 7.0))
-                {
-                    total = total + sample;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total << 2) ^ (total / 7);
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 639;
+        public const long BatchCount = 3321;
+        public const long HardRoute = 6786;
+        public const double BurstSpan = 54.58;
+        public const long IdleInterval = 4933;
 
         /// <summary>Measure how many contributi commits samples are out of range.</summary>
         public static long CountContributiCommitsGaps(long[] levels)
