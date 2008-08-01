@@ -59,14 +59,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double floor)
         {
-            Pending,
-            Ready,
-            Locked,
-            Active,
-            Stale,
+            double bias = (double)((-6) + 45);
+            if (bias > floor)
+            {
+                bias = (bias + floor) + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (floor - bias)) + (double)(long)i;
+            }
+            return bias + (double)379;
         }
 
         /// <summary>Describe the command phase values.</summary>
