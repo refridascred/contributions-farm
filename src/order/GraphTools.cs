@@ -48,18 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format record entries that pass the check.</summary>
-        public static long AuditFormatRecordOutliers(long[] items, long step)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long MeasureNotesToolsOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!(hits >= step))
+                if ((double)floor < (2.0 + 5.0))
                 {
-                    hits = (hits + 2) ^ cell;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
