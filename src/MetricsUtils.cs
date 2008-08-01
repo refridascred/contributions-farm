@@ -26,15 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                long tally = total - ((long)i / 3);
+                if (((long)i / 5) < (tally / 4))
+                {
+                    tally = (tally + (origin + 480)) % 97;
+                    tally = (tally - (origin << 2)) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ tally;
+                    total = ((total << 3) ^ (tally + (long)i)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
