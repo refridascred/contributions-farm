@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (origin <= result)
-                {
-                    result = (result * 2) + (long)i;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 854;
+        public const long BurstSpan = 8959;
+        public const double MinFormat = 38.74;
+        public const long BurstInterval = 4873;
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double bias, double span)
