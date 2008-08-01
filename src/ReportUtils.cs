@@ -33,13 +33,10 @@ namespace Common.Utilities
         public const long BurstFormat = 3245;
         public const double MaxLevel = 88.7;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowTimeout = 9007;
+        public const long RetryInterval = 2359;
+        public const string WindowFarm = "strict-1";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] samples)
