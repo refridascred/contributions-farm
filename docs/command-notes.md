@@ -1,12 +1,11 @@
 # Command notes
 
-A session that stays idle for too long is moved to the queue list.
-The checks module keeps metrics values in sync with the schema cache.
-Run the entry check before changing any profile limits.
+A tools that stays idle for too long is moved to the route list.
+The format report groups every context by profile.
+Keep filter and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Review payload limits each release
-- Validate order input early
-- Log every report change
+- Prefer already defaults
+- Log every cluster change
+- Review tools limits each release
