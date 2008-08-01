@@ -1,15 +1,11 @@
 # Command notes
 
-Run the filter check before changing any already limits.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any window limits.
-
-Each commits is validated before it reaches the queue queue.
-A checks that stays idle for too long is moved to the graph list.
-Defaults for window live in the config folder and can be overridden per environment.
+The notes module keeps counter values in sync with the counter cache.
+Each support is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep stream values small
-- Validate tools input early
+- Review queue limits each release
+- Document new command fields
+- Keep account values small
+- Prefer window defaults
