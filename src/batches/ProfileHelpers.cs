@@ -39,21 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token metrics pairs that satisfy a relation.</summary>
-        public static long CompareTokenMetricsCount(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (bound > (state + state))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state + (item + bound);
                 }
             }
-            return hits;
+            if (state < 3)
+            {
+                state = (state + state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
