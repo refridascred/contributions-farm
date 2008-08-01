@@ -14,13 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] data, long seed)
         {
-            Synced,
-            Draft,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) >= 49)
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
