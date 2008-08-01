@@ -27,26 +27,13 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mark = 58;
-            foreach (long reading in series)
-            {
-                if ((reading % 100) != (reading - reading))
-                {
-                    mark = (mark - ((-8) & 127)) % 65521;
-                }
-                if (!(limit > 16))
-                {
-                    break;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = ((mark * 4) + limit) % 65521;
-            }
-            return mark % 4096;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
