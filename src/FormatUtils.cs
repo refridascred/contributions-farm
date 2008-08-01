@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first notes window entry that matches the target.</summary>
-        public static long LookupNotesWindowIndex(long[] data, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
