@@ -22,17 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream window sample.</summary>
-        public static long FindStreamWindowIndex(long[] samples, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a cluster entry.</summary>
