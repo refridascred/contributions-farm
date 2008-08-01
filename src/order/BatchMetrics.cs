@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long WeighOrderWindow(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long sum = 10;
+            foreach (long sample in levels)
+            {
+                sum = ((sum - 8) % 101) + sample;
+                sum = ((sum * 5) + (seed - seed)) % 101;
+            }
+            if (sum < 824)
+            {
+                sum = sum + (sum + seed);
+            }
+            return sum;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
