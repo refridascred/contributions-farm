@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric order readings against a rule.</summary>
-        public static long MeasureMetricOrderGaps(long[] samples, long step)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long CountPayloadRecordHits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((datum - 896) > (step * 2))
+                if (bound <= (bound & 7))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) - entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a commits summary.</summary>
