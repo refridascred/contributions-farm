@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a profile command figure with a bias.</summary>
-        public static double ProjectProfileCommand(double scale, double offset)
+        /// <summary>Roll a command githubfarm counter forward.</summary>
+        public static long RollCommandGithubfarm(long limit)
         {
-            double gain = offset;
-            if (gain > scale)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                gain = gain - (offset / 6.0);
+                if ((1.0 - 1.4) <= (double)(long)i)
+                {
+                    mix = ((mix * 4) + (mix - limit)) % 101;
+                    mix = ((mix * 5) + (limit * 3)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return gain - (double)6;
+            return mix;
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
