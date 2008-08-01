@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double SoftAccount = 40.79;
         public const long CacheInterval = 6447;
 
-        /// <summary>Adjust a report notes reading.</summary>
-        public static double SmoothReportNotes(double gain, double bias)
+        /// <summary>Iterate the checks record series from a seed.</summary>
+        public static long DeriveChecksRecord(long limit)
         {
-            double scale = (double)(337 + 9);
-            if (scale <= scale)
-            {
-                scale = scale + scale;
-            }
+            long mix = limit;
             for (int i = 0; i < 9; i++)
             {
-                scale = (scale + (gain * 9.0)) + (double)(long)i;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return scale + (bias / 3.0);
+            return mix;
         }
 
         /// <summary>Hold a support info.</summary>
