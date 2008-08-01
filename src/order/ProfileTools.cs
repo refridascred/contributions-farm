@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 7114;
-        public const double CacheDepth = 64.68;
-        public const string BurstQueue = "legacy-edge";
-        public const long IdleSpan = 1052;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits <= 7.4)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long limit, long limit2)
