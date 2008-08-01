@@ -68,20 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples, long target)
         {
-            long mix = 160;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix ^ reading) % 101;
-                mix = mix ^ (mix + step);
+                if (((item - target) != (item & 63)) && ((item << 1) >= target))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix < 977)
-            {
-                mix = mix ^ step;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit buffer farm readings against a rule.</summary>
