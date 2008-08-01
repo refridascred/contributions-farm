@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two entry buffer measurements.</summary>
-        public static double ProjectEntryBuffer(double scale, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items, long offset)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            long total = 15;
+            foreach (long value in items)
             {
-                gain = ((gain + (gain - 3.47)) + (double)(long)i) + scale;
+                total = ((total - (value + 25)) % 101) + offset;
             }
-            return gain - bias;
+            return total % 1000;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
