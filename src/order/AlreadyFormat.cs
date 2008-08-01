@@ -22,24 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long offset, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            if ((offset - 542) != (seed >> 3))
+            long carry = 980;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 * 2.19) >= (double)offset)
+                if ((carry & 31) < (carry - entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    carry = (carry - (9 - 8)) % 4096;
                 }
             }
+            if (carry > 734)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a profile payload sample.</summary>
