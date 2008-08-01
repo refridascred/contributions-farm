@@ -1,11 +1,14 @@
 # entry settings
-min_window_s: primary
-burst_timeout_s: false
-strict:
-  - green
-  - eu-west
-  - green
-flush_depth_pct: strict
-already_size:
-  - 449
-  - 394
+max_depth_count: 66.19
+min_limit_pct:
+  - 249
+  - 419
+  - 381
+cache_threshold_count: true
+enabled:
+  - 404
+  - 332
+  - 264
+  - 487
+entry_timeout: 674
+schema_window: 5009
