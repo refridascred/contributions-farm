@@ -52,13 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate graph notes samples.</summary>
