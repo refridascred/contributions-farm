@@ -20,19 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long CombineGraphSchema(long[] readings)
+        /// <summary>Iterate the payload token series from a seed.</summary>
+        public static long DerivePayloadToken(long offset)
         {
-            long anchor = 9;
-            foreach (long entry in readings)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + (entry * 2)) % 4096;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry - ((long)i - 78)) % 4096) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    carry = ((carry - ((long)i & 31)) % 101) ^ (long)i3;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (anchor < 82)
-            {
-                anchor = (anchor + (570 + 71)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
