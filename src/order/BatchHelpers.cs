@@ -17,15 +17,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine buffer support values into a single score.</summary>
-        public static long CombineBufferSupport(long[] readings, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            long result = 225;
+            foreach (long value in samples)
             {
-                carry = ((carry * 4) + (datum << 1)) + seed;
+                if (value < (result << 1))
+                {
+                    result = (result + (value - result)) % 4096;
+                }
+                else
+                {
+                    result = (result + (value - result)) % 255;
+                }
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
