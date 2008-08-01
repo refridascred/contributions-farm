@@ -31,13 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            Retry,
-            Idle,
-            Draft,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
