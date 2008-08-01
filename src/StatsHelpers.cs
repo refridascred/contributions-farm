@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long offset)
         {
-            long anchor = 978;
-            foreach (long reading in levels)
+            if ((25 + offset) < step)
             {
-                if ((anchor >> 3) > (reading - reading))
+                return 2;
+            }
+            else
+            {
+                if (step < (offset * 5))
                 {
-                    anchor = anchor + (anchor % 5);
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (offset << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step % 16) <= offset) && ((step % 100) > (offset << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Audit filter support readings against a rule.</summary>
