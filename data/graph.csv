@@ -1,7 +1,8 @@
-id,region,count
-1,615,edge
-2,953,354
-3,310,9.32
-4,980,85.09
-5,strict,758
-6,blue,308
+id,rank,active
+1,296,403
+2,706,fallback
+3,stable,strict
+4,498,60.65
+5,17.06,349
+6,legacy,green
+7,993,primary
