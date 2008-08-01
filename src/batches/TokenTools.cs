@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
