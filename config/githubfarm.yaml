@@ -1,11 +1,7 @@
 # githubfarm settings
-retry_retries: 500
-tools_retries: 17
-base_window_count: primary
-stats_window:
-  - local
-  - blue
-  - cached
-  - fallback
-default_threshold: 2147
-record_size: true
+cache_ratio: 97.54
+hard_delay_pct: 100
+poll_threshold_s: 85.43
+filter_retries: eu-west
+format_window: 5780
+buffer_ttl: 55
