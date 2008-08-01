@@ -75,26 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mix = 191;
-            foreach (long reading in data)
-            {
-                if (((mix >> 5) >= (mix / 7)) || ((double)floor >= 3.27))
-                {
-                    mix = mix + (floor / 2);
-                }
-                if ((double)reading > (0.04 + 4.3))
-                {
-                    break;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix << 2) ^ (mix % 7);
-            }
-            return mix % 97;
+            Ready,
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Project the next farm value.</summary>
