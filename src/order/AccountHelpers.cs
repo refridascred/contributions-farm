@@ -51,15 +51,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Closed,
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
