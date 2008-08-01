@@ -66,25 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer report pair into a bucket.</summary>
-        public static long BucketBufferReport(long step, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] series, long target)
         {
-            long diff = step - seed;
-            if (((seed + step) <= seed) && ((162 + step) < (diff + step)))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (24 < diff)
+                if (entry >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
