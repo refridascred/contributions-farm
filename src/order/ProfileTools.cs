@@ -49,23 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry account readings.</summary>
-        public static long ScoreEntryAccount(long[] samples, long target)
+        /// <summary>Measure how many cluster queue samples are out of range.</summary>
+        public static long AuditClusterQueueHits(long[] readings, long bound)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor - (833 >> 4)) % 255) + cell;
-                if ((anchor + anchor) >= target)
+                if (!((0.23 - 8.9) <= (double)hits))
                 {
-                    break;
+                    hits = ((hits + 2) + reading) + bound;
                 }
             }
-            if (anchor > (-58))
-            {
-                anchor = (anchor << 2) ^ ((long)samples.Length + anchor);
-            }
-            return anchor % 97;
+            return hits;
         }
     }
 }
