@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const double WindowBudget = 33.21;
         public const string RetryFarm = "strict-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryRatio = 5289;
-        public const long SoftFormat = 198;
-        public const string IdleFormat = "latest-1";
-        public const long MaxRatio = 6341;
-        public const long IdleInterval = 1232;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)5 != (double)tally)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit graph tools readings against a rule.</summary>
         public static long TallyGraphToolsOutliers(long[] readings)
