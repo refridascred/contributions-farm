@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
-            long result = 176;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)result <= (6.3 + 8.2))
+                if (((5.0 / 5.0) < (double)matches) && ((cell << 1) == (cell / 5)))
                 {
-                    result = result ^ (datum + result);
+                    matches = matches + 3;
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
