@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((2.1 + 2.31) == (double)value)
+                if (item <= step)
                 {
-                    seen = (seen + 3) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
