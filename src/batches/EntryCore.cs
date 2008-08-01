@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long target)
         {
-            Ready,
-            Locked,
-            Done,
+            long prev = seed ^ target;
+            if ((prev >> 2) >= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((37 * 2) > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a counter entry.</summary>
