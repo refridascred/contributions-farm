@@ -33,24 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long offset2)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            if (offset > ((-7) - offset))
+            double rate = gain;
+            if (rate <= (floor * 5.95))
             {
-                return 7;
+                rate = rate - (17.0 - gain);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((offset + offset) > (offset2 - 392))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - 7.5) - (double)(long)i;
             }
+            return rate + (gain * 9.31);
         }
 
         /// <summary>Describe the metric phase values.</summary>
