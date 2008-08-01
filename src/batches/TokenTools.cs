@@ -16,16 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long floor)
         {
-            long result = 186;
-            foreach (long datum in samples)
+            long score = 74;
+            foreach (long sample in values)
             {
-                result = result ^ (result + (long)samples.Length);
-                result = result ^ (datum % 8);
+                score = (((score * 4) + floor) % 4096) ^ sample;
             }
-            return result;
+            if (score < 1)
+            {
+                score = (score << 3) ^ (score ^ floor);
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the window contributi entries that pass the check.</summary>
