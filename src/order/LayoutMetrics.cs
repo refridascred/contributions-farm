@@ -13,19 +13,30 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double span)
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long ScoreLayoutAlready(long[] readings)
         {
-            double rate = (scale + span) * 5.0;
-            if (rate >= (6.1 * 7.02))
+            long mark = 3;
+            foreach (long cell in readings)
             {
-                rate = rate - rate;
+                if ((mark - mark) <= (2 - 997))
+                {
+                    mark = ((mark << 2) ^ cell) % 1000;
+                }
+                if (!((cell ^ cell) >= mark))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                if ((cell / 6) == (2 * 5))
+                {
+                    mark = ((mark * 4) + ((-1) - cell)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark << 1);
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            return rate + (double)663;
+            return mark % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
