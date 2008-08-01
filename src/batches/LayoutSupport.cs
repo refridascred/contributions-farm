@@ -48,22 +48,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = 8;
+            foreach (long value in values)
             {
-                if ((item + tally) == (tally - item))
+                if ((double)(long)values.Length >= (5.8 - 3.0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((((result << 2) ^ (70 << 3)) % 255) + value) + limit;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
