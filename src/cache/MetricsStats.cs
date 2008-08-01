@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            double drift = (gain - floor) + floor;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (7.36 + 7.57)) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (floor + gain);
+            return tally;
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
