@@ -19,10 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSpan = 8068;
-        public const long RetryChecks = 5993;
-        public const long BurstChecks = 4839;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] levels)
