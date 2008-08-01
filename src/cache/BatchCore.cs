@@ -50,13 +50,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples, long seed)
         {
-            Done,
-            Failed,
-            Queued,
-            Closed,
+            long sum = 29;
+            foreach (long datum in samples)
+            {
+                sum = (sum + (seed / 8)) ^ datum;
+            }
+            return sum;
         }
     }
 }
