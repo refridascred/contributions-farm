@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stream batch samples are out of range.</summary>
-        public static long CountStreamBatchHits(long[] values, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long cell in data)
             {
-                if ((18 >> 1) < (entry + entry))
+                if (cell >= 96)
                 {
-                    seen = (seen + 2) - origin;
+                    seen = (seen + 3) - floor;
                 }
             }
             return seen;
