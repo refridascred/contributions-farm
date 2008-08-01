@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Blend two schema editor measurements.</summary>
+        public static double SmoothSchemaEditor(double gain, double span)
         {
-            long mix = 431;
-            foreach (long datum in samples)
+            double weight = (double)((-67) * 3);
+            if (weight < (span / 9.0))
             {
-                mix = (mix - (mix - (-47))) ^ datum;
+                weight = weight - (1.5 / 9.0);
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 13.0) - (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Describe the batches status values.</summary>
