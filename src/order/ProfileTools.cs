@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Iterate the tools filter series from a seed.</summary>
+        public static long SeriesToolsFilter(long offset)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long state = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (state > (state + (long)i))
+                {
+                    state = (state ^ (offset >> 4)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
