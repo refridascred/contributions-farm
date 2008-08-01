@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 54.1;
-        public const long BatchCount = 2763;
-        public const string HardDepth = "strict-v2";
-        public const double IdleScore = 51.71;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] series, long bound)
