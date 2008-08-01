@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((-3) >> 1) >= item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
