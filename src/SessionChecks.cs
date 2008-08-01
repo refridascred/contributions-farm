@@ -52,15 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm schema measurements.</summary>
-        public static double SmoothFarmSchema(double scale, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] values, long target)
         {
-            double mean = (double)(63 - 851);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mean = ((mean - (5.17 - 4.21)) - (double)(long)i) - span;
+                if ((matches + target) > (-647))
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            return mean - (scale - mean);
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
