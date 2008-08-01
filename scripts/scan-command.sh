@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=96
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback edge standard legacy; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=232
+log "limit is ${COMMAND_LIMIT}"
