@@ -29,10 +29,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstBudget = 13.1;
-        public const long BatchWidth = 565;
-        public const long HardAccount = 9636;
-        public const double WindowRatio = 90.3;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public double Size { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
