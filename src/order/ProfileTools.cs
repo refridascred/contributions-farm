@@ -65,18 +65,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many cluster queue samples are out of range.</summary>
-        public static long AuditClusterQueueHits(long[] readings, long bound)
+        /// <summary>Adjust a stream schema reading.</summary>
+        public static double ScaleStreamSchema(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double bias = (double)(6 - 68);
+            if (bias <= offset)
             {
-                if (!((0.23 - 8.9) <= (double)hits))
-                {
-                    hits = ((hits + 2) + reading) + bound;
-                }
+                bias = (bias - (bias * 15.0)) + gain;
             }
-            return hits;
+            else
+            {
+                bias = bias - (double)(-90);
+            }
+            return bias - bias;
         }
     }
 }
