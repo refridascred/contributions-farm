@@ -1,11 +1,20 @@
 # entry settings
-idle_retries: false
-max_depth: 1024
-readonly:
-  support_delay: 4442
-  warm_ratio_pct:
-    - strict
-    - staging
-  min_timeout_s: legacy
-counter_interval: 28
-base_limit: false
+cache_limit_s:
+  audit: 100
+  cache_capacity: open
+  retry_window_ms: false
+  soft_size_pct:
+    - 462
+    - 391
+    - 148
+    - 213
+  batch_delay: 500
+  hard_size:
+    - eu-west
+    - eu-west
+    - standard
+    - local
+min_size: fallback
+stats_size: 9298
+default_timeout_s: true
+dry_run: false
