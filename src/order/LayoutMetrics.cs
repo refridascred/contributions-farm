@@ -33,9 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitSize = 8982;
-        public const long RetrySize = 9882;
-        public const double DefaultRecord = 61.43;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
