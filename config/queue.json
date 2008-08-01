@@ -1,5 +1,16 @@
 {
-  "max_retries_s": [266, 494],
-  "hard_size": "stable",
-  "cache_timeout": "open"
+  "min_timeout_ms": "fallback",
+  "max_retries_s": true,
+  "sync_threshold_ms": {
+    "base_size": {
+      "tools_timeout": ["legacy", "open", "green"],
+      "layout_retries": 39,
+      "poll_size": "cached",
+      "command_limit": "legacy",
+      "flush_timeout": 19
+    },
+    "burst_limit": "staging",
+    "batch_capacity": true,
+    "retry_window": 1024
+  }
 }
