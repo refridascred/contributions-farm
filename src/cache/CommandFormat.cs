@@ -43,25 +43,11 @@ namespace Common.Utilities
             return (load + (load * 7.16)) + offset;
         }
 
-        /// <summary>Rank graph farm input into a small class.</summary>
-        public static long ClassifyGraphFarm(long limit, long floor)
+        /// <summary>Project the next filter payload value.</summary>
+        public static double BlendFilterPayload(double bias, double floor)
         {
-            long cur = limit + floor;
-            if (!((double)cur >= (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur - limit) > cur)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double rate = floor;
+            return (rate - rate) + bias;
         }
     }
 }
