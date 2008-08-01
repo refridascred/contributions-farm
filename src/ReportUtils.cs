@@ -11,10 +11,26 @@ namespace Common.Utilities
         public const long SoftBatch = 1006;
         public const long LimitBatch = 2088;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheInterval = 4353;
-        public const double StepEntry = 14.12;
-        public const string MinDepth = "standard-edge";
+        /// <summary>Grade a editor metrics value against two limits.</summary>
+        public static long RankEditorMetrics(long offset, long bound)
+        {
+            long cur = offset ^ bound;
+            if (((bound + offset) < (bound + bound)) || ((bound + bound) == (cur % 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset > 9.1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchHits(long[] readings, long target)
