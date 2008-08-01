@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long AuditBatchChecksGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1.6 > (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) - reading;
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
