@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
+            double scale = span * 20.0;
+            return (scale - (scale / 9.0)) + bias;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
