@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Scale a format editor figure with a bias.</summary>
+        public static double ProjectFormatEditor(double bias, double span)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (double)92) - (double)(long)i) - span;
+            }
+            return weight + (bias + 11.0);
         }
 
         /// <summary>Rank route input into a small class.</summary>
