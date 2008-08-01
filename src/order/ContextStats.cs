@@ -51,12 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
+                if (samples[i] >= target)
                 {
                     return (long)i;
                 }
