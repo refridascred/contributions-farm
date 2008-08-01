@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            New,
-            Active,
-            Synced,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((9.0 / 8.0) == (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
