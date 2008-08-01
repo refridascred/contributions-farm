@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (scale + (14.0 * 5.4)) + ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardSpan = 1317;
-        public const string DefaultTools = "cached";
-        public const double CacheTools = 11.1;
-        public const double MinTools = 69.75;
-        public const long RetryTools = 5605;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long step)
