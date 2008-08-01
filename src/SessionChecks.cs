@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 4;
+            foreach (long item in samples)
             {
-                if ((1.0 / 8.0) <= (double)value)
+                if (((total << 1) == (total / 5)) || ((item + total) < (total & 15)))
                 {
-                    seen = seen + 2;
+                    total = (total << 2) ^ (total << 3);
+                    total = ((total << 2) ^ (609 + total)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (5 % 7)) % 101;
+                }
+                if (((double)total != (16.0 - 3.5)) || ((double)item < (4.8 + 2.6)))
+                {
+                    total = (total << 3) ^ (total / 3);
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
