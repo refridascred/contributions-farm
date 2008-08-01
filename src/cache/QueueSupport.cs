@@ -29,22 +29,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long CombineProfileNotes(long[] samples, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = 1;
-            foreach (long value in samples)
-            {
-                if (!((double)result < (double)limit))
-                {
-                    result = (result << 2) ^ (858 + value);
-                }
-            }
-            if (result < 712)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
