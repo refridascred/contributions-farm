@@ -43,22 +43,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if (!(((-37) ^ limit) > (seed >> 3)))
             {
-                if (tally > reading)
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) <= (limit >> 2))
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((5.92 + 7.58) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed > (551 + limit)) || ((seed - seed) >= (limit ^ seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
