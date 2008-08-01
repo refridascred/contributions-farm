@@ -56,15 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Idle,
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
