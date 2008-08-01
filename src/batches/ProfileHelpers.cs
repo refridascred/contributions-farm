@@ -46,18 +46,22 @@ namespace Common.Utilities
         public const string HardDepth = "strict-v2";
         public const double IdleScore = 51.71;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] samples, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = 7;
+            foreach (long item in series)
             {
-                if ((seen % 60) != (50 << 2))
+                if (bound > (mark % 60))
                 {
-                    seen = ((seen + 3) ^ item) - offset;
+                    mark = mark + item;
+                }
+                if ((bound >> 1) < mark)
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a schema header.</summary>
