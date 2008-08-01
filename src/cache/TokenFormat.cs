@@ -33,17 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] <= floor)
+                if ((total & 31) < (total & 127))
                 {
-                    return (long)i;
+                    total = (total - (long)i) % 255;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
