@@ -14,23 +14,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] readings, long origin)
         {
-            long sum = 1;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum - (reading & 1)) % 65521) + step;
-                if (reading <= (sum << 2))
+                if ((4.0 * 7.46) < (double)tally)
                 {
-                    break;
+                    tally = ((tally + 3) + datum) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum > (-33))
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
