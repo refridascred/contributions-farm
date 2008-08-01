@@ -75,22 +75,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report support values into a single score.</summary>
-        public static long WeighReportSupport(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long step)
         {
-            long sum = 332;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sum * 3) < (sum - 109)))
+                if ((items[i] > step) && ((items[i] % 5) == 0))
                 {
-                    sum = (sum - (sum + datum)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ datum) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
