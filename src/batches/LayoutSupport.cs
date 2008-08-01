@@ -65,21 +65,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
-        public static long OverlapQueueBufferCount(long[] values)
+        /// <summary>Fold a list of metrics route readings.</summary>
+        public static long FoldMetricsRoute(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix - (item >> 4)) % 1000;
+                if (((origin + 11) != (origin / 4)) && ((12.0 * 5.4) < (double)mix))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix - (mix & 63);
                 }
             }
-            return seen;
+            if (mix < 63)
+            {
+                mix = (mix - (mix ^ mix)) % 97;
+            }
+            return mix;
         }
     }
 }
