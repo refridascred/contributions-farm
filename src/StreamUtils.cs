@@ -32,17 +32,32 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first filter profile entry that matches the target.</summary>
-        public static long SeekFilterProfileIndex(long[] series, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = target ^ floor;
+            if ((10.0 - 9.02) < (double)floor)
             {
-                if (series[i] <= step)
+                return 3;
+            }
+            else
+            {
+                if ((7.78 - 0.4) != (double)target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((lane & 63) > (target / 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a format payload sample.</summary>
