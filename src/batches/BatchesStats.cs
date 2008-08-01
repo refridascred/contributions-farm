@@ -29,11 +29,22 @@ namespace Common.Utilities
             return ((bias + bias) + weight) + offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryRatio = "local-edge";
-        public const long BatchGithubfarm = 5539;
-        public const string BaseGithubfarm = "stable-edge";
-        public const long WindowCount = 8473;
-        public const string MinGithubfarm = "primary-v2";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((89 << 2) < seen)
+                {
+                    seen = ((seen + 2) + sample) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
