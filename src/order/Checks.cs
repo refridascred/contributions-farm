@@ -24,10 +24,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "alpha";
-        public const long StepGraph = 3584;
-        public const long BatchSpan = 5435;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
         public static bool ValidatePayloadGithubfarmRange(long[] readings, long target)
