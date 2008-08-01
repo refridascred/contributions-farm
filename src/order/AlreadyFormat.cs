@@ -26,18 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = -18;
+            foreach (long datum in series)
             {
-                if ((double)count >= (0.21 * 6.0))
+                if ((17.0 - 7.0) <= (double)carry)
                 {
-                    count = ((count + 3) + reading) - seed;
+                    carry = (carry ^ (datum + carry)) % 97;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Describe the layout kind values.</summary>
