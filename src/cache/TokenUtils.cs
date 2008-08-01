@@ -37,12 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long target)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
