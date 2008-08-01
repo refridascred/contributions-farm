@@ -18,23 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long limit)
         {
-            long cur = origin ^ seed;
-            if (!((origin + cur) < seed))
+            if ((offset + limit) >= (732 % 97))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (origin <= (cur * 3))
+                if ((offset >> 4) > limit)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if (9.01 >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((6.0 + 10.0) <= (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
