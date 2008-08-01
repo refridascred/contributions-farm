@@ -34,15 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            double load = (double)(905 * 3);
+            if (load > load)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                load = (load + (floor / 9.0)) - scale;
             }
-            return sum;
+            return load - (5.0 + load);
         }
     }
 }
