@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitSize = "staging-edge";
-        public const long HardBudget = 7383;
-        public const long MinTools = 6754;
-        public const double WindowBudget = 27.48;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long origin)
+        {
+            if ((528 >= (step >> 1)) || (origin > (step << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 3) <= (origin % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - origin) >= (step * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long SeekGraphIndex(long[] series, long bound)
