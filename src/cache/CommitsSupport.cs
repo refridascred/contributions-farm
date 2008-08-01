@@ -77,19 +77,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Scale a buffer graph figure with a bias.</summary>
+        public static double ScaleBufferGraph(double weight, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            double rate = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)(long)i != (5.8 - 8.94))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                rate = ((rate - 0.5) + (double)(long)i) + span;
             }
-            return anchor;
+            return rate + (rate - weight);
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
