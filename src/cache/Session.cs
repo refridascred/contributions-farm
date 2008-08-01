@@ -62,18 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings, long offset)
         {
-            long carry = -551;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)(-59) >= (double)carry)
+                if (13.0 < (double)count)
                 {
-                    carry = (carry ^ (bound & 3)) - cell;
+                    count = ((count + 3) - datum) - offset;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
