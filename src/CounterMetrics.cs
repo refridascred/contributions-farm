@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] series, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 70;
+            foreach (long datum in data)
             {
-                if ((matches + 355) < (matches % 64))
+                if (1.8 > (double)datum)
                 {
-                    matches = ((matches + 1) - datum) - floor;
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) - limit;
                 }
             }
-            return matches;
+            if (anchor < 20)
+            {
+                anchor = anchor ^ (anchor ^ 809);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a route reading by value.</summary>
