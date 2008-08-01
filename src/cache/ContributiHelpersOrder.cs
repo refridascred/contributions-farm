@@ -34,21 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset > (14.0 / 4.0))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - ((long)i << 1)) % 65521;
                 }
+                mix = (mix << 3) ^ (mix / 3);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
