@@ -69,19 +69,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
