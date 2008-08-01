@@ -25,22 +25,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long MeasureGithubfarmNotesOutliers(long[] data)
+        /// <summary>Fold a list of report queue readings.</summary>
+        public static long FoldReportQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = 92;
+            foreach (long value in values)
             {
-                if ((datum >= (matches + matches)) || ((double)(long)data.Length >= (double)matches))
+                if ((value + value) > (mark * 2))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark + mark) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
