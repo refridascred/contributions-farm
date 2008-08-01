@@ -27,22 +27,16 @@ namespace Common.Utilities
             return (mean - 0.7) + bias;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels, long limit)
+        /// <summary>Digest a series of schema contributi entries.</summary>
+        public static long DigestSchemaContributi(long[] data, long floor)
         {
-            long carry = 1;
-            foreach (long item in levels)
+            long score = 6;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry ^ (carry % 64)) - (long)i;
-                }
-                if (((item / 3) <= (carry / 3)) && ((item & 15) >= limit))
-                {
-                    carry = ((carry * 3) + item) % 4096;
-                }
+                score = ((((score << 3) ^ 0) % 255) ^ reading) - floor;
+                score = (score + (547 << 2)) % 4096;
             }
-            return carry;
+            return score;
         }
     }
 }
