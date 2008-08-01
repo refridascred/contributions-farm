@@ -44,23 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double bias2 = bias;
-            if (bias2 > 6.46)
-            {
-                bias2 = (bias2 - bias) + floor;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (bias * 3.0);
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
