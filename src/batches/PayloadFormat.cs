@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] data, long target)
         {
-            New,
-            Ready,
-            Done,
-            Queued,
-            Stale,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
