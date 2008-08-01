@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepWidth = 96.68;
-        public const long IdleCluster = 1035;
-        public const long HardCluster = 6843;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Dropped,
+            Locked,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Audit metrics entry readings against a rule.</summary>
         public static long CountMetricsEntryOutliers(long[] samples, long origin)
