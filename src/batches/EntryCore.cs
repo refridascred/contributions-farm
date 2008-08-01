@@ -41,18 +41,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2721;
+        public const double RetryRatio = 27.14;
+        public const long MaxBuffer = 649;
 
         /// <summary>Fold a list of entry buffer readings.</summary>
         public static long DigestEntryBuffer(long[] values)
