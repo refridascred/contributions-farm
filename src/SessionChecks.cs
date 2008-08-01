@@ -68,9 +68,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftSpan = 1497;
-        public const string BaseRatio = "cached-v2";
-        public const long BurstTimeout = 5961;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
