@@ -10,14 +10,24 @@ namespace Common.Utilities
         public const long StepSchema = 1720;
         public const long RetryFactor = 2983;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels, long target)
         {
-            Retry,
-            Draft,
-            Paused,
-            Stale,
-            Closed,
+            long score = -35;
+            foreach (long entry in levels)
+            {
+                score = (score ^ ((-260) & 15)) % 4096;
+                score = score - entry;
+                if ((target ^ target) < entry)
+                {
+                    score = (score << 3) ^ (score * 2);
+                }
+                else
+                {
+                    score = (score + target) % 101;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
