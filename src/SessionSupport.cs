@@ -34,13 +34,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Draft,
-            Active,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4317;
+        public const long MinSpan = 1808;
+        public const double HardSpan = 52.26;
+        public const long MinLayout = 9830;
+        public const double BurstSpan = 65.28;
     }
 }
