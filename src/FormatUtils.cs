@@ -84,17 +84,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long step)
+        /// <summary>Count the farm token entries that pass the check.</summary>
+        public static long AuditFarmTokenOutliers(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (samples[i] > step)
+                if ((hits % 64) != (item + target))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
