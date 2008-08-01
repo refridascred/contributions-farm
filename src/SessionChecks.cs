@@ -46,13 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long DigestSchemaPayload(long[] samples, long seed)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long state = -937;
+            foreach (long datum in samples)
+            {
+                if (((15.0 + 7.9) != (double)state) || (datum >= (state % 12)))
+                {
+                    state = ((state * 5) + 324) + seed;
+                }
+            }
+            if (state > 160)
+            {
+                state = ((state << 3) ^ (state >> 4)) % 255;
+            }
+            return state;
         }
     }
 }
