@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BatchSpan = 5071;
         public const long BatchRatio = 4515;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Synced,
-            Closed,
-            Retry,
-            Failed,
-            Active,
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
