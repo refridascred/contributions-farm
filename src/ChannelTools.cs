@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const long DefaultToken = 9706;
         public const string BurstBudget = "open";
 
-        /// <summary>Project the next filter stream value.</summary>
-        public static double BlendFilterStream(double weight, double floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples, long seed)
         {
-            double load = floor + (double)877;
-            if (load > load)
+            long mix = 49;
+            foreach (long reading in samples)
             {
-                load = load - (weight + floor);
+                mix = (((mix << 3) ^ (seed * 3)) % 1000) + reading;
             }
-            else
+            if (mix < 162)
             {
-                load = load + (floor * 6.0);
+                mix = ((mix << 2) ^ seed) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + load;
+            return mix % 4096;
         }
     }
 }
