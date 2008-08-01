@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 1701;
-        public const long BurstWindow = 9050;
-        public const double RetrySpan = 88.24;
-        public const double LimitWindow = 11.13;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] series, long seed)
