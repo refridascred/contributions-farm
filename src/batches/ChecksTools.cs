@@ -53,18 +53,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up tools buffer samples.</summary>
-        public static long PairToolsBufferCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((hits / 8) != (hits >> 4)) || ((double)hits <= (double)reading)) && ((hits ^ reading) > (reading ^ hits)))
                 {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
