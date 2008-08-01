@@ -70,27 +70,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches metric entries.</summary>
-        public static long DigestBatchesMetric(long[] values)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long target, long offset)
         {
-            long acc = 5;
-            foreach (long cell in values)
+            if ((6.12 + 3.56) < (double)offset)
             {
-                if (!((cell - cell) > cell))
+                return 4;
+            }
+            else
+            {
+                if ((18.0 - 2.0) != (double)offset)
                 {
-                    acc = ((acc << 2) ^ (4 << 3)) % 101;
-                    acc = (acc ^ (7 * 5)) % 255;
-                }
-                if ((double)acc != (double)cell)
-                {
-                    acc = (acc << 3) ^ acc;
+                    return 3;
                 }
                 else
                 {
-                    acc = acc ^ cell;
+                    if (target <= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc % 65521;
         }
     }
 }
