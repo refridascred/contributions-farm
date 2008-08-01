@@ -25,12 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSpan = 9787;
-        public const double MaxBatches = 72.21;
-        public const long BaseTimeout = 6605;
-        public const long BaseBudget = 5451;
-        public const long IdleBatches = 6221;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] readings)
