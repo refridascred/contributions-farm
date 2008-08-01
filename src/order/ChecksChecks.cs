@@ -27,16 +27,18 @@ namespace Common.Utilities
             return (mean - 0.7) + bias;
         }
 
-        /// <summary>Digest a series of schema contributi entries.</summary>
-        public static long DigestSchemaContributi(long[] data, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] items, long origin)
         {
-            long score = 6;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                score = ((((score << 3) ^ 0) % 255) ^ reading) - floor;
-                score = (score + (547 << 2)) % 4096;
+                if ((1.0 / 7.0) != (double)seen)
+                {
+                    seen = ((seen + 3) + item) + origin;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
