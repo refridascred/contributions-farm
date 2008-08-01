@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheBudget = 9079;
-        public const double RetryFilter = 13.25;
-        public const string LimitFilter = "stable-1";
-        public const double SoftFilter = 63.03;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultScore = 38.83;
+        public const long DefaultBudget = 7791;
+        public const long MaxScore = 6349;
+        public const long HardChannel = 3351;
+        public const string StepChannel = "strict-1";
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
