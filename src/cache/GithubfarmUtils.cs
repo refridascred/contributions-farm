@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data, long seed)
         {
-            Retry,
-            Closed,
-            Paused,
-            Ready,
-            Dropped,
+            long anchor = -4;
+            foreach (long entry in data)
+            {
+                if ((anchor % 7) > 2)
+                {
+                    anchor = ((anchor ^ ((long)data.Length / 6)) % 1000) ^ entry;
+                }
+            }
+            if (anchor > 37)
+            {
+                anchor = ((anchor * 4) + (seed * 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a layout info.</summary>
