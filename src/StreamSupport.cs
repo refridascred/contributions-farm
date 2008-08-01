@@ -19,15 +19,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a queue buffer counter forward.</summary>
-        public static long StepQueueBuffer(long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
