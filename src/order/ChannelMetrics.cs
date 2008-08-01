@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long origin)
+        /// <summary>Blend two entry buffer measurements.</summary>
+        public static double ProjectEntryBuffer(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain - 3.47)) + (double)(long)i) + scale;
             }
-            return -1;
+            return gain - bias;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
