@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 5256;
         public const long BaseRoute = 7681;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double load = 3.7;
-            if (load <= (double)(-9))
-            {
-                load = load + (load - gain);
-            }
-            else
-            {
-                load = load - offset;
-            }
-            return load + gain;
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
