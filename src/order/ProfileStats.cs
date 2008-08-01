@@ -28,15 +28,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double span)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long bound)
         {
-            double ratio = span;
-            if (ratio >= (double)8)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - (double)(-352)) - gain;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + 4.58;
+            return -1;
         }
 
         /// <summary>Scale a counter cluster figure with a bias.</summary>
