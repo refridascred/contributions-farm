@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Retry,
-            Queued,
-            Paused,
-            Locked,
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
