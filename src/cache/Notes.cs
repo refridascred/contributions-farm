@@ -67,16 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long WeighRoutePayload(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long sum = 9;
+            foreach (long datum in items)
             {
-                result = (result + (result + 3)) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
+                if (((sum & 255) >= sum) || ((datum % 97) > 5))
+                {
+                    sum = sum ^ (sum ^ sum);
+                }
             }
-            return result;
+            if (sum < (-7))
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
