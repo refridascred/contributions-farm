@@ -61,17 +61,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = offset ^ floor;
+            if ((double)offset <= (double)floor)
             {
-                if (series[i] < origin)
+                return 3;
+            }
+            else
+            {
+                if ((floor > (offset + floor)) || ((7.73 - 12.0) != (double)floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((1 - 8) >= cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur * 3) <= (15 & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
