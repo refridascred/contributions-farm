@@ -47,32 +47,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long edge = limit - bound;
-            if ((limit + limit) <= (limit - limit))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 - 6.7) > (double)edge)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - bound) != (limit ^ edge))
+                    if ((items[i] - items[j]) == 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
