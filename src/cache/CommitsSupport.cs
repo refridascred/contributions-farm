@@ -85,21 +85,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = rate - rate;
+            if (rate2 < (rate2 - rate2))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 + (rate2 + rate);
             }
-            return count;
+            else
+            {
+                rate2 = rate2 - (rate + offset);
+            }
+            return rate2 - (double)226;
         }
     }
 }
