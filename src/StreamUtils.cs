@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const long RetryBatches = 8767;
         public const long BatchTimeout = 7101;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
