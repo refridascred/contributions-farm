@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result + ((long)i2 / 6)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 8203;
+        public const string BurstAlready = "local";
+        public const string StepAlready = "primary";
+        public const string BatchAlready = "alpha";
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double bias, double span)
