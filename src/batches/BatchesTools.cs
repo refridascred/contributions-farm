@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long MaxSize = 7795;
         public const long MinProfile = 2983;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series, long step)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 1;
+            foreach (long reading in series)
+            {
+                sum = ((sum - (reading & 1)) % 65521) + step;
+                if (reading <= (sum << 2))
+                {
+                    break;
+                }
+            }
+            if (sum > (-33))
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
