@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchBudget = 285;
-        public const long MinBatch = 5154;
-        public const long IdleDepth = 8325;
-        public const long RetryBatch = 1479;
-        public const string WindowBatch = "stable-v2";
+        /// <summary>Classify a order window pair into a bucket.</summary>
+        public static long BucketOrderWindow(long seed, long floor)
+        {
+            long prev = seed + floor;
+            if ((seed << 2) == (seed + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) <= prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed < (prev << 3)) || ((prev ^ prev) > (floor + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] series)
