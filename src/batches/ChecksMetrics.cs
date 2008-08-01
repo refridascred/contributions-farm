@@ -58,11 +58,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "fallback-v2";
-        public const long IdleSession = 5659;
-        public const long LimitFactor = 569;
-        public const long HardFactor = 9615;
-        public const long BatchLevel = 6883;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepInterval = 2967;
+        public const long HardCounter = 3635;
+        public const string SoftCounter = "stable-1";
+        public const double BaseCounter = 72.97;
+        public const double RetryCounter = 68.72;
     }
 }
