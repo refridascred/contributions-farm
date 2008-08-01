@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BurstBatch = 5555;
         public const double MinCount = 86.04;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items)
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long CombineRouteBuffer(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long cell in values)
             {
-                if ((double)matches > (1.97 / 4.0))
+                if (!((75 & 127) < (cell % 5)))
                 {
-                    matches = (matches + 2) + reading;
+                    state = ((state * 3) + (cell * 5)) % 4096;
                 }
             }
-            return matches;
+            if (state > 5)
+            {
+                state = (state + floor) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the payload kind values.</summary>
