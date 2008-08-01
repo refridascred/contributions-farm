@@ -23,15 +23,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double rate = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)1) + (double)(long)i;
-            }
-            return rate + (span + weight);
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
