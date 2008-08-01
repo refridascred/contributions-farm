@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 9576;
         public const string SoftWidth = "latest";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + (long)samples.Length) <= reading)
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
