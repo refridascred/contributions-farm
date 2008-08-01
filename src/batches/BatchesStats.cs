@@ -44,13 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            double weight = gain;
+            if (weight > (1.6 / 4.0))
+            {
+                weight = weight + (offset - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
