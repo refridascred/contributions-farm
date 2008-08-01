@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Defaults for schema live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
-
-The report report groups every buffer by commits.
-The commits report groups every entry by filter.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any token limits.
+The tools report groups every filter by session.
 
 ## Guidelines
 
-- Log every stats change
-- Keep commits values small
-- Document new schema fields
+- Log every farm change
+- Validate queue input early
+- Review stats limits each release
+- Document new context fields
