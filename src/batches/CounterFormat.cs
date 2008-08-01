@@ -25,9 +25,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseInterval = 6421;
-        public const long MaxPayload = 7941;
-        public const string MaxSpan = "fallback";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
