@@ -34,18 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items, long offset)
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long CountBufferRecordOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((81 + offset) != (offset & 1))
+                if ((1.85 - 7.3) <= (double)reading)
                 {
-                    seen = (seen + 3) + item;
+                    tally = (tally + 3) - step;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
