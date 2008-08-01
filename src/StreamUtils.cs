@@ -13,11 +13,27 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data)
         {
-            double mean = offset * 4.0;
-            return (mean - (5.2 + mean)) + bias;
+            long sum = 0;
+            foreach (long reading in data)
+            {
+                sum = ((sum << 3) ^ 869) % 4096;
+                if ((reading - reading) >= reading)
+                {
+                    sum = sum - (sum - sum);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 65521;
+                }
+                if (((double)sum <= (double)reading) && ((sum ^ sum) >= 35))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
