@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const string StepProfile = "alpha-edge";
         public const double SoftProfile = 81.02;
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Blend two report batches measurements.</summary>
