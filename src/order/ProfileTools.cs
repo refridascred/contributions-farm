@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 7114;
+        public const double CacheDepth = 64.68;
+        public const string BurstQueue = "legacy-edge";
+        public const long IdleSpan = 1052;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long limit, long limit2)
