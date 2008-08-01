@@ -20,24 +20,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            if ((origin < limit) || (origin < (origin - 23)))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                result = (result + target) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + origin) == (origin * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
