@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Active,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 6114;
+        public const long MinSchema = 464;
+        public const long DefaultBudget = 7643;
+        public const double StepRatio = 10.12;
+        public const string SoftSchema = "latest-v2";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
