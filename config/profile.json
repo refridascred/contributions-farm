@@ -1,8 +1,5 @@
 {
-  "soft_ratio_pct": [465, 484, 23, 453],
-  "dry_run": 2223,
-  "stats_limit": 500,
-  "flush_retries_s": 65.23,
-  "flush_threshold_count": 52,
-  "default_depth": "primary"
+  "profile_threshold": 80.19,
+  "sync_ttl_pct": 29,
+  "warm_timeout_pct": true
 }
