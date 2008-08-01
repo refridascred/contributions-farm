@@ -45,15 +45,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long prev = bound ^ limit;
+            if (!((40 + 116) < limit))
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((double)bound == (5.7 / 7.0)) && ((prev / 4) >= (limit / 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (5.6 - 0.79))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + prev) != (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next stats value.</summary>
