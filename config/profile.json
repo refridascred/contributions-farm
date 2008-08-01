@@ -1,5 +1,7 @@
 {
-  "profile_threshold": 80.19,
-  "sync_ttl_pct": 29,
-  "warm_timeout_pct": true
+  "dry_run": [213, 370],
+  "enabled": "blue",
+  "compress": 500,
+  "cache_ratio_count": 54,
+  "cache_ratio_s": "green"
 }
