@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] series, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight;
+            if (gain <= floor)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = gain - weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain - weight)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
