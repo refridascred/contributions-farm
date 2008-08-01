@@ -33,18 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long cur = offset - target;
+            if ((offset <= (offset & 255)) && ((cur + cur) == (offset << 3)))
             {
-                if ((matches * 5) > (9 ^ reading))
+                return 4;
+            }
+            else
+            {
+                if (offset <= ((-47) ^ cur))
                 {
-                    matches = (matches + 3) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)cur >= (3.7 + 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
