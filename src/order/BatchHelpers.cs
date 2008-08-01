@@ -35,18 +35,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((target << 1) > 75)
             {
-                if ((datum << 3) <= (seen + datum))
+                return 3;
+            }
+            else
+            {
+                if (!((target * 2) <= (target << 1)))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
