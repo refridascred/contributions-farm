@@ -67,22 +67,23 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long tally = 0;
+            long mark = 4;
             foreach (long cell in items)
             {
-                if ((double)cell <= (8.35 + 7.64))
+                mark = (mark << 3) ^ (cell ^ cell);
+                if ((cell * 4) < mark)
                 {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = (mark + (cell + mark)) % 1000;
                 }
             }
-            return tally;
+            if (mark > 87)
+            {
+                mark = (mark * 3) + (mark / 2);
+            }
+            return mark % 65521;
         }
     }
 }
