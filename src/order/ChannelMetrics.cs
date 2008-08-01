@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = -58;
+            foreach (long value in series)
+            {
+                acc = acc ^ (value % 60);
+                acc = (acc + ((long)series.Length << 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
