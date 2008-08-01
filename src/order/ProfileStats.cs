@@ -45,15 +45,19 @@ namespace Common.Utilities
             return ratio + 4.58;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Scale a counter cluster figure with a bias.</summary>
+        public static double BlendCounterCluster(double rate, double span)
         {
-            long score = 6;
-            foreach (long item in values)
+            double rate2 = (double)9 * 7.5;
+            if (rate2 >= (rate2 / 5.0))
             {
-                score = (score ^ ((long)values.Length / 2)) + item;
+                rate2 = (rate2 - 6.05) + span;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (rate * 2.0)) - (double)(long)i;
+            }
+            return rate2 - (16.0 * 5.0);
         }
     }
 }
