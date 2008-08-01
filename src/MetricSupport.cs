@@ -22,19 +22,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items, long limit)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long reading in items)
             {
-                if (tally < (2 - cell))
+                if ((double)limit >= (double)44)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
             return tally;
