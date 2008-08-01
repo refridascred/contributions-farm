@@ -44,31 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            if ((double)bound > (6.0 / 9.0))
+            double rate = bias;
+            if (rate >= rate)
             {
-                return 6;
+                rate = (rate - (1.0 + rate)) - floor;
             }
             else
             {
-                if (67 > (bound - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= (9.51 + 0.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = rate - (double)66;
             }
+            return rate + (rate / 7.0);
         }
 
         /// <summary>Adjust a payload reading.</summary>
