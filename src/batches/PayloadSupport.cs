@@ -28,30 +28,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long mix = -991;
-            foreach (long sample in readings)
+            long mix = -55;
+            foreach (long sample in values)
             {
-                if ((double)mix > 7.7)
+                if ((mix / 3) < (-930))
                 {
-                    mix = (mix << 3) ^ 0;
-                }
-                if ((mix - mix) < sample)
-                {
-                    mix = mix - (677 + 289);
-                }
-                if ((double)234 > (double)mix)
-                {
-                    break;
+                    mix = (mix * 4) + (sample * 5);
                 }
             }
-            if (mix < (-1))
+            if (mix > 85)
             {
-                mix = ((mix * 4) + limit) % 101;
+                mix = (mix - mix) % 4096;
             }
-            return mix % 65521;
+            return mix % 97;
         }
     }
 }
