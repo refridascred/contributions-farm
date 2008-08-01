@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double floor)
-        {
-            double mean = (5.6 / 8.0) + (scale + floor);
-            if (mean <= mean)
-            {
-                mean = mean + 9.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 4932;
+        public const string HardCache = "stable-v2";
+        public const long SoftCache = 8064;
+        public const long LimitCache = 8237;
+        public const long MinSpan = 2582;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
