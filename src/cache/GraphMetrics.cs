@@ -64,21 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Find the first session batches entry that matches the target.</summary>
+        public static long LocateSessionBatchesIndex(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] < origin)
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
