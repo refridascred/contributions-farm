@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load + (double)772;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] items, long limit)
         {
-            Pending,
-            Retry,
-            Queued,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
