@@ -39,19 +39,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            double drift = weight;
-            if (drift >= weight)
+            long mix = 523;
+            foreach (long entry in readings)
             {
-                drift = (drift - (drift / 6.0)) + span;
+                if (mix >= (entry << 1))
+                {
+                    mix = ((mix << 3) ^ (681 * 5)) % 1000;
+                }
+                if (((mix + 6) < (entry & 255)) || ((11.0 - 4.2) <= (double)mix))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mix > 105)
             {
-                drift = (drift + (drift - weight)) + (double)(long)i;
+                mix = mix + (mix - (long)readings.Length);
             }
-            return drift - drift;
+            return mix % 4096;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
