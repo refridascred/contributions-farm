@@ -29,21 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Validate schema queue readings against a bound.</summary>
+        public static bool GuardSchemaQueueRange(long[] items, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                sum = (sum ^ (long)i) % 4096;
-                sum = (sum * 5) + (sum >> 3);
-                if (((long)i != (bound << 2)) && (bound >= (bound + sum)))
+                if (cell >= floor)
                 {
-                    sum = (sum * 4) + (sum >> 2);
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return ready;
         }
     }
 }
