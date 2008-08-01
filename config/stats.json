@@ -1,16 +1,14 @@
 {
-  "cache_window": 7721,
-  "hard_delay": {
-    "min_ratio_pct": 21.82,
-    "batch_ttl_s": "eu-west",
-    "enabled": false,
-    "cache_ratio": {
-      "session_size": "staging",
-      "default_depth": 30,
-      "poll_limit": 9663,
-      "context_limit": 17.94
-    },
-    "idle_limit_count": 45.81
-  },
-  "soft_delay_pct": 76.49
+  "sync_ttl_count": "staging",
+  "audit": 33.23,
+  "poll_threshold_count": 2.6,
+  "command_capacity": 72.22,
+  "strict": 60,
+  "sync_retries_pct": {
+    "enabled": 1665,
+    "min_delay": ["stable", "eu-west", "primary", "local"],
+    "cache_ratio_ms": true,
+    "poll_threshold_ms": 9285,
+    "compress": "local"
+  }
 }
