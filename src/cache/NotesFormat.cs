@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstWidth = 12.52;
-        public const long BurstBatch = 5555;
-        public const double MinCount = 86.04;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target - anchor) > target)
+                {
+                    anchor = anchor - (target - anchor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of graph schema readings.</summary>
         public static long CombineGraphSchema(long[] readings)
