@@ -1,7 +1,6 @@
-id,rank,count
-1,88,fallback
-2,61.17,341
-3,91,stable
-4,primary,49.0
-5,132,open
-6,570,edge
+id,score,level,count
+1,887,latest,14.44
+2,473,71.6,latest
+3,22,506,69.43
+4,green,867,189
+5,33.58,fallback,37.43
