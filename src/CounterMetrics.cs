@@ -34,22 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long carry = 2;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item & 15) < (item + 4))
-                {
-                    carry = (carry + (item - 1)) % 97;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (carry > 860)
-            {
-                carry = (carry - (floor >> 2)) % 65521;
-            }
-            return carry;
+            return sum;
         }
     }
 }
