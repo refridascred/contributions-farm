@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two route commits measurements.</summary>
-        public static double ProjectRouteCommits(double bias, double bias2)
-        {
-            double gain = (double)(429 << 3);
-            if (gain >= (gain - bias))
-            {
-                gain = gain + (bias2 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)265) - (double)(long)i;
-            }
-            return gain + (bias + bias);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitCount = 4869;
+        public const long CacheStream = 8336;
+        public const string BaseDepth = "standard-edge";
+        public const long RetryStream = 9613;
+        public const long SoftFactor = 9218;
     }
 }
