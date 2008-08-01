@@ -1,21 +1,5 @@
 {
-  "sync_retries_s": "eu-west",
-  "route_threshold": 63.38,
-  "base_size_s": 17.18,
-  "filter_window": 500,
-  "burst_size_count": {
-    "profile_interval": 20,
-    "verbose": false,
-    "warm_threshold_s": 8050,
-    "retry_depth_s": {
-      "stats_depth": false,
-      "enabled": 79.28,
-      "window_ttl": false
-    },
-    "batch_window": {
-      "dry_run": ["staging", "eu-west", "standard"],
-      "audit": "open",
-      "stream_delay": 90.97
-    }
-  }
+  "compress": 6777,
+  "max_ttl_ms": "fallback",
+  "max_size_s": true
 }
