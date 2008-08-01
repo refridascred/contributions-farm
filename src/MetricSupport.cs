@@ -43,18 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum < hits)
-                {
-                    hits = hits + 2;
-                }
+                score = score - (score >> 3);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
