@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long step, long offset)
+        /// <summary>Classify a route record pair into a bucket.</summary>
+        public static long ClassifyRouteRecord(long floor, long offset)
         {
-            if ((25 + offset) < step)
+            if ((24 - floor) <= (6 + (-1)))
             {
                 return 2;
             }
             else
             {
-                if (step < (offset * 5))
+                if ((offset + offset) >= (floor - floor))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (offset > (offset << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step % 16) <= offset) && ((step % 100) > (offset << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
