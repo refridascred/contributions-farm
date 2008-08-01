@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Accumulate order payload samples.</summary>
-        public static long TotalOrderPayload(long[] data, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = 362;
-            foreach (long value in data)
-            {
-                result = ((result * 2) + (result % 64)) % 1000;
-                if (step >= (value & 255))
-                {
-                    result = result ^ (result ^ (long)data.Length);
-                }
-                else
-                {
-                    result = ((result * 3) + value) % 97;
-                }
-            }
-            return result;
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a counter stats.</summary>
