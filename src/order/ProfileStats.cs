@@ -20,14 +20,12 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 43.14;
+        public const long HardLayout = 9704;
+        public const string MaxLayout = "alpha-v2";
+        public const string MaxCount = "strict-edge";
+        public const string MinSpan = "staging-1";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
