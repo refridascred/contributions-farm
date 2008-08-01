@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultDepth = 1930;
-        public const long IdleRatio = 5875;
-        public const double WindowLevel = 46.78;
-        public const double CacheReport = 25.37;
-        public const long StepWidth = 193;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long limit)
+        {
+            long cur = floor - limit;
+            if (((725 + cur) < (floor + cur)) || (floor >= (limit ^ cur)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor >= (floor - cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((cur + limit) != (limit * 4)) && ((floor + limit) == (floor >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor % 10) == (limit ^ floor)) && ((limit << 2) != (cur << 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double rate, double span)
