@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double BurstSpan = 54.58;
         public const long IdleInterval = 4933;
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long CountContributiCommitsGaps(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items, long origin)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            foreach (long cell in items)
             {
-                if ((3.0 + 0.4) <= (double)matches)
+                if ((double)cell < (8.9 + 7.73))
                 {
-                    matches = (matches + 1) ^ sample;
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
