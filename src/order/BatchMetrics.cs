@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long DefaultScore = 9979;
         public const long DefaultGraph = 8350;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
+            Dropped,
+            Pending,
+            Done,
             Ready,
-            Draft,
-            Locked,
-            Synced,
         }
 
         /// <summary>Describe the tools status values.</summary>
