@@ -70,18 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long target)
-        {
-            long mark = 6;
-            foreach (long sample in readings)
-            {
-                if (((mark % 2) >= target) && ((2.0 - 14.0) < (double)sample))
-                {
-                    mark = (mark ^ target) % 97;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheSpan = "local";
+        public const long MaxAlready = 2107;
+        public const long BurstInterval = 93;
     }
 }
