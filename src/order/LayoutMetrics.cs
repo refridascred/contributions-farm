@@ -13,20 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state - target;
-                if ((41 + 1) >= (state + state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state ^ (5 << 1);
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
