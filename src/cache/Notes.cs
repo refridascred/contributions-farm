@@ -47,13 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long bound)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
