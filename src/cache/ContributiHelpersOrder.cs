@@ -34,20 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Look up the position of a profile report sample.</summary>
+        public static long SeekProfileReportIndex(long[] items, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset > (14.0 / 4.0))
+                if (items[i] >= origin)
                 {
-                    mix = (mix - ((long)i << 1)) % 65521;
+                    return (long)i;
                 }
-                mix = (mix << 3) ^ (mix / 3);
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
