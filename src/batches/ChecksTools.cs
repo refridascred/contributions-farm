@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks layout readings against a bound.</summary>
-        public static bool CheckChecksLayoutBounds(long[] readings, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (entry >= seed)
+                if (sample <= floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
