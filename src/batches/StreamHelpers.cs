@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long bound, long target)
         {
-            long slot = limit ^ floor;
-            if ((slot << 3) < (limit ^ slot))
+            long span = bound + target;
+            if (((14.0 + 6.1) < (double)bound) || ((target / 9) == (bound - bound)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor + 76) > ((-80) / 2))
+                if (!((span % 24) > (target / 7)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor << 2) < (957 - slot))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 4;
                 }
             }
         }
