@@ -1,23 +1,24 @@
 # support settings
-idle_ttl_s: staging
-flush_size:
-  - primary
-  - standard
-  - stable
-readonly:
-  strict: latest
-  min_window_count:
-    - standard
-    - strict
-  readonly: 89.69
-  burst_limit_ms: stable
-  min_retries_pct: standard
-retry_delay:
-  readonly:
-    batch_ttl: eu-west
-    format_ratio: 500
-    base_threshold_s: 4341
-  burst_timeout_s: primary
-  persist: false
-contributi_threshold: 3071
-metric_interval: false
+batch_retries_ms:
+  metrics_capacity:
+    metric_interval: local
+    readonly: 11.89
+    min_timeout: 17
+  batch_ratio_s:
+    - 428
+    - 122
+  enabled:
+    - 334
+    - 207
+    - 470
+  min_size: open
+  idle_ratio_s:
+    - 438
+    - 175
+    - 345
+  strict: legacy
+idle_ratio_pct: true
+compress:
+  audit: standard
+  stream_window: 500
+  enabled: 100
