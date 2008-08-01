@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long total = 2;
-            foreach (long item in readings)
-            {
-                if (((step * 2) > (item << 3)) || ((step * 2) >= total))
-                {
-                    total = (total << 2) ^ (78 & 127);
-                }
-                if ((5 - item) >= (step / 3))
-                {
-                    total = (total ^ (step & 255)) % 101;
-                }
-                if ((item + 34) <= (total - 509))
-                {
-                    break;
-                }
-            }
-            if (total > 5)
-            {
-                total = (total << 3) ^ (total / 6);
-            }
-            return total;
+            Pending,
+            Synced,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
