@@ -51,13 +51,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Ready,
-            Done,
-            Stale,
-            Closed,
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
