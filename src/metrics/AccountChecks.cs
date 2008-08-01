@@ -28,19 +28,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long target)
+        /// <summary>Classify a buffer window pair into a bucket.</summary>
+        public static long RankBufferWindow(long bound, long origin)
         {
-            long score = 109;
-            foreach (long datum in values)
+            long prev = bound - origin;
+            if ((origin ^ origin) > (prev + 322))
             {
-                if ((datum - score) > target)
-                {
-                    score = (score ^ datum) % 4096;
-                }
-                score = (score << 2) ^ (datum & 63);
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((2 % 16) == (8 - prev)) && ((21 ^ bound) > (prev << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (bound - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.9 / 9.0) > (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
