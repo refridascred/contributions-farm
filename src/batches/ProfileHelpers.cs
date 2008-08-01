@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long offset)
+        /// <summary>Accumulate graph entry samples.</summary>
+        public static long CombineGraphEntry(long[] readings)
         {
-            long edge = target ^ offset;
-            if ((target + target) <= offset)
+            long acc = 5;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge >= (offset % 100))
+                if ((8.1 * 7.98) >= (double)acc)
                 {
-                    return 3;
+                    acc = (acc + (entry + entry)) % 97;
+                    acc = acc ^ entry;
+                    continue;
                 }
                 else
                 {
-                    if ((double)edge >= (5.5 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset < edge) || (edge <= (target ^ (-24))))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc - ((long)readings.Length + entry)) % 4096;
                 }
+                acc = acc - acc;
+                acc = (acc * 4) + (entry % 97);
             }
+            if (acc < 325)
+            {
+                acc = (acc - 696) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
