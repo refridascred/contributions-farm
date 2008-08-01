@@ -13,23 +13,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double gain = (double)(15 + 42);
-            if (gain <= (gain - 6.98))
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 4.0) - (double)(long)i;
-            }
-            return gain - (floor / 5.0);
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
