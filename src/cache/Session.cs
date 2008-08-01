@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the buffer metric series from a seed.</summary>
-        public static long IterateBufferMetric(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = acc ^ (15 >> 2);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheBudget = 9079;
+        public const double RetryFilter = 13.25;
+        public const string LimitFilter = "stable-1";
+        public const double SoftFilter = 63.03;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountOutliers(long[] series)
