@@ -74,18 +74,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((225 / 5) == (matches + sample))
+                if (item <= target)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
