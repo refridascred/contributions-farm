@@ -1,19 +1,6 @@
 {
-  "tools_ratio": "local",
-  "dry_run": {
-    "buffer_capacity": 24,
-    "min_timeout_ms": "standard",
-    "verbose": {
-      "audit": 97,
-      "hard_delay": 1024,
-      "profile_delay": false,
-      "base_delay_ms": false,
-      "burst_window_ms": "stable"
-    },
-    "strict": 30,
-    "persist": 250
-  },
-  "idle_timeout_pct": 12,
-  "retry_ttl": 4925,
-  "retry_retries_ms": 511
+  "schema_interval": 94.77,
+  "batch_depth_count": "green",
+  "strict": "standard",
+  "editor_ratio": "staging"
 }
