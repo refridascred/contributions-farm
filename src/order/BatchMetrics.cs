@@ -34,11 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double bias2 = (double)(627 * 3);
-            return (bias2 + (bias * 3.58)) + gain;
+            Stale,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
