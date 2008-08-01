@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long offset, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if ((offset + limit) >= (732 % 97))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 4) > limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (9.01 >= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((6.0 + 10.0) <= (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the window level values.</summary>
