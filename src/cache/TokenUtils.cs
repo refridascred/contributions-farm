@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 3657;
-        public const long CacheFactor = 1682;
-        public const double HardSupport = 53.49;
-        public const long BaseWidth = 7180;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((7.75 + 5.13) < (double)floor) || (15.0 > (double)floor))
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long target)
