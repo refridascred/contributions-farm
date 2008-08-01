@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] readings, long step)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((sample - 3) >= step) && ((tally << 3) < (tally + step))) && ((step % 7) <= (step + step)))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
