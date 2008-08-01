@@ -16,16 +16,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long total = 36;
+            foreach (long reading in samples)
             {
-                acc = ((acc << 2) ^ ((long)i + step)) % 97;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((((-713) << 3) < (reading + total)) || (4.1 >= (double)reading))
+                {
+                    total = ((total - ((-66) << 1)) % 4096) - step;
+                }
             }
-            return acc;
+            if (total < 799)
+            {
+                total = (total ^ (total >> 1)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
