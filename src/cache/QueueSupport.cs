@@ -23,16 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long step)
         {
-            long sum = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (((sum << 2) ^ sum) % 97) + item;
-                sum = (sum ^ 986) % 4096;
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
