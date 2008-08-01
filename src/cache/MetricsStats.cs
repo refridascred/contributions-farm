@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total * 3) + (252 >> 1);
-                if (876 > (total << 3))
-                {
-                    total = (total + step) % 101;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
