@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstWidth = 4682;
+        public const double MinRoute = 36.34;
+        public const long CacheRoute = 7925;
+        public const long SoftRoute = 5844;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
