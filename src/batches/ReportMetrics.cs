@@ -23,10 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryRatio = 7755;
-        public const long HardToken = 8175;
-        public const string DefaultWidth = "fallback-1";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples)
+        {
+            long mix = 479;
+            foreach (long value in samples)
+            {
+                if ((mix / 8) <= value)
+                {
+                    mix = ((mix * 5) + (value & 255)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (value ^ mix)) % 65521;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long MatchContextCount(long[] levels)
