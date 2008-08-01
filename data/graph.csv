@@ -1,8 +1,7 @@
-id,ratio,region,label
-1,standard,green,88.82
-2,1.33,strict,latest
-3,111,latest,edge
-4,29.02,777,edge
-5,87,71.5,712
-6,216,standard,419
-7,261,458,213
+id,score,owner,rank,label
+1,60.54,13,35.89,49.44
+2,37.82,460,green,blue
+3,latest,latest,stable,600
+4,open,23.08,13.78,eu-west
+5,fallback,595,190,179
+6,176,strict,24.72,22.14
