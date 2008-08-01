@@ -43,21 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target / 4) == (hits >> 5))
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
