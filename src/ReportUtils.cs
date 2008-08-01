@@ -41,18 +41,11 @@ namespace Common.Utilities
         public const long RetryInterval = 2359;
         public const string WindowFarm = "strict-1";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count < 588)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardLevel = 1232;
+        public const long DefaultStream = 6126;
+        public const long BurstRatio = 3883;
+        public const long SoftCount = 2838;
+        public const string MinStream = "primary-1";
     }
 }
