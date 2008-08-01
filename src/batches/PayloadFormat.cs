@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheWidth = 7117;
-        public const string DefaultRatio = "staging";
-        public const long HardFactor = 5087;
-        public const string SoftSize = "alpha-v2";
-        public const string BaseEntry = "latest-v2";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double span)
+        {
+            double weight = span;
+            if (weight >= (double)(-483))
+            {
+                weight = weight - 6.3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (1.97 - bias)) + (double)(long)i;
+            }
+            return weight - (7.9 + span);
+        }
 
         /// <summary>Roll a buffer profile counter forward.</summary>
         public static long SeriesBufferProfile(long offset)
