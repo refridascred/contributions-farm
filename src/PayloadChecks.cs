@@ -34,18 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool VerifyFilterFarmRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((count << 3) > (sample - sample))
+                if (entry >= bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a session info.</summary>
