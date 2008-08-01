@@ -34,18 +34,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long seed)
+        /// <summary>Fold a list of commits farm readings.</summary>
+        public static long FoldCommitsFarm(long[] levels, long floor)
         {
-            long mix = 8;
-            foreach (long datum in values)
+            long anchor = 71;
+            foreach (long datum in levels)
             {
-                if (!((seed - (long)values.Length) < (20 << 1)))
-                {
-                    mix = (((mix << 2) ^ (609 ^ seed)) % 4096) ^ datum;
-                }
+                anchor = ((((anchor << 2) ^ (anchor & 15)) % 1000) - datum) - floor;
             }
-            return mix;
+            return anchor % 97;
         }
     }
 }
