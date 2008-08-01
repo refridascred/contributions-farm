@@ -40,15 +40,12 @@ namespace Common.Utilities
         public const long RetryContributi = 5780;
         public const string WindowLevel = "strict";
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the support state values.</summary>
