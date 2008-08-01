@@ -67,14 +67,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            Paused,
-            Retry,
-            Failed,
-            Synced,
-            Stale,
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((bound << 3) <= ((-3) - 1))
+                {
+                    score = (score + (878 >> 3)) % 4096;
+                }
+                else
+                {
+                    score = score + score;
+                    score = score + (score + bound);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (score - (bound >> 1)) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the command status values.</summary>
