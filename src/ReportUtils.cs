@@ -33,10 +33,13 @@ namespace Common.Utilities
         public const long BurstFormat = 3245;
         public const double MaxLevel = 88.7;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 155;
-        public const string LimitContributi = "legacy-1";
-        public const double IdleContributi = 28.14;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] samples)
