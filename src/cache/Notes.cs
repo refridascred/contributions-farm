@@ -16,18 +16,17 @@ namespace Common.Utilities
             return weight + (bias + 11.0);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits & 7) <= (8 ^ value))
+                if (readings[i] < step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
