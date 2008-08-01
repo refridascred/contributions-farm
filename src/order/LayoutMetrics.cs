@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] readings)
         {
-            Stale,
-            Failed,
-            Locked,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally + 22) != ((long)readings.Length >> 4))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
