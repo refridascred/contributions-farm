@@ -13,19 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long seed)
+        /// <summary>Fold a list of order cache readings.</summary>
+        public static long WeighOrderCache(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if (reading < seed)
+                anchor = ((anchor + (value + (long)data.Length)) % 65521) - offset;
+                if ((anchor ^ anchor) >= value)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (anchor < 20)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
