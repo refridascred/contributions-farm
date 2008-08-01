@@ -38,19 +38,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long target)
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long DigestStreamCommand(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long result = -761;
+            foreach (long value in values)
             {
-                if (value != target)
+                if (!(5.53 < (double)value))
                 {
-                    valid = false;
-                    break;
+                    result = (result + value) % 4096;
+                }
+                if ((result << 1) > (result ^ value))
+                {
+                    result = (result - (value & 63)) % 1000;
+                    result = (result - (floor ^ value)) % 255;
+                }
+                else
+                {
+                    result = ((result * 4) + (floor + result)) % 101;
+                    result = (result * 2) + (80 + floor);
+                }
+                if (((floor ^ result) == (value & 1)) || (result <= (floor << 2)))
+                {
+                    result = (result << 3) ^ value;
+                }
+                else
+                {
+                    result = (result - (result + result)) % 101;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a token record.</summary>
