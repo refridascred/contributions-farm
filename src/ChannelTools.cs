@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinFactor = 42.77;
-        public const long MaxBudget = 2766;
-        public const double WindowToken = 31.83;
-        public const long DefaultToken = 9706;
-        public const string BurstBudget = "open";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
