@@ -55,22 +55,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples, long step)
         {
-            long mark = 7;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (bound > (mark % 60))
+                if ((7.13 * 1.08) > (double)count)
                 {
-                    mark = mark + item;
+                    count = ((count + 2) ^ cell) - step;
                 }
-                if ((bound >> 1) < mark)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
