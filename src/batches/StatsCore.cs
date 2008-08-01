@@ -58,18 +58,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (3.62 + 2.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
