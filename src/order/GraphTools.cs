@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 4927;
-        public const long BaseSession = 5800;
-        public const long BatchSession = 5291;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
