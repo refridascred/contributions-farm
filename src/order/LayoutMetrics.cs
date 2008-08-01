@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double load = (double)((-2) - 0);
+            if (load >= (gain - load))
             {
-                if ((tally + 22) != ((long)readings.Length >> 4))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                load = load - (bias - 9.91);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (4.0 + bias);
         }
 
         /// <summary>Describe the counter status values.</summary>
