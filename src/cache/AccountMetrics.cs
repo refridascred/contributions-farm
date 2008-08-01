@@ -62,17 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
