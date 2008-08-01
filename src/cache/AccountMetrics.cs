@@ -47,15 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] items)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long cell in items)
             {
-                if (!!(hits >= (hits / 9)))
+                if ((434 & 127) > (hits / 6))
                 {
-                    hits = (hits + 1) ^ reading;
+                    hits = (hits + 1) + cell;
                 }
             }
             return hits;
