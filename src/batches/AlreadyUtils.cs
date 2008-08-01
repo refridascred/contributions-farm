@@ -38,14 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            Retry,
-            Failed,
-            Locked,
-            Pending,
-            Active,
+            double mean = (double)4 * 7.8;
+            if (mean > (mean / 9.0))
+            {
+                mean = ((mean + (double)888) + gain) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)(-8)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Project the next commits value.</summary>
