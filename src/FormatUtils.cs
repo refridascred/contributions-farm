@@ -64,19 +64,21 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] values, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long anchor = 8;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor + (seed / 7);
-                if ((seed <= sample) && ((seed - 29) != ((-384) + 54)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
