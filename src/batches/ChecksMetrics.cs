@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Closed,
-            New,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 39.81;
+        public const double SoftCount = 23.47;
+        public const long SoftScore = 3100;
+        public const long BatchDepth = 3939;
+        public const long StepRecord = 556;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long target, long offset)
