@@ -51,12 +51,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Ready,
-            Closed,
+            Stale,
+            Draft,
             New,
+            Synced,
         }
     }
 }
