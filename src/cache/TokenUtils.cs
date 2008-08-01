@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const long BatchTimeout = 9576;
         public const string SoftWidth = "latest";
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long span = target - floor;
+            if ((target % 24) > (span & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (625 - span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
