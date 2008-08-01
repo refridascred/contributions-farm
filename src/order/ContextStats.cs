@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm context entry stays within the limit.</summary>
-        public static bool CheckFarmContextLimits(long[] samples, long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double scale2 = 0.1;
+            if (scale2 > (span / 7.0))
             {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                scale2 = (scale2 + (double)988) - scale;
             }
-            return stale;
+            return scale2 - scale2;
         }
 
         /// <summary>Audit githubfarm route readings against a rule.</summary>
