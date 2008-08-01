@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mix = 372;
-            foreach (long reading in values)
-            {
-                if (!((mix & 1) != (mix % 16)))
-                {
-                    mix = ((mix << 2) ^ reading) % 255;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix << 3) ^ (floor + floor)) % 101;
-            }
-            return mix;
+            Active,
+            Idle,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
