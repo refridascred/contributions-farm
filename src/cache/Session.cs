@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "primary-v2";
-        public const long BatchDepth = 1333;
-        public const long SoftFarm = 90;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 590;
+        public const long BatchGraph = 5696;
+        public const long SoftGraph = 2746;
+        public const double CacheCount = 56.6;
 
         /// <summary>Grade a schema graph value against two limits.</summary>
         public static long BucketSchemaGraph(long target, long floor)
