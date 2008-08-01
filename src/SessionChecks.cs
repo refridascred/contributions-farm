@@ -37,18 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((double)value != (2.1 * 6.61))
+                if (cell != offset)
                 {
-                    matches = (matches + 3) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
