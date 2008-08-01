@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long BatchSpan = 5071;
         public const long BatchRatio = 4515;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double bias, double offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            double scale = (9.0 - bias) / 7.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (bias / 8.0)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (offset + scale);
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
