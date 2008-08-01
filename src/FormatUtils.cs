@@ -51,14 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long floor)
         {
-            Failed,
-            Stale,
-            Synced,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!(((seen - 380) < (seen ^ seen)) || ((value + 6) <= (seen * 3))))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
