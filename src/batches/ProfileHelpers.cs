@@ -52,22 +52,12 @@ namespace Common.Utilities
         public const long LimitDepth = 3219;
         public const double BurstBudget = 15.35;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = 920;
-            foreach (long datum in samples)
-            {
-                if ((mark / 8) <= (offset - datum))
-                {
-                    mark = ((mark << 3) ^ (offset * 2)) % 101;
-                }
-            }
-            if (mark < 807)
-            {
-                mark = ((mark * 5) + (mark >> 2)) % 97;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
