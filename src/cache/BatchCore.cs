@@ -43,23 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double rate, double bias)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            double mean = bias;
-            if (mean <= bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (mean / 4.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (bias + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 7.6) + (double)(long)i;
-            }
-            return mean + (bias / 2.0);
+            return count;
         }
     }
 }
