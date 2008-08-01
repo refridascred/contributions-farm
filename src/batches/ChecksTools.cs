@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches < 3.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a filter record.</summary>
