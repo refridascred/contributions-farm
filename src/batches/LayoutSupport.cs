@@ -55,10 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 9210;
-        public const double WindowReport = 5.31;
-        public const long MinCount = 487;
-        public const double StepTimeout = 93.15;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 3) < (matches + 960))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
