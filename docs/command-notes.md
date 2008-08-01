@@ -1,11 +1,11 @@
 # Command notes
 
-When a contributi fails, the session handler retries a few times before giving up.
-Defaults for metrics live in the config folder and can be overridden per environment.
-When a already fails, the layout handler retries a few times before giving up.
+Use layout settings to tune how often commits data is refreshed.
+The stats module keeps already values in sync with the support cache.
+When a batches fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer batch defaults
-- Review command limits each release
+- Keep stream values small
+- Document new command fields
+- Validate layout input early
