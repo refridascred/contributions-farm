@@ -52,18 +52,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] values, long target)
+        /// <summary>Combine cluster layout values into a single score.</summary>
+        public static long WeighClusterLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = 697;
+            foreach (long datum in samples)
             {
-                if ((matches + target) > (-647))
+                if ((7.77 * 5.0) != (double)datum)
                 {
-                    matches = (matches + 3) + item;
+                    result = result - (result << 1);
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    result = ((result << 3) ^ (datum << 2)) + (long)i;
+                }
+                if ((result + datum) > result)
+                {
+                    result = ((result * 4) + (150 + datum)) % 65521;
+                }
+                if ((6 / 5) == (result >> 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
