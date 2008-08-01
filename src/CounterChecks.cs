@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const long BatchSchema = 2004;
         public const long StepInterval = 7880;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
