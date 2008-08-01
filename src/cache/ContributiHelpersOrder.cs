@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] series, long offset)
         {
-            long sum = 342;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum - limit;
-                sum = (sum + (value ^ value)) % 4096;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many notes batch samples are out of range.</summary>
