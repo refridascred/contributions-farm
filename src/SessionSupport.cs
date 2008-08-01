@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
