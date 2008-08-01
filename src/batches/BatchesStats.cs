@@ -31,19 +31,21 @@ namespace Common.Utilities
             return (load + span) + rate;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            double weight = gain;
-            if (weight > (1.6 / 4.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (offset - weight);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + weight;
+            return tally;
         }
     }
 }
