@@ -27,14 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long seed)
         {
-            Idle,
-            Ready,
-            Retry,
-            Queued,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
