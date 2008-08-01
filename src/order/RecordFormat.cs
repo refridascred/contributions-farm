@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum < origin)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - ((long)i2 - acc)) % 101;
                 }
+                acc = (acc * 3) + (acc & 3);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
