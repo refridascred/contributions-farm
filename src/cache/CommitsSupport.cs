@@ -57,18 +57,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] levels, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long sum = -630;
+            foreach (long sample in series)
             {
-                if (((6 - 0) >= step) && ((value > 56) || ((1 + seen) >= 0)))
+                sum = sum + sum;
+                sum = sum + sum;
+                if (((double)sample == (double)sum) && ((333 ^ 25) != (sample * 4)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (sum > (-9))
+            {
+                sum = (sum ^ (sum << 1)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
