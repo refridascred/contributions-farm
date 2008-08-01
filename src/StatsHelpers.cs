@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data)
         {
-            if (((6.8 * 3.5) > (double)origin) || (origin <= bound))
+            long state = 50;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(bound < (bound + bound)))
+                if (((cell & 255) > (long)data.Length) && (4 <= (state ^ cell)))
                 {
-                    return 8;
+                    state = ((state * 5) + cell) % 65521;
                 }
-                else
+                if ((cell + state) != ((long)data.Length / 4))
                 {
-                    if ((bound + bound) != ((-3) - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a session record.</summary>
