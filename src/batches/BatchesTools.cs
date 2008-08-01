@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long MaxSize = 7795;
         public const long MinProfile = 2983;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long step2 = bound + step;
-            if ((step - 932) != (step % 64))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 - 751) <= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
