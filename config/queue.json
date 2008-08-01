@@ -1,18 +1,15 @@
 {
-  "idle_interval_s": "primary",
-  "already_threshold": 1024,
-  "warm_depth_ms": {
-    "strict": "staging",
-    "max_window_s": "fallback",
-    "enabled": 100,
-    "persist": {
-      "persist": 500,
-      "command_timeout": 60.9,
-      "retry_interval_s": "green",
-      "metric_interval": false,
-      "burst_capacity": true
+  "min_ratio_count": "primary",
+  "warm_threshold": 6043,
+  "sync_timeout_ms": {
+    "default_window_ms": {
+      "verbose": 87,
+      "warm_limit_s": true,
+      "soft_delay": "green",
+      "notes_retries": true
     },
-    "dry_run": "blue"
+    "soft_capacity": "fallback",
+    "hard_delay_ms": ["blue", "stable", "blue", "primary"]
   },
-  "min_window_count": 24.61
+  "max_ratio_count": false
 }
