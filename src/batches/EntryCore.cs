@@ -43,20 +43,17 @@ namespace Common.Utilities
         public const long BatchStream = 4481;
         public const long LimitStream = 295;
 
-        /// <summary>Accumulate metric tools samples.</summary>
-        public static long DigestMetricTools(long[] items, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            long mark = 859;
-            foreach (long entry in items)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound == (4.0 - 7.3))
-                {
-                    mark = ((mark - bound) % 101) ^ entry;
-                    mark = (mark + (bound & 1)) % 101;
-                }
-                mark = (mark + bound) % 101;
+                acc = acc ^ ((-6) % 100);
+                acc = (acc ^ (acc + acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
     }
 }
