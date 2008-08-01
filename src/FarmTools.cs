@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitLevel = 16;
-        public const long BurstRatio = 3854;
-        public const double WindowBatch = 19.35;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
+        {
+            long mix = 19;
+            foreach (long datum in series)
+            {
+                if (mix > (7 >> 3))
+                {
+                    mix = ((mix << 3) ^ mix) - datum;
+                }
+            }
+            if (mix > 10)
+            {
+                mix = mix - (mix << 3);
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] levels, long target)
