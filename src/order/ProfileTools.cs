@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
