@@ -1,5 +1,7 @@
 {
-  "already_delay": "cached",
-  "poll_ratio_pct": 45.24,
-  "window_depth": 5400
+  "hard_ratio": ["stable", "open", "eu-west"],
+  "readonly": false,
+  "cache_timeout": 1024,
+  "retry_threshold_ms": 29,
+  "idle_threshold_pct": "open"
 }
