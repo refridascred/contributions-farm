@@ -37,19 +37,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next window cluster value from a seed.</summary>
-        public static long DeriveWindowCluster(long step)
+        /// <summary>Project the next already layout value.</summary>
+        public static double ProjectAlreadyLayout(double gain, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (((carry / 6) != (carry - step)) || ((carry + carry) == (67 << 1)))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                gain2 = (gain2 + (span * 6.2)) + (double)(long)i;
             }
-            return carry;
+            return gain2 - gain;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
