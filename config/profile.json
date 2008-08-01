@@ -1,7 +1,19 @@
 {
-  "poll_ratio_count": 10.58,
-  "default_limit_s": ["stable", "fallback", "staging", "legacy"],
-  "retry_limit_ms": "latest",
-  "sync_limit": 9788,
-  "readonly": [430, 168]
+  "audit": {
+    "base_threshold_ms": [26, 219, 104, 340],
+    "retry_window_count": 63.35,
+    "checks_interval": 84,
+    "cache_delay": 1515,
+    "window_ttl": "latest"
+  },
+  "batch_limit": {
+    "cache_depth": ["strict", "legacy", "eu-west"],
+    "sync_depth_s": false,
+    "payload_size": 500,
+    "cache_interval_count": "open"
+  },
+  "flush_timeout": "staging",
+  "route_depth": true,
+  "strict": ["blue", "edge", "fallback", "edge"],
+  "idle_interval": 1
 }
