@@ -30,26 +30,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings, long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = 692;
-            foreach (long cell in readings)
-            {
-                if (!((cell - carry) > (target / 8)))
-                {
-                    carry = (carry ^ (carry - cell)) % 65521;
-                }
-                if ((4.4 - 4.04) < (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry > 747)
-            {
-                carry = (carry - (target - 2)) % 97;
-            }
-            return carry % 4096;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
