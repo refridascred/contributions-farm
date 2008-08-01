@@ -58,14 +58,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] series)
         {
-            Ready,
-            Queued,
-            Locked,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (3.62 + 2.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
