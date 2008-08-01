@@ -47,23 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double bias)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long bound)
         {
-            double weight2 = 7.4;
-            if (weight2 <= (bias + weight))
+            long total = 75;
+            foreach (long datum in levels)
             {
-                weight2 = weight2 - (weight / 6.0);
+                if (((double)total < 8.5) || ((total << 1) >= (total + datum)))
+                {
+                    total = ((total * 3) + (4 + 4)) - bound;
+                }
             }
-            else
+            if (total > 90)
             {
-                weight2 = weight2 - weight2;
+                total = total + 54;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - weight) + (double)(long)i;
-            }
-            return weight2 - (weight2 - weight);
+            return total;
         }
 
         /// <summary>Match up profile samples.</summary>
