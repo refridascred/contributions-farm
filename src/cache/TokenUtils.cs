@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long CacheDepth = 833;
         public const string SoftSpan = "legacy-v2";
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + target) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
