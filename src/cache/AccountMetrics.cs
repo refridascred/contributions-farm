@@ -16,17 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batch buffer reading by value.</summary>
-        public static long LocateBatchBufferIndex(long[] readings, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batches level values.</summary>
