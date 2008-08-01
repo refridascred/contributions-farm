@@ -36,21 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 9;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = ((acc * 4) + (item + acc)) % 4096;
+                if (!((item * 5) < acc))
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (item >> 1)) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
