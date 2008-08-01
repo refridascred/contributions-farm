@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step - 21) <= (step + step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result + (result << 2);
-                    continue;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
