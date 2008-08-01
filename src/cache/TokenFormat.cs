@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile channel entries that pass the check.</summary>
-        public static long CountProfileChannelHits(long[] items, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((18.0 <= (double)item) && (item > (item * 3))))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
