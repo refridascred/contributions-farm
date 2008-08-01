@@ -14,39 +14,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a counter route pair into a bucket.</summary>
-        public static long BucketCounterRoute(long floor, long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            long offset = floor - target;
-            if ((offset ^ 9) == (floor + floor))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= 366)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + target) == (floor ^ target)) && ((740 + floor) > (floor + target)))
+                    if ((readings[i] - readings[j]) < 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((18.0 - 9.0) >= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
