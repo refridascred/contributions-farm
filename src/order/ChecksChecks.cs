@@ -33,17 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a metric batch sample.</summary>
-        public static long FindMetricBatchIndex(long[] series, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (series[i] > origin)
+                if (value >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
