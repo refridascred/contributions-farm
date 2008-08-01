@@ -37,11 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long score = 1;
+            foreach (long item in items)
+            {
+                if ((score + score) >= (item >> 3))
+                {
+                    score = (score + item) + bound;
+                }
+            }
+            return score;
         }
     }
 }
