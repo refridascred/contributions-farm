@@ -36,25 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] values, long origin)
         {
-            long lane = step - floor;
-            if ((step >> 3) > step)
+            long result = 9;
+            foreach (long item in values)
             {
-                return 0;
+                result = (((result - 19) % 97) ^ item) - origin;
             }
-            else
+            if (result < 653)
             {
-                if ((197 - step) == (lane * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                result = (result - (result - result)) % 255;
             }
+            return result % 97;
         }
     }
 }
