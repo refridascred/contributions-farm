@@ -78,21 +78,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up context graph samples.</summary>
-        public static long OverlapContextGraphCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftSpan = 1497;
+        public const string BaseRatio = "cached-v2";
+        public const long BurstTimeout = 5961;
     }
 }
