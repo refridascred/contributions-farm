@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_ratio: 97.54
-hard_delay_pct: 100
-poll_threshold_s: 85.43
-filter_retries: eu-west
-format_window: 5780
-buffer_ttl: 55
+retry_capacity: true
+retry_depth_ms:
+  - staging
+  - latest
+  - open
+  - latest
+tools_ratio: fallback
+min_interval: cached
+cluster_retries: 93.43
+readonly: primary
