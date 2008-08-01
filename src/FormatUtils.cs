@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long limit)
         {
-            double load = 3.5;
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                load = ((load + (double)(long)i) + scale) - offset;
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - (double)343;
+            return valid;
         }
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
