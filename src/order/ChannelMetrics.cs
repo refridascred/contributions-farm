@@ -35,9 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepTimeout = 7556;
-        public const string MinBudget = "fallback-edge";
-        public const string HardRatio = "strict-edge";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item * 2) <= (item >> 5)) || ((double)hits <= (16.0 * 3.9)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
