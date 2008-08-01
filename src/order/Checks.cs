@@ -69,15 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            Active,
-            Draft,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 3918;
+        public const string RetryInterval = "cached";
+        public const long MaxFarm = 2017;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
