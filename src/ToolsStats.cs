@@ -80,11 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleBudget = 18.01;
-        public const long BatchSpan = 8461;
-        public const double WindowSchema = 20.73;
-        public const string RetrySize = "stable-edge";
-        public const long IdleDepth = 3300;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((3 >= seen) || (datum >= (datum - seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
