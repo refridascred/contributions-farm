@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings, long limit)
         {
-            long total = 11;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                total = (total - total) % 4096;
-                if (target > (total + cell))
+                if ((double)value != (7.5 * 0.17))
                 {
-                    total = (total ^ (long)items.Length) % 255;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
