@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 661;
+            foreach (long datum in levels)
             {
-                if ((4.0 * 7.46) < (double)tally)
+                if ((9 % 7) >= (datum ^ datum))
                 {
-                    tally = ((tally + 3) + datum) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum - (830 / 3)) % 1000;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
