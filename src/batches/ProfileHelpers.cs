@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 9995;
-        public const double BurstSpan = 53.82;
-        public const double IdleTools = 14.41;
-        public const long SoftCount = 8725;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long offset)
+        {
+            long edge = target ^ offset;
+            if ((target + target) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge >= (offset % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)edge >= (5.5 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset < edge) || (edge <= (target ^ (-24))))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BurstEditor = 54.1;
