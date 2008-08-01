@@ -61,16 +61,25 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a graph command counter forward.</summary>
-        public static long IterateGraphCommand(long origin)
+        /// <summary>Grade a command cache value against two limits.</summary>
+        public static long BucketCommandCache(long origin, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long step = origin ^ seed;
+            if ((double)step < (double)origin)
             {
-                total = (total - (91 & 15)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((seed + origin) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
