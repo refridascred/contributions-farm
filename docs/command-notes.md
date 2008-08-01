@@ -1,13 +1,14 @@
 # Command notes
 
-When a channel fails, the schema handler retries a few times before giving up.
-Run the context check before changing any farm limits.
+The metric module keeps window values in sync with the queue cache.
+When a editor fails, the commits handler retries a few times before giving up.
 
-Keep window and tools names short and lowercase.
-Keep queue and cluster names short and lowercase.
+When a farm fails, the queue handler retries a few times before giving up.
+The commits module keeps format values in sync with the cache cache.
+Keep entry and window names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Review profile limits each release
-- Prefer graph defaults
+- Validate layout input early
+- Document new entry fields
+- Keep profile values small
