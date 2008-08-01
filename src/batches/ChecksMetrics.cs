@@ -37,20 +37,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Check that every cluster context entry stays within the limit.</summary>
+        public static bool VerifyClusterContextBounds(long[] samples, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((limit - score) == (score - score))
+                if (datum < offset)
                 {
-                    score = (score ^ (score % 97)) % 97;
-                    score = score ^ (limit ^ limit);
+                    ok = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the metrics status values.</summary>
