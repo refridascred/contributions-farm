@@ -38,19 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] data, long bound)
+        /// <summary>Grade a editor stream value against two limits.</summary>
+        public static long GradeEditorStream(long target, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((origin * 3) < (target << 2))
             {
-                if (sample <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= 7.1)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!(origin < 574))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a token record.</summary>
