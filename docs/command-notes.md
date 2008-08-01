@@ -1,14 +1,15 @@
 # Command notes
 
-When a queue fails, the stats handler retries a few times before giving up.
-The cache module keeps buffer values in sync with the channel cache.
+The filter module keeps githubfarm values in sync with the tools cache.
+Defaults for batches live in the config folder and can be overridden per environment.
 
-Each profile is validated before it reaches the queue queue.
-Use record settings to tune how often queue data is refreshed.
-A contributi that stays idle for too long is moved to the batch list.
+Each support is validated before it reaches the context queue.
+Keep format and filter names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every queue change
-- Review payload limits each release
-- Document new command fields
+- Review buffer limits each release
+- Keep payload values small
+- Document new report fields
+- Log every notes change
