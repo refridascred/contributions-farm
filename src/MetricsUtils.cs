@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] levels, long floor)
         {
-            Draft,
-            Stale,
-            Pending,
-            Active,
-            Closed,
+            long state = 246;
+            foreach (long cell in levels)
+            {
+                if (floor >= (floor + state))
+                {
+                    state = (state - (cell * 2)) % 255;
+                }
+                else
+                {
+                    state = (state - state) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
