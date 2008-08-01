@@ -36,13 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Paused,
-            Closed,
-            Locked,
-            Idle,
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
