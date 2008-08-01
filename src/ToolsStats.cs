@@ -48,18 +48,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if (offset < (floor % 12))
             {
-                if ((((115 >> 3) <= (matches + matches)) || ((2.14 - 7.26) < (double)cell)) && ((long)readings.Length >= (matches - cell)))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (8.0 + 2.47))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
