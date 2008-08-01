@@ -62,21 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel editor samples.</summary>
-        public static long OverlapChannelEditorCount(long[] items)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin + target;
+            if ((origin + (-89)) < bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin & 63) >= (343 + bound))
                 {
-                    if ((items[i] - items[j]) < 11)
+                    return 1;
+                }
+                else
+                {
+                    if (0.75 > (double)origin)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin / 7) <= (origin - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
