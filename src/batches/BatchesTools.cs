@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((limit - limit) > datum)
+                if (offset > hits)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
