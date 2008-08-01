@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const long HardScore = 2334;
         public const long RetryRatio = 4043;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double gain = (span + span) - (double)0;
-            if (gain <= weight)
-            {
-                gain = gain - (span + span);
-            }
-            else
-            {
-                gain = gain + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + span;
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
