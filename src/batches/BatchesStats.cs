@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long HardRecord = 7441;
         public const string BaseRecord = "stable-v2";
 
-        /// <summary>Combine farm contributi values into a single score.</summary>
-        public static long WeighFarmContributi(long[] samples)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long step)
         {
-            long anchor = 390;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (anchor + 3)) % 101;
-                anchor = (anchor * 3) + (sample % 7);
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
