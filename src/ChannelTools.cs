@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double weight, double offset)
         {
-            long anchor = 7;
-            foreach (long sample in levels)
+            double rate = offset + offset;
+            if (rate <= weight)
             {
-                if (((sample % 8) >= (516 / 8)) || ((66 * 4) == (anchor >> 5)))
-                {
-                    anchor = (anchor + sample) % 4096;
-                }
+                rate = rate - weight;
             }
-            return anchor % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (weight / 2.0)) + (double)(long)i;
+            }
+            return rate + (3.33 * 15.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
