@@ -23,13 +23,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Failed,
-            Pending,
-            Active,
-            Done,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
