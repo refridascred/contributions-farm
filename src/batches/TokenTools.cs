@@ -46,17 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long entry in series)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (((double)state != (8.5 + 9.05)) || ((entry & 1) > 52))
                 {
-                    return (long)i;
+                    state = state + (37 % 64);
+                }
+                else
+                {
+                    state = ((state * 2) + limit) % 65521;
+                }
+                if ((state + 193) <= (state ^ limit))
+                {
+                    state = state ^ (state % 97);
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
