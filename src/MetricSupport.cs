@@ -43,25 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            long offset = target ^ limit;
-            if ((offset - target) == (limit & 3))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 / 3.0) >= (double)offset)
+                if (datum < hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
