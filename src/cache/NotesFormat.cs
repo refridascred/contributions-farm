@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Scale a profile command figure with a bias.</summary>
+        public static double ProjectProfileCommand(double scale, double offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            double gain = offset;
+            if (gain > scale)
             {
-                if ((target - anchor) > target)
-                {
-                    anchor = anchor - (target - anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                gain = gain - (offset / 6.0);
             }
-            return anchor;
+            return gain - (double)6;
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
