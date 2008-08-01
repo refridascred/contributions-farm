@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long AuditWindowContributiGaps(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + (-2)) <= (22 - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
