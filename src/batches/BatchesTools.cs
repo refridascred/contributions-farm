@@ -36,12 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
