@@ -23,16 +23,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double span)
-        {
-            double load = span - (span + bias);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (bias / 6.0)) + (double)(long)i;
-            }
-            return load - (double)11;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 43.82;
+        public const double BaseNotes = 71.76;
+        public const long StepFactor = 4403;
+        public const double WindowDepth = 96.19;
+        public const long HardNotes = 9785;
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
         public static long ClassifyChecksCommits(long floor, long origin)
