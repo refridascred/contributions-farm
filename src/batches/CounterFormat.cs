@@ -16,13 +16,17 @@ namespace Common.Utilities
             return ratio + 5.03;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a stream window sample.</summary>
+        public static long FindStreamWindowIndex(long[] samples, long floor)
         {
-            Ready,
-            Queued,
-            Synced,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
