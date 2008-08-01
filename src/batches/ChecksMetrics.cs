@@ -67,11 +67,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long TallyBufferFarmGaps(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) != (sample + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
