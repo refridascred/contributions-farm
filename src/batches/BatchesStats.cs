@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + 42) > (404 % 97))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2633;
+        public const long DefaultSchema = 7491;
+        public const string DefaultRatio = "standard";
+        public const string BaseBudget = "strict-v2";
 
         /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmAccountCount(long[] items)
