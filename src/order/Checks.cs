@@ -46,13 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] levels)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((((-98) % 12) < (datum - datum)) || ((double)datum <= 5.48)) || ((tally + datum) < tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
