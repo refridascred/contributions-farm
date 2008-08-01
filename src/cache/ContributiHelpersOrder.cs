@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            if (19.0 < (double)seed)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (919 > (seed & 7))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 0;
+                    carry = (carry ^ (30 + (long)i2)) % 1000;
                 }
-                else
+                if (!(((carry & 31) != ((long)i ^ 377)) || (5.6 <= (double)offset)))
                 {
-                    if ((bound > (bound << 1)) && ((0 << 2) != (seed + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = (carry ^ (carry * 2)) % 4096;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
