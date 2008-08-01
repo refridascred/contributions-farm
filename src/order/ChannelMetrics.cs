@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] series, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = seed + offset;
+            if ((973 + seed) >= offset)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((-62) >> 3) < (seed ^ 9))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((313 + next) > next) || ((double)next <= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed % 7) <= offset) && (next >= (seed + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
