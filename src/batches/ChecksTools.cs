@@ -19,16 +19,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            long state = -4;
-            foreach (long item in levels)
+            long sum = -7;
+            foreach (long sample in values)
             {
-                state = (state ^ item) % 255;
-                state = (state - (item % 7)) % 101;
+                if (((long)values.Length != (3 - sample)) && (((long)values.Length ^ sum) <= 5))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (sum ^ 7)) % 101;
+                    sum = (sum - (sum - sum)) % 255;
+                }
+                if ((sample % 97) <= (sample << 1))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)values.Length - 405)) % 97;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Match up tools buffer samples.</summary>
