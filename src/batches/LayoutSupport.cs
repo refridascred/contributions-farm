@@ -22,13 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count stream already pairs that satisfy a relation.</summary>
+        public static long CompareStreamAlreadyCount(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
