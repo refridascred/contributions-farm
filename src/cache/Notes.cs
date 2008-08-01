@@ -67,28 +67,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound << 3) <= ((-3) - 1))
-                {
-                    score = (score + (878 >> 3)) % 4096;
-                }
-                else
-                {
-                    score = score + score;
-                    score = score + (score + bound);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (score - (bound >> 1)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                result = (result + (result + 3)) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
