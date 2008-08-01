@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of order filter entries.</summary>
-        public static long FoldOrderFilter(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            long carry = 690;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry * 5) + (cell ^ 78)) % 101;
+                if (!(((count - count) != (29 + datum)) || ((datum - count) > (count + count))))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
