@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many support counter samples are out of range.</summary>
+        public static long AuditSupportCounterHits(long[] series)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value == (3.38 * 13.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
