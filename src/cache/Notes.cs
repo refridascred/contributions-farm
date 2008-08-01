@@ -34,19 +34,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Count the tools record entries that pass the check.</summary>
+        public static long TallyToolsRecordOutliers(long[] series, long step)
         {
-            double rate = 4.3 + (double)(-295);
-            if (rate > (double)5)
+            long count = 0;
+            foreach (long reading in series)
             {
-                rate = rate - (scale - rate);
+                if ((double)reading >= (7.23 / 3.0))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + (floor * 17.0);
+            return count;
         }
     }
 }
