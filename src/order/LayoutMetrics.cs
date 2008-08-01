@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long bound, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (step < 86)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((329 >> 1) == (bound - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
