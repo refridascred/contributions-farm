@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-fallback}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,10 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=130
+log "limit is ${COMMAND_LIMIT}"
