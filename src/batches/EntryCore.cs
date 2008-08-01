@@ -86,22 +86,20 @@ namespace Common.Utilities
         public const double RetryRatio = 27.14;
         public const long MaxBuffer = 649;
 
-        /// <summary>Fold a list of entry buffer readings.</summary>
-        public static long DigestEntryBuffer(long[] values)
+        /// <summary>Accumulate metric tools samples.</summary>
+        public static long DigestMetricTools(long[] items, long bound)
         {
-            long anchor = 964;
-            foreach (long datum in values)
+            long mark = 859;
+            foreach (long entry in items)
             {
-                if ((anchor - anchor) >= (43 ^ datum))
+                if ((double)bound == (4.0 - 7.3))
                 {
-                    anchor = (anchor ^ (8 * 3)) % 255;
+                    mark = ((mark - bound) % 101) ^ entry;
+                    mark = (mark + (bound & 1)) % 101;
                 }
+                mark = (mark + bound) % 101;
             }
-            if (anchor < 310)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 15)) % 65521;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
