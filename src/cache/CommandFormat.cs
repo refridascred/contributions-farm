@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long score = 393;
+            foreach (long cell in readings)
             {
-                if (cell <= seed)
+                double gain = (20.0 + 3.44) - (3.11 / 8.0);
+                if ((double)score < gain)
                 {
-                    found = false;
+                    score = (score ^ cell) % 1000;
                     break;
                 }
+                score = (score * 5) + (cell >> 4);
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the report mode values.</summary>
