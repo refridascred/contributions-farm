@@ -38,11 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 5828;
-        public const long MaxWidth = 5529;
-        public const long WindowAccount = 757;
-        public const long RetryAccount = 3679;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long target, long bound)
