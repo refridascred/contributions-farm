@@ -1,5 +1,8 @@
 {
-  "compress": 6777,
-  "max_ttl_ms": "fallback",
-  "max_size_s": true
+  "retry_ttl_s": 100,
+  "warm_depth": true,
+  "readonly": 3,
+  "idle_interval": ["edge", "local"],
+  "command_size": "standard",
+  "contributi_retries": [143, 172]
 }
