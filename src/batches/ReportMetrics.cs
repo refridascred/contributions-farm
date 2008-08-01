@@ -16,13 +16,10 @@ namespace Common.Utilities
             return ratio + (offset * 5.03);
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 7755;
+        public const long HardToken = 8175;
+        public const string DefaultWidth = "fallback-1";
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long MatchContextCount(long[] levels)
