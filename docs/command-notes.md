@@ -1,15 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often metric data is refreshed.
-Run the editor check before changing any already limits.
-When a counter fails, the record handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the editor list.
 
-Keep cluster and cache names short and lowercase.
-The githubfarm module keeps window values in sync with the layout cache.
-A graph that stays idle for too long is moved to the graph list.
+The metrics module keeps graph values in sync with the batches cache.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate filter input early
-- Prefer graph defaults
+- Log every filter change
+- Review batch limits each release
+- Document new cluster fields
+- Validate payload input early
