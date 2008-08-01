@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
