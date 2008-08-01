@@ -1,17 +1,7 @@
 {
-  "flush_threshold": {
-    "account_delay": {
-      "base_timeout": 94.84,
-      "commits_timeout": 20.46,
-      "counter_retries": 250
-    },
-    "flush_limit": 61.16,
-    "min_capacity_s": "open",
-    "retry_size": 98.0
-  },
-  "entry_delay": true,
-  "cache_depth_s": 500,
-  "base_depth": 250,
-  "verbose": 30,
-  "idle_interval": [465, 280, 86, 205]
+  "cache_window": 77.31,
+  "batch_window_count": false,
+  "entry_limit": true,
+  "sync_window": 30,
+  "soft_window_pct": 955
 }
