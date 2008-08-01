@@ -47,22 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!!(68 < (8 + reading)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
