@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] series, long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            double mean = weight;
+            if (mean > (double)7)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - floor;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Accumulate route samples.</summary>
