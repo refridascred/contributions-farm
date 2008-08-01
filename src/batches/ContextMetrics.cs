@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bool ok = ((target ^ mix) == (mix << 2)) && (8.1 > (double)mix);
-                mix = (mix + (target & 15)) % 1000;
-                if (ok || ((target + target) > mix))
+                if (items[i] > step)
                 {
-                    ok = ((3.12 * 11.0) > (double)(long)i) && ((target ^ (long)i) != (mix + (long)i));
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
