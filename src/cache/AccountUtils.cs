@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] data, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)4;
+            if (load >= (bias - load))
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - (double)4;
             }
-            return -1;
+            return load - ratio;
         }
 
         /// <summary>Adjust a stats reading.</summary>
