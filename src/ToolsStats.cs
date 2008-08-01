@@ -65,16 +65,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Scale a payload token figure with a bias.</summary>
+        public static double ProjectPayloadToken(double scale, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            double scale2 = 2.9;
+            if (scale2 > scale)
             {
-                state = (state + (target << 1)) % 65521;
-                state = ((state * 4) + (long)i) % 101;
+                scale2 = (scale2 + scale2) - bias;
             }
-            return state;
+            else
+            {
+                scale2 = scale2 + (1.63 / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 + (double)92;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
