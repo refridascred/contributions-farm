@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series, long floor)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches + 355) < (matches % 64))
+                {
+                    matches = ((matches + 1) - datum) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a route reading by value.</summary>
