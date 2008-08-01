@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Queued,
-            Dropped,
-            Synced,
-            Draft,
-            Failed,
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
