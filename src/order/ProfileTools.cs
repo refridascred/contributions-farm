@@ -65,19 +65,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a stream schema reading.</summary>
-        public static double ScaleStreamSchema(double gain, double offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double bias = (double)(6 - 68);
-            if (bias <= offset)
-            {
-                bias = (bias - (bias * 15.0)) + gain;
-            }
-            else
-            {
-                bias = bias - (double)(-90);
-            }
-            return bias - bias;
+            Ready,
+            Done,
+            Retry,
+            Draft,
         }
     }
 }
