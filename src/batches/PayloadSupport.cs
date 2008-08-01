@@ -23,21 +23,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 650;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (((mix << 3) ^ (444 / 4)) % 255) - limit;
+                if ((280 << 2) >= (item >> 1))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
