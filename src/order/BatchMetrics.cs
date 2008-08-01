@@ -21,12 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 6.36;
-        public const long BatchWindow = 2169;
-        public const long BaseWindow = 7343;
-        public const long SoftWindow = 2581;
-        public const long IdleWindow = 1962;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardSpan = 1317;
+        public const string DefaultTools = "cached";
+        public const double CacheTools = 11.1;
+        public const double MinTools = 69.75;
+        public const long RetryTools = 5605;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long step)
