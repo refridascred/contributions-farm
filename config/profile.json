@@ -1,8 +1,13 @@
 {
-  "batch_ratio_pct": ["staging", "standard", "staging", "open"],
-  "strict": "strict",
-  "default_threshold_ms": 12,
-  "route_timeout": "fallback",
-  "base_interval_pct": 72.97,
-  "max_delay_s": "open"
+  "verbose": {
+    "context_capacity": 69,
+    "cluster_delay": false,
+    "max_timeout": "standard",
+    "route_window": 250
+  },
+  "entry_delay": 3551,
+  "persist": 6522,
+  "filter_ratio": 28,
+  "soft_threshold_ms": 55.58,
+  "sync_window_s": ["edge", "fallback", "blue", "edge"]
 }
