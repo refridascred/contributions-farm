@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 9576;
         public const string SoftWidth = "latest";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < 14.0)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
