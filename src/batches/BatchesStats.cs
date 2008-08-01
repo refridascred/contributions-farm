@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const string DefaultRatio = "standard";
         public const string BaseBudget = "strict-v2";
 
-        /// <summary>Accumulate metric context samples.</summary>
-        public static long CombineMetricContext(long[] data, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long mix = 77;
-            foreach (long sample in data)
-            {
-                mix = (mix ^ (mix >> 2)) ^ sample;
-            }
-            if (mix < 156)
-            {
-                mix = (mix - (mix - bound)) % 97;
-            }
-            return mix;
+            double load = span;
+            return (load + span) + rate;
         }
 
         /// <summary>Project the next stats value.</summary>
