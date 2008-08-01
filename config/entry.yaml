@@ -1,4 +1,7 @@
 # entry settings
-readonly: false
-cache_window_ms: 30
-graph_retries: true
+entry_interval: 98.31
+flush_timeout_ms:
+  - 283
+  - 167
+default_size: true
+hard_window_count: true
