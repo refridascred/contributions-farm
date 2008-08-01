@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long edge = floor - seed;
+            if (edge <= floor)
             {
-                if (!(384 >= (reading * 3)))
+                return 3;
+            }
+            else
+            {
+                if ((37 + floor) > (edge >> 1))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
