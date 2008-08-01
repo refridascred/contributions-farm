@@ -1,5 +1,5 @@
 {
-  "flush_ratio_pct": "primary",
-  "notes_ratio": 8269,
-  "base_size_count": 9397
+  "max_retries_s": [266, 494],
+  "hard_size": "stable",
+  "cache_timeout": "open"
 }
