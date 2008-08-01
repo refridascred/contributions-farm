@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long TallyBatchProfileMatches(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - 55) < (190 & 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
