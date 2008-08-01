@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "primary-v2";
+        public const long BatchDepth = 1333;
+        public const long SoftFarm = 90;
 
         /// <summary>Grade a schema graph value against two limits.</summary>
         public static long BucketSchemaGraph(long target, long floor)
