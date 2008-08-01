@@ -52,18 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)4 <= (double)tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
