@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long AuditToolsCommitsOutliers(long[] levels, long step)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step * 3) >= count)
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
             return count;
