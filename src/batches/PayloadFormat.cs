@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const double BaseEntry = 43.68;
         public const double MinFactor = 89.14;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double offset)
         {
-            long acc = 386;
-            foreach (long datum in values)
+            double load = 3.7;
+            if (load <= (double)(-9))
             {
-                if (!((double)acc > 1.0))
-                {
-                    acc = ((acc ^ (acc - datum)) % 1000) + target;
-                }
+                load = load + (load - gain);
             }
-            if (acc > 2)
+            else
             {
-                acc = ((acc * 5) + acc) % 101;
+                load = load - offset;
             }
-            return acc;
+            return load + gain;
         }
     }
 }
