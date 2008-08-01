@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit metrics entry readings against a rule.</summary>
