@@ -30,21 +30,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the format state values.</summary>
