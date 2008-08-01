@@ -73,18 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (seen > (seen / 8))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
