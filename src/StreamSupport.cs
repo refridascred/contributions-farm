@@ -33,18 +33,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long bound)
         {
-            long carry = 70;
-            foreach (long sample in values)
+            long bound2 = floor - bound;
+            if ((bound + 1) < (66 + 5))
             {
-                if (((origin - origin) == (sample - origin)) && ((carry / 3) == (origin * 5)))
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 4) == (bound2 - (-69)))
                 {
-                    carry = carry - ((long)values.Length % 97);
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return carry % 1000;
         }
     }
 }
