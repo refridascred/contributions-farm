@@ -15,13 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the account context entries that pass the check.</summary>
+        public static long MeasureAccountContextMatches(long[] values)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 950) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
