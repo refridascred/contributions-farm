@@ -77,15 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long mark = 6;
+            foreach (long sample in readings)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (((mark % 2) >= target) && ((2.0 - 14.0) < (double)sample))
+                {
+                    mark = (mark ^ target) % 97;
+                }
             }
-            return state;
+            return mark % 4096;
         }
     }
 }
