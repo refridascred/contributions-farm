@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 4932;
-        public const string HardCache = "stable-v2";
-        public const long SoftCache = 8064;
-        public const long LimitCache = 8237;
-        public const long MinSpan = 2582;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double bias, double floor)
+        {
+            double weight = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)(long)i) - bias;
+            }
+            return weight - (double)865;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
