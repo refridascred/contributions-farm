@@ -46,10 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleWidth = 32.44;
-        public const long WindowSupport = 2344;
-        public const long CacheSupport = 402;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cluster schema entries that pass the check.</summary>
         public static long TallyClusterSchemaMatches(long[] series, long floor)
