@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((long)readings.Length + 510) <= cell)
+                if (((-1) ^ count) > (count / 8))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
