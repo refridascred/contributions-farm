@@ -23,11 +23,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long gap = limit - step;
+            if (!((double)limit <= (0.84 - 14.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((gap * 5) > (gap + gap)) && (6.18 >= (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a cluster record.</summary>
