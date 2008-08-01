@@ -1,6 +1,10 @@
-id,state,rank,score,weight
-1,blue,edge,517,local
-2,47.66,fallback,eu-west,983
-3,301,220,51.37,419
-4,open,398,86.55,453
-5,blue,68.98,stable,primary
+id,state,count
+1,open,green
+2,487,59.03
+3,929,73.48
+4,15.09,legacy
+5,legacy,standard
+6,46,55.96
+7,689,latest
+8,621,51.8
+9,51.98,87.92
