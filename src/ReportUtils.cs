@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (5.0 >= (double)mark)
-                {
-                    mark = ((mark * 4) + 38) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
