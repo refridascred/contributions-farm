@@ -30,22 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] readings, long floor)
         {
-            long state = 64;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)state > (9.08 / 7.0))
+                if ((double)floor <= (double)7)
                 {
-                    state = ((state + state) % 1000) ^ cell;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (state < 405)
-            {
-                state = (state * 4) + ((long)values.Length >> 2);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
