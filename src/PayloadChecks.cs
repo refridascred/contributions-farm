@@ -21,13 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((hits + reading) > (hits - reading)) || (((double)639 == (double)hits) || ((hits - reading) <= (long)series.Length)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
