@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
