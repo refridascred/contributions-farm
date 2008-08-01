@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings, long floor)
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long CombineRecordNotes(long[] data, long seed)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long anchor = 1;
+            foreach (long sample in data)
             {
-                acc = (acc + floor) % 255;
-                if ((275 % 7) <= (870 + value))
+                anchor = anchor + (sample + seed);
+                if ((seed - anchor) > (seed + seed))
                 {
-                    acc = acc ^ acc;
+                    break;
                 }
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next window cluster value from a seed.</summary>
