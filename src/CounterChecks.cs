@@ -52,10 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 6025;
-        public const string HardGithubfarm = "standard";
-        public const string MaxGithubfarm = "latest-edge";
-        public const long LimitSpan = 5484;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 2) <= (count - cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
