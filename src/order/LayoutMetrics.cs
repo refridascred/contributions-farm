@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (!(((count - count) != (29 + datum)) || ((datum - count) > (count + count))))
+                if (item > bound)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
