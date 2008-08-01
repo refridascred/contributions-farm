@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long floor)
-        {
-            if ((1.79 - 6.8) == (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.97 / 9.0) != (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 5) == (target * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitSize = "staging-edge";
+        public const long HardBudget = 7383;
+        public const long MinTools = 6754;
+        public const double WindowBudget = 27.48;
 
         /// <summary>Rank stream githubfarm input into a small class.</summary>
         public static long BucketStreamGithubfarm(long floor, long limit)
