@@ -35,27 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long sum = 9;
-            foreach (long item in items)
-            {
-                if (!((81 & 31) > sum))
-                {
-                    sum = (sum ^ step) % 101;
-                    continue;
-                }
-                if ((50 >> 5) >= (step >> 1))
-                {
-                    sum = sum ^ (item >> 2);
-                }
-            }
-            if (sum < 85)
-            {
-                sum = ((sum << 2) ^ (step - sum)) % 65521;
-            }
-            return sum % 97;
+            Failed,
+            Closed,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
