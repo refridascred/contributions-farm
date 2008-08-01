@@ -29,10 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 15.88;
-        public const long LimitTimeout = 6388;
-        public const string BatchInterval = "open-1";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Draft,
+            Idle,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
