@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the account context entries that pass the check.</summary>
-        public static long MeasureAccountContextMatches(long[] values)
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long CountGithubfarmRouteGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((reading + 950) > hits)
+                if (seen <= (309 ^ seen))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) - item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
