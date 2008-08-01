@@ -47,12 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
