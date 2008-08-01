@@ -24,13 +24,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (8.58 < (double)sample)
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
