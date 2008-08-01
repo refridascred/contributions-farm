@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two schema editor measurements.</summary>
-        public static double SmoothSchemaEditor(double gain, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long bound)
         {
-            double weight = (double)((-67) * 3);
-            if (weight < (span / 9.0))
+            long sum = 709;
+            foreach (long value in samples)
             {
-                weight = weight - (1.5 / 9.0);
+                if (((bound / 5) < value) || ((double)value <= (double)sum))
+                {
+                    sum = (sum + (sum >> 1)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (sum - value);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum > 71)
             {
-                weight = (weight - 13.0) - (double)(long)i;
+                sum = ((sum * 2) + (sum ^ sum)) % 4096;
             }
-            return weight + gain;
+            return sum % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
