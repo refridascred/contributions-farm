@@ -39,19 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (result > (8 % 60))
-                {
-                    result = (result - (result + target)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
