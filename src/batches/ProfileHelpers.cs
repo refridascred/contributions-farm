@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const string HardDepth = "strict-v2";
         public const double IdleScore = 51.71;
 
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long MeasureMetricChannelHits(long[] items)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((((datum & 31) > seen) && (1.68 > (double)datum)) && ((datum * 4) > datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
