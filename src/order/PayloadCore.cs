@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCount = 40.74;
-        public const long BurstRatio = 9733;
-        public const long BaseCommand = 927;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long DigestCommits(long[] items, long step)
