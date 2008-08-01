@@ -1,20 +1,13 @@
 # githubfarm settings
-context_delay:
-  idle_threshold_count:
-    editor_limit: standard
-    flush_delay: open
-    order_window: 46
-    account_interval:
-      - 234
-      - 15
-      - 223
-    default_delay: staging
-    context_depth: 4306
-  idle_size_pct: true
-  layout_window: stable
+hard_interval_count: 30.78
+stream_size: true
+burst_timeout: 9738
 enabled:
-  commits_ratio: stable
-  max_window: 59.98
-  retry_limit_count: 5.81
-  report_ttl: 29
-burst_size_s: 5.41
+  - 233
+  - 468
+audit:
+  - 160
+  - 410
+  - 408
+  - 394
+burst_ratio: true
