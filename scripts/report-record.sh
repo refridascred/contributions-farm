@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-standard}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local cached blue edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=404
-log "limit is ${RECORD_LIMIT}"
