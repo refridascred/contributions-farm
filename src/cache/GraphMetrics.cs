@@ -28,16 +28,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a already batches counter forward.</summary>
-        public static long RollAlreadyBatches(long origin)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long MeasureBatchesSchemaGaps(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = (carry + ((long)i - carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((82 >> 1) <= (count + count)) && (((count / 7) < (count - entry)) || (count >= (count * 2))))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
