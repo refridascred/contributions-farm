@@ -1,6 +1,16 @@
 {
-  "commits_threshold": "green",
-  "enabled": 8234,
-  "session_retries": "edge",
-  "soft_depth_pct": "fallback"
+  "notes_size": "standard",
+  "retry_retries": ["legacy", "eu-west", "strict", "edge"],
+  "batch_ratio": {
+    "queue_ratio": true,
+    "burst_delay_count": {
+      "audit": 53.88,
+      "metric_window": [174, 45, 109],
+      "metrics_window": "cached"
+    },
+    "compress": "stable",
+    "base_threshold_count": "fallback"
+  },
+  "soft_limit_count": "open",
+  "max_retries_ms": 39.14
 }
