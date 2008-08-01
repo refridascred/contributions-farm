@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 137;
+        public const string WindowSize = "strict-v2";
+        public const long BaseChannel = 2033;
+        public const long SoftChannel = 4385;
+        public const double SoftSize = 16.73;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double span)
