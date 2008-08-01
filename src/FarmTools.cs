@@ -27,11 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Dropped,
-            Active,
+            Pending,
+            Queued,
+            Locked,
             Stale,
         }
     }
