@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const double DefaultStream = 67.79;
         public const long MaxStream = 4711;
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Count the batch order entries that pass the check.</summary>
+        public static long TallyBatchOrderOutliers(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally - origin) > value)
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
