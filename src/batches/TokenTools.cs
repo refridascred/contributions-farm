@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
