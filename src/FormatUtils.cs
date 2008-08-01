@@ -47,20 +47,10 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double bias)
-        {
-            double ratio = (double)(5 * 4);
-            if (ratio >= weight)
-            {
-                ratio = ratio + (weight / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8651;
+        public const long BurstDepth = 9638;
+        public const long BurstFilter = 1218;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] items)
