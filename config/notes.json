@@ -1,17 +1,9 @@
 {
-  "burst_threshold": 60,
-  "poll_window_s": 500,
-  "format_capacity": {
-    "sync_threshold_s": 3.96,
-    "base_timeout": true,
-    "cache_ratio": 20,
-    "default_depth_ms": 5810,
-    "burst_threshold": {
-      "audit": false,
-      "readonly": 5,
-      "cache_size_ms": [22, 243, 437, 463],
-      "dry_run": 96.29,
-      "soft_size_pct": "latest"
-    }
-  }
+  "cache_depth": ["primary", "stable", "primary"],
+  "soft_window": {
+    "base_depth": 1260,
+    "idle_limit": ["open", "blue", "latest", "strict"],
+    "contributi_retries": "standard"
+  },
+  "max_capacity_ms": 1609
 }
