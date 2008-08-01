@@ -33,15 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] levels, long limit)
         {
-            double ratio = (double)(573 & 127);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                ratio = ((ratio - bias) + (double)(long)i) + offset;
+                if (((((-750) >> 4) <= entry) || ((entry + count) > limit)) && ((limit * 4) < limit))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio + (12.0 - bias);
+            return count;
         }
     }
 }
