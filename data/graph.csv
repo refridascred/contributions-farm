@@ -1,6 +1,10 @@
-id,ratio,state,token
-1,737,legacy,34.11
-2,0.28,legacy,standard
-3,55.08,409,edge
-4,strict,99,87.62
-5,cached,639,847
+id,ratio,owner,weight,label
+1,primary,13.8,64.06,49
+2,512,737,608,50.14
+3,69.71,507,47.75,35.39
+4,33,local,790,staging
+5,blue,41.78,13.81,386
+6,157,78.25,strict,449
+7,25.58,361,open,blue
+8,10.61,staging,516,green
+9,65.45,95.83,standard,local
