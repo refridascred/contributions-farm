@@ -50,16 +50,14 @@ namespace Common.Utilities
         public const string WindowStream = "cached-1";
         public const string StepStream = "stable-edge";
 
-        /// <summary>Derive the next schema notes value from a seed.</summary>
-        public static long DeriveSchemaNotes(long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry << 3) ^ (167 + (long)i)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Active,
+            New,
+            Paused,
+            Done,
         }
     }
 }
