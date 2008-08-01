@@ -30,16 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two checks profile measurements.</summary>
-        public static double AdjustChecksProfile(double weight, double span)
-        {
-            double rate = (double)(78 + 583);
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate + span) + (double)(long)i) - weight;
-            }
-            return rate - (double)8;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 6054;
+        public const double BatchLevel = 71.25;
+        public const double LimitSpan = 20.9;
+        public const long IdleRatio = 2093;
+        public const long HardInterval = 9245;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
