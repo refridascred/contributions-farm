@@ -32,24 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster report values into a single score.</summary>
-        public static long TotalClusterReport(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long mix = -75;
-            foreach (long cell in data)
+            double weight2 = (weight - 9.1) + (floor + weight);
+            if (weight2 <= (weight / 2.0))
             {
-                mix = mix ^ (mix + cell);
-                mix = (mix << 3) ^ (cell - mix);
-                if (!((double)mix <= 14.0))
-                {
-                    break;
-                }
+                weight2 = weight2 + weight;
             }
-            if (mix < 29)
+            else
             {
-                mix = ((mix * 2) + (mix % 8)) % 65521;
+                weight2 = weight2 + (weight2 + weight2);
             }
-            return mix % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Scale a notes batch figure with a bias.</summary>
