@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long bound2)
-        {
-            long cur = bound ^ bound2;
-            if ((double)cur < (2.5 - 3.12))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)cur < 3.9)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 + bound2) >= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheWidth = 7117;
+        public const string DefaultRatio = "staging";
+        public const long HardFactor = 5087;
+        public const string SoftSize = "alpha-v2";
+        public const string BaseEntry = "latest-v2";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] series, long limit)
