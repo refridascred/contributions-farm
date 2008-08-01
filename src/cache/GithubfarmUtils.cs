@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long origin)
         {
-            Pending,
-            Failed,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((1.0 * 8.4) > (double)origin)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
