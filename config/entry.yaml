@@ -1,33 +1,11 @@
 # entry settings
+idle_retries: false
+max_depth: 1024
 readonly:
-  - 393
-  - 138
-  - 128
-  - 86
-max_ratio:
-  flush_size_count:
-    flush_threshold: 49.6
-    dry_run: local
-    enabled: 56.3
-  max_delay: 2350
-  default_ttl:
-    - 21
-    - 115
-    - 132
-  poll_delay_ms:
-    notes_interval: eu-west
-    audit: 64.49
-    githubfarm_ttl: 96
-    notes_window:
-      - green
-      - strict
-      - primary
-      - legacy
-  batch_retries_s: 57.6
-  batch_delay_count: eu-west
-dry_run: cached
-base_window:
-  - staging
-  - fallback
-flush_threshold: true
-retry_depth: 7605
+  support_delay: 4442
+  warm_ratio_pct:
+    - strict
+    - staging
+  min_timeout_s: legacy
+counter_interval: 28
+base_limit: false
