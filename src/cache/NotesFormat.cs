@@ -35,18 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter already readings against a rule.</summary>
-        public static long TallyCounterAlreadyHits(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = 599;
+            foreach (long value in values)
             {
-                if (224 > (sample ^ seen))
+                if (((result + value) > (value - value)) || ((value - value) >= (26 + value)))
                 {
-                    seen = seen + 1;
+                    result = (result ^ (result + 4)) % 65521;
+                }
+                if ((value << 2) == (result + 43))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 65521;
         }
     }
 }
