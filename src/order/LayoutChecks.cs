@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of support already readings.</summary>
-        public static long DigestSupportAlready(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long limit)
         {
-            long mix = 61;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((entry ^ entry) > (2 & 127))
+                if ((limit + value) < (tally % 7))
                 {
-                    mix = (mix * 2) + entry;
+                    tally = tally + 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
