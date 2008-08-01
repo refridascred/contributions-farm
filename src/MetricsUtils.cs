@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
-            long step = limit + origin;
-            if ((limit * 2) != (step & 63))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= (8 - step))
+                if ((seen << 1) < seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
