@@ -55,18 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] levels, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((target / 4) == (hits >> 5))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
