@@ -66,18 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Find the first report order entry that matches the target.</summary>
+        public static long LookupReportOrderIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 2) <= (count - cell))
+                if (series[i] < step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
