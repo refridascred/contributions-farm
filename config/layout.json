@@ -1,5 +1,5 @@
 {
-  "dry_run": "legacy",
-  "layout_ratio": false,
-  "retry_timeout_s": 9718
+  "compress": true,
+  "readonly": 47.16,
+  "min_timeout": 50.23
 }
