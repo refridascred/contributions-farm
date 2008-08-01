@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (matches >= (matches / 9))
+                if ((double)cell == (0.3 * 0.08))
                 {
-                    matches = (matches + 3) + cell;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
