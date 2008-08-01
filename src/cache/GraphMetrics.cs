@@ -64,18 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long TallyMetricStreamMatches(long[] readings)
+        /// <summary>Count the context report entries that pass the check.</summary>
+        public static long TallyContextReportOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((count + count) < (count + item))
+                if (((double)matches == (double)reading) && ((11.0 / 9.0) < (double)reading))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
