@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            double drift = (gain - floor) + floor;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (7.36 + 7.57)) + (double)(long)i;
+            }
+            return drift + (floor + gain);
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
