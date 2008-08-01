@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((503 >> 1) > (reading / 8))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
