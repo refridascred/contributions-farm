@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 264;
-        public const long MinTimeout = 3949;
-        public const long DefaultRatio = 9612;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)862 > (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two metrics report measurements.</summary>
         public static double ScaleMetricsReport(double bias, double offset)
