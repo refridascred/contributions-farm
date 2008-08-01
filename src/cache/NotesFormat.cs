@@ -29,19 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long score = 0;
-            foreach (long cell in series)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score ^ 58) % 65521;
-                if ((double)score >= (3.9 * 3.4))
-                {
-                    score = (score - cell) % 255;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return score % 4096;
+            return score;
         }
     }
 }
