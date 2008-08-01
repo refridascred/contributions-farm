@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 3) == (716 - 9))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate support samples.</summary>
