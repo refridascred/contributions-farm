@@ -22,10 +22,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSpan = 2116;
-        public const long HardWidth = 8986;
-        public const long BurstTimeout = 7603;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long offset2)
+        {
+            long bound = offset - offset2;
+            if ((double)bound <= (4.43 - 3.4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (offset >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
