@@ -21,15 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] samples, long origin)
         {
-            long sum = 90;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                sum = (sum + (reading - reading)) % 255;
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
