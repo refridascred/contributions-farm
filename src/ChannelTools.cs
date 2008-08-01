@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long DefaultToken = 9706;
         public const string BurstBudget = "open";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Failed,
-            Synced,
-            Done,
-            Active,
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
