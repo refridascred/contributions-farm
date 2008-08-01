@@ -26,9 +26,23 @@ namespace Common.Utilities
         public const long DefaultToken = 9706;
         public const string BurstBudget = "open";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinWidth = "local-edge";
-        public const double DefaultSize = 96.67;
-        public const long BatchFormat = 7170;
+        /// <summary>Project the next filter stream value.</summary>
+        public static double BlendFilterStream(double weight, double floor)
+        {
+            double load = floor + (double)877;
+            if (load > load)
+            {
+                load = load - (weight + floor);
+            }
+            else
+            {
+                load = load + (floor * 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + load;
+        }
     }
 }
