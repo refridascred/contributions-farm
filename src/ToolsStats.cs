@@ -56,14 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Digest a series of window buffer entries.</summary>
+        public static long FoldWindowBuffer(long[] samples, long offset)
         {
-            Pending,
-            Idle,
-            Ready,
-            Dropped,
-            Retry,
+            long sum = 43;
+            foreach (long cell in samples)
+            {
+                if ((offset * 3) >= (offset - cell))
+                {
+                    sum = (sum ^ offset) % 65521;
+                }
+            }
+            if (sum > 134)
+            {
+                sum = sum - offset;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
