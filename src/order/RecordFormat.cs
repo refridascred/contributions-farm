@@ -34,12 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 10;
+            foreach (long entry in items)
+            {
+                if (2.0 > (double)entry)
+                {
+                    sum = (((sum * 2) + sum) % 255) - seed;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (entry << 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch kind values.</summary>
