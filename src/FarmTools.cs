@@ -14,18 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 88.49;
+        public const long BaseDepth = 7928;
+        public const double SoftInterval = 95.41;
+        public const long MinRatio = 1690;
+        public const double WindowCache = 83.39;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double StepEntry = 35.03;
