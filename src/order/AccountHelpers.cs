@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every command contributi entry stays within the limit.</summary>
-        public static bool GuardCommandContributiLimits(long[] series, long step)
+        /// <summary>Validate checks already readings against a bound.</summary>
+        public static bool ValidateChecksAlreadyBounds(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (reading < step)
+                if (reading <= offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
