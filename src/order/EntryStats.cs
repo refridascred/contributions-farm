@@ -38,18 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double gain2 = gain;
+            if (gain2 <= gain)
             {
-                if ((301 - reading) > (reading + reading))
-                {
-                    count = count + 1;
-                }
+                gain2 = gain2 + (gain2 - 7.15);
             }
-            return count;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 - floor;
         }
 
         /// <summary>Hold a token record.</summary>
