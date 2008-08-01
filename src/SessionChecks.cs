@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            if (!(341 > (step - step)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.57 - 0.67) >= (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset - offset) != (step / 6)) && ((offset - 79) >= (step / 5)))
+                    if ((readings[i] + readings[j]) == 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
