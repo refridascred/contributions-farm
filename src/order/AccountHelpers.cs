@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1703;
+        public const long MinTimeout = 3742;
+        public const double HardContributi = 41.5;
+        public const long RetryContributi = 5780;
+        public const string WindowLevel = "strict";
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long bound)
