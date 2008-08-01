@@ -48,12 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Done,
-            Pending,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
