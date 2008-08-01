@@ -52,22 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] samples)
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long TallyEditorRecordMatches(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)seen != (3.38 * 8.5))
+                if ((step % 7) < (datum % 24))
                 {
-                    seen = (seen + 3) - reading;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
