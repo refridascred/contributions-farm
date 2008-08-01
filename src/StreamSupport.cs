@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxSize = 57.07;
-        public const string BatchSpan = "staging";
-        public const double DefaultTools = 17.42;
-        public const double HardWidth = 83.37;
-        public const long WindowDepth = 2589;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string CacheRatio = "standard-edge";
