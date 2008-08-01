@@ -73,24 +73,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            if (!((15 + 5) > seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((86 <= (limit & 15)) && ((limit - seed) < (limit + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
