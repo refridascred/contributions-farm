@@ -46,22 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long target)
         {
-            long state = 26;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell % 12) != ((-548) * 2))
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
-                    state = state - (state - cell);
-                }
-                else
-                {
-                    state = (state - 132) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
