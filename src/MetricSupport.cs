@@ -22,25 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long offset2)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long bound = offset - offset2;
-            if ((double)bound <= (4.43 - 3.4))
+            long sum = -583;
+            foreach (long sample in values)
             {
-                return 1;
+                sum = ((sum ^ (sum - sum)) % 97) ^ sample;
+                sum = (sum + (780 + 0)) % 1000;
             }
-            else
-            {
-                if (offset < (offset >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
