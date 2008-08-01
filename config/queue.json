@@ -1,6 +1,10 @@
 {
-  "cache_delay_count": 6303,
-  "stream_interval": false,
-  "enabled": 500,
-  "poll_ratio_ms": "local"
+  "readonly": "primary",
+  "idle_size_count": {
+    "audit": 83,
+    "warm_size_pct": "local",
+    "sync_threshold_s": ["standard", "open", "primary", "primary"],
+    "format_ratio": "open"
+  },
+  "command_retries": true
 }
