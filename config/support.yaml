@@ -1,8 +1,18 @@
 # support settings
-soft_limit:
-  - green
-  - strict
-compress: eu-west
-burst_threshold_pct: 1024
-batch_interval: stable
-channel_depth: 31
+support_window: standard
+token_threshold:
+  persist: 317
+  strict:
+    verbose: cached
+    soft_limit: legacy
+    max_ttl_ms: primary
+    command_limit: 38.92
+  editor_limit: 100
+  warm_interval_ms:
+    - standard
+    - latest
+    - blue
+  base_delay_count: 73.89
+enabled: false
+cache_threshold_ms: true
+poll_timeout_ms: staging
