@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSize = 6449;
-        public const long BaseSize = 6747;
-        public const long SoftInterval = 8680;
-        public const double LimitFactor = 18.66;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((8.9 * 15.0) <= (double)seed)
+                {
+                    state = ((state << 2) ^ (seed / 8)) % 65521;
+                }
+                state = ((state * 4) + (seed * 3)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 4837;
