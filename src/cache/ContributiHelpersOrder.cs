@@ -39,15 +39,9 @@ namespace Common.Utilities
         public const long CacheDepth = 5849;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double offset)
-        {
-            double scale = 7.2;
-            if (scale >= (double)84)
-            {
-                scale = (scale + (scale - scale)) - offset;
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSize = 2135;
+        public const long BurstSchema = 3640;
+        public const long DefaultSchema = 3226;
     }
 }
