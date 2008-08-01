@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long CacheDepth = 5849;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (17.0 < (double)datum)
+                if (items[i] < origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
