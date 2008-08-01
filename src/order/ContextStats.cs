@@ -32,12 +32,9 @@ namespace Common.Utilities
         public const long BatchSpan = 9735;
         public const long LimitBudget = 1121;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Queued,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitInterval = 1576;
+        public const long BaseCount = 9606;
+        public const long CacheFactor = 2721;
     }
 }
