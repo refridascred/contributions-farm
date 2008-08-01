@@ -56,39 +56,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long bound = origin + target;
-            if ((origin + (-89)) < bound)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 63) >= (343 + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (0.75 > (double)origin)
+                    if ((samples[i] ^ samples[j]) < 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin / 7) <= (origin - bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
