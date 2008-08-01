@@ -1,5 +1,12 @@
 {
-  "min_interval": 62.71,
-  "max_timeout_ms": false,
-  "flush_threshold": 1024
+  "max_delay_s": 97.37,
+  "poll_window_pct": {
+    "base_interval_count": 6807,
+    "base_window": 250,
+    "flush_depth": 1024,
+    "support_window": "local",
+    "min_retries_s": ["cached", "staging", "blue", "blue"]
+  },
+  "compress": 1997,
+  "filter_window": ["eu-west", "open", "staging", "edge"]
 }
