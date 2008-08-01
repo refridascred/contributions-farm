@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long AuditBatchChecksGaps(long[] samples, long floor)
         {
-            Failed,
-            Paused,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (1.6 > (double)floor)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
