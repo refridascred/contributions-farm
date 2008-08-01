@@ -19,31 +19,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long origin, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            if ((double)target != (0.6 - 1.1))
+            long state = -4;
+            foreach (long item in levels)
             {
-                return 5;
+                state = (state ^ item) % 255;
+                state = (state - (item % 7)) % 101;
             }
-            else
-            {
-                if (!((target - target) < (origin + origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (origin / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the account kind values.</summary>
