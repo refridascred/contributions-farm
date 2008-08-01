@@ -13,12 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Closed,
-            Dropped,
-            Done,
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
