@@ -20,19 +20,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stream commits entry stays within the limit.</summary>
-        public static bool CheckStreamCommitsRange(long[] readings, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Look up the position of a format payload sample.</summary>
