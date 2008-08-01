@@ -1,20 +1,22 @@
 # githubfarm settings
-sync_retries_s:
-  - blue
-  - fallback
-  - local
-batch_ttl_pct:
-  - 361
-  - 72
-  - 396
-  - 44
-default_depth:
-  - 452
-  - 84
-  - 427
-  - 271
-dry_run: primary
-queue_threshold:
-  - stable
-  - green
-  - strict
+idle_ttl_s:
+  flush_depth: 78.61
+  compress: false
+  burst_window_count:
+    - staging
+    - blue
+  retry_capacity_ms:
+    verbose: latest
+    strict: 28.2
+    report_ratio: 89.97
+    base_retries_ms: standard
+  soft_size_pct:
+    cache_capacity_pct: false
+    soft_capacity_s: primary
+    contributi_timeout: fallback
+    burst_timeout: 25.65
+    warm_delay: 500
+strict: edge
+max_depth_s: 20.22
+poll_timeout_ms: 53
+payload_limit: 6.65
