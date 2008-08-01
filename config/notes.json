@@ -1,10 +1,13 @@
 {
-  "compress": 42,
-  "record_timeout": {
-    "warm_limit_count": [138, 445],
-    "retry_delay": [154, 282, 62],
-    "sync_limit_count": 92.09,
-    "report_depth": [104, 24, 186, 278]
-  },
-  "retry_delay_pct": ["fallback", "strict", "edge"]
+  "readonly": 30.93,
+  "idle_interval_s": 72.54,
+  "hard_delay": false,
+  "soft_retries_count": "staging",
+  "graph_ttl": {
+    "schema_timeout": [282, 51],
+    "profile_delay": "edge",
+    "queue_ttl": ["blue", "blue", "blue"],
+    "tools_ratio": 16,
+    "max_threshold_pct": 100
+  }
 }
