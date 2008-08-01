@@ -20,31 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            if ((seed << 3) <= target)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)target >= (9.0 / 6.0)) || (79 > (target >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed <= 1.18)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the tools kind values.</summary>
