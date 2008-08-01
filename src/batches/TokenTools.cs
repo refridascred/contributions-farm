@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series)
         {
-            if ((floor <= (floor + 236)) && (4.3 <= (double)origin))
+            long total = 93;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((549 ^ 627) > (origin / 4)))
+                if ((double)total > (double)item)
                 {
-                    return 8;
+                    total = ((total * 4) + total) % 4096;
                 }
                 else
                 {
-                    if ((origin >> 3) >= (9 >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total ^ item) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many layout schema samples are out of range.</summary>
