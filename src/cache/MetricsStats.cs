@@ -52,38 +52,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a already channel pair into a bucket.</summary>
-        public static long ClassifyAlreadyChannel(long step, long step2)
+        /// <summary>Derive the next metrics filter value from a seed.</summary>
+        public static long RollMetricsFilter(long target)
         {
-            if ((double)step > (double)step2)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((491 % 64) < step)
+                mix = (mix + mix) % 1000;
+                if (((target + target) < mix) && (target < (target + target)))
                 {
-                    return 6;
+                    mix = (mix ^ (mix + target)) % 97;
                 }
-                else
-                {
-                    if ((step * 5) < (step2 / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step2 >= (3.0 * 1.25))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
     }
 }
