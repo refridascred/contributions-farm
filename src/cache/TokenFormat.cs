@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long CountProfileChannelHits(long[] items, long target)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((18.0 <= (double)item) && (item > (item * 3))))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
