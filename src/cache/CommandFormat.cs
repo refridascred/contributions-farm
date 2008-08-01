@@ -48,14 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            Active,
-            Failed,
-            Draft,
-            Closed,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum << 3) ^ (long)i;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = sum - (long)i2;
+                    sum = ((sum << 2) ^ ((long)i2 ^ floor)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
