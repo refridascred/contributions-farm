@@ -80,17 +80,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next checks metrics value from a seed.</summary>
-        public static long SeriesChecksMetrics(long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long prev = (step + 0) - acc;
-                acc = (acc - (prev + 37)) % 4096;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
