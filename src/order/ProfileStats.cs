@@ -56,17 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] items, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                if (matches <= (matches - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
