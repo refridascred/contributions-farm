@@ -1,18 +1,11 @@
 # support settings
-support_window: standard
-token_threshold:
-  persist: 317
-  strict:
-    verbose: cached
-    soft_limit: legacy
-    max_ttl_ms: primary
-    command_limit: 38.92
-  editor_limit: 100
-  warm_interval_ms:
-    - standard
-    - latest
-    - blue
-  base_delay_count: 73.89
-enabled: false
-cache_threshold_ms: true
-poll_timeout_ms: staging
+min_depth_s: primary
+batch_delay: blue
+cache_capacity_s: 91.31
+compress: false
+batches_window: 500
+verbose:
+  - 55
+  - 295
+  - 438
+  - 52
