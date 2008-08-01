@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string MaxChannel = "alpha";
         public const double DefaultScore = 22.17;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)5 != (double)tally)
+                if ((double)matches <= (5.8 - 9.0))
                 {
-                    tally = (tally + 3) + item;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a channel entry.</summary>
