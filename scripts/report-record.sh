@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in local cached blue edge; do
-    log "checking ${item}"
-done
-
 count=0
 while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+RECORD_LIMIT=131
+log "limit is ${RECORD_LIMIT}"
