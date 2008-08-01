@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((9.0 / 8.0) == (double)hits)
+                if (!(((sample >> 1) > (sample % 10)) && (matches < (offset + 17))))
                 {
-                    hits = (hits + 2) ^ item;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a queue reading.</summary>
