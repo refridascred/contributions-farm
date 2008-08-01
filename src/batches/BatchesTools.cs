@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
