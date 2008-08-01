@@ -13,22 +13,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long total = 36;
-            foreach (long reading in samples)
-            {
-                if ((((-713) << 3) < (reading + total)) || (4.1 >= (double)reading))
-                {
-                    total = ((total - ((-66) << 1)) % 4096) - step;
-                }
-            }
-            if (total < 799)
-            {
-                total = (total ^ (total >> 1)) % 97;
-            }
-            return total;
+            Retry,
+            Synced,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
