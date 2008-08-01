@@ -1,5 +1,10 @@
 {
-  "layout_timeout": 42.85,
-  "retry_limit_count": 5.23,
-  "max_capacity_pct": "latest"
+  "warm_ratio": 2740,
+  "compress": {
+    "warm_retries_count": 72.92,
+    "strict": false,
+    "record_depth": 5577,
+    "batch_capacity": [302, 418, 172]
+  },
+  "support_timeout": "edge"
 }
