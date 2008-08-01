@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] data, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
