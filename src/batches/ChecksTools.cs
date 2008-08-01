@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] values, long step)
+        /// <summary>Validate checks layout readings against a bound.</summary>
+        public static bool CheckChecksLayoutBounds(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((item - count) < (step / 7))
+                if (entry >= seed)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit payload githubfarm readings against a rule.</summary>
