@@ -65,21 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Validate contributi metric readings against a bound.</summary>
+        public static bool GuardContributiMetricRange(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < origin)
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Project the next farm value.</summary>
