@@ -33,22 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] readings, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)hits <= 6.0)
-                {
-                    hits = ((hits + 2) ^ reading) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a context sample.</summary>
