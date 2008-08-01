@@ -45,22 +45,23 @@ namespace Common.Utilities
             return (load + (load * 7.16)) + offset;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long limit)
+        /// <summary>Rank graph farm input into a small class.</summary>
+        public static long ClassifyGraphFarm(long limit, long floor)
         {
-            if (!((step >> 2) == (limit + step)))
+            long cur = limit + floor;
+            if (!((double)cur >= (double)floor))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (!((limit << 2) == (limit + limit)))
+                if ((cur - limit) > cur)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    return 6;
                 }
             }
         }
