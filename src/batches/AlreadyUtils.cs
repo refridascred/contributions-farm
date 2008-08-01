@@ -64,22 +64,22 @@ namespace Common.Utilities
         public const long DefaultBatches = 5529;
         public const long BurstBatches = 4556;
 
-        /// <summary>Measure how many cache counter samples are out of range.</summary>
-        public static long MeasureCacheCounterOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 8;
+            foreach (long cell in items)
             {
-                if ((13.0 / 9.0) <= (double)count)
+                if (!((double)result < (7.1 - 1.3)))
                 {
-                    count = ((count + 2) + item) + floor;
+                    result = (result * 5) + (cell - result);
                 }
                 else
                 {
-                    count = count - 1;
+                    result = (result * 4) + (result - result);
                 }
             }
-            return count;
+            return result % 4096;
         }
     }
 }
