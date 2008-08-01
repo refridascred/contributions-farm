@@ -1,11 +1,6 @@
-id,label,state,count
-1,edge,89.98,751
-2,81.64,local,592
-3,edge,local,834
-4,staging,411,320
-5,95.03,25.29,285
-6,202,22.83,93.05
-7,946,18,52.17
-8,539,744,legacy
-9,legacy,280,blue
-10,open,legacy,90.12
+id,state,count
+1,79.31,294
+2,18.65,438
+3,edge,strict
+4,22.53,85.68
+5,448,290
