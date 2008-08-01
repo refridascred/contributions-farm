@@ -63,18 +63,22 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] levels, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                if ((item << 3) < bound)
+                if (!((origin << 3) < (origin << 2)))
                 {
-                    matches = matches + 1;
+                    sum = (((sum * 2) + sum) % 101) + reading;
                 }
             }
-            return matches;
+            if (sum > 8)
+            {
+                sum = (sum ^ (sum * 4)) % 65521;
+            }
+            return sum;
         }
     }
 }
