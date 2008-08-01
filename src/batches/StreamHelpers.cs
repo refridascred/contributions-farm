@@ -47,38 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long seed, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            if (!(((-37) ^ limit) > (seed >> 3)))
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed) <= (limit >> 2))
+                anchor = ((anchor * 5) + (entry % 16)) % 255;
+                anchor = (anchor << 2) ^ (anchor + entry);
+                if (!((entry - anchor) > entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.92 + 7.58) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed > (551 + limit)) || ((seed - seed) >= (limit ^ seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor * 3) + 167;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a order info.</summary>
