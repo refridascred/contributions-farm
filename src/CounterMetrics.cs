@@ -51,18 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] values, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(8.2 <= (double)count))
-                {
-                    count = ((count + 3) + datum) - step;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Ready,
         }
     }
 }
