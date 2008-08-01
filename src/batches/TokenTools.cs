@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] series, long target)
         {
-            long total = 93;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((double)total > (double)item)
+                if (entry != target)
                 {
-                    total = ((total * 4) + total) % 4096;
-                }
-                else
-                {
-                    total = (total ^ item) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a stats summary.</summary>
