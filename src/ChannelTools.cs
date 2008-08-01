@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > offset)
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
