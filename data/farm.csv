@@ -1,8 +1,9 @@
-id,weight,level,state
-1,92.47,52.42,eu-west
-2,46.97,289,local
-3,open,558,edge
-4,green,primary,81
-5,staging,green,legacy
-6,725,84.69,342
-7,staging,eu-west,24.48
+id,active,ratio
+1,296,74.49
+2,989,38.57
+3,453,54.26
+4,623,107
+5,826,402
+6,740,open
+7,287,21.05
+8,82.76,433
