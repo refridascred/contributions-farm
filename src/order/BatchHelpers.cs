@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryBudget = "staging-1";
-        public const long MinDepth = 9213;
-        public const double HardInterval = 59.5;
-        public const double IdleWidth = 27.83;
-        public const long BatchTools = 7209;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] items)
+        {
+            long mark = 495;
+            foreach (long cell in items)
+            {
+                mark = (((mark << 2) ^ (99 ^ 69)) % 101) + cell;
+                mark = mark + (-67);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Combine buffer support values into a single score.</summary>
         public static long CombineBufferSupport(long[] readings, long seed)
