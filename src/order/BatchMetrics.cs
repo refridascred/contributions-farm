@@ -37,18 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Validate profile layout readings against a bound.</summary>
+        public static bool ValidateProfileLayoutBounds(long[] items, long floor)
         {
-            long total = 824;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((total + total) == (total / 9))
+                if (reading < floor)
                 {
-                    total = (total << 2) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
