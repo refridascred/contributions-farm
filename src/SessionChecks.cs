@@ -46,12 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
+            public long Region { get; set; }
             public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
