@@ -30,22 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] values, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long offset)
         {
-            long state = 2;
-            foreach (long item in values)
+            long mark = 920;
+            foreach (long datum in samples)
             {
-                if (bound > (state + state))
+                if ((mark / 8) <= (offset - datum))
                 {
-                    state = state + (item + bound);
+                    mark = ((mark << 3) ^ (offset * 2)) % 101;
                 }
             }
-            if (state < 3)
+            if (mark < 807)
             {
-                state = (state + state) % 1000;
+                mark = ((mark * 5) + (mark >> 2)) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
