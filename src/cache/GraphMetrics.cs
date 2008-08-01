@@ -46,19 +46,21 @@ namespace Common.Utilities
         public const long BatchSize = 106;
         public const long CacheTools = 3391;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            double weight = (double)(52 % 3);
-            if (weight > offset)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - 0.7;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (gain - weight);
-            }
-            return weight - offset;
+            return matches;
         }
     }
 }
