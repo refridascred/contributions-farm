@@ -51,17 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((seed & 127) == (790 % 64)) || (1 > (limit << 1)))
             {
-                if (series[i] < step)
+                return 1;
+            }
+            else
+            {
+                if (((3 & 31) <= (limit - seed)) || ((seed + seed) >= 251))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
