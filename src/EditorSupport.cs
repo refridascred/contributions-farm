@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long cell in samples)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                state = ((state - cell) % 97) - target;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
