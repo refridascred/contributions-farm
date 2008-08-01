@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Dropped,
-            Stale,
-            New,
-            Paused,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
