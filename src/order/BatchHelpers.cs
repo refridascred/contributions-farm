@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryBudget = "staging-1";
+        public const long MinDepth = 9213;
+        public const double HardInterval = 59.5;
+        public const double IdleWidth = 27.83;
+        public const long BatchTools = 7209;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
