@@ -1,5 +1,4 @@
 # support settings
-base_interval_s: blue
-notes_depth: false
-retry_limit_pct: 4652
-channel_depth: false
+sync_window_pct: latest
+enabled: 34
+max_ttl: 76.05
