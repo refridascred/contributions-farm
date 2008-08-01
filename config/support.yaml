@@ -1,4 +1,37 @@
 # support settings
-cache_limit_pct: 250
-hard_depth: true
-burst_depth: 47.58
+cache_limit: fallback
+audit:
+  retry_interval_ms: stable
+  retry_retries_pct: false
+  retry_ttl_count:
+    channel_delay: 43.53
+    idle_ttl: 61.51
+    cache_delay_count: 4709
+    metrics_ratio: 60
+  cache_retries:
+    base_ttl: 60
+    retry_delay:
+      - 357
+      - 315
+      - 341
+      - 253
+    strict: true
+    min_capacity_pct: green
+    cache_threshold_count: true
+    graph_timeout: 8
+  persist: 63.28
+  enabled: cached
+base_interval_ms: true
+soft_threshold_s: false
+entry_ttl:
+  burst_interval_count:
+    dry_run: true
+    cache_threshold_ms: legacy
+    sync_delay_count: 8897
+    cache_size_ms: latest
+    retry_limit_ms: 26.67
+  verbose: primary
+  poll_window_count:
+    - edge
+    - primary
+  strict: strict
