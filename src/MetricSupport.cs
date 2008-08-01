@@ -26,24 +26,19 @@ namespace Common.Utilities
             return ratio - (double)94;
         }
 
-        /// <summary>Rank githubfarm commits input into a small class.</summary>
-        public static long RankGithubfarmCommits(long floor, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            if (floor > (8 * 5))
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + 24) != (step & 7)))
+                if (!(((long)i << 3) != (origin - (long)i)))
                 {
-                    return 6;
+                    score = (score << 3) ^ (origin * 5);
                 }
-                else
-                {
-                    return 2;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
