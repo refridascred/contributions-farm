@@ -40,31 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long origin2)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            if ((origin << 1) <= (origin2 - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin2 >= (567 & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin2 + origin2) >= origin2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double bias = floor / 3.0;
+            return (bias + 3.04) + ratio;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
