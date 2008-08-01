@@ -32,17 +32,18 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if ((matches >= (matches - matches)) && ((matches < (matches ^ datum)) && (datum < (matches / 4))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the tools status values.</summary>
