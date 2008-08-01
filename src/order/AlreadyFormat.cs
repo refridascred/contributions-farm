@@ -55,21 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit - item) != (count << 1))
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
