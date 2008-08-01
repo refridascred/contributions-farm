@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const string StepProfile = "alpha-edge";
         public const double SoftProfile = 81.02;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Idle,
-            Ready,
-            Pending,
-            Queued,
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
