@@ -48,18 +48,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] data, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (bound <= (seen / 4))
+                if (!((mix + (long)i) != (728 & 31)))
                 {
-                    seen = (seen + 1) + value;
+                    mix = ((mix << 3) ^ (mix / 9)) % 97;
                 }
+                if ((4 - target) >= target)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
