@@ -77,15 +77,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a buffer graph figure with a bias.</summary>
-        public static double ScaleBufferGraph(double weight, double span)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double rate = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate - 0.5) + (double)(long)i) + span;
-            }
-            return rate + (rate - weight);
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
