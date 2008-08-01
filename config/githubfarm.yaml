@@ -1,4 +1,9 @@
 # githubfarm settings
-flush_window: 500
-metric_timeout: 15.52
-dry_run: 9517
+commits_limit: 40
+compress: blue
+sync_capacity_pct: latest
+audit:
+  - 208
+  - 313
+  - 223
+token_timeout: cached
