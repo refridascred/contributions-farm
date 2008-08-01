@@ -33,28 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((531 / 2) != (limit * 2)) && (434 < (sum - sum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 3) ^ (sum ^ (long)i);
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum - (sum + limit);
-                    sum = sum + (limit ^ 470);
-                }
-                if ((8.0 - 7.0) == (double)sum)
-                {
-                    sum = (sum + (sum & 255)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
