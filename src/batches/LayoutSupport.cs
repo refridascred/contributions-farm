@@ -31,15 +31,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next already layout value.</summary>
-        public static double ProjectAlreadyLayout(double gain, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double span)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
+            double scale = span + 0.7;
+            if (scale <= 2.0)
             {
-                gain2 = (gain2 + (span * 6.2)) + (double)(long)i;
+                scale = (scale - scale) - weight;
             }
-            return gain2 - gain;
+            else
+            {
+                scale = scale - (double)9;
+            }
+            return scale + (double)6;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
