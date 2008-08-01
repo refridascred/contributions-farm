@@ -65,13 +65,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long limit)
         {
-            Ready,
-            Done,
-            Retry,
-            Draft,
+            if (!((15 + 5) > seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((86 <= (limit & 15)) && ((limit - seed) < (limit + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
