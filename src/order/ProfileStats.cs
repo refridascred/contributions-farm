@@ -48,18 +48,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] series)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((count >= (count - 253)) && ((0.85 - 0.5) == (double)entry)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
