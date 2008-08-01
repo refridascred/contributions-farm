@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels, long offset)
         {
-            double load = (double)(11 % 100);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = ((load + (ratio * 3.55)) + (double)(long)i) + bias;
+                if ((2.1 + 2.31) == (double)value)
+                {
+                    seen = (seen + 3) + offset;
+                }
             }
-            return load - (double)(-35);
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
