@@ -33,22 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                double bias = (double)(sum & 63);
-                bias = bias - bias;
-                if (((bias - bias) < (6.0 * 4.9)) && (((long)i * 2) == (origin >> 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - (origin + origin)) % 4096;
-                    continue;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
     }
 }
