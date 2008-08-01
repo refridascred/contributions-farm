@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] samples, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= origin)
+                double scale = (8.0 + 6.4) * 9.13;
+                if (((result * 4) >= (offset & 3)) || ((double)offset < scale))
                 {
-                    valid = false;
                     break;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    scale = (scale + scale) + (double)(long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate format samples.</summary>
