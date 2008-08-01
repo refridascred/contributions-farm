@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const long RetryContributi = 5780;
         public const string WindowLevel = "strict";
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Queued,
-            Dropped,
-            Idle,
+            New,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the support state values.</summary>
