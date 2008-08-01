@@ -1,22 +1,15 @@
 # githubfarm settings
-idle_ttl_s:
-  flush_depth: 78.61
-  compress: false
-  burst_window_count:
-    - staging
-    - blue
-  retry_capacity_ms:
-    verbose: latest
-    strict: 28.2
-    report_ratio: 89.97
-    base_retries_ms: standard
-  soft_size_pct:
-    cache_capacity_pct: false
-    soft_capacity_s: primary
-    contributi_timeout: fallback
-    burst_timeout: 25.65
-    warm_delay: 500
-strict: edge
-max_depth_s: 20.22
-poll_timeout_ms: 53
-payload_limit: 6.65
+filter_ttl: true
+compress: eu-west
+editor_ratio:
+  - 53
+  - 448
+  - 209
+  - 102
+batches_delay:
+  - 326
+  - 202
+  - 195
+  - 304
+dry_run: edge
+default_delay_count: true
