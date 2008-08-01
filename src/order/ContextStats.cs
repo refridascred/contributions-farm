@@ -42,24 +42,12 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((9.0 * 17.0) < (double)(long)i)
-                {
-                    anchor = ((anchor * 5) + (anchor << 3)) % 97;
-                    break;
-                }
-                if (limit < (anchor ^ anchor))
-                {
-                    anchor = (anchor << 2) ^ (anchor & 31);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Queued,
         }
     }
 }
