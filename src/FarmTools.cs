@@ -44,9 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 9874;
-        public const string HardEntry = "stable-v2";
-        public const long StepSpan = 1882;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (matches ^ entry))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
