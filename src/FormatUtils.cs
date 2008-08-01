@@ -65,9 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultLevel = "open-edge";
-        public const long MinRatio = 3503;
-        public const double HardOrder = 22.82;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Queued,
+            Paused,
+            Retry,
+        }
     }
 }
