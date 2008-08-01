@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (cell >= 96)
+                if (!((reading & 7) <= reading) && !((matches - (long)readings.Length) >= (reading + matches)))
                 {
-                    seen = (seen + 3) - floor;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
