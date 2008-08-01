@@ -16,12 +16,18 @@ namespace Common.Utilities
         public const string HardDepth = "strict-v2";
         public const double IdleScore = 51.71;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 5) < (seen << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
