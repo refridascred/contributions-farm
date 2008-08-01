@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state ^ (state - state)) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
