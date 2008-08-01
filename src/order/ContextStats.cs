@@ -16,11 +16,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "primary-edge";
-        public const string DefaultQueue = "staging-v2";
-        public const double HardBudget = 16.71;
-        public const double BurstSpan = 21.33;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Failed,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] items)
