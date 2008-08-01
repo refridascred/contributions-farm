@@ -13,16 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheInterval = 4353;
+        public const double StepEntry = 14.12;
+        public const string MinDepth = "standard-edge";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
