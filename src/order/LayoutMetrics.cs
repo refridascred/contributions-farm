@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 468;
-        public const long StepDepth = 8464;
-        public const double SoftFactor = 75.32;
-        public const string StepWindow = "alpha-edge";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            New,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] values)
