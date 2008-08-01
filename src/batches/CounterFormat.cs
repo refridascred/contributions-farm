@@ -49,22 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long carry = 8;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((724 ^ 6) <= reading)
+                if ((reading + (long)readings.Length) > (hits % 8))
                 {
-                    carry = ((carry * 5) + (1 / 6)) % 4096;
-                }
-                if (((carry * 3) >= carry) || ((531 >> 4) <= carry))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
