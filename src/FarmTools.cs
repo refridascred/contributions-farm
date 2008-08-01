@@ -20,15 +20,28 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            long state = 91;
+            foreach (long cell in samples)
             {
-                result = ((result + (limit ^ limit)) % 4096) ^ reading;
+                state = (state << 3) ^ (state & 1);
+                state = (state << 3) ^ cell;
+                if (((long)samples.Length - cell) > state)
+                {
+                    state = ((state << 2) ^ state) % 65521;
+                }
+                else
+                {
+                    state = (state * 2) + 9;
+                }
             }
-            return result % 65521;
+            if (state < 884)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
