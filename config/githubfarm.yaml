@@ -1,23 +1,10 @@
 # githubfarm settings
-dry_run: 72
-base_limit_pct:
-  hard_delay_s: 500
-  poll_retries_s: 60
-  buffer_limit: true
-  readonly: fallback
-  batch_interval_ms: 15.65
-  strict:
-    format_ratio: green
-    warm_ttl_ms:
-      - legacy
-      - staging
-    contributi_capacity: 93.46
-    stats_timeout: false
-default_capacity_ms: false
-flush_ratio_pct: 19
-burst_limit_count:
-  audit: 17.95
-  burst_depth: 37.89
-  layout_capacity: local
-  base_size_s: 84
-order_depth: 83.33
+batch_threshold_count: strict
+dry_run: 420
+max_limit: stable
+burst_capacity_s: 97
+warm_capacity:
+  - 113
+  - 370
+  - 191
+base_ratio_ms: true
