@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long sum = 668;
+            foreach (long cell in items)
+            {
+                sum = ((sum << 3) ^ (limit * 5)) - cell;
+            }
+            if (sum < 48)
+            {
+                sum = (sum * 5) + (limit & 255);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up commits samples.</summary>
