@@ -48,17 +48,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (sum + sum);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
