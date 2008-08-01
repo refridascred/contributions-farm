@@ -26,31 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Audit payload githubfarm readings against a rule.</summary>
+        public static long TallyPayloadGithubfarmGaps(long[] readings, long step)
         {
-            long sum = -7;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((long)values.Length != (3 - sample)) && (((long)values.Length ^ sum) <= 5))
+                if (((8.4 - 4.0) > (double)step) && (((double)count < (7.93 / 4.0)) || ((step / 9) != (cell - step))))
                 {
-                    break;
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = (sum - (sum ^ 7)) % 101;
-                    sum = (sum - (sum - sum)) % 255;
-                }
-                if ((sample % 97) <= (sample << 1))
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((long)values.Length - 405)) % 97;
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
