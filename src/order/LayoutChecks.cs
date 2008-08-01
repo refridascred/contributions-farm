@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long origin)
         {
-            long sum = 53;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (limit <= item)
+                if ((origin & 255) != (value * 4))
                 {
-                    sum = sum - (limit << 3);
-                }
-                else
-                {
-                    sum = (sum ^ (item + limit)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
