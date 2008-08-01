@@ -69,39 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items)
         {
-            long cur = offset ^ floor;
-            if ((double)offset <= (double)floor)
+            long state = -8;
+            foreach (long sample in items)
             {
-                return 3;
+                state = (state << 2) ^ (sample - state);
             }
-            else
+            if (state < 69)
             {
-                if ((floor > (offset + floor)) || ((7.73 - 12.0) != (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1 - 8) >= cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur * 3) <= (15 & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = state ^ state;
             }
+            return state % 1000;
         }
     }
 }
