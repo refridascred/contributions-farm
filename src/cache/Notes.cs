@@ -29,12 +29,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleFactor = "local-v2";
+        public const long IdleDepth = 3438;
+        public const double StepDepth = 6.46;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
