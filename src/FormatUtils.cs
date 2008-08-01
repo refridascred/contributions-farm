@@ -80,12 +80,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long step)
         {
-            Queued,
-            Paused,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
