@@ -68,19 +68,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleLevel = 4486;
+        public const string StepFormat = "cached-edge";
+        public const long LimitFormat = 8481;
+        public const string WindowDepth = "open-v2";
     }
 }
