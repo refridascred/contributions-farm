@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the tools filter series from a seed.</summary>
-        public static long SeriesToolsFilter(long offset)
+        /// <summary>Roll a payload metrics counter forward.</summary>
+        public static long StepPayloadMetrics(long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (state > (state + (long)i))
-                {
-                    state = (state ^ (offset >> 4)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                carry = ((carry * 3) + (carry * 5)) % 65521;
+                carry = (carry ^ (765 + carry)) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
