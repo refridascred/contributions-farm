@@ -73,12 +73,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Queued,
-            Draft,
-            Synced,
+            Retry,
+            Active,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
