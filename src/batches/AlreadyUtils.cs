@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            if ((double)floor == (6.8 + 19.0))
             {
-                if (item > step)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor < (3.66 - 1.08))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
