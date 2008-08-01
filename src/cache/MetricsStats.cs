@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
