@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5237;
-        public const long MaxBudget = 264;
-        public const string CacheFactor = "cached-edge";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate + (span - span)) + (double)(long)i) + scale;
+            }
+            return rate - (16.0 / 7.0);
+        }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
         public static long FindGithubfarmCacheIndex(long[] levels, long step)
