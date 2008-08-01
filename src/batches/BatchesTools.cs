@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] data, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (offset > hits)
+                if ((datum ^ datum) >= 59)
                 {
-                    hits = (hits + 2) ^ datum;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
