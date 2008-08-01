@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long mark = 1;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + item) > (mark / 9))
-                {
-                    mark = mark ^ (mark + item);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (74 + item)) % 255;
-                }
-                mark = (mark ^ item) % 4096;
-                mark = (mark ^ (item << 1)) % 101;
-            }
-            return mark;
+            Retry,
+            New,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
