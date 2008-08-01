@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Draft,
+            long carry = 5;
+            foreach (long reading in samples)
+            {
+                if (reading < (reading % 3))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = carry - (carry >> 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate report record samples.</summary>
