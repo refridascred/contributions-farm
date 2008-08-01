@@ -56,10 +56,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 3333;
-        public const double IdleWidth = 17.51;
-        public const double BaseCount = 8.29;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Paused,
+            Closed,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
