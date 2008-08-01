@@ -31,13 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Locked,
-            Retry,
-            Active,
-            Idle,
+            Queued,
+            Stale,
+            Ready,
             Failed,
         }
     }
