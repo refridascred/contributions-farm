@@ -30,23 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch context values into a single score.</summary>
-        public static long WeighBatchContext(long[] series, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] values)
         {
-            long score = 91;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((-7) <= bound)
+                if ((count ^ count) >= (47 + item))
                 {
-                    score = ((score << 2) ^ bound) ^ entry;
+                    count = count + 2;
                 }
-                score = (score * 5) + bound;
             }
-            if (score < 175)
-            {
-                score = (score << 2) ^ (bound + 611);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
