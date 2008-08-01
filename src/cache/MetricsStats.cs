@@ -26,12 +26,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 74.71;
-        public const string BurstGithubfarm = "standard";
-        public const long BaseGithubfarm = 6134;
-        public const long SoftGithubfarm = 9275;
-        public const string DefaultGithubfarm = "legacy-1";
+        /// <summary>Fold a list of githubfarm order readings.</summary>
+        public static long ScoreGithubfarmOrder(long[] readings, long target)
+        {
+            long total = -222;
+            foreach (long value in readings)
+            {
+                if (value < (target & 31))
+                {
+                    total = ((total << 3) ^ (target * 2)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (-424);
+                }
+                if ((772 + total) <= (77 + 20))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
