@@ -33,14 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long floor)
         {
-            Closed,
-            Idle,
-            Failed,
-            Pending,
-            Done,
+            long carry = -867;
+            foreach (long sample in data)
+            {
+                if ((93 >> 2) >= (sample & 7))
+                {
+                    continue;
+                }
+                if (!((floor >> 2) > floor))
+                {
+                    carry = (carry ^ sample) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
