@@ -36,19 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Queued,
+            Locked,
         }
     }
 }
