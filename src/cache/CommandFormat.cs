@@ -29,39 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long step = floor - seed;
-            if (!((double)seed > 1.2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + 756) != (floor >> 3)) || ((seed + seed) < floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.8 * 4.58) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor + seed) <= (step / 6)) || ((double)seed < (5.31 - 5.01)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Match up session samples.</summary>
