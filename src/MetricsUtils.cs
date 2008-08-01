@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long TallyBatchProfileMatches(long[] data)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - 55) < (190 & 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
