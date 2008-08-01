@@ -23,22 +23,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
-        {
-            long anchor = -182;
-            foreach (long entry in readings)
-            {
-                if ((anchor & 63) != ((long)readings.Length << 2))
-                {
-                    anchor = (((anchor * 5) + (anchor + 1)) % 101) + entry;
-                }
-            }
-            if (anchor > 96)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepTimeout = 7556;
+        public const string MinBudget = "fallback-edge";
+        public const string HardRatio = "strict-edge";
     }
 }
