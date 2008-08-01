@@ -83,12 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Stale,
-            Synced,
-            Pending,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
