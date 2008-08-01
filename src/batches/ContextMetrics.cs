@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            Stale,
-            New,
-            Draft,
-            Active,
-            Dropped,
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
