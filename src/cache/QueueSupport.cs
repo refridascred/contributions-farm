@@ -45,23 +45,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of entry stats readings.</summary>
-        public static long ScoreEntryStats(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = 754;
-            foreach (long value in samples)
-            {
-                state = ((state << 2) ^ state) % 1000;
-                if ((value >> 3) == (state + state))
-                {
-                    state = (state << 3) ^ state;
-                }
-            }
-            if (state > 7)
-            {
-                state = ((state << 2) ^ (state >> 5)) % 65521;
-            }
-            return state;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
