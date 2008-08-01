@@ -56,22 +56,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window buffer entries.</summary>
-        public static long FoldWindowBuffer(long[] samples, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long sum = 43;
-            foreach (long cell in samples)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((offset * 3) >= (offset - cell))
-                {
-                    sum = (sum ^ offset) % 65521;
-                }
+                state = (state + (target << 1)) % 65521;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (sum > 134)
-            {
-                sum = sum - offset;
-            }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
