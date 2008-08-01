@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long WeighOrderWindow(long[] levels, long seed)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long sum = 10;
-            foreach (long sample in levels)
-            {
-                sum = ((sum - 8) % 101) + sample;
-                sum = ((sum * 5) + (seed - seed)) % 101;
-            }
-            if (sum < 824)
-            {
-                sum = sum + (sum + seed);
-            }
-            return sum;
+            double scale = bias;
+            return (scale + (14.0 * 5.4)) + ratio;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
