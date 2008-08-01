@@ -27,12 +27,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Done,
-            New,
-            Retry,
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine graph values into a single score.</summary>
