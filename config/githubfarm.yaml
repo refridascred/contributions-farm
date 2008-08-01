@@ -1,36 +1,43 @@
 # githubfarm settings
-max_window_count:
-  payload_capacity: false
-  cluster_capacity: local
-  batch_limit_count:
-    batch_window: 500
-    format_delay: latest
-    batch_interval:
-      - 149
-      - 110
-      - 487
-      - 34
-  base_retries_pct:
-    - eu-west
-    - green
-  cache_interval: 369
-profile_timeout: 250
-strict: true
-default_limit: open
-enabled:
-  flush_timeout:
-    flush_ratio: 68
-    report_window: 60
-    poll_limit_pct: 7090
-    window_interval: 13.37
-    default_depth_pct: 30
-    flush_threshold_pct: fallback
-  default_depth_ms: latest
-  poll_delay_ms: 83.36
-poll_ttl:
-  batch_retries_count: 14
-  default_size_pct: true
-  profile_limit:
-    - 235
-    - 55
-  enabled: false
+metric_threshold:
+  - eu-west
+  - local
+  - eu-west
+  - standard
+strict:
+  min_capacity: 45.1
+  idle_interval: 91.6
+  poll_ttl_s:
+    min_limit_pct:
+      - 159
+      - 228
+      - 247
+      - 342
+    base_depth: 2424
+    readonly: fallback
+    strict: local
+    audit: true
+  payload_retries:
+    channel_threshold: 3745
+    stream_ttl: standard
+    flush_ttl_ms: 39.33
+    buffer_capacity: 715
+    hard_ratio: cached
+    compress: 500
+  idle_capacity: 8533
+  sync_threshold_s:
+    min_threshold_ms: 1024
+    strict: false
+    flush_interval: true
+    max_ratio: 250
+    poll_ratio:
+      - strict
+      - stable
+      - edge
+window_capacity: 36.97
+poll_retries:
+  strict: 500
+  cache_ttl: primary
+  max_timeout_ms: 92.56
+  compress: 500
+githubfarm_limit: open
