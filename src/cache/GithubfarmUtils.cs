@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] series, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell ^ seen) >= (8 + seen))
+                result = result ^ ((long)i & 31);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = (seen + 2) - bound;
+                    result = (result - (result ^ target)) + (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a graph options.</summary>
