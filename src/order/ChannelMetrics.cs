@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] values, long limit)
         {
-            Idle,
-            Locked,
-            Dropped,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (double)limit)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
