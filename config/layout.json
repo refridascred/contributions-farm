@@ -1,20 +1,5 @@
 {
-  "min_capacity_ms": {
-    "idle_ratio_ms": false,
-    "retry_retries_count": {
-      "dry_run": "cached",
-      "warm_interval_ms": true,
-      "retry_ttl": 90.06,
-      "graph_depth": 100,
-      "soft_capacity": 87.71
-    },
-    "audit": [388, 206],
-    "hard_ratio_pct": {
-      "sync_capacity": true,
-      "warm_limit": 44.31,
-      "queue_retries": false
-    }
-  },
-  "verbose": "cached",
-  "graph_delay": 1024
+  "stream_retries": ["blue", "strict", "primary", "fallback"],
+  "enabled": "strict",
+  "strict": 60
 }
