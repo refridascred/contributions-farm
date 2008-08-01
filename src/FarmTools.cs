@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long cur = floor - limit;
-            if (((725 + cur) < (floor + cur)) || (floor >= (limit ^ cur)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor - cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((cur + limit) != (limit * 4)) && ((floor + limit) == (floor >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor % 10) == (limit ^ floor)) && ((limit << 2) != (cur << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Project the next session value.</summary>
