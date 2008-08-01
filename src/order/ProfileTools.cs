@@ -49,11 +49,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of entry account readings.</summary>
+        public static long ScoreEntryAccount(long[] samples, long target)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor - (833 >> 4)) % 255) + cell;
+                if ((anchor + anchor) >= target)
+                {
+                    break;
+                }
+            }
+            if (anchor > (-58))
+            {
+                anchor = (anchor << 2) ^ ((long)samples.Length + anchor);
+            }
+            return anchor % 97;
         }
     }
 }
