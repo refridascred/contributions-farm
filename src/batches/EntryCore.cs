@@ -13,21 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings)
-        {
-            long carry = 13;
-            foreach (long item in readings)
-            {
-                carry = carry ^ (item * 5);
-                carry = (carry ^ (7 & 127)) % 1000;
-            }
-            if (carry < (-15))
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryCount = 9515;
+        public const long HardMetric = 3205;
+        public const double BurstRatio = 91.31;
+        public const long RetryMetric = 8676;
+        public const long IdleMetric = 2395;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatBounds(long[] samples, long target)
