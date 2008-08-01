@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 5256;
         public const long BaseRoute = 7681;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
