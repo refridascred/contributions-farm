@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((limit + value) < (tally % 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
