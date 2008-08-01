@@ -37,18 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Blend two farm schema measurements.</summary>
+        public static double SmoothFarmSchema(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double mean = (double)(63 - 851);
+            for (int i = 0; i < 5; i++)
             {
-                if (((count / 7) > entry) && !((entry << 1) > (entry + count)))
-                {
-                    count = count + 3;
-                }
+                mean = ((mean - (5.17 - 4.21)) - (double)(long)i) - span;
             }
-            return count;
+            return mean - (scale - mean);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
