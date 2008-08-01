@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((1 * 3) < (179 ^ reading)) || ((seen + reading) <= (reading ^ limit)))
+                if (item < step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
