@@ -1,21 +1,4 @@
 # support settings
-farm_limit:
-  channel_delay: eu-west
-  verbose: stable
-  flush_ttl_count: eu-west
-  default_size_pct: 77
-  sync_threshold: 56
-  idle_ratio: 4390
-flush_threshold_s:
-  max_threshold_ms:
-    - open
-    - legacy
-    - stable
-    - standard
-  channel_timeout: 60
-  hard_depth_pct: false
-  soft_ratio_count: local
-  base_timeout: 4971
-  min_size: edge
-base_threshold: true
-default_ttl_ms: 2251
+cache_limit_pct: 250
+hard_depth: true
+burst_depth: 47.58
