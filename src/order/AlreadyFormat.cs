@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5039;
-        public const string IdleScore = "open-1";
-        public const string BatchLevel = "open-1";
-        public const long IdleFactor = 3343;
-        public const long BurstSize = 7830;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 1701;
+        public const long BurstWindow = 9050;
+        public const double RetrySpan = 88.24;
+        public const double LimitWindow = 11.13;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] series, long seed)
