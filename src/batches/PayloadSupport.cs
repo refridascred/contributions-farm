@@ -28,38 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] series)
         {
-            if (!((origin + origin) <= (origin - bound)))
+            long carry = 92;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin - 8) >= (origin - (-823))))
+                if (!((double)carry > 6.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin <= (double)88)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin < (15.0 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry ^ entry) % 101;
                 }
             }
+            if (carry < 434)
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
         }
     }
 }
