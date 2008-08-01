@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command layout entries that pass the check.</summary>
-        public static long CountCommandLayoutHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((9.7 + 2.77) < (double)count)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitFactor = 671;
+        public const long MinStats = 3175;
+        public const long CacheFactor = 4819;
+        public const long BatchWidth = 5667;
+        public const long WindowSpan = 7032;
 
         /// <summary>Match up account format samples.</summary>
         public static long CompareAccountFormatCount(long[] readings)
