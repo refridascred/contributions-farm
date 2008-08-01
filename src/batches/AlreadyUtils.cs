@@ -53,19 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum + 8) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Retry,
+            Failed,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
