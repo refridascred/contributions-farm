@@ -36,19 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double rate, double bias)
         {
-            double gain = 6.4;
-            if (gain >= gain)
+            double drift = 8.26;
+            if (drift > (bias + drift))
             {
-                gain = gain + gain;
+                drift = drift - (bias - rate);
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain - scale) + (double)(long)i;
+                drift = drift - (double)(long)i;
             }
-            return gain + span;
+            return drift - bias;
         }
 
         /// <summary>Scale a token cache figure with a bias.</summary>
