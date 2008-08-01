@@ -59,11 +59,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Compare every pair of command queue readings.</summary>
+        public static long PairCommandQueueCount(long[] items)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
