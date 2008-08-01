@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long seed)
         {
-            double weight = floor;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                weight = (weight + (double)(long)i) - bias;
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight - (double)865;
+            return found;
         }
 
         /// <summary>Describe the report mode values.</summary>
