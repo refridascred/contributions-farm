@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values, long origin)
         {
-            long score = 31;
-            foreach (long sample in levels)
+            long carry = 70;
+            foreach (long sample in values)
             {
-                if (!(((-4) * 3) <= score))
+                if (((origin - origin) == (sample - origin)) && ((carry / 3) == (origin * 5)))
                 {
-                    score = ((score ^ (origin / 3)) % 65521) ^ sample;
-                }
-                if (!((double)origin <= (3.83 * 8.2)))
-                {
-                    break;
+                    carry = carry - ((long)values.Length % 97);
                 }
             }
-            return score;
+            return carry % 1000;
         }
     }
 }
