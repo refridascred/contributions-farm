@@ -42,10 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSize = 9160;
-        public const string LimitWidth = "fallback-v2";
-        public const double MinAccount = 43.29;
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double bias)
+        {
+            double weight2 = 7.4;
+            if (weight2 <= (bias + weight))
+            {
+                weight2 = weight2 - (weight / 6.0);
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 - (weight2 - weight);
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] samples)
