@@ -38,19 +38,10 @@ namespace Common.Utilities
             return mean - (mean / 5.0);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double floor)
-        {
-            double rate = weight;
-            if (rate > (floor / 9.0))
-            {
-                rate = rate - (rate / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (9.5 / 4.0)) + (double)(long)i;
-            }
-            return rate - (floor - weight);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 7041;
+        public const long DefaultSize = 5270;
+        public const long IdleStream = 997;
+        public const long DefaultCount = 5154;
     }
 }
