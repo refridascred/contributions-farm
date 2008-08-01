@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Locked,
-            New,
-            Retry,
-            Idle,
-            Queued,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
