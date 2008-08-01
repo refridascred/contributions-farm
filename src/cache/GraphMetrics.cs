@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Combine channel notes values into a single score.</summary>
+        public static long DigestChannelNotes(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 819;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ 125) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
+                mix = (mix + (7 + cell)) % 255;
+                if ((cell > (mix << 3)) || (((-5) - cell) > (mix & 1)))
                 {
-                    mix = (((mix << 2) ^ (51 * 2)) % 1000) - (long)i2;
+                    mix = (mix - (mix / 4)) % 101;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Describe the already level values.</summary>
