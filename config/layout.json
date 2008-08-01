@@ -1,5 +1,7 @@
 {
-  "stream_retries": ["blue", "strict", "primary", "fallback"],
-  "enabled": "strict",
-  "strict": 60
+  "soft_depth_ms": 9.29,
+  "format_timeout": 98,
+  "report_ttl": ["eu-west", "open"],
+  "farm_timeout": 500,
+  "flush_window": 78.09
 }
