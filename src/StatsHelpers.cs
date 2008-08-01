@@ -34,21 +34,23 @@ namespace Common.Utilities
             return (load - (bias * 0.5)) + ratio;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 9.0;
+            if (rate > rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return matches;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
