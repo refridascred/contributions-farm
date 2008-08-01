@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long step)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 6.6;
+            if (mean < (offset + scale))
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)61;
             }
-            return -1;
+            return mean + (mean + offset);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
