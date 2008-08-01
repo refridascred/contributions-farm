@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long mix = 650;
-            foreach (long item in levels)
+            double load = span - (span + bias);
+            for (int i = 0; i < 2; i++)
             {
-                mix = (((mix << 3) ^ (444 / 4)) % 255) - limit;
-                if ((280 << 2) >= (item >> 1))
-                {
-                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
-                }
+                load = (load - (bias / 6.0)) + (double)(long)i;
             }
-            return mix;
+            return load - (double)11;
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
