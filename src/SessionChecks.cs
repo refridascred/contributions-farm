@@ -40,12 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a channel options.</summary>
