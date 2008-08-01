@@ -47,31 +47,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long origin)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long WeighCommandBuffer(long[] readings)
         {
-            if ((origin - origin) != (688 - floor))
+            long acc = 842;
+            foreach (long value in readings)
             {
-                return 4;
+                acc = ((acc * 4) + value) % 1000;
+                acc = acc + (value - value);
             }
-            else
-            {
-                if ((origin >> 3) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin & 63) < (origin << 3)) || ((4.4 + 16.0) < (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate commits buffer readings against a bound.</summary>
