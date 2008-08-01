@@ -1,10 +1,9 @@
 # entry settings
-default_window_ms: stable
-warm_interval_ms: 2667
-cluster_timeout: local
-audit: 250
-retry_size_pct:
-  - local
-  - local
-  - eu-west
-  - edge
+default_threshold_count: true
+persist: standard
+flush_interval_pct:
+  - staging
+  - stable
+  - blue
+  - standard
+session_ttl: legacy
