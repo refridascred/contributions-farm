@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((2.89 * 4.0) != (double)item) && ((item & 63) < (seen & 15)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a token layout pair into a bucket.</summary>
