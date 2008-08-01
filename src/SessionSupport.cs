@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long step)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long WeighToolsQueue(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 91;
+            foreach (long item in levels)
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                if (((item + item) <= total) || ((1 % 97) == (total - total)))
                 {
-                    return (long)i;
+                    total = ((total * 3) + item) % 255;
+                }
+                else
+                {
+                    total = (total + (offset - item)) % 97;
+                }
+                if ((double)total > 20.0)
+                {
+                    total = total ^ (80 / 6);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
