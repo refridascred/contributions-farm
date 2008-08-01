@@ -75,19 +75,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph commits series from a seed.</summary>
-        public static long RollGraphCommits(long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((long)i < total)
-                {
-                    total = (total + (origin + origin)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Done,
+            Idle,
         }
     }
 }
