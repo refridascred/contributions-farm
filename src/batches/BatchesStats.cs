@@ -42,18 +42,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)tally < (6.7 + 3.08))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            double bias = (double)103;
+            return ((bias + bias) + weight) + offset;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
