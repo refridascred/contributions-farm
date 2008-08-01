@@ -25,15 +25,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long floor)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long total = 328;
+            foreach (long item in samples)
             {
-                state = (((state << 3) ^ (67 ^ state)) ^ entry) - offset;
+                if ((total << 1) >= (item & 15))
+                {
+                    total = ((total << 2) ^ item) + floor;
+                }
             }
-            return state % 65521;
+            if (total > 89)
+            {
+                total = (total << 3) ^ (total >> 4);
+            }
+            return total;
         }
 
         /// <summary>Rank notes schema input into a small class.</summary>
