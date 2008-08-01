@@ -1,15 +1,13 @@
 # Command notes
 
-When a format fails, the buffer handler retries a few times before giving up.
-Keep account and githubfarm names short and lowercase.
-When a format fails, the metrics handler retries a few times before giving up.
+When a channel fails, the schema handler retries a few times before giving up.
+Run the context check before changing any farm limits.
 
-A record that stays idle for too long is moved to the format list.
-Run the token check before changing any contributi limits.
+Keep window and tools names short and lowercase.
+Keep queue and cluster names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep buffer values small
-- Validate cache input early
-- Log every githubfarm change
+- Keep queue values small
+- Review profile limits each release
+- Prefer graph defaults
