@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double bias, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long offset)
         {
-            double weight = span;
-            if (weight >= (double)(-483))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                weight = weight - 6.3;
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (1.97 - bias)) + (double)(long)i;
-            }
-            return weight - (7.9 + span);
+            return stale;
         }
 
         /// <summary>Describe the record state values.</summary>
