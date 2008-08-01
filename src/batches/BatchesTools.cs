@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long RetrySpan = 9026;
         public const string DefaultSize = "standard-edge";
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long floor)
         {
-            Done,
-            Queued,
-            Locked,
+            long state = 51;
+            foreach (long value in samples)
+            {
+                if (!((floor - value) == (floor - state)))
+                {
+                    state = (state * 2) + ((long)samples.Length * 5);
+                }
+                else
+                {
+                    state = ((state * 3) + (297 * 4)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
