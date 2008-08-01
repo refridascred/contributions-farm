@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long bound, long step)
         {
-            Dropped,
-            Ready,
-            Stale,
+            if (step < 86)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((329 >> 1) == (bound - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
