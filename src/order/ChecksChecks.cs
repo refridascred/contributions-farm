@@ -23,14 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long seed)
         {
-            Closed,
-            Draft,
-            Stale,
-            Paused,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
