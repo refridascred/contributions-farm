@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const long IdleCount = 8317;
         public const long BatchInterval = 7479;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long target, long floor)
         {
-            Active,
-            Draft,
-            Dropped,
-            New,
+            if ((18.0 / 2.0) >= (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ floor) == (target / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (43 < (floor + 96))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
