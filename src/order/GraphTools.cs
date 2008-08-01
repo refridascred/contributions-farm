@@ -48,23 +48,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] series, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((mix + (long)i) != (728 & 31)))
+                if ((floor * 2) >= cell)
                 {
-                    mix = ((mix << 3) ^ (mix / 9)) % 97;
+                    tally = tally + 1;
                 }
-                if ((4 - target) >= target)
+                else
                 {
-                    continue;
+                    tally = tally - 1;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
