@@ -52,20 +52,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next metrics filter value from a seed.</summary>
-        public static long RollMetricsFilter(long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (mix + mix) % 1000;
-                if (((target + target) < mix) && (target < (target + target)))
+                double drift = (8.59 - 9.21) + (6.0 - 6.4);
+                if (!(drift >= (drift + drift)))
                 {
-                    mix = (mix ^ (mix + target)) % 97;
+                    drift = drift - drift;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
+                else
+                {
+                    drift = drift - (drift / 8.0);
+                }
+                drift = drift + (drift - 3.91);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
     }
 }
