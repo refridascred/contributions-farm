@@ -75,24 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((8.74 + 12.0) > (double)floor)
-                {
-                    mix = ((mix * 3) + (mix << 2)) % 65521;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix * 2) + floor) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSize = 738;
+        public const double BatchLevel = 86.56;
+        public const string BaseCache = "standard-edge";
+        public const long HardCache = 811;
+        public const long CacheSize = 5013;
     }
 }
