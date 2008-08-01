@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Compare every pair of metric batch readings.</summary>
-        public static long CompareMetricBatchCount(long[] data)
+        /// <summary>Audit metrics entry readings against a rule.</summary>
+        public static long CountMetricsEntryOutliers(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((175 / 3) <= (origin + sample))
                 {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
