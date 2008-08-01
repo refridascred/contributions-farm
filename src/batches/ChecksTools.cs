@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = seed + bound;
+            if ((bound ^ seed) >= (48 * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound + cur) < (seed ^ cur))
                 {
-                    if ((data[i] + data[j]) == 9)
+                    return 5;
+                }
+                else
+                {
+                    if (((cur << 1) > ((-4) >> 4)) && ((bound + cur) < (bound << 1)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ (-476)) == (bound ^ cur))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate checks layout readings against a bound.</summary>
