@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BaseSession = 5800;
         public const long BatchSession = 5291;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
