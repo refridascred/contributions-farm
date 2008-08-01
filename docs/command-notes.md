@@ -1,15 +1,14 @@
 # Command notes
 
-Use filter settings to tune how often account data is refreshed.
-Use cluster settings to tune how often notes data is refreshed.
-Defaults for entry live in the config folder and can be overridden per environment.
+Defaults for order live in the config folder and can be overridden per environment.
+A farm that stays idle for too long is moved to the graph list.
 
-The metrics module keeps format values in sync with the payload cache.
-A tools that stays idle for too long is moved to the window list.
+Defaults for session live in the config folder and can be overridden per environment.
+Use route settings to tune how often route data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every filter change
-- Validate githubfarm input early
-- Review cluster limits each release
-- Prefer graph defaults
+- Document new report fields
+- Log every route change
+- Keep entry values small
