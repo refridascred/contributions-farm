@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            double drift = ratio * 2.0;
-            if (drift > (drift / 4.0))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                drift = drift - span;
+                if ((double)entry == (1.5 + 11.0))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (ratio - span)) + (double)(long)i;
-            }
-            return drift - (double)2;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
