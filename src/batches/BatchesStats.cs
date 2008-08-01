@@ -24,19 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
