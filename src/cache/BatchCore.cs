@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes batch figure with a bias.</summary>
-        public static double BlendNotesBatch(double weight, double floor)
+        /// <summary>Derive the next cache queue value from a seed.</summary>
+        public static long StepCacheQueue(long limit)
         {
-            double bias = (double)(373 ^ 7);
-            if (bias > (double)0)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                bias = ((bias - (double)86) - weight) + floor;
+                total = (total << 2) ^ (total >> 5);
+                total = (total ^ limit) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return bias + (bias / 7.0);
+            return total;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
