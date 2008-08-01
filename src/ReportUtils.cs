@@ -47,14 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Draft,
-            Paused,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4421;
+        public const string MaxSize = "alpha-1";
+        public const long IdleMetric = 662;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 155;
