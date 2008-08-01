@@ -1,14 +1,27 @@
 # entry settings
-max_depth_count: 66.19
-min_limit_pct:
-  - 249
-  - 419
-  - 381
-cache_threshold_count: true
-enabled:
-  - 404
-  - 332
-  - 264
-  - 487
-entry_timeout: 674
-schema_window: 5009
+burst_ratio_pct:
+  base_timeout_ms: primary
+  account_retries: true
+  soft_delay: edge
+hard_window_ms: 18
+max_threshold:
+  - 204
+  - 198
+format_timeout:
+  cache_limit_ms: green
+  idle_limit_pct: blue
+  cache_retries_count: primary
+  flush_retries_s: true
+  sync_limit_ms: 6658
+  soft_size_count: 59.95
+hard_depth:
+  command_capacity: eu-west
+  idle_limit: primary
+  readonly:
+    - 343
+    - 246
+    - 318
+    - 182
+  payload_interval: 35.44
+  flush_limit_s: true
+verbose: 100
