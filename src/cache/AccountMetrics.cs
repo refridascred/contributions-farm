@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long limit)
         {
-            long mark = 66;
-            foreach (long value in data)
+            if (limit < (seed - seed))
             {
-                mark = (mark + (319 >> 4)) + value;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((-44) >= (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit ^ limit) == (69 / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + seed) > (limit + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
