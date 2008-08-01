@@ -1,6 +1,12 @@
 {
-  "strict": "eu-west",
-  "min_timeout_ms": "stable",
-  "poll_ttl_pct": 30,
-  "hard_interval": "stable"
+  "poll_window_count": 8,
+  "batch_delay": {
+    "schema_ttl": "standard",
+    "readonly": true,
+    "warm_ttl_count": [271, 416],
+    "route_threshold": "strict",
+    "soft_ratio_pct": 65
+  },
+  "cache_retries": "blue",
+  "profile_ttl": 35.38
 }
