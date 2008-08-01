@@ -1,11 +1,10 @@
 # support settings
-notes_limit: false
-route_ratio:
-  retry_timeout_s: 71
-  record_depth: 25.4
-  retry_limit_count: primary
-  dry_run: 97.39
-idle_window:
-  - 490
-  - 89
-  - 250
+persist: 15.53
+sync_capacity_count:
+  filter_size: primary
+  context_delay: false
+  cache_ttl_count: 25.39
+  metric_timeout: 30
+editor_retries: standard
+base_limit: 6
+compress: staging
