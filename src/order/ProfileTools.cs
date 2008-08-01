@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)hits <= 7.4)
+                if (12.0 <= (double)(long)i)
                 {
-                    hits = (hits + 1) + entry;
+                    score = (score ^ ((long)i % 60)) % 65521;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
