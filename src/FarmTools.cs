@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                acc = acc + (bound - bound);
-                for (int i2 = 0; i2 < 3; i2++)
+                sum = (sum ^ (sum + sum)) % 4096;
+                sum = (sum * 4) + (item + item);
+                if ((double)sum <= (15.0 + 5.1))
                 {
-                    acc = ((acc * 4) + (bound << 3)) - (long)i2;
+                    sum = (sum * 5) + item;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                else
+                {
+                    sum = sum - (2 * 5);
+                }
             }
-            return acc;
+            return sum % 65521;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
