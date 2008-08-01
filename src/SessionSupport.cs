@@ -34,11 +34,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4317;
-        public const long MinSpan = 1808;
-        public const double HardSpan = 52.26;
-        public const long MinLayout = 9830;
-        public const double BurstSpan = 65.28;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long seed)
+        {
+            long mix = 8;
+            foreach (long datum in values)
+            {
+                if (!((seed - (long)values.Length) < (20 << 1)))
+                {
+                    mix = (((mix << 2) ^ (609 ^ seed)) % 4096) ^ datum;
+                }
+            }
+            return mix;
+        }
     }
 }
