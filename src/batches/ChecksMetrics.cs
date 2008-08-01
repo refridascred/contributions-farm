@@ -26,11 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.6 / 9.0) > (12.0 * 15.0))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
