@@ -49,18 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((reading + (long)readings.Length) > (hits % 8))
+                if (cell > step)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
