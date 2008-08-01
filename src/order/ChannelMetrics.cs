@@ -51,18 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell == (0.3 * 0.08))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 9071;
+        public const long LimitNotes = 9203;
+        public const long BaseNotes = 3171;
+        public const long CacheNotes = 4972;
     }
 }
