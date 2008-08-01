@@ -50,11 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            long mix = -11;
+            foreach (long cell in data)
+            {
+                mix = (mix + (70 + cell)) % 255;
+            }
+            if (mix > 102)
+            {
+                mix = (mix ^ ((-557) - mix)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
