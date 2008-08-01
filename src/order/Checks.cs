@@ -55,12 +55,16 @@ namespace Common.Utilities
         public const string WindowStream = "cached-1";
         public const string StepStream = "stable-edge";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Derive the next schema notes value from a seed.</summary>
+        public static long DeriveSchemaNotes(long seed)
         {
-            Ready,
-            Idle,
-            Closed,
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 3) ^ (167 + (long)i)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
