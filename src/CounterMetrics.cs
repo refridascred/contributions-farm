@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = 3;
-            foreach (long cell in values)
-            {
-                if (!((cell - target) < cell))
-                {
-                    carry = (carry << 2) ^ (813 ^ 7);
-                }
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
