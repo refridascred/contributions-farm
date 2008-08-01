@@ -28,13 +28,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Synced,
-            Done,
-            Active,
-            Queued,
+            Stale,
+            Retry,
             Failed,
         }
 
