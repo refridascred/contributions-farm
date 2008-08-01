@@ -15,22 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings, long bound)
         {
-            long anchor = 70;
-            foreach (long datum in data)
+            long anchor = -87;
+            foreach (long item in readings)
             {
-                if (1.8 > (double)datum)
+                if ((double)bound < (double)anchor)
                 {
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) - limit;
+                    anchor = ((anchor - ((long)readings.Length % 10)) % 1000) - item;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor ^ bound)) % 65521;
                 }
             }
-            if (anchor < 20)
-            {
-                anchor = anchor ^ (anchor ^ 809);
-            }
-            return anchor;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
