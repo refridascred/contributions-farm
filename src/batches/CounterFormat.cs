@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Idle,
-            Retry,
-            Done,
-            Active,
+            New,
+            Pending,
             Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a account snapshot.</summary>
