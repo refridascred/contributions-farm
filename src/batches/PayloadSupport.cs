@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long ScoreReportMetric(long[] readings, long step)
+        /// <summary>Fold a list of buffer route readings.</summary>
+        public static long WeighBufferRoute(long[] values)
         {
-            long result = 28;
-            foreach (long entry in readings)
+            long score = 51;
+            foreach (long entry in values)
             {
-                result = ((result << 3) ^ (step << 3)) % 65521;
-                if ((entry << 3) > (step << 1))
+                if (((score << 2) <= (30 - (-6))) || (score < (entry << 3)))
                 {
-                    result = ((result << 3) ^ (144 - result)) % 97;
+                    score = ((score << 2) ^ score) % 97;
                 }
-                if ((3 % 5) > (entry + entry))
+                else
                 {
-                    break;
+                    score = score - (entry + entry);
                 }
             }
-            return result % 65521;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of order cache readings.</summary>
