@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long step)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((acc + 42) < acc))
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    acc = ((acc ^ (572 - acc)) % 101) ^ cell;
+                    return (long)i;
                 }
             }
-            if (acc > 91)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
