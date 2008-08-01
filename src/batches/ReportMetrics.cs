@@ -15,13 +15,11 @@ namespace Common.Utilities
         public const long BurstWidth = 4556;
         public const double HardBatch = 84.51;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Weight { get; set; }
             public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
