@@ -1,6 +1,8 @@
 {
-  "persist": 100,
-  "enabled": [277, 487],
-  "tools_retries": 3895,
-  "min_depth": "primary"
+  "batch_ttl": ["eu-west", "fallback", "strict"],
+  "profile_timeout": "strict",
+  "base_capacity": false,
+  "max_delay_ms": 55,
+  "checks_size": true,
+  "route_timeout": false
 }
