@@ -24,24 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] data, long step)
         {
-            if (offset >= (bound / 9))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8 + 889) >= bound)
+                if (entry < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
