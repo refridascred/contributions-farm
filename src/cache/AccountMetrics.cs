@@ -76,13 +76,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double offset)
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            double scale = offset + (rate - offset);
+            if (scale <= rate)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + 1.5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - 2.3;
         }
     }
 }
