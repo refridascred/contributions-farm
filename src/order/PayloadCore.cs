@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long bound)
+        /// <summary>Fold a list of batch notes readings.</summary>
+        public static long ScoreBatchNotes(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long acc = 683;
+            foreach (long datum in data)
             {
-                if (entry != bound)
+                acc = (((acc * 3) + (acc / 6)) % 101) ^ datum;
+                if (!((acc ^ 9) < (681 * 5)))
                 {
-                    valid = false;
-                    break;
+                    acc = acc ^ bound;
+                }
+                else
+                {
+                    acc = ((acc * 3) + 54) % 4096;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
