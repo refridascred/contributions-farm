@@ -39,17 +39,15 @@ namespace Common.Utilities
             return drift - 2.3;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 92;
+            foreach (long value in values)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (30 % 8)) % 101) - value;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a notes stats.</summary>
