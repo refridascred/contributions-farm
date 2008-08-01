@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of already schema readings.</summary>
+        public static long TallyAlreadySchema(long[] items, long offset)
         {
-            Paused,
-            Synced,
-            Active,
-            Ready,
+            long mix = 324;
+            foreach (long item in items)
+            {
+                mix = ((mix * 4) + (offset + (-13))) - item;
+            }
+            if (mix < 88)
+            {
+                mix = ((mix << 3) ^ (offset - mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
