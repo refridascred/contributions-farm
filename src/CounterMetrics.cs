@@ -20,22 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = -87;
-            foreach (long item in readings)
-            {
-                if ((double)bound < (double)anchor)
-                {
-                    anchor = ((anchor - ((long)readings.Length % 10)) % 1000) - item;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor ^ bound)) % 65521;
-                }
-            }
-            return anchor % 97;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
