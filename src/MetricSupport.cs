@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next channel schema value from a seed.</summary>
-        public static long StepChannelSchema(long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seed > 1.72)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - (long)i;
-                    carry = (carry << 2) ^ (carry & 15);
-                    continue;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
