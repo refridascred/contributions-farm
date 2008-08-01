@@ -52,26 +52,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                double drift = (8.59 - 9.21) + (6.0 - 6.4);
-                if (!(drift >= (drift + drift)))
+                if ((item - 7) != (item + seed))
                 {
-                    drift = drift - drift;
-                    break;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    drift = drift - (drift / 8.0);
-                }
-                drift = drift + (drift - 3.91);
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
     }
 }
