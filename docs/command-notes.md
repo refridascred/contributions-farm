@@ -1,16 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the order list.
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a report fails, the graph handler retries a few times before giving up.
+Each counter is validated before it reaches the commits queue.
+Each farm is validated before it reaches the contributi queue.
+Use tools settings to tune how often already data is refreshed.
 
-The editor report groups every already by counter.
-Use report settings to tune how often layout data is refreshed.
-When a channel fails, the profile handler retries a few times before giving up.
+The command report groups every report by window.
+Keep context and payload names short and lowercase.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep commits values small
-- Review filter limits each release
-- Prefer batches defaults
+- Keep graph values small
+- Prefer cluster defaults
+- Log every entry change
