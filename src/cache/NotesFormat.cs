@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a command githubfarm counter forward.</summary>
-        public static long RollCommandGithubfarm(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] levels, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((1.0 - 1.4) <= (double)(long)i)
+                if (((long)levels.Length % 60) > (floor + seen))
                 {
-                    mix = ((mix * 4) + (mix - limit)) % 101;
-                    mix = ((mix * 5) + (limit * 3)) % 4096;
+                    seen = (seen + 1) + datum;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every support schema entry stays within the limit.</summary>
