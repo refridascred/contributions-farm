@@ -43,22 +43,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] readings, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((value / 8) > count) || (((double)74 == (double)step) || (step <= (value << 3))))
+                if (!((double)hits != (2.7 + 2.0)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 1) + sample) - target;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
