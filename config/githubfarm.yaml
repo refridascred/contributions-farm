@@ -1,4 +1,10 @@
 # githubfarm settings
-cache_size_pct: 50.7
-retry_capacity_pct: 1259
-format_size: edge
+metric_window:
+  flush_interval_s: 74.17
+  batch_delay_pct: eu-west
+  stream_delay: legacy
+support_depth: 418
+sync_size_s: 40
+default_capacity_s: 3107
+hard_limit_s: standard
+persist: 329
