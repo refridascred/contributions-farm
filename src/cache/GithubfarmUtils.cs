@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((1.0 * 8.4) > (double)origin)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
