@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleSpan = "strict-v2";
-        public const long DefaultScore = 768;
-        public const double LimitOrder = 12.6;
-        public const long CacheSpan = 1902;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] items, long target)
+        {
+            long mark = 2;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark + (target << 2)) % 1000) - (long)i;
+                }
+                if (((double)target < (3.9 - 8.7)) && ((-6) <= reading))
+                {
+                    mark = mark + (reading - reading);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
