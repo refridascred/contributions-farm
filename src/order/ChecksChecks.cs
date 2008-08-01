@@ -23,19 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= step)
+                if (readings[i] > step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
