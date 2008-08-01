@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark >> 2) > 17)
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
-                    mark = (mark << 2) ^ ((long)i ^ limit);
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
