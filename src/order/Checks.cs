@@ -17,19 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (item != floor)
+                if (((item <= (item + tally)) || ((double)tally <= (1.09 * 5.95))) && ((double)item < (9.66 + 4.25)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
