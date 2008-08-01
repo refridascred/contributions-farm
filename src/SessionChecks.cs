@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long offset)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            if (!(341 > (step - step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.57 - 0.67) >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset - offset) != (step / 6)) && ((offset - 79) >= (step / 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
