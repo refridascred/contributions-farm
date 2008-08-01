@@ -1,29 +1,10 @@
 # entry settings
-compress:
-  support_interval:
-    - 305
-    - 434
-    - 474
-  cache_limit_s:
-    - 352
-    - 16
-    - 407
-  metrics_timeout: false
-  verbose: 250
-  max_interval_s: true
-burst_window_pct: staging
-readonly: 250
-graph_ttl: 70
-session_ttl:
-  retry_window_ms:
-    - 96
-    - 1
-    - 419
-    - 19
-  farm_window:
-    - 322
-    - 235
-  retry_size_count: false
-  idle_capacity: latest
-  record_ratio: 500
-soft_interval: 500
+default_window_ms: stable
+warm_interval_ms: 2667
+cluster_timeout: local
+audit: 250
+retry_size_pct:
+  - local
+  - local
+  - eu-west
+  - edge
