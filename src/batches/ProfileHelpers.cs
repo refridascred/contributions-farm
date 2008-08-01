@@ -55,22 +55,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples, long step)
+        /// <summary>Digest a series of tools support entries.</summary>
+        public static long TallyToolsSupport(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = -62;
+            foreach (long sample in items)
             {
-                if ((7.13 * 1.08) > (double)count)
+                result = ((result << 2) ^ (result / 9)) % 1000;
+                if (((result - result) >= (sample >> 1)) && ((double)sample < (12.0 * 3.1)))
                 {
-                    count = ((count + 2) ^ cell) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result - (sample & 127)) % 97;
                 }
             }
-            return count;
+            if (result > 0)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Describe the route class values.</summary>
