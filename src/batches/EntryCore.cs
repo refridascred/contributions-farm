@@ -12,23 +12,38 @@ namespace Common.Utilities
         public const long SoftChannel = 4385;
         public const double SoftSize = 16.73;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double span)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long offset)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            if (!(1.16 >= (double)offset))
             {
-                ratio = ratio + (ratio / 5.0);
+                return 7;
             }
             else
             {
-                ratio = ratio + (ratio - ratio);
+                if (bound < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ bound) != (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((5 + 1) > (offset << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (18.0 + span);
         }
 
         /// <summary>Rank layout input into a small class.</summary>
