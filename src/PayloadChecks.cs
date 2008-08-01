@@ -64,15 +64,14 @@ namespace Common.Utilities
         public const long LimitRatio = 7810;
         public const long SoftContext = 1756;
 
-        /// <summary>Fold a list of support route readings.</summary>
-        public static long DigestSupportRoute(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = 8;
-            foreach (long reading in items)
-            {
-                sum = ((sum ^ (sum + 761)) % 255) + reading;
-            }
-            return sum;
+            Closed,
+            Synced,
+            Paused,
+            Retry,
+            Failed,
         }
     }
 }
