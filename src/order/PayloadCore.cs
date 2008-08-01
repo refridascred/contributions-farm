@@ -20,23 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally % 16) != (tally << 2))
-                {
-                    tally = ((tally + 1) ^ sample) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCount = 40.74;
+        public const long BurstRatio = 9733;
+        public const long BaseCommand = 927;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
