@@ -34,17 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile report sample.</summary>
-        public static long SeekProfileReportIndex(long[] items, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (items[i] >= origin)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
