@@ -48,12 +48,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] values, long step)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up channel samples.</summary>
