@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long step)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
