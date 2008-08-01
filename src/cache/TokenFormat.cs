@@ -47,22 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double load = (double)36 - weight;
+            if (load > (double)547)
             {
-                if ((count + count) <= datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - (load + 8.79);
             }
-            return count;
+            else
+            {
+                load = load + load;
+            }
+            return load + (offset / 9.0);
         }
     }
 }
