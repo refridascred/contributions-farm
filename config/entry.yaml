@@ -1,5 +1,5 @@
 # entry settings
-verbose: true
-dry_run: blue
-flush_ratio_ms: 45.81
-min_depth: fallback
+retry_limit_count: 5803
+already_ratio: 30
+account_retries: fallback
+stream_window: 29.88
