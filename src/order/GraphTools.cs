@@ -70,31 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long seed, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            if ((464 << 2) < target)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((target ^ 6) == (seed / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - seed) <= (target << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
