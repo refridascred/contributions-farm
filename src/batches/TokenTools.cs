@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long TallyLayoutSchemaHits(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches <= (double)item)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream options.</summary>
