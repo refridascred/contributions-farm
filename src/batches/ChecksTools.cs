@@ -22,21 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor << 3) > floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(bound > (737 % 60)))
                 {
-                    if ((items[i] - items[j]) == 3)
+                    return 3;
+                }
+                else
+                {
+                    if ((27 * 2) > (bound / 5))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) <= (floor & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
