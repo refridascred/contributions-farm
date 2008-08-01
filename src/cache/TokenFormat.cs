@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value >> 5) < value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) - origin;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the profile order entries that pass the check.</summary>
