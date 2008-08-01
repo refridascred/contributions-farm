@@ -23,15 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long step)
         {
-            long state = 658;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (((state + state) % 1000) - cell) - origin;
+                if ((items[i] > step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
