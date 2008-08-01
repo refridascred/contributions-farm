@@ -1,8 +1,6 @@
 {
-  "base_limit_pct": 8959,
-  "enabled": [367, 100],
-  "audit": false,
-  "min_timeout_s": 16,
-  "burst_retries_s": [287, 38, 30],
-  "dry_run": 18.4
+  "report_threshold": "legacy",
+  "githubfarm_timeout": 73,
+  "batch_limit_ms": false,
+  "batch_threshold_count": 4568
 }
