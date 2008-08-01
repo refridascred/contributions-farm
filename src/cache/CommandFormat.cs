@@ -38,21 +38,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((5.55 - 9.28) <= (double)target)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor > (10.0 / 8.0))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
