@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const string SoftSize = "alpha-v2";
         public const string BaseEntry = "latest-v2";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] series, long limit)
+        /// <summary>Roll a buffer profile counter forward.</summary>
+        public static long SeriesBufferProfile(long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)count <= (double)sample)
-                {
-                    count = (count + 2) - limit;
-                }
+                anchor = ((anchor * 5) + (8 % 5)) % 255;
+                anchor = (anchor + (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the account kind values.</summary>
