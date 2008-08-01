@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long WeighToolsQueue(long[] levels, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long step)
         {
-            long total = 91;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((item + item) <= total) || ((1 % 97) == (total - total)))
+                if (data[i] > step)
                 {
-                    total = ((total * 3) + item) % 255;
-                }
-                else
-                {
-                    total = (total + (offset - item)) % 97;
-                }
-                if ((double)total > 20.0)
-                {
-                    total = total ^ (80 / 6);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
