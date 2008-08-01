@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const long MinTools = 6754;
         public const double WindowBudget = 27.48;
 
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long BucketStreamGithubfarm(long floor, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long bound)
         {
-            if (limit >= (limit << 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + floor) > (floor & 31)) && (floor > (floor >> 4)))
+                if (series[i] > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor <= (floor << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (1 - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a notes batch figure with a bias.</summary>
