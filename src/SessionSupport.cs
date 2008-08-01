@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 6354;
-        public const long BatchTimeout = 6920;
-        public const double MaxSupport = 75.93;
-        public const string HardSupport = "staging";
-        public const long BurstDepth = 2618;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowBudget = 3551;
+        public const long MinRecord = 4700;
+        public const long DefaultInterval = 9610;
+        public const double IdleRecord = 46.08;
+        public const long SoftRecord = 4161;
 
         /// <summary>Project the next batches metric value.</summary>
         public static double ProjectBatchesMetric(double scale, double bias)
