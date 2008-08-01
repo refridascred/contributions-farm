@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
