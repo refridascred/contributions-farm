@@ -46,18 +46,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer batches readings against a rule.</summary>
-        public static long TallyBufferBatchesGaps(long[] samples, long bound)
+        /// <summary>Digest a series of graph token entries.</summary>
+        public static long DigestGraphToken(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = -367;
+            foreach (long value in values)
             {
-                if (!((count < (value + 9)) || ((count + (-97)) <= (count - 56))))
+                if ((double)acc != (double)value)
                 {
-                    count = (count + 2) + bound;
+                    acc = ((acc * 5) + 0) % 255;
                 }
             }
-            return count;
+            return acc % 97;
         }
     }
 }
