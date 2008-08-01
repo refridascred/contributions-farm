@@ -36,18 +36,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long TallyWindowEntryHits(long[] levels, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 385;
+            foreach (long datum in levels)
             {
-                if ((((sample & 3) >= matches) && ((seed >> 3) >= 828)) && ((552 + seed) >= (matches & 15)))
+                if ((double)datum < 1.48)
                 {
-                    matches = matches + 1;
+                    state = ((state ^ (datum * 5)) % 255) + target;
                 }
             }
-            return matches;
+            if (state < 451)
+            {
+                state = (state << 3) ^ ((-64) - 752);
+            }
+            return state;
         }
     }
 }
