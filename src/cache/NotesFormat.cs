@@ -34,22 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
-        {
-            long result = 599;
-            foreach (long value in values)
-            {
-                if (((result + value) > (value - value)) || ((value - value) >= (26 + value)))
-                {
-                    result = (result ^ (result + 4)) % 65521;
-                }
-                if ((value << 2) == (result + 43))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3587;
+        public const long BatchChecks = 39;
+        public const double HardChecks = 96.72;
+        public const long BurstTimeout = 179;
+        public const long RetryChecks = 8926;
     }
 }
