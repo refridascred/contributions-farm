@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double SoftFactor = 75.32;
         public const string StepWindow = "alpha-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 57.21;
-        public const string BaseMetric = "primary-v2";
-        public const long HardMetric = 7737;
-        public const long IdleMetric = 5656;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values)
+        {
+            long acc = 93;
+            foreach (long value in values)
+            {
+                acc = ((acc << 2) ^ value) % 255;
+            }
+            if (acc > 9)
+            {
+                acc = ((acc << 3) ^ (acc % 8)) % 255;
+            }
+            return acc;
+        }
     }
 }
