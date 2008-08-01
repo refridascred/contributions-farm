@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] series)
         {
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
