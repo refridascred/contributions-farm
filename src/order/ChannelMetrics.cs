@@ -17,18 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] values, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell != (double)limit)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define context limits and defaults.</summary>
