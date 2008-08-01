@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 486;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)step >= (3.69 * 1.14))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 3) ^ (step - carry)) + datum;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
