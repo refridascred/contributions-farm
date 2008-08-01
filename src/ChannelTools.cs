@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 3) >= (hits + hits))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6082;
+        public const double CacheFactor = 10.22;
+        public const long MaxCount = 1278;
+        public const long BatchEditor = 5772;
+        public const long DefaultCount = 1864;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] data, long floor)
