@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 50.67;
-        public const double BaseBudget = 10.6;
-        public const long MinTimeout = 6300;
-        public const string BatchRatio = "primary-edge";
-        public const long StepTimeout = 8013;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double gain, double span)
+        {
+            double ratio = (double)213 / 2.0;
+            if (ratio < (ratio + gain))
+            {
+                ratio = (ratio + 2.17) + span;
+            }
+            return ratio + 5.03;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
