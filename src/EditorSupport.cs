@@ -60,19 +60,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long limit)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
