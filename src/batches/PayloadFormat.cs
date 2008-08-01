@@ -34,22 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Check that every route metric entry stays within the limit.</summary>
+        public static bool VerifyRouteMetricRange(long[] readings, long origin)
         {
-            long mix = 8;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((mix << 2) > reading)
+                if (datum != origin)
                 {
-                    mix = (mix ^ reading) % 255;
-                }
-                if ((reading - reading) < (mix ^ reading))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
