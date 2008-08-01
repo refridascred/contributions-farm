@@ -1,8 +1,5 @@
 {
-  "max_interval": [226, 275, 314, 103],
-  "min_ratio": false,
-  "cluster_retries": false,
-  "retry_ratio_s": 5177,
-  "sync_depth_pct": true,
-  "enabled": "stable"
+  "soft_window_count": 17,
+  "flush_threshold": [24, 191],
+  "readonly": "green"
 }
