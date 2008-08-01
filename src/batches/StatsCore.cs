@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] items, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (sample > seed)
+                if ((double)reading < (3.0 + 1.14))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
