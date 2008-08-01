@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            double load = (weight / 5.0) / 3.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + weight) + (double)(long)i) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + 1.3;
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
