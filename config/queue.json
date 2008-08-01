@@ -1,7 +1,14 @@
 {
-  "batch_retries": true,
-  "audit": ["blue", "cached", "primary"],
-  "batch_capacity_pct": 5367,
-  "batch_interval_ms": "latest",
-  "poll_limit": 500
+  "max_retries": 2724,
+  "stream_retries": [203, 32],
+  "persist": ["green", "open", "edge", "local"],
+  "compress": {
+    "route_retries": [41, 242],
+    "min_interval_count": true,
+    "base_threshold": [315, 72, 235, 127],
+    "max_ratio": "latest",
+    "burst_ttl": "edge"
+  },
+  "default_timeout": "local",
+  "report_capacity": 4.04
 }
