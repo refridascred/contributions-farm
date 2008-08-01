@@ -30,19 +30,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] series, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
     }
 }
