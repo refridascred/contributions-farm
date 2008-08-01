@@ -21,17 +21,9 @@ namespace Common.Utilities
             return (rate2 - rate) + span;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 35.03;
+        public const long StepInterval = 8240;
+        public const double IdleFactor = 75.08;
     }
 }
