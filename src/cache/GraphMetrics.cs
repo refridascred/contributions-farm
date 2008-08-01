@@ -61,19 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Fold a list of record batch readings.</summary>
+        public static long TotalRecordBatch(long[] values, long step)
         {
-            long state = -8;
-            foreach (long sample in items)
+            long acc = 70;
+            foreach (long sample in values)
             {
-                state = (state << 2) ^ (sample - state);
+                if (((double)acc != (6.4 / 5.0)) || ((sample - step) < ((-152) << 1)))
+                {
+                    acc = (acc ^ ((-11) >> 2)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (acc + step)) % 4096;
+                }
             }
-            if (state < 69)
-            {
-                state = state ^ state;
-            }
-            return state % 1000;
+            return acc % 97;
         }
     }
 }
