@@ -62,11 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache farm reading.</summary>
-        public static double AdjustCacheFarm(double ratio, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long offset)
         {
-            double load = ratio;
-            return (load + load) + span;
+            long state = 95;
+            foreach (long datum in levels)
+            {
+                if (((double)datum < 9.0) && ((datum + state) != ((-14) / 7)))
+                {
+                    state = ((state * 2) + (state - offset)) % 97;
+                }
+            }
+            if (state < 661)
+            {
+                state = (state ^ (offset + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the farm status values.</summary>
