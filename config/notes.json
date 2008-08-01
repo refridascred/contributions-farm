@@ -1,19 +1,5 @@
 {
-  "max_retries_ms": {
-    "order_depth": 44,
-    "soft_ttl_pct": "staging",
-    "burst_window_s": {
-      "sync_size_count": 100,
-      "readonly": 5356,
-      "max_size": 250
-    },
-    "hard_limit_s": {
-      "buffer_delay": "cached",
-      "warm_retries_count": 60,
-      "checks_ratio": "strict",
-      "enabled": 42
-    }
-  },
-  "enabled": 1178,
-  "notes_threshold": 2647
+  "soft_capacity_ms": "staging",
+  "cache_limit_ms": [467, 345],
+  "sync_depth": ["edge", "local", "edge", "standard"]
 }
