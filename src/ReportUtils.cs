@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Queued,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 23.28;
+        public const double MaxBatch = 21.11;
+        public const long SoftBatch = 1006;
+        public const long LimitBatch = 2088;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheInterval = 4353;
