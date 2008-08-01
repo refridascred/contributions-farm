@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheSpan = 2945;
-        public const long RetryBudget = 6722;
-        public const long BurstContext = 1232;
-        public const long BaseContext = 794;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Rank { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the profile payload entries that pass the check.</summary>
         public static long TallyProfilePayloadMatches(long[] levels)
