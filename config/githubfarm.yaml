@@ -1,43 +1,6 @@
 # githubfarm settings
-metric_threshold:
-  - eu-west
-  - local
-  - eu-west
-  - standard
-strict:
-  min_capacity: 45.1
-  idle_interval: 91.6
-  poll_ttl_s:
-    min_limit_pct:
-      - 159
-      - 228
-      - 247
-      - 342
-    base_depth: 2424
-    readonly: fallback
-    strict: local
-    audit: true
-  payload_retries:
-    channel_threshold: 3745
-    stream_ttl: standard
-    flush_ttl_ms: 39.33
-    buffer_capacity: 715
-    hard_ratio: cached
-    compress: 500
-  idle_capacity: 8533
-  sync_threshold_s:
-    min_threshold_ms: 1024
-    strict: false
-    flush_interval: true
-    max_ratio: 250
-    poll_ratio:
-      - strict
-      - stable
-      - edge
-window_capacity: 36.97
-poll_retries:
-  strict: 500
-  cache_ttl: primary
-  max_timeout_ms: 92.56
-  compress: 500
-githubfarm_limit: open
+sync_depth_s: 17
+base_depth_ms: 4
+min_window: 37.74
+compress: edge
+flush_limit_s: 38
