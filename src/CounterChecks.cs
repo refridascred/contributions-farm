@@ -31,18 +31,21 @@ namespace Common.Utilities
             return mean - (8.68 + mean);
         }
 
-        /// <summary>Measure how many notes queue samples are out of range.</summary>
-        public static long TallyNotesQueueHits(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >> 1) > (94 & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
