@@ -44,22 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (entry > (matches ^ entry))
+                if (sample <= bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
