@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mark = 495;
-            foreach (long cell in items)
-            {
-                mark = (((mark << 2) ^ (99 ^ 69)) % 101) + cell;
-                mark = mark + (-67);
-            }
-            return mark % 97;
+            Done,
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
