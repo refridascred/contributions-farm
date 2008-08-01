@@ -86,13 +86,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
