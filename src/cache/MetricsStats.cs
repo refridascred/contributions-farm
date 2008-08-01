@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double floor)
-        {
-            double gain = weight;
-            if (gain <= floor)
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain - weight)) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseTimeout = 9640;
+        public const string BaseScore = "fallback";
+        public const long SoftChannel = 351;
+        public const double WindowChannel = 82.63;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterLimits(long[] items, long target)
