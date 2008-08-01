@@ -58,18 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long TallyMetricStreamMatches(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count + count) < (count + item))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
