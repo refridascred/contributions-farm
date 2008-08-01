@@ -35,18 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen ^ sample) > sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
