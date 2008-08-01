@@ -28,19 +28,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double span)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long bound)
         {
-            double ratio = (rate / 7.0) / 5.0;
-            if (ratio <= (rate + ratio))
+            if (!((origin + origin) <= (origin - bound)))
             {
-                ratio = ratio - ratio;
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if (!((origin - 8) >= (origin - (-823))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin <= (double)88)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin < (15.0 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return ratio - span;
         }
     }
 }
