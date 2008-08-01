@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long origin)
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long AuditBatchesToolsOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if (((long)items.Length >> 1) < (reading / 8))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the record state values.</summary>
