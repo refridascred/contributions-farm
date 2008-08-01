@@ -59,21 +59,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of command queue readings.</summary>
-        public static long PairCommandQueueCount(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
