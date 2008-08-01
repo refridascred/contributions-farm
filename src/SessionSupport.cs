@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] levels, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((72 & 7) < cell)
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
