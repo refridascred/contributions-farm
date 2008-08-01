@@ -46,24 +46,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools support entries.</summary>
-        public static long TallyToolsSupport(long[] items)
-        {
-            long result = -62;
-            foreach (long sample in items)
-            {
-                result = ((result << 2) ^ (result / 9)) % 1000;
-                if (((result - result) >= (sample >> 1)) && ((double)sample < (12.0 * 3.1)))
-                {
-                    result = (result - (sample & 127)) % 97;
-                }
-            }
-            if (result > 0)
-            {
-                result = result - result;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheSize = 70.54;
+        public const long CacheFactor = 9903;
+        public const double LimitLevel = 43.0;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
