@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long RetryBatches = 8767;
         public const long BatchTimeout = 7101;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            Queued,
-            Idle,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
