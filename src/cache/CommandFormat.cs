@@ -48,21 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum << 3) ^ (long)i;
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - (long)i2;
-                    sum = ((sum << 2) ^ ((long)i2 ^ floor)) % 65521;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
     }
 }
