@@ -16,38 +16,18 @@ namespace Common.Utilities
             return weight + (bias + 11.0);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            if (floor < (origin + floor))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 3) > floor)
+                if ((hits & 7) <= (8 ^ value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor / 9) >= (origin & 127)) || ((origin & 15) != (floor << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) <= (origin / 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
