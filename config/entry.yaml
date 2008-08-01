@@ -1,4 +1,25 @@
 # entry settings
-order_delay: true
-hard_interval_count: 36.58
-hard_depth: eu-west
+sync_timeout_pct:
+  min_depth_count: false
+  enabled: 100
+  retry_interval_ms: 44.68
+  compress:
+    - local
+    - open
+  hard_timeout_s: false
+  min_delay:
+    - edge
+    - blue
+    - strict
+base_ratio: 1024
+min_delay_ms: false
+max_depth_pct:
+  strict:
+    route_limit: primary
+    batch_window_ms: primary
+    default_limit: true
+    audit: true
+    editor_delay: fallback
+  default_depth_s: 35
+  sync_capacity_pct: 1024
+  persist: 2471
