@@ -61,22 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record batch readings.</summary>
-        public static long TotalRecordBatch(long[] values, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] readings, long offset)
         {
-            long acc = 70;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)acc != (6.4 / 5.0)) || ((sample - step) < ((-152) << 1)))
+                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
                 {
-                    acc = (acc ^ ((-11) >> 2)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (acc + step)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
