@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double StepDepth = 83.53;
         public const string WindowLevel = "alpha-v2";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long bound)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long mark = -256;
+            foreach (long value in readings)
+            {
+                if ((bound % 64) > (value ^ mark))
+                {
+                    mark = (mark ^ (mark >> 5)) % 97;
+                    break;
+                }
+                if ((bound >> 4) <= mark)
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout header.</summary>
