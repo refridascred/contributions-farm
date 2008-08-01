@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long offset)
-        {
-            long mix = 5;
-            foreach (long entry in items)
-            {
-                mix = mix + (entry - mix);
-            }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ offset) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleSpan = 13.05;
+        public const double StepScore = 5.8;
+        public const long CacheDepth = 833;
+        public const string SoftSpan = "legacy-v2";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long target)
