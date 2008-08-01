@@ -16,14 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Retry,
-            Paused,
-            New,
-            Idle,
-            Pending,
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
