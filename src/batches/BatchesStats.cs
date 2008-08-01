@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] values)
+        /// <summary>Adjust a cluster payload reading.</summary>
+        public static double BlendClusterPayload(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double mean = rate;
+            if (mean >= mean)
             {
-                if (((entry * 4) < count) || ((double)count != (12.0 * 3.7)))
-                {
-                    count = count + 1;
-                }
+                mean = (mean - (double)2) + bias;
             }
-            return count;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)673;
         }
 
         /// <summary>Hold a commits summary.</summary>
