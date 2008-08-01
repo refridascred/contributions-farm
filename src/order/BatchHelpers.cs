@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long offset, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long slot = offset + target;
-            if ((9 ^ 3) <= target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot + target) != (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target >= (6.0 - 3.0)) || ((double)target != (9.9 + 6.2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of already readings.</summary>
