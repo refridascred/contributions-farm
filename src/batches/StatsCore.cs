@@ -69,39 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] series, long seed)
         {
-            long span = origin + seed;
-            if ((span & 1) != (seed + span))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span ^ origin) >= (span / 5))
+                if (entry > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span + seed) <= (seed * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (span < (88 % 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
