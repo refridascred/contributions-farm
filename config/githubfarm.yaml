@@ -1,9 +1,4 @@
 # githubfarm settings
-warm_depth_ms: 1024
-readonly: 9078
-notes_retries:
-  - primary
-  - local
-  - green
-retry_ttl: 90.83
-retry_timeout_s: cached
+flush_window: 500
+metric_timeout: 15.52
+dry_run: 9517
