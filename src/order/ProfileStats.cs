@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] >= offset)
+                if ((count >> 5) > (count % 60))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
