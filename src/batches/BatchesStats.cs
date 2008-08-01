@@ -15,12 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] data, long seed)
         {
-            Queued,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + 42) > (404 % 97))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
