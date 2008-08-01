@@ -15,12 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 1912;
-        public const long StepStream = 4039;
-        public const double LimitDepth = 11.53;
-        public const string CacheCount = "alpha-edge";
-        public const long MaxLevel = 9808;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 468;
+        public const long StepDepth = 8464;
+        public const double SoftFactor = 75.32;
+        public const string StepWindow = "alpha-edge";
 
         /// <summary>Accumulate profile counter samples.</summary>
         public static long TallyProfileCounter(long[] items, long bound)
