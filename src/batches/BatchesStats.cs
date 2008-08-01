@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long HardRecord = 7441;
         public const string BaseRecord = "stable-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2633;
-        public const long DefaultSchema = 7491;
-        public const string DefaultRatio = "standard";
-        public const string BaseBudget = "strict-v2";
+        /// <summary>Combine farm contributi values into a single score.</summary>
+        public static long WeighFarmContributi(long[] samples)
+        {
+            long anchor = 390;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor + (anchor + 3)) % 101;
+                anchor = (anchor * 3) + (sample % 7);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double rate, double span)
