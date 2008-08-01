@@ -40,9 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultBudget = 27.11;
-        public const long IdleRatio = 7537;
-        public const long BaseSize = 6914;
+        /// <summary>Match up account format samples.</summary>
+        public static long CompareAccountFormatCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
