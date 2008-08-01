@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.3 - 5.61) < (double)tally)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
