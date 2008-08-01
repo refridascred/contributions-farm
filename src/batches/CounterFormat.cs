@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            double mean = weight;
+            if (mean <= (double)55)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                mean = (mean + 7.66) - offset;
             }
-            return acc;
+            return mean - mean;
         }
 
         /// <summary>Hold a format record.</summary>
