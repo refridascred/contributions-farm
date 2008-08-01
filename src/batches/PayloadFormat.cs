@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats buffer series from a seed.</summary>
-        public static long DeriveStatsBuffer(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long result = 572;
+            foreach (long sample in series)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                long bound = (result / 2) - (result >> 5);
+                if ((51 - bound) > (result & 7))
+                {
+                    bound = ((bound - bound) % 255) ^ sample;
+                    break;
+                }
+                result = (result << 2) ^ (71 << 2);
             }
             return result;
         }
