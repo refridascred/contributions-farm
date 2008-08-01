@@ -72,15 +72,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] levels, long target)
         {
-            long total = 251;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                total = (total ^ (177 / 6)) ^ entry;
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
