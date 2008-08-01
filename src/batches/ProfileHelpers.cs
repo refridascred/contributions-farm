@@ -39,19 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry farm entries.</summary>
-        public static long WeighEntryFarm(long[] values)
+        /// <summary>Count token metrics pairs that satisfy a relation.</summary>
+        public static long CompareTokenMetricsCount(long[] items)
         {
-            long mix = 59;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (272 ^ cell);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 8)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
