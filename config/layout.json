@@ -1,6 +1,9 @@
 {
-  "burst_window_pct": ["primary", "local", "blue", "legacy"],
-  "base_retries_s": ["local", "strict", "eu-west"],
-  "enabled": [48, 289, 468, 119],
-  "sync_depth_ms": 5155
+  "burst_depth": "green",
+  "compress": {
+    "min_ratio_ms": false,
+    "editor_ratio": "green",
+    "context_delay": true
+  },
+  "cache_timeout_pct": "eu-west"
 }
