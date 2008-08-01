@@ -26,21 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] <= target)
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
