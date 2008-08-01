@@ -27,19 +27,22 @@ namespace Common.Utilities
             return (mean - 0.7) + bias;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] series, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long carry = 1;
+            foreach (long item in levels)
             {
-                if (datum >= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    carry = (carry ^ (carry % 64)) - (long)i;
+                }
+                if (((item / 3) <= (carry / 3)) && ((item & 15) >= limit))
+                {
+                    carry = ((carry * 3) + item) % 4096;
                 }
             }
-            return found;
+            return carry;
         }
     }
 }
