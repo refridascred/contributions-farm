@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Failed,
-            Locked,
-            Pending,
-            Synced,
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
