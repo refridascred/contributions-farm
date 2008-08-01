@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long step, long offset)
+        /// <summary>Count metrics layout pairs that satisfy a relation.</summary>
+        public static long CompareMetricsLayoutCount(long[] samples)
         {
-            long bound = step - offset;
-            if (((bound - bound) >= step) || ((step / 4) == (bound - step)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step - step) > (step + step)) || (offset > (offset + 880)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a cache entry.</summary>
