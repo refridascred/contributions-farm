@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the entry format entries that pass the check.</summary>
-        public static long TallyEntryFormatMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)hits != (19.0 / 5.0))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowScore = 4.22;
+        public const long RetryGithubfarm = 4650;
+        public const long StepScore = 7203;
+        public const long DefaultGithubfarm = 5520;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long seed, long floor)
