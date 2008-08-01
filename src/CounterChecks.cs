@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] readings, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (cell >= (floor << 2))
+                if (value < target)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
