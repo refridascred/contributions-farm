@@ -20,14 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] items)
         {
-            Active,
-            Done,
-            Retry,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (tally > reading)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
