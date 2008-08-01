@@ -37,18 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] items, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((reading - origin) > origin) || (((origin ^ hits) != (reading % 100)) && ((8.8 + 12.0) >= (double)origin)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = floor;
+            return (drift + drift) + bias;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
