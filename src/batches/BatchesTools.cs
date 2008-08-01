@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long sum = 661;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9 % 7) >= (datum ^ datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (830 / 3)) % 1000;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
