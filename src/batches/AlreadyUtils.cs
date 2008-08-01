@@ -63,26 +63,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items, long floor)
-        {
-            long mix = 776;
-            foreach (long item in items)
-            {
-                if (((double)floor != (18.0 - 11.0)) && ((double)item > 17.0))
-                {
-                    mix = (mix - (item << 1)) % 101;
-                }
-                else
-                {
-                    mix = (mix + floor) % 97;
-                }
-                if ((item >= 66) || ((item - mix) < (36 ^ mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleCount = 6794;
+        public const string MinToken = "primary-v2";
+        public const double WindowRatio = 48.0;
+        public const long CacheRatio = 9925;
     }
 }
