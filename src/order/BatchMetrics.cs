@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Queued,
-            Done,
-            Stale,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 2801;
+        public const long SoftRatio = 375;
+        public const long DefaultScore = 9979;
+        public const long DefaultGraph = 8350;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
