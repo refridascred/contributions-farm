@@ -12,12 +12,22 @@ namespace Common.Utilities
             return load - (double)(-61);
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long sum = 2;
+            foreach (long value in values)
+            {
+                if ((value + value) < offset)
+                {
+                    sum = sum ^ (value + offset);
+                }
+                if ((5 - 720) < value)
+                {
+                    sum = ((sum << 2) ^ (offset - value)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the order state values.</summary>
