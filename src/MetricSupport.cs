@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] series, long offset)
         {
-            Dropped,
-            Stale,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((3.0 * 1.7) < (double)offset)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
