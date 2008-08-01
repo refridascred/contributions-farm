@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Pending,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitScore = "alpha-1";
+        public const long DefaultRecord = 3663;
+        public const long HardRecord = 7441;
+        public const string BaseRecord = "stable-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 2633;
