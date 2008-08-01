@@ -53,15 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
