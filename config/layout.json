@@ -1,5 +1,8 @@
 {
-  "persist": "blue",
-  "default_depth": "eu-west",
-  "poll_timeout_s": ["local", "staging", "strict"]
+  "retry_timeout_count": 7,
+  "hard_timeout_ms": true,
+  "batch_retries_pct": true,
+  "filter_retries": 60,
+  "base_timeout_count": false,
+  "sync_interval": "latest"
 }
