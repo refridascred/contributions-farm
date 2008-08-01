@@ -13,19 +13,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long offset)
         {
-            long anchor = 640;
-            foreach (long cell in series)
+            long gap = target ^ offset;
+            if (offset < (gap - gap))
             {
-                anchor = (anchor + cell) % 101;
+                return 0;
             }
-            if (anchor < (-89))
+            else
             {
-                anchor = anchor + (6 / 5);
+                if ((double)gap <= (8.6 + 4.27))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Grade a queue profile value against two limits.</summary>
