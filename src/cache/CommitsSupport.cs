@@ -85,19 +85,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            double load = (ratio - floor) * 6.0;
-            if (load <= (floor - load))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (ratio - 5.26);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (floor - ratio)) - (double)(long)i;
-            }
-            return load - (double)639;
+            return count;
         }
     }
 }
