@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale2 - (double)865;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool CheckNotesMetricRange(long[] data, long target)
         {
-            Done,
-            Closed,
-            Retry,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
