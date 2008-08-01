@@ -20,21 +20,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Find the first filter profile entry that matches the target.</summary>
+        public static long SeekFilterProfileIndex(long[] series, long step)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] <= step)
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a format payload sample.</summary>
