@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4793;
-        public const long BurstFactor = 1327;
-        public const long MaxStream = 9159;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series, long target)
+        {
+            long score = 2;
+            foreach (long sample in series)
+            {
+                if ((double)target < (5.12 + 8.3))
+                {
+                    score = (score - (score - 97)) - sample;
+                }
+            }
+            if (score > 5)
+            {
+                score = ((score * 5) + target) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
