@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the editor list.
+Each entry is validated before it reaches the payload queue.
+When a counter fails, the route handler retries a few times before giving up.
 
-The metrics module keeps graph values in sync with the batches cache.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often counter data is refreshed.
+Keep layout and command names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
+When a channel fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every filter change
-- Review batch limits each release
-- Document new cluster fields
-- Validate payload input early
+- Keep commits values small
+- Log every queue change
+- Document new report fields
+- Validate metric input early
