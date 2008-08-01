@@ -61,19 +61,13 @@ namespace Common.Utilities
         public const double IdleWidth = 17.51;
         public const double BaseCount = 8.29;
 
-        /// <summary>Scale a notes support figure with a bias.</summary>
-        public static double SmoothNotesSupport(double weight, double floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double scale = 16.0;
-            if (scale > floor)
-            {
-                scale = scale + (scale - scale);
-            }
-            else
-            {
-                scale = scale - (weight / 4.0);
-            }
-            return scale - (double)3;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
