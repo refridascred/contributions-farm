@@ -60,19 +60,15 @@ namespace Common.Utilities
         public const string LimitContributi = "legacy-1";
         public const double IdleContributi = 28.14;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Roll a command support counter forward.</summary>
+        public static long DeriveCommandSupport(long offset)
         {
-            double load = rate;
-            if (load > bias)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - (rate + load);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (rate / 3.0)) - (double)(long)i;
-            }
-            return load - (4.8 * 1.1);
+            return state;
         }
     }
 }
