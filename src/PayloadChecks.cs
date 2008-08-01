@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8104;
-        public const long IdleGithubfarm = 3012;
-        public const long RetryTimeout = 8256;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i - carry) < 785)
+                {
+                    carry = (carry ^ (step ^ step)) % 1000;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of filter schema readings.</summary>
         public static long CombineFilterSchema(long[] readings)
