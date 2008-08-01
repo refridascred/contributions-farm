@@ -24,12 +24,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSpan = 1283;
-        public const long BaseLevel = 4382;
-        public const long LimitDepth = 9167;
-        public const long CacheDepth = 5849;
-        public const string DefaultWidth = "primary";
+        /// <summary>Fold a list of batch format readings.</summary>
+        public static long TallyBatchFormat(long[] readings)
+        {
+            long mix = -578;
+            foreach (long item in readings)
+            {
+                mix = ((mix * 3) + (item - mix)) % 4096;
+                if ((item & 255) <= (item / 2))
+                {
+                    mix = (mix ^ (7 / 6)) % 65521;
+                }
+                mix = (mix - (mix / 9)) % 4096;
+            }
+            if (mix < 182)
+            {
+                mix = mix + ((long)readings.Length * 3);
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double scale, double span)
