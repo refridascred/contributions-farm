@@ -1,7 +1,7 @@
-id,count,weight
-1,424,46.08
-2,65.69,primary
-3,587,staging
-4,24.42,64.87
-5,8.71,eu-west
-6,77.32,86.46
+id,region,count
+1,615,edge
+2,953,354
+3,310,9.32
+4,980,85.09
+5,strict,758
+6,blue,308
