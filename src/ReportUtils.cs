@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long SoftBatch = 1006;
         public const long LimitBatch = 2088;
 
-        /// <summary>Grade a editor metrics value against two limits.</summary>
-        public static long RankEditorMetrics(long offset, long bound)
-        {
-            long cur = offset ^ bound;
-            if (((bound + offset) < (bound + bound)) || ((bound + bound) == (cur % 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > 9.1)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "cached-edge";
+        public const long MaxSpan = 9709;
+        public const long HardSpan = 278;
+        public const long HardScore = 2334;
+        public const long RetryRatio = 4043;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double weight, double span)
