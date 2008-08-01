@@ -37,16 +37,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long CountAlreadyGithubfarmHits(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                result = result ^ 5;
-                result = ((result * 5) + (long)i) % 65521;
+                if (entry >= (entry / 8))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
