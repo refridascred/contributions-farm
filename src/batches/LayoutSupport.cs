@@ -59,19 +59,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double scale2 = (double)(9 + 8);
+            if (scale2 > (double)9)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = (scale2 - (scale / 5.0)) + bias;
             }
-            return flag;
+            return scale2 + (double)764;
         }
     }
 }
