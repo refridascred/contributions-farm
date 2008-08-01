@@ -30,12 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
