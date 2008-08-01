@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double DefaultStream = 67.79;
         public const long MaxStream = 4711;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] readings, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
