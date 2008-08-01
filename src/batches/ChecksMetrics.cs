@@ -26,14 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Locked,
-            Synced,
-            Failed,
-            Queued,
-            Closed,
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
