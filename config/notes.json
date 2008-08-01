@@ -1,9 +1,19 @@
 {
-  "cache_depth": ["primary", "stable", "primary"],
-  "soft_window": {
-    "base_depth": 1260,
-    "idle_limit": ["open", "blue", "latest", "strict"],
-    "contributi_retries": "standard"
+  "max_retries_ms": {
+    "order_depth": 44,
+    "soft_ttl_pct": "staging",
+    "burst_window_s": {
+      "sync_size_count": 100,
+      "readonly": 5356,
+      "max_size": 250
+    },
+    "hard_limit_s": {
+      "buffer_delay": "cached",
+      "warm_retries_count": 60,
+      "checks_ratio": "strict",
+      "enabled": 42
+    }
   },
-  "max_capacity_ms": 1609
+  "enabled": 1178,
+  "notes_threshold": 2647
 }
