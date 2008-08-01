@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-edge";
         public const long MaxLevel = 9808;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Accumulate profile counter samples.</summary>
+        public static long TallyProfileCounter(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -624;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (537 ^ bound)) - entry;
             }
-            return tally;
+            return state % 65521;
         }
     }
 }
