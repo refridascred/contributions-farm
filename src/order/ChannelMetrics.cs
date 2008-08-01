@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
