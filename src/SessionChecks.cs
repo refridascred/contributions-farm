@@ -52,17 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = rate;
+            if (drift >= (rate - floor))
             {
-                if ((series[i] == origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - 7.68;
             }
-            return -1;
+            else
+            {
+                drift = drift + (6.4 / 7.0);
+            }
+            return drift - (floor - 2.6);
         }
     }
 }
