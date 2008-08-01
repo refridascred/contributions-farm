@@ -57,19 +57,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (entry <= bound)
+                if (((6 - 0) >= step) && ((value > 56) || ((1 + seen) >= 0)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
