@@ -1,6 +1,8 @@
 {
-  "audit": 60,
-  "dry_run": ["open", "eu-west", "latest"],
-  "hard_depth_ms": 8435,
-  "warm_capacity_pct": "stable"
+  "soft_ratio_pct": [465, 484, 23, 453],
+  "dry_run": 2223,
+  "stats_limit": 500,
+  "flush_retries_s": 65.23,
+  "flush_threshold_count": 52,
+  "default_depth": "primary"
 }
