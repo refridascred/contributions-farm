@@ -1,13 +1,11 @@
 {
-  "max_retries_pct": "local",
-  "buffer_depth": 92.77,
-  "queue_threshold": {
-    "idle_ttl_s": "latest",
-    "dry_run": 82.3,
-    "token_ratio": ["fallback", "standard", "blue"],
-    "base_delay_pct": 79.35,
-    "idle_ratio_pct": 1024,
-    "burst_ttl": false
+  "idle_depth_count": {
+    "sync_capacity_count": 54,
+    "poll_ratio_s": true,
+    "filter_window": 49.52
   },
-  "dry_run": true
+  "max_limit": 66,
+  "record_retries": true,
+  "warm_retries": "legacy",
+  "farm_threshold": [101, 43]
 }
