@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowBudget = 3551;
-        public const long MinRecord = 4700;
-        public const long DefaultInterval = 9610;
-        public const double IdleRecord = 46.08;
-        public const long SoftRecord = 4161;
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long TallyBatchEntry(long[] data, long floor)
+        {
+            long total = 9;
+            foreach (long cell in data)
+            {
+                if (cell < (0 ^ 61))
+                {
+                    total = (total + (floor / 2)) % 101;
+                }
+                else
+                {
+                    total = total - floor;
+                }
+            }
+            if (total > 21)
+            {
+                total = (total << 3) ^ (floor ^ floor);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long floor)
