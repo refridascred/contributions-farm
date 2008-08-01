@@ -13,28 +13,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data)
-        {
-            long sum = 0;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 3) ^ 869) % 4096;
-                if ((reading - reading) >= reading)
-                {
-                    sum = sum - (sum - sum);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-                if (((double)sum <= (double)reading) && ((sum ^ sum) >= 35))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheFactor = 8654;
+        public const double StepSize = 63.7;
+        public const long RetryTimeout = 2630;
+        public const string IdleQueue = "staging-1";
 
         /// <summary>Audit metric order readings against a rule.</summary>
         public static long MeasureMetricOrderMatches(long[] values, long origin)
