@@ -79,15 +79,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
