@@ -38,31 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor stream value against two limits.</summary>
-        public static long GradeEditorStream(long target, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] series)
         {
-            if ((origin * 3) < (target << 2))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= 7.1)
+                if ((301 - reading) > (reading + reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(origin < 574))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a token record.</summary>
