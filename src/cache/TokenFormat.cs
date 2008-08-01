@@ -56,11 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftInterval = 55.74;
-        public const long SoftEntry = 8736;
-        public const long IdleLevel = 7604;
-        public const long BaseEntry = 3401;
-        public const long LimitEntry = 4234;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)item >= (3.6 / 4.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
