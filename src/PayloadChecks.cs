@@ -21,19 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long CombineFilterSchema(long[] readings)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] readings, long target)
         {
-            long mark = 38;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 2) ^ ((-21) - 6)) % 65521) + item;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 3)
-            {
-                mark = (mark - (13 - mark)) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
