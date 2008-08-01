@@ -20,19 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate command githubfarm readings against a bound.</summary>
-        public static bool CheckCommandGithubfarmBounds(long[] data, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (reading != offset)
+                if (datum != limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
