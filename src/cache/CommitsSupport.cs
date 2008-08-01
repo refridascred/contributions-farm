@@ -69,19 +69,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double rate, double offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double rate2 = rate - rate;
-            if (rate2 < (rate2 - rate2))
-            {
-                rate2 = rate2 + (rate2 + rate);
-            }
-            else
-            {
-                rate2 = rate2 - (rate + offset);
-            }
-            return rate2 - (double)226;
+            Synced,
+            Active,
+            Pending,
         }
     }
 }
