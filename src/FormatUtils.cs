@@ -32,19 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph cache value.</summary>
-        public static double BlendGraphCache(double ratio, double bias)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            double mean = (bias + ratio) / 9.0;
-            if (mean >= 2.78)
-            {
-                mean = mean + (mean * 2.9);
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean + (1.72 * 8.01);
+            double load = (double)(810 + 84);
+            return ((load - (double)8) + rate) + offset;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
