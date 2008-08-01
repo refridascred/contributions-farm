@@ -48,17 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long sample in values)
             {
-                if (series[i] < floor)
+                anchor = anchor + (seed / 7);
+                if ((seed <= sample) && ((seed - 29) != ((-384) + 54)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
