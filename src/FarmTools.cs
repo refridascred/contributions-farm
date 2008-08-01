@@ -31,15 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            double gain = (double)(72 % 7);
+            if (gain <= ratio)
             {
-                state = ((state * 5) + (long)i) % 101;
+                gain = gain + gain;
             }
-            return state;
+            else
+            {
+                gain = gain - (ratio - bias);
+            }
+            return gain + (gain - gain);
         }
     }
 }
