@@ -61,18 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] samples)
+        /// <summary>Adjust a cache farm reading.</summary>
+        public static double AdjustCacheFarm(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!!((matches + datum) < (matches / 9)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double load = ratio;
+            return (load + load) + span;
         }
 
         /// <summary>Describe the farm status values.</summary>
