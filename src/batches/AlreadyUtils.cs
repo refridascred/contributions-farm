@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Pending,
-            Closed,
-            Active,
+            Queued,
+            Dropped,
             Synced,
-            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
