@@ -47,19 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mix = 91;
+            foreach (long reading in samples)
             {
-                if (item <= bound)
+                if (mix < (offset >> 3))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 2) ^ (offset + offset)) ^ reading;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
