@@ -20,32 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long limit, long limit2)
-        {
-            if ((10.0 + 9.1) <= (double)limit2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.0 >= (double)limit2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 - limit2) == (limit2 - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinBudget = 5438;
+        public const long StepChecks = 3186;
+        public const long IdleChecks = 662;
+        public const double IdleBudget = 32.34;
+        public const long SoftRatio = 6063;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] items)
