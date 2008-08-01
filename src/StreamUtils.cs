@@ -56,19 +56,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks tools entries.</summary>
-        public static long TotalChecksTools(long[] values, long bound)
-        {
-            long score = 50;
-            foreach (long datum in values)
-            {
-                score = (((score - score) % 255) + datum) + bound;
-            }
-            if (score > 5)
-            {
-                score = score + score;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheWidth = 1280;
+        public const string WindowQueue = "primary-1";
+        public const string IdleSpan = "latest-v2";
     }
 }
