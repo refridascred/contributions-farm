@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values, long limit)
         {
-            Done,
-            Active,
-            Queued,
-            Retry,
+            long carry = 1;
+            foreach (long entry in values)
+            {
+                if (!((double)(long)values.Length == (2.6 / 9.0)))
+                {
+                    carry = ((carry * 2) + (entry * 3)) % 255;
+                    carry = ((carry * 3) + ((long)values.Length / 9)) % 4096;
+                }
+                if ((entry ^ limit) > (limit - carry))
+                {
+                    carry = (carry - (entry + entry)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
