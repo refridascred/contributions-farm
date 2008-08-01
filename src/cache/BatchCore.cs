@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            double gain = bias;
-            if (gain <= offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (offset / 7.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + (gain - 9.82);
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
