@@ -13,14 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
             Retry,
-            Synced,
             Locked,
-            Idle,
-            Dropped,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
