@@ -17,17 +17,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
+                if (reading > (sum / 3))
                 {
-                    return (long)i;
+                    sum = (sum + (sum * 4)) % 1000;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
