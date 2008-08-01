@@ -21,17 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(439 + 73);
+            if (scale <= (1.5 * 17.0))
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + span) - gain;
             }
-            return -1;
+            else
+            {
+                scale = scale + (span / 6.0);
+            }
+            return scale - span;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
