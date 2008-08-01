@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long SoftChannel = 351;
         public const double WindowChannel = 82.63;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= target)
+                total = (total * 3) + (252 >> 1);
+                if (876 > (total << 3))
                 {
-                    valid = false;
-                    break;
+                    total = (total + step) % 101;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
