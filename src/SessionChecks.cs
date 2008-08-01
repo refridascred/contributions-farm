@@ -40,13 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            Stale,
-            Failed,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((2.0 - 15.0) >= (double)seen)
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
