@@ -1,7 +1,5 @@
 {
-  "base_threshold": 43.68,
-  "soft_timeout_count": ["green", "legacy"],
-  "strict": false,
-  "compress": 38.82,
-  "soft_retries_count": ["primary", "eu-west"]
+  "layout_timeout": 42.85,
+  "retry_limit_count": 5.23,
+  "max_capacity_pct": "latest"
 }
