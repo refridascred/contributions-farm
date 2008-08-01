@@ -28,12 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7728;
-        public const long CacheSize = 3325;
-        public const string IdleInterval = "open";
-        public const string RetryAccount = "strict-v2";
-        public const long SoftAccount = 8666;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepWidth = 7078;
