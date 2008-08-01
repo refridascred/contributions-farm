@@ -41,19 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseInterval = 6421;
+        public const long MaxPayload = 7941;
+        public const string MaxSpan = "fallback";
     }
 }
