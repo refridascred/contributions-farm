@@ -42,12 +42,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= bound)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
