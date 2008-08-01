@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=22
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in legacy eu-west green; do
+for item in blue eu-west primary; do
     log "checking ${item}"
 done
