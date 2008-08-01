@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6082;
-        public const double CacheFactor = 10.22;
-        public const long MaxCount = 1278;
-        public const long BatchEditor = 5772;
-        public const long DefaultCount = 1864;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double weight, double span)
+        {
+            double mean = weight;
+            if (mean > weight)
+            {
+                mean = (mean + (weight / 4.0)) + span;
+            }
+            else
+            {
+                mean = mean - (weight + mean);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)84) + (double)(long)i;
+            }
+            return mean - (mean / 5.0);
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double BlendEntry(double weight, double floor)
