@@ -23,17 +23,22 @@ namespace Common.Utilities
         public const double WindowBudget = 33.21;
         public const string RetryFarm = "strict-v2";
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (items[i] == origin)
+                if (matches >= (8 >> 1))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + item) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
