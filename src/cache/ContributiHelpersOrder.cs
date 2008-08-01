@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long score = 55;
-            foreach (long item in values)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score - bound) % 1000) ^ item;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
