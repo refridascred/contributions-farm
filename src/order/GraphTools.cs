@@ -13,32 +13,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long bound)
         {
-            long offset2 = offset + seed;
-            if (offset2 <= (seed + offset2))
+            long total = -42;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.9 >= (4.8 - 2.1))
+                double gain = (double)total + (19.0 + 20.0);
+                if ((8.2 >= gain) || ((entry ^ total) > ((-176) - entry)))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (((13.0 / 6.0) >= (double)offset2) && ((9.91 - 1.8) <= (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = (total ^ (7 + bound)) % 101;
             }
+            return total;
         }
 
         /// <summary>Measure how many notes tools samples are out of range.</summary>
