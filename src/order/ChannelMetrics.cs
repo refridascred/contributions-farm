@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long origin)
         {
-            long result = 5;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (result > sample)
+                if (values[i] > origin)
                 {
-                    result = (result + 5) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
