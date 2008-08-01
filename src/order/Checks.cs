@@ -63,10 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxInterval = 667;
-        public const long IdleBudget = 8731;
-        public const long DefaultCounter = 624;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
