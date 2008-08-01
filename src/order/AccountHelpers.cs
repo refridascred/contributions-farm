@@ -66,22 +66,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = -658;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= 2.7)
-                {
-                    acc = (acc - (sample + 9)) % 97;
-                }
-            }
-            if (acc < 223)
-            {
-                acc = acc ^ (acc + 616);
-            }
-            return acc;
+            Draft,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Locate a account reading by value.</summary>
