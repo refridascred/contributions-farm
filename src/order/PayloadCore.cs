@@ -43,23 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account editor counter forward.</summary>
-        public static long IterateAccountEditor(long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (2.9 >= (double)target)
-                {
-                    total = ((total * 2) + (target + 6)) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total + target)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
