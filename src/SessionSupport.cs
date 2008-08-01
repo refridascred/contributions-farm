@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((target & 31) > (target % 10))
+                if (((entry - count) > ((long)items.Length & 7)) && ((double)entry < 5.28))
                 {
-                    anchor = (anchor ^ target) % 65521;
+                    count = (count + 3) + offset;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
     }
 }
