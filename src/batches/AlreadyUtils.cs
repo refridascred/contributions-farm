@@ -58,15 +58,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double span)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            double load = span;
+            if (load >= weight)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                load = load + (span - weight);
             }
-            return result;
+            return load - span;
         }
     }
 }
