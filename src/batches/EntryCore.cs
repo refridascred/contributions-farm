@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of window metrics readings.</summary>
-        public static long DigestWindowMetrics(long[] series, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            double weight = offset;
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark - origin) - reading;
+                weight = (weight - (offset + 17.0)) + (double)(long)i;
             }
-            return mark % 97;
+            return weight - (weight + rate);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
