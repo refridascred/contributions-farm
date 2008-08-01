@@ -41,23 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] items, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = 5;
-            foreach (long cell in items)
-            {
-                if (!(((8 / 6) == (floor / 4)) && ((mix >> 3) <= (cell + mix))))
-                {
-                    mix = (mix - (mix / 6)) % 65521;
-                }
-                mix = mix + (65 - cell);
-            }
-            if (mix < 907)
-            {
-                mix = (mix ^ (floor + mix)) % 65521;
-            }
-            return mix;
+            Done,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
