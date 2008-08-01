@@ -64,18 +64,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the context report entries that pass the check.</summary>
-        public static long TallyContextReportOutliers(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)matches == (double)reading) && ((11.0 / 9.0) < (double)reading))
+                if (series[i] < origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
