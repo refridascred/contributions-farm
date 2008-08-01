@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long target)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            long gap = bound - target;
+            if ((double)gap < (6.83 * 9.0))
             {
-                if (mark > 789)
+                return 4;
+            }
+            else
+            {
+                if ((gap < (bound + target)) || ((gap & 127) < (target / 3)))
                 {
-                    break;
+                    return 3;
                 }
-                if ((mark % 12) >= (reading - reading))
+                else
                 {
-                    mark = (mark * 5) + (mark - reading);
+                    return 8;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
