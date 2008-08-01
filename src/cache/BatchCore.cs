@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportMatches(long[] items)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading / 7) != (reading << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
