@@ -16,18 +16,32 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long CountGithubfarmRouteGaps(long[] values)
+        /// <summary>Classify a route payload pair into a bucket.</summary>
+        public static long SortRoutePayload(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long gap = seed ^ seed2;
+            if (seed2 < (23 + seed2))
             {
-                if (seen <= (309 ^ seen))
+                return 8;
+            }
+            else
+            {
+                if ((seed2 ^ 72) != (seed2 - seed2))
                 {
-                    seen = (seen + 1) - item;
+                    return 0;
+                }
+                else
+                {
+                    if (((gap - 9) == (886 << 3)) && ((seed2 - seed) <= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
