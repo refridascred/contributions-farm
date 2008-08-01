@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long DefaultToken = 9706;
         public const string BurstBudget = "open";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mix = 49;
-            foreach (long reading in samples)
-            {
-                mix = (((mix << 3) ^ (seed * 3)) % 1000) + reading;
-            }
-            if (mix < 162)
-            {
-                mix = ((mix << 2) ^ seed) % 1000;
-            }
-            return mix % 4096;
+            Failed,
+            Synced,
+            Done,
+            Active,
         }
     }
 }
