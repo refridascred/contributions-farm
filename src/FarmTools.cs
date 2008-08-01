@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long mix = 19;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (mix > (7 >> 3))
+                acc = acc + (bound - bound);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = ((mix << 3) ^ mix) - datum;
+                    acc = ((acc * 4) + (bound << 3)) - (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (mix > 10)
-            {
-                mix = mix - (mix << 3);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Accumulate command samples.</summary>
