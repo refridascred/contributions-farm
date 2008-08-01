@@ -33,22 +33,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload githubfarm readings against a rule.</summary>
-        public static long TallyPayloadGithubfarmGaps(long[] readings, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (!((offset / 7) >= (offset2 * 4)))
             {
-                if (((8.4 - 4.0) > (double)step) && (((double)count < (7.93 / 4.0)) || ((step / 9) != (cell - step))))
+                return 6;
+            }
+            else
+            {
+                if (((1 / 4) == (offset ^ offset)) && (((-63) + offset) < (offset + offset)))
                 {
-                    count = count + 1;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset2 - 54) >= (offset2 ^ offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
