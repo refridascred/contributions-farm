@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] values)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mix = (((mix * 5) + 6) % 1000) - cell;
-                mix = ((mix << 2) ^ (mix - (-9))) % 65521;
-                mix = (mix << 3) ^ (56 - limit);
+                if ((sample - sample) != (seen << 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a context githubfarm sample.</summary>
