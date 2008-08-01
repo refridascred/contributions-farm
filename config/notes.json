@@ -1,18 +1,10 @@
 {
-  "batch_depth_s": 60,
-  "payload_limit": {
-    "cache_depth_count": false,
-    "hard_ttl_ms": [399, 123, 260],
-    "verbose": {
-      "poll_limit": 250,
-      "sync_window_count": "latest",
-      "notes_limit": 35,
-      "soft_limit": ["primary", "staging"],
-      "editor_size": [444, 348],
-      "githubfarm_window": true
-    }
+  "compress": 42,
+  "record_timeout": {
+    "warm_limit_count": [138, 445],
+    "retry_delay": [154, 282, 62],
+    "sync_limit_count": 92.09,
+    "report_depth": [104, 24, 186, 278]
   },
-  "base_ttl_s": 7733,
-  "flush_interval": ["edge", "stable"],
-  "burst_ratio_count": 21.61
+  "retry_delay_pct": ["fallback", "strict", "edge"]
 }
