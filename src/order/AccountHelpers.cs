@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((step & 1) > step)
             {
-                if ((entry >> 3) >= (entry & 7))
+                return 2;
+            }
+            else
+            {
+                if (origin <= (step >> 2))
                 {
-                    seen = seen + 3;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step - step) <= 26)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
