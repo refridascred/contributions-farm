@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long AuditNotesSupportGaps(long[] readings, long offset)
         {
-            Dropped,
-            Failed,
-            Done,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((34 & 15) != (seen >> 2))
+                {
+                    seen = ((seen + 2) + value) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
