@@ -48,24 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (offset < (floor % 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (8.0 + 2.47))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
