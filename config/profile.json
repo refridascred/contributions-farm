@@ -1,13 +1,11 @@
 {
-  "verbose": {
-    "context_capacity": 69,
-    "cluster_delay": false,
-    "max_timeout": "standard",
-    "route_window": 250
-  },
-  "entry_delay": 3551,
-  "persist": 6522,
-  "filter_ratio": 28,
-  "soft_threshold_ms": 55.58,
-  "sync_window_s": ["edge", "fallback", "blue", "edge"]
+  "flush_ratio_pct": ["open", "staging", "staging", "edge"],
+  "record_retries": ["green", "fallback"],
+  "base_delay": false,
+  "editor_ratio": false,
+  "flush_interval_pct": {
+    "buffer_timeout": 651,
+    "burst_capacity_count": 250,
+    "graph_size": ["stable", "stable", "local", "staging"]
+  }
 }
