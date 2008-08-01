@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const long MaxRatio = 6341;
         public const long IdleInterval = 1232;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long TallyGraphToolsOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                if (sample >= (matches + sample))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
