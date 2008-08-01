@@ -41,13 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] series, long bound)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
