@@ -37,38 +37,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long floor2)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            if (!(floor2 >= (floor2 * 4)))
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 - floor) >= (floor2 + floor2))
+                if ((limit - score) == (score - score))
                 {
-                    return 8;
+                    score = (score ^ (score % 97)) % 97;
+                    score = score ^ (limit ^ limit);
                 }
-                else
-                {
-                    if ((5.9 - 8.01) > (5.0 - 1.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(floor < (83 >> 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Describe the metrics status values.</summary>
