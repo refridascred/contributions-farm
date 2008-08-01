@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count schema metrics pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaMetricsCount(long[] series)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 534;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (total - (value * 4)) % 65521;
+                if (target < (target << 1))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
