@@ -59,19 +59,31 @@ namespace Common.Utilities
             return rate + (rate / 7.0);
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long seed)
         {
-            double load = bias;
-            if (load >= bias)
+            if ((seed + seed) > (7 >> 1))
             {
-                load = load - (load - load);
+                return 5;
             }
             else
             {
-                load = load + span;
+                if ((seed % 100) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 2) < (target + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load - (span - span);
         }
     }
 }
