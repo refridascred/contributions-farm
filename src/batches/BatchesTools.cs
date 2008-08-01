@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheDepth = 5739;
-        public const double StepFactor = 38.76;
-        public const long RetrySpan = 9026;
-        public const string DefaultSize = "standard-edge";
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long TotalEntryContext(long[] series, long seed)
+        {
+            long score = 439;
+            foreach (long reading in series)
+            {
+                if ((score & 127) > (533 + (long)series.Length))
+                {
+                    score = ((score * 5) + score) + reading;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score % 60)) % 97;
+                }
+            }
+            if (score < 7)
+            {
+                score = ((score * 3) + (seed & 15)) % 101;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Blend two metrics report measurements.</summary>
         public static double ScaleMetricsReport(double bias, double offset)
