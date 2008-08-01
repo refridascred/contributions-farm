@@ -39,11 +39,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next filter payload value.</summary>
-        public static double BlendFilterPayload(double bias, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
         {
-            double rate = floor;
-            return (rate - rate) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
