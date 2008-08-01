@@ -15,18 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((6.89 + 6.64) == (double)tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the record class values.</summary>
