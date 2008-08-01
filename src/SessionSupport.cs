@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long delta = floor - target;
+            if (target <= (floor + floor))
             {
-                if ((38 + 69) == (value << 3))
+                return 0;
+            }
+            else
+            {
+                if (((11.0 + 9.9) == (double)delta) || ((double)delta >= (5.2 - 18.0)))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (delta < (floor >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target < (double)delta)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
