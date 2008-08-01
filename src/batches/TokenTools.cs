@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count metrics layout pairs that satisfy a relation.</summary>
-        public static long CompareMetricsLayoutCount(long[] samples)
+        /// <summary>Fold a list of metrics counter readings.</summary>
+        public static long TallyMetricsCounter(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 445;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value << 3) != (score + (-796)))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    score = score ^ (-54);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a cache entry.</summary>
