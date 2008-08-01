@@ -25,15 +25,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long MeasureGithubfarmNotesOutliers(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((datum >= (matches + matches)) || ((double)(long)data.Length >= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
