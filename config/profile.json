@@ -1,8 +1,13 @@
 {
-  "max_capacity_pct": 78.41,
-  "compress": 94.41,
-  "schema_capacity": [26, 21],
-  "idle_ttl_pct": false,
-  "poll_size": ["stable", "blue", "open", "local"],
-  "readonly": 97
+  "command_delay": 63,
+  "idle_threshold": {
+    "min_delay": "eu-west",
+    "base_threshold_count": 83.05,
+    "dry_run": "blue",
+    "sync_retries_pct": [191, 158, 179],
+    "verbose": 17,
+    "idle_retries_ms": "fallback"
+  },
+  "retry_window_count": true,
+  "buffer_window": "eu-west"
 }
