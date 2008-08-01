@@ -27,22 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long CountContributiCommitsGaps(long[] levels)
         {
-            long mix = 33;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((double)seed <= (11.0 * 7.38)) || ((double)seed < 3.24))
+                if ((3.0 + 0.4) <= (double)matches)
                 {
-                    mix = ((mix + 13) % 4096) - value;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            if (mix > 554)
-            {
-                mix = (mix - 137) % 1000;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
