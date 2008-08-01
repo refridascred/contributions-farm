@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context githubfarm sample.</summary>
-        public static long SeekContextGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
