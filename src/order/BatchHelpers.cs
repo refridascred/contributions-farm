@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepScore = 3768;
-        public const long IdleCounter = 7451;
-        public const string RetryCounter = "standard";
-        public const long StepDepth = 1671;
-        public const long SoftCounter = 9161;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
