@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels, long limit)
         {
-            double load = (double)4;
-            if (load >= (bias - load))
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                load = load - (double)4;
+                mix = (((mix * 5) + 6) % 1000) - cell;
+                mix = ((mix << 2) ^ (mix - (-9))) % 65521;
+                mix = (mix << 3) ^ (56 - limit);
             }
-            return load - ratio;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
