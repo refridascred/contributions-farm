@@ -41,19 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double rate, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data)
         {
-            double load = bias * 9.0;
-            if (load <= (double)0)
+            long result = 458;
+            foreach (long sample in data)
             {
-                load = load - (double)3;
+                result = (result - result) % 4096;
+                if (((sample - (-5)) <= (208 % 24)) && ((sample - result) != (812 % 100)))
+                {
+                    break;
+                }
+                if ((result < (result % 2)) && ((result & 255) >= sample))
+                {
+                    result = ((result * 2) + (result % 24)) % 1000;
+                }
             }
-            else
-            {
-                load = load + (11.0 + rate);
-            }
-            return load + load;
+            return result;
         }
     }
 }
