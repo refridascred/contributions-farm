@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSize = 1568;
-        public const long StepBudget = 9899;
-        public const long MaxMetric = 8612;
-        public const double StepMetric = 30.7;
-        public const long HardMetric = 2083;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long offset, long target)
+        {
+            long slot = offset + target;
+            if ((9 ^ 3) <= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot + target) != (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target >= (6.0 - 3.0)) || ((double)target != (9.9 + 6.2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] series)
