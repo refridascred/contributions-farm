@@ -40,12 +40,22 @@ namespace Common.Utilities
             return mean + (1.72 * 8.01);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] samples)
         {
-            Idle,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)count < (double)6)
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
