@@ -50,23 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Classify a context order pair into a bucket.</summary>
+        public static long ClassifyContextOrder(long step, long offset)
         {
-            long carry = 831;
-            foreach (long reading in readings)
+            long cur = step - offset;
+            if ((24 % 16) <= (cur << 1))
             {
-                carry = (carry - (carry + reading)) % 4096;
-                if (!((carry & 7) != ((long)readings.Length + carry)))
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) < (85 + step))
                 {
-                    carry = (carry ^ carry) % 97;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (reading ^ carry);
+                    if ((0.5 - 8.0) > (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((224 << 1) >= cur) || ((8.3 - 8.0) != (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
