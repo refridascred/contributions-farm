@@ -32,11 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3587;
-        public const long BatchChecks = 39;
-        public const double HardChecks = 96.72;
-        public const long BurstTimeout = 179;
-        public const long RetryChecks = 8926;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series)
+        {
+            long score = 0;
+            foreach (long cell in series)
+            {
+                score = (score ^ 58) % 65521;
+                if ((double)score >= (3.9 * 3.4))
+                {
+                    score = (score - cell) % 255;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
