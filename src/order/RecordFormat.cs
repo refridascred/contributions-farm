@@ -52,12 +52,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > target)
+                if (readings[i] >= offset)
                 {
                     return (long)i;
                 }
