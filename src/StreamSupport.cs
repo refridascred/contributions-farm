@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long carry = -829;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum + carry) < (8 + datum))
+                if (!((double)71 < (double)(long)i))
                 {
-                    carry = ((carry * 2) + (origin + datum)) % 1000;
+                    acc = acc + (acc + (-82));
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
