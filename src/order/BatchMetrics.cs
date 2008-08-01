@@ -54,21 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 39;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seed <= (4.7 * 5.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum ^ (sum + sum)) % 4096) ^ entry;
+                }
+                else
+                {
+                    sum = (sum + ((long)series.Length + sum)) % 101;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Project the next stats value.</summary>
