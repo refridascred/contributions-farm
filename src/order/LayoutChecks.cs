@@ -14,11 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseWidth = 30.85;
-        public const long WindowInterval = 55;
-        public const string MaxChannel = "alpha";
-        public const double DefaultScore = 22.17;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Synced,
+            Draft,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadRange(long[] samples, long bound)
