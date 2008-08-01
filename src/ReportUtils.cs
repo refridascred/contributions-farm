@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "cached-edge";
-        public const long MaxSpan = 9709;
-        public const long HardSpan = 278;
-        public const long HardScore = 2334;
-        public const long RetryRatio = 4043;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "strict-v2";
