@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset - 542) != (seed >> 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 * 2.19) >= (double)offset)
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a profile payload sample.</summary>
