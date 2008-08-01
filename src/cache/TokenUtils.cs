@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 9576;
         public const string SoftWidth = "latest";
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
