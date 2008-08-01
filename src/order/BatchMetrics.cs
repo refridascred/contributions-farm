@@ -21,19 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!(seen < 986))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 6.36;
+        public const long BatchWindow = 2169;
+        public const long BaseWindow = 7343;
+        public const long SoftWindow = 2581;
+        public const long IdleWindow = 1962;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long step)
