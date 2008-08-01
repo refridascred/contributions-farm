@@ -30,11 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double load = (double)(810 + 84);
-            return ((load - (double)8) + rate) + offset;
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
