@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum <= seed)
                 {
-                    carry = (carry ^ (30 + (long)i2)) % 1000;
+                    ok = false;
+                    break;
                 }
-                if (!(((carry & 31) != ((long)i ^ 377)) || (5.6 <= (double)offset)))
-                {
-                    carry = (carry ^ (carry * 2)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Fold a list of batch format readings.</summary>
