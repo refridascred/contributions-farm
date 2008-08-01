@@ -60,12 +60,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long limit)
         {
-            Stale,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
