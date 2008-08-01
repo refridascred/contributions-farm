@@ -1,11 +1,6 @@
 {
-  "default_depth_ms": "open",
-  "hard_delay_ms": false,
-  "strict": {
-    "strict": "eu-west",
-    "metric_ratio": 250,
-    "warm_window_s": "stable",
-    "enabled": ["legacy", "open", "blue", "fallback"],
-    "readonly": "latest"
-  }
+  "flush_capacity_count": "cached",
+  "min_threshold_ms": "blue",
+  "base_retries": 17.24,
+  "max_retries": 100
 }
