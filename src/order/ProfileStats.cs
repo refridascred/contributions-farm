@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double scale = floor;
+            if (scale < floor)
             {
-                if ((count >> 5) > (count % 60))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                scale = scale + (double)30;
             }
-            return count;
+            else
+            {
+                scale = scale - (gain + floor);
+            }
+            return scale + (scale + gain);
         }
 
         /// <summary>Hold a format entry.</summary>
