@@ -30,25 +30,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long step)
         {
-            long bound2 = floor - bound;
-            if ((bound + 1) < (66 + 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 4) == (bound2 - (-69)))
+                if (items[i] <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
