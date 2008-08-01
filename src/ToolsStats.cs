@@ -24,19 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] values, long step)
+        /// <summary>Project the next window githubfarm value.</summary>
+        public static double BlendWindowGithubfarm(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double mean = offset - 12.0;
+            if (mean <= offset)
             {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + 9.0) - rate;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (mean + 5.0);
         }
 
         /// <summary>Match up channel samples.</summary>
