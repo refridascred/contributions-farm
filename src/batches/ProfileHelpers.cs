@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate graph entry samples.</summary>
-        public static long CombineGraphEntry(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long acc = 5;
-            foreach (long entry in readings)
+            long anchor = 95;
+            foreach (long reading in values)
             {
-                if ((8.1 * 7.98) >= (double)acc)
-                {
-                    acc = (acc + (entry + entry)) % 97;
-                    acc = acc ^ entry;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - ((long)readings.Length + entry)) % 4096;
-                }
-                acc = acc - acc;
-                acc = (acc * 4) + (entry % 97);
+                anchor = anchor + (reading / 6);
+                anchor = anchor ^ (anchor % 60);
             }
-            if (acc < 325)
-            {
-                acc = (acc - 696) % 97;
-            }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
