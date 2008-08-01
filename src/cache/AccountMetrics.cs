@@ -59,16 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)(16 >> 1);
+            if (weight >= floor)
             {
-                result = result ^ (7 * 4);
-                result = ((result * 2) + (long)i) % 4093;
+                weight = weight - (double)(-93);
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight / 8.0)) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Hold a buffer record.</summary>
