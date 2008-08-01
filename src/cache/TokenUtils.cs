@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long CountPayloadRecordHits(long[] levels, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound <= (bound & 7))
+                if (readings[i] > step)
                 {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
