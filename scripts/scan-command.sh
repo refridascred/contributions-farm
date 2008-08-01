@@ -7,17 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
+for item in fallback eu-west local; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy standard staging; do
-    log "checking ${item}"
-done
