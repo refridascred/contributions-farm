@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double SoftSupport = 11.98;
         public const long HardScore = 5083;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = floor + floor;
+            if (scale < floor)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale = scale + (floor + bias);
             }
-            return -1;
+            return scale + (floor + bias);
         }
 
         /// <summary>Count the format metric entries that pass the check.</summary>
