@@ -35,35 +35,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long floor, long bound)
         {
-            long bound = seed - step;
-            if ((step - 3) != (step >> 3))
+            if ((double)floor == (double)bound)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((seed - step) <= (step * 5))
+                if (((3.0 + 2.8) <= (double)floor) && (floor < (bound + bound)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (((bound + bound) < (bound % 24)) || ((1 & 63) >= (seed ^ bound)))
+                    if ((bound << 1) >= (73 + floor))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if ((9.8 * 8.47) == (double)seed)
+                        if ((floor / 6) <= (4 + floor))
                         {
-                            return 3;
+                            return 5;
                         }
                         else
                         {
-                            return 0;
+                            return 2;
                         }
                     }
                 }
