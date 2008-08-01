@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many batch window samples are out of range.</summary>
-        public static long MeasureBatchWindowHits(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((876 * 4) == (floor ^ floor))
-                {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 4371;
+        public const double CacheEntry = 56.23;
+        public const double IdleEntry = 4.34;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] series)
