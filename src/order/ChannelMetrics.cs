@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate cluster counter readings against a bound.</summary>
+        public static bool GuardClusterCounterBounds(long[] values, long bound)
         {
-            Dropped,
-            Paused,
-            Active,
-            Queued,
-            Draft,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
