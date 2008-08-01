@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string LimitFilter = "stable-1";
         public const double SoftFilter = 63.03;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
