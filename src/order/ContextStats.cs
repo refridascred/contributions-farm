@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + (floor - 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - (7.91 + floor)) + (double)(long)i;
-            }
-            return weight2 + floor;
+            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
