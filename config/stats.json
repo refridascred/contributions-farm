@@ -1,7 +1,6 @@
 {
-  "strict": 30,
-  "soft_timeout": 60,
-  "default_retries": "stable",
-  "context_window": 500,
-  "soft_depth_s": "staging"
+  "base_size": 61.81,
+  "sync_size": "cached",
+  "compress": "blue",
+  "graph_threshold": "local"
 }
