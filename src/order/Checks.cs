@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long StepGraph = 3584;
         public const long BatchSpan = 5435;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool ValidatePayloadGithubfarmRange(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
