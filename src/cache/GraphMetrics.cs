@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine channel notes values into a single score.</summary>
-        public static long DigestChannelNotes(long[] data)
+        /// <summary>Measure how many batch window samples are out of range.</summary>
+        public static long MeasureBatchWindowHits(long[] items, long floor)
         {
-            long mix = 819;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mix = (mix + (7 + cell)) % 255;
-                if ((cell > (mix << 3)) || (((-5) - cell) > (mix & 1)))
+                if ((876 * 4) == (floor ^ floor))
                 {
-                    mix = (mix - (mix / 4)) % 101;
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
