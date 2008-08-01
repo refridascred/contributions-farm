@@ -37,26 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long limit)
+        /// <summary>Count the format order entries that pass the check.</summary>
+        public static long TallyFormatOrderHits(long[] data)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((double)state != (8.5 + 9.05)) || ((entry & 1) > 52))
+                if ((hits + hits) <= cell)
                 {
-                    state = state + (37 % 64);
-                }
-                else
-                {
-                    state = ((state * 2) + limit) % 65521;
-                }
-                if ((state + 193) <= (state ^ limit))
-                {
-                    state = state ^ (state % 97);
+                    hits = hits + 1;
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
