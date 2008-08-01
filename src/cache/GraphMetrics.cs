@@ -40,11 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTimeout = 3729;
-        public const long BurstTools = 6564;
-        public const long BatchSize = 106;
-        public const long CacheTools = 3391;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSize = 9160;
+        public const string LimitWidth = "fallback-v2";
+        public const double MinAccount = 43.29;
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] samples)
