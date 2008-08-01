@@ -1,14 +1,5 @@
 {
-  "farm_timeout": {
-    "sync_retries_ms": 21.91,
-    "default_capacity": 675,
-    "audit": ["fallback", "eu-west", "local", "latest"],
-    "soft_capacity_count": true,
-    "soft_depth": "blue",
-    "min_timeout": 60
-  },
-  "retry_interval_count": 62,
-  "poll_timeout": [342, 343, 292],
-  "idle_delay_s": 65,
-  "poll_size": "stable"
+  "flush_capacity_s": 30,
+  "batch_interval_pct": "legacy",
+  "checks_delay": 9992
 }
