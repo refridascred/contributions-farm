@@ -17,14 +17,10 @@ namespace Common.Utilities
         public const double WindowCache = 4.72;
         public const string DefaultSize = "staging-v2";
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            New,
-            Pending,
-            Active,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheDepth = "latest";
+        public const long BatchSchema = 2004;
+        public const long StepInterval = 7880;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
