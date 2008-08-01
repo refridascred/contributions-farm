@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            Paused,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
