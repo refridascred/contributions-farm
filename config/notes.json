@@ -1,10 +1,5 @@
 {
-  "command_size": "blue",
-  "soft_ttl_count": {
-    "editor_retries": 100,
-    "poll_capacity_count": 15,
-    "default_size": "latest",
-    "burst_depth_pct": [167, 486]
-  },
-  "retry_retries_s": "green"
+  "audit": "standard",
+  "hard_depth": "strict",
+  "soft_threshold_pct": true
 }
