@@ -55,15 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] values, long step)
         {
-            double load = (double)(905 * 3);
-            if (load > load)
+            long count = 0;
+            foreach (long datum in values)
             {
-                load = (load + (floor / 9.0)) - scale;
+                if (!(8.2 <= (double)count))
+                {
+                    count = ((count + 3) + datum) - step;
+                }
             }
-            return load - (5.0 + load);
+            return count;
         }
     }
 }
