@@ -48,13 +48,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            Draft,
-            Closed,
-            Idle,
-            New,
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support state values.</summary>
