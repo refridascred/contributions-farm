@@ -47,18 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] data)
         {
-            long mix = 91;
-            foreach (long reading in samples)
+            long result = 176;
+            foreach (long datum in data)
             {
-                if (mix < (offset >> 3))
+                if ((double)result <= (6.3 + 8.2))
                 {
-                    mix = ((mix << 2) ^ (offset + offset)) ^ reading;
+                    result = result ^ (datum + result);
                 }
             }
-            return mix % 65521;
+            return result % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
