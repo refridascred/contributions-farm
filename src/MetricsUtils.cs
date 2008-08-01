@@ -26,22 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] levels, long floor)
+        /// <summary>Fold a list of order already readings.</summary>
+        public static long TallyOrderAlready(long[] values, long floor)
         {
-            long state = 246;
-            foreach (long cell in levels)
+            long mix = 90;
+            foreach (long cell in values)
             {
-                if (floor >= (floor + state))
-                {
-                    state = (state - (cell * 2)) % 255;
-                }
-                else
-                {
-                    state = (state - state) % 4096;
-                }
+                mix = (mix + (mix + mix)) % 1000;
+                mix = mix - (floor + cell);
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
