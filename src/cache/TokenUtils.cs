@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BatchTimeout = 9576;
         public const string SoftWidth = "latest";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < 14.0)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
