@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) < (cell & 15))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a counter route pair into a bucket.</summary>
