@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (anchor ^ 833)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
