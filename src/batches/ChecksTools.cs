@@ -55,31 +55,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long offset2)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            if (!((offset / 7) >= (offset2 * 4)))
+            long result = 65;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((1 / 4) == (offset ^ offset)) && (((-63) + offset) < (offset + offset)))
+                result = (result ^ (889 + 230)) % 255;
+                if (reading < (result << 3))
                 {
-                    return 8;
+                    result = ((result * 5) + reading) % 255;
                 }
-                else
+                if (reading >= (result % 8))
                 {
-                    if ((offset2 - 54) >= (offset2 ^ offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
