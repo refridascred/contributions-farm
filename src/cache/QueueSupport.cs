@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account format readings against a bound.</summary>
-        public static bool VerifyAccountFormatRange(long[] items, long limit)
+        /// <summary>Look up the position of a metrics report sample.</summary>
+        public static long LookupMetricsReportIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > limit)
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
