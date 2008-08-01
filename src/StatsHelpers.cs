@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 978;
+            foreach (long reading in levels)
+            {
+                if ((anchor >> 3) > (reading - reading))
+                {
+                    anchor = anchor + (anchor % 5);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit filter support readings against a rule.</summary>
