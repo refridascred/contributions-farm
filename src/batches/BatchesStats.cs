@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a cluster payload reading.</summary>
-        public static double BlendClusterPayload(double rate, double bias)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double mean = rate;
-            if (mean >= mean)
-            {
-                mean = (mean - (double)2) + bias;
-            }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)673;
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
