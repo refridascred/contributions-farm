@@ -53,23 +53,19 @@ namespace Common.Utilities
         public const double SoftScore = 61.82;
         public const long HardLayout = 2879;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Check that every session payload entry stays within the limit.</summary>
+        public static bool CheckSessionPayloadLimits(long[] values, long step)
         {
-            long mix = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mix = (mix ^ (mix ^ mix)) % 255;
-                if ((sample ^ mix) < mix)
+                if (datum > step)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ (mix ^ mix)) % 97;
-            }
-            return mix % 97;
+            return found;
         }
     }
 }
