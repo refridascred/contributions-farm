@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 28.32;
+        public const long RetryTimeout = 4421;
+        public const double BatchCache = 41.0;
+        public const double BaseCache = 65.88;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] data)
