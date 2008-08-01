@@ -20,13 +20,13 @@ namespace Common.Utilities
             return load - (4.0 + bias);
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            New,
-            Locked,
             Retry,
-            Queued,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate schema queue readings against a bound.</summary>
