@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long DefaultScore = 9979;
         public const long DefaultGraph = 8350;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = 3;
-            foreach (long entry in data)
-            {
-                acc = (((acc * 4) + acc) + entry) + origin;
-            }
-            return acc % 1000;
+            Synced,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
