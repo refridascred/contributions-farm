@@ -74,15 +74,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Combine report support values into a single score.</summary>
+        public static long WeighReportSupport(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = 332;
+            foreach (long datum in readings)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (!((sum * 3) < (sum - 109)))
+                {
+                    sum = (sum - (sum + datum)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ datum) % 1000;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
