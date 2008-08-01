@@ -35,12 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long sum = 0;
+            foreach (long item in data)
+            {
+                sum = (((sum << 2) ^ sum) % 97) + item;
+                sum = (sum ^ 986) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
