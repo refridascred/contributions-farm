@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double scale, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            double rate = span;
-            for (int i = 0; i < 7; i++)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                rate = ((rate + (span - span)) + (double)(long)i) + scale;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result + ((long)i2 / 6)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return rate - (16.0 / 7.0);
+            return result;
         }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
