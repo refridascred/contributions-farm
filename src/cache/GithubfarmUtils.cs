@@ -28,25 +28,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long target, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long next = target - floor;
-            if ((next + 7) == (next >> 2))
+            long carry = 492;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next <= (target << 2)) || ((5.0 * 4.95) != (double)floor))
+                if ((double)value > (8.1 + 4.66))
                 {
-                    return 4;
+                    carry = carry - value;
                 }
-                else
+                if (!(7 > (value / 6)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ (carry / 8)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
