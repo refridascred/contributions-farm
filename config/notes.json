@@ -1,8 +1,7 @@
 {
-  "already_size": 4,
-  "idle_ttl_s": false,
-  "min_retries": 5552,
-  "retry_threshold": [163, 453, 316],
-  "sync_ratio": 1024,
-  "commits_limit": 100
+  "strict": 92.52,
+  "base_timeout_pct": 49,
+  "min_depth_ms": 69,
+  "support_timeout": 30,
+  "batch_size": 59
 }
