@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BaseSession = 5800;
         public const long BatchSession = 5291;
 
-        /// <summary>Scale a batches metric figure with a bias.</summary>
-        public static double BlendBatchesMetric(double weight, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double gain = weight;
-            if (gain >= 11.0)
-            {
-                gain = (gain + (8.8 - gain)) + floor;
-            }
-            else
-            {
-                gain = gain + (weight - weight);
-            }
-            return gain - gain;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
