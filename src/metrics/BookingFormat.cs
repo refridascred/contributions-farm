@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "stable-edge";
-        public const double BurstWidth = 74.29;
-        public const double BaseDepth = 27.2;
-        public const long RetrySize = 9423;
-        public const double BurstRoute = 84.95;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            New,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
