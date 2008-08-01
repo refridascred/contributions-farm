@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long StepGraph = 3584;
         public const long BatchSpan = 5435;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((double)count <= (19.0 / 7.0)) || (count > (value + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
