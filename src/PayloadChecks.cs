@@ -65,13 +65,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxDepth = 7060;
+        public const long MinAccount = 8450;
+        public const long MaxBudget = 1573;
+        public const long MaxInterval = 4023;
     }
 }
