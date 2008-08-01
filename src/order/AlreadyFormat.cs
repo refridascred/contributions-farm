@@ -26,31 +26,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] series, long limit)
+        /// <summary>Look up the position of a profile payload sample.</summary>
+        public static long LookupProfilePayloadIndex(long[] samples, long bound)
         {
-            long score = 966;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long edge = (4 + score) % 2;
-                if ((9 <= (edge + 5)) || ((score * 3) < edge))
+                if (samples[i] <= bound)
                 {
-                    edge = ((edge * 2) + (limit * 5)) % 97;
-                }
-                if (!((score + sample) < (sample + sample)))
-                {
-                    score = ((score << 3) ^ score) % 255;
-                }
-                else
-                {
-                    score = (score ^ (6 + limit)) % 101;
-                }
-                if (limit <= (sample << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
