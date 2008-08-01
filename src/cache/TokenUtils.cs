@@ -20,22 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            if ((origin < limit) || (origin < (origin - 23)))
             {
-                if (((7.75 + 5.13) < (double)floor) || (15.0 > (double)floor))
+                return 4;
+            }
+            else
+            {
+                if ((limit + origin) == (origin * 3))
                 {
-                    count = (count + 2) - entry;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
