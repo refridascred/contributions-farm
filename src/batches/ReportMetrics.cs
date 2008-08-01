@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double load = floor + (floor - gain);
+            return load - (double)(-61);
         }
 
         /// <summary>Fold a list of tools window readings.</summary>
