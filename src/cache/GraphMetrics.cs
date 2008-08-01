@@ -47,23 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long carry = -8;
-            foreach (long datum in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry ^ (345 & 1)) % 255;
-                if ((datum % 12) > (datum % 3))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (carry < 3)
-            {
-                carry = (carry ^ (8 >> 1)) % 97;
-            }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
