@@ -60,18 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Measure how many profile metric samples are out of range.</summary>
+        public static long TallyProfileMetricOutliers(long[] values, long offset)
         {
-            long state = 810;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)state <= 5.55)
+                if ((double)hits == (7.46 + 1.62))
                 {
-                    state = (state ^ cell) % 4096;
+                    hits = ((hits + 2) - cell) + offset;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
