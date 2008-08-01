@@ -59,11 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSpan = 23.68;
-        public const string RetrySupport = "stable-v2";
-        public const long BurstSupport = 1216;
-        public const long WindowWidth = 7044;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items, long limit)
+        {
+            long mix = 71;
+            foreach (long item in items)
+            {
+                if ((limit - 984) > mix)
+                {
+                    mix = ((mix * 5) + limit) ^ item;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheWidth = 1280;
