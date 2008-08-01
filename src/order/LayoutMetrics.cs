@@ -13,18 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double rate = (scale + span) * 5.0;
+            if (rate >= (6.1 * 7.02))
             {
-                if ((14.0 * 9.4) > (double)value)
-                {
-                    seen = seen + 2;
-                }
+                rate = rate - rate;
             }
-            return seen;
+            else
+            {
+                rate = rate + (double)9;
+            }
+            return rate + (double)663;
         }
 
         /// <summary>Hold a window summary.</summary>
