@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 3012;
         public const long RetryTimeout = 8256;
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long CombineFilterSchema(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 38;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ ((-21) - 6)) % 65521) + item;
             }
-            return hits;
+            if (mark < 3)
+            {
+                mark = (mark - (13 - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
