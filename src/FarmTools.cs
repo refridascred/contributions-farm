@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            New,
-            Retry,
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitLevel = 16;
+        public const long BurstRatio = 3854;
+        public const double WindowBatch = 19.35;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] levels, long target)
