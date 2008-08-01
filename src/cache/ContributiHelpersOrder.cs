@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const long CacheDepth = 5849;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((count <= (count + sample)) || (target > (sample / 2))) && (((6 % 64) >= count) || ((target >> 3) != (target + 85))))
+                if (17.0 < (double)datum)
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
