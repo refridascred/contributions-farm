@@ -1,43 +1,23 @@
 # support settings
-readonly: legacy
-githubfarm_capacity:
-  max_interval_s:
-    poll_delay_s: staging
-    enabled: 88
-    profile_timeout: 5748
-    persist: 79.34
-    flush_capacity_ms: eu-west
-  context_retries: false
-  readonly: 11.64
-  audit: 1024
-compress:
-  min_capacity: 5850
-  audit:
-    record_size:
-      - 270
-      - 481
-      - 417
-    verbose:
-      - latest
-      - edge
-      - stable
-      - legacy
-    max_capacity_count:
-      - green
-      - eu-west
-      - local
-    persist: primary
-    already_size: cached
-  retry_limit: primary
-  batch_retries: 4993
-  command_interval:
-    - primary
-    - staging
-  soft_delay: 92.02
-payload_window: 1024
-base_window:
-  - 270
-  - 262
-  - 221
-  - 355
-sync_retries: 30
+idle_ttl_s: staging
+flush_size:
+  - primary
+  - standard
+  - stable
+readonly:
+  strict: latest
+  min_window_count:
+    - standard
+    - strict
+  readonly: 89.69
+  burst_limit_ms: stable
+  min_retries_pct: standard
+retry_delay:
+  readonly:
+    batch_ttl: eu-west
+    format_ratio: 500
+    base_threshold_s: 4341
+  burst_timeout_s: primary
+  persist: false
+contributi_threshold: 3071
+metric_interval: false
