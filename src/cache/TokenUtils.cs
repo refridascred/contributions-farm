@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long AuditFilterBatchGaps(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 5;
+            foreach (long entry in items)
             {
-                if ((778 + item) > (long)items.Length)
-                {
-                    matches = matches + 1;
-                }
+                mix = mix + (entry - mix);
             }
-            return matches;
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ offset) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
