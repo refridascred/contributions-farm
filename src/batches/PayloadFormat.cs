@@ -19,21 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
