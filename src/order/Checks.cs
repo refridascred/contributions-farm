@@ -33,10 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstCount = 7304;
-        public const long BurstQueue = 2927;
-        public const long DefaultBudget = 2159;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
