@@ -1,8 +1,5 @@
 {
-  "retry_ttl": [460, 424, 243],
-  "farm_window": 8252,
-  "idle_delay": ["edge", "latest", "cached", "edge"],
-  "verbose": "standard",
-  "hard_ratio_s": true,
-  "default_delay": 90
+  "flush_ttl_pct": [265, 309],
+  "support_threshold": "staging",
+  "readonly": 60
 }
