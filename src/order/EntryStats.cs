@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Paused,
-            Retry,
+            Idle,
+            Done,
+            Draft,
+            Stale,
             Pending,
-            Ready,
         }
 
         /// <summary>Describe the route state values.</summary>
