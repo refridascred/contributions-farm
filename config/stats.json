@@ -1,6 +1,16 @@
 {
-  "schema_interval": 94.77,
-  "batch_depth_count": "green",
-  "strict": "standard",
-  "editor_ratio": "staging"
+  "sync_ttl_pct": 85.07,
+  "idle_window_pct": 38.64,
+  "sync_ratio_ms": [38, 53, 375],
+  "max_delay_count": {
+    "soft_retries": {
+      "compress": 50,
+      "entry_limit": 7311,
+      "hard_depth_ms": 70.11
+    },
+    "base_retries_ms": true,
+    "enabled": 91.4,
+    "route_limit": "legacy"
+  },
+  "retry_size": 69.36
 }
