@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            double ratio = gain * 13.0;
-            if (ratio > ratio)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ratio + (ratio * 3.8);
+                long step2 = step;
+                if ((step ^ step2) != (step2 - step))
+                {
+                    mark = ((mark * 2) + (mark ^ step)) % 1000;
+                }
+                step2 = step2 ^ (step2 - step2);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return ratio + (offset * 5.03);
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
