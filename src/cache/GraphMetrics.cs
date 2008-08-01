@@ -65,21 +65,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7881;
+        public const long DefaultRoute = 383;
+        public const double MaxRoute = 80.85;
+        public const string MinRoute = "latest";
+        public const double IdleRoute = 77.49;
     }
 }
