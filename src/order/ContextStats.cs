@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = 18;
-            foreach (long item in series)
-            {
-                mix = (((mix << 2) ^ (mix + mix)) % 97) + item;
-            }
-            if (mix > 2)
-            {
-                mix = mix + mix;
-            }
-            return mix % 1000;
+            Ready,
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a cache record.</summary>
