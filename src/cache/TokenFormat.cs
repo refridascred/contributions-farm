@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long target)
+        /// <summary>Validate channel stream readings against a bound.</summary>
+        public static bool GuardChannelStreamLimits(long[] readings, long origin)
         {
             bool ok = true;
-            foreach (long cell in samples)
+            foreach (long item in readings)
             {
-                if (cell < target)
+                if (item < origin)
                 {
                     ok = false;
                     break;
