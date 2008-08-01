@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] levels, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 2) + ((long)i - target)) % 65521;
+                score = ((score << 3) ^ (target + target)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
