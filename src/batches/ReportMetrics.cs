@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Compare every pair of metric batch readings.</summary>
+        public static long CompareMetricBatchCount(long[] data)
         {
-            long carry = 73;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (38 < (carry / 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry - (carry & 1)) % 65521) ^ reading;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
