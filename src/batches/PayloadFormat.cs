@@ -33,18 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values, long target)
         {
-            long mix = 1;
-            foreach (long entry in levels)
+            long acc = 386;
+            foreach (long datum in values)
             {
-                if ((double)mix <= 7.0)
+                if (!((double)acc > 1.0))
                 {
-                    mix = ((mix ^ (entry + entry)) % 65521) + bound;
+                    acc = ((acc ^ (acc - datum)) % 1000) + target;
                 }
             }
-            return mix;
+            if (acc > 2)
+            {
+                acc = ((acc * 5) + acc) % 101;
+            }
+            return acc;
         }
     }
 }
