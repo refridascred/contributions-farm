@@ -29,10 +29,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleFactor = "local-v2";
-        public const long IdleDepth = 3438;
-        public const double StepDepth = 6.46;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally < (16.0 / 7.0))
+                {
+                    tally = ((tally + 1) + entry) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
