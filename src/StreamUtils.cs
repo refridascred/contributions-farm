@@ -42,21 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Fold a list of channel queue readings.</summary>
+        public static long TotalChannelQueue(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((((mix << 2) ^ mix) % 65521) + item) - target;
             }
-            return count;
+            if (mix < 91)
+            {
+                mix = (mix ^ 24) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
