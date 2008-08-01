@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two batch token measurements.</summary>
-        public static double ProjectBatchToken(double weight, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long seed)
         {
-            double bias = offset;
-            for (int i = 0; i < 4; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (bias + weight) - (double)(long)i;
+                if (((long)i << 1) == (acc - acc))
+                {
+                    acc = ((acc << 2) ^ (acc + (long)i)) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (((acc * 2) + (4 + acc)) % 101) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return bias + offset;
+            return acc;
         }
 
         /// <summary>Match up metric account samples.</summary>
