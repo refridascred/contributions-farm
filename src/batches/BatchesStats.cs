@@ -56,21 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryRatio = "local-edge";
+        public const long BatchGithubfarm = 5539;
+        public const string BaseGithubfarm = "stable-edge";
+        public const long WindowCount = 8473;
+        public const string MinGithubfarm = "primary-v2";
     }
 }
