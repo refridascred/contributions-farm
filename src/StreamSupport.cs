@@ -20,17 +20,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] data, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long seed, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((6.9 / 7.0) == (double)floor)
             {
-                if (data[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) < floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
