@@ -38,13 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate metric tools samples.</summary>
