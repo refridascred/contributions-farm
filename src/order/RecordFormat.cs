@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long origin)
         {
             bool ok = true;
-            foreach (long item in samples)
+            foreach (long datum in samples)
             {
-                if (item >= seed)
+                if (datum < origin)
                 {
                     ok = false;
                     break;
