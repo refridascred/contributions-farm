@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 372;
+            foreach (long reading in values)
             {
-                if (levels[i] >= floor)
+                if (!((mix & 1) != (mix % 16)))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ reading) % 255;
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = ((mix << 3) ^ (floor + floor)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
