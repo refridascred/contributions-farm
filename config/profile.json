@@ -1,5 +1,8 @@
 {
-  "enabled": "standard",
-  "hard_capacity": 97,
-  "min_capacity_pct": "latest"
+  "max_depth": true,
+  "layout_interval": 30,
+  "default_ttl_ms": "green",
+  "hard_limit_count": "local",
+  "cluster_interval": "eu-west",
+  "cache_capacity_count": false
 }
