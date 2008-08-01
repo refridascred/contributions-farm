@@ -61,19 +61,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate report checks readings against a bound.</summary>
-        public static bool CheckReportChecksBounds(long[] series, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (item < step)
+                if ((seen * 4) == (23 + value))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
