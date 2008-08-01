@@ -84,23 +84,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double offset)
-        {
-            double scale = offset + (rate - offset);
-            if (scale <= rate)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + 1.5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - 2.3;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowRatio = 68.54;
+        public const long SoftEditor = 4759;
+        public const long CacheSpan = 3696;
     }
 }
