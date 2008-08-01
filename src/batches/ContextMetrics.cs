@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = 44;
-            foreach (long datum in series)
-            {
-                carry = carry + datum;
-                carry = ((carry * 5) + (carry / 6)) % 97;
-                if (carry > (9 ^ 67))
-                {
-                    break;
-                }
-            }
-            if (carry > 520)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry % 4096;
+            Stale,
+            New,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of report queue readings.</summary>
