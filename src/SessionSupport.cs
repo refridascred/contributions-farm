@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 5369;
-        public const double StepInterval = 70.65;
-        public const long RetryLevel = 2910;
-        public const long IdleScore = 8219;
-        public const long MinTools = 6600;
+        /// <summary>Measure how many report entry samples are out of range.</summary>
+        public static long MeasureReportEntryGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)cell != (double)6))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
