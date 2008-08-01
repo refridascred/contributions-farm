@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Failed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowBudget = 7840;
+        public const long WindowInterval = 8738;
+        public const double BurstRecord = 12.85;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] values, long origin)
