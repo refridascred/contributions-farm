@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine metric cluster values into a single score.</summary>
-        public static long TotalMetricCluster(long[] values, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long sum = 5;
-            foreach (long sample in values)
-            {
-                if ((double)target < (9.6 / 7.0))
-                {
-                    sum = (sum * 4) + sample;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (target / 7)) % 65521;
-                }
-            }
-            if (sum > 35)
-            {
-                sum = sum ^ (830 * 4);
-            }
-            return sum % 1000;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
