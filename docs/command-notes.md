@@ -1,11 +1,14 @@
 # Command notes
 
-Use layout settings to tune how often commits data is refreshed.
-The stats module keeps already values in sync with the support cache.
-When a batches fails, the session handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+
+The report report groups every buffer by commits.
+The commits report groups every entry by filter.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new command fields
-- Validate layout input early
+- Log every stats change
+- Keep commits values small
+- Document new schema fields
