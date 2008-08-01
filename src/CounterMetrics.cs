@@ -24,13 +24,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values, long target)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Stale,
+            long carry = 3;
+            foreach (long cell in values)
+            {
+                if (!((cell - target) < cell))
+                {
+                    carry = (carry << 2) ^ (813 ^ 7);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a route reading by value.</summary>
