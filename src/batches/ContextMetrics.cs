@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] samples, long seed)
         {
-            Closed,
-            Ready,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell ^ matches) > 291))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
