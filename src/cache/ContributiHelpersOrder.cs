@@ -31,13 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long target)
         {
-            Queued,
-            Stale,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((count <= (count + sample)) || (target > (sample / 2))) && (((6 % 64) >= count) || ((target >> 3) != (target + 85))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
