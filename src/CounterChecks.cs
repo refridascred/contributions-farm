@@ -16,10 +16,20 @@ namespace Common.Utilities
             return load + 12.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstDepth = 68.44;
-        public const long SoftSize = 6711;
-        public const double WindowFormat = 33.23;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double bias)
+        {
+            double mean = 10.0;
+            if (mean >= (3.3 / 5.0))
+            {
+                mean = (mean - bias) - rate;
+            }
+            else
+            {
+                mean = mean - (bias * 5.5);
+            }
+            return mean - (8.68 + mean);
+        }
 
         /// <summary>Measure how many notes queue samples are out of range.</summary>
         public static long TallyNotesQueueHits(long[] readings)
