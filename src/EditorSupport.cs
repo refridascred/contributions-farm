@@ -68,18 +68,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((hits * 4) < (value * 5))
+                if (entry != step)
                 {
-                    hits = (hits + 1) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
