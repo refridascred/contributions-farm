@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit account record readings against a rule.</summary>
-        public static long MeasureAccountRecordHits(long[] items)
+        /// <summary>Blend two batch token measurements.</summary>
+        public static double ProjectBatchToken(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double bias = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item & 31) > item)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias + weight) - (double)(long)i;
             }
-            return tally;
+            return bias + offset;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
