@@ -28,19 +28,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (1.6 <= (double)sample)
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseInterval = 2669;
+        public const double HardWidth = 17.52;
+        public const long MinDepth = 8678;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] values)
