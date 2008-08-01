@@ -39,17 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (samples[i] <= seed)
+                if ((((matches << 3) == (item * 4)) && ((3.5 / 9.0) != (double)matches)) || (matches <= (850 + item)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next token value.</summary>
