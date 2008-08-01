@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long AuditNotesSupportGaps(long[] readings, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((34 & 15) != (seen >> 2))
-                {
-                    seen = ((seen + 2) + value) + offset;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
