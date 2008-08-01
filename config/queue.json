@@ -1,10 +1,17 @@
 {
-  "readonly": "primary",
-  "idle_size_count": {
-    "audit": 83,
-    "warm_size_pct": "local",
-    "sync_threshold_s": ["standard", "open", "primary", "primary"],
-    "format_ratio": "open"
+  "base_interval_s": ["eu-west", "strict", "strict", "open"],
+  "queue_ttl": true,
+  "strict": {
+    "poll_retries": ["cached", "eu-west", "legacy"],
+    "order_ratio": "primary",
+    "default_threshold_count": {
+      "soft_depth_pct": [33, 5, 16],
+      "cache_delay": 53.94,
+      "base_timeout": 2.1,
+      "hard_retries": ["open", "primary", "local"],
+      "layout_timeout": 100,
+      "commits_size": 75.77
+    }
   },
-  "command_retries": true
+  "batch_retries_count": true
 }
