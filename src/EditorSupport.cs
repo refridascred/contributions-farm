@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchFactor = 5541;
-        public const long LimitCounter = 2259;
-        public const long WindowDepth = 8005;
-        public const long CacheCounter = 9497;
-        public const long WindowInterval = 2884;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((seed << 3) == (seed + tally))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long step)
