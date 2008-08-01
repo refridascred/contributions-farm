@@ -1,15 +1,7 @@
 {
-  "min_capacity_ms": {
-    "contributi_limit": 27,
-    "filter_size": "eu-west",
-    "order_ttl": "stable",
-    "stream_ttl": "local",
-    "default_capacity": true,
-    "warm_ratio_count": "latest"
-  },
-  "strict": 65.6,
-  "batches_depth": "cached",
-  "flush_timeout_s": "staging",
-  "hard_size_count": [340, 306, 255],
-  "contributi_ttl": [351, 127, 91]
+  "flush_capacity_count": 9105,
+  "enabled": 55.0,
+  "strict": 1024,
+  "verbose": "staging",
+  "max_depth_count": 329
 }
