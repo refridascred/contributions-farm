@@ -13,15 +13,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings)
         {
-            double weight = offset;
-            for (int i = 0; i < 3; i++)
+            long carry = 13;
+            foreach (long item in readings)
             {
-                weight = (weight - (offset + 17.0)) + (double)(long)i;
+                carry = carry ^ (item * 5);
+                carry = (carry ^ (7 & 127)) % 1000;
             }
-            return weight - (weight + rate);
+            if (carry < (-15))
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
