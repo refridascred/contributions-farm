@@ -23,14 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits + 8) >= (5 / 9))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
