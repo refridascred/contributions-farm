@@ -1,15 +1,5 @@
 # githubfarm settings
-filter_ttl: true
-compress: eu-west
-editor_ratio:
-  - 53
-  - 448
-  - 209
-  - 102
-batches_delay:
-  - 326
-  - 202
-  - 195
-  - 304
-dry_run: edge
-default_delay_count: true
+idle_timeout: strict
+warm_window: legacy
+format_window: blue
+session_size: 23.51
