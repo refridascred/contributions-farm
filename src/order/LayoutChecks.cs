@@ -26,24 +26,12 @@ namespace Common.Utilities
         public const double WindowBudget = 33.21;
         public const string RetryFarm = "strict-v2";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (offset >= result)
-                {
-                    result = ((result * 4) + ((long)i << 3)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (4 % 12)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryRatio = 5289;
+        public const long SoftFormat = 198;
+        public const string IdleFormat = "latest-1";
+        public const long MaxRatio = 6341;
+        public const long IdleInterval = 1232;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] values, long offset)
