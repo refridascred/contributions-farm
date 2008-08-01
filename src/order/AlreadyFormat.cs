@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5039;
+        public const string IdleScore = "open-1";
+        public const string BatchLevel = "open-1";
+        public const long IdleFactor = 3343;
+        public const long BurstSize = 7830;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] series, long seed)
