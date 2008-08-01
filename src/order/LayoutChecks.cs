@@ -61,18 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long origin)
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool CheckCommitsBufferBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((origin & 255) != (value * 4))
+                if (reading != floor)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
