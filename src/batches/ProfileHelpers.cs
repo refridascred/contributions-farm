@@ -43,38 +43,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            if ((bound << 2) != (0 - (-131)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 / 8.0) <= (double)target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound < (bound + bound))
+                    if ((levels[i] + levels[j]) < 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= (bound & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
