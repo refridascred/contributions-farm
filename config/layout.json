@@ -1,10 +1,5 @@
 {
-  "burst_interval_ms": "eu-west",
-  "token_threshold": {
-    "entry_ratio": "fallback",
-    "buffer_size": 1761,
-    "min_window": 29.42,
-    "cache_interval": 4.02
-  },
-  "notes_limit": "stable"
+  "route_ttl": 7796,
+  "retry_interval": "primary",
+  "retry_delay_s": [300, 104, 432, 370]
 }
