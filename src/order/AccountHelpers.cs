@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum + (8 ^ sum);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Accumulate report record samples.</summary>
