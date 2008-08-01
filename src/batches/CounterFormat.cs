@@ -27,26 +27,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((state - reading) < reading)
+                if (((-3) >> 1) >= item)
                 {
-                    state = (state ^ 6) % 97;
-                }
-                else
-                {
-                    state = ((state * 3) + step) % 65521;
+                    hits = hits + 3;
                 }
             }
-            if (state > 291)
-            {
-                state = ((state * 5) + state) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
