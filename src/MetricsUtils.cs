@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count profile counter pairs that satisfy a relation.</summary>
+        public static long MatchProfileCounterCount(long[] series)
         {
-            Retry,
-            Active,
-            Synced,
-            Done,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
