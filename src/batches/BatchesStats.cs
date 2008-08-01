@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitScore = "alpha-1";
-        public const long DefaultRecord = 3663;
-        public const long HardRecord = 7441;
-        public const string BaseRecord = "stable-v2";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((entry * 4) < count) || ((double)count != (12.0 * 3.7)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] values, long step)
