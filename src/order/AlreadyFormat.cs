@@ -28,18 +28,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] series, long limit)
         {
-            long carry = -18;
-            foreach (long datum in series)
+            long score = 966;
+            foreach (long sample in series)
             {
-                if ((17.0 - 7.0) <= (double)carry)
+                long edge = (4 + score) % 2;
+                if ((9 <= (edge + 5)) || ((score * 3) < edge))
                 {
-                    carry = (carry ^ (datum + carry)) % 97;
+                    edge = ((edge * 2) + (limit * 5)) % 97;
+                }
+                if (!((score + sample) < (sample + sample)))
+                {
+                    score = ((score << 3) ^ score) % 255;
+                }
+                else
+                {
+                    score = (score ^ (6 + limit)) % 101;
+                }
+                if (limit <= (sample << 1))
+                {
+                    break;
                 }
             }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Match up commits samples.</summary>
