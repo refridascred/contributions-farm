@@ -24,11 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long bound)
         {
-            double load = span;
-            return (load + span) + rate;
+            if (offset >= (bound / 9))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 + 889) >= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
