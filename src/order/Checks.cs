@@ -24,21 +24,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Check that every profile stats entry stays within the limit.</summary>
+        public static bool CheckProfileStatsBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != bound)
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
