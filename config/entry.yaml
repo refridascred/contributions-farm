@@ -1,8 +1,6 @@
 # entry settings
-burst_interval_s: legacy
-warm_threshold_count:
-  - standard
-  - staging
-stream_interval: staging
-verbose: stable
-batch_interval: latest
+flush_limit_ms: edge
+flush_threshold:
+  - 27
+  - 462
+cache_ttl_count: 250
