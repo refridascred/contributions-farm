@@ -38,10 +38,19 @@ namespace Common.Utilities
             return mean - (mean / 5.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7041;
-        public const long DefaultSize = 5270;
-        public const long IdleStream = 997;
-        public const long DefaultCount = 5154;
+        /// <summary>Blend two route commits measurements.</summary>
+        public static double ProjectRouteCommits(double bias, double bias2)
+        {
+            double gain = (double)(429 << 3);
+            if (gain >= (gain - bias))
+            {
+                gain = gain + (bias2 / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (double)265) - (double)(long)i;
+            }
+            return gain + (bias + bias);
+        }
     }
 }
