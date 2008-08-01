@@ -1,16 +1,10 @@
 {
-  "sync_ttl_pct": 85.07,
-  "idle_window_pct": 38.64,
-  "sync_ratio_ms": [38, 53, 375],
-  "max_delay_count": {
-    "soft_retries": {
-      "compress": 50,
-      "entry_limit": 7311,
-      "hard_depth_ms": 70.11
-    },
-    "base_retries_ms": true,
-    "enabled": 91.4,
-    "route_limit": "legacy"
+  "filter_ttl": "latest",
+  "warm_ratio_count": {
+    "githubfarm_timeout": 36.27,
+    "sync_threshold_pct": ["cached", "edge"],
+    "batches_ttl": 61
   },
-  "retry_size": 69.36
+  "dry_run": 48.29,
+  "batches_threshold": false
 }
