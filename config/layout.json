@@ -1,6 +1,14 @@
 {
-  "readonly": "standard",
-  "base_ratio": 60,
-  "channel_capacity": ["edge", "eu-west", "stable"],
-  "hard_window": "primary"
+  "max_depth_count": 33,
+  "warm_capacity": {
+    "contributi_window": false,
+    "default_delay_count": "edge",
+    "audit": true,
+    "token_threshold": 99
+  },
+  "context_retries": {
+    "poll_interval_s": 500,
+    "retry_capacity_ms": 4479,
+    "idle_depth": true
+  }
 }
