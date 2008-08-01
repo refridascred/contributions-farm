@@ -1,7 +1,15 @@
 {
-  "dry_run": [213, 370],
-  "enabled": "blue",
-  "compress": 500,
-  "cache_ratio_count": 54,
-  "cache_ratio_s": "green"
+  "strict": {
+    "format_ratio": 3007,
+    "cache_capacity_pct": false,
+    "cache_depth_count": 93.53,
+    "burst_delay_pct": false
+  },
+  "metric_size": {
+    "checks_threshold": 30,
+    "readonly": "standard",
+    "sync_window_ms": 93
+  },
+  "min_ttl": 30,
+  "soft_retries_pct": false
 }
