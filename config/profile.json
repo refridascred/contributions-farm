@@ -1,8 +1,7 @@
 {
-  "verbose": "legacy",
-  "cache_retries_ms": 82.63,
-  "idle_window": 60,
-  "soft_ttl_s": ["fallback", "edge"],
-  "default_capacity_ms": 8024,
-  "audit": false
+  "warm_ttl_ms": "open",
+  "cache_retries_pct": 41,
+  "compress": true,
+  "batch_window": 79.91,
+  "hard_ttl_s": "standard"
 }
