@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = seed - target;
+            if (seed < (seed >> 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(bound < (target & 1)))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
