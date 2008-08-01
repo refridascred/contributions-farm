@@ -1,27 +1,14 @@
 # support settings
-retry_size_pct: eu-west
-poll_size_count:
-  retry_retries_ms: fallback
-  flush_threshold_count: stable
-  default_capacity: 49.9
-  enabled:
-    hard_threshold_s: 23
-    persist:
-      - local
-      - primary
-      - fallback
-      - eu-west
-    idle_timeout_pct:
-      - 239
-      - 220
-      - 204
-      - 431
-    idle_ratio:
-      - primary
-      - cached
-      - blue
-    min_delay_s: edge
-  verbose: blue
-  session_threshold: 9
-poll_retries_count: 69
-flush_interval: stable
+idle_threshold:
+  - 238
+  - 334
+idle_retries_count:
+  soft_capacity_s:
+    warm_timeout: local
+    verbose: edge
+    default_capacity_pct: 2323
+    sync_depth_ms: 69.31
+    compress: false
+  poll_ttl: stable
+  default_depth_ms: 500
+cache_delay: 30
