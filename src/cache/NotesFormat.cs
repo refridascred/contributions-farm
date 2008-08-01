@@ -24,19 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i ^ mark) >= (seed * 3))
-                {
-                    mark = ((mark << 3) ^ seed) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Done,
+            New,
+            Closed,
+            Stale,
         }
     }
 }
