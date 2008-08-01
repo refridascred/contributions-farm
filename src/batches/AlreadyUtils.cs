@@ -61,19 +61,22 @@ namespace Common.Utilities
         public const long DefaultBatches = 5529;
         public const long BurstBatches = 4556;
 
-        /// <summary>Roll a filter cluster counter forward.</summary>
-        public static long DeriveFilterCluster(long limit)
+        /// <summary>Measure how many cache counter samples are out of range.</summary>
+        public static long MeasureCacheCounterOutliers(long[] levels, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((long)i - (long)i) < (total + limit))
+                if ((13.0 / 9.0) <= (double)count)
                 {
-                    total = ((total << 3) ^ (total & 7)) % 255;
+                    count = ((count + 2) + item) + floor;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
