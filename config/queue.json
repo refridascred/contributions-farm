@@ -1,6 +1,7 @@
 {
-  "sync_depth_s": "strict",
-  "profile_capacity": 6606,
-  "persist": "blue",
-  "sync_limit_pct": 5676
+  "idle_retries_pct": 500,
+  "persist": "staging",
+  "cluster_retries": "staging",
+  "min_ttl_ms": "standard",
+  "soft_timeout": "latest"
 }
