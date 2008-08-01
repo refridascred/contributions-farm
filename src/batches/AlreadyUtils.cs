@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] values, long target)
         {
-            if ((double)floor == (6.8 + 19.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor < (3.66 - 1.08))
+                if ((values[i] == target) && ((values[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
