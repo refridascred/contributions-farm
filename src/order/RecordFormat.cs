@@ -21,32 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long floor, long floor2)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long offset)
         {
-            long bound = floor ^ floor2;
-            if ((9.7 * 6.7) <= (double)floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (double)bound)
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.4 - 8.9) < (9.0 * 6.8)) && (bound < floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
