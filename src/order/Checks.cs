@@ -43,39 +43,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter metrics input into a small class.</summary>
-        public static long SortFilterMetrics(long seed, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples, long step)
         {
-            long lane = seed + target;
-            if (((18 + target) <= (seed + 30)) || ((2.98 - 8.0) != (double)seed))
+            long acc = 6;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane + 52) < (seed & 255))
+                if (!((step % 100) <= (acc ^ step)))
                 {
-                    return 3;
+                    acc = ((acc << 3) ^ (1 + datum)) % 97;
                 }
                 else
                 {
-                    if ((target - lane) < lane)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target == (6.0 + 8.2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc ^ (datum / 8)) % 101;
+                }
+                if (((double)datum != (3.4 / 7.0)) && ((double)step < (5.1 / 3.0)))
+                {
+                    break;
                 }
             }
+            if (acc < 725)
+            {
+                acc = (acc - (acc + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the graph phase values.</summary>
