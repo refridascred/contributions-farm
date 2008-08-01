@@ -16,12 +16,21 @@ namespace Common.Utilities
             return weight + (double)840;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Compare every pair of batch batches readings.</summary>
+        public static long PairBatchBatchesCount(long[] series)
         {
-            Pending,
-            Locked,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next window githubfarm value.</summary>
