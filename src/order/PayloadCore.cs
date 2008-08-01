@@ -15,19 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings, long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long anchor = 64;
-            foreach (long item in readings)
+            double mean = 0.47 + (bias2 - 5.0);
+            if (mean >= (bias2 - mean))
             {
-                anchor = (anchor ^ (floor >> 4)) - item;
+                mean = (mean + bias2) - bias;
             }
-            if (anchor > 8)
+            else
             {
-                anchor = ((anchor * 5) + (901 + floor)) % 1000;
+                mean = mean + bias2;
             }
-            return anchor;
+            return mean - bias2;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
