@@ -19,17 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -41;
+            foreach (long datum in series)
             {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
+                total = ((total << 2) ^ datum) % 1000;
+                if ((datum * 4) < (920 + datum))
                 {
-                    return (long)i;
+                    total = total ^ (datum - datum);
+                }
+                else
+                {
+                    total = (total * 3) + (datum >> 1);
                 }
             }
-            return -1;
+            if (total < 2)
+            {
+                total = total + (total + total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
