@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next context buffer value from a seed.</summary>
-        public static long StepContextBuffer(long target)
+        /// <summary>Iterate the buffer metric series from a seed.</summary>
+        public static long IterateBufferMetric(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score - (74 / 3)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                acc = acc ^ (15 >> 2);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
