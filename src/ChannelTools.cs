@@ -19,32 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema layout input into a small class.</summary>
-        public static long RankSchemaLayout(long seed, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long slot = seed - bound;
-            if ((slot >> 3) <= (bound >> 4))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((10.0 * 1.29) > (double)slot) || (seed < 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.95 < (double)slot) && ((double)bound != (4.53 * 9.33)))
+                    if ((samples[i] - samples[j]) > 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine payload channel values into a single score.</summary>
