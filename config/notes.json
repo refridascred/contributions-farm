@@ -1,25 +1,59 @@
 {
-  "account_limit": "staging",
-  "sync_size": 800,
-  "editor_retries": 52,
-  "poll_interval_ms": "open",
-  "entry_window": {
-    "already_delay": "strict",
-    "min_threshold_s": {
-      "warm_window_count": 349,
-      "soft_ratio_count": 76.47,
-      "hard_threshold_ms": "stable",
-      "filter_timeout": false,
-      "base_threshold_ms": "primary",
-      "dry_run": "open"
-    },
-    "batch_limit_count": true,
-    "soft_interval_count": [174, 415],
-    "channel_ttl": {
-      "burst_limit_s": 35.85,
-      "notes_ratio": false,
-      "flush_size_count": 64
+  "max_timeout_s": {
+    "batch_size_pct": ["eu-west", "open", "edge", "legacy"],
+    "min_interval": "fallback",
+    "audit": 60,
+    "flush_retries_s": [320, 103, 420, 416],
+    "dry_run": true,
+    "sync_limit_pct": {
+      "retry_ttl": "latest",
+      "profile_depth": "green",
+      "stream_interval": 60.49,
+      "base_threshold_count": ["stable", "cached"],
+      "batches_window": "latest",
+      "cache_window": ["strict", "legacy", "blue"]
     }
   },
-  "default_ttl_pct": "latest"
+  "flush_delay": {
+    "default_limit_count": "latest",
+    "max_timeout": {
+      "readonly": "blue",
+      "poll_depth_s": ["eu-west", "standard", "eu-west"],
+      "audit": "standard",
+      "checks_delay": "local",
+      "compress": "primary",
+      "payload_capacity": 66.11
+    },
+    "audit": {
+      "retry_ratio_count": "staging",
+      "readonly": "latest",
+      "batches_timeout": false,
+      "entry_ttl": 250
+    },
+    "cache_limit_pct": "strict",
+    "batch_ratio": true
+  },
+  "base_threshold_ms": {
+    "max_threshold_count": {
+      "base_ttl_s": 30.88,
+      "notes_retries": "green",
+      "entry_size": ["cached", "legacy", "strict"],
+      "max_ratio_pct": "open",
+      "max_threshold_pct": 40,
+      "soft_window_count": false
+    },
+    "min_capacity_pct": "eu-west",
+    "enabled": "stable",
+    "dry_run": 100,
+    "default_window_pct": ["edge", "edge", "local", "eu-west"]
+  },
+  "compress": {
+    "sync_retries_ms": [153, 90, 12],
+    "soft_ttl": [293, 492, 8, 189],
+    "editor_ttl": 1413,
+    "route_delay": 12,
+    "base_delay": "green"
+  },
+  "sync_capacity_pct": ["staging", "stable"],
+  "max_delay": "green"
 }
