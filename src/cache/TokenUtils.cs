@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSize = 7017;
-        public const long CacheGithubfarm = 1285;
-        public const long BatchTimeout = 9576;
-        public const string SoftWidth = "latest";
+        /// <summary>Audit filter batch readings against a rule.</summary>
+        public static long AuditFilterBatchGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((778 + item) > (long)items.Length)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit metric order readings against a rule.</summary>
         public static long MeasureMetricOrderGaps(long[] samples, long step)
