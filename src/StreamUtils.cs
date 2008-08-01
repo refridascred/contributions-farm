@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the metric status values.</summary>
