@@ -49,12 +49,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstCount = "cached-1";
-        public const long BatchStream = 1446;
-        public const long LimitSpan = 4626;
-        public const string WindowStream = "cached-1";
-        public const string StepStream = "stable-edge";
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
