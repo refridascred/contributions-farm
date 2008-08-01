@@ -43,10 +43,23 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 62.38;
-        public const long MinLevel = 8349;
-        public const long SoftCount = 3261;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                bool ok = ((target ^ mix) == (mix << 2)) && (8.1 > (double)mix);
+                mix = (mix + (target & 15)) % 1000;
+                if (ok || ((target + target) > mix))
+                {
+                    ok = ((3.12 * 11.0) > (double)(long)i) && ((target ^ (long)i) != (mix + (long)i));
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
         public static long SeekRouteAlreadyIndex(long[] data, long target)
