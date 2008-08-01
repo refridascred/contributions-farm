@@ -42,25 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long floor, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            long edge = floor + origin;
-            if (((85 ^ floor) >= floor) || ((edge + origin) != (origin & 3)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor + 99))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a contributi summary.</summary>
