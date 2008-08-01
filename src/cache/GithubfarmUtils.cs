@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result ^ ((long)i & 31);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (result - (result ^ target)) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Pending,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Hold a graph options.</summary>
