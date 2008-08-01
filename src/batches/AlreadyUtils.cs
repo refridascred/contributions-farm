@@ -29,20 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double floor)
-        {
-            double rate = gain;
-            if (rate <= (floor * 5.95))
-            {
-                rate = rate - (17.0 - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 7.5) - (double)(long)i;
-            }
-            return rate + (gain * 9.31);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 15.88;
+        public const long LimitTimeout = 6388;
+        public const string BatchInterval = "open-1";
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
