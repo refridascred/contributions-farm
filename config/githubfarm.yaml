@@ -1,9 +1,21 @@
 # githubfarm settings
-commits_limit: 40
-compress: blue
-sync_capacity_pct: latest
-audit:
-  - 208
-  - 313
-  - 223
-token_timeout: cached
+buffer_window:
+  - legacy
+  - cached
+  - green
+entry_timeout: open
+commits_window: false
+sync_threshold_count: 55.85
+retry_window:
+  poll_threshold_pct:
+    persist: 64.65
+    strict: green
+    flush_limit_ms: local
+    metrics_ttl: 1840
+    retry_interval_ms:
+      - 141
+      - 13
+  record_timeout: 44.45
+  report_limit: 37
+  idle_capacity_s: 63.38
+retry_retries_ms: 73.14
