@@ -62,18 +62,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] values)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)seen <= (double)192)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            New,
+            Locked,
         }
     }
 }
