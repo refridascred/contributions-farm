@@ -45,19 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = -11;
-            foreach (long cell in data)
-            {
-                mix = (mix + (70 + cell)) % 255;
-            }
-            if (mix > 102)
-            {
-                mix = (mix ^ ((-557) - mix)) % 255;
-            }
-            return mix % 97;
+            Locked,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
