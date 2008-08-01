@@ -26,16 +26,32 @@ namespace Common.Utilities
             return ratio - (double)94;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long target2)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long step = target - target2;
+            if ((double)target2 <= (1.5 / 2.0))
             {
-                mix = mix + (mix / 7);
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((step & 63) != (step + 6)) && ((target2 - target) <= (target2 * 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 2) != (target - 434))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
