@@ -49,12 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
