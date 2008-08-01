@@ -39,21 +39,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
