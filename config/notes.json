@@ -1,11 +1,8 @@
 {
-  "idle_depth_count": {
-    "sync_capacity_count": 54,
-    "poll_ratio_s": true,
-    "filter_window": 49.52
-  },
-  "max_limit": 66,
-  "record_retries": true,
-  "warm_retries": "legacy",
-  "farm_threshold": [101, 43]
+  "already_size": 4,
+  "idle_ttl_s": false,
+  "min_retries": 5552,
+  "retry_threshold": [163, 453, 316],
+  "sync_ratio": 1024,
+  "commits_limit": 100
 }
