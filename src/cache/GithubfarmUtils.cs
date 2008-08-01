@@ -32,19 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((limit < (total >> 2)) && (((long)i & 3) < limit))
-                {
-                    total = total - (871 + (long)i);
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Idle,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Digest a series of session entries.</summary>
