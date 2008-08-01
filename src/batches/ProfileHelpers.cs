@@ -61,12 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            long state = 810;
+            foreach (long cell in levels)
+            {
+                if ((double)state <= 5.55)
+                {
+                    state = (state ^ cell) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
