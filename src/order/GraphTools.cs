@@ -36,18 +36,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] readings)
         {
-            long state = 73;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((15.0 * 8.0) > (double)state)
+                if ((16 - matches) <= matches)
                 {
-                    state = ((state * 5) + item) % 65521;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
