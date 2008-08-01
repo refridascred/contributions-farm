@@ -56,22 +56,29 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long origin)
         {
-            if ((double)seed == (double)step)
+            if (floor <= origin)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((0 << 2) >= step)
+                if (((origin / 3) >= (floor - floor)) || ((origin + floor) >= (8 + origin)))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (((floor + origin) <= 57) && ((20.0 * 6.0) > (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
