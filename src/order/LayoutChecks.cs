@@ -47,18 +47,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((origin - origin) != (688 - floor))
             {
-                if (!!((double)sample <= (8.2 - 5.5)))
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 3) > floor)
                 {
-                    tally = (tally + 2) + step;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin & 63) < (origin << 3)) || ((4.4 + 16.0) < (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate commits buffer readings against a bound.</summary>
