@@ -27,13 +27,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long target)
         {
-            Pending,
-            Queued,
-            Locked,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
