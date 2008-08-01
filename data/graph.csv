@@ -1,6 +1,9 @@
-id,score,level,count
-1,887,latest,14.44
-2,473,71.6,latest
-3,22,506,69.43
-4,green,867,189
-5,33.58,fallback,37.43
+id,weight,owner,score,rank
+1,33.79,936,fallback,cached
+2,137,634,blue,91.27
+3,603,63.44,299,823
+4,602,45,390,59.83
+5,59.05,81.8,75.3,20.57
+6,995,335,410,fallback
+7,0.77,cached,staging,232
+8,92.7,670,legacy,420
