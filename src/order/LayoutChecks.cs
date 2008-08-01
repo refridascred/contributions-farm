@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFactor = 78.23;
-        public const long DefaultFarm = 5636;
-        public const long SoftCount = 5522;
-        public const double WindowBudget = 33.21;
-        public const string RetryFarm = "strict-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseWidth = 30.85;
+        public const long WindowInterval = 55;
+        public const string MaxChannel = "alpha";
+        public const double DefaultScore = 22.17;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] readings)
