@@ -1,12 +1,8 @@
 {
-  "batch_interval": "blue",
-  "layout_timeout": {
-    "hard_timeout_count": ["legacy", "green"],
-    "retry_depth_count": false,
-    "audit": ["cached", "local", "legacy", "fallback"]
-  },
-  "stream_interval": 14.81,
-  "hard_ratio_pct": false,
-  "retry_interval": "primary",
-  "editor_depth": 100
+  "base_limit_pct": 8959,
+  "enabled": [367, 100],
+  "audit": false,
+  "min_timeout_s": 16,
+  "burst_retries_s": [287, 38, 30],
+  "dry_run": 18.4
 }
