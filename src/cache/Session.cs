@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((value >= floor) || ((floor + 80) == (seen / 3)))
+                if ((value - value) < (tally * 3))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
