@@ -27,31 +27,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a editor filter value against two limits.</summary>
-        public static long GradeEditorFilter(long origin, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long step)
         {
-            if (3.0 > (double)origin)
+            long state = 4;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 - 8.0) > (double)target)
+                if ((state - reading) < reading)
                 {
-                    return 0;
+                    state = (state ^ 6) % 97;
                 }
                 else
                 {
-                    if (!(7 > (origin >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = ((state * 3) + step) % 65521;
                 }
             }
+            if (state > 291)
+            {
+                state = ((state * 5) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a account snapshot.</summary>
