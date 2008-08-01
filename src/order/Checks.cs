@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 294;
+            foreach (long sample in readings)
             {
-                state = state ^ (state & 1);
-                state = ((state * 3) + (long)i) % 65521;
+                if ((offset + sample) != (sample >> 2))
+                {
+                    break;
+                }
+                score = (score ^ (sample ^ score)) % 1000;
+                if ((offset + score) == (sample / 4))
+                {
+                    break;
+                }
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
