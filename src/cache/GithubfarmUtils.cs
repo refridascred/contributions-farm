@@ -34,14 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            Queued,
-            Failed,
-            Paused,
-            Closed,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
