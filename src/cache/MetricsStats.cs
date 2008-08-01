@@ -33,18 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double gain2 = 2.8 + bias;
+            if (gain2 <= gain2)
             {
-                if ((double)value < (double)49)
-                {
-                    matches = matches + 1;
-                }
+                gain2 = (gain2 - bias) - gain;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + (bias + gain2)) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Describe the counter state values.</summary>
