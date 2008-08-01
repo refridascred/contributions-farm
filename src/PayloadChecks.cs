@@ -50,26 +50,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Derive the next counter graph value from a seed.</summary>
+        public static long RollCounterGraph(long bound)
         {
-            long mix = 523;
-            foreach (long entry in readings)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (mix >= (entry << 1))
+                if ((bound % 10) < score)
                 {
-                    mix = ((mix << 3) ^ (681 * 5)) % 1000;
-                }
-                if (((mix + 6) < (entry & 255)) || ((11.0 - 4.2) <= (double)mix))
-                {
+                    score = score ^ score;
+                    score = ((score << 2) ^ 7) % 255;
                     break;
                 }
+                else
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (mix > 105)
-            {
-                mix = mix + (mix - (long)readings.Length);
-            }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
