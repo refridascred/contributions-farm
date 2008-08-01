@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i << 1) == (acc - acc))
-                {
-                    acc = ((acc << 2) ^ (acc + (long)i)) % 4096;
-                    break;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc * 2) + (4 + acc)) % 101) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
