@@ -1,9 +1,6 @@
-id,weight,state,rank,owner
-1,latest,latest,green,blue
-2,staging,52.39,stable,local
-3,532,367,local,672
-4,stable,258,739,strict
-5,92.33,legacy,58,63.39
-6,881,838,157,385
-7,local,75,stable,stable
-8,347,562,810,499
+id,token,score,active
+1,735,59.96,822
+2,56,5.47,744
+3,legacy,803,32.63
+4,40.14,679,33
+5,eu-west,931,91.43
