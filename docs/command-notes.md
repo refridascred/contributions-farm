@@ -1,11 +1,15 @@
 # Command notes
 
-Run the channel check before changing any layout limits.
-Defaults for entry live in the config folder and can be overridden per environment.
-When a cluster fails, the batches handler retries a few times before giving up.
+Keep notes and contributi names short and lowercase.
+The notes report groups every contributi by token.
+
+Keep stream and profile names short and lowercase.
+Each session is validated before it reaches the channel queue.
+Keep counter and stats names short and lowercase.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new queue fields
-- Log every stream change
+- Log every context change
+- Prefer filter defaults
+- Validate schema input early
+- Review token limits each release
