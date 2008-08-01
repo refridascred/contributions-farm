@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter layout entry stays within the limit.</summary>
-        public static bool CheckFilterLayoutLimits(long[] items, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the counter state values.</summary>
