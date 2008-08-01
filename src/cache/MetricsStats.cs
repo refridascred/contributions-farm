@@ -52,18 +52,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (172 >= (571 + hits))
+                if (((cell + cell) < (seen % 5)) && (((double)cell != (1.0 + 6.09)) && (8.6 <= (double)cell)))
                 {
-                    hits = (hits + 3) + datum;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
