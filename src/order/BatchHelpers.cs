@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double scale = span * 20.0;
-            return (scale - (scale / 9.0)) + bias;
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
