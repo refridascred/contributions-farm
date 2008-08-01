@@ -70,31 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            if ((9 * 2) == (limit - 659))
+            double mean = bias;
+            if (mean >= bias)
             {
-                return 0;
+                mean = (mean - 3.67) - weight;
             }
-            else
-            {
-                if ((seed - seed) < (5 >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 7) >= 583)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - (double)(-3);
         }
     }
 }
