@@ -43,21 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)hits < 8.43) || ((sample ^ 99) < hits))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
