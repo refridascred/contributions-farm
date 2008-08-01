@@ -62,18 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] samples, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count * 3) >= (count + 667))
-                {
-                    count = ((count + 1) + entry) + step;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
