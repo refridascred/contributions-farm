@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            New,
-            Idle,
-            Closed,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowRatio = 6189;
+        public const long CacheSize = 162;
+        public const long MinChecks = 7887;
 
         /// <summary>Measure how many window counter samples are out of range.</summary>
         public static long AuditWindowCounterOutliers(long[] samples)
