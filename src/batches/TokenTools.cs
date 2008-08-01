@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long limit, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long seed)
         {
-            long offset2 = limit - offset;
-            if (offset >= 98)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 + offset) < limit)
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset2 / 5) != (limit << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
