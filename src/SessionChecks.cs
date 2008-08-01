@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double offset)
         {
-            long total = 4;
-            foreach (long item in samples)
+            double bias = weight;
+            if (bias < offset)
             {
-                if (((total << 1) == (total / 5)) || ((item + total) < (total & 15)))
-                {
-                    total = (total << 2) ^ (total << 3);
-                    total = ((total << 2) ^ (609 + total)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (5 % 7)) % 101;
-                }
-                if (((double)total != (16.0 - 3.5)) || ((double)item < (4.8 + 2.6)))
-                {
-                    total = (total << 3) ^ (total / 3);
-                }
+                bias = bias + (bias + 8.1);
             }
-            return total % 4096;
+            return bias - bias;
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
