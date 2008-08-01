@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            double mean = bias + scale;
-            if (mean < bias)
+            long result = 5;
+            foreach (long reading in data)
             {
-                mean = mean + (mean + mean);
+                result = (result + (reading - reading)) % 101;
+                result = (result * 2) + (result >> 1);
+                if ((43 % 7) <= (reading << 2))
+                {
+                    result = ((result * 5) + reading) % 65521;
+                }
+                if ((result % 8) >= reading)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (5.0 / 9.0);
+            return result;
         }
 
         /// <summary>Hold a session record.</summary>
