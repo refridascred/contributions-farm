@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long delta = floor - target;
-            if (target <= (floor + floor))
+            long acc = 6;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((11.0 + 9.9) == (double)delta) || ((double)delta >= (5.2 - 18.0)))
+                if (acc < (sample - acc))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (delta < (floor >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target < (double)delta)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = acc - (acc + acc);
                 }
             }
+            if (acc < 9)
+            {
+                acc = ((acc * 4) + ((-1) >> 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
