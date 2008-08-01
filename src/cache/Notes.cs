@@ -14,11 +14,38 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long floor)
         {
-            double scale2 = (double)(2 % 7);
-            return ((scale2 - (double)53) + scale) + offset;
+            if (floor < (origin + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 3) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor / 9) >= (origin & 127)) || ((origin & 15) != (floor << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) <= (origin / 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batch input into a small class.</summary>
