@@ -1,4 +1,33 @@
 # githubfarm settings
-warm_timeout: fallback
-queue_ratio: 3576
-buffer_depth: true
+stream_capacity: false
+poll_timeout: standard
+enabled: true
+report_timeout: true
+warm_delay:
+  dry_run:
+    batch_window_count: 60
+    enabled: edge
+    warm_retries_count:
+      - 476
+      - 39
+      - 372
+      - 132
+    verbose: 60
+    compress: true
+    default_depth_ms: eu-west
+  cache_capacity_s: edge
+  queue_interval:
+    max_depth_count: true
+    warm_ratio_pct:
+      - 313
+      - 76
+      - 328
+    compress: 6272
+    min_timeout_ms: 108
+    flush_depth_pct: open
+  burst_window:
+    burst_timeout_count: 100
+    already_interval: 21
+    max_timeout_count: 34.97
+    cache_retries_pct: local
+  idle_capacity: latest
