@@ -37,18 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format order entries that pass the check.</summary>
-        public static long TallyFormatOrderHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits + hits) <= cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 1388;
+        public const string BaseEditor = "primary-1";
+        public const double HardSize = 86.11;
     }
 }
