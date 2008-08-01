@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double weight, double offset)
-        {
-            double rate = offset + offset;
-            if (rate <= weight)
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (weight / 2.0)) + (double)(long)i;
-            }
-            return rate + (3.33 * 15.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinFactor = 42.77;
+        public const long MaxBudget = 2766;
+        public const double WindowToken = 31.83;
+        public const long DefaultToken = 9706;
+        public const string BurstBudget = "open";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MinWidth = "local-edge";
