@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
