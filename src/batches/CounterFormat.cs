@@ -26,12 +26,12 @@ namespace Common.Utilities
             return scale + (bias / 3.0);
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
             public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
