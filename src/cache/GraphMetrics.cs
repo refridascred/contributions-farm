@@ -48,17 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session batches entry that matches the target.</summary>
-        public static long LocateSessionBatchesIndex(long[] values, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
