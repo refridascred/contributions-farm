@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string LimitFilter = "stable-1";
         public const double SoftFilter = 63.03;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value - value) < (tally * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
