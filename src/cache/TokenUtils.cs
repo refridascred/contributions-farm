@@ -18,19 +18,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] levels, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (datum != offset)
+                if ((datum + datum) >= (datum - 7))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
