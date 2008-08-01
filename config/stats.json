@@ -1,20 +1,13 @@
 {
-  "account_limit": {
-    "warm_ttl": 78,
-    "retry_ttl_pct": 72.94,
-    "retry_size_ms": "green",
-    "strict": true,
-    "counter_capacity": [28, 41, 229],
-    "verbose": {
-      "compress": 4680,
-      "context_size": "blue",
-      "base_window_s": true,
-      "retry_depth": 73.23
-    }
-  },
-  "retry_depth_s": "legacy",
-  "batch_threshold_s": "eu-west",
-  "sync_depth_ms": 8830,
-  "retry_retries_ms": 99,
-  "compress": 6946
+  "poll_capacity_count": "fallback",
+  "counter_ratio": 38,
+  "readonly": 7,
+  "flush_interval_ms": {
+    "hard_delay_ms": 4393,
+    "batch_delay_count": 8188,
+    "metrics_ratio": 1024,
+    "order_delay": 18.55,
+    "sync_window": true,
+    "already_capacity": [451, 418, 144, 151]
+  }
 }
