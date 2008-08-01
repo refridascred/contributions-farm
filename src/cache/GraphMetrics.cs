@@ -50,10 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 2461;
-        public const long DefaultMetrics = 1973;
-        public const string BatchCount = "local";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings)
+        {
+            long carry = -8;
+            foreach (long datum in readings)
+            {
+                carry = (carry ^ (345 & 1)) % 255;
+                if ((datum % 12) > (datum % 3))
+                {
+                    break;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = (carry ^ (8 >> 1)) % 97;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchRoute = 7881;
