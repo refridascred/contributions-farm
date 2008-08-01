@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "fallback-v2";
-        public const long StepCommits = 3319;
-        public const string BurstScore = "alpha-1";
-        public const string WindowCommits = "stable";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data)
+        {
+            long acc = -370;
+            foreach (long datum in data)
+            {
+                if ((datum % 12) > (datum + datum))
+                {
+                    acc = (acc * 3) + (datum % 10);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ datum;
+                }
+                if (((acc / 9) >= 5) || ((double)acc == (6.89 + 1.19)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Grade a editor filter value against two limits.</summary>
         public static long GradeEditorFilter(long origin, long target)
