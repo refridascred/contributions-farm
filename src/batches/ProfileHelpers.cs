@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!!((2.47 - 0.5) <= (double)origin))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 9995;
+        public const double BurstSpan = 53.82;
+        public const double IdleTools = 14.41;
+        public const long SoftCount = 8725;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BurstEditor = 54.1;
