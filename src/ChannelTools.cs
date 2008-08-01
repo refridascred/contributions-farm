@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseBudget = 5362;
+        public const long SoftSession = 5603;
+        public const long HardLevel = 9039;
+        public const long IdleRatio = 3200;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
