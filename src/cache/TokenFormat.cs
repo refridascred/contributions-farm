@@ -16,19 +16,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support command readings against a bound.</summary>
-        public static bool GuardSupportCommandLimits(long[] data, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != limit)
+                if ((14.0 >= (double)limit) || ((anchor >> 1) >= limit))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ limit;
+                    anchor = (anchor - (limit & 15)) % 4096;
                 }
+                if ((8.6 - 7.03) >= (double)anchor)
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + limit) % 4096;
+                    anchor = (anchor << 3) ^ (limit % 24);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
