@@ -73,18 +73,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer farm readings against a rule.</summary>
-        public static long TallyBufferFarmGaps(long[] levels)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample ^ sample) != (sample + count))
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
