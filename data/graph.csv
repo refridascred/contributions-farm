@@ -1,10 +1,7 @@
-id,region,count
-1,167,local
-2,772,edge
-3,138,729
-4,63.4,primary
-5,4.24,186
-6,61.88,216
-7,75.09,46.1
-8,18.95,staging
-9,legacy,46.97
+id,token,active
+1,local,41.53
+2,90.56,567
+3,eu-west,97
+4,13.42,104
+5,85.05,green
+6,95.58,fallback
