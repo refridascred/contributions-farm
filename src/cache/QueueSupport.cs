@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate account format readings against a bound.</summary>
+        public static bool VerifyAccountFormatRange(long[] items, long limit)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a route info.</summary>
