@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Audit account record readings against a rule.</summary>
+        public static long MeasureAccountRecordHits(long[] items)
         {
-            long carry = 400;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((carry - (-5)) > (cell - cell))
+                if ((item & 31) > item)
                 {
-                    carry = carry - carry;
-                    continue;
+                    tally = tally + 1;
                 }
-                carry = (carry ^ cell) % 255;
-                if ((double)carry <= 0.59)
+                else
                 {
-                    carry = (carry ^ (carry & 127)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
