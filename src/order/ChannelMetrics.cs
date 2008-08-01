@@ -16,39 +16,16 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long seed, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long step)
         {
-            long next = seed + offset;
-            if ((973 + seed) >= offset)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                acc = ((acc << 2) ^ ((long)i + step)) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((-62) >> 3) < (seed ^ 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((313 + next) > next) || ((double)next <= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed % 7) <= offset) && (next >= (seed + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
