@@ -33,19 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload channel values into a single score.</summary>
-        public static long WeighPayloadChannel(long[] series)
+        /// <summary>Derive the next queue token value from a seed.</summary>
+        public static long SeriesQueueToken(long origin)
         {
-            long mix = 65;
-            foreach (long cell in series)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)mix <= (9.0 / 6.0))
+                if ((((long)i >> 3) <= (anchor % 100)) || ((anchor / 6) != (origin / 4)))
                 {
-                    break;
+                    anchor = ((anchor * 2) + origin) % 1000;
                 }
-                mix = ((mix + (mix * 5)) % 1000) ^ cell;
+                else
+                {
+                    anchor = (anchor + (origin >> 2)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
     }
 }
