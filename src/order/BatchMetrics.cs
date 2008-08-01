@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every filter layout entry stays within the limit.</summary>
+        public static bool CheckFilterLayoutLimits(long[] items, long offset)
         {
-            New,
-            Idle,
-            Done,
-            Pending,
-            Stale,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
