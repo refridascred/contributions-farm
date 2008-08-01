@@ -26,22 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7717;
+        public const double WindowSession = 0.77;
+        public const string BurstDepth = "alpha-v2";
 
         /// <summary>Blend two metrics report measurements.</summary>
         public static double ScaleMetricsReport(double bias, double offset)
