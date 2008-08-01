@@ -27,12 +27,26 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 58;
+            foreach (long reading in series)
+            {
+                if ((reading % 100) != (reading - reading))
+                {
+                    mark = (mark - ((-8) & 127)) % 65521;
+                }
+                if (!(limit > 16))
+                {
+                    break;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = ((mark * 4) + limit) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a support reading.</summary>
