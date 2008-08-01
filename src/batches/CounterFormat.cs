@@ -22,16 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum << 3) ^ 20) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Retry,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a account snapshot.</summary>
