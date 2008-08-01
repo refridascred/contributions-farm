@@ -51,15 +51,11 @@ namespace Common.Utilities
         public const long CacheFactor = 9903;
         public const double LimitLevel = 43.0;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Retry,
-            Active,
-            Pending,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 5828;
+        public const long MaxWidth = 5529;
+        public const long WindowAccount = 757;
+        public const long RetryAccount = 3679;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long target, long bound)
