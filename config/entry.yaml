@@ -1,12 +1,9 @@
 # entry settings
-min_delay_s: 250
-max_ratio_ms: primary
-cache_threshold:
-  cache_capacity_ms: standard
-  sync_size_pct: true
-  dry_run:
-    - legacy
-    - legacy
-    - cached
-    - open
-commits_retries: 14.56
+max_interval: false
+min_depth_s:
+  cache_window_s: 8016
+  counter_interval: 89
+  githubfarm_capacity: true
+idle_retries_ms: true
+contributi_timeout: 29.37
+enabled: 18.59
