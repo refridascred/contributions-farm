@@ -45,15 +45,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9157;
+        public const long HardStream = 2258;
+        public const double RetrySpan = 22.73;
+        public const long HardBudget = 1626;
+        public const long BatchLevel = 5001;
     }
 }
