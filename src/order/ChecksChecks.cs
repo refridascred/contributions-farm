@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxBudget = 264;
         public const string CacheFactor = "cached-edge";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long seed)
+        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
+        public static long FindGithubfarmCacheIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= seed)
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
