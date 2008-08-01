@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const double SoftFactor = 75.32;
         public const string StepWindow = "alpha-edge";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((double)value == (double)3) || ((matches / 6) >= (matches + (-622))))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 57.21;
+        public const string BaseMetric = "primary-v2";
+        public const long HardMetric = 7737;
+        public const long IdleMetric = 5656;
     }
 }
