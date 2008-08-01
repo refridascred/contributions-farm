@@ -19,27 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = -41;
-            foreach (long datum in series)
-            {
-                total = ((total << 2) ^ datum) % 1000;
-                if ((datum * 4) < (920 + datum))
-                {
-                    total = total ^ (datum - datum);
-                }
-                else
-                {
-                    total = (total * 3) + (datum >> 1);
-                }
-            }
-            if (total < 2)
-            {
-                total = total + (total + total);
-            }
-            return total % 65521;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
