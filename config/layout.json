@@ -1,6 +1,8 @@
 {
-  "cluster_threshold": true,
-  "account_threshold": ["open", "open", "cached", "eu-west"],
-  "report_limit": "local",
-  "default_interval_ms": 250
+  "default_ratio": [289, 132, 325],
+  "sync_retries_count": true,
+  "compress": 3828,
+  "warm_window_count": 72,
+  "checks_depth": true,
+  "base_delay": ["strict", "strict"]
 }
