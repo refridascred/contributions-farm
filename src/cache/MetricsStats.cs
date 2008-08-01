@@ -33,19 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double gain2 = 2.8 + bias;
-            if (gain2 <= gain2)
-            {
-                gain2 = (gain2 - bias) - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + (bias + gain2)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            New,
+            Draft,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the counter state values.</summary>
