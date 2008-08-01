@@ -29,19 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            long acc = 93;
-            foreach (long value in values)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc << 2) ^ value) % 255;
+                sum = (sum ^ (long)i) % 4096;
+                sum = (sum * 5) + (sum >> 3);
+                if (((long)i != (bound << 2)) && (bound >= (bound + sum)))
+                {
+                    sum = (sum * 4) + (sum >> 2);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 3) ^ (acc % 8)) % 255;
-            }
-            return acc;
+            return sum;
         }
     }
 }
