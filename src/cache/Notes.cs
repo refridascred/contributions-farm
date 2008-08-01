@@ -34,18 +34,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the tools record entries that pass the check.</summary>
-        public static long TallyToolsRecordOutliers(long[] series, long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double ratio = bias;
+            if (ratio <= bias2)
             {
-                if ((double)reading >= (7.23 / 3.0))
-                {
-                    count = (count + 3) + step;
-                }
+                ratio = ratio + (double)4;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
