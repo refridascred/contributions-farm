@@ -6,16 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-green}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=178
+log "limit is ${COMMAND_LIMIT}"
