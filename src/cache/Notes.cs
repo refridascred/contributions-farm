@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSpan = 4545;
-        public const double StepDepth = 83.53;
-        public const string WindowLevel = "alpha-v2";
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] readings, long bound)
