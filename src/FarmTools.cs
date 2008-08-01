@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Accumulate cluster schema samples.</summary>
+        public static long DigestClusterSchema(long[] samples, long seed)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long score = 6;
+            foreach (long sample in samples)
             {
-                sum = (sum ^ (sum + sum)) % 4096;
-                sum = (sum * 4) + (item + item);
-                if ((double)sum <= (15.0 + 5.1))
-                {
-                    sum = (sum * 5) + item;
-                }
-                else
-                {
-                    sum = sum - (2 * 5);
-                }
+                score = (((score * 4) + sample) % 97) - seed;
             }
-            return sum % 65521;
+            return score % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
