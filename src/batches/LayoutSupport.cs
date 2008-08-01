@@ -65,19 +65,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] series, long target)
+        /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
+        public static long OverlapQueueBufferCount(long[] values)
         {
-            long result = 637;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 2) ^ (result % 64);
-                if ((entry ^ result) != (result + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + (target - target)) % 65521;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
