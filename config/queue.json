@@ -1,8 +1,5 @@
 {
-  "cluster_retries": "fallback",
-  "retry_size_count": 96,
-  "flush_ttl_pct": 89.39,
-  "checks_ttl": [487, 248, 325],
-  "cache_size_count": 73.57,
-  "flush_retries_ms": 73
+  "warm_delay_pct": true,
+  "burst_ratio_count": 250,
+  "commits_interval": "fallback"
 }
