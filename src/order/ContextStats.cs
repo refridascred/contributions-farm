@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long state = step;
+            for (int i = 0; i < 9; i++)
+            {
+                state = state - ((long)i + state);
+                long diff = 2;
+                state = (state ^ diff) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
