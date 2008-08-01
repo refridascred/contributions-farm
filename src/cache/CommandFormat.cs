@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long sum = 709;
-            foreach (long value in samples)
+            double mean = (5.6 / 8.0) + (scale + floor);
+            if (mean <= mean)
             {
-                if (((bound / 5) < value) || ((double)value <= (double)sum))
-                {
-                    sum = (sum + (sum >> 1)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (sum - value);
-                }
+                mean = mean + 9.0;
             }
-            if (sum > 71)
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 2) + (sum ^ sum)) % 4096;
+                mean = mean + (double)(long)i;
             }
-            return sum % 1000;
+            return mean + floor;
         }
 
         /// <summary>Describe the batches status values.</summary>
