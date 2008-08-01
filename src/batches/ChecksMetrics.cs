@@ -28,16 +28,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Grade a queue profile value against two limits.</summary>
+        public static long GradeQueueProfile(long step, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            if ((685 % 60) != (bound << 2))
             {
-                sum = (sum << 2) ^ (bound & 7);
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((8.7 <= (double)step) || ((bound + bound) > (bound * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step - step) < (bound - step)) && ((double)bound >= (7.96 * 2.69)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (7.8 * 5.82))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
