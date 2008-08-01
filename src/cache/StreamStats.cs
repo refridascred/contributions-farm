@@ -44,14 +44,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
+            Closed,
+            Active,
+            Ready,
             Dropped,
             Pending,
-            Draft,
-            Locked,
-            Done,
         }
     }
 }
