@@ -1,20 +1,10 @@
 {
-  "sync_ttl": ["open", "staging", "green"],
-  "notes_delay": "blue",
-  "warm_size": {
-    "batch_delay_s": "standard",
-    "stream_interval": {
-      "hard_threshold_pct": 96,
-      "soft_threshold_count": false,
-      "contributi_timeout": true,
-      "buffer_size": 5346,
-      "flush_threshold": "latest"
-    },
-    "persist": {
-      "default_retries": 60,
-      "strict": ["cached", "stable", "eu-west", "standard"],
-      "default_threshold_count": false
-    },
-    "warm_size": "stable"
-  }
+  "command_size": "blue",
+  "soft_ttl_count": {
+    "editor_retries": 100,
+    "poll_capacity_count": 15,
+    "default_size": "latest",
+    "burst_depth_pct": [167, 486]
+  },
+  "retry_retries_s": "green"
 }
