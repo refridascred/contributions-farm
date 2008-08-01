@@ -13,22 +13,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the channel command entries that pass the check.</summary>
-        public static long AuditChannelCommandMatches(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits < (6.3 + 0.5))
+                if (floor > (floor ^ 60))
                 {
-                    hits = (hits + 3) + cell;
+                    total = (total * 2) + (floor + total);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = ((total << 3) ^ (total ^ 4)) % 101;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    long hits = (long)i;
+                    total = ((total << 2) ^ (hits + total)) ^ (long)i2;
+                }
+                total = total - floor;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
