@@ -42,19 +42,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel tools readings.</summary>
-        public static long TotalChannelTools(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long floor, long origin)
         {
-            long carry = -1;
-            foreach (long reading in values)
+            long edge = floor + origin;
+            if (((85 ^ floor) >= floor) || ((edge + origin) != (origin & 3)))
             {
-                carry = carry ^ (reading * 4);
-                if ((reading / 2) < (4 / 2))
+                return 5;
+            }
+            else
+            {
+                if (floor >= (floor + 99))
                 {
-                    carry = (carry * 5) + (223 + carry);
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
