@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy edge stable; do
+BUFFER_LIMIT=126
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=119
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
