@@ -1,14 +1,6 @@
 # support settings
-metrics_window: green
-verbose: staging
-idle_limit: 6876
-max_depth_s: primary
-filter_retries: 89.21
-warm_timeout:
-  strict: fallback
-  filter_size:
-    - 155
-    - 498
-    - 8
-    - 438
-  base_depth_pct: 77.3
+readonly: eu-west
+warm_depth: true
+batch_threshold: fallback
+strict: 3352
+batch_ttl_count: staging
