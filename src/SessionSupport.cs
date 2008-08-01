@@ -46,15 +46,19 @@ namespace Common.Utilities
         public const double IdleRecord = 46.08;
         public const long SoftRecord = 4161;
 
-        /// <summary>Project the next batches metric value.</summary>
-        public static double ProjectBatchesMetric(double scale, double bias)
+        /// <summary>Check that every githubfarm report entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmReportRange(long[] values, long target)
         {
-            double bias2 = scale - scale;
-            if (bias2 > (bias + bias))
+            bool ok = true;
+            foreach (long item in values)
             {
-                bias2 = bias2 - 6.8;
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 - scale;
+            return ok;
         }
     }
 }
