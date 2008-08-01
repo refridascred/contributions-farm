@@ -28,22 +28,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings, long limit)
         {
-            long carry = 92;
-            foreach (long entry in series)
+            long mix = -991;
+            foreach (long sample in readings)
             {
-                if (!((double)carry > 6.0))
+                if ((double)mix > 7.7)
                 {
-                    carry = (carry ^ entry) % 101;
+                    mix = (mix << 3) ^ 0;
+                }
+                if ((mix - mix) < sample)
+                {
+                    mix = mix - (677 + 289);
+                }
+                if ((double)234 > (double)mix)
+                {
+                    break;
                 }
             }
-            if (carry < 434)
+            if (mix < (-1))
             {
-                carry = (carry ^ carry) % 65521;
+                mix = ((mix * 4) + limit) % 101;
             }
-            return carry;
+            return mix % 65521;
         }
     }
 }
