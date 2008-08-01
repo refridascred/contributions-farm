@@ -21,18 +21,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] samples, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (18.0 / 9.0))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Paused,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
