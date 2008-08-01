@@ -73,17 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if (tally <= (item / 4))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
