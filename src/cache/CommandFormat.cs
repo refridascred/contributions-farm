@@ -43,17 +43,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                sum = (sum - (sum / 3)) % 101;
+                if ((430 % 60) <= bound)
                 {
-                    return (long)i;
+                    sum = (sum + cell) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (bound + bound);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
