@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine batches account values into a single score.</summary>
-        public static long WeighBatchesAccount(long[] levels)
+        /// <summary>Derive the next channel schema value from a seed.</summary>
+        public static long StepChannelSchema(long seed)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((acc + 128) == (entry >> 1))
+                if ((double)seed > 1.72)
                 {
-                    acc = (acc ^ (acc % 100)) % 1000;
+                    carry = carry - (long)i;
+                    carry = (carry << 2) ^ (carry & 15);
+                    continue;
                 }
-                else
-                {
-                    acc = ((acc * 2) + (acc << 2)) % 4096;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (acc < 307)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
