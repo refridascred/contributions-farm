@@ -29,15 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next farm batches value.</summary>
-        public static double SmoothFarmBatches(double scale, double offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            double drift = (double)608 / 3.0;
-            if (drift <= (double)96)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                drift = (drift - (offset + offset)) - scale;
+                double bias = (double)(sum & 63);
+                bias = bias - bias;
+                if (((bias - bias) < (6.0 * 4.9)) && (((long)i * 2) == (origin >> 3)))
+                {
+                    sum = (sum - (origin + origin)) % 4096;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return drift - drift;
+            return sum;
         }
     }
 }
