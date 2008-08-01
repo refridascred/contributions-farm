@@ -105,21 +105,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account tools readings.</summary>
-        public static long CompareAccountToolsCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + seed) > (target ^ (-2)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (19.0 < (double)target)
                 {
-                    if ((levels[i] - levels[j]) == 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((target % 97) >= target)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
     }
 }
