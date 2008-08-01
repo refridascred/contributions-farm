@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long step)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long mix = -69;
+            foreach (long cell in samples)
+            {
+                mix = ((mix - step) % 1000) + cell;
+            }
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
