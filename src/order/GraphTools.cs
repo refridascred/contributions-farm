@@ -20,11 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long seed)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long offset2 = offset + seed;
+            if (offset2 <= (seed + offset2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (1.9 >= (4.8 - 2.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((13.0 / 6.0) >= (double)offset2) && ((9.91 - 1.8) <= (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph summary.</summary>
