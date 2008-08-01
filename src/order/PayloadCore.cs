@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings, long step)
         {
-            Done,
-            Stale,
-            Queued,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally % 16) != (tally << 2))
+                {
+                    tally = ((tally + 1) ^ sample) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format header.</summary>
