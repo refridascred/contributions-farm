@@ -14,22 +14,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit metrics entry readings against a rule.</summary>
-        public static long CountMetricsEntryOutliers(long[] samples, long origin)
+        /// <summary>Fold a list of tools window readings.</summary>
+        public static long ScoreToolsWindow(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = 994;
+            foreach (long value in items)
             {
-                if ((175 / 3) <= (origin + sample))
+                if ((8.0 - 6.33) > (double)value)
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor * 3) + (3 + anchor)) % 101;
+                    anchor = (anchor ^ anchor) % 65521;
                 }
-                else
+                if (((value & 127) > value) && ((68 - anchor) >= (value & 127)))
                 {
-                    tally = tally - 1;
+                    anchor = (anchor + anchor) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 32)
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next route value.</summary>
