@@ -45,11 +45,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9157;
-        public const long HardStream = 2258;
-        public const double RetrySpan = 22.73;
-        public const long HardBudget = 1626;
-        public const long BatchLevel = 5001;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
