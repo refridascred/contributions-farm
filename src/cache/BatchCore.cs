@@ -52,10 +52,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSize = 6774;
-        public const long BatchChannel = 1043;
-        public const long BaseSize = 1985;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading >> 4) > (seen >> 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] samples, long seed)
