@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = 286;
+            foreach (long cell in series)
             {
-                if (((long)series.Length >> 5) <= item)
-                {
-                    matches = matches + 3;
-                }
+                state = (state + (94 + state)) ^ cell;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate checks samples.</summary>
