@@ -1,9 +1,8 @@
-id,rank,region
-1,372,eu-west
-2,local,105
-3,61,147
-4,443,134
-5,35,953
-6,452,cached
-7,591,283
-8,blue,955
+id,count,token,label
+1,892,12.32,402
+2,16.23,430,staging
+3,72.17,edge,staging
+4,8.82,staging,31.13
+5,881,legacy,330
+6,strict,63.34,792
+7,71.46,stable,108
