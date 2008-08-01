@@ -1,12 +1,14 @@
 # Commits notes
 
-The stream report groups every batch by payload.
-A batches that stays idle for too long is moved to the format list.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the payload list.
+A support that stays idle for too long is moved to the session list.
+
+Each order is validated before it reaches the batch queue.
+Use batches settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Validate token input early
-- Review context limits each release
-- Log every context change
-- Document new graph fields
+- Log every window change
+- Review farm limits each release
+- Prefer counter defaults
+- Keep graph values small
