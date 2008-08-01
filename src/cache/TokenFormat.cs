@@ -33,18 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] levels, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((((-750) >> 4) <= entry) || ((entry + count) > limit)) && ((limit * 4) < limit))
+                if (items[i] <= floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
