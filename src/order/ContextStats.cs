@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Failed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepRatio = 1057;
+        public const long SoftCache = 9906;
+        public const long SoftSize = 2703;
+        public const long MaxCache = 6788;
+        public const long BatchCache = 7377;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] items)
