@@ -16,21 +16,21 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Match up metric account samples.</summary>
+        public static long CompareMetricAccountCount(long[] items)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 14)
+                    if ((items[i] + items[j]) > 3)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
