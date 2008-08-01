@@ -26,19 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] series, long bound)
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long CombineProfileNotes(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long result = 1;
+            foreach (long value in samples)
             {
-                if (value > bound)
+                if (!((double)result < (double)limit))
                 {
-                    flag = false;
-                    break;
+                    result = (result << 2) ^ (858 + value);
                 }
             }
-            return flag;
+            if (result < 712)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
