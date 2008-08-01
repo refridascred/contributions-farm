@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            Active,
+            Done,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
