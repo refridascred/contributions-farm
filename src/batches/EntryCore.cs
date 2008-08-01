@@ -70,10 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2721;
-        public const double RetryRatio = 27.14;
-        public const long MaxBuffer = 649;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Accumulate metric tools samples.</summary>
         public static long DigestMetricTools(long[] items, long bound)
