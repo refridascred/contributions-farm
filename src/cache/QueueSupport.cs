@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double DefaultStream = 67.79;
         public const long MaxStream = 4711;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] readings, long offset)
         {
-            Failed,
-            Closed,
-            Draft,
-            New,
-            Stale,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
