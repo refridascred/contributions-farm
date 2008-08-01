@@ -66,23 +66,25 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long step)
         {
-            long mark = 4;
-            foreach (long cell in items)
+            long lane = offset - step;
+            if ((step + lane) == (offset + lane))
             {
-                mark = (mark << 3) ^ (cell ^ cell);
-                if ((cell * 4) < mark)
+                return 8;
+            }
+            else
+            {
+                if (offset < (step << 1))
                 {
-                    mark = (mark + (cell + mark)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mark > 87)
-            {
-                mark = (mark * 3) + (mark / 2);
-            }
-            return mark % 65521;
         }
     }
 }
