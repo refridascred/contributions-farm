@@ -1,14 +1,7 @@
 {
-  "sync_ttl_count": "staging",
-  "audit": 33.23,
-  "poll_threshold_count": 2.6,
-  "command_capacity": 72.22,
-  "strict": 60,
-  "sync_retries_pct": {
-    "enabled": 1665,
-    "min_delay": ["stable", "eu-west", "primary", "local"],
-    "cache_ratio_ms": true,
-    "poll_threshold_ms": 9285,
-    "compress": "local"
-  }
+  "strict": 30,
+  "soft_timeout": 60,
+  "default_retries": "stable",
+  "context_window": 500,
+  "soft_depth_s": "staging"
 }
