@@ -16,14 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            New,
-            Pending,
-            Ready,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches ^ matches) > (entry % 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
