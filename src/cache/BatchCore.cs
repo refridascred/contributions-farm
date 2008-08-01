@@ -77,22 +77,17 @@ namespace Common.Utilities
             return bias + (bias / 7.0);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long bound)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin << 3) < (origin << 2)))
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
                 {
-                    sum = (((sum * 2) + sum) % 101) + reading;
+                    return (long)i;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum ^ (sum * 4)) % 65521;
-            }
-            return sum;
+            return -1;
         }
     }
 }
