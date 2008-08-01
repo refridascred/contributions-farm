@@ -76,21 +76,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Blend two metric schema measurements.</summary>
+        public static double ProjectMetricSchema(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = rate;
+            return (load - (load + load)) + floor;
         }
     }
 }
