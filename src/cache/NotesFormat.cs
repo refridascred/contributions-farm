@@ -14,23 +14,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Count checks queue pairs that satisfy a relation.</summary>
+        public static long CompareChecksQueueCount(long[] items)
         {
-            long mix = 70;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix ^ reading;
-                if ((4.2 - 5.0) <= (8.9 / 4.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 4) + (mix & 7)) % 1000;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix * 5) + (mix + mix);
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
