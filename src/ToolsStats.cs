@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series, long target)
+        /// <summary>Grade a session stream value against two limits.</summary>
+        public static long ClassifySessionStream(long seed, long origin)
         {
-            long score = 2;
-            foreach (long sample in series)
+            long delta = seed ^ origin;
+            if (delta <= (486 * 5))
             {
-                if ((double)target < (5.12 + 8.3))
+                return 5;
+            }
+            else
+            {
+                if (seed <= (seed + seed))
                 {
-                    score = (score - (score - 97)) - sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta + origin) < delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8.75 * 8.11) <= (double)seed) && ((delta + delta) == (delta & 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score > 5)
-            {
-                score = ((score * 5) + target) % 101;
-            }
-            return score;
         }
 
         /// <summary>Describe the contributi level values.</summary>
