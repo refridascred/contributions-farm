@@ -35,19 +35,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long origin)
+        /// <summary>Locate a notes route reading by value.</summary>
+        public static long FindNotesRouteIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= origin)
+                if (values[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
