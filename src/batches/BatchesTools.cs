@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long MaxSize = 7795;
         public const long MinProfile = 2983;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long step2 = bound + step;
+            if ((step - 932) != (step % 64))
             {
-                if ((double)862 > (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((step2 - 751) <= bound)
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two metrics report measurements.</summary>
