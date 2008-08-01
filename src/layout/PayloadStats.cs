@@ -56,30 +56,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long seed)
         {
-            long offset2 = offset ^ limit;
-            if (!(limit < offset))
+            if ((double)seed == (double)step)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((limit + offset) >= (limit - 9)) && (limit >= offset2))
+                if ((0 << 2) >= step)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset2 + limit) > (offset2 - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
