@@ -21,15 +21,18 @@ namespace Common.Utilities
         public const double SoftFactor = 75.32;
         public const string StepWindow = "alpha-edge";
 
-        /// <summary>Accumulate profile counter samples.</summary>
-        public static long TallyProfileCounter(long[] items, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values, long bound)
         {
-            long state = -624;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                state = (state ^ (537 ^ bound)) - entry;
+                if (((double)value == (double)3) || ((matches / 6) >= (matches + (-622))))
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
