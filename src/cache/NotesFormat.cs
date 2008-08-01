@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstWidth = 12.52;
+        public const long BurstBatch = 5555;
+        public const double MinCount = 86.04;
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] values)
