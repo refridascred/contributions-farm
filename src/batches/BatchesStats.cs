@@ -17,23 +17,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "standard";
         public const string BaseBudget = "strict-v2";
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Accumulate metric context samples.</summary>
+        public static long CombineMetricContext(long[] data, long bound)
         {
-            double gain = offset;
-            if (gain >= (offset / 9.0))
+            long mix = 77;
+            foreach (long sample in data)
             {
-                gain = (gain + offset) - bias;
+                mix = (mix ^ (mix >> 2)) ^ sample;
             }
-            else
+            if (mix < 156)
             {
-                gain = gain + offset;
+                mix = (mix - (mix - bound)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)5) + (double)(long)i;
-            }
-            return gain + (double)55;
+            return mix;
         }
 
         /// <summary>Project the next stats value.</summary>
