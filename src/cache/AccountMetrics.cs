@@ -47,13 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Done,
-            Failed,
-            Pending,
-            New,
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
