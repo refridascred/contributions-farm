@@ -49,11 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepWidth = 7078;
-        public const long WindowBatches = 6195;
-        public const long DefaultBatches = 5529;
-        public const long BurstBatches = 4556;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum + 8) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LookupChannelIndex(long[] levels, long seed)
