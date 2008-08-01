@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != bound)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the tools state values.</summary>
