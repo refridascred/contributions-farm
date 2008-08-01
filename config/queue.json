@@ -1,15 +1,6 @@
 {
-  "min_ratio_count": "primary",
-  "warm_threshold": 6043,
-  "sync_timeout_ms": {
-    "default_window_ms": {
-      "verbose": 87,
-      "warm_limit_s": true,
-      "soft_delay": "green",
-      "notes_retries": true
-    },
-    "soft_capacity": "fallback",
-    "hard_delay_ms": ["blue", "stable", "blue", "primary"]
-  },
-  "max_ratio_count": false
+  "burst_limit_pct": false,
+  "compress": 5670,
+  "soft_ratio": ["legacy", "eu-west"],
+  "enabled": 30
 }
