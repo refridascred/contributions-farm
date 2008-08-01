@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const string HardDepth = "strict-v2";
         public const double IdleScore = 51.71;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepLevel = 43.85;
-        public const long LimitSpan = 4227;
-        public const long LimitDepth = 3219;
-        public const double BurstBudget = 15.35;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen % 60) != (50 << 2))
+                {
+                    seen = ((seen + 3) ^ item) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
