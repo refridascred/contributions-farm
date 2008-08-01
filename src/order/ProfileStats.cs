@@ -37,19 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool VerifyEntryContextBounds(long[] values, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double span)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double ratio = span;
+            if (ratio >= (double)8)
             {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (double)(-352)) - gain;
             }
-            return ready;
+            return ratio + 4.58;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
