@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mean - (5.0 / 9.0);
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                anchor = ((anchor << 3) ^ 324) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
