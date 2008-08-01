@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long bound)
         {
-            long acc = 9;
-            foreach (long item in series)
+            long carry = -551;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + (item + acc)) % 4096;
-                if (!((item * 5) < acc))
+                if ((double)(-59) >= (double)carry)
                 {
-                    acc = (acc ^ (item >> 1)) % 65521;
+                    carry = (carry ^ (bound & 3)) - cell;
                 }
             }
-            return acc;
+            return carry;
         }
     }
 }
