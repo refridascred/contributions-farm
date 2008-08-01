@@ -1,11 +1,15 @@
 # Command notes
 
-Keep metric and entry names short and lowercase.
-Keep graph and metrics names short and lowercase.
-Use report settings to tune how often context data is refreshed.
+Run the filter check before changing any already limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any window limits.
+
+Each commits is validated before it reaches the queue queue.
+A checks that stays idle for too long is moved to the graph list.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every schema change
-- Keep graph values small
-- Prefer report defaults
+- Document new cache fields
+- Keep stream values small
+- Validate tools input early
