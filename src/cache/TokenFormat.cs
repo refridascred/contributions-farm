@@ -31,17 +31,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                if (!(count < sample))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
