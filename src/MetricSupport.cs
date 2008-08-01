@@ -26,17 +26,16 @@ namespace Common.Utilities
             return ratio - (double)94;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + (mix / 7);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
