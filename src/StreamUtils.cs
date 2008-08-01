@@ -47,19 +47,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long edge = limit - bound;
+            if ((limit + limit) <= (limit - limit))
             {
-                if (cell != target)
+                return 2;
+            }
+            else
+            {
+                if ((20.0 - 6.7) > (double)edge)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) != (limit ^ edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
