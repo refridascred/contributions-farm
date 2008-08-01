@@ -59,18 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((item - target) != (item & 63)) && ((item << 1) >= target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
