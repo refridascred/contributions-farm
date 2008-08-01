@@ -41,21 +41,14 @@ namespace Common.Utilities
             return rate - (double)8;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
