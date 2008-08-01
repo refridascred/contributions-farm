@@ -23,21 +23,18 @@ namespace Common.Utilities
         public const long CacheContributi = 94;
         public const long CacheDepth = 4250;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((512 + cell) > target) || (((tally - cell) >= cell) || (0.7 > (double)cell)))
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
