@@ -50,40 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long limit)
-        {
-            long prev = bound ^ limit;
-            if (!((40 + 116) < limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound == (5.7 / 7.0)) && ((prev / 4) >= (limit / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (5.6 - 0.79))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + prev) != (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "latest-edge";
+        public const long SoftWidth = 253;
+        public const long BaseStream = 4119;
+        public const double DefaultLevel = 2.54;
+        public const double CacheStream = 39.96;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double bias, double floor)
