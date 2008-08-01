@@ -42,15 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Check that every already checks entry stays within the limit.</summary>
+        public static bool GuardAlreadyChecksBounds(long[] samples, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
