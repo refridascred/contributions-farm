@@ -1,7 +1,5 @@
 {
-  "audit": 250,
-  "sync_threshold": false,
-  "min_delay": "staging",
-  "metric_threshold": "eu-west",
-  "order_timeout": true
+  "command_timeout": 1024,
+  "soft_retries_ms": "eu-west",
+  "cache_threshold_s": false
 }
