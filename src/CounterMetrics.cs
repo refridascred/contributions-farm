@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = bias;
-            if (rate >= (rate / 2.0))
-            {
-                rate = rate - (weight + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (bias * 5.7)) + (double)(long)i;
-            }
-            return rate + bias;
+            Retry,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Locate a route reading by value.</summary>
