@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long offset)
+        /// <summary>Count the format record entries that pass the check.</summary>
+        public static long AuditFormatRecordOutliers(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                if (!(hits >= step))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a cache farm reading.</summary>
