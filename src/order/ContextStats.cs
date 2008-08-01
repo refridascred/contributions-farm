@@ -43,18 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = 486;
-            foreach (long datum in data)
-            {
-                if ((double)step >= (3.69 * 1.14))
-                {
-                    carry = ((carry << 3) ^ (step - carry)) + datum;
-                }
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
