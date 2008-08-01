@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long AuditWindowCounterOutliers(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + sample) != (seen % 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next graph cache value.</summary>
