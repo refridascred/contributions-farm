@@ -92,18 +92,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] readings)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3 >= seen) || (datum >= (datum - seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
