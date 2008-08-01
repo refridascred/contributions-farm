@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            Paused,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((6.89 + 6.64) == (double)tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
