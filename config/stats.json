@@ -1,11 +1,16 @@
 {
-  "readonly": 95.1,
-  "max_depth": "legacy",
-  "channel_threshold": {
-    "compress": "staging",
-    "idle_ttl_ms": [250, 388, 326, 466],
-    "retry_ratio_pct": "latest",
-    "idle_ratio_count": "green",
-    "retry_window_ms": 96.69
-  }
+  "cache_retries_pct": {
+    "enabled": ["eu-west", "legacy", "stable"],
+    "flush_window": 170,
+    "max_capacity": "green"
+  },
+  "account_ttl": {
+    "batch_depth": [310, 166, 319, 54],
+    "audit": false,
+    "idle_size_count": 58,
+    "batch_size": "fallback",
+    "flush_delay": "strict",
+    "readonly": 81.94
+  },
+  "soft_limit_ms": 36.67
 }
