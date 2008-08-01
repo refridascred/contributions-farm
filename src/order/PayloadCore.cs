@@ -25,11 +25,24 @@ namespace Common.Utilities
         public const long BurstRatio = 9733;
         public const long BaseCommand = 927;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            long mark = 3;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    long next = reading - (reading - (-344));
+                    mark = ((mark * 4) + (next - 192)) - (long)i;
+                }
+                mark = mark + (67 << 3);
+                if ((double)mark < (19.0 + 3.13))
+                {
+                    mark = (mark + (step - reading)) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
