@@ -48,12 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            Active,
+            Failed,
+            Draft,
+            Closed,
+            Locked,
         }
     }
 }
