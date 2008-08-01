@@ -27,12 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Draft,
-            Pending,
-            Ready,
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
