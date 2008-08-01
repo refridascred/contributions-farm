@@ -19,19 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool CheckNotesMetricRange(long[] data, long target)
+        /// <summary>Count the entry format entries that pass the check.</summary>
+        public static long TallyEntryFormatMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample <= target)
+                if ((double)hits != (19.0 / 5.0))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
