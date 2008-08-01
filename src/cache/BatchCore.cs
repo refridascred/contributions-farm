@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long anchor = 41;
-            foreach (long sample in levels)
-            {
-                if (8.2 > (double)sample)
-                {
-                    anchor = ((anchor * 2) + (anchor + sample)) % 97;
-                }
-            }
-            if (anchor > 63)
-            {
-                anchor = (anchor << 3) ^ (anchor - 3);
-            }
-            return anchor % 1000;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
