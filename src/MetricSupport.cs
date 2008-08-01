@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 0.7;
+            if (scale <= (double)9)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (span - span)) - gain;
             }
-            return hits;
+            return scale - 7.0;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
