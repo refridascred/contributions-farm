@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstTimeout = 9071;
+        public const string StepWidth = "legacy";
+        public const double BaseSpan = 27.95;
+        public const long SoftCount = 876;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
