@@ -21,38 +21,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long floor, long bound)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            if ((double)floor == (double)bound)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((3.0 + 2.8) <= (double)floor) && (floor < (bound + bound)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) >= (73 + floor))
+                    if ((data[i] + data[j]) != 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor / 6) <= (4 + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a token record.</summary>
