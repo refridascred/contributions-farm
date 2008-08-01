@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 54.44;
-        public const long BatchSpan = 5071;
-        public const long BatchRatio = 4515;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long floor)
+        {
+            long slot = limit ^ floor;
+            if ((slot << 3) < (limit ^ slot))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + 76) > ((-80) / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 2) < (957 - slot))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] samples)
