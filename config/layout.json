@@ -1,17 +1,7 @@
 {
-  "batch_depth": 6884,
-  "retry_window_pct": {
-    "contributi_window": ["local", "latest", "fallback"],
-    "batch_retries_s": {
-      "min_interval": "primary",
-      "metrics_limit": true,
-      "max_threshold": false,
-      "base_timeout": true,
-      "readonly": "blue"
-    },
-    "cluster_timeout": 57.48,
-    "enabled": 68,
-    "strict": "blue"
-  },
-  "compress": 28.45
+  "dry_run": "local",
+  "session_ttl": 60,
+  "batch_threshold": 86,
+  "compress": 44,
+  "base_capacity": 8786
 }
