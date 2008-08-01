@@ -18,20 +18,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((acc - offset) > acc)
+                if ((((115 >> 3) <= (matches + matches)) || ((2.14 - 7.26) < (double)cell)) && ((long)readings.Length >= (matches - cell)))
                 {
-                    acc = acc + ((long)i >> 1);
+                    matches = matches + 1;
                 }
-                acc = (acc ^ acc) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a schema metric reading by value.</summary>
