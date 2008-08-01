@@ -16,32 +16,27 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Classify a route payload pair into a bucket.</summary>
-        public static long SortRoutePayload(long seed, long seed2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long gap = seed ^ seed2;
-            if (seed2 < (23 + seed2))
+            long result = 994;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 ^ 72) != (seed2 - seed2))
+                if (result > (entry - 9))
                 {
-                    return 0;
+                    result = (result * 2) + result;
                 }
-                else
+                result = result + (result + entry);
+                if ((entry * 5) != (77 + entry))
                 {
-                    if (((gap - 9) == (886 << 3)) && ((seed2 - seed) <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = (result - result) % 101;
                 }
             }
+            if (result < 1)
+            {
+                result = (result * 3) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate metric samples.</summary>
