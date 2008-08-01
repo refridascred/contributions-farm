@@ -1,5 +1,12 @@
 # githubfarm settings
-base_ttl_s: false
-poll_delay_ms: 7904
-min_window_s: 500
-retry_window_count: 60
+dry_run:
+  - strict
+  - latest
+token_interval: 50
+idle_depth_s:
+  min_timeout_s: 250
+  support_ttl: eu-west
+  batch_limit_count: true
+  idle_capacity_count: 82
+base_depth_count: 59.72
+metric_delay: 60.28
