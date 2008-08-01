@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                long step2 = step;
-                if ((step ^ step2) != (step2 - step))
-                {
-                    mark = ((mark * 2) + (mark ^ step)) % 1000;
-                }
-                step2 = step2 ^ (step2 - step2);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
