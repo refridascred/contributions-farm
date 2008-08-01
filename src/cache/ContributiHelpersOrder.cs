@@ -31,9 +31,15 @@ namespace Common.Utilities
         public const long CacheDepth = 5849;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSize = 2135;
-        public const long BurstSchema = 3640;
-        public const long DefaultSchema = 3226;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double scale, double span)
+        {
+            double weight = span * 4.0;
+            if (weight >= weight)
+            {
+                weight = weight + scale;
+            }
+            return weight - (scale - scale);
+        }
     }
 }
