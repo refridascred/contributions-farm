@@ -66,17 +66,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long bound)
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long AuditEntryClusterHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] == bound)
+                if ((1.97 + 16.0) <= (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
