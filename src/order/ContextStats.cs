@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
