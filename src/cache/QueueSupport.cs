@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double bias)
-        {
-            double rate = (double)(56 >> 4);
-            if (rate <= 7.0)
-            {
-                rate = rate - (7.95 * 3.9);
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6797;
+        public const long BaseMetric = 157;
+        public const long MaxMetric = 6386;
+        public const long SoftSize = 1907;
+        public const long BaseRatio = 2402;
 
         /// <summary>Count the batch order entries that pass the check.</summary>
         public static long TallyBatchOrderOutliers(long[] items, long origin)
