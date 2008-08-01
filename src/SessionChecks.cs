@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftSpan = 105;
-        public const string CacheCount = "stable-1";
-        public const double HardGraph = 49.85;
-        public const long IdleGraph = 8884;
-        public const string BaseSize = "standard";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultSpan = 2693;
+        public const long LimitFarm = 9821;
+        public const long MaxFarm = 4857;
+        public const long StepFarm = 7058;
 
         /// <summary>Accumulate graph commits samples.</summary>
         public static long TallyGraphCommits(long[] readings)
