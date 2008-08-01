@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long BatchSchema = 2004;
         public const long StepInterval = 7880;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] items, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 3) <= (step - step))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
