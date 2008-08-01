@@ -29,9 +29,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 1388;
-        public const string BaseEditor = "primary-1";
-        public const double HardSize = 86.11;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstBudget = 13.1;
+        public const long BatchWidth = 565;
+        public const long HardAccount = 9636;
+        public const double WindowRatio = 90.3;
     }
 }
