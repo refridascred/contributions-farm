@@ -1,7 +1,10 @@
-id,count,weight
-1,351,794
-2,71.82,staging
-3,806,open
-4,19.42,928
-5,763,fallback
-6,905,63.09
+id,rank,active,state
+1,92.08,61.18,local
+2,18.12,231,387
+3,legacy,58.49,58.46
+4,57.53,506,888
+5,53,686,293
+6,strict,standard,staging
+7,strict,214,latest
+8,986,9.07,73.01
+9,934,370,9.63
