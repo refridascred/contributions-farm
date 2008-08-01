@@ -35,21 +35,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
-        public static long PairCommitsMetricsCount(long[] readings)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 > 6.46)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 - bias) + floor;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (bias * 3.0);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
