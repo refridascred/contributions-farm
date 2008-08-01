@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > origin)
+                if (values[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate cluster counter readings against a bound.</summary>
