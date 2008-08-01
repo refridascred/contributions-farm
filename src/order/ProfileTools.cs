@@ -16,16 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate filter tools samples.</summary>
-        public static long ScoreFilterTools(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long origin)
         {
-            long state = 741;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state - state) % 1000) ^ sample;
-                state = ((state * 3) + state) % 255;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
