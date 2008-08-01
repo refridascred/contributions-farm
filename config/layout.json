@@ -1,18 +1,17 @@
 {
-  "default_threshold_s": 98,
-  "hard_timeout_pct": "legacy",
-  "max_retries_ms": 76.62,
-  "warm_delay_pct": 42,
-  "commits_limit": {
-    "base_delay_s": {
-      "checks_capacity": "eu-west",
-      "audit": "edge",
-      "checks_delay": "edge"
+  "max_timeout": 75,
+  "soft_interval_ms": false,
+  "route_ratio": {
+    "warm_limit_count": 4604,
+    "warm_limit_pct": [364, 192, 11, 60],
+    "strict": ["staging", "open"],
+    "batch_ttl_count": {
+      "idle_retries": false,
+      "max_limit_count": "legacy",
+      "burst_delay": true
     },
-    "idle_interval_s": 48.83,
-    "cache_ttl": 64,
-    "hard_capacity_ms": "standard",
-    "idle_timeout_count": "legacy",
-    "warm_threshold": "latest"
-  }
+    "counter_size": 7712
+  },
+  "base_timeout": "staging",
+  "report_retries": 3478
 }
