@@ -36,9 +36,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitInterval = 1576;
-        public const long BaseCount = 9606;
-        public const long CacheFactor = 2721;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
