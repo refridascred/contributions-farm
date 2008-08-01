@@ -29,14 +29,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Retry,
-            Ready,
+            Pending,
+            Idle,
+            Locked,
             Done,
-            Dropped,
-            Closed,
+            Draft,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
