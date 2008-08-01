@@ -23,21 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -237;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.6 + 9.6) <= (double)(long)items.Length)
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (((sum + (sum & 255)) % 97) ^ item) - origin;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
