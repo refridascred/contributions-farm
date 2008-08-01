@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstWidth = 4682;
-        public const double MinRoute = 36.34;
-        public const long CacheRoute = 7925;
-        public const long SoftRoute = 5844;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleSpan = "strict-v2";
+        public const long DefaultScore = 768;
+        public const double LimitOrder = 12.6;
+        public const long CacheSpan = 1902;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
