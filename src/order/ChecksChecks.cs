@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double BlendRouteEntry(double scale, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] items)
         {
-            double ratio = 6.26;
-            return (ratio - scale) + bias;
+            long sum = 90;
+            foreach (long reading in items)
+            {
+                sum = (sum + (reading - reading)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
