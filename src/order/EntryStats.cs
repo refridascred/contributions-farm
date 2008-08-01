@@ -50,31 +50,18 @@ namespace Common.Utilities
             return rate + (rate / 7.0);
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] samples, long step)
         {
-            if ((seed + seed) > (7 >> 1))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 100) < target)
+                if ((count * 3) >= (count + 667))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 2) < (target + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = ((count + 1) + entry) + step;
                 }
             }
+            return count;
         }
     }
 }
