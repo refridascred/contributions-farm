@@ -30,25 +30,18 @@ namespace Common.Utilities
         public const double WindowDepth = 96.19;
         public const long HardNotes = 9785;
 
-        /// <summary>Classify a checks commits pair into a bucket.</summary>
-        public static long ClassifyChecksCommits(long floor, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            long offset = floor - origin;
-            if ((offset >> 5) <= (offset >> 2))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 127) < (origin - offset))
+                if (reading >= (82 >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
