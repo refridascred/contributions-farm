@@ -36,11 +36,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double scale, double offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long limit)
         {
-            double load = scale;
-            return (load + (load * 7.16)) + offset;
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next filter payload value.</summary>
