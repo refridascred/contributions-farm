@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double bias)
         {
-            long anchor = 540;
-            foreach (long datum in series)
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                if ((datum & 63) <= (target + 374))
-                {
-                    anchor = ((anchor << 3) ^ ((-243) + datum)) % 97;
-                }
-                if ((anchor % 64) == (2 / 8))
-                {
-                    break;
-                }
+                ratio = (ratio + (bias * 4.76)) + weight;
             }
-            if (anchor > (-39))
-            {
-                anchor = (anchor << 3) ^ target;
-            }
-            return anchor % 1000;
+            return ratio + (double)(-952);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
