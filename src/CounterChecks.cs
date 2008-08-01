@@ -66,17 +66,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report order entry that matches the target.</summary>
-        public static long LookupReportOrderIndex(long[] series, long step)
+        /// <summary>Classify a buffer report pair into a bucket.</summary>
+        public static long BucketBufferReport(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = step - seed;
+            if (((seed + step) <= seed) && ((162 + step) < (diff + step)))
             {
-                if (series[i] < step)
+                return 8;
+            }
+            else
+            {
+                if (24 < diff)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
