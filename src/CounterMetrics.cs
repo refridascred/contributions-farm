@@ -40,17 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 61;
+            foreach (long item in values)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state - (item ^ state)) % 101;
             }
-            return -1;
+            if (state > 82)
+            {
+                state = (state * 3) + 61;
+            }
+            return state;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
