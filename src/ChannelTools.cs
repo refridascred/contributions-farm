@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items, long bound)
+        /// <summary>Combine payload channel values into a single score.</summary>
+        public static long WeighPayloadChannel(long[] series)
         {
-            long score = 1;
-            foreach (long item in items)
+            long mix = 65;
+            foreach (long cell in series)
             {
-                if ((score + score) >= (item >> 3))
+                if ((double)mix <= (9.0 / 6.0))
                 {
-                    score = (score + item) + bound;
+                    break;
                 }
+                mix = ((mix + (mix * 5)) % 1000) ^ cell;
             }
-            return score;
+            return mix;
         }
     }
 }
