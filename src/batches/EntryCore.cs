@@ -36,14 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 15.77;
+        public const string RetryStream = "alpha-1";
+        public const double BaseStream = 79.83;
+        public const long BatchStream = 4481;
+        public const long LimitStream = 295;
 
         /// <summary>Accumulate metric tools samples.</summary>
         public static long DigestMetricTools(long[] items, long bound)
