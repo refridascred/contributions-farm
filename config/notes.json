@@ -1,7 +1,12 @@
 {
-  "flush_capacity_count": 9105,
-  "enabled": 55.0,
-  "strict": 1024,
-  "verbose": "staging",
-  "max_depth_count": 329
+  "batch_interval": "blue",
+  "layout_timeout": {
+    "hard_timeout_count": ["legacy", "green"],
+    "retry_depth_count": false,
+    "audit": ["cached", "local", "legacy", "fallback"]
+  },
+  "stream_interval": 14.81,
+  "hard_ratio_pct": false,
+  "retry_interval": "primary",
+  "editor_depth": 100
 }
