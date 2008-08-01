@@ -1,7 +1,11 @@
 {
-  "warm_ttl_ms": "open",
-  "cache_retries_pct": 41,
-  "compress": true,
-  "batch_window": 79.91,
-  "hard_ttl_s": "standard"
+  "default_depth_ms": "open",
+  "hard_delay_ms": false,
+  "strict": {
+    "strict": "eu-west",
+    "metric_ratio": 250,
+    "warm_window_s": "stable",
+    "enabled": ["legacy", "open", "blue", "fallback"],
+    "readonly": "latest"
+  }
 }
