@@ -28,15 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                carry = (carry ^ (seed - carry)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
