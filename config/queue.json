@@ -1,6 +1,30 @@
 {
-  "metric_timeout": ["staging", "local", "stable"],
-  "metric_ratio": ["local", "edge"],
-  "strict": 61,
-  "hard_interval": 4280
+  "token_timeout": "fallback",
+  "persist": {
+    "soft_ratio_s": "fallback",
+    "dry_run": {
+      "dry_run": "stable",
+      "metric_threshold": 93.55,
+      "default_delay_count": 16.15
+    },
+    "enabled": 30,
+    "persist": true,
+    "context_capacity": "local"
+  },
+  "metrics_interval": {
+    "sync_limit_count": 500,
+    "max_delay_ms": "stable",
+    "burst_capacity": true,
+    "channel_ratio": {
+      "stats_timeout": "primary",
+      "min_capacity_count": 28,
+      "min_window": 36.61,
+      "token_depth": 100,
+      "burst_ttl_s": "primary",
+      "idle_capacity_s": 500
+    },
+    "layout_capacity": "strict",
+    "queue_size": 1133
+  },
+  "burst_threshold": [427, 251]
 }
