@@ -42,15 +42,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long AuditSessionStatsGaps(long[] samples)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] items)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches % 60) <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
