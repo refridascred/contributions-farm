@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings, long offset)
-        {
-            long score = 294;
-            foreach (long sample in readings)
-            {
-                if ((offset + sample) != (sample >> 2))
-                {
-                    break;
-                }
-                score = (score ^ (sample ^ score)) % 1000;
-                if ((offset + score) == (sample / 4))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5277;
+        public const long RetryCache = 1713;
+        public const long MinCount = 7017;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] samples)
