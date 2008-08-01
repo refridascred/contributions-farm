@@ -91,19 +91,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] items, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (item >= limit)
+                if (value > 47)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
