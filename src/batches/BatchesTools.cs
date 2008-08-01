@@ -23,19 +23,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                if (cell > target)
+                long tally = (922 & 1) + (datum + datum);
+                if (datum > (tally + datum))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally << 2) ^ (datum * 3)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ datum;
+                }
+                anchor = ((anchor * 5) + datum) % 255;
             }
-            return flag;
+            if (anchor < 3)
+            {
+                anchor = (anchor ^ (anchor * 5)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up metric samples.</summary>
