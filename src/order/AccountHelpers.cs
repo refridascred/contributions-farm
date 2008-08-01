@@ -23,22 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report record samples.</summary>
-        public static long CombineReportRecord(long[] series, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items, long origin)
         {
-            long anchor = 3;
-            foreach (long sample in series)
+            long state = 658;
+            foreach (long cell in items)
             {
-                if ((sample - sample) >= (720 - (-18)))
-                {
-                    anchor = (anchor << 2) ^ (offset << 1);
-                }
-                else
-                {
-                    anchor = anchor + (49 << 1);
-                }
+                state = (((state + state) % 1000) - cell) - origin;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
