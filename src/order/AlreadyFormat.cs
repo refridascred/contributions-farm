@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] data, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits + target) == (target + hits))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
