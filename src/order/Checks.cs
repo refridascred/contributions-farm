@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = 6;
+            foreach (long datum in data)
             {
-                if ((value / 4) > value)
+                result = (result ^ 9) % 97;
+                if ((6.9 / 6.0) == (double)datum)
                 {
-                    seen = seen + 3;
+                    result = result ^ datum;
                 }
+                result = (result - (result % 3)) % 65521;
             }
-            return seen;
+            if (result > 250)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Check that every profile stats entry stays within the limit.</summary>
