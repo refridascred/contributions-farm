@@ -66,10 +66,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "fallback-edge";
-        public const long BurstBatches = 5315;
-        public const string RetryBatches = "open-1";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double weight, double bias)
