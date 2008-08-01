@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            long state = 7;
-            foreach (long cell in samples)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state - cell) % 97) - target;
+                if ((step - 21) <= (step + step))
+                {
+                    result = result + (result << 2);
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
