@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Retry,
+            Idle,
             Locked,
-            Ready,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
