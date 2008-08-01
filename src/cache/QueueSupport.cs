@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double DefaultStream = 67.79;
         public const long MaxStream = 4711;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data, long limit)
         {
-            Queued,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (limit < (limit + 5))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
