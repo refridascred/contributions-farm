@@ -1,6 +1,11 @@
 # githubfarm settings
-retry_capacity_pct: stable
-retry_retries: 100
-command_capacity: false
-max_retries: strict
-hard_delay_pct: local
+retry_retries: 500
+tools_retries: 17
+base_window_count: primary
+stats_window:
+  - local
+  - blue
+  - cached
+  - fallback
+default_threshold: 2147
+record_size: true
