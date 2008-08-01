@@ -1,7 +1,7 @@
-id,score,owner,rank,label
-1,60.54,13,35.89,49.44
-2,37.82,460,green,blue
-3,latest,latest,stable,600
-4,open,23.08,13.78,eu-west
-5,fallback,595,190,179
-6,176,strict,24.72,22.14
+id,label,owner
+1,132,green
+2,642,890
+3,latest,95.48
+4,fallback,staging
+5,open,11.43
+6,374,29.55
