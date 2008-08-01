@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (bias * 4.76)) + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)(-952);
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
