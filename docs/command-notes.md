@@ -1,15 +1,12 @@
 # Command notes
 
-Each entry is validated before it reaches the payload queue.
-When a counter fails, the route handler retries a few times before giving up.
-
-Keep layout and command names short and lowercase.
-Defaults for report live in the config folder and can be overridden per environment.
-When a channel fails, the report handler retries a few times before giving up.
+A session that stays idle for too long is moved to the queue list.
+The checks module keeps metrics values in sync with the schema cache.
+Run the entry check before changing any profile limits.
 
 ## Guidelines
 
-- Keep commits values small
-- Log every queue change
-- Document new report fields
-- Validate metric input early
+- Prefer buffer defaults
+- Review payload limits each release
+- Validate order input early
+- Log every report change
