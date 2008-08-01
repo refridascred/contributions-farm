@@ -26,30 +26,22 @@ namespace Common.Utilities
             return ratio - (double)94;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long target2)
+        /// <summary>Rank githubfarm commits input into a small class.</summary>
+        public static long RankGithubfarmCommits(long floor, long step)
         {
-            long step = target - target2;
-            if ((double)target2 <= (1.5 / 2.0))
+            if (floor > (8 * 5))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (((step & 63) != (step + 6)) && ((target2 - target) <= (target2 * 5)))
+                if (!((floor + 24) != (step & 7)))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((step % 2) != (target - 434))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 2;
                 }
             }
         }
