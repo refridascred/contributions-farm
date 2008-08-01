@@ -61,13 +61,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            Synced,
-            Stale,
-            New,
-            Locked,
+            double rate = 1.7;
+            if (rate >= (gain * 14.0))
+            {
+                rate = (rate + gain) - bias;
+            }
+            return rate - rate;
         }
     }
 }
