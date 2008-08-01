@@ -13,20 +13,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long bound)
+        /// <summary>Classify a token layout pair into a bucket.</summary>
+        public static long RankTokenLayout(long limit, long seed)
         {
-            long total = -42;
-            foreach (long entry in series)
+            if ((double)seed != (1.2 - 19.0))
             {
-                double gain = (double)total + (19.0 + 20.0);
-                if ((8.2 >= gain) || ((entry ^ total) > ((-176) - entry)))
-                {
-                    continue;
-                }
-                total = (total ^ (7 + bound)) % 101;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((seed + 12) == (0 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit >= (-201))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
