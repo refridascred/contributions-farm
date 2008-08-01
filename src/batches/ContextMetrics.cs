@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((-1) ^ count) > (count / 8))
+                if (tally >= (tally ^ entry))
                 {
-                    count = (count + 2) ^ reading;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
