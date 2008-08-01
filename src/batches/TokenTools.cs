@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = 186;
+            foreach (long datum in samples)
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result ^ (result + (long)samples.Length);
+                result = result ^ (datum % 8);
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Count the window contributi entries that pass the check.</summary>
