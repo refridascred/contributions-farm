@@ -35,17 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a notes route reading by value.</summary>
-        public static long FindNotesRouteIndex(long[] values, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 824;
+            foreach (long item in values)
             {
-                if (values[i] == origin)
+                if ((total + total) == (total / 9))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ item;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
