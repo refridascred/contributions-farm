@@ -92,11 +92,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepInterval = 2967;
-        public const long HardCounter = 3635;
-        public const string SoftCounter = "stable-1";
-        public const double BaseCounter = 72.97;
-        public const double RetryCounter = 68.72;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum == (5.13 * 4.12)) && !((31 - 420) == (matches + datum)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
