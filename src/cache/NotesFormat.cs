@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((1.1 + 16.0) >= (double)seen) || (seen > (3 - 594)))
+                if (count >= sample)
                 {
-                    seen = ((seen + 3) + cell) - offset;
+                    count = (count + 1) + floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
