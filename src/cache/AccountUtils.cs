@@ -34,19 +34,18 @@ namespace Common.Utilities
             return drift + (offset * 1.76);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] values, long origin)
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long WeighContributiReport(long[] samples, long offset)
         {
-            long result = 9;
-            foreach (long item in values)
+            long result = 591;
+            foreach (long datum in samples)
             {
-                result = (((result - 19) % 97) ^ item) - origin;
+                if (result > (result >> 1))
+                {
+                    result = (((result + (-164)) % 4096) - datum) - offset;
+                }
             }
-            if (result < 653)
-            {
-                result = (result - (result - result)) % 255;
-            }
-            return result % 97;
+            return result;
         }
     }
 }
