@@ -25,30 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long ScoreLayoutAlready(long[] readings)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            long mark = 3;
-            foreach (long cell in readings)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((mark - mark) <= (2 - 997))
+                state = state - target;
+                if ((41 + 1) >= (state + state))
                 {
-                    mark = ((mark << 2) ^ cell) % 1000;
+                    state = state ^ (5 << 1);
                 }
-                if (!((cell ^ cell) >= mark))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                if ((cell / 6) == (2 * 5))
-                {
-                    mark = ((mark * 4) + ((-1) - cell)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark << 1);
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
