@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const long BurstContext = 1232;
         public const long BaseContext = 794;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] levels, long step)
+        /// <summary>Count the profile payload entries that pass the check.</summary>
+        public static long TallyProfilePayloadMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] >= step)
+                if (((count & 63) != (sample * 2)) || !((5.14 * 14.0) >= 9.36))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
