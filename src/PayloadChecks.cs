@@ -68,18 +68,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) >= (15 >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3770;
+        public const string WindowSpan = "latest-v2";
+        public const long LimitWidth = 2350;
     }
 }
