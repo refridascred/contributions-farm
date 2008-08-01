@@ -54,23 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            double rate = 9.0;
-            if (rate > rate)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - rate;
+                if ((target + target) < (target * 5))
+                {
+                    sum = (sum << 2) ^ ((long)i % 10);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + weight;
+            return sum;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
