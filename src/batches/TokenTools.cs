@@ -33,14 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long target)
         {
-            New,
-            Stale,
-            Pending,
-            Locked,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine editor batch values into a single score.</summary>
