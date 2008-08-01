@@ -1,13 +1,8 @@
 # entry settings
-compress: strict
-burst_retries:
-  soft_delay_pct: 3856
-  burst_retries_pct: stable
-  burst_delay: 5473
-  notes_delay: open
-  audit:
-    retry_threshold_s: 70
-    max_size_count: legacy
-    compress: true
-  layout_timeout: 41.32
-graph_limit: 500
+burst_interval_s: legacy
+warm_threshold_count:
+  - standard
+  - staging
+stream_interval: staging
+verbose: stable
+batch_interval: latest
