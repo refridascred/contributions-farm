@@ -16,18 +16,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Grade a editor filter value against two limits.</summary>
+        public static long GradeEditorFilter(long origin, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (3.0 > (double)origin)
             {
-                if ((matches ^ matches) > (entry % 7))
+                return 7;
+            }
+            else
+            {
+                if ((8.0 - 8.0) > (double)target)
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (!(7 > (origin >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
