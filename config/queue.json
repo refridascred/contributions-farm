@@ -1,12 +1,11 @@
 {
-  "dry_run": {
-    "cache_retries_ms": ["cached", "strict"],
-    "cluster_threshold": [240, 402, 113, 307],
-    "strict": 500,
-    "warm_interval_pct": 89,
-    "base_capacity": 250
+  "default_ttl_s": 43,
+  "layout_ttl": {
+    "poll_threshold_pct": "green",
+    "batch_delay_ms": "open",
+    "dry_run": 7847
   },
-  "cache_depth_ms": "cached",
-  "audit": true,
-  "batch_depth_ms": [54, 221, 188]
+  "checks_depth": true,
+  "min_limit_pct": "green",
+  "min_retries_count": "legacy"
 }
