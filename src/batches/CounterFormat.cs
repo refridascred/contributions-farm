@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double offset)
-        {
-            double mean = weight;
-            if (mean <= (double)55)
-            {
-                mean = (mean + 7.66) - offset;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowBudget = 9992;
+        public const long MaxAccount = 91;
+        public const double SoftAccount = 40.79;
+        public const long CacheInterval = 6447;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
