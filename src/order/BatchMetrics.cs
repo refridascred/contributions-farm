@@ -35,14 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long origin)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Ready,
-            Locked,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
