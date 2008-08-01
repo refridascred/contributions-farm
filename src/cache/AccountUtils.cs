@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowBudget = 7840;
-        public const long WindowInterval = 8738;
-        public const double BurstRecord = 12.85;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double offset)
+        {
+            double drift = scale;
+            if (drift >= (offset + offset))
+            {
+                drift = drift - 3.0;
+            }
+            else
+            {
+                drift = drift + (drift / 5.0);
+            }
+            return drift + (offset * 1.76);
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] values, long origin)
