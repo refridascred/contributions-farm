@@ -29,10 +29,27 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8731;
-        public const string StepLevel = "alpha";
-        public const double DefaultSize = 43.45;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings, long target)
+        {
+            long carry = 692;
+            foreach (long cell in readings)
+            {
+                if (!((cell - carry) > (target / 8)))
+                {
+                    carry = (carry ^ (carry - cell)) % 65521;
+                }
+                if ((4.4 - 4.04) < (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry > 747)
+            {
+                carry = (carry - (target - 2)) % 97;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] values, long target)
