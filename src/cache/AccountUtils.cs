@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double offset)
-        {
-            double drift = scale;
-            if (drift >= (offset + offset))
-            {
-                drift = drift - 3.0;
-            }
-            else
-            {
-                drift = drift + (drift / 5.0);
-            }
-            return drift + (offset * 1.76);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftBudget = 39.65;
+        public const long CacheContributi = 94;
+        public const long CacheDepth = 4250;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long MatchReportCount(long[] levels)
