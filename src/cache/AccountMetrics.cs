@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
