@@ -36,19 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cluster context entry stays within the limit.</summary>
-        public static bool VerifyClusterContextBounds(long[] samples, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a route info.</summary>
