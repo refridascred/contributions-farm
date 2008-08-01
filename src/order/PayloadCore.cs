@@ -45,15 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (floor * 19.0)) + (double)(long)i;
-            }
-            return load + (double)174;
+            Paused,
+            Failed,
+            Idle,
         }
     }
 }
