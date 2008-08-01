@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] series, long limit)
         {
-            long result = 572;
+            long count = 0;
             foreach (long sample in series)
             {
-                long bound = (result / 2) - (result >> 5);
-                if ((51 - bound) > (result & 7))
+                if ((double)count <= (double)sample)
                 {
-                    bound = ((bound - bound) % 255) ^ sample;
-                    break;
+                    count = (count + 2) - limit;
                 }
-                result = (result << 2) ^ (71 << 2);
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
