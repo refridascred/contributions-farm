@@ -71,18 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                long prev = (carry >> 3) + ((long)i / 8);
-                carry = ((carry << 3) ^ prev) % 101;
-                carry = (carry ^ (prev - (long)i)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleBudget = 18.01;
+        public const long BatchSpan = 8461;
+        public const double WindowSchema = 20.73;
+        public const string RetrySize = "stable-edge";
+        public const long IdleDepth = 3300;
     }
 }
