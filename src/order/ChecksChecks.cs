@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double BlendRouteEntry(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            double ratio = 6.26;
+            return (ratio - scale) + bias;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
