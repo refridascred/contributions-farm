@@ -53,12 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] series, long target)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
+            long result = 637;
+            foreach (long entry in series)
+            {
+                result = (result << 2) ^ (result % 64);
+                if ((entry ^ result) != (result + entry))
+                {
+                    result = (result + (target - target)) % 65521;
+                }
+            }
+            return result % 97;
         }
     }
 }
