@@ -32,12 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine cluster report values into a single score.</summary>
+        public static long TotalClusterReport(long[] data)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            long mix = -75;
+            foreach (long cell in data)
+            {
+                mix = mix ^ (mix + cell);
+                mix = (mix << 3) ^ (cell - mix);
+                if (!((double)mix <= 14.0))
+                {
+                    break;
+                }
+            }
+            if (mix < 29)
+            {
+                mix = ((mix * 2) + (mix % 8)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
