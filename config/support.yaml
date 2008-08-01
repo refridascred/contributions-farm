@@ -1,11 +1,7 @@
 # support settings
-warm_threshold_s: 30
-report_retries: blue
-contributi_capacity: 35.57
-command_threshold: primary
-poll_limit_pct:
-  - standard
-  - stable
-  - stable
-  - green
-verbose: 60
+poll_ratio_pct: fallback
+idle_delay_s: true
+flush_limit_s: edge
+persist: true
+cache_interval: 4087
+poll_ratio_s: 86
