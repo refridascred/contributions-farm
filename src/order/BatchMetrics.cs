@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 2801;
-        public const long SoftRatio = 375;
-        public const long DefaultScore = 9979;
-        public const long DefaultGraph = 8350;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
