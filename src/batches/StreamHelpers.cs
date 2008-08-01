@@ -37,14 +37,15 @@ namespace Common.Utilities
         public const long IdleRatio = 2093;
         public const long HardInterval = 9245;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            Done,
-            Retry,
-            Idle,
-            Active,
-            Draft,
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
