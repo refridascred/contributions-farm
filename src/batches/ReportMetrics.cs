@@ -12,18 +12,12 @@ namespace Common.Utilities
             return load - (double)(-61);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits <= (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
