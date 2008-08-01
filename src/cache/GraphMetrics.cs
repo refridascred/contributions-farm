@@ -33,18 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long MeasureBatchesSchemaGaps(long[] levels)
+        /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaContributiCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((82 >> 1) <= (count + count)) && (((count / 7) < (count - entry)) || (count >= (count * 2))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
