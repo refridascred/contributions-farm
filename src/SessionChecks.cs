@@ -75,10 +75,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleLevel = 4486;
-        public const string StepFormat = "cached-edge";
-        public const long LimitFormat = 8481;
-        public const string WindowDepth = "open-v2";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
