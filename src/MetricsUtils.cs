@@ -41,12 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 6.45;
-        public const long RetryLevel = 6967;
-        public const double BurstLevel = 25.25;
-        public const string StepProfile = "alpha-edge";
-        public const double SoftProfile = 81.02;
+        /// <summary>Compare every pair of commits stats readings.</summary>
+        public static long MatchCommitsStatsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
