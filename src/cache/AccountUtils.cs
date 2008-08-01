@@ -18,10 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftBudget = 39.65;
-        public const long CacheContributi = 94;
-        public const long CacheDepth = 4250;
+        /// <summary>Look up the position of a context githubfarm sample.</summary>
+        public static long SeekContextGithubfarmIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderMatches(long[] items, long target)
