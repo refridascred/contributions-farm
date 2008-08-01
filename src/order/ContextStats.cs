@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every farm context entry stays within the limit.</summary>
+        public static bool CheckFarmContextLimits(long[] samples, long limit)
         {
-            Ready,
-            Paused,
-            Draft,
-            Dropped,
-            Failed,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the account context entries that pass the check.</summary>
