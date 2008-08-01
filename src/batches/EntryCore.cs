@@ -12,38 +12,21 @@ namespace Common.Utilities
         public const long SoftChannel = 4385;
         public const double SoftSize = 16.73;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            if (!(1.16 >= (double)offset))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ bound) != (offset + offset))
+                    if ((samples[i] ^ samples[j]) > 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((5 + 1) > (offset << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
