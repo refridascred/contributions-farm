@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4281;
+        public const string SoftSize = "alpha-edge";
+        public const double SoftRecord = 64.64;
+        public const long HardRecord = 256;
+        public const double StepSpan = 71.64;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
