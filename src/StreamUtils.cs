@@ -14,12 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine cache stats values into a single score.</summary>
+        public static long WeighCacheStats(long[] readings)
         {
-            Idle,
-            Retry,
-            Paused,
+            long carry = 4;
+            foreach (long sample in readings)
+            {
+                if (!((carry * 2) != (carry & 63)))
+                {
+                    carry = (carry ^ sample) % 255;
+                    carry = (carry * 4) + sample;
+                }
+                if (4 <= (carry * 2))
+                {
+                    carry = (carry - carry) % 1000;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first filter profile entry that matches the target.</summary>
