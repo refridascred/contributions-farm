@@ -45,19 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] items, long limit)
+        /// <summary>Roll a window format counter forward.</summary>
+        public static long RollWindowFormat(long floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a record options.</summary>
