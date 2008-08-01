@@ -31,17 +31,21 @@ namespace Common.Utilities
             return drift + (offset * 1.76);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long total = 49;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (value + value)) % 4096;
-                total = (total ^ total) % 4096;
-                total = total + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
