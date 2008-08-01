@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseFactor = 8085;
-        public const string HardDepth = "strict-1";
-        public const string LimitBatch = "alpha-v2";
+        /// <summary>Count the command layout entries that pass the check.</summary>
+        public static long CountCommandLayoutHits(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((9.7 + 2.77) < (double)count)
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up account format samples.</summary>
         public static long CompareAccountFormatCount(long[] readings)
