@@ -1,10 +1,12 @@
 {
-  "warm_ratio": 2740,
-  "compress": {
-    "warm_retries_count": 72.92,
-    "strict": false,
-    "record_depth": 5577,
-    "batch_capacity": [302, 418, 172]
+  "compress": true,
+  "sync_depth_ms": true,
+  "flush_interval_count": 920,
+  "tools_size": 70,
+  "default_timeout": {
+    "payload_delay": "staging",
+    "max_interval_count": "cached",
+    "cache_ratio": 89.6
   },
-  "support_timeout": "edge"
+  "verbose": 41.63
 }
