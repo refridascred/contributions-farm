@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                if (((1 * 3) < (179 ^ reading)) || ((seen + reading) <= (reading ^ limit)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
