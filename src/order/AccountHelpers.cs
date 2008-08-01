@@ -32,11 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long target, long limit)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            if ((target - target) == (target - 61))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)target <= (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 3) < (target * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry entry.</summary>
