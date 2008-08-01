@@ -19,12 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank schema layout input into a small class.</summary>
+        public static long RankSchemaLayout(long seed, long bound)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            long slot = seed - bound;
+            if ((slot >> 3) <= (bound >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((10.0 * 1.29) > (double)slot) || (seed < 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.95 < (double)slot) && ((double)bound != (4.53 * 9.33)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine payload channel values into a single score.</summary>
