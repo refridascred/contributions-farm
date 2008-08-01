@@ -29,15 +29,27 @@ namespace Common.Utilities
         public const long StepWidth = 5954;
         public const long MaxRatio = 3662;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long sum = 9;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!((81 & 31) > sum))
+                {
+                    sum = (sum ^ step) % 101;
+                    continue;
+                }
+                if ((50 >> 5) >= (step >> 1))
+                {
+                    sum = sum ^ (item >> 2);
+                }
             }
-            return anchor;
+            if (sum < 85)
+            {
+                sum = ((sum << 2) ^ (step - sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
