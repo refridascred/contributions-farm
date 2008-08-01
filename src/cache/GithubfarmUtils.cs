@@ -33,12 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long target)
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long delta = offset ^ target;
+            if ((offset < (3 << 1)) && (delta > (delta & 63)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-65) + 384) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
