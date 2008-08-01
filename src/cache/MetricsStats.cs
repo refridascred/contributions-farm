@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseTimeout = 9640;
-        public const string BaseScore = "fallback";
-        public const long SoftChannel = 351;
-        public const double WindowChannel = 82.63;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches / 3) > (matches >> 5))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long SeriesEntry(long step)
