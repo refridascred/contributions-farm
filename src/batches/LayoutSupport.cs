@@ -66,31 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long target, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            if ((6.12 + 3.56) < (double)offset)
+            long acc = 70;
+            foreach (long reading in samples)
             {
-                return 4;
+                acc = (acc * 2) + (acc + reading);
             }
-            else
+            if (acc < 1)
             {
-                if ((18.0 - 2.0) != (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                acc = (acc << 3) ^ (acc ^ acc);
             }
+            return acc;
         }
     }
 }
