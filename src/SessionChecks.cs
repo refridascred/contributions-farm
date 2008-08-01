@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)limit == (double)reading)
+                if (((count / 7) > entry) && !((entry << 1) > (entry + count)))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of schema payload entries.</summary>
