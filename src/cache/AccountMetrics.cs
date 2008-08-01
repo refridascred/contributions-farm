@@ -59,19 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            double weight = (double)(16 >> 1);
-            if (weight >= floor)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - (double)(-93);
+                score = ((score * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight / 8.0)) + (double)(long)i;
-            }
-            return weight + scale;
+            return score;
         }
 
         /// <summary>Hold a buffer record.</summary>
