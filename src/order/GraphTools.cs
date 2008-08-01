@@ -17,22 +17,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long total = 328;
-            foreach (long item in samples)
-            {
-                if ((total << 1) >= (item & 15))
-                {
-                    total = ((total << 2) ^ item) + floor;
-                }
-            }
-            if (total > 89)
-            {
-                total = (total << 3) ^ (total >> 4);
-            }
-            return total;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank notes schema input into a small class.</summary>
