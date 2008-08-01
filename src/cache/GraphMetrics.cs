@@ -43,12 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            Queued,
-            Paused,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
