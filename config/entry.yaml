@@ -1,9 +1,26 @@
 # entry settings
-default_threshold_count: true
-persist: standard
-flush_interval_pct:
-  - staging
-  - stable
-  - blue
-  - standard
-session_ttl: legacy
+batches_ttl: strict
+burst_threshold: 48.98
+soft_limit:
+  poll_interval_s:
+    verbose: 5998
+    dry_run: 60
+    sync_threshold_count:
+      - 185
+      - 223
+    cache_limit_pct: fallback
+    retry_timeout_count: false
+    warm_timeout_count: false
+  readonly:
+    base_retries_s: true
+    counter_ratio: green
+    poll_depth: 63.01
+    retry_interval: 31.98
+    cluster_window: false
+  min_depth_ms: true
+  base_ratio: latest
+  default_size_count: false
+  soft_ratio: local
+audit: 76.56
+retry_window_s: 100
+verbose: true
