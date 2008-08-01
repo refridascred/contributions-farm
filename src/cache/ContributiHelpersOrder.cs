@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const long CacheDepth = 5849;
         public const string DefaultWidth = "primary";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = 7.2;
+            if (scale >= (double)84)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (scale - scale)) - offset;
             }
-            return -1;
+            return scale - ratio;
         }
     }
 }
