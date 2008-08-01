@@ -1,8 +1,18 @@
 {
-  "strict": 47.79,
-  "default_window_count": [346, 181],
-  "audit": false,
-  "verbose": ["open", "fallback"],
-  "batch_interval_pct": 19.41,
-  "poll_delay": 29.19
+  "idle_interval_s": "primary",
+  "already_threshold": 1024,
+  "warm_depth_ms": {
+    "strict": "staging",
+    "max_window_s": "fallback",
+    "enabled": 100,
+    "persist": {
+      "persist": 500,
+      "command_timeout": 60.9,
+      "retry_interval_s": "green",
+      "metric_interval": false,
+      "burst_capacity": true
+    },
+    "dry_run": "blue"
+  },
+  "min_window_count": 24.61
 }
