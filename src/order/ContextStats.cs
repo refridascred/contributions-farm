@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "primary-edge";
+        public const string DefaultQueue = "staging-v2";
+        public const double HardBudget = 16.71;
+        public const double BurstSpan = 21.33;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string CacheTimeout = "fallback";
