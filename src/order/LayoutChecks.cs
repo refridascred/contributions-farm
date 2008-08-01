@@ -47,11 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!!((double)sample <= (8.2 - 5.5)))
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
