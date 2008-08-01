@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+RECORD_LIMIT=74
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge stable local standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
-
-RECORD_LIMIT=178
-log "limit is ${RECORD_LIMIT}"
+log "total ${total}"
