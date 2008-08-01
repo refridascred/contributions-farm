@@ -27,18 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches >= (matches - matches)) && ((matches < (matches ^ datum)) && (datum < (matches / 4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
