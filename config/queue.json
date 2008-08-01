@@ -1,5 +1,7 @@
 {
-  "flush_capacity_s": 30,
-  "batch_interval_pct": "legacy",
-  "checks_delay": 9992
+  "flush_window_ms": 89,
+  "report_size": "latest",
+  "metrics_threshold": 60,
+  "buffer_timeout": 95.76,
+  "account_limit": "eu-west"
 }
