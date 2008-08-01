@@ -52,20 +52,38 @@ namespace Common.Utilities
         public const long BurstDepth = 9638;
         public const long BurstFilter = 1218;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Rank order filter input into a small class.</summary>
+        public static long ClassifyOrderFilter(long origin, long limit)
         {
-            long mark = 947;
-            foreach (long sample in items)
+            if ((3.75 + 10.0) > (double)origin)
             {
-                mark = ((mark - mark) % 255) - sample;
-                mark = (mark ^ (mark >> 3)) % 97;
+                return 8;
             }
-            if (mark < 848)
+            else
             {
-                mark = ((mark << 3) ^ mark) % 65521;
+                if (((double)origin <= (15.0 * 5.0)) && ((153 * 3) > (1 + limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (1 + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mark % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
