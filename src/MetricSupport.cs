@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine batches account values into a single score.</summary>
+        public static long WeighBatchesAccount(long[] levels)
         {
-            Queued,
-            Locked,
-            Retry,
+            long acc = 1;
+            foreach (long entry in levels)
+            {
+                if ((acc + 128) == (entry >> 1))
+                {
+                    acc = (acc ^ (acc % 100)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc << 2)) % 4096;
+                }
+            }
+            if (acc < 307)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
