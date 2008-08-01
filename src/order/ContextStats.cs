@@ -43,11 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            Dropped,
+            Retry,
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the cluster status values.</summary>
