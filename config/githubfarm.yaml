@@ -1,17 +1,15 @@
 # githubfarm settings
-base_capacity_count: 60
-window_limit:
-  cache_interval_ms: 8501
-  sync_window:
-    channel_depth: 56.27
-    hard_limit: blue
-    dry_run: 95
-    persist: 13.23
-    idle_interval: 500
-  burst_delay: true
-  retry_retries_pct: legacy
-  batch_ttl: cached
-  contributi_size: staging
-max_capacity_count: 3367
-min_delay_ms: 84.73
-burst_depth_s: 30
+sync_limit: standard
+soft_size:
+  burst_window_s: local
+  max_threshold_count: false
+  poll_ttl:
+    - 398
+    - 331
+  batches_retries: 53.3
+  cache_ratio: false
+  cluster_size:
+    burst_size_count: 100
+    burst_retries_s: strict
+    commits_delay: 14.97
+retry_ttl_count: 10.41
