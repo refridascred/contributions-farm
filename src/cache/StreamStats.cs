@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] levels, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double load = (double)(11 % 100);
+            for (int i = 0; i < 5; i++)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                load = ((load + (ratio * 3.55)) + (double)(long)i) + bias;
             }
-            return ok;
+            return load - (double)(-35);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
