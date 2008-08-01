@@ -1,6 +1,8 @@
-id,label,rank,state
-1,45.14,767,825
-2,226,41,91.71
-3,52.57,459,61.5
-4,87,75.58,primary
-5,38,stable,306
+id,ratio,region,label
+1,standard,green,88.82
+2,1.33,strict,latest
+3,111,latest,edge
+4,29.02,777,edge
+5,87,71.5,712
+6,216,standard,419
+7,261,458,213
