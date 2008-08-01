@@ -64,17 +64,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] levels, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 776;
+            foreach (long item in items)
             {
-                if (levels[i] > seed)
+                if (((double)floor != (18.0 - 11.0)) && ((double)item > 17.0))
                 {
-                    return (long)i;
+                    mix = (mix - (item << 1)) % 101;
+                }
+                else
+                {
+                    mix = (mix + floor) % 97;
+                }
+                if ((item >= 66) || ((item - mix) < (36 ^ mix)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
