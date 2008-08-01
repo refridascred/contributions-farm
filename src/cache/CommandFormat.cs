@@ -15,12 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Stale,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a editor options.</summary>
