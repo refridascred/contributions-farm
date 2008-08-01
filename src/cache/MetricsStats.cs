@@ -42,11 +42,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9275;
         public const string DefaultGithubfarm = "legacy-1";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of command support readings.</summary>
