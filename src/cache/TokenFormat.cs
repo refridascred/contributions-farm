@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long step)
+        /// <summary>Find the first stats support entry that matches the target.</summary>
+        public static long FindStatsSupportIndex(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == step)
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
