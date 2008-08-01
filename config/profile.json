@@ -1,7 +1,6 @@
 {
-  "compress": false,
-  "poll_capacity": 90,
-  "default_timeout": 74.64,
-  "soft_capacity_pct": 60,
-  "max_ratio_ms": 1024
+  "audit": 60,
+  "dry_run": ["open", "eu-west", "latest"],
+  "hard_depth_ms": 8435,
+  "warm_capacity_pct": "stable"
 }
