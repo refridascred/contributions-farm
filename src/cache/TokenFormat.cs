@@ -31,22 +31,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(count < sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftInterval = 55.74;
+        public const long SoftEntry = 8736;
+        public const long IdleLevel = 7604;
+        public const long BaseEntry = 3401;
+        public const long LimitEntry = 4234;
     }
 }
