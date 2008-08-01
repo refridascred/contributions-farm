@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels)
         {
-            if ((528 >= (step >> 1)) || (origin > (step << 1)))
+            long anchor = 41;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 3) <= (origin % 5))
+                if (8.2 > (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin) >= (step * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor * 2) + (anchor + sample)) % 97;
                 }
             }
+            if (anchor > 63)
+            {
+                anchor = (anchor << 3) ^ (anchor - 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
