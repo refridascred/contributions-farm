@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long BaseBatch = 2744;
         public const long CacheBatch = 2898;
 
-        /// <summary>Count checks queue pairs that satisfy a relation.</summary>
-        public static long CompareChecksQueueCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 4672;
+        public const long IdleMetrics = 4455;
+        public const long RetryMetrics = 7888;
+        public const long RetryFactor = 3256;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long step)
