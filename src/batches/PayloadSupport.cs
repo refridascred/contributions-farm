@@ -43,22 +43,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] readings, long step)
         {
-            long mix = -55;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((mix / 3) < (-930))
+                if (((value / 8) > count) || (((double)74 == (double)step) || (step <= (value << 3))))
                 {
-                    mix = (mix * 4) + (sample * 5);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix > 85)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix % 97;
+            return count;
         }
     }
 }
