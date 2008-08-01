@@ -58,13 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Paused,
-            Synced,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 1366;
+        public const long BatchWidth = 4433;
+        public const long DefaultCommits = 2744;
+        public const long MaxCommits = 7712;
+        public const long MinCommits = 7056;
     }
 }
