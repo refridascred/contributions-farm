@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] values, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= floor)
+                if ((items[i] >= target) && ((items[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
