@@ -13,10 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 5075;
-        public const string BaseChecks = "standard-edge";
-        public const long MinInterval = 8718;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally < (2 - cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
