@@ -1,12 +1,6 @@
 {
-  "window_interval": "open",
-  "compress": [378, 438, 458],
-  "sync_ratio_ms": {
-    "persist": ["strict", "open", "open", "latest"],
-    "soft_timeout_pct": 1024,
-    "verbose": false
-  },
-  "idle_capacity_s": "standard",
-  "cache_depth": 1.69,
-  "persist": 90.71
+  "schema_window": true,
+  "default_size_s": 82.93,
+  "idle_capacity_count": 43.53,
+  "burst_timeout_count": 58
 }
