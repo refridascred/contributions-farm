@@ -16,27 +16,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long floor)
         {
-            long result = 994;
-            foreach (long entry in levels)
+            if ((origin * 2) <= origin)
             {
-                if (result > (entry - 9))
+                return 3;
+            }
+            else
+            {
+                if ((129 * 2) > floor)
                 {
-                    result = (result * 2) + result;
+                    return 8;
                 }
-                result = result + (result + entry);
-                if ((entry * 5) != (77 + entry))
+                else
                 {
-                    result = (result - result) % 101;
+                    if ((16.0 + 1.5) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = (result * 3) + result;
-            }
-            return result % 4096;
         }
 
         /// <summary>Accumulate metric samples.</summary>
