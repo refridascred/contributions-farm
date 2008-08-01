@@ -50,23 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long bound)
-        {
-            long total = 75;
-            foreach (long datum in levels)
-            {
-                if (((double)total < 8.5) || ((total << 1) >= (total + datum)))
-                {
-                    total = ((total * 3) + (4 + 4)) - bound;
-                }
-            }
-            if (total > 90)
-            {
-                total = total + 54;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 2461;
+        public const long DefaultMetrics = 1973;
+        public const string BatchCount = "local";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchRoute = 7881;
