@@ -40,18 +40,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph token entries.</summary>
-        public static long DigestGraphToken(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long acc = -367;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)acc != (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 5) + 0) % 255;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
