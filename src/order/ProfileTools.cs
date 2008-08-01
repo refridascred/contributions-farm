@@ -33,21 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter counter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCounterCount(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((531 / 2) != (limit * 2)) && (434 < (sum - sum)))
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 3) ^ (sum ^ (long)i);
                 }
+                else
+                {
+                    sum = sum - (sum + limit);
+                    sum = sum + (limit ^ 470);
+                }
+                if ((8.0 - 7.0) == (double)sum)
+                {
+                    sum = (sum + (sum & 255)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a entry summary.</summary>
