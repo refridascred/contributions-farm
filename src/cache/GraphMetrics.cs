@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits + 8) >= (5 / 9))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 4.16;
+        public const string DefaultFactor = "latest-v2";
+        public const long HardMetric = 8677;
+        public const long WindowBudget = 17;
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
         public static long OverlapSchemaContributiCount(long[] items)
