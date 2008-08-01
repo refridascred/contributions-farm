@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The commits report groups every report by schema.
+Run the channel check before changing any layout limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a cluster fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review layout limits each release
-- Validate cache input early
-- Keep metrics values small
+- Keep channel values small
+- Document new queue fields
+- Log every stream change
