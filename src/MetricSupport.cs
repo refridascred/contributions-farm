@@ -13,18 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 5075;
+        public const string BaseChecks = "standard-edge";
+        public const long MinInterval = 8718;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
