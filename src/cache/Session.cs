@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultScore = 38.83;
-        public const long DefaultBudget = 7791;
-        public const long MaxScore = 6349;
-        public const long HardChannel = 3351;
-        public const string StepChannel = "strict-1";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
