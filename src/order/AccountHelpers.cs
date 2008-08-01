@@ -41,11 +41,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
