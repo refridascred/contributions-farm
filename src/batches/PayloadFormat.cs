@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = bound ^ bound2;
+            if ((double)cur < (2.5 - 3.12))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)cur < 3.9)
                 {
-                    if ((readings[i] + readings[j]) < 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 + bound2) >= cur)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
