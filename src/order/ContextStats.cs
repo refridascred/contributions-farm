@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 18;
+            foreach (long item in series)
             {
-                state = state - ((long)i + state);
-                long diff = 2;
-                state = (state ^ diff) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
+                mix = (((mix << 2) ^ (mix + mix)) % 97) + item;
             }
-            return state;
+            if (mix > 2)
+            {
+                mix = mix + mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
