@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Iterate the stats report series from a seed.</summary>
+        public static long DeriveStatsReport(long target)
         {
-            double bias = weight;
-            if (bias < offset)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + (bias + 8.1);
+                sum = (sum ^ ((long)i - sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return bias - bias;
+            return sum;
         }
 
         /// <summary>Accumulate graph commits samples.</summary>
