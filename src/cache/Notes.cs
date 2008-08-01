@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((5.0 / 5.0) < (double)matches) && ((cell << 1) == (cell / 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the command status values.</summary>
