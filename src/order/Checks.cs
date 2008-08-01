@@ -42,11 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8788;
-        public const long WindowReport = 6654;
-        public const long LimitSize = 1404;
-        public const long CacheReport = 7026;
+        /// <summary>Fold a list of channel tools readings.</summary>
+        public static long TotalChannelTools(long[] values)
+        {
+            long carry = -1;
+            foreach (long reading in values)
+            {
+                carry = carry ^ (reading * 4);
+                if ((reading / 2) < (4 / 2))
+                {
+                    carry = (carry * 5) + (223 + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseDepth = 3918;
