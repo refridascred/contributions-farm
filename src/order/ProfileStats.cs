@@ -46,15 +46,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long StepCommandSchema(long target)
+        /// <summary>Combine commits buffer values into a single score.</summary>
+        public static long FoldCommitsBuffer(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long result = 82;
+            foreach (long datum in data)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((datum >= (datum & 63)) || (result < datum))
+                {
+                    result = (result + datum) % 1000;
+                }
+                else
+                {
+                    result = result - (result + (-22));
+                }
+                if (!((result ^ datum) >= datum))
+                {
+                    result = result ^ datum;
+                }
+                if ((double)result != (2.48 * 4.2))
+                {
+                    result = (result ^ (datum - datum)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (datum % 2)) % 1000;
+                }
+                if ((result + result) >= (datum - 3))
+                {
+                    break;
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
