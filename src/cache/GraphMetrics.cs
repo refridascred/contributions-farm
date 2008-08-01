@@ -20,15 +20,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Active,
-            Queued,
-            Paused,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 843;
+        public const long MaxFactor = 4835;
+        public const long IdleSpan = 3181;
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
         public static long OverlapSchemaContributiCount(long[] items)
