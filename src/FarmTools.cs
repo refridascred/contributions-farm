@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long MinRatio = 1690;
         public const double WindowCache = 83.39;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double mean = weight / 2.0;
-            if (mean <= mean)
-            {
-                mean = mean - (3.0 * 17.0);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + floor;
+            New,
+            Idle,
+            Active,
+            Paused,
         }
     }
 }
