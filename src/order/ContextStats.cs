@@ -57,16 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = sum ^ (sum + sum);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Locked,
+            Stale,
         }
     }
 }
