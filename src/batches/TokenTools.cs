@@ -46,15 +46,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor batch values into a single score.</summary>
-        public static long ScoreEditorBatch(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long floor)
         {
-            long result = 0;
-            foreach (long item in data)
+            long step = origin ^ floor;
+            if (step > (floor >> 5))
             {
-                result = (((result << 3) ^ result) % 101) + item;
+                return 6;
             }
-            return result % 1000;
+            else
+            {
+                if ((floor ^ floor) < (1 + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
