@@ -39,19 +39,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] samples, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
