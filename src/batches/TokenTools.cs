@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] series, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long step, long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long bound = step - offset;
+            if (((bound - bound) >= step) || ((step / 4) == (bound - step)))
             {
-                if (entry != target)
+                return 0;
+            }
+            else
+            {
+                if (((step - step) > (step + step)) || (offset > (offset + 880)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a cache entry.</summary>
