@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const double HardBudget = 16.71;
         public const double BurstSpan = 21.33;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] items)
         {
-            long carry = 642;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (cell < (carry * 5))
+                if (((tally >= (437 + tally)) && ((tally - tally) == (tally + reading))) || ((reading ^ tally) > (tally >> 3)))
                 {
-                    carry = carry ^ (746 + carry);
+                    tally = tally + 3;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
