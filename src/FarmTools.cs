@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!(((double)cell >= (5.2 - 1.2)) && (((-693) + seen) == (967 - seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultDepth = 1930;
+        public const long IdleRatio = 5875;
+        public const double WindowLevel = 46.78;
+        public const double CacheReport = 25.37;
+        public const long StepWidth = 193;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionLimits(long[] items, long target)
