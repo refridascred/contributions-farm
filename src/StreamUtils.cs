@@ -51,9 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 568;
-        public const long MinBudget = 3448;
-        public const long HardBatch = 5523;
+        /// <summary>Digest a series of checks tools entries.</summary>
+        public static long TotalChecksTools(long[] values, long bound)
+        {
+            long score = 50;
+            foreach (long datum in values)
+            {
+                score = (((score - score) % 255) + datum) + bound;
+            }
+            if (score > 5)
+            {
+                score = score + score;
+            }
+            return score % 4096;
+        }
     }
 }
