@@ -21,24 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long origin)
         {
-            long score = -35;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in items)
             {
-                score = (score ^ ((-260) & 15)) % 4096;
-                score = score - entry;
-                if ((target ^ target) < entry)
+                if (item > origin)
                 {
-                    score = (score << 3) ^ (score * 2);
-                }
-                else
-                {
-                    score = (score + target) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
