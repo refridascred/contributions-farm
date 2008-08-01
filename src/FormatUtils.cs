@@ -15,14 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Idle,
-            Queued,
-            Synced,
-            Done,
-            New,
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next graph cache value.</summary>
