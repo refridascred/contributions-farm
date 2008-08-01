@@ -40,15 +40,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Draft,
-            Done,
-            Pending,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSize = 6774;
+        public const long BatchChannel = 1043;
+        public const long BaseSize = 1985;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TotalQueue(long[] samples, long seed)
