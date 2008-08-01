@@ -20,15 +20,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                result = ((result + (limit ^ limit)) % 4096) ^ reading;
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
