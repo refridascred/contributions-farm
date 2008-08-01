@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 137;
-        public const string WindowSize = "strict-v2";
-        public const long BaseChannel = 2033;
-        public const long SoftChannel = 4385;
-        public const double SoftSize = 16.73;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] samples)
