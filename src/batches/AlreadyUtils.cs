@@ -58,10 +58,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleCount = 6794;
-        public const string MinToken = "primary-v2";
-        public const double WindowRatio = 48.0;
-        public const long CacheRatio = 9925;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
