@@ -51,14 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Failed,
+            Stale,
+            Synced,
+            Idle,
             Paused,
-            Closed,
-            Pending,
-            Dropped,
-            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
