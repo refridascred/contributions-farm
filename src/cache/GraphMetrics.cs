@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long TallyBufferBatchGaps(long[] readings, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading + 25) != (seen % 16))
+                mix = ((mix << 2) ^ 125) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = (seen + 3) + target;
+                    mix = (((mix << 2) ^ (51 * 2)) % 1000) - (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
