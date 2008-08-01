@@ -23,16 +23,17 @@ namespace Common.Utilities
         public const double WindowBudget = 33.21;
         public const string RetryFarm = "strict-v2";
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long origin)
         {
-            long sum = -292;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum ^ ((-704) & 1)) % 97) + limit;
-                sum = (sum << 3) ^ (reading >> 4);
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
