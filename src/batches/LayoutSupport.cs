@@ -37,14 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Derive the next window cluster value from a seed.</summary>
+        public static long DeriveWindowCluster(long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (seed - carry)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (((carry / 6) != (carry - step)) || ((carry + carry) == (67 << 1)))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
             return carry;
         }
