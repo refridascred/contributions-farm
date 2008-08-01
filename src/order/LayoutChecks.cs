@@ -56,21 +56,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.74 + 12.0) > (double)floor)
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 3) + (mix << 2)) % 65521;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix * 2) + floor) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
