@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batch format readings.</summary>
-        public static long TallyBatchFormat(long[] readings)
+        /// <summary>Measure how many notes batch samples are out of range.</summary>
+        public static long CountNotesBatchGaps(long[] readings)
         {
-            long mix = -578;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mix = ((mix * 3) + (item - mix)) % 4096;
-                if ((item & 255) <= (item / 2))
+                if ((double)count > (9.4 + 17.0))
                 {
-                    mix = (mix ^ (7 / 6)) % 65521;
+                    count = (count + 1) + value;
                 }
-                mix = (mix - (mix / 9)) % 4096;
             }
-            if (mix < 182)
-            {
-                mix = mix + ((long)readings.Length * 3);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
