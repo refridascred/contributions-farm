@@ -48,18 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((8 + 21) == (tally - tally))
+                if ((double)seen != (3.38 * 8.5))
                 {
-                    tally = (tally + 2) ^ datum;
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
