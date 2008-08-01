@@ -19,12 +19,12 @@ namespace Common.Utilities
             return (rate2 - rate) + span;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < target)
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
