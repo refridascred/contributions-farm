@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable primary staging latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in stable edge legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=190
+log "limit is ${BUFFER_LIMIT}"
