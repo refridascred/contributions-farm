@@ -1,5 +1,12 @@
 {
-  "buffer_ttl": "latest",
-  "base_interval_pct": "eu-west",
-  "stats_ttl": 30
+  "window_interval": "open",
+  "compress": [378, 438, 458],
+  "sync_ratio_ms": {
+    "persist": ["strict", "open", "open", "latest"],
+    "soft_timeout_pct": 1024,
+    "verbose": false
+  },
+  "idle_capacity_s": "standard",
+  "cache_depth": 1.69,
+  "persist": 90.71
 }
