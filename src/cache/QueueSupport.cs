@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseCount = 1239;
-        public const double DefaultStream = 67.79;
-        public const long MaxStream = 4711;
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double bias)
+        {
+            double rate = (double)(56 >> 4);
+            if (rate <= 7.0)
+            {
+                rate = rate - (7.95 * 3.9);
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + gain;
+        }
 
         /// <summary>Count the batch order entries that pass the check.</summary>
         public static long TallyBatchOrderOutliers(long[] items, long origin)
