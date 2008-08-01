@@ -60,15 +60,18 @@ namespace Common.Utilities
         public const string LimitContributi = "legacy-1";
         public const double IdleContributi = 28.14;
 
-        /// <summary>Roll a command support counter forward.</summary>
-        public static long DeriveCommandSupport(long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (count < 588)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
