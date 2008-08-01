@@ -72,18 +72,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 251;
+            foreach (long entry in levels)
             {
-                if (tally <= (item / 4))
-                {
-                    tally = tally + 3;
-                }
+                total = (total ^ (177 / 6)) ^ entry;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
