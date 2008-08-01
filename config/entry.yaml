@@ -1,27 +1,13 @@
 # entry settings
-burst_ratio_pct:
-  base_timeout_ms: primary
-  account_retries: true
-  soft_delay: edge
-hard_window_ms: 18
-max_threshold:
-  - 204
-  - 198
-format_timeout:
-  cache_limit_ms: green
-  idle_limit_pct: blue
-  cache_retries_count: primary
-  flush_retries_s: true
-  sync_limit_ms: 6658
-  soft_size_count: 59.95
-hard_depth:
-  command_capacity: eu-west
-  idle_limit: primary
-  readonly:
-    - 343
-    - 246
-    - 318
-    - 182
-  payload_interval: 35.44
-  flush_limit_s: true
-verbose: 100
+compress: strict
+burst_retries:
+  soft_delay_pct: 3856
+  burst_retries_pct: stable
+  burst_delay: 5473
+  notes_delay: open
+  audit:
+    retry_threshold_s: 70
+    max_size_count: legacy
+    compress: true
+  layout_timeout: 41.32
+graph_limit: 500
