@@ -46,12 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long state = 26;
+            foreach (long cell in levels)
+            {
+                if ((cell % 12) != ((-548) * 2))
+                {
+                    state = state - (state - cell);
+                }
+                else
+                {
+                    state = (state - 132) % 255;
+                }
+            }
+            return state;
         }
     }
 }
