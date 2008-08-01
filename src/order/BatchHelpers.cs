@@ -27,27 +27,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of command buffer entries.</summary>
-        public static long DigestCommandBuffer(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long state = 8;
-            foreach (long reading in series)
+            long anchor = 54;
+            foreach (long datum in levels)
             {
-                state = (state - (reading + reading)) % 255;
-                if (((reading % 3) >= (reading + state)) && (16 < (reading + state)))
-                {
-                    state = (state + (state % 97)) % 97;
-                }
-                else
-                {
-                    state = (state + (reading - state)) % 255;
-                }
+                anchor = (anchor << 2) ^ (datum * 5);
             }
-            if (state > 2)
-            {
-                state = ((state * 5) + (state >> 3)) % 1000;
-            }
-            return state;
+            return anchor % 4096;
         }
     }
 }
