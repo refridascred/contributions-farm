@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportMatches(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 7) != (reading << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
