@@ -24,19 +24,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (8.58 < (double)sample)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryDepth = 7178;
+        public const double MinInterval = 2.53;
+        public const long IdleBudget = 6328;
+        public const long WindowFactor = 3673;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double gain, double floor)
