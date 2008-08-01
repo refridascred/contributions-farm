@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double bias)
         {
-            double ratio = bias2 + 8.26;
-            if (ratio > ratio)
-            {
-                ratio = ratio - bias2;
-            }
-            return ratio - (bias2 + bias);
+            double load = (double)(9 << 2);
+            return (load - (bias * 0.5)) + ratio;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
