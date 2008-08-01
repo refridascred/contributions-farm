@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            Active,
-            Done,
-            Ready,
-            Idle,
-            New,
+            long mark = 1;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + item) > (mark / 9))
+                {
+                    mark = mark ^ (mark + item);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (74 + item)) % 255;
+                }
+                mark = (mark ^ item) % 4096;
+                mark = (mark ^ (item << 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
