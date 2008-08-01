@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every profile schema entry stays within the limit.</summary>
-        public static bool ValidateProfileSchemaLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftSpan = 105;
+        public const string CacheCount = "stable-1";
+        public const double HardGraph = 49.85;
+        public const long IdleGraph = 8884;
+        public const string BaseSize = "standard";
 
         /// <summary>Accumulate graph commits samples.</summary>
         public static long TallyGraphCommits(long[] readings)
