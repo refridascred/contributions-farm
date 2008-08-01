@@ -42,19 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already checks entry stays within the limit.</summary>
-        public static bool GuardAlreadyChecksBounds(long[] samples, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (datum != floor)
+                if (target > (seen & 7))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
