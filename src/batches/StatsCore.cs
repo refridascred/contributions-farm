@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score / 8) != (offset - (long)i))
+                if (data[i] >= offset)
                 {
-                    score = ((score * 5) + (offset * 4)) % 255;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
