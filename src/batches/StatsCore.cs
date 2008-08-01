@@ -46,20 +46,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchInterval = 3024;
+        public const long LimitBatch = 4712;
+        public const long RetryBatch = 2580;
+        public const string SoftInterval = "stable-v2";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteLimits(long[] series, long seed)
