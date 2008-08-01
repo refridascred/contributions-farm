@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of already schema readings.</summary>
-        public static long TallyAlreadySchema(long[] items, long offset)
-        {
-            long mix = 324;
-            foreach (long item in items)
-            {
-                mix = ((mix * 4) + (offset + (-13))) - item;
-            }
-            if (mix < 88)
-            {
-                mix = ((mix << 3) ^ (offset - mix)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultFactor = 834;
+        public const long StepSchema = 1720;
+        public const long RetryFactor = 2983;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] samples)
