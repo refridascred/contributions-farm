@@ -48,16 +48,13 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] values, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long result = 8;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)(long)values.Length >= (5.8 - 3.0))
-                {
-                    result = ((((result << 2) ^ (70 << 3)) % 255) + value) + limit;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
             return result;
         }
