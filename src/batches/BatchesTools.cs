@@ -36,15 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
