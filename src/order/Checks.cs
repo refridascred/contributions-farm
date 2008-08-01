@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            New,
-            Ready,
-            Failed,
+            Idle,
+            Dropped,
+            Queued,
+            Retry,
             Closed,
         }
 
