@@ -45,18 +45,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Fold a list of entry stats readings.</summary>
+        public static long ScoreEntryStats(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 754;
+            foreach (long value in samples)
             {
-                if ((count - entry) < ((long)levels.Length ^ 72))
+                state = ((state << 2) ^ state) % 1000;
+                if ((value >> 3) == (state + state))
                 {
-                    count = count + 2;
+                    state = (state << 3) ^ state;
                 }
             }
-            return count;
+            if (state > 7)
+            {
+                state = ((state << 2) ^ (state >> 5)) % 65521;
+            }
+            return state;
         }
     }
 }
