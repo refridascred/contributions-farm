@@ -23,12 +23,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 8209;
-        public const long CacheMetric = 1132;
-        public const long LimitMetric = 443;
-        public const long WindowMetric = 6483;
-        public const long BatchMetric = 5995;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
