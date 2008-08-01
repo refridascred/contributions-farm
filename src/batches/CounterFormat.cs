@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values)
         {
-            double ratio = (double)213 / 2.0;
-            if (ratio < (ratio + gain))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + 2.17) + span;
+                if ((double)sample == (12.0 + 1.48))
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio + 5.03;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream window sample.</summary>
