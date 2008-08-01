@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Count the batch cluster entries that pass the check.</summary>
+        public static long CountBatchClusterHits(long[] values, long offset)
         {
-            long state = 50;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((cell & 255) > (long)data.Length) && (4 <= (state ^ cell)))
+                if ((datum + offset) >= (offset + (long)values.Length))
                 {
-                    state = ((state * 5) + cell) % 65521;
-                }
-                if ((cell + state) != ((long)data.Length / 4))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
