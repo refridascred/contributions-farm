@@ -49,11 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long carry = 8;
+            foreach (long reading in data)
+            {
+                if ((724 ^ 6) <= reading)
+                {
+                    carry = ((carry * 5) + (1 / 6)) % 4096;
+                }
+                if (((carry * 3) >= carry) || ((531 >> 4) <= carry))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
