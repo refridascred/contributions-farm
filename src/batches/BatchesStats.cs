@@ -23,25 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long gap = limit - step;
-            if (!((double)limit <= (0.84 - 14.0)))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap * 5) > (gap + gap)) && (6.18 >= (double)step))
+                if (!(9.61 > (double)tally))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
