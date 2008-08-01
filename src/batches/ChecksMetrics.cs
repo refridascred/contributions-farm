@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 49.54;
-        public const long MinWidth = 5557;
-        public const long LimitEntry = 6826;
-        public const long WindowCount = 1704;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] series)
