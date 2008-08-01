@@ -65,13 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            Stale,
-            Draft,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (26 >= count)
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
     }
 }
