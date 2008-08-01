@@ -1,6 +1,8 @@
 {
-  "layout_threshold": ["legacy", "local"],
-  "channel_ttl": 79.6,
-  "soft_limit_count": "fallback",
-  "support_window": "green"
+  "compress": 25.76,
+  "githubfarm_size": true,
+  "idle_delay_pct": 5010,
+  "idle_capacity_pct": "open",
+  "warm_ttl_s": 6216,
+  "idle_retries_s": 76
 }
