@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] levels, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((long)levels.Length % 60) > (floor + seen))
+                if ((cell & 15) != (count + cell))
                 {
-                    seen = (seen + 1) + datum;
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every support schema entry stays within the limit.</summary>
