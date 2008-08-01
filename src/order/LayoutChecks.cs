@@ -26,22 +26,23 @@ namespace Common.Utilities
         public const double WindowBudget = 33.21;
         public const string RetryFarm = "strict-v2";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] readings, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (matches >= (8 >> 1))
+                if (offset >= result)
                 {
-                    matches = ((matches + 2) + item) + offset;
+                    result = ((result * 4) + ((long)i << 3)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result ^ (4 % 12)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a graph info.</summary>
