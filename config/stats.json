@@ -1,22 +1,7 @@
 {
-  "hard_limit_count": {
-    "editor_interval": ["cached", "open", "fallback", "primary"],
-    "persist": "standard",
-    "dry_run": {
-      "cache_capacity_ms": "stable",
-      "max_limit_s": "eu-west",
-      "editor_retries": 14,
-      "default_interval": 4.81,
-      "idle_threshold_count": 13.64
-    }
-  },
-  "flush_ratio_count": ["cached", "strict"],
-  "dry_run": "strict",
-  "metric_depth": 7738,
-  "flush_threshold": "fallback",
-  "session_delay": {
-    "burst_ttl": true,
-    "max_size_s": 500,
-    "readonly": "latest"
-  }
+  "base_threshold": 43.68,
+  "soft_timeout_count": ["green", "legacy"],
+  "strict": false,
+  "compress": 38.82,
+  "soft_retries_count": ["primary", "eu-west"]
 }
