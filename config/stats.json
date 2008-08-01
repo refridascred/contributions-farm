@@ -1,5 +1,6 @@
 {
-  "flush_ttl_pct": [265, 309],
-  "support_threshold": "staging",
-  "readonly": 60
+  "layout_threshold": ["legacy", "local"],
+  "channel_ttl": 79.6,
+  "soft_limit_count": "fallback",
+  "support_window": "green"
 }
