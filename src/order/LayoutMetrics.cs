@@ -29,19 +29,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate schema queue readings against a bound.</summary>
-        public static bool GuardSchemaQueueRange(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSize = 8982;
+        public const long RetrySize = 9882;
+        public const double DefaultRecord = 61.43;
     }
 }
