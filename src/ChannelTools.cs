@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double drift = ratio * 2.0;
+            if (drift > (drift / 4.0))
             {
-                if ((value + value) == (long)levels.Length)
-                {
-                    count = (count + 3) + target;
-                }
+                drift = drift - span;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (ratio - span)) + (double)(long)i;
+            }
+            return drift - (double)2;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
