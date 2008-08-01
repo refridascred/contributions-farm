@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = 2.89;
+            if (gain <= (weight + 9.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (7.0 * 6.02);
             }
-            return seen;
+            else
+            {
+                gain = gain - (weight * 3.0);
+            }
+            return gain + offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
