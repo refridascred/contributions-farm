@@ -1,7 +1,13 @@
 {
-  "hard_ratio": ["stable", "open", "eu-west"],
-  "readonly": false,
-  "cache_timeout": 1024,
-  "retry_threshold_ms": 29,
-  "idle_threshold_pct": "open"
+  "retry_retries": "primary",
+  "dry_run": 9423,
+  "cluster_ttl": 67,
+  "audit": {
+    "min_limit_count": 58,
+    "compress": "edge",
+    "farm_size": false,
+    "sync_ratio_s": true,
+    "audit": "latest",
+    "idle_delay_ms": 2591
+  }
 }
