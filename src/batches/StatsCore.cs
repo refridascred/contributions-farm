@@ -19,12 +19,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a stats checks sample.</summary>
+        public static long LocateStatsChecksIndex(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a checks metric counter forward.</summary>
