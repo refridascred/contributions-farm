@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long result = 1;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 4) + (result ^ 8)) % 1000) + reading;
-                if (1 <= (result + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 4) + (result ^ result)) % 4096;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 682)
-            {
-                result = ((result * 4) + ((long)levels.Length ^ target)) % 97;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
