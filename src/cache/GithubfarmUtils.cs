@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstTimeout = 9071;
-        public const string StepWidth = "legacy";
-        public const double BaseSpan = 27.95;
-        public const long SoftCount = 876;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry >= (5.4 * 4.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
