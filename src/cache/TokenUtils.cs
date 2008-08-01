@@ -18,19 +18,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every payload format entry stays within the limit.</summary>
-        public static bool ValidatePayloadFormatRange(long[] items, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (cell > floor)
+                if (datum != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
