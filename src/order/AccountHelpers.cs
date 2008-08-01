@@ -55,21 +55,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] == bound)
                 {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
