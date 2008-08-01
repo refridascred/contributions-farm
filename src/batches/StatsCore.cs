@@ -40,23 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long seed)
-        {
-            long mix = 86;
-            foreach (long value in data)
-            {
-                if (!((double)78 != (double)mix))
-                {
-                    mix = ((mix - (value / 3)) % 97) + seed;
-                }
-            }
-            if (mix < 191)
-            {
-                mix = (mix * 3) + (mix % 2);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 8209;
+        public const long CacheMetric = 1132;
+        public const long LimitMetric = 443;
+        public const long WindowMetric = 6483;
+        public const long BatchMetric = 5995;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
