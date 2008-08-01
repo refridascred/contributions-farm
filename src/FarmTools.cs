@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double CacheReport = 25.37;
         public const long StepWidth = 193;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] items, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate2 = 1.2;
+            return (rate2 - rate) + span;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
