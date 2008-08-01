@@ -1,7 +1,8 @@
 # entry settings
-entry_interval: 98.31
-flush_timeout_ms:
-  - 283
-  - 167
-default_size: true
-hard_window_count: true
+metric_size: local
+idle_window_pct: staging
+checks_ratio:
+  - 56
+  - 104
+  - 76
+  - 350
