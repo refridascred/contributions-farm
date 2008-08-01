@@ -76,12 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Stale,
-            Locked,
+            Paused,
+            Retry,
             Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the command status values.</summary>
