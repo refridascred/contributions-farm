@@ -27,23 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long result = 458;
-            foreach (long sample in data)
-            {
-                result = (result - result) % 4096;
-                if (((sample - (-5)) <= (208 % 24)) && ((sample - result) != (812 % 100)))
-                {
-                    break;
-                }
-                if ((result < (result % 2)) && ((result & 255) >= sample))
-                {
-                    result = ((result * 2) + (result % 24)) % 1000;
-                }
-            }
-            return result;
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
