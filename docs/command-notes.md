@@ -1,12 +1,16 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Run the notes check before changing any token limits.
-The tools report groups every filter by session.
+Keep queue and queue names short and lowercase.
+The metric report groups every filter by stream.
+Keep checks and already names short and lowercase.
+
+Defaults for order live in the config folder and can be overridden per environment.
+When a cache fails, the batches handler retries a few times before giving up.
+Use batches settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every farm change
-- Validate queue input early
+- Validate cache input early
+- Document new tools fields
+- Log every support change
 - Review stats limits each release
-- Document new context fields
