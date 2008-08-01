@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long floor)
         {
-            Locked,
-            Done,
-            Active,
+            if ((1.79 - 6.8) == (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0.97 / 9.0) != (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target / 5) == (target * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches class values.</summary>
