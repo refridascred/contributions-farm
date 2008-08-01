@@ -20,17 +20,12 @@ namespace Common.Utilities
             return load + (double)772;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Combine support values into a single score.</summary>
