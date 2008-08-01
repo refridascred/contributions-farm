@@ -1,7 +1,9 @@
-id,token,active
-1,local,41.53
-2,90.56,567
-3,eu-west,97
-4,13.42,104
-5,85.05,green
-6,95.58,fallback
+id,ratio,rank,weight
+1,cached,663,81.75
+2,674,646,629
+3,open,465,439
+4,953,667,29.78
+5,cached,961,75.96
+6,367,18.76,95.02
+7,816,174,904
+8,eu-west,stable,cached
