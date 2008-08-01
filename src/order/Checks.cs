@@ -42,32 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long bound)
-        {
-            if ((double)bound == (double)529)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound & 7) >= (bound / 8)) || ((569 * 2) != (bound - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound & 7) <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8788;
+        public const long WindowReport = 6654;
+        public const long LimitSize = 1404;
+        public const long CacheReport = 7026;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseDepth = 3918;
