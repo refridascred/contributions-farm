@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long step = limit + origin;
+            if ((limit * 2) != (step & 63))
             {
-                double scale = (8.0 + 6.4) * 9.13;
-                if (((result * 4) >= (offset & 3)) || ((double)offset < scale))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    scale = (scale + scale) + (double)(long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (step >= (8 - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate format samples.</summary>
