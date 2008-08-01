@@ -31,14 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool VerifyEntryContextBounds(long[] values, long origin)
         {
-            Done,
-            Stale,
-            New,
-            Dropped,
-            Draft,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next command schema value from a seed.</summary>
