@@ -52,18 +52,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long offset)
+        /// <summary>Classify a already channel pair into a bucket.</summary>
+        public static long ClassifyAlreadyChannel(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((double)step > (double)step2)
             {
-                if (((cell + cell) < (seen % 5)) && (((double)cell != (1.0 + 6.09)) && (8.6 <= (double)cell)))
+                return 3;
+            }
+            else
+            {
+                if ((491 % 64) < step)
                 {
-                    seen = (seen + 1) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 5) < (step2 / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step2 >= (3.0 * 1.25))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
