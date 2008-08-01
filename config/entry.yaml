@@ -1,34 +1,6 @@
 # entry settings
-channel_limit:
-  flush_size_count: 100
-  base_limit: 60
-  warm_timeout_pct: 34.73
-  strict: 30
-  sync_interval_ms: 33
-  verbose: false
-verbose:
-  - 458
-  - 416
-  - 357
-audit:
-  retry_capacity_count: 3726
-  hard_depth_pct:
-    base_ratio: open
-    readonly: 86
-    account_window: strict
-    warm_limit_ms: 60
-    cache_size: staging
-    retry_limit_count: 24
-  soft_window: 8
-  editor_timeout:
-    audit: 3649
-    persist: 5763
-    schema_threshold:
-      - 23
-      - 235
-      - 8
-      - 76
-    dry_run: 94.39
-    cache_size: fallback
-  retry_limit_ms: 60
-  enabled: 11.46
+cluster_capacity: true
+sync_threshold: true
+hard_size_count:
+  - stable
+  - green
