@@ -27,14 +27,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSpan = 1283;
+        public const long BaseLevel = 4382;
+        public const long LimitDepth = 9167;
+        public const long CacheDepth = 5849;
+        public const string DefaultWidth = "primary";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] values, long target)
