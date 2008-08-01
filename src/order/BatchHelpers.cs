@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 3) <= (seen + datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
