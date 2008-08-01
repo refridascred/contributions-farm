@@ -1,6 +1,7 @@
-id,active,rank
-1,83.9,strict
-2,cached,31.15
-3,local,blue
-4,91.64,29.01
-5,339,612
+id,token,owner
+1,eu-west,4.93
+2,green,35.22
+3,46.66,88.06
+4,10.3,923
+5,698,73.42
+6,strict,929
