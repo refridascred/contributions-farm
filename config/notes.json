@@ -1,6 +1,15 @@
 {
-  "report_threshold": "legacy",
-  "githubfarm_timeout": 73,
-  "batch_limit_ms": false,
-  "batch_threshold_count": 4568
+  "warm_retries_pct": {
+    "base_depth": "fallback",
+    "min_threshold": ["local", "local", "legacy"],
+    "notes_ttl": 250,
+    "batch_delay_s": 4.82
+  },
+  "verbose": "legacy",
+  "compress": {
+    "profile_delay": 26.65,
+    "poll_limit": "eu-west",
+    "readonly": 63,
+    "hard_threshold_count": false
+  }
 }
