@@ -64,15 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] items, long bound)
         {
-            long mark = -1;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 2) + (entry % 2)) % 255;
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
