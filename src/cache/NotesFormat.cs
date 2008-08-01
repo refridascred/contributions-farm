@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 8280;
+        public const long MaxWidth = 1073;
+        public const double IdleLevel = 33.87;
+        public const long BaseBatch = 2744;
+        public const long CacheBatch = 2898;
 
         /// <summary>Count checks queue pairs that satisfy a relation.</summary>
         public static long CompareChecksQueueCount(long[] items)
