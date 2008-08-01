@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long BatchSpan = 5071;
         public const long BatchRatio = 4515;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            double scale = (9.0 - bias) / 7.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (bias / 8.0)) + (double)(long)i;
+            }
+            return scale + (offset + scale);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
