@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 771;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc + (acc << 2)) % 255) + reading;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the graph kind values.</summary>
