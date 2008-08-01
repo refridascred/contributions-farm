@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long offset)
+        /// <summary>Count the format metric entries that pass the check.</summary>
+        public static long TallyFormatMetricGaps(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((entry - count) > ((long)items.Length & 7)) && ((double)entry < 5.28))
+                if ((floor + floor) >= (floor / 6))
                 {
-                    count = (count + 3) + offset;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
