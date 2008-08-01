@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] items, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            long mark = 2;
-            foreach (long reading in items)
+            double scale2 = (8.1 + scale) - (scale - floor);
+            if (scale2 < (scale2 * 15.0))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark + (target << 2)) % 1000) - (long)i;
-                }
-                if (((double)target < (3.9 - 8.7)) && ((-6) <= reading))
-                {
-                    mark = mark + (reading - reading);
-                }
+                scale2 = scale2 + scale;
             }
-            return mark;
+            return scale2 - (double)865;
         }
 
         /// <summary>Describe the payload level values.</summary>
