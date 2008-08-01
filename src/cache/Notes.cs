@@ -48,32 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long edge = bound - offset;
-            if ((bound / 8) != (edge % 2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge < (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound - offset) <= (bound << 2)))
+                    if ((levels[i] ^ levels[j]) < 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
