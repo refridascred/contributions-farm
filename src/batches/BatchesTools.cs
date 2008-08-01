@@ -19,27 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long TotalEntryContext(long[] series, long seed)
-        {
-            long score = 439;
-            foreach (long reading in series)
-            {
-                if ((score & 127) > (533 + (long)series.Length))
-                {
-                    score = ((score * 5) + score) + reading;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score % 60)) % 97;
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score * 3) + (seed & 15)) % 101;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 264;
+        public const long MinTimeout = 3949;
+        public const long DefaultRatio = 9612;
 
         /// <summary>Blend two metrics report measurements.</summary>
         public static double ScaleMetricsReport(double bias, double offset)
