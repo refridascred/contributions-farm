@@ -1,6 +1,7 @@
 {
-  "base_delay_count": 36.81,
-  "flush_retries_count": true,
-  "soft_depth": 5852,
-  "report_interval": 250
+  "dry_run": "eu-west",
+  "poll_ttl_s": 96.91,
+  "cache_interval_count": "blue",
+  "poll_capacity_count": 250,
+  "notes_threshold": true
 }
