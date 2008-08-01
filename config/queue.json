@@ -1,5 +1,6 @@
 {
-  "enabled": "local",
-  "audit": "blue",
-  "farm_limit": "latest"
+  "commits_threshold": "green",
+  "enabled": 8234,
+  "session_retries": "edge",
+  "soft_depth_pct": "fallback"
 }
