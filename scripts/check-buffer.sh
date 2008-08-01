@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=82
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in edge stable open; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=174
+log "limit is ${BUFFER_LIMIT}"
