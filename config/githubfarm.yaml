@@ -1,36 +1,4 @@
 # githubfarm settings
-audit: eu-west
-support_size:
-  enabled: true
-  max_delay_count:
-    command_ttl: 7890
-    stats_window: latest
-    poll_size_pct: false
-    session_ttl: legacy
-    checks_capacity: 12.83
-    persist: primary
-  warm_retries_count:
-    max_window_count: fallback
-    sync_interval: 73
-    counter_timeout: 18.05
-  dry_run: 29.77
-  hard_size: 2848
-hard_limit_pct: 68.61
-record_ratio:
-  strict: primary
-  order_interval:
-    base_capacity: 72.21
-    poll_interval_s: false
-    audit:
-      - strict
-      - local
-      - standard
-      - primary
-  soft_size_pct:
-    - 95
-    - 376
-    - 422
-    - 10
-  burst_window_pct: legacy
-  hard_depth: standard
-  flush_window_pct: local
+warm_timeout: fallback
+queue_ratio: 3576
+buffer_depth: true
