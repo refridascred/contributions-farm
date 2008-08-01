@@ -35,18 +35,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long cur = offset + origin;
+            if (offset >= (offset - offset))
             {
-                if (((item * 2) <= (item >> 5)) || ((double)hits <= (16.0 * 3.9)))
+                return 4;
+            }
+            else
+            {
+                if ((cur >> 1) >= offset)
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((1 & 127) > cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
