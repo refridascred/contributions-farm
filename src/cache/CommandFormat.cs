@@ -35,19 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine profile values into a single score.</summary>
