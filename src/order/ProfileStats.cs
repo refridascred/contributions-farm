@@ -44,24 +44,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long seed)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long StepCommandSchema(long target)
         {
-            if (((seed & 127) == (790 % 64)) || (1 > (limit << 1)))
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((3 & 31) <= (limit - seed)) || ((seed + seed) >= 251))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
     }
 }
