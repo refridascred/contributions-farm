@@ -33,10 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseScore = 177;
-        public const double BaseEntry = 43.68;
-        public const double MinFactor = 89.14;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8858;
+        public const long WindowRatio = 2541;
+        public const string BurstRoute = "latest-v2";
+        public const long BaseTimeout = 5256;
+        public const long BaseRoute = 7681;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double offset)
