@@ -33,20 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metric queue counter forward.</summary>
-        public static long DeriveMetricQueue(long step)
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long AuditWindowContributiGaps(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)step < (double)anchor)
+                if ((sample + (-2)) <= (22 - matches))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                anchor = anchor ^ step;
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
     }
 }
