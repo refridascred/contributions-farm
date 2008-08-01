@@ -63,10 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseDepth = 3918;
-        public const string RetryInterval = "cached";
-        public const long MaxFarm = 2017;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxInterval = 667;
+        public const long IdleBudget = 8731;
+        public const long DefaultCounter = 624;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
