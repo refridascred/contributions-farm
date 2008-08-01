@@ -51,23 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long seed)
-        {
-            long sum = 39;
-            foreach (long entry in series)
-            {
-                if ((double)seed <= (4.7 * 5.0))
-                {
-                    sum = ((sum ^ (sum + sum)) % 4096) ^ entry;
-                }
-                else
-                {
-                    sum = (sum + ((long)series.Length + sum)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "fallback-edge";
+        public const long BurstBatches = 5315;
+        public const string RetryBatches = "open-1";
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double weight, double bias)
