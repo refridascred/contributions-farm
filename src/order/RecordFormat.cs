@@ -56,11 +56,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metric schema measurements.</summary>
-        public static double ProjectMetricSchema(double rate, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series)
         {
-            double load = rate;
-            return (load - (load + load)) + floor;
+            long mark = -1;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 2) + (entry % 2)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
