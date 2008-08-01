@@ -1,21 +1,15 @@
 # support settings
-readonly: 1982
-base_limit_ms: cached
-batch_ttl:
-  default_timeout_pct: primary
-  retry_timeout:
-    - 473
-    - 90
-    - 279
-    - 72
-  layout_delay: false
-  enabled: 1024
-  batch_threshold_s:
-    retry_limit: fallback
-    audit: latest
-    cache_limit_s: true
-graph_ratio: false
-base_threshold_count:
-  - blue
-  - blue
-idle_capacity: stable
+dry_run: 17
+graph_threshold:
+  contributi_window: 6734
+  strict: 3
+  cache_timeout_ms:
+    - strict
+    - cached
+    - staging
+max_size_s:
+  - local
+  - local
+  - standard
+token_size: 14.97
+strict: staging
