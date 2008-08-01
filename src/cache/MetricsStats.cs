@@ -35,15 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            New,
-            Draft,
-            Locked,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 74.71;
+        public const string BurstGithubfarm = "standard";
+        public const long BaseGithubfarm = 6134;
+        public const long SoftGithubfarm = 9275;
+        public const string DefaultGithubfarm = "legacy-1";
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
