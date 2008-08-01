@@ -21,13 +21,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long floor, long floor2)
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long bound = floor ^ floor2;
+            if ((9.7 * 6.7) <= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.4 - 8.9) < (9.0 * 6.8)) && (bound < floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer summary.</summary>
