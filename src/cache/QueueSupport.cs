@@ -45,21 +45,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count - entry) < ((long)levels.Length ^ 72))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
