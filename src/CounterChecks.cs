@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long BatchSchema = 2004;
         public const long StepInterval = 7880;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] readings, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= (floor << 2))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
