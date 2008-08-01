@@ -1,7 +1,4 @@
 # support settings
-poll_ratio_pct: fallback
-idle_delay_s: true
-flush_limit_s: edge
-persist: true
-cache_interval: 4087
-poll_ratio_s: 86
+hard_ratio_count: 8229
+verbose: true
+checks_limit: fallback
