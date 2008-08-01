@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double offset)
-        {
-            double mean = 6.6;
-            if (mean < (offset + scale))
-            {
-                mean = mean - (double)61;
-            }
-            return mean + (mean + offset);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 3657;
+        public const long CacheFactor = 1682;
+        public const double HardSupport = 53.49;
+        public const long BaseWidth = 7180;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long target)
