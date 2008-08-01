@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long LimitCache = 8237;
         public const long MinSpan = 2582;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Stale,
-            Retry,
-            Failed,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a context entry.</summary>
