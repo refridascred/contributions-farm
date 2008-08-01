@@ -45,17 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
