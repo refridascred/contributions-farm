@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] series)
         {
-            long edge = floor - seed;
-            if (edge <= floor)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((37 + floor) > (edge >> 1))
+                if (!(((double)cell >= (5.2 - 1.2)) && (((-693) + seen) == (967 - seen))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
