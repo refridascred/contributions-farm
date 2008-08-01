@@ -32,12 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
