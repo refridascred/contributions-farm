@@ -23,18 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long TallyLayoutSchemaHits(long[] data, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches <= (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
