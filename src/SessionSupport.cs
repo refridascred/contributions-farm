@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long limit)
+        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
+        public static long SeekGithubfarmContributiIndex(long[] data, long origin)
         {
-            if (!((origin - origin) == (limit >> 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin >> 4))
+                if (data[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)629 < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (95 >= (limit & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
