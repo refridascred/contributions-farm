@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Fold a list of batches support readings.</summary>
-        public static long DigestBatchesSupport(long[] values, long floor)
-        {
-            long result = 37;
-            foreach (long sample in values)
-            {
-                if ((floor < (floor >> 2)) && ((double)sample >= (double)6))
-                {
-                    result = (result * 4) + (0 / 3);
-                }
-                if ((result - result) > (floor % 60))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "fallback";
+        public const long BurstWidth = 4556;
+        public const double HardBatch = 84.51;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
