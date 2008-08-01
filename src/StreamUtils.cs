@@ -20,18 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric order readings against a rule.</summary>
-        public static long MeasureMetricOrderMatches(long[] values, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((origin ^ 775) != ((long)values.Length * 4))
+                if (cell < seed)
                 {
-                    matches = (matches + 2) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Look up the position of a format payload sample.</summary>
