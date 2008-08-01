@@ -45,11 +45,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
