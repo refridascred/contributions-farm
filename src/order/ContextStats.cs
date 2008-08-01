@@ -20,31 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] readings)
         {
-            if ((origin * 2) <= origin)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((129 * 2) > floor)
+                if ((value % 5) != (value / 8))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((16.0 + 1.5) >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
