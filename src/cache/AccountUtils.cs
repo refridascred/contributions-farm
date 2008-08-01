@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] data, long origin)
+        /// <summary>Measure how many stream batch samples are out of range.</summary>
+        public static long CountStreamBatchHits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                if ((18 >> 1) < (entry + entry))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
