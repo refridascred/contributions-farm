@@ -29,16 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double floor)
-        {
-            double drift = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (floor + 3.36)) - (double)(long)i;
-            }
-            return drift - 2.3;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheSpan = 2945;
+        public const long RetryBudget = 6722;
+        public const long BurstContext = 1232;
+        public const long BaseContext = 794;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] levels, long step)
