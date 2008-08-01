@@ -68,12 +68,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 6054;
-        public const double BatchLevel = 71.25;
-        public const double LimitSpan = 20.9;
-        public const long IdleRatio = 2093;
-        public const long HardInterval = 9245;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Dropped,
+            Queued,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardWidth = 1846;
