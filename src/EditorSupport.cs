@@ -35,19 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count ^ count) >= (47 + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchFactor = 5541;
+        public const long LimitCounter = 2259;
+        public const long WindowDepth = 8005;
+        public const long CacheCounter = 9497;
+        public const long WindowInterval = 2884;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long step)
