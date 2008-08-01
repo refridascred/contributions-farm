@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long origin)
         {
-            double scale2 = (8.1 + scale) - (scale - floor);
-            if (scale2 < (scale2 * 15.0))
+            long carry = -829;
+            foreach (long datum in values)
             {
-                scale2 = scale2 + scale;
+                if ((datum + carry) < (8 + datum))
+                {
+                    carry = ((carry * 2) + (origin + datum)) % 1000;
+                }
             }
-            return scale2 - (double)865;
+            return carry % 97;
         }
 
         /// <summary>Validate notes metric readings against a bound.</summary>
