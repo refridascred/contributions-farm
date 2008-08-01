@@ -26,26 +26,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm order readings.</summary>
-        public static long ScoreGithubfarmOrder(long[] readings, long target)
+        /// <summary>Audit stream cluster readings against a rule.</summary>
+        public static long MeasureStreamClusterMatches(long[] series, long origin)
         {
-            long total = -222;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (value < (target & 31))
+                if ((origin + hits) < (origin + 80))
                 {
-                    total = ((total << 3) ^ (target * 2)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (-424);
-                }
-                if ((772 + total) <= (77 + 20))
-                {
-                    break;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
