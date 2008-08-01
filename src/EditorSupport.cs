@@ -69,19 +69,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] values, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
