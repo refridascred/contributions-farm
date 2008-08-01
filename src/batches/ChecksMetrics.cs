@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 39.81;
-        public const double SoftCount = 23.47;
-        public const long SoftScore = 3100;
-        public const long BatchDepth = 3939;
-        public const long StepRecord = 556;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Ready,
+            Retry,
+            Paused,
+            Locked,
+            Active,
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] values, long offset)
