@@ -50,9 +50,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 3562;
-        public const long BaseStream = 7244;
-        public const string CacheScore = "latest-v2";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long target)
+        {
+            if ((464 << 2) < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target ^ 6) == (seed / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) <= (target << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
