@@ -48,22 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + cell) > (cell & 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the token phase values.</summary>
