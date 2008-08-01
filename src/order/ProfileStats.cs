@@ -42,19 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter cluster figure with a bias.</summary>
-        public static double BlendCounterCluster(double rate, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] series)
         {
-            double rate2 = (double)9 * 7.5;
-            if (rate2 >= (rate2 / 5.0))
+            long count = 0;
+            foreach (long entry in series)
             {
-                rate2 = (rate2 - 6.05) + span;
+                if (!((count >= (count - 253)) && ((0.85 - 0.5) == (double)entry)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (rate * 2.0)) - (double)(long)i;
-            }
-            return rate2 - (16.0 * 5.0);
+            return count;
         }
     }
 }
