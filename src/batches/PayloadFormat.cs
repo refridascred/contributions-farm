@@ -35,13 +35,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 5256;
         public const long BaseRoute = 7681;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Paused,
-            Ready,
-            Synced,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstRatio = 965;
+        public const string SoftRatio = "open";
+        public const double BaseFarm = 25.61;
+        public const string StepSize = "cached-edge";
+        public const long WindowFarm = 7933;
     }
 }
