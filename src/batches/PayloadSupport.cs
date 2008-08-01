@@ -43,18 +43,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data, long target)
+        /// <summary>Classify a checks commits pair into a bucket.</summary>
+        public static long ClassifyChecksCommits(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long offset = floor - origin;
+            if ((offset >> 5) <= (offset >> 2))
             {
-                if (!((double)hits != (2.7 + 2.0)))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 127) < (origin - offset))
                 {
-                    hits = ((hits + 1) + sample) - target;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
