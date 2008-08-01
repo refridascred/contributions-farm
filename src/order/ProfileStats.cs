@@ -20,12 +20,23 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 43.14;
-        public const long HardLayout = 9704;
-        public const string MaxLayout = "alpha-v2";
-        public const string MaxCount = "strict-edge";
-        public const string MinSpan = "staging-1";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + 442) > tally)
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
