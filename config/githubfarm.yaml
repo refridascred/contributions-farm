@@ -1,33 +1,23 @@
 # githubfarm settings
-stream_capacity: false
-poll_timeout: standard
-enabled: true
-report_timeout: true
-warm_delay:
-  dry_run:
-    batch_window_count: 60
-    enabled: edge
-    warm_retries_count:
-      - 476
-      - 39
-      - 372
-      - 132
-    verbose: 60
-    compress: true
-    default_depth_ms: eu-west
-  cache_capacity_s: edge
-  queue_interval:
-    max_depth_count: true
-    warm_ratio_pct:
-      - 313
-      - 76
-      - 328
-    compress: 6272
-    min_timeout_ms: 108
-    flush_depth_pct: open
-  burst_window:
-    burst_timeout_count: 100
-    already_interval: 21
-    max_timeout_count: 34.97
-    cache_retries_pct: local
-  idle_capacity: latest
+dry_run: 72
+base_limit_pct:
+  hard_delay_s: 500
+  poll_retries_s: 60
+  buffer_limit: true
+  readonly: fallback
+  batch_interval_ms: 15.65
+  strict:
+    format_ratio: green
+    warm_ttl_ms:
+      - legacy
+      - staging
+    contributi_capacity: 93.46
+    stats_timeout: false
+default_capacity_ms: false
+flush_ratio_pct: 19
+burst_limit_count:
+  audit: 17.95
+  burst_depth: 37.89
+  layout_capacity: local
+  base_size_s: 84
+order_depth: 83.33
