@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long bound)
         {
-            long result = 5;
-            foreach (long reading in data)
+            if (((6.8 * 3.5) > (double)origin) || (origin <= bound))
             {
-                result = (result + (reading - reading)) % 101;
-                result = (result * 2) + (result >> 1);
-                if ((43 % 7) <= (reading << 2))
+                return 5;
+            }
+            else
+            {
+                if (!(bound < (bound + bound)))
                 {
-                    result = ((result * 5) + reading) % 65521;
+                    return 8;
                 }
-                if ((result % 8) >= reading)
+                else
                 {
-                    break;
+                    if ((bound + bound) != ((-3) - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a session record.</summary>
