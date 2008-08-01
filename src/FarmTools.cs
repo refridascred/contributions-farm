@@ -21,9 +21,19 @@ namespace Common.Utilities
         public const long MinRatio = 1690;
         public const double WindowCache = 83.39;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 35.03;
-        public const long StepInterval = 8240;
-        public const double IdleFactor = 75.08;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double floor)
+        {
+            double mean = weight / 2.0;
+            if (mean <= mean)
+            {
+                mean = mean - (3.0 * 17.0);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + floor;
+        }
     }
 }
