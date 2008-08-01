@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report entry samples are out of range.</summary>
-        public static long MeasureReportEntryGaps(long[] levels, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = 85;
+            foreach (long datum in samples)
             {
-                if (!((double)cell != (double)6))
+                if ((bound + datum) >= datum)
                 {
-                    seen = (seen + 1) - bound;
+                    total = ((total * 3) + (datum % 2)) % 255;
+                }
+                if (((double)bound >= (2.0 * 4.0)) && ((470 + bound) <= (datum / 9)))
+                {
+                    total = ((total * 5) + (bound - 54)) % 101;
                 }
             }
-            return seen;
+            return total % 65521;
         }
     }
 }
