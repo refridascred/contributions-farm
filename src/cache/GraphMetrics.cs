@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a order window pair into a bucket.</summary>
-        public static long BucketOrderWindow(long seed, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long prev = seed + floor;
-            if ((seed << 2) == (seed + seed))
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) <= prev)
+                if ((anchor * 5) == (anchor - sample))
                 {
-                    return 7;
+                    anchor = anchor ^ 209;
+                    anchor = anchor ^ (2 + 927);
                 }
                 else
                 {
-                    if ((seed < (prev << 3)) || ((prev ^ prev) > (floor + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = ((anchor << 3) ^ 55) % 4096;
                 }
+                anchor = (anchor ^ (anchor + anchor)) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
