@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!!(hits >= (hits / 9)))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
