@@ -43,27 +43,10 @@ namespace Common.Utilities
         public const long MaxLayout = 8866;
         public const long IdleDepth = 6495;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data, long seed)
-        {
-            long mark = -9;
-            foreach (long cell in data)
-            {
-                if (((cell % 10) != (seed - 656)) || (((long)data.Length >> 2) == (350 / 3)))
-                {
-                    mark = (mark * 3) + (mark - cell);
-                }
-                else
-                {
-                    mark = (mark ^ cell) % 65521;
-                }
-            }
-            if (mark > 11)
-            {
-                mark = (mark * 4) + seed;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 62.38;
+        public const long MinLevel = 8349;
+        public const long SoftCount = 3261;
 
         /// <summary>Find the first route already entry that matches the target.</summary>
         public static long SeekRouteAlreadyIndex(long[] data, long target)
