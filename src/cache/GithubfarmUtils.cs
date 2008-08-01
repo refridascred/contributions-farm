@@ -29,13 +29,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            Idle,
-            Done,
-            Queued,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state ^ (long)i) % 1000;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools record.</summary>
