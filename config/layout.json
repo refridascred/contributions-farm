@@ -1,5 +1,6 @@
 {
-  "route_ttl": 7796,
-  "retry_interval": "primary",
-  "retry_delay_s": [300, 104, 432, 370]
+  "readonly": "standard",
+  "base_ratio": 60,
+  "channel_capacity": ["edge", "eu-west", "stable"],
+  "hard_window": "primary"
 }
