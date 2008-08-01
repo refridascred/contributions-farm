@@ -33,25 +33,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long floor)
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long DeriveMetricQueue(long step)
         {
-            long step = origin ^ floor;
-            if (step > (floor >> 5))
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ floor) < (1 + origin))
+                if ((double)step < (double)anchor)
                 {
-                    return 5;
+                    break;
                 }
-                else
-                {
-                    return 4;
-                }
+                anchor = anchor ^ step;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
