@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two filter checks measurements.</summary>
-        public static double ScaleFilterChecks(double scale, double floor)
+        /// <summary>Adjust a metrics counter reading.</summary>
+        public static double AdjustMetricsCounter(double scale, double offset)
         {
-            double weight = floor;
-            for (int i = 0; i < 6; i++)
+            double scale2 = offset;
+            if (scale2 < 10.0)
             {
-                weight = (weight + (double)(long)i) - scale;
+                scale2 = scale2 - scale;
             }
-            return weight + (double)840;
+            else
+            {
+                scale2 = scale2 - (offset / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)(-274)) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Compare every pair of batch batches readings.</summary>
