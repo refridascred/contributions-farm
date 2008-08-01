@@ -1,6 +1,11 @@
-id,region,score
-1,95.66,51.48
-2,local,104
-3,green,101
-4,463,82.44
-5,190,standard
+id,active,ratio,label
+1,14.35,green,80.66
+2,39,blue,local
+3,88.7,84.42,211
+4,39.48,90.88,70.64
+5,14.19,98.33,local
+6,latest,96.82,staging
+7,498,edge,96.97
+8,70.76,legacy,staging
+9,blue,strict,739
+10,cached,317,28.2
