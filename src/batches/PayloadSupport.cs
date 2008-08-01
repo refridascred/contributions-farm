@@ -20,26 +20,17 @@ namespace Common.Utilities
             return load + (double)772;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long step = target;
-                if ((target >> 5) > (step >> 5))
+                if (items[i] >= floor)
                 {
-                    step = (step ^ score) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score - (target - (long)i);
-                    step = ((step << 3) ^ (score ^ (long)i)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
