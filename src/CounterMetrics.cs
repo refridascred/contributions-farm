@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long origin)
+        /// <summary>Digest a series of commits support entries.</summary>
+        public static long TotalCommitsSupport(long[] data)
         {
-            long acc = 7;
-            foreach (long value in values)
+            long score = 5;
+            foreach (long entry in data)
             {
-                acc = ((acc - (acc % 60)) % 255) + value;
+                score = ((score * 4) + entry) % 65521;
+                score = (score + (entry * 2)) % 1000;
+                if ((entry > (entry >> 3)) || ((11.0 - 1.0) != (double)score))
+                {
+                    break;
+                }
             }
-            if (acc < (-43))
-            {
-                acc = (acc << 2) ^ (origin / 5);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
