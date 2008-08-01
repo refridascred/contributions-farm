@@ -1,7 +1,6 @@
-id,label,owner
-1,132,green
-2,642,890
-3,latest,95.48
-4,fallback,staging
-5,open,11.43
-6,374,29.55
+id,rank,ratio,weight
+1,legacy,770,eu-west
+2,135,fallback,384
+3,871,451,57.9
+4,37.25,626,local
+5,open,662,524
