@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data, long seed)
+        /// <summary>Count the queue batch entries that pass the check.</summary>
+        public static long CountQueueBatchOutliers(long[] series, long floor)
         {
-            long anchor = -4;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((anchor % 7) > 2)
+                if ((floor << 1) != (floor - floor))
                 {
-                    anchor = ((anchor ^ ((long)data.Length / 6)) % 1000) ^ entry;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            if (anchor > 37)
-            {
-                anchor = ((anchor * 4) + (seed * 4)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
