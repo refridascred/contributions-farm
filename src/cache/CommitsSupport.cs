@@ -57,15 +57,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long bound)
         {
-            double weight2 = (double)(70 - 189);
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                weight2 = ((weight2 + weight2) + (double)(long)i) - span;
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight2 - (weight * 10.0);
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
