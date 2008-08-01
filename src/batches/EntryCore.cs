@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of window metrics readings.</summary>
+        public static long DigestWindowMetrics(long[] series, long origin)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long mark = 2;
+            foreach (long reading in series)
+            {
+                mark = (mark - origin) - reading;
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
