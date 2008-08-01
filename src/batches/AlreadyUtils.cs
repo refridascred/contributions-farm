@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 6051;
-        public const double BurstBudget = 2.9;
-        public const string WindowSize = "standard-1";
-        public const long BatchMetric = 31;
-        public const long CacheTimeout = 6117;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Draft,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleAccount = 7728;
