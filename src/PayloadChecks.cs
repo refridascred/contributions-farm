@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i - carry) < 785)
-                {
-                    carry = (carry ^ (step ^ step)) % 1000;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
