@@ -55,19 +55,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate contributi metric readings against a bound.</summary>
-        public static bool GuardContributiMetricRange(long[] items, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mix = 191;
+            foreach (long reading in data)
             {
-                if (entry < origin)
+                if (((mix >> 5) >= (mix / 7)) || ((double)floor >= 3.27))
                 {
-                    flag = false;
+                    mix = mix + (floor / 2);
+                }
+                if ((double)reading > (0.04 + 4.3))
+                {
                     break;
                 }
             }
-            return flag;
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (mix % 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Project the next farm value.</summary>
