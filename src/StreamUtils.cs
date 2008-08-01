@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up batch cluster samples.</summary>
-        public static long PairBatchClusterCount(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] >= step)
                 {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
