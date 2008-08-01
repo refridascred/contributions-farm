@@ -1,16 +1,29 @@
 # entry settings
-burst_size_ms:
-  - 164
-  - 454
-  - 52
-audit:
-  - 248
-  - 187
-  - 191
-session_limit:
-  - legacy
-  - standard
-  - eu-west
-channel_depth: 54.19
-sync_capacity_pct: 1024
-readonly: true
+compress:
+  support_interval:
+    - 305
+    - 434
+    - 474
+  cache_limit_s:
+    - 352
+    - 16
+    - 407
+  metrics_timeout: false
+  verbose: 250
+  max_interval_s: true
+burst_window_pct: staging
+readonly: 250
+graph_ttl: 70
+session_ttl:
+  retry_window_ms:
+    - 96
+    - 1
+    - 419
+    - 19
+  farm_window:
+    - 322
+    - 235
+  retry_size_count: false
+  idle_capacity: latest
+  record_ratio: 500
+soft_interval: 500
