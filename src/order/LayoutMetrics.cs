@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a queue record reading by value.</summary>
-        public static long FindQueueRecordIndex(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (values[i] <= limit)
+                if (((-41) / 9) == (entry * 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
