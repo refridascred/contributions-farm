@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > (value + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - floor;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
