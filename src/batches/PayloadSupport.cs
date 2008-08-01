@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many commits format samples are out of range.</summary>
-        public static long CountCommitsFormatHits(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double load = span;
+            if (load >= load)
             {
-                if ((count & 1) <= item)
-                {
-                    count = count + 1;
-                }
+                load = load + (load + bias);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (double)772;
         }
 
         /// <summary>Describe the context kind values.</summary>
