@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "standard-v2";
-        public const long MinSpan = 693;
-        public const long MaxSchema = 6337;
-        public const long IdleSchema = 5033;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5237;
+        public const long MaxBudget = 264;
+        public const string CacheFactor = "cached-edge";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] series, long seed)
