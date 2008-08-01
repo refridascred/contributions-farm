@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor << 3) ^ origin) % 1000) + (long)i2;
+                }
+                anchor = (anchor - origin) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
