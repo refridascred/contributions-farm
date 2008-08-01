@@ -32,31 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long target, long limit)
+        /// <summary>Accumulate report record samples.</summary>
+        public static long CombineReportRecord(long[] series, long offset)
         {
-            if ((target - target) == (target - 61))
+            long anchor = 3;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)target <= (double)limit))
+                if ((sample - sample) >= (720 - (-18)))
                 {
-                    return 1;
+                    anchor = (anchor << 2) ^ (offset << 1);
                 }
                 else
                 {
-                    if ((limit << 3) < (target * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor + (49 << 1);
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a entry entry.</summary>
