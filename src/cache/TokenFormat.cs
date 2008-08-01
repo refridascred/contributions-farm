@@ -16,29 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((14.0 >= (double)limit) || ((anchor >> 1) >= limit))
+                if (bound >= hits)
                 {
-                    anchor = anchor ^ limit;
-                    anchor = (anchor - (limit & 15)) % 4096;
+                    hits = (hits + 1) + sample;
                 }
-                if ((8.6 - 7.03) >= (double)anchor)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + limit) % 4096;
-                    anchor = (anchor << 3) ^ (limit % 24);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
