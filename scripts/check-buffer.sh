@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=126
-log "limit is ${BUFFER_LIMIT}"
-
-for item in open staging; do
+for item in stable legacy; do
     log "checking ${item}"
 done
 
