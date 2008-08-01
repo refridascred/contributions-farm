@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample == (12.0 + 1.48))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream window sample.</summary>
