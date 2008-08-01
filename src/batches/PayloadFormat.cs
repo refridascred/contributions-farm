@@ -26,12 +26,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8858;
-        public const long WindowRatio = 2541;
-        public const string BurstRoute = "latest-v2";
-        public const long BaseTimeout = 5256;
-        public const long BaseRoute = 7681;
+        /// <summary>Look up the position of a counter stream sample.</summary>
+        public static long FindCounterStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstRatio = 965;
