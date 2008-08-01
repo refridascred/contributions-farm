@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheCount = 2100;
-        public const double IdleWidth = 74.91;
-        public const double HardContext = 41.65;
-        public const string WindowBudget = "open";
+        /// <summary>Iterate the stats buffer series from a seed.</summary>
+        public static long DeriveStatsBuffer(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
