@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long HardWidth = 8986;
         public const long BurstTimeout = 7603;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((long)i << 3) != (origin - (long)i)))
-                {
-                    score = (score << 3) ^ (origin * 5);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
