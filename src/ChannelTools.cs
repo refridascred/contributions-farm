@@ -33,11 +33,9 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitCount = 4869;
-        public const long CacheStream = 8336;
-        public const string BaseDepth = "standard-edge";
-        public const long RetryStream = 9613;
-        public const long SoftFactor = 9218;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinWidth = "local-edge";
+        public const double DefaultSize = 96.67;
+        public const long BatchFormat = 7170;
     }
 }
