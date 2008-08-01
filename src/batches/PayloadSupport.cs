@@ -23,23 +23,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of order cache readings.</summary>
-        public static long WeighOrderCache(long[] data, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (value + (long)data.Length)) % 65521) - offset;
-                if ((anchor ^ anchor) >= value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 20)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
