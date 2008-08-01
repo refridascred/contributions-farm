@@ -1,6 +1,25 @@
 {
-  "max_retries_ms": false,
-  "stream_threshold": 11.11,
-  "warm_delay_pct": "standard",
-  "max_ttl_pct": "fallback"
+  "enabled": "legacy",
+  "githubfarm_interval": ["local", "eu-west"],
+  "flush_limit": false,
+  "min_limit_pct": {
+    "already_retries": ["legacy", "edge"],
+    "farm_delay": false,
+    "min_depth_ms": ["cached", "local", "staging"],
+    "hard_threshold_ms": {
+      "default_timeout": 3215,
+      "burst_interval_count": [208, 32, 443, 477],
+      "checks_threshold": "strict"
+    }
+  },
+  "dry_run": {
+    "sync_retries": "fallback",
+    "already_capacity": "local",
+    "payload_delay": 250,
+    "hard_timeout_s": {
+      "notes_threshold": "latest",
+      "audit": 71.62,
+      "sync_timeout": 26.46
+    }
+  }
 }
