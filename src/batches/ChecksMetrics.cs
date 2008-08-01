@@ -37,18 +37,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.6 / 9.0) > (12.0 * 15.0))
-                {
-                    count = (count + 1) + sample;
-                }
+                sum = (sum << 2) ^ (bound & 7);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Accumulate stream samples.</summary>
