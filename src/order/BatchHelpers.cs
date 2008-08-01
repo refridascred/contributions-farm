@@ -29,15 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window layout measurements.</summary>
-        public static double ScaleWindowLayout(double scale, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            double drift = scale;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (17.0 / 2.0)) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (floor * 0.7);
+            return matches;
         }
     }
 }
