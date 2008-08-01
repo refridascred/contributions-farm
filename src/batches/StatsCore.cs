@@ -45,22 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheScore = 93.31;
+        public const long MinOrder = 4443;
+        public const long StepOrder = 7023;
+        public const long CacheOrder = 7826;
+        public const long BaseRatio = 8261;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long origin, long seed)
