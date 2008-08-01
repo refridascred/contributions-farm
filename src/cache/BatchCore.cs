@@ -32,19 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue command entry stays within the limit.</summary>
-        public static bool GuardQueueCommandRange(long[] samples, long floor)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long BucketStreamGithubfarm(long floor, long limit)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            if (limit >= (limit << 3))
             {
-                if (sample >= floor)
+                return 8;
+            }
+            else
+            {
+                if (((limit + floor) > (floor & 31)) && (floor > (floor >> 4)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (floor <= (floor << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (1 - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a notes batch figure with a bias.</summary>
