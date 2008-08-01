@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 23.28;
-        public const double MaxBatch = 21.11;
-        public const long SoftBatch = 1006;
-        public const long LimitBatch = 2088;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((840 << 2) >= seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BaseGraph = "cached-edge";
