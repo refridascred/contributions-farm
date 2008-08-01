@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            long acc = 6;
-            foreach (long sample in levels)
+            long total = 427;
+            foreach (long value in levels)
             {
-                if (acc < (sample - acc))
+                if ((value >> 2) > value)
                 {
-                    acc = acc - (acc + acc);
+                    total = (total << 2) ^ (value + total);
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 1000;
                 }
             }
-            if (acc < 9)
-            {
-                acc = ((acc * 4) + ((-1) >> 3)) % 1000;
-            }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
