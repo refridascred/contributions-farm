@@ -1,5 +1,8 @@
 {
-  "idle_interval_count": ["blue", "strict", "eu-west", "legacy"],
-  "session_threshold": "strict",
-  "sync_limit_s": [200, 281]
+  "strict": 47.79,
+  "default_window_count": [346, 181],
+  "audit": false,
+  "verbose": ["open", "fallback"],
+  "batch_interval_pct": 19.41,
+  "poll_delay": 29.19
 }
