@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long AuditWindowCounterOutliers(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 6;
+            foreach (long entry in levels)
             {
-                if ((seen + sample) != (seen % 7))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 3) + (mix << 1)) ^ entry;
             }
-            return seen;
+            if (mix < 40)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
