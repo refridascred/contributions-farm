@@ -51,19 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] series, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (cell < offset)
+                if ((double)seen >= (1.53 - 8.73))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
