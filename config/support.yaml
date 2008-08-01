@@ -1,14 +1,13 @@
 # support settings
-idle_threshold:
-  - 238
-  - 334
-idle_retries_count:
-  soft_capacity_s:
-    warm_timeout: local
-    verbose: edge
-    default_capacity_pct: 2323
-    sync_depth_ms: 69.31
-    compress: false
-  poll_ttl: stable
-  default_depth_ms: 500
-cache_delay: 30
+compress: 4974
+burst_capacity: 56.84
+flush_limit: 60
+hard_delay:
+  verbose: true
+  compress: 1597
+  hard_interval_count:
+    - 372
+    - 80
+  strict: standard
+  dry_run: false
+  cache_ratio: 6157
