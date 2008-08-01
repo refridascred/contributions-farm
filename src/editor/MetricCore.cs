@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long state = 17;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ sample) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 824)
-            {
-                state = ((state << 3) ^ (state + offset)) % 101;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
