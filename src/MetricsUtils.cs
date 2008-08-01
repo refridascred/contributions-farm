@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "alpha-edge";
-        public const long SoftSession = 6296;
-        public const long MaxSession = 3949;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] levels, long floor)
