@@ -38,21 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = (double)3 / 7.0;
+            if (weight2 <= 20.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 + (bias - weight2);
             }
-            return matches;
+            return weight2 + (weight + weight);
         }
 
         /// <summary>Rank command input into a small class.</summary>
