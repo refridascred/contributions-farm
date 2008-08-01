@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
