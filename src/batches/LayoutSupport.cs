@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
             public long Total { get; set; }
-            public long Flag { get; set; }
         }
 
         /// <summary>Project the next already layout value.</summary>
