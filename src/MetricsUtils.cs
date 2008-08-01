@@ -52,22 +52,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 385;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < 1.48)
-                {
-                    state = ((state ^ (datum * 5)) % 255) + target;
-                }
-            }
-            if (state < 451)
-            {
-                state = (state << 3) ^ ((-64) - 752);
-            }
-            return state;
+            Ready,
+            Paused,
+            Locked,
         }
     }
 }
