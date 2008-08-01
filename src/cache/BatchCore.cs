@@ -36,17 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache queue value from a seed.</summary>
-        public static long StepCacheQueue(long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total << 2) ^ (total >> 5);
-                total = (total ^ limit) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                score = (score << 3) ^ score;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
