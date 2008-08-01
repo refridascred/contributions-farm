@@ -46,17 +46,9 @@ namespace Common.Utilities
         public const long BatchStream = 4481;
         public const long LimitStream = 295;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ ((-6) % 100);
-                acc = (acc ^ (acc + acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 22.08;
+        public const long BurstTimeout = 4180;
+        public const long BurstOrder = 8923;
     }
 }
