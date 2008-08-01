@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits + hits) < (4 + 3))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
