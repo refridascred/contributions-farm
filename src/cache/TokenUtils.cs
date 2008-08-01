@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSize = 7017;
+        public const long CacheGithubfarm = 1285;
+        public const long BatchTimeout = 9576;
+        public const string SoftWidth = "latest";
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadMatches(long[] samples, long origin)
