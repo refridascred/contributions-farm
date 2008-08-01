@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            Ready,
-            Retry,
-            Failed,
-            Synced,
+            double load = bias;
+            if (load >= bias)
+            {
+                load = load - (load - load);
+            }
+            else
+            {
+                load = load + span;
+            }
+            return load - (span - span);
         }
     }
 }
