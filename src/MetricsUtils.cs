@@ -63,12 +63,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Ready,
-            Paused,
-            Locked,
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
