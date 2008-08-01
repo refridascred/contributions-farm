@@ -44,29 +44,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long seed, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            long diff = seed - origin;
-            if ((8 / 3) < diff)
+            if ((double)bound > (6.0 / 9.0))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (origin < diff)
+                if (67 > (bound - seed))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (!((diff % 60) > (diff ^ diff)))
+                    if ((double)bound >= (9.51 + 0.9))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        return 1;
                     }
                 }
             }
