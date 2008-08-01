@@ -1,5 +1,8 @@
 {
-  "flush_depth_pct": "edge",
-  "entry_ttl": 60,
-  "compress": false
+  "batch_capacity": 500,
+  "entry_threshold": false,
+  "route_capacity": "open",
+  "schema_ratio": 8978,
+  "compress": 44,
+  "record_size": 63.68
 }
