@@ -63,19 +63,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Active,
+            Closed,
+            New,
+            Queued,
         }
     }
 }
