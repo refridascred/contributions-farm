@@ -30,11 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long state = 64;
+            foreach (long cell in values)
+            {
+                if ((double)state > (9.08 / 7.0))
+                {
+                    state = ((state + state) % 1000) ^ cell;
+                }
+            }
+            if (state < 405)
+            {
+                state = (state * 4) + ((long)values.Length >> 2);
+            }
+            return state;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
