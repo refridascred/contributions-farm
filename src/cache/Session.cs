@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window format counter forward.</summary>
-        public static long RollWindowFormat(long floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
