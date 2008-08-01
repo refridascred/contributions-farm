@@ -66,18 +66,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long AuditEntryClusterHits(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((1.97 + 16.0) <= (double)sample)
+                if (!((count >> 2) < count))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
