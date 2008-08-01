@@ -53,22 +53,17 @@ namespace Common.Utilities
         public const long DefaultBatches = 5529;
         public const long BurstBatches = 4556;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] levels, long seed)
         {
-            long result = 8;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)result < (7.1 - 1.3)))
+                if (levels[i] > seed)
                 {
-                    result = (result * 5) + (cell - result);
-                }
-                else
-                {
-                    result = (result * 4) + (result - result);
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
