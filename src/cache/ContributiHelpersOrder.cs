@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long sum = 342;
+            foreach (long value in samples)
             {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = sum - limit;
+                sum = (sum + (value ^ value)) % 4096;
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many notes batch samples are out of range.</summary>
