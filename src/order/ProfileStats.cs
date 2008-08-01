@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items)
         {
-            long total = 534;
-            foreach (long value in levels)
+            long carry = 63;
+            foreach (long sample in items)
             {
-                total = (total - (value * 4)) % 65521;
-                if (target < (target << 1))
+                if (!((double)carry <= (7.0 + 6.9)))
                 {
-                    break;
+                    carry = ((carry * 2) + (3 - carry)) - sample;
                 }
             }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
