@@ -31,12 +31,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long seed)
         {
-            Queued,
-            Locked,
-            Active,
+            if ((offset + 7) >= (429 * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - offset) > (seed * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
