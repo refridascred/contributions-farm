@@ -34,19 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a session reading by value.</summary>
