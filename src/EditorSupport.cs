@@ -68,12 +68,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultFactor = 4114;
-        public const long MinEditor = 8579;
-        public const double HardSize = 43.24;
-        public const string SoftEditor = "legacy-edge";
-        public const long DefaultEditor = 8093;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items)
+        {
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor * 2) + (anchor ^ anchor)) ^ cell;
+            }
+            if (anchor < 88)
+            {
+                anchor = anchor + (anchor << 2);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
