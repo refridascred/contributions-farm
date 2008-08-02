@@ -20,21 +20,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset == (3.93 - 19.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (2.97 + 4.9))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
