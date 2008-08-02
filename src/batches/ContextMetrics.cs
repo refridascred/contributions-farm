@@ -38,12 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 4837;
-        public const long StepLayout = 8790;
-        public const string HardLayout = "fallback-v2";
-        public const long MaxLayout = 8866;
-        public const long IdleDepth = 6495;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] samples, long seed)
