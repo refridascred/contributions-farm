@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already metrics samples.</summary>
-        public static long ScoreAlreadyMetrics(long[] levels, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            long anchor = 7;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                anchor = (((anchor - (anchor - anchor)) % 1000) - entry) - target;
+                if ((double)reading <= (double)8)
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
