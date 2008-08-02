@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            Idle,
+            Ready,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the profile mode values.</summary>
