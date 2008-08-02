@@ -13,21 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up commits window samples.</summary>
-        public static long CompareCommitsWindowCount(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every farm editor entry stays within the limit.</summary>
