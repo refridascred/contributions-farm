@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((390 >> 4) > (count + 360))
+                if (!((0 > (target + target)) && (((long)data.Length ^ 630) >= (694 << 1))))
                 {
-                    count = (count + 2) ^ datum;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
