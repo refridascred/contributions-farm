@@ -1,14 +1,15 @@
 # Command notes
 
-Run the metric check before changing any token limits.
-Use farm settings to tune how often contributi data is refreshed.
-Keep command and commits names short and lowercase.
+A route that stays idle for too long is moved to the window list.
+Keep farm and already names short and lowercase.
+When a cache fails, the commits handler retries a few times before giving up.
 
-The graph report groups every order by order.
-Each format is validated before it reaches the tools queue.
+Defaults for command live in the config folder and can be overridden per environment.
+Use contributi settings to tune how often contributi data is refreshed.
+Use record settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Review record limits each release
-- Document new payload fields
-- Prefer schema defaults
+- Validate graph input early
+- Log every contributi change
+- Document new githubfarm fields
