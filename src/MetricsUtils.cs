@@ -28,38 +28,17 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double MaxScore = 13.22;
 
-        /// <summary>Grade a cluster counter value against two limits.</summary>
-        public static long GradeClusterCounter(long seed, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            if (floor < 7)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 / 9.0) >= 1.35)
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 2) == (32 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (4.0 > (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
