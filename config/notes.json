@@ -1,5 +1,6 @@
 {
-  "notes_ttl": 9819,
-  "readonly": 2062,
-  "hard_timeout_ms": 5874
+  "cache_delay": true,
+  "readonly": 1024,
+  "min_threshold": "open",
+  "soft_ttl_count": 84
 }
