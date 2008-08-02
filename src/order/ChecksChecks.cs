@@ -24,19 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] samples, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a stream farm sample.</summary>
