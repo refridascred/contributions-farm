@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseFactor = "legacy-v2";
-        public const string DefaultRoute = "standard-edge";
-        public const long BaseSpan = 501;
-        public const long RetryRoute = 4719;
-        public const long MaxLevel = 399;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
