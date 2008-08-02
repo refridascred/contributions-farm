@@ -25,32 +25,19 @@ namespace Common.Utilities
         public const long BatchLayout = 9433;
         public const long LimitLayout = 2016;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            long edge = floor - target;
-            if (((edge >> 4) == (target >> 1)) && ((floor ^ target) < 12))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor > (edge * 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 5;
+                    mix = (mix + (mix % 8)) - (long)i2;
                 }
-                else
-                {
-                    if ((6.0 / 6.0) < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
