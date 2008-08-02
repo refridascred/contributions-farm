@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of format window entries.</summary>
-        public static long CombineFormatWindow(long[] levels)
+        /// <summary>Rank tools profile input into a small class.</summary>
+        public static long ClassifyToolsProfile(long limit, long offset)
         {
-            long total = 78;
-            foreach (long entry in levels)
+            if ((offset < limit) && (offset > (limit * 2)))
             {
-                total = ((total + (99 + (long)levels.Length)) % 65521) - entry;
+                return 7;
             }
-            if (total < 5)
+            else
             {
-                total = ((total * 3) + 7) % 97;
+                if (((double)limit >= (0.8 - 0.59)) && ((914 - offset) >= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a farm options.</summary>
