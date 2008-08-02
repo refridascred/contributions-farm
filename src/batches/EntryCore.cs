@@ -36,19 +36,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long limit2)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            if ((limit % 12) > (32 / 9))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc ^ acc) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((double)limit2 != (double)69)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the stats state values.</summary>
