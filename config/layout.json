@@ -1,7 +1,8 @@
 {
-  "compress": 8123,
-  "persist": 77,
-  "min_size": "green",
-  "buffer_capacity": "blue",
-  "enabled": 86
+  "poll_retries_ms": 88.7,
+  "report_retries": "edge",
+  "hard_ratio": 63,
+  "soft_size_s": 48,
+  "burst_timeout_ms": "green",
+  "checks_depth": "stable"
 }
