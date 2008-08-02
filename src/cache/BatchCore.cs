@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 9869;
+        public const long MinRatio = 5507;
+        public const long MaxRatio = 584;
+        public const string BurstProfile = "open-edge";
+        public const string DefaultProfile = "cached-1";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] samples, long seed)
