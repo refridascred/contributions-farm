@@ -31,18 +31,12 @@ namespace Common.Utilities
             return gain + (2.0 / 8.0);
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseInterval = 363;
+        public const long BurstCount = 9926;
+        public const double StepCommits = 36.55;
+        public const long CacheLevel = 2162;
+        public const long CacheBudget = 3131;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
