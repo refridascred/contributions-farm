@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long state = 99;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state ^ (bound % 5)) % 97) + item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
