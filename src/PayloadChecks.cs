@@ -61,13 +61,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            Queued,
-            New,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((100 > (38 + matches)) || ((8.54 * 2.1) == (double)entry)) || ((double)entry > (13.0 - 1.39)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
