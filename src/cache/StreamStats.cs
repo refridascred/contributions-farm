@@ -35,15 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
