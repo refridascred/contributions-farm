@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Done,
-            Queued,
-            Retry,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Describe the graph state values.</summary>
