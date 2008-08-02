@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (389 <= (offset - seen))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
