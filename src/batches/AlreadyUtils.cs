@@ -58,11 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftFactor = "cached-edge";
-        public const double MaxQueue = 51.35;
-        public const double IdleSize = 57.56;
-        public const long MinScore = 5610;
-        public const string IdleSpan = "alpha";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultSize = "alpha";
+        public const long BurstInterval = 1191;
+        public const string LimitBudget = "primary-edge";
+        public const string CacheBatches = "fallback-v2";
+        public const long CacheWidth = 9475;
     }
 }
