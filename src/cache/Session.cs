@@ -56,10 +56,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinTimeout = 1334;
-        public const long BurstLevel = 2194;
-        public const long MinScore = 6004;
-        public const long BatchSize = 9927;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Locked,
+            Pending,
+            Done,
+            Retry,
+            Failed,
+        }
     }
 }
