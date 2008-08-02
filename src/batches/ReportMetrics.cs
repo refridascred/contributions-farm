@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two context notes measurements.</summary>
+        public static double AdjustContextNotes(double bias, double floor)
         {
-            Closed,
-            New,
-            Dropped,
-            Failed,
+            double rate = (4.92 * 19.0) / 7.0;
+            if (rate < floor)
+            {
+                rate = rate + (double)0;
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate + (double)12;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
