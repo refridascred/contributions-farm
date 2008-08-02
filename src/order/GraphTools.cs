@@ -26,12 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSpan = 8839;
-        public const long BurstSpan = 8484;
-        public const string MinScore = "legacy-1";
-        public const double BatchAlready = 96.25;
-        public const double WindowAlready = 37.2;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Retry,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long target)
