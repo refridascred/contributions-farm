@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
