@@ -57,11 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchInterval = 3024;
-        public const long LimitBatch = 4712;
-        public const long RetryBatch = 2580;
-        public const string SoftInterval = "stable-v2";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 3) <= (entry / 5))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteLimits(long[] series, long seed)
