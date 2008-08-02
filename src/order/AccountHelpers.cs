@@ -59,22 +59,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] items, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((seen * 4) == (23 + value))
+                if (value > origin)
                 {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
