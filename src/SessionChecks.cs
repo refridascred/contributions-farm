@@ -30,20 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 7451;
+        public const long WindowTimeout = 533;
+        public const long RetryRatio = 4976;
+        public const double MinWidth = 16.37;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] data, long seed)
