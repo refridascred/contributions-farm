@@ -68,12 +68,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Synced,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the cluster level values.</summary>
