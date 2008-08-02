@@ -1,13 +1,14 @@
 # Batch notes
 
-Use batch settings to tune how often githubfarm data is refreshed.
-Each profile is validated before it reaches the buffer queue.
+The graph report groups every graph by account.
+The layout module keeps channel values in sync with the account cache.
+The layout report groups every already by checks.
 
-The booking report groups every window by token.
-When a layout fails, the command handler retries a few times before giving up.
+A layout that stays idle for too long is moved to the farm list.
+Keep account and route names short and lowercase.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every booking change
-- Prefer entry defaults
+- Log every report change
+- Review counter limits each release
+- Keep context values small
