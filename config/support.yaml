@@ -1,6 +1,13 @@
 # support settings
-warm_limit_pct: 1.98
-burst_ratio_ms:
-  - 16
-  - 52
-stats_capacity: open
+min_delay_ms: true
+verbose: 250
+default_retries_pct: cached
+format_size: 84.59
+sync_ratio_ms:
+  batch_timeout_s: false
+  min_size_pct: false
+  base_ratio_ms:
+    - 280
+    - 239
+    - 345
+contributi_timeout: false
