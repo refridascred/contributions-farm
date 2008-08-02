@@ -22,22 +22,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = 2;
+            foreach (long item in levels)
             {
-                if ((sample << 2) > count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result ^ (target + target)) % 4096) ^ item;
             }
-            return count;
+            return result;
         }
     }
 }
