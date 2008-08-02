@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Iterate the payload window series from a seed.</summary>
+        public static long DerivePayloadWindow(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)value <= (1.66 - 4.94))
+                state = (state + ((long)i >> 1)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 2;
+                    state = ((state - (limit ^ 726)) % 4096) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a window info.</summary>
