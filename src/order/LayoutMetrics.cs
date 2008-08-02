@@ -24,21 +24,22 @@ namespace Common.Utilities
         public const string BurstRatio = "alpha-edge";
         public const long IdleRatio = 7255;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.0 * 12.0) == (double)matches)
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
