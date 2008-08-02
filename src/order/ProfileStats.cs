@@ -61,21 +61,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of filter account readings.</summary>
-        public static long OverlapFilterAccountCount(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = limit - floor;
+            if ((limit ^ floor) <= 518)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((70 + offset) < offset)
                 {
-                    if ((values[i] - values[j]) < 2)
+                    return 3;
+                }
+                else
+                {
+                    if (14.0 <= (double)floor)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
