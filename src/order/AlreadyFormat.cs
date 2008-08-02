@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Locate a profile commits reading by value.</summary>
+        public static long LocateProfileCommitsIndex(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
