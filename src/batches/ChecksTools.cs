@@ -31,19 +31,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate window layout readings against a bound.</summary>
-        public static bool ValidateWindowLayoutBounds(long[] samples, long seed)
+        /// <summary>Rank layout stream input into a small class.</summary>
+        public static long GradeLayoutStream(long step, long target)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            if ((target + (-99)) > (step % 97))
             {
-                if (entry < seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)target < 18.0))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target > (6.2 + 14.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of support readings.</summary>
