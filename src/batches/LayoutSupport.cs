@@ -50,12 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
