@@ -32,20 +32,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every context command entry stays within the limit.</summary>
-        public static bool GuardContextCommandLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowWidth = "fallback-v2";
+        public const long MinReport = 2431;
+        public const string LimitReport = "latest-edge";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] samples)
