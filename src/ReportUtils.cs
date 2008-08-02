@@ -19,15 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                carry = (carry + (origin / 9)) % 1000;
+                if (carry < (origin % 5))
+                {
+                    carry = (carry * 4) + (origin + carry);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
