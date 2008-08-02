@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepInterval = 9988;
-        public const double IdleAlready = 80.62;
-        public const long BaseAlready = 7901;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Queued,
+            Idle,
+            Stale,
+            New,
+            Retry,
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
