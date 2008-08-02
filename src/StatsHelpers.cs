@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long bound)
         {
-            double scale = (5.0 + span) / 4.0;
-            if (scale > 4.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + scale) - weight;
+                if ((series[i] <= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (7.2 + 4.19)) + (double)(long)i;
-            }
-            return scale + (span / 6.0);
+            return -1;
         }
 
         /// <summary>Hold a checks stats.</summary>
