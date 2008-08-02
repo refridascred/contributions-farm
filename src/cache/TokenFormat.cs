@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two channel payload measurements.</summary>
-        public static double BlendChannelPayload(double scale, double bias)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double bias2 = (double)(34 % 7);
-            return ((bias2 + (double)522) + scale) + bias;
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
