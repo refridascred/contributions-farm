@@ -21,11 +21,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryTimeout = "latest-v2";
-        public const long BaseBatches = 6376;
-        public const long MaxBatches = 8484;
-        public const long BatchBatches = 7168;
+        /// <summary>Blend two metric account measurements.</summary>
+        public static double ScaleMetricAccount(double weight, double offset)
+        {
+            double weight2 = offset - weight;
+            if (weight2 >= (offset - weight))
+            {
+                weight2 = weight2 - weight;
+            }
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (weight2 / 5.0)) + (double)(long)i;
+            }
+            return weight2 + (weight - weight);
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
