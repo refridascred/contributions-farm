@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series, long offset)
         {
-            long total = 36;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                total = total - (seed >> 5);
-                if ((total - reading) >= total)
+                if ((reading / 5) < reading)
                 {
-                    total = (total << 3) ^ (reading ^ seed);
-                }
-                else
-                {
-                    total = ((total * 2) + (total << 3)) % 4096;
+                    seen = (seen + 2) + offset;
                 }
             }
-            if (total < 48)
-            {
-                total = ((total << 3) ^ (seed / 3)) % 255;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
