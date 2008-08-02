@@ -1,9 +1,5 @@
 # githubfarm settings
-idle_capacity_pct: 500
-order_capacity:
-  idle_ratio_pct: 3.65
-  sync_timeout: false
-  batch_ratio_ms: staging
-warm_window_ms: latest
-idle_limit_s: green
-enabled: true
+cluster_retries: 48.91
+readonly: 86
+audit: 1108
+account_threshold: 81.8
