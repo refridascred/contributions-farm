@@ -38,11 +38,12 @@ namespace Common.Utilities
             return ratio + 10.0;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
