@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftInterval = 186;
-        public const long StepProfile = 6770;
-        public const long BaseInterval = 3133;
-        public const long StepSize = 8767;
-        public const long BatchTimeout = 6202;
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long SeekChannelOrderIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank profile session input into a small class.</summary>
         public static long ClassifyProfileSession(long offset, long origin)
