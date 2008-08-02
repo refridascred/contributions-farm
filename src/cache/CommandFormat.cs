@@ -45,24 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = -841;
-            foreach (long entry in items)
-            {
-                long lane = anchor;
-                anchor = (anchor * 3) + (1 ^ lane);
-                if (((double)entry < (6.0 - 12.0)) || (((long)items.Length + entry) < (anchor >> 5)))
-                {
-                    anchor = (anchor - (anchor * 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ entry;
-                }
-            }
-            return anchor % 65521;
+            Active,
+            Idle,
+            Paused,
         }
     }
 }
