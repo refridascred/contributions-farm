@@ -13,40 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long offset)
-        {
-            long diff = limit + offset;
-            if (offset <= (limit % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 2) > diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.8 / 2.0) == (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)diff)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6285;
+        public const double BaseProfile = 5.87;
+        public const string MaxCount = "open-1";
+        public const string BurstInterval = "strict";
+        public const string MaxProfile = "local-edge";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long bound)
