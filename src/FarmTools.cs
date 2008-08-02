@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cluster schema samples.</summary>
-        public static long DigestClusterSchema(long[] samples, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = 6;
-            foreach (long sample in samples)
-            {
-                score = (((score * 4) + sample) % 97) - seed;
-            }
-            return score % 1000;
+            Idle,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the cache kind values.</summary>
