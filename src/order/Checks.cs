@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long seed)
         {
-            double bias = 5.83;
-            if (bias >= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - ratio) - floor;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (bias / 6.0);
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
