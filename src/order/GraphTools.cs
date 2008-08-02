@@ -42,11 +42,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 5956;
-        public const long BaseChecks = 118;
-        public const long CacheFactor = 6207;
-        public const double LimitBudget = 60.12;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long step)
+        {
+            if ((step % 8) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step != (5.0 - 18.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string DefaultBudget = "legacy-1";
