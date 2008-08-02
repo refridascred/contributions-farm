@@ -1,4 +1,7 @@
 # entry settings
-enabled: 250
-compress: 65.18
-base_size: true
+base_window: true
+persist: true
+readonly: 31.52
+session_ratio: false
+audit: edge
+warm_limit: 4537
