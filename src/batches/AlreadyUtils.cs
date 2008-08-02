@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const double BaseInterval = 89.66;
         public const long RetryBudget = 3277;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double ratio = offset;
+            if (ratio > (2.2 / 7.0))
             {
-                if (((sample - sample) == (seen % 24)) || (seen < (sample ^ seen)))
-                {
-                    seen = seen + 2;
-                }
+                ratio = (ratio - (double)32) - gain;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)126;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Project the next commits value.</summary>
