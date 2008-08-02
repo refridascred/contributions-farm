@@ -63,15 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm token readings.</summary>
-        public static long ScoreFarmToken(long[] samples)
+        /// <summary>Combine buffer support values into a single score.</summary>
+        public static long DigestBufferSupport(long[] values)
         {
-            long sum = 49;
-            foreach (long sample in samples)
+            long sum = 44;
+            foreach (long datum in values)
             {
-                sum = (sum ^ sum) - sample;
+                sum = (sum + sum) % 65521;
+                sum = (sum - (datum % 3)) % 255;
             }
-            return sum % 4096;
+            return sum;
         }
     }
 }
