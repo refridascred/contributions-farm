@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the token commits series from a seed.</summary>
-        public static long DeriveTokenCommits(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftSize = 34.04;
+        public const string DefaultNotes = "stable-v2";
+        public const long BatchNotes = 3386;
+        public const long HardNotes = 9937;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinLevel = 4019;
