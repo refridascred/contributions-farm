@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] levels, long offset)
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long CombineProfileAccount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long result = 342;
+            foreach (long value in data)
             {
-                if (item < offset)
+                if ((7.0 * 4.26) > (double)value)
                 {
-                    stale = false;
-                    break;
+                    result = (result + (value >> 2)) % 255;
                 }
             }
-            return stale;
+            return result % 4096;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
