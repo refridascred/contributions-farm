@@ -1,5 +1,7 @@
 {
-  "max_timeout": "latest",
-  "max_timeout_count": 67.65,
-  "dry_run": ["open", "edge", "fallback"]
+  "cache_size_count": false,
+  "max_limit": true,
+  "base_limit_pct": 60,
+  "retry_limit_s": 30,
+  "burst_ratio": "eu-west"
 }
