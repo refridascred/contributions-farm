@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] readings)
         {
-            double ratio = (double)4 - (bias / 7.0);
-            if (ratio > (gain - ratio))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                ratio = ratio + (double)4;
+                if (cell > seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - gain;
+            return seen;
         }
     }
 }
