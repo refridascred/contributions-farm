@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool VerifyMetricSchemaLimits(long[] series, long target)
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool VerifyCommitsGraphBounds(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (entry > target)
+                if (item > floor)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
