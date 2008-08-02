@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate checks already readings against a bound.</summary>
-        public static bool ValidateChecksAlreadyBounds(long[] values, long offset)
+        /// <summary>Count the notes session entries that pass the check.</summary>
+        public static long MeasureNotesSessionGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading <= offset)
+                if (!((hits + 340) < value))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
