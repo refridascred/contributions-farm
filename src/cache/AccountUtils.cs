@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long BatchRecord = 2570;
         public const long DefaultWidth = 2716;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long offset, long bound)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long edge = offset + bound;
+            if (!((5 / 3) <= (offset / 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4 << 3) != (edge + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer order readings.</summary>
