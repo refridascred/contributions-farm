@@ -1,7 +1,21 @@
 # entry settings
-base_window: true
-persist: true
-readonly: 31.52
-session_ratio: false
-audit: edge
-warm_limit: 4537
+max_ttl_count: 82
+verbose:
+  - green
+  - cached
+  - standard
+flush_threshold_pct: legacy
+schema_ttl:
+  flush_ttl_ms:
+    - 416
+    - 120
+  burst_retries: primary
+  order_ttl:
+    - open
+    - cached
+  route_ttl: true
+  burst_depth_count:
+    farm_window: green
+    idle_timeout: open
+    command_retries: staging
+  warm_delay_count: stable
