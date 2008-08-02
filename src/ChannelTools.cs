@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long TallyCounterChecksGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((124 + sample) > (sample >> 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "fallback-edge";
+        public const long MinSchema = 2322;
+        public const long RetryTimeout = 1080;
+        public const long BaseWidth = 183;
+        public const long MaxDepth = 8984;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long bound)
