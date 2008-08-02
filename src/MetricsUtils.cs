@@ -22,30 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record editor entries.</summary>
-        public static long CombineRecordEditor(long[] levels, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 979;
-            foreach (long value in levels)
-            {
-                if ((bound + carry) == ((-301) >> 3))
-                {
-                    carry = carry ^ (value + value);
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
-                if ((carry + bound) <= (value / 2))
-                {
-                    carry = ((carry << 3) ^ (442 - 7)) % 101;
-                }
-                else
-                {
-                    carry = carry - (4 % 97);
-                }
-            }
-            return carry % 97;
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
