@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Combine record metric values into a single score.</summary>
+        public static long ScoreRecordMetric(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long acc = 21;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (acc <= (acc + entry))
                 {
-                    acc = (acc - ((long)i2 - acc)) % 101;
+                    acc = acc + acc;
                 }
-                acc = (acc * 3) + (acc & 3);
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = (acc + (acc - acc)) % 4096;
             }
-            return acc;
+            if (acc > 776)
+            {
+                acc = (acc * 3) + (57 * 4);
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
