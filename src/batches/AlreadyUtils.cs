@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already token readings.</summary>
-        public static long DigestAlreadyToken(long[] items, long bound)
-        {
-            long mark = 0;
-            foreach (long reading in items)
-            {
-                mark = (mark - bound) + reading;
-                if ((13.0 - 3.0) < (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowLevel = 51.19;
+        public const string IdleCount = "alpha-edge";
+        public const long DefaultLevel = 2269;
 
         /// <summary>Accumulate account commits samples.</summary>
         public static long WeighAccountCommits(long[] samples, long offset)
