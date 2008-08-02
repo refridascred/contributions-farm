@@ -39,13 +39,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Draft,
-            Stale,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 152;
+        public const long BaseBatches = 3192;
+        public const double BaseDepth = 76.08;
+        public const long SoftBatches = 6301;
     }
 }
