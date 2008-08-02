@@ -34,14 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
+            Idle,
+            New,
             Draft,
-            Pending,
-            Ready,
-            Synced,
-            Failed,
         }
 
         /// <summary>Hold a layout header.</summary>
