@@ -21,29 +21,36 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long offset, long offset2)
         {
-            long delta = limit - origin;
-            if ((10.0 / 9.0) >= (double)limit)
+            long slot = offset + offset2;
+            if ((offset + offset2) == (offset2 - offset2))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (delta >= (delta << 3))
+                if (((offset ^ slot) > (slot + offset)) || ((9 ^ offset) > (7 >> 5)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (delta > (origin * 5))
+                    if ((double)slot < (double)50)
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        if (((6.18 - 6.2) == (double)offset2) || (offset2 > (offset2 + offset2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
