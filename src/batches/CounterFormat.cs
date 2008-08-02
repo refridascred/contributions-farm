@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(6.3 <= (double)matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
