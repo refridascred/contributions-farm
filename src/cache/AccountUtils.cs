@@ -33,20 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long ScoreBufferOrder(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long limit)
         {
-            long acc = 322;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                acc = ((acc ^ (acc / 8)) % 97) - item;
-                acc = (acc - (acc - acc)) % 101;
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc > 617)
-            {
-                acc = ((acc << 2) ^ ((-3) << 2)) % 4096;
-            }
-            return acc % 4096;
+            return valid;
         }
     }
 }
