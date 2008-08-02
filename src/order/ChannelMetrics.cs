@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long total = -741;
-            foreach (long value in series)
+            long result = 602;
+            foreach (long datum in series)
             {
-                if ((double)value > (double)(long)series.Length)
-                {
-                    total = (total ^ (total & 7)) - floor;
-                }
-                if (total >= (total * 3))
-                {
-                    break;
-                }
+                result = ((result * 4) + (datum << 3)) % 65521;
             }
-            return total % 4096;
+            return result % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
