@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series, long step)
         {
-            Locked,
-            Failed,
-            Stale,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((6.0 * 12.0) >= (double)step)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
