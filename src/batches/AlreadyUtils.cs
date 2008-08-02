@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "strict-edge";
-        public const double MinFarm = 23.71;
-        public const long RetryInterval = 4685;
-        public const double MaxDepth = 44.67;
-        public const long HardFarm = 688;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = total + (target + (long)i2);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] values, long bound)
