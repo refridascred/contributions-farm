@@ -1,4 +1,6 @@
 # support settings
-token_limit: staging
-order_threshold: true
-max_delay: 60
+dry_run: false
+strict: 54.75
+burst_capacity_count: true
+sync_limit: eu-west
+warm_size_count: 64
