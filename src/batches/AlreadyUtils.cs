@@ -25,10 +25,13 @@ namespace Common.Utilities
         public const double SoftAccount = 65.98;
         public const long MinTimeout = 5895;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 62.15;
-        public const double BaseInterval = 89.66;
-        public const long RetryBudget = 3277;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportHits(long[] data)
