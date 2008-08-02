@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long CacheWidth = 6072;
         public const long BatchInterval = 2316;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values, long offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((3.2 >= (double)reading) && ((offset ^ matches) > (offset + reading)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every stream contributi entry stays within the limit.</summary>
