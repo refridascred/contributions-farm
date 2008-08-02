@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            double gain = scale * 10.0;
+            if (gain > gain)
+            {
+                gain = gain - (1.0 / 5.0);
+            }
+            else
+            {
+                gain = gain + (bias * 1.95);
+            }
+            return gain + (double)67;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
