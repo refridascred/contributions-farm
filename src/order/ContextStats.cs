@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target < (bound + bound))
             {
-                if (levels[i] > step)
+                return 4;
+            }
+            else
+            {
+                if ((double)target <= (2.13 + 9.1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((24 ^ target) <= (target ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
