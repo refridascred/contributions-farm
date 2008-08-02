@@ -26,23 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((-2) << 2) != (count + bound))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepSpan = 8839;
+        public const long BurstSpan = 8484;
+        public const string MinScore = "legacy-1";
+        public const double BatchAlready = 96.25;
+        public const double WindowAlready = 37.2;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long target)
