@@ -21,12 +21,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSpan = 3263;
-        public const long MaxFactor = 6195;
-        public const string DefaultWidth = "local-v2";
-        public const long StepTimeout = 6779;
-        public const long CacheContributi = 5958;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double floor)
+        {
+            double gain2 = floor;
+            if (gain2 < gain)
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 + (double)572;
+        }
 
         /// <summary>Combine tools report values into a single score.</summary>
         public static long CombineToolsReport(long[] values, long floor)
