@@ -1,28 +1,18 @@
 # entry settings
-sync_size_count:
-  dry_run:
-    idle_limit_s: 100
-    batch_timeout_ms: eu-west
-    min_depth: false
-    hard_retries_s: 86.02
-  idle_timeout_s: 8453
-  batch_timeout: fallback
-  buffer_threshold: 30.38
-  cluster_interval: standard
-  audit: latest
-min_threshold_pct:
-  hard_ratio_ms: true
-  soft_depth_pct: 37.48
-  retry_limit_ms:
-    - 156
-    - 449
-  retry_limit_pct: 94.15
-  cache_ratio_ms:
-    - 68
-    - 111
-    - 191
-    - 97
-  contributi_ttl: 1024
-entry_size: 21.6
-dry_run: 36.92
-enabled: 3424
+dry_run: true
+session_delay: false
+base_limit_s:
+  tools_depth:
+    filter_depth: 30
+    default_depth_s: 2669
+    enabled: stable
+    base_interval_count: 100
+  session_ratio: true
+  report_capacity: 89
+  warm_size:
+    - primary
+    - eu-west
+    - standard
+    - legacy
+sync_delay_count: 500
+batch_capacity: latest
