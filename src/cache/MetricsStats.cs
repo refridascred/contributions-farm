@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            New,
-            Ready,
-            Pending,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) <= (tally - 757))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two entry measurements.</summary>
