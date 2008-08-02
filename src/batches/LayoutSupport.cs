@@ -30,23 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 870;
-            foreach (long cell in values)
-            {
-                score = (score ^ (cell + cell)) % 97;
-                if (!((score % 97) > (cell % 16)))
-                {
-                    score = ((score * 4) + (cell >> 3)) % 97;
-                }
-            }
-            if (score > 193)
-            {
-                score = ((score * 3) + (score >> 1)) % 255;
-            }
-            return score % 4096;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
