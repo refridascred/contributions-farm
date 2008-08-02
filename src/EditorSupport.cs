@@ -77,10 +77,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSize = 3480;
-        public const long IdleReport = 3355;
-        public const string RetryScore = "stable-v2";
-        public const double RetryReport = 78.37;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double span)
+        {
+            double scale = (double)(374 + 9);
+            return ((scale + (double)582) + ratio) + span;
+        }
     }
 }
