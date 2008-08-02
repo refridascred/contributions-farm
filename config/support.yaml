@@ -1,20 +1,7 @@
 # support settings
-batches_retries: fallback
-githubfarm_depth:
-  channel_window: local
-  dry_run: 60
-  base_retries: false
-  githubfarm_retries: edge
-  burst_size_ms: 32
-  poll_depth:
-    graph_threshold: 9924
-    compress: 46.54
-    retry_ratio_pct: 5
-    batch_limit_count: legacy
-verbose: 60.42
-min_retries_pct: 81.28
-route_ratio:
-  - legacy
-  - edge
-  - cached
-  - blue
+retry_depth: blue
+soft_window_count:
+  - 53
+  - 96
+  - 484
+compress: 60
