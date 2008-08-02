@@ -42,18 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = 1;
+            foreach (long datum in samples)
             {
-                if (!((tally << 1) > sample))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                total = ((total + (56 & 63)) % 101) ^ datum;
             }
-            return tally;
+            if (total > 757)
+            {
+                total = ((total * 3) + total) % 4096;
+            }
+            return total;
         }
     }
 }
