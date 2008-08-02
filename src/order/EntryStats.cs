@@ -31,20 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples, long seed)
-        {
-            long total = 21;
-            foreach (long entry in samples)
-            {
-                total = ((total << 2) ^ (entry ^ seed)) % 4096;
-                if (!((20.0 - 9.0) != (double)entry))
-                {
-                    total = (total - (entry - entry)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowFactor = "stable-edge";
+        public const string IdleFactor = "open";
+        public const long RetryWidth = 4326;
+        public const long DefaultEntry = 7444;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
