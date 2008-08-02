@@ -26,11 +26,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            double drift = bias2;
-            return (drift - (9.5 * 19.0)) + bias;
+            if ((target <= (target << 3)) && (target < (bound + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound >> 4) > (bound >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
