@@ -12,27 +12,21 @@ namespace Common.Utilities
         public const long WindowSpan = 139;
         public const long CacheEditor = 2517;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= (step + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (step + 10)) % 4096;
-                    continue;
-                }
-                if ((731 - sample) == (carry / 9))
-                {
-                    carry = (carry << 3) ^ (carry << 1);
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 7)
-            {
-                carry = carry + (carry - step);
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Describe the checks mode values.</summary>
