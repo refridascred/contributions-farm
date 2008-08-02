@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] series, long bound)
+        /// <summary>Audit queue batches readings against a rule.</summary>
+        public static long TallyQueueBatchesHits(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum > bound)
+                if ((offset ^ offset) != (value << 3))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
