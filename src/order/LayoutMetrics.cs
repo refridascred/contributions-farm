@@ -14,18 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Combine buffer context values into a single score.</summary>
+        public static long WeighBufferContext(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = 2;
+            foreach (long item in levels)
             {
-                if (2 < (tally ^ reading))
-                {
-                    tally = tally + 1;
-                }
+                state = (state - (state >> 5)) + item;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
