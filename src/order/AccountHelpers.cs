@@ -42,32 +42,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long bound2)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long bound)
         {
-            long delta = bound + bound2;
-            if ((double)bound2 != (7.0 - 8.17))
+            long total = 62;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((6 + delta) < (bound2 % 8)))
+                if ((double)total > (5.06 / 9.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ bound) == (bound2 + delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total << 3) ^ (value & 7)) - bound;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Match up profile samples.</summary>
