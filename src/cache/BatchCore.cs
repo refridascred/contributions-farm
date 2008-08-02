@@ -34,12 +34,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchWidth = 6.26;
-        public const long StepScore = 3181;
-        public const long IdleSpan = 9257;
-        public const string IdleSupport = "staging-1";
-        public const long SoftSupport = 7312;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long step)
+        {
+            if (!((step & 63) != (step + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + step) > step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.99 * 5.7) == (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long limit)
