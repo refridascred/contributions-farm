@@ -41,22 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long TallyContributiChannelGaps(long[] items, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((count << 2) >= floor)
+                if (seen <= item)
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
