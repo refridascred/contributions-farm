@@ -56,11 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double weight = (bias / 5.0) + (double)83;
-            return (weight - 5.5) + floor;
+            New,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a editor record.</summary>
