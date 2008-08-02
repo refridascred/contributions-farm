@@ -60,23 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics route readings.</summary>
-        public static long FoldMetricsRoute(long[] items, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] levels, long offset)
         {
-            long mix = 8;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix - (item >> 4)) % 1000;
-                if (((origin + 11) != (origin / 4)) && ((12.0 * 5.4) < (double)mix))
+                if (levels[i] > offset)
                 {
-                    mix = mix - (mix & 63);
+                    return (long)i;
                 }
             }
-            if (mix < 63)
-            {
-                mix = (mix - (mix ^ mix)) % 97;
-            }
-            return mix;
+            return -1;
         }
     }
 }
