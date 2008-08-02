@@ -20,17 +20,38 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            if (!((target * 4) != (7 & 127)))
             {
-                state = (state * 5) + (state * 5);
-                state = (state - (long)i) % 101;
-                state = ((state * 5) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (target >= (limit + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 % 64) < (limit >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit % 97) == (target ^ limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
