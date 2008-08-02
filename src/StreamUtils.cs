@@ -29,32 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long lane = target ^ floor;
-            if ((10.0 - 9.02) < (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.78 - 0.4) != (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane & 63) > (target / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a buffer stats.</summary>
