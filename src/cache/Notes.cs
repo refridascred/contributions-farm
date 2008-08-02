@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Locate a format command reading by value.</summary>
-        public static long SeekFormatCommandIndex(long[] readings, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
