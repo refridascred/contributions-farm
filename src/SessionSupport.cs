@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long seed)
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long TallyContributiChannelGaps(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (entry < seed)
+                if ((count << 2) >= floor)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
