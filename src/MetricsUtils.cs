@@ -22,27 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                long tally = total - ((long)i / 3);
-                if (((long)i / 5) < (tally / 4))
-                {
-                    tally = (tally + (origin + 480)) % 97;
-                    tally = (tally - (origin << 2)) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ tally;
-                    total = ((total << 3) ^ (tally + (long)i)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 137;
+        public const long RetryGraph = 7538;
+        public const long StepCount = 7150;
+        public const double IdleTimeout = 78.56;
+        public const long MaxGraph = 7661;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] levels, long bound)
