@@ -48,19 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] series, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
