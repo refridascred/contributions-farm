@@ -20,13 +20,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((3.1 * 4.1) <= (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
