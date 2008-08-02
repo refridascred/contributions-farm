@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of format buffer entries.</summary>
+        public static long FoldFormatBuffer(long[] samples)
         {
-            New,
-            Pending,
-            Stale,
-            Queued,
-            Failed,
+            long carry = 28;
+            foreach (long reading in samples)
+            {
+                if ((reading + 914) != (carry + 3))
+                {
+                    carry = (carry << 3) ^ (carry + carry);
+                }
+            }
+            if (carry > 8)
+            {
+                carry = ((carry << 2) ^ ((-998) + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Validate checks editor readings against a bound.</summary>
