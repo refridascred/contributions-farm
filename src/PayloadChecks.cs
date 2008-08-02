@@ -75,15 +75,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double gain = span;
-            if (gain < scale)
-            {
-                gain = gain - gain;
-            }
-            return gain - (8.5 - span);
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
