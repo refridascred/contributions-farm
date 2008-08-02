@@ -1,19 +1,22 @@
 # githubfarm settings
-audit: 72.75
-metrics_size: 4956
-context_delay: false
-max_depth:
-  - latest
-  - legacy
-  - standard
-warm_ratio:
-  base_capacity_s: eu-west
-  audit: eu-west
-  window_ttl: 9824
-  max_ratio: 1024
-  min_timeout: staging
-  soft_retries_ms: stable
-record_delay:
-  - 424
-  - 345
-  - 64
+max_size_count: edge
+batch_limit_s:
+  enabled: 30
+  warm_window_ms: true
+  cache_depth:
+    - 347
+    - 56
+    - 1
+  strict: 60
+  warm_threshold: 250
+idle_delay_ms:
+  flush_interval_pct:
+    - cached
+    - primary
+  min_timeout: open
+  session_interval:
+    warm_limit_ms: fallback
+    strict: cached
+    dry_run: 37
+    base_window_ms: true
+payload_delay: false
