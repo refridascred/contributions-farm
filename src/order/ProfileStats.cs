@@ -43,11 +43,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSpan = 2719;
-        public const string CacheRoute = "legacy-edge";
-        public const long BurstCount = 8474;
-        public const long StepRatio = 1086;
-        public const string HardBudget = "alpha-edge";
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
