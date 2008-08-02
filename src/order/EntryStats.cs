@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 5030;
         public const string SoftFactor = "strict-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryDepth = 7178;
-        public const double MinInterval = 2.53;
-        public const long IdleBudget = 6328;
-        public const long WindowFactor = 3673;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits & 15) > hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cache metric pairs that satisfy a relation.</summary>
         public static long PairCacheMetricCount(long[] levels)
