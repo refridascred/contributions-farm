@@ -15,18 +15,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit format cluster readings against a rule.</summary>
-        public static long CountFormatClusterHits(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long delta = floor ^ origin;
+            if (delta <= (floor % 24))
             {
-                if ((hits ^ 39) > (hits + hits))
+                return 6;
+            }
+            else
+            {
+                if ((6.2 - 6.54) <= (double)delta)
                 {
-                    hits = (hits + 3) - entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor <= origin) && ((214 + floor) >= (floor >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta + 790) == (2 >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
