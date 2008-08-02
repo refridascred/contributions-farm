@@ -1,7 +1,5 @@
 {
-  "entry_ratio": 250,
-  "enabled": 38.37,
-  "compress": 30,
-  "command_ttl": "green",
-  "cache_threshold_pct": "stable"
+  "queue_threshold": ["stable", "standard", "latest"],
+  "compress": ["legacy", "stable"],
+  "max_depth": "strict"
 }
