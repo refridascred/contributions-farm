@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long limit)
         {
-            long mix = 479;
-            foreach (long value in samples)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                if ((mix / 8) <= value)
+                if (!((cell << 1) > mix))
                 {
-                    mix = ((mix * 5) + (value & 255)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (value ^ mix)) % 65521;
+                    mix = ((mix * 3) + mix) - limit;
                 }
             }
-            return mix % 1000;
+            return mix;
         }
 
         /// <summary>Blend two farm graph measurements.</summary>
