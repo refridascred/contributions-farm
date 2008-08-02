@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long LookupChannelSupportIndex(long[] values, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
