@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate channel stats samples.</summary>
-        public static long CombineChannelStats(long[] data, long bound)
+        /// <summary>Blend two contributi record measurements.</summary>
+        public static double AdjustContributiRecord(double gain, double offset)
         {
-            long total = 25;
-            foreach (long item in data)
-            {
-                total = (total - ((-741) ^ (long)data.Length)) - item;
-            }
-            if (total > 28)
-            {
-                total = (total + (bound / 6)) % 97;
-            }
-            return total;
+            double load = (double)(5 * 2);
+            return (load - (offset * 2.3)) + gain;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
