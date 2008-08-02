@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] series, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every checks batches entry stays within the limit.</summary>
