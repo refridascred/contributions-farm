@@ -20,18 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] values, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((3.1 / 8.0) > (double)target)
             {
-                if (((2.4 / 8.0) > (double)target) && ((entry - entry) < 96))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > 0.92)
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target <= (offset << 3)) && ((offset % 97) >= offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
