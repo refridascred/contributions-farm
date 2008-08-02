@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long offset2)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            if ((1 % 10) > (offset ^ offset2))
+            double load = offset;
+            if (load <= (offset - load))
             {
-                return 7;
+                load = load + (double)186;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset2 % 7) < (offset2 * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = (load - (bias * 4.92)) + (double)(long)i;
             }
+            return load - (load - offset);
         }
 
         /// <summary>Describe the route kind values.</summary>
