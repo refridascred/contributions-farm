@@ -28,18 +28,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen <= item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - bound;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
