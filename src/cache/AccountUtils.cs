@@ -20,12 +20,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long bound)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long next = floor - bound;
+            if (((bound + next) >= (652 % 3)) || ((next - next) < (next + floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (712 > (bound + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the schema level values.</summary>
