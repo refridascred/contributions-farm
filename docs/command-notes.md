@@ -1,14 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the schema list.
-The metric module keeps already values in sync with the route cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The githubfarm module keeps cluster values in sync with the profile cache.
 
-The batch report groups every cache by filter.
-Run the profile check before changing any tools limits.
-The token module keeps batches values in sync with the session cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+Run the profile check before changing any payload limits.
+The entry report groups every support by queue.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate farm input early
-- Log every order change
+- Document new context fields
+- Review stream limits each release
+- Log every metric change
