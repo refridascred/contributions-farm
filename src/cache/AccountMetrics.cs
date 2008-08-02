@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 1909;
-        public const long BaseLevel = 378;
-        public const long BatchCommits = 702;
-        public const long BatchFactor = 5076;
-        public const double SoftCommits = 85.04;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (floor > (sample + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double StepToken = 1.68;
