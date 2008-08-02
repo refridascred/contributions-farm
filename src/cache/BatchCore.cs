@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long origin)
+        /// <summary>Validate context account readings against a bound.</summary>
+        public static bool VerifyContextAccountRange(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (item > origin)
+                if (datum <= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
