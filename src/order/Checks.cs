@@ -69,17 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 674;
+            foreach (long reading in data)
             {
-                if (readings[i] >= seed)
+                if (((4.77 - 2.0) < (double)mix) || ((mix - 83) < mix))
                 {
-                    return (long)i;
+                    mix = ((mix ^ (mix << 2)) % 101) ^ reading;
                 }
             }
-            return -1;
+            if (mix > (-71))
+            {
+                mix = mix - (mix / 6);
+            }
+            return mix % 4096;
         }
     }
 }
