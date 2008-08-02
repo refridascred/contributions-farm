@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            Closed,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
