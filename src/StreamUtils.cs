@@ -84,32 +84,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token tools input into a small class.</summary>
-        public static long ClassifyTokenTools(long origin, long origin2)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long slot = origin - origin2;
-            if ((double)slot >= (16.0 - 10.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin2 < (2.6 * 5.85)) || ((slot >> 1) <= (slot >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin2 + origin) >= (origin - slot))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Queued,
+            Dropped,
         }
     }
 }
