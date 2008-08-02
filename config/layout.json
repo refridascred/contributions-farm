@@ -1,9 +1,8 @@
 {
-  "burst_depth": "green",
-  "compress": {
-    "min_ratio_ms": false,
-    "editor_ratio": "green",
-    "context_delay": true
-  },
-  "cache_timeout_pct": "eu-west"
+  "poll_timeout_count": false,
+  "commits_threshold": 21,
+  "retry_limit": 28.33,
+  "idle_ttl_pct": 29.85,
+  "flush_ratio": 53.94,
+  "warm_capacity": 80.24
 }
