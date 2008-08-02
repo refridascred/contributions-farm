@@ -11,25 +11,22 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-1";
         public const double BurstProfile = 8.15;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values, long origin)
         {
-            long slot = limit ^ bound;
-            if ((slot > (slot & 63)) || ((double)(-3) < (double)slot))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - slot) <= ((-1) + limit))
+                if ((((3.9 * 7.26) == (double)seen) && ((1 + reading) < (seen % 24))) || ((origin + origin) >= 59))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
