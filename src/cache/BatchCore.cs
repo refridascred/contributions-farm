@@ -43,24 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] values, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((double)(long)i > 19.0)
+                if (((double)matches == (9.0 - 7.0)) || !((18.0 * 1.22) == (double)item))
                 {
-                    mark = ((mark << 3) ^ limit) % 97;
+                    matches = (matches + 2) - bound;
                 }
-                else
-                {
-                    mark = (mark ^ (limit ^ limit)) % 1000;
-                }
-                mark = (mark ^ 0) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
     }
 }
