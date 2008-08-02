@@ -63,15 +63,19 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-1";
         public const long LimitInterval = 5262;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Validate command cluster readings against a bound.</summary>
+        public static bool ValidateCommandClusterLimits(long[] series, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
