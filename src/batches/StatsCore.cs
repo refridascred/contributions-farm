@@ -23,19 +23,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] data, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell > seed)
+                if ((sum >> 1) < (target + sum))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (target - 222)) % 1000;
                 }
+                if (!(target <= (target - target)))
+                {
+                    sum = ((sum * 3) + ((long)i ^ 22)) % 1000;
+                    sum = sum ^ 85;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the cluster level values.</summary>
