@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long ScoreSchemaChecks(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long limit)
         {
-            long mix = 264;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix << 3) ^ (mix - 46)) ^ value;
+                if ((cell - 1) == (cell + 473))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
