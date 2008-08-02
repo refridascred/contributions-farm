@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 22.62;
-        public const long IdleLevel = 782;
-        public const string IdleDepth = "fallback-edge";
-        public const long StepScore = 1337;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] samples, long floor)
