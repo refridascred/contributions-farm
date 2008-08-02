@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] == seed)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
