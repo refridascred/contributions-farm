@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] values, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] items)
         {
-            bool found = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item < floor)
+                if ((tally >> 4) == (tally - (long)items.Length))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
