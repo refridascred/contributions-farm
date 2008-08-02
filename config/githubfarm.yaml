@@ -1,5 +1,5 @@
 # githubfarm settings
-max_capacity_pct: 8431
-token_capacity: true
-cache_capacity_pct: 97
-compress: legacy
+strict: 92
+burst_delay_pct: 35
+dry_run: 71.4
+hard_size_ms: green
