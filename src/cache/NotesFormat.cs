@@ -29,15 +29,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 7888;
         public const long RetryFactor = 3256;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Ready,
+            New,
+            Retry,
         }
     }
 }
