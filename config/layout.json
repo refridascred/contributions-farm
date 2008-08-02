@@ -1,8 +1,6 @@
 {
-  "poll_retries_ms": 88.7,
-  "report_retries": "edge",
-  "hard_ratio": 63,
-  "soft_size_s": 48,
-  "burst_timeout_ms": "green",
-  "checks_depth": "stable"
+  "max_retries_s": 9502,
+  "batch_threshold_count": "edge",
+  "account_limit": 250,
+  "already_size": 8.6
 }
