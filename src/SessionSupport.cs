@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long target)
+        /// <summary>Accumulate channel stats samples.</summary>
+        public static long CombineChannelStats(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 25;
+            foreach (long item in data)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                total = (total - ((-741) ^ (long)data.Length)) - item;
             }
-            return -1;
+            if (total > 28)
+            {
+                total = (total + (bound / 6)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
