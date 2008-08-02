@@ -59,10 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSpan = 4923;
-        public const long DefaultNotes = 9517;
-        public const long SoftTimeout = 7829;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc - ((long)i << 1)) % 255;
+                acc = (acc - (280 * 4)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] values, long origin)
