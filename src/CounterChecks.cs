@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Iterate the token commits series from a seed.</summary>
+        public static long DeriveTokenCommits(long target)
         {
-            double load = bias;
-            if (load < (double)20)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                load = (load - (bias / 2.0)) + offset;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return load + bias;
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
