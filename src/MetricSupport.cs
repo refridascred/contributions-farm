@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 36;
-            foreach (long reading in samples)
-            {
-                if (!(75 > reading))
-                {
-                    state = (state ^ bound) % 65521;
-                }
-            }
-            return state % 4096;
+            New,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the stats status values.</summary>
