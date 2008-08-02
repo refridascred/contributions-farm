@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 5293;
-        public const long BatchLevel = 7809;
-        public const string MinWidth = "open";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double gain, double bias)
