@@ -38,22 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] readings, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            long score = 51;
-            foreach (long datum in readings)
+            double scale = bias / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score ^ (score - datum)) % 97) ^ (long)i;
-                }
-                if ((double)bound < (double)datum)
-                {
-                    score = (score << 2) ^ bound;
-                }
+                scale = (scale + (bias + weight)) + (double)(long)i;
             }
-            return score;
+            return scale - (scale - 18.0);
         }
     }
 }
