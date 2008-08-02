@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] series)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)seen <= (9.2 - 14.0))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits header.</summary>
