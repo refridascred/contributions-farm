@@ -21,15 +21,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
         {
-            double gain2 = floor;
-            if (gain2 < gain)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                gain2 = gain2 - gain2;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return gain2 + (double)572;
+            return total;
         }
 
         /// <summary>Fold a list of record readings.</summary>
