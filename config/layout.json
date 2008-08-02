@@ -1,7 +1,5 @@
 {
-  "dry_run": "fallback",
-  "idle_ratio": 75,
-  "sync_retries_ms": 5482,
-  "max_ratio_pct": 64,
-  "base_threshold_ms": "latest"
+  "readonly": ["primary", "strict"],
+  "base_capacity_s": true,
+  "persist": ["stable", "green", "eu-west"]
 }
