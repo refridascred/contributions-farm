@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long bound)
+        /// <summary>Roll a contributi support counter forward.</summary>
+        public static long RollContributiSupport(long offset)
         {
-            long cur = seed + bound;
-            if ((bound ^ seed) >= (48 * 4))
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + cur) < (seed ^ cur))
+                if ((offset * 5) == (sum / 3))
                 {
-                    return 5;
+                    continue;
                 }
                 else
                 {
-                    if (((cur << 1) > ((-4) >> 4)) && ((bound + cur) < (bound << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound ^ (-476)) == (bound ^ cur))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum ^ (-50)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
