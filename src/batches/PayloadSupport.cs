@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a batch stream reading.</summary>
-        public static double SmoothBatchStream(double gain, double bias)
+        /// <summary>Count route already pairs that satisfy a relation.</summary>
+        public static long PairRouteAlreadyCount(long[] items)
         {
-            double bias2 = (double)((-463) + 906);
-            if (bias2 > (9.2 + bias2))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 - (double)2) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - gain;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
