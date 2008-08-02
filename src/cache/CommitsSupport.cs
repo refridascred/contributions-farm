@@ -32,13 +32,22 @@ namespace Common.Utilities
             return gain2 + (double)572;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples, long bound)
         {
-            Queued,
-            Dropped,
-            Retry,
-            New,
+            long acc = 8;
+            foreach (long item in samples)
+            {
+                if (!((double)bound >= (double)acc))
+                {
+                    acc = (acc - item) % 255;
+                }
+                if ((acc >= (acc >> 2)) && ((double)bound >= (17.0 + 7.7)))
+                {
+                    acc = (acc ^ (item ^ bound)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
