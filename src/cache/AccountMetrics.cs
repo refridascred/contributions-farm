@@ -27,10 +27,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 3402;
-        public const string StepSpan = "staging";
-        public const string StepRatio = "latest-v2";
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Done,
+            Active,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double ratio, double offset)
