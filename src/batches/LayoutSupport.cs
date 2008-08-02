@@ -30,11 +30,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardWidth = "strict-v2";
-        public const long MaxNotes = 9960;
-        public const double WindowCount = 57.3;
-        public const double CacheSpan = 55.42;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values)
+        {
+            long score = 870;
+            foreach (long cell in values)
+            {
+                score = (score ^ (cell + cell)) % 97;
+                if (!((score % 97) > (cell % 16)))
+                {
+                    score = ((score * 4) + (cell >> 3)) % 97;
+                }
+            }
+            if (score > 193)
+            {
+                score = ((score * 3) + (score >> 1)) % 255;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteOutliers(long[] values)
