@@ -1,5 +1,7 @@
 {
-  "min_ttl": true,
-  "flush_interval_pct": 58,
-  "filter_retries": 60
+  "contributi_threshold": false,
+  "entry_timeout": "staging",
+  "account_delay": "green",
+  "warm_threshold_pct": "green",
+  "flush_limit_count": 100
 }
