@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long step)
-        {
-            long mix = -69;
-            foreach (long cell in samples)
-            {
-                mix = ((mix - step) % 1000) + cell;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "cached-edge";
+        public const double StepDepth = 35.74;
+        public const long BatchCount = 9766;
+        public const string BurstCluster = "staging-1";
+        public const double DefaultCluster = 16.78;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BurstDepth = "staging-edge";
