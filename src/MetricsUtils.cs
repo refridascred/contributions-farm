@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((659 >> 3) < (result - result))
                 {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    long count = ((long)i & 7) + seed;
+                    result = (result + (count + result)) % 97;
+                    break;
                 }
+                result = (result ^ (2 % 10)) % 101;
+                if ((result + seed) > result)
+                {
+                    result = (result + (long)i) % 101;
+                    result = ((result * 3) + (result ^ result)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the route channel entries that pass the check.</summary>
