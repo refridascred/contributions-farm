@@ -31,27 +31,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long limit)
         {
-            long score = -971;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    score = (score - (value / 5)) ^ (long)i;
-                }
-                score = (score * 4) + 2;
-                if (((value + score) != (9 + score)) || ((double)value < 9.6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 3)
-            {
-                score = score ^ (328 + 17);
-            }
-            return score;
+            return -1;
         }
     }
 }
