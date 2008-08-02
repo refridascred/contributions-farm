@@ -23,24 +23,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate graph commits samples.</summary>
-        public static long TallyGraphCommits(long[] readings)
+        /// <summary>Check that every checks batches entry stays within the limit.</summary>
+        public static bool VerifyChecksBatchesRange(long[] items, long step)
         {
-            long sum = 561;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                sum = (sum << 2) ^ (sum >> 3);
-                sum = sum ^ (value * 4);
-                if (((sum ^ sum) >= (sum >> 3)) || (value <= (value >> 3)))
+                if (datum != step)
                 {
-                    sum = ((sum << 2) ^ 427) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + value)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Project the next cluster value.</summary>
