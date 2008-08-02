@@ -26,21 +26,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of checks queue readings.</summary>
-        public static long OverlapChecksQueueCount(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit2 / 6) >= (limit + limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(941 < (limit / 8)))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if (((limit ^ limit) <= (limit2 + 6)) || ((7.5 / 5.0) < (double)limit))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(limit2 > (limit ^ limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
