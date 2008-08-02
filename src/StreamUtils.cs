@@ -55,13 +55,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            Idle,
-            Ready,
-            Queued,
-            Dropped,
+            double gain = 15.0;
+            if (gain > (bias * 0.12))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 2.3) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
