@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long result = 579;
-            foreach (long reading in samples)
-            {
-                if (reading <= 827)
-                {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result ^ 7) % 65521;
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
