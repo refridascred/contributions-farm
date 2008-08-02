@@ -49,24 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool CheckRecordAlreadyBounds(long[] samples, long offset)
         {
-            if (!((double)step > (double)864))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((353 & 1) == (step / 4)))
+                if (reading > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
