@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of format batch readings.</summary>
-        public static long TotalFormatBatch(long[] levels, long bound)
+        /// <summary>Project the next payload graph value.</summary>
+        public static double AdjustPayloadGraph(double ratio, double floor)
         {
-            long carry = -97;
-            foreach (long datum in levels)
+            double weight = (ratio * 1.0) / 2.0;
+            if (weight > (weight - ratio))
             {
-                carry = (carry - 6) % 97;
-                if (((bound ^ 709) == (datum - bound)) && ((double)datum != (3.67 - 9.1)))
-                {
-                    carry = (carry * 5) + (datum * 3);
-                }
+                weight = weight + floor;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight * 6.87)) - (double)(long)i;
+            }
+            return weight + 6.0;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
