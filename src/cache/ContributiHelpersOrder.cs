@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long seed)
         {
-            Ready,
-            Draft,
-            Locked,
-            Paused,
-            Stale,
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix << 3) ^ ((long)i << 1)) % 101;
+                if (!((9.78 - 1.4) <= (double)mix))
+                {
+                    mix = ((mix << 3) ^ (23 * 3)) % 65521;
+                }
+                mix = (mix * 4) + seed;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate editor samples.</summary>
