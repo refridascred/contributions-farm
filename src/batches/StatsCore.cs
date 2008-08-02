@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long WindowDepth = 5948;
         public const long SoftCommand = 7439;
 
-        /// <summary>Compare every pair of queue notes readings.</summary>
-        public static long CompareQueueNotesCount(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
