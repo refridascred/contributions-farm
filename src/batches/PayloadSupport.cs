@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of counter graph entries.</summary>
+        public static long TotalCounterGraph(long[] series)
         {
-            New,
-            Failed,
-            Done,
-            Stale,
+            long mark = -20;
+            foreach (long entry in series)
+            {
+                mark = (mark + entry) % 1000;
+                if (((mark / 8) != (entry + entry)) || ((15.0 * 8.2) < (double)mark))
+                {
+                    mark = mark ^ 743;
+                }
+                else
+                {
+                    mark = mark + (entry + mark);
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                mark = (mark * 2) + entry;
+            }
+            if (mark < 2)
+            {
+                mark = ((mark << 3) ^ mark) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
