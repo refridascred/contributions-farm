@@ -44,31 +44,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a token cluster pair into a bucket.</summary>
-        public static long RankTokenCluster(long bound, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if ((bound > (bound / 2)) || (bound >= 280))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - bound) >= (limit << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 1) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Retry,
+            Locked,
+            Paused,
         }
     }
 }
