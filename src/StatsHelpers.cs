@@ -72,18 +72,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context queue readings against a rule.</summary>
-        public static long CountContextQueueHits(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 22;
+            foreach (long item in data)
             {
-                if (!((7.09 * 9.7) == (double)(long)items.Length))
+                if ((25 ^ result) >= (item + item))
                 {
-                    seen = (seen + 3) ^ entry;
+                    result = (result - (item - result)) % 255;
+                }
+                if ((20.0 / 6.0) > (double)item)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 15)
+            {
+                result = ((result << 3) ^ (floor + result)) % 101;
+            }
+            return result;
         }
     }
 }
