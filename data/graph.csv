@@ -1,6 +1,8 @@
-id,owner,ratio,count
-1,591,blue,cached
-2,strict,96,891
-3,0.69,2.7,latest
-4,497,fallback,374
-5,edge,265,41.63
+id,owner,token
+1,88.11,3.73
+2,blue,83.62
+3,71.07,eu-west
+4,669,3.61
+5,95.11,299
+6,open,stable
+7,316,8.8
