@@ -16,21 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -87;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (target >= mark)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (item % 7)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (mark << 1)) % 101;
                 }
             }
-            return hits;
+            if (mark < 20)
+            {
+                mark = mark - (mark - (long)levels.Length);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a order options.</summary>
