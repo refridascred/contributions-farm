@@ -63,23 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((2 - limit) != (limit >> 4)) || ((carry - (long)i) <= carry))
-                {
-                    carry = ((carry << 3) ^ (carry & 15)) % 97;
-                }
-                if ((double)(long)i < (6.95 + 3.0))
-                {
-                    carry = carry - ((-64) ^ 43);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
