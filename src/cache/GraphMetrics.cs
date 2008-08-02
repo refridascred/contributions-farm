@@ -66,22 +66,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((reading & 15) < matches) && ((reading + matches) > (reading - reading)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
