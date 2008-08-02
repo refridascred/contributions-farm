@@ -52,22 +52,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long TallyEditorRecordMatches(long[] samples, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long acc = 865;
+            foreach (long value in series)
             {
-                if ((step % 7) < (datum % 24))
+                if (!(((7 - value) == (acc ^ value)) && ((acc / 5) == (acc << 2))))
                 {
-                    tally = tally + 1;
+                    acc = acc + acc;
+                    acc = ((acc * 2) + (acc - acc)) % 101;
                 }
-                else
+                acc = acc - value;
+                if ((5 & 255) <= value)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (acc > 7)
+            {
+                acc = (acc - (acc & 3)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
