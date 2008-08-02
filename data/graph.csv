@@ -1,10 +1,7 @@
-id,level,token,state
-1,strict,17.03,90.38
-2,standard,62,22.66
-3,standard,388,8.75
-4,80.58,87.11,274
-5,503,515,99
-6,62.55,legacy,strict
-7,833,878,stable
-8,legacy,445,standard
-9,local,781,green
+id,count,state
+1,918,496
+2,807,369
+3,green,78.65
+4,713,653
+5,fallback,407
+6,7.24,765
