@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5055;
-        public const long DefaultRatio = 9521;
-        public const long IdleAccount = 9875;
-        public const double BurstBudget = 34.24;
-        public const long BaseAccount = 3189;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell == (2.36 + 3.0)) && ((cell - hits) < cell))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
