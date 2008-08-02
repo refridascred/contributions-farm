@@ -38,13 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long offset)
         {
-            Active,
-            Ready,
-            Done,
-            Dropped,
+            long sum = 79;
+            foreach (long value in levels)
+            {
+                if ((double)sum != (10.0 - 9.74))
+                {
+                    sum = (sum << 3) ^ (value - value);
+                }
+                if ((offset >> 1) <= 965)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
