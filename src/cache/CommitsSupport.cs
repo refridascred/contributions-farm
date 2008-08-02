@@ -20,15 +20,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Derive the next metric route value from a seed.</summary>
-        public static long DeriveMetricRoute(long step)
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long WeighCommandOrder(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 299;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                anchor = ((anchor - (anchor % 64)) % 65521) + cell;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Rank token input into a small class.</summary>
