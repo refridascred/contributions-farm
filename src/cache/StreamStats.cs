@@ -21,21 +21,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count command metrics pairs that satisfy a relation.</summary>
-        public static long OverlapCommandMetricsCount(long[] samples)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
