@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count buffer notes pairs that satisfy a relation.</summary>
-        public static long OverlapBufferNotesCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 3;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc / 3) == (acc - (-607)))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc ^ (75 + value)) % 65521) - offset;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ value) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
