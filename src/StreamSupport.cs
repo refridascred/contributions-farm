@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)71 < (double)(long)i))
-                {
-                    acc = acc + (acc + (-82));
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Draft,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
