@@ -22,15 +22,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
