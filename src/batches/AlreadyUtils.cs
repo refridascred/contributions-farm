@@ -62,19 +62,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long mark = 161;
-            foreach (long value in items)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark << 2) ^ (mark - 255)) ^ value;
+                result = (result * 4) + bound;
+                result = (result + (result & 63)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mark > 3)
-            {
-                mark = mark ^ (target + target);
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
