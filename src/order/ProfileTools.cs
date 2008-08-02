@@ -47,12 +47,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
