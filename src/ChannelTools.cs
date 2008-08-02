@@ -33,23 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue token value from a seed.</summary>
-        public static long SeriesQueueToken(long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((long)i >> 3) <= (anchor % 100)) || ((anchor / 6) != (origin / 4)))
-                {
-                    anchor = ((anchor * 2) + origin) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (origin >> 2)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                mix = (mix - ((long)i / 7)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
     }
 }
