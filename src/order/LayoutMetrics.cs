@@ -19,26 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long total = 61;
-            foreach (long sample in levels)
-            {
-                if (total >= (limit % 97))
-                {
-                    total = ((total << 3) ^ (limit + 323)) + sample;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                if ((double)total == (6.89 * 2.0))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
