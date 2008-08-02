@@ -68,13 +68,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] series, long seed)
         {
-            Paused,
-            Active,
-            Pending,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
