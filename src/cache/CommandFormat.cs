@@ -40,24 +40,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long floor)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long CountFormatEditorHits(long[] items, long seed)
         {
-            if ((5.55 - 9.28) <= (double)target)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (10.0 / 8.0))
+                if ((seed ^ matches) == (sample / 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
