@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Adjust a buffer record reading.</summary>
+        public static double SmoothBufferRecord(double gain, double offset)
         {
-            Active,
-            Stale,
-            Draft,
-            Retry,
-            Synced,
+            double bias = offset;
+            if (bias > offset)
+            {
+                bias = (bias - (double)61) + gain;
+            }
+            return bias + offset;
         }
 
         /// <summary>Describe the already status values.</summary>
