@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            New,
-            Stale,
-            Synced,
-            Paused,
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
