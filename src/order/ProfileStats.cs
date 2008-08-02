@@ -14,17 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (readings[i] == offset)
+                if (!((item << 2) > (seen + seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
