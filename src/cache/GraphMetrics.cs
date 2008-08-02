@@ -71,18 +71,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of metrics order entries.</summary>
-        public static long TotalMetricsOrder(long[] series)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long anchor = 41;
-            foreach (long item in series)
-            {
-                if ((7 - item) == (anchor + anchor))
-                {
-                    anchor = anchor ^ (item * 2);
-                }
-            }
-            return anchor % 1000;
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
