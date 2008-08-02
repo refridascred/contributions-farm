@@ -1,6 +1,7 @@
-id,score,label
-1,standard,55.79
-2,50.73,latest
-3,917,40.07
-4,70.99,640
-5,39,167
+id,score,active
+1,596,359
+2,cached,47.22
+3,963,primary
+4,297,18
+5,488,open
+6,1,429
