@@ -27,18 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 8;
+            foreach (long value in data)
             {
-                if ((hits << 2) > (seed + 1))
+                if ((state - state) <= (state * 3))
                 {
-                    hits = (hits + 2) ^ entry;
+                    state = (state ^ (value - state)) % 1000;
                 }
             }
-            return hits;
+            if (state < 9)
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
