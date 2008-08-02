@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardScore = 2716;
-        public const string HardCount = "alpha-edge";
-        public const long IdleTools = 2487;
-        public const long IdleWidth = 6018;
-        public const string BaseFactor = "cached-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxCount = 2.49;
+        public const long CacheWidth = 4367;
+        public const string CacheStream = "primary-edge";
+        public const long RetryFactor = 2347;
+        public const long IdleStream = 6181;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
