@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long step)
         {
-            long result = 83;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + (limit - result)) % 1000) - entry;
-                if ((double)limit <= 6.2)
+                if (samples[i] > step)
                 {
-                    result = ((result << 3) ^ 52) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
