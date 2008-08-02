@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 3911;
-        public const long HardContext = 7429;
-        public const double BatchScore = 67.51;
-        public const long WindowContext = 176;
-        public const long DefaultContext = 6981;
+        /// <summary>Count editor payload pairs that satisfy a relation.</summary>
+        public static long OverlapEditorPayloadCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
         public static long TallyMetricWindowHits(long[] readings, long target)
