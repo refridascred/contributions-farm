@@ -23,17 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            New,
         }
     }
 }
