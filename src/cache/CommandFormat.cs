@@ -50,12 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many editor route samples are out of range.</summary>
+        public static long MeasureEditorRouteHits(long[] samples, long limit)
         {
-            Active,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((double)limit > (16.0 / 9.0)) && ((double)limit <= (13.0 * 6.0))))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
     }
 }
