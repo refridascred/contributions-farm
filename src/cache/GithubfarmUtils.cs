@@ -19,18 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long slot = origin - offset;
+            if ((slot << 1) != (1 - 20))
             {
-                if ((item & 31) < (item + target))
+                return 8;
+            }
+            else
+            {
+                if ((offset / 3) >= 62)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
