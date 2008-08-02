@@ -22,20 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long floor, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            if ((9.7 + 4.5) < (double)origin)
             {
-                if ((8.9 * 15.0) <= (double)seed)
-                {
-                    state = ((state << 2) ^ (seed / 8)) % 65521;
-                }
-                state = ((state * 4) + (seed * 3)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((origin << 1) >= 9)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 31) > (floor / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
