@@ -48,18 +48,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats filter samples are out of range.</summary>
-        public static long CountStatsFilterHits(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + seen) == (value + value))
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate graph notes samples.</summary>
