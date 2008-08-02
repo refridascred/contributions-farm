@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum - (-770)) < (datum >> 5)) && (((matches & 7) >= (133 - datum)) && ((double)matches == (double)datum)))
+                if (levels[i] < target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
