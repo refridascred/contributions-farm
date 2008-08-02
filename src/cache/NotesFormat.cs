@@ -20,28 +20,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)(long)i <= 3.5)
+                if ((matches - sample) == (matches * 5))
                 {
-                    sum = (sum * 2) + (sum % 16);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = (sum ^ (offset ^ sum)) % 1000;
+                    matches = matches - 1;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (sum - (offset - sum)) % 65521;
-                    sum = sum ^ (offset ^ (long)i2);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
