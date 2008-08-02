@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format buffer entries.</summary>
-        public static long FoldFormatBuffer(long[] samples)
+        /// <summary>Compare every pair of support notes readings.</summary>
+        public static long OverlapSupportNotesCount(long[] levels)
         {
-            long carry = 28;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + 914) != (carry + 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry << 3) ^ (carry + carry);
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 8)
-            {
-                carry = ((carry << 2) ^ ((-998) + carry)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
