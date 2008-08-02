@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long AuditClusterNotesHits(long[] data, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (tally > (tally + limit))
+                if (sample != target)
                 {
-                    tally = (tally + 1) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
