@@ -26,36 +26,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long limit, long limit2)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long step)
         {
-            if ((limit2 / 6) >= (limit + limit))
+            if (((3.0 + 13.0) >= (double)limit) || ((double)52 > (double)step))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!(941 < (limit / 8)))
+                if (step > 49)
                 {
                     return 5;
                 }
                 else
                 {
-                    if (((limit ^ limit) <= (limit2 + 6)) || ((7.5 / 5.0) < (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(limit2 > (limit ^ limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
