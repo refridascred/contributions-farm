@@ -20,14 +20,28 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Paused,
-            Done,
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)(long)i <= 3.5)
+                {
+                    sum = (sum * 2) + (sum % 16);
+                }
+                else
+                {
+                    sum = (sum ^ (offset ^ sum)) % 1000;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (sum - (offset - sum)) % 65521;
+                    sum = sum ^ (offset ^ (long)i2);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
