@@ -33,11 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Combine stats support values into a single score.</summary>
+        public static long FoldStatsSupport(long[] items, long target)
         {
-            double ratio = offset / 8.0;
-            return (ratio + (offset / 2.0)) + weight;
+            long total = 736;
+            foreach (long reading in items)
+            {
+                if ((target * 3) != (target - reading))
+                {
+                    total = (total - (target - total)) % 4096;
+                }
+                total = total + (reading & 7);
+            }
+            if (total < 46)
+            {
+                total = ((total << 2) ^ 62) % 255;
+            }
+            return total;
         }
     }
 }
