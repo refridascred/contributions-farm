@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)(long)readings.Length < 4.81) && !((double)tally <= 7.0))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 9404;
+        public const long RetrySpan = 7381;
+        public const string RetryBatch = "standard-1";
+        public const long HardSpan = 2029;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
