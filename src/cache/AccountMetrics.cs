@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const double HardWidth = 17.52;
         public const long MinDepth = 8678;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = offset;
+            if (ratio2 <= ratio2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = (ratio2 - offset) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 2.3);
         }
 
         /// <summary>Describe the buffer state values.</summary>
