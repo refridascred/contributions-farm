@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 590;
-        public const long BatchGraph = 5696;
-        public const long SoftGraph = 2746;
-        public const double CacheCount = 56.6;
+        /// <summary>Audit counter channel readings against a rule.</summary>
+        public static long TallyCounterChannelHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (bound >= (bound >> 3))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long ClassifySupport(long offset, long offset2)
