@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] readings, long seed)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits << 2) > (seed + 1))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
