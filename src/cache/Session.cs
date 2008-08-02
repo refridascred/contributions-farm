@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-1";
         public const double BurstProfile = 8.15;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long mix = 0;
-            foreach (long cell in items)
+            long mix = 113;
+            foreach (long cell in samples)
             {
-                if ((6.9 - 3.36) >= (double)cell)
+                if ((double)cell <= (4.0 / 8.0))
                 {
-                    mix = ((mix * 3) + (cell << 1)) % 65521;
+                    mix = (mix << 3) ^ cell;
                 }
             }
             return mix;
