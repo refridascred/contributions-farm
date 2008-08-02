@@ -49,12 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 2540;
-        public const long IdleSpan = 559;
-        public const long DefaultTimeout = 811;
-        public const double IdleInterval = 6.87;
-        public const long SoftBatches = 6340;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)matches != (8.2 - 2.5)))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
