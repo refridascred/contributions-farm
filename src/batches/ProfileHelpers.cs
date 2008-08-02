@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinDepth = 14.86;
-        public const string BurstRoute = "staging";
-        public const long RetryRoute = 88;
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long AuditClusterNotesHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (tally > (tally + limit))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
