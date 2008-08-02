@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Audit order token readings against a rule.</summary>
+        public static long TallyOrderTokenHits(long[] data)
         {
-            double load = offset;
-            if (load <= (offset - load))
+            long tally = 0;
+            foreach (long item in data)
             {
-                load = load + (double)186;
+                if (tally < (tally + 405))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (bias * 4.92)) + (double)(long)i;
-            }
-            return load - (load - offset);
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
