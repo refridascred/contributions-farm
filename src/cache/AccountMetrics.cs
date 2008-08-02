@@ -58,17 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout metrics entry that matches the target.</summary>
-        public static long LocateLayoutMetricsIndex(long[] values, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                if (((double)item >= (double)count) && ((item % 64) < item))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
