@@ -63,22 +63,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] readings, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + 7) >= (target + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
