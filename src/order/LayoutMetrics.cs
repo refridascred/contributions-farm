@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchCount = 1321;
-        public const long MinFormat = 4963;
-        public const long MaxCount = 9527;
-        public const long RetryFormat = 4509;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
+        {
+            long score = 1;
+            foreach (long datum in data)
+            {
+                score = ((score << 3) ^ (63 + datum)) % 4096;
+            }
+            return score % 97;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long offset)
