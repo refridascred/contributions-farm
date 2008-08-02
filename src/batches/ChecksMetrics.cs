@@ -23,14 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] series, long seed)
         {
-            Dropped,
-            Stale,
-            Ready,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell >= 8.5)
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
