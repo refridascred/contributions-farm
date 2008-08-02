@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 4801;
-        public const double BatchDepth = 73.51;
-        public const long BurstStream = 6410;
-        public const string CacheStream = "latest-edge";
-        public const long HardCount = 1643;
+        /// <summary>Derive the next metrics order value from a seed.</summary>
+        public static long IterateMetricsOrder(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i > (16.0 / 8.0))
+                {
+                    total = ((total * 2) + 345) % 101;
+                }
+                else
+                {
+                    total = (total - total) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
