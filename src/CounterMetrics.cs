@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric account measurements.</summary>
-        public static double ScaleMetricAccount(double weight, double offset)
+        /// <summary>Check that every farm channel entry stays within the limit.</summary>
+        public static bool VerifyFarmChannelRange(long[] items, long seed)
         {
-            double weight2 = offset - weight;
-            if (weight2 >= (offset - weight))
+            bool valid = true;
+            foreach (long item in items)
             {
-                weight2 = weight2 - weight;
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (weight2 / 5.0)) + (double)(long)i;
-            }
-            return weight2 + (weight - weight);
+            return valid;
         }
 
         /// <summary>Hold a filter info.</summary>
