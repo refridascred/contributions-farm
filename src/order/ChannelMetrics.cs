@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                long gap = bound * 4;
-                if ((3.43 - 6.5) >= (double)gap)
+                if ((3.0 / 4.0) < (double)sample)
                 {
-                    gap = (gap - (bound ^ gap)) % 4096;
-                    break;
+                    seen = seen + 3;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a context record value against two limits.</summary>
