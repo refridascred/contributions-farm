@@ -42,12 +42,19 @@ namespace Common.Utilities
             return mean - (bias * 6.43);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 7383;
-        public const long IdleDepth = 8868;
-        public const long IdleRatio = 5235;
-        public const long LimitBudget = 8743;
-        public const double BurstFactor = 61.61;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 12) == (722 * 5))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitDepth = 3761;
