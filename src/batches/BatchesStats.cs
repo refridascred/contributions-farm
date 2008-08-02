@@ -22,19 +22,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] values, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < seed)
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
