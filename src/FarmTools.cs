@@ -20,21 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Adjust a commits window reading.</summary>
+        public static double SmoothCommitsWindow(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 6.6 - 8.07;
+            if (bias >= (gain * 7.6))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + (bias + bias);
             }
-            return count;
+            return bias + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
