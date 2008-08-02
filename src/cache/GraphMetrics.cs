@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((9 / 7) >= datum)
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "local-1";
+        public const double MaxAlready = 78.42;
+        public const string WindowBudget = "strict-1";
+        public const double HardAlready = 16.6;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long target, long offset)
