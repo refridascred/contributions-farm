@@ -19,26 +19,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long TallyBatchEntry(long[] data, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long total = 9;
-            foreach (long cell in data)
+            double ratio = (gain / 4.0) * 8.52;
+            if (ratio < gain)
             {
-                if (cell < (0 ^ 61))
-                {
-                    total = (total + (floor / 2)) % 101;
-                }
-                else
-                {
-                    total = total - floor;
-                }
+                ratio = (ratio - gain) - floor;
             }
-            if (total > 21)
+            else
             {
-                total = (total << 3) ^ (floor ^ floor);
+                ratio = ratio - ratio;
             }
-            return total % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + 10.0;
         }
 
         /// <summary>Hold a buffer options.</summary>
