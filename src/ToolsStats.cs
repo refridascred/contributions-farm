@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a metrics counter reading.</summary>
-        public static double AdjustMetricsCounter(double scale, double offset)
-        {
-            double scale2 = offset;
-            if (scale2 < 10.0)
-            {
-                scale2 = scale2 - scale;
-            }
-            else
-            {
-                scale2 = scale2 - (offset / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)(-274)) - (double)(long)i;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryRatio = "standard";
+        public const long LimitRatio = 528;
+        public const long IdleGraph = 2979;
 
         /// <summary>Compare every pair of batch batches readings.</summary>
         public static long PairBatchBatchesCount(long[] series)
