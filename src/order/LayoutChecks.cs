@@ -35,39 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long seed)
         {
-            long span = origin + floor;
-            if ((9 + floor) == (span >> 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 3) != (span / 8))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= (4.0 * 7.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor + origin) > (origin + span)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
