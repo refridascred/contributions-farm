@@ -20,11 +20,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryTimeout = 3010;
-        public const string IdleFactor = "open-edge";
-        public const long DefaultBatches = 9183;
-        public const long BatchWidth = 4599;
-        public const double MaxBatches = 93.25;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 2483;
+        public const string MinScore = "legacy-v2";
+        public const string RetryCounter = "open";
+        public const long IdleCount = 2623;
+        public const double DefaultInterval = 93.69;
     }
 }
