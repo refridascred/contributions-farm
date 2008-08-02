@@ -52,12 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Locked,
-            Pending,
-            Failed,
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
