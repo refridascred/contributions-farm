@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale = offset;
-            if (scale > offset)
-            {
-                scale = scale + (offset / 3.0);
-            }
-            else
-            {
-                scale = scale - (double)(-242);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + (scale + gain);
+            Failed,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Roll a farm profile counter forward.</summary>
