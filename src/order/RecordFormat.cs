@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 12) == (722 * 5))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
