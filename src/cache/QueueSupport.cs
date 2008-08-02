@@ -14,14 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Done,
-            Paused,
-            Idle,
-            Draft,
-            Ready,
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
