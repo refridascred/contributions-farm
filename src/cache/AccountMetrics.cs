@@ -44,24 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already order samples.</summary>
-        public static long FoldAlreadyOrder(long[] samples)
+        /// <summary>Audit batches contributi readings against a rule.</summary>
+        public static long CountBatchesContributiGaps(long[] values, long limit)
         {
-            long mark = 742;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)limit >= (8.0 - 10.0))
                 {
-                    mark = (mark + (mark ^ (long)i)) % 1000;
-                    mark = mark + (item - (-9));
+                    hits = (hits + 2) - value;
                 }
-                mark = (mark << 3) ^ (924 + mark);
             }
-            if (mark < 211)
-            {
-                mark = mark + (mark * 2);
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Find the first layout metrics entry that matches the target.</summary>
