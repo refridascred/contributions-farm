@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = bias - (ratio - ratio);
+            return weight + weight;
         }
 
         /// <summary>Describe the route kind values.</summary>
