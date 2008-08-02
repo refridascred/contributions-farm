@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph profile readings.</summary>
-        public static long ScoreGraphProfile(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long mix = 774;
-            foreach (long value in samples)
+            long score = 46;
+            foreach (long cell in values)
             {
-                if (mix > (value * 5))
+                score = score - (cell * 3);
+                if ((cell <= (score << 2)) || (cell > (345 - score)))
                 {
-                    mix = (mix ^ value) % 97;
+                    break;
                 }
             }
-            if (mix > 9)
-            {
-                mix = mix + (mix / 3);
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
