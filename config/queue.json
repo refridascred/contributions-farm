@@ -1,6 +1,6 @@
 {
-  "burst_threshold": "blue",
-  "cluster_delay": true,
-  "batch_limit_ms": "blue",
-  "hard_depth_count": 415
+  "base_threshold_ms": 7.1,
+  "burst_depth_ms": "strict",
+  "session_depth": false,
+  "channel_timeout": false
 }
