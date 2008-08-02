@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples, long origin)
+        /// <summary>Iterate the token already series from a seed.</summary>
+        public static long IterateTokenAlready(long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (5 > (matches - cell))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total + ((long)i ^ floor)) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a window info.</summary>
