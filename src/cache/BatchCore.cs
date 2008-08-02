@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const string IdleSupport = "staging-1";
         public const long SoftSupport = 7312;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.23 - 6.14) != (double)origin)
                 {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
             return matches;
