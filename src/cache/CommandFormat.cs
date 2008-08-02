@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long FoldStatsChecks(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long score = 998;
-            foreach (long reading in levels)
+            long mark = 3;
+            foreach (long item in samples)
             {
-                score = ((score * 4) + (85 % 100)) + reading;
+                if (217 > mark)
+                {
+                    mark = mark ^ (mark - item);
+                }
+                if ((item * 2) == ((long)samples.Length + 86))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
