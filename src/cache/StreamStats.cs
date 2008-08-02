@@ -13,12 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long floor)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            if (7 <= (floor ^ 53))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor % 10) > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - floor) < (floor << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
