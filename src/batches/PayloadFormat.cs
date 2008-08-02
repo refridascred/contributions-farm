@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSize = 7415;
+        public const long SoftBudget = 3665;
+        public const string WindowMetrics = "cached-edge";
+        public const double StepWidth = 27.13;
+        public const long IdleMetrics = 9914;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long limit)
