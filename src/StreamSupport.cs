@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long slot = seed - step;
+            if ((slot + seed) != (seed + slot))
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((seed + slot) < (4 / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step >= (seed + slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step * 5) != (3 + slot)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window info.</summary>
