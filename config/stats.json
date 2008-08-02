@@ -1,8 +1,16 @@
 {
-  "stream_depth": "eu-west",
-  "audit": "green",
-  "compress": "staging",
-  "idle_threshold_count": 5368,
-  "soft_retries_count": 18.12,
-  "max_retries": "standard"
+  "max_delay_pct": 250,
+  "burst_ttl": "eu-west",
+  "counter_timeout": "strict",
+  "report_retries": {
+    "flush_ratio": true,
+    "default_ratio_ms": "cached",
+    "audit": {
+      "dry_run": 9601,
+      "hard_interval": 5395,
+      "default_delay": 100,
+      "command_capacity": 32
+    },
+    "cache_interval": false
+  }
 }
