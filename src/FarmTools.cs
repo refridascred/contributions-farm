@@ -35,19 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double offset)
-        {
-            double bias = (double)487;
-            if (bias <= (double)(-837))
-            {
-                bias = bias - (ratio * 3.3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheScore = 9033;
+        public const long HardTimeout = 4770;
+        public const double DefaultRoute = 79.54;
     }
 }
