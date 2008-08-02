@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (671 <= (origin + 208))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 1863;
+        public const long MaxScore = 121;
+        public const double BatchLevel = 20.21;
+        public const long BaseNotes = 319;
+        public const long IdleNotes = 524;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyOutliers(long[] items)
