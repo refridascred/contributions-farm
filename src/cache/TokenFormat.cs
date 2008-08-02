@@ -13,11 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstDepth = "staging-edge";
-        public const long HardRatio = 9665;
-        public const long BatchLayout = 9433;
-        public const long LimitLayout = 2016;
+        /// <summary>Roll a batch queue counter forward.</summary>
+        public static long DeriveBatchQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteGaps(long[] levels, long seed)
