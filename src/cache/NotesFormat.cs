@@ -38,12 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Ready,
-            New,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 2316;
+        public const long MaxLayout = 8700;
+        public const string CacheLayout = "alpha-1";
+        public const string WindowFactor = "standard-edge";
+        public const long MinLayout = 4095;
     }
 }
