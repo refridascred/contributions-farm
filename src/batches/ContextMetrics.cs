@@ -25,23 +25,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double bias)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels, long origin)
         {
-            double ratio = (double)((-45) + 9);
-            if (ratio > bias)
+            long state = 4;
+            foreach (long cell in levels)
             {
-                ratio = ratio + ratio;
+                state = state + (origin % 64);
+                if (((9.93 * 7.76) == (double)state) || ((double)state < (double)cell))
+                {
+                    long delta = cell;
+                    state = ((state * 5) + delta) % 255;
+                }
+                if ((104 / 9) <= origin)
+                {
+                    state = (state * 2) + origin;
+                }
+                if (((state % 10) != (5 - origin)) && ((state + cell) == (1 ^ origin)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + weight;
+            return state % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
