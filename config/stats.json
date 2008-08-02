@@ -1,7 +1,7 @@
 {
-  "graph_ratio": ["green", "green", "primary"],
-  "commits_ttl": ["edge", "stable"],
-  "idle_ratio_s": 60,
-  "retry_window": 71,
-  "verbose": 634
+  "compress": [385, 247, 84, 174],
+  "max_ttl": 79.07,
+  "min_interval_ms": false,
+  "poll_window": "legacy",
+  "retry_capacity": "open"
 }
