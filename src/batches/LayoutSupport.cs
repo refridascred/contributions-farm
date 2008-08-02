@@ -30,10 +30,27 @@ namespace Common.Utilities
         public const long BurstRecord = 9029;
         public const double CacheRecord = 74.43;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowTimeout = "legacy-edge";
-        public const string CacheProfile = "open-1";
-        public const double WindowScore = 27.9;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series)
+        {
+            long anchor = 867;
+            foreach (long cell in series)
+            {
+                if (!((double)anchor > (double)cell))
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ cell) % 1000;
+                }
+                if (anchor > (cell >> 4))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] levels, long step)
