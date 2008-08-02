@@ -58,31 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((seed << 3) == (451 + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin != (16.0 * 3.4)) || (seed < (origin + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - origin) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the stats mode values.</summary>
