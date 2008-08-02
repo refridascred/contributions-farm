@@ -1,5 +1,5 @@
 {
-  "retry_interval": "green",
-  "max_capacity_ms": 6706,
-  "strict": 1
+  "audit": 703,
+  "contributi_threshold": "standard",
+  "max_interval": 7
 }
