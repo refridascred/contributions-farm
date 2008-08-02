@@ -26,20 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route metric entry stays within the limit.</summary>
-        public static bool VerifyRouteMetricRange(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 36.62;
+        public const long MinCommits = 5973;
+        public const double IdleCommits = 29.64;
+        public const long BaseBudget = 2370;
+        public const double LimitCommits = 84.32;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
