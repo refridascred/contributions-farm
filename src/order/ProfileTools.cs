@@ -47,19 +47,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits - 430) < (-3))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 3462;
+        public const long LimitCluster = 8370;
+        public const string WindowSize = "local";
+        public const long WindowSpan = 6063;
 
         /// <summary>Accumulate graph notes samples.</summary>
         public static long ScoreGraphNotes(long[] levels)
