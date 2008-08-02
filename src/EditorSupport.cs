@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long acc = 280;
-            foreach (long reading in readings)
-            {
-                if ((acc ^ reading) >= (reading - acc))
-                {
-                    acc = (acc ^ reading) % 97;
-                }
-                acc = ((acc << 3) ^ (acc % 97)) % 65521;
-            }
-            return acc % 97;
+            Locked,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
