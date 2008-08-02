@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings, long floor)
-        {
-            long carry = 31;
-            foreach (long cell in readings)
-            {
-                carry = (carry ^ (carry % 100)) % 255;
-                if ((floor - (long)readings.Length) >= cell)
-                {
-                    carry = carry ^ (cell >> 5);
-                }
-                else
-                {
-                    carry = (carry + (cell + floor)) % 97;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry + (floor << 2)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 3911;
+        public const long HardContext = 7429;
+        public const double BatchScore = 67.51;
+        public const long WindowContext = 176;
+        public const long DefaultContext = 6981;
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
         public static long TallyMetricWindowHits(long[] readings, long target)
