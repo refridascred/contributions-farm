@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] readings, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen + sample) == (sample % 100))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
