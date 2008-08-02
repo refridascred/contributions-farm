@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinTimeout = "local-v2";
-        public const long BurstCommand = 1270;
-        public const long WindowDepth = 5948;
-        public const long SoftCommand = 7439;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result ^ result) % 101) ^ (long)i2;
+                }
+                if (((long)i ^ result) > floor)
+                {
+                    result = result + (437 + result);
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] samples, long target)
