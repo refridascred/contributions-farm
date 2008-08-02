@@ -34,13 +34,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
