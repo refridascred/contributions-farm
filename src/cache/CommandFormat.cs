@@ -30,12 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every farm stream entry stays within the limit.</summary>
+        public static bool GuardFarmStreamLimits(long[] series, long floor)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
