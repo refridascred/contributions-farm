@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + (long)items.Length) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
