@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 9882;
-        public const string LimitRatio = "primary";
-        public const long CacheLevel = 4456;
-        public const long BurstBatches = 2306;
-        public const long DefaultCount = 1962;
+        /// <summary>Digest a series of batches counter entries.</summary>
+        public static long TotalBatchesCounter(long[] samples)
+        {
+            long carry = 2;
+            foreach (long value in samples)
+            {
+                carry = (carry + (65 >> 2)) % 97;
+                if (!(((double)carry < 1.39) && ((double)value >= (18.0 + 20.0))))
+                {
+                    carry = carry ^ (carry % 7);
+                }
+                if ((double)value < (15.0 + 11.0))
+                {
+                    carry = (carry * 4) + (6 - value);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatLimits(long[] samples, long origin)
