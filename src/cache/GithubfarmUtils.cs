@@ -31,32 +31,17 @@ namespace Common.Utilities
             return gain + (2.0 / 8.0);
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long step2)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long bound)
         {
-            long slot = step ^ step2;
-            if ((-189) >= (slot << 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)slot <= (4.96 * 5.0))
+                if (data[i] >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.9 + 1.02) == (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
