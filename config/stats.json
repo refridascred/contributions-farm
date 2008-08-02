@@ -1,8 +1,8 @@
 {
-  "min_size_ms": true,
-  "sync_threshold": "local",
-  "burst_capacity": ["open", "standard", "green"],
-  "base_depth_ms": 18,
-  "idle_size_s": "latest",
-  "burst_ratio_s": 91.75
+  "order_depth": true,
+  "compress": ["legacy", "stable"],
+  "dry_run": 3.52,
+  "sync_retries_s": [424, 305, 121],
+  "hard_window": 100,
+  "already_window": [402, 233, 367]
 }
