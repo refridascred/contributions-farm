@@ -39,18 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (8.27 + 6.55))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
