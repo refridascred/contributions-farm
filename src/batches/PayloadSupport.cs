@@ -44,22 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] data, long offset)
         {
-            long sum = 355;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((43 < (seed % 100)) || (((-168) & 127) > sum))
+                if ((count >= (count << 1)) || (((offset - count) < entry) || ((offset << 3) > (13 + entry))))
                 {
-                    sum = (sum - sum) + value;
+                    count = count + 1;
                 }
             }
-            if (sum < 374)
-            {
-                sum = sum ^ (long)values.Length;
-            }
-            return sum % 4096;
+            return count;
         }
     }
 }
