@@ -22,17 +22,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a tools account reading by value.</summary>
-        public static long SeekToolsAccountIndex(long[] readings, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Active,
+            Closed,
         }
     }
 }
