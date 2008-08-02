@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const string BatchSpan = "primary";
         public const long BatchPayload = 1394;
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long TallyContextAccountOutliers(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count != (7.0 / 3.0))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
