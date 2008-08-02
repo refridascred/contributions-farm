@@ -39,12 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] data, long target)
+        /// <summary>Locate a schema metric reading by value.</summary>
+        public static long LookupSchemaMetricIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < target)
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
