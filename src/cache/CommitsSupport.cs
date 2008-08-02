@@ -65,19 +65,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Accumulate githubfarm token samples.</summary>
+        public static long TotalGithubfarmToken(long[] samples, long origin)
         {
-            double drift = weight;
-            if (drift < (weight + weight))
+            long anchor = -28;
+            foreach (long entry in samples)
             {
-                drift = (drift - weight) - bias;
+                long matches = (entry % 64) << 2;
+                if (matches <= (826 % 8))
+                {
+                    break;
+                }
+                else
+                {
+                    matches = (matches + matches) % 65521;
+                }
+                if ((double)origin == (double)entry)
+                {
+                    anchor = (anchor - origin) % 101;
+                }
+                else
+                {
+                    anchor = anchor + origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor > 677)
             {
-                drift = (drift - weight) + (double)(long)i;
+                anchor = (anchor + anchor) % 101;
             }
-            return drift - (drift + drift);
+            return anchor % 65521;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
