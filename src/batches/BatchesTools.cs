@@ -23,32 +23,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long bound = origin - target;
-            if (((-1) % 5) != (target - origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + origin) > target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound + target) <= (origin * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
