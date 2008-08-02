@@ -33,17 +33,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a stream farm sample.</summary>
-        public static long LocateStreamFarmIndex(long[] series, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
