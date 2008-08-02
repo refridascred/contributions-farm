@@ -25,22 +25,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] readings, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((((sample - 3) >= step) && ((tally << 3) < (tally + step))) && ((step % 7) <= (step + step)))
+                if (!((hits > entry) || (entry >= (221 ^ 4))))
                 {
-                    tally = tally + 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
