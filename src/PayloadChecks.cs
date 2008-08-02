@@ -22,17 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order cluster sample.</summary>
-        public static long LocateOrderClusterIndex(long[] samples, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
