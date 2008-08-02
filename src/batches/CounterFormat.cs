@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 5042;
-        public const long WindowSchema = 7432;
-        public const long CacheDepth = 3464;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepTimeout = 286;
+        public const double HardWidth = 38.92;
+        public const double SoftFormat = 28.09;
+        public const string StepSpan = "standard-1";
+        public const double RetryWidth = 78.7;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] readings, long target)
