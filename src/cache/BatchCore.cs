@@ -62,18 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell == (1.0 - 14.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
