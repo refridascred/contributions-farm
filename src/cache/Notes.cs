@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Dropped,
-            Closed,
-            New,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 9402;
+        public const double RetryRatio = 76.5;
+        public const long BaseCounter = 476;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long GradeGithubfarm(long offset, long floor)
