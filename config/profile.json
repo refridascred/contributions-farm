@@ -1,8 +1,5 @@
 {
-  "cluster_limit": 1856,
-  "min_retries_pct": 83,
-  "flush_threshold_pct": 47.05,
-  "batch_limit_ms": true,
-  "farm_delay": 29.48,
-  "batch_depth_count": ["cached", "open", "standard"]
+  "max_timeout": "latest",
+  "max_timeout_count": 67.65,
+  "dry_run": ["open", "edge", "fallback"]
 }
