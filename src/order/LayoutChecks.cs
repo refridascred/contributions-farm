@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double span)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double rate = (double)(5 * 4);
-            if (rate <= (span * 0.97))
-            {
-                rate = rate + (9.18 / 7.0);
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (span / 4.0);
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
