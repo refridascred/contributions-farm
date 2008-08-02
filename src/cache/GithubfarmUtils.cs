@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = 4;
-            foreach (long reading in samples)
-            {
-                carry = ((carry * 2) + carry) + reading;
-            }
-            if (carry < 841)
-            {
-                carry = (carry ^ (702 + bound)) % 255;
-            }
-            return carry % 97;
+            Ready,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
