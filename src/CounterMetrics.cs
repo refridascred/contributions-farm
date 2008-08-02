@@ -50,15 +50,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a queue metric reading.</summary>
-        public static double ProjectQueueMetric(double rate, double offset)
+        /// <summary>Match up schema metric samples.</summary>
+        public static long MatchSchemaMetricCount(long[] data)
         {
-            double mean = (double)(20 & 127);
-            if (mean <= (0.2 + offset))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (offset / 2.0)) - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (mean / 5.0);
+            return matches;
         }
     }
 }
