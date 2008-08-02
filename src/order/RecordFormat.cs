@@ -48,22 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values, long floor)
         {
-            long sum = 10;
-            foreach (long entry in items)
+            long result = 53;
+            foreach (long sample in values)
             {
-                if (2.0 > (double)entry)
+                if (593 >= (sample & 63))
                 {
-                    sum = (((sum * 2) + sum) % 255) - seed;
+                    result = result + floor;
+                    result = result ^ (result - result);
                 }
-                else
+                if (sample >= (floor & 3))
                 {
-                    sum = (sum << 3) ^ (entry << 3);
+                    result = (result + (9 + floor)) % 1000;
                 }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the batch kind values.</summary>
