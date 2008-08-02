@@ -25,11 +25,32 @@ namespace Common.Utilities
         public const long BatchLayout = 9433;
         public const long LimitLayout = 2016;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long target)
         {
-            double weight2 = (double)(813 ^ 0);
-            return (weight2 - (offset * 9.69)) + weight;
+            long edge = floor - target;
+            if (((edge >> 4) == (target >> 1)) && ((floor ^ target) < 12))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (edge * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.0 / 6.0) < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
