@@ -37,18 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 20.26;
+        public const double WindowTools = 10.46;
+        public const string MinScore = "fallback-edge";
+        public const string SoftSpan = "cached-1";
+        public const long CacheWidth = 1259;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items, long floor)
