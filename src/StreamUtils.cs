@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Locked,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the farm status values.</summary>
