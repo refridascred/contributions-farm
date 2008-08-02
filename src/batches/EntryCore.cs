@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryDepth = "latest";
+        public const long WindowGraph = 210;
+        public const long MinGraph = 9521;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderHits(long[] items, long target)
