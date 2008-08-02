@@ -35,21 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
