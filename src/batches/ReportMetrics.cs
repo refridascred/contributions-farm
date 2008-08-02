@@ -23,14 +23,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            Ready,
-            Paused,
-            New,
-            Closed,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
