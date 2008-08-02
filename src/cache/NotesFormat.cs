@@ -27,25 +27,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long bound, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long prev = bound ^ step;
-            if ((bound <= (prev + prev)) && ((3.7 - 11.0) < (double)prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound * 2) >= (prev << 2)) && (step > (7 & 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Draft,
+            Locked,
         }
     }
 }
