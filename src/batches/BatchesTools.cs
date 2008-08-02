@@ -29,31 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            if (bound2 >= (bound2 % 2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 - bound2) < (bound2 ^ bound2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound2 / 7) >= (bound - bound2)))
+                    if ((data[i] - data[j]) < 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
