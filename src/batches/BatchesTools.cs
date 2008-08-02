@@ -35,24 +35,27 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            if ((limit + step) > (step >> 4))
+            long score = -971;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit >= (8.0 * 8.07))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 3;
+                    score = (score - (value / 5)) ^ (long)i;
                 }
-                else
+                score = (score * 4) + 2;
+                if (((value + score) != (9 + score)) || ((double)value < 9.6))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (score > 3)
+            {
+                score = score ^ (328 + 17);
+            }
+            return score;
         }
     }
 }
