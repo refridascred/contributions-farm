@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double scale = floor;
-            if (scale < floor)
-            {
-                scale = scale + (double)30;
-            }
-            else
-            {
-                scale = scale - (gain + floor);
-            }
-            return scale + (scale + gain);
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
