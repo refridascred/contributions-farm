@@ -29,24 +29,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!(((long)i & 15) >= seed))
+                if ((value + count) >= 803)
                 {
-                    sum = ((sum * 3) + (seed ^ (long)i)) % 255;
+                    count = count + 1;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum - seed)) % 97;
-                    sum = sum ^ 8;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
