@@ -33,24 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long limit, long limit2)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series)
         {
-            if (limit2 < (limit % 8))
+            long anchor = 55;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7 / 6) <= (limit2 % 12))
+                if (anchor > (anchor * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (anchor ^ (anchor + anchor)) + entry;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
