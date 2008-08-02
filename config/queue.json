@@ -1,6 +1,11 @@
 {
-  "default_ratio_count": 24.1,
-  "burst_interval_count": "fallback",
-  "window_ratio": 73,
-  "poll_limit_s": true
+  "warm_window_count": {
+    "command_delay": 250,
+    "audit": ["fallback", "blue"],
+    "already_retries": "primary"
+  },
+  "burst_ratio_pct": 65.56,
+  "strict": "eu-west",
+  "soft_interval_pct": ["stable", "edge"],
+  "poll_delay_count": "primary"
 }
