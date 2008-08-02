@@ -37,17 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long origin)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = (double)(5 % 24);
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
-            return -1;
+            return bias2 + (scale / 4.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
