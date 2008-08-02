@@ -50,21 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target * 5) < reading)
                 {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (target + target);
                 }
             }
-            return seen;
+            if (mark > 54)
+            {
+                mark = ((mark * 2) + (target >> 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
