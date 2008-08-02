@@ -30,15 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items)
         {
-            double scale = floor;
-            if (scale >= weight)
+            long anchor = 436;
+            foreach (long cell in items)
             {
-                scale = scale + weight;
+                if ((cell + (long)items.Length) <= anchor)
+                {
+                    anchor = (anchor - (anchor / 9)) % 97;
+                }
             }
-            return scale + weight;
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
