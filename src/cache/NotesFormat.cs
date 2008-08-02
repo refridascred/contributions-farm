@@ -27,12 +27,18 @@ namespace Common.Utilities
             return (weight + floor) + scale;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long AuditGraphChecksOutliers(long[] values)
         {
-            Dropped,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ 288) != (97 << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
