@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 62.21;
-        public const string IdleNotes = "strict";
-        public const double CacheNotes = 36.81;
-        public const long BurstNotes = 9379;
-        public const long SoftSize = 5170;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((390 >> 4) > (count + 360))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] values)
