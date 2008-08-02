@@ -30,17 +30,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = target ^ bound;
+            if ((double)bound < (12.0 / 5.0))
             {
-                if (items[i] < floor)
+                return 3;
+            }
+            else
+            {
+                if (!((double)target >= (double)span))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)span < 4.1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
