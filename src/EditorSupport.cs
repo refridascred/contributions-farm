@@ -25,32 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long lane = step + seed;
-            if ((9.58 + 0.21) >= (double)lane)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane & 3) != (7 - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (14.0 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
