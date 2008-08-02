@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate tools graph readings against a bound.</summary>
+        public static bool GuardToolsGraphLimits(long[] series, long floor)
         {
-            Locked,
-            Done,
-            Closed,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
