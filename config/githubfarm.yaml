@@ -1,4 +1,10 @@
 # githubfarm settings
-burst_timeout: edge
-token_depth: false
-schema_delay: 19.97
+audit: 470
+flush_threshold: true
+retry_size_ms: standard
+profile_ttl:
+  - 395
+  - 323
+  - 126
+  - 465
+batches_capacity: open
