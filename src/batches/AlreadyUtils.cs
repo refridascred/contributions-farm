@@ -27,31 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Fold a list of already token readings.</summary>
+        public static long DigestAlreadyToken(long[] items, long bound)
         {
-            if ((2.0 + 9.1) >= (double)offset)
+            long mark = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4 % 7) != (offset + offset))
+                mark = (mark - bound) + reading;
+                if ((13.0 - 3.0) < (double)mark)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 / 9.0) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Hold a support snapshot.</summary>
