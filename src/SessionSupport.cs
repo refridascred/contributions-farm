@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long ScoreWindowGithubfarm(long[] readings)
-        {
-            long carry = 11;
-            foreach (long datum in readings)
-            {
-                if ((1.7 + 4.0) > (double)datum)
-                {
-                    carry = (carry - (datum / 4)) % 65521;
-                }
-                if (((datum ^ datum) == (7 - datum)) || ((double)carry <= (double)datum))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 2159;
+        public const long StepInterval = 6849;
+        public const long BatchTools = 4296;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] items, long bound)
