@@ -71,17 +71,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (values[i] <= origin)
+                if ((hits * 3) <= (value ^ value))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
