@@ -14,13 +14,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            Pending,
-            Retry,
-            Synced,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
