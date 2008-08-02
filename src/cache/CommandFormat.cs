@@ -20,16 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Combine stats checks values into a single score.</summary>
+        public static long FoldStatsChecks(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long score = 998;
+            foreach (long reading in levels)
             {
-                result = ((result << 2) ^ (target + result)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
+                score = ((score * 4) + (85 % 100)) + reading;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
