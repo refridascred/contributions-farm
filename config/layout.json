@@ -1,7 +1,7 @@
 {
-  "burst_ttl_pct": 51,
-  "contributi_threshold": 90.71,
-  "poll_interval": "legacy",
-  "strict": 1024,
-  "burst_delay": 317
+  "compress": 8123,
+  "persist": 77,
+  "min_size": "green",
+  "buffer_capacity": "blue",
+  "enabled": 86
 }
