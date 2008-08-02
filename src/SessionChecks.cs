@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue batch values into a single score.</summary>
-        public static long CombineQueueBatch(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            long result = 200;
-            foreach (long sample in levels)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((result + sample) > (sample ^ sample)))
-                {
-                    result = result - (result << 2);
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
