@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 8441;
-        public const long StepWindow = 7442;
-        public const string HardWidth = "latest-1";
-        public const long MaxBudget = 8244;
-        public const long CacheWindow = 3083;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long carry = 882;
+            foreach (long item in data)
+            {
+                if (carry <= item)
+                {
+                    carry = ((carry << 3) ^ item) % 1000;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long GradeMetric(long origin, long target)
