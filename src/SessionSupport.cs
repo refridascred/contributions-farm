@@ -23,12 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 31.54;
-        public const long IdleFarm = 9325;
-        public const long HardFarm = 158;
-        public const string MaxFarm = "strict";
-        public const long WindowInterval = 4951;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count >= (count + bound))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit contributi channel readings against a rule.</summary>
         public static long TallyContributiChannelGaps(long[] items, long floor)
