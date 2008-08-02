@@ -33,19 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long origin)
+        /// <summary>Accumulate layout payload samples.</summary>
+        public static long TallyLayoutPayload(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = 900;
+            foreach (long item in series)
             {
-                if (sample >= origin)
+                if (((long)series.Length % 24) > (-8))
                 {
-                    ok = false;
-                    break;
+                    state = (state ^ (972 / 6)) ^ item;
+                    state = state ^ (state + state);
                 }
+                state = ((state << 2) ^ state) % 65521;
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Hold a already options.</summary>
