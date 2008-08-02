@@ -28,11 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "standard-v2";
-        public const long CacheRatio = 6579;
-        public const long DefaultBuffer = 4793;
-        public const string MinTimeout = "primary-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((count + offset) <= (value / 6)) || (((count - 8) != (count + offset)) || (count >= (count * 5))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] series, long step)
