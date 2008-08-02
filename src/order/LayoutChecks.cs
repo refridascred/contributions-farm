@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long limit, long bound)
         {
-            Pending,
-            Synced,
-            Paused,
+            if ((bound ^ limit) > (1 / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (4.02 >= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound + bound) > 308) || ((limit - limit) == (bound ^ 6)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
