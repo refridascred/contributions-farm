@@ -79,15 +79,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double bias, double bias2)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long limit)
         {
-            double weight = (double)(871 & 255);
-            if (weight < (bias2 * 8.8))
+            if (seed < limit)
             {
-                weight = (weight - 6.2) - bias;
+                return 0;
             }
-            return weight + (weight * 8.2);
+            else
+            {
+                if ((limit - seed) > (limit / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed > (seed & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)seed <= 1.67) && (0.56 >= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
