@@ -1,5 +1,7 @@
 {
-  "min_window_pct": 100,
-  "stream_retries": false,
-  "counter_limit": [339, 142]
+  "session_ratio": "cached",
+  "command_capacity": 1472,
+  "hard_ratio": "strict",
+  "hard_capacity_pct": "latest",
+  "idle_window_ms": 49.7
 }
