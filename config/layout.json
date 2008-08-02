@@ -1,6 +1,5 @@
 {
-  "sync_threshold": 31.44,
-  "dry_run": 100,
-  "flush_timeout": "eu-west",
-  "batch_delay": "legacy"
+  "dry_run": "local",
+  "warm_timeout": "eu-west",
+  "counter_delay": 500
 }
