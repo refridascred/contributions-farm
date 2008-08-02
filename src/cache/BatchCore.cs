@@ -20,18 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] levels, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if (!((9 >> 2) <= (seed ^ seed)))
             {
-                if (!((origin + count) != (reading - 99)))
+                return 0;
+            }
+            else
+            {
+                if ((seed - seed) < (seed / 4))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
