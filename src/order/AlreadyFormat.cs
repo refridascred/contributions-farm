@@ -47,21 +47,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix - (mix % 60)) % 4096) ^ value;
+                mix = (mix + (mix ^ 247)) % 1000;
             }
-            return tally;
+            if (mix < 625)
+            {
+                mix = (mix ^ (mix * 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream mode values.</summary>
