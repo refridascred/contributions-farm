@@ -50,22 +50,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values)
+        /// <summary>Fold a list of layout channel readings.</summary>
+        public static long TotalLayoutChannel(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = 0;
+            foreach (long sample in samples)
             {
-                if ((datum >> 4) != (8 ^ seen))
+                result = (result - (step - sample)) % 4096;
+                if (((step + result) >= (step / 4)) && (step <= sample))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = (result ^ (step % 100)) % 255;
                 }
             }
-            return seen;
+            if (result > 878)
+            {
+                result = (result + ((-371) + 158)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
