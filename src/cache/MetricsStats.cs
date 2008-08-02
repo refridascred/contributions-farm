@@ -49,13 +49,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Find the first record account entry that matches the target.</summary>
+        public static long FindRecordAccountIndex(long[] values, long seed)
         {
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command support readings.</summary>
