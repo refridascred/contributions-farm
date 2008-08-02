@@ -29,22 +29,38 @@ namespace Common.Utilities
         public const double IdleTimeout = 78.56;
         public const long MaxGraph = 7661;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels, long bound)
+        /// <summary>Grade a cluster counter value against two limits.</summary>
+        public static long GradeClusterCounter(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (floor < 7)
             {
-                if ((matches >= (matches - 96)) || !((item + bound) <= (item * 3)))
+                return 2;
+            }
+            else
+            {
+                if ((2.0 / 9.0) >= 1.35)
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor << 2) == (32 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (4.0 > (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a record header.</summary>
