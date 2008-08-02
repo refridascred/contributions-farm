@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double span)
-        {
-            double mean = (double)(773 >> 1);
-            return (mean - ratio) + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 96.88;
+        public const string BaseTools = "staging-v2";
+        public const double StepTools = 95.12;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
