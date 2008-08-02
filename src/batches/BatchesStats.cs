@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long MeasureRouteQueueGaps(long[] series)
         {
-            long mark = 39;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mark = (mark + mark) % 4096;
-                if (((long)readings.Length >> 4) >= (entry * 3))
+                if (!((hits - reading) == (reading % 3)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
