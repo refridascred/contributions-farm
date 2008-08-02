@@ -40,18 +40,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a profile payload sample.</summary>
-        public static long LookupProfilePayloadIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowCount = 5167;
+        public const double BurstBuffer = 6.24;
+        public const long WindowBuffer = 1390;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextGaps(long[] levels, long limit)
