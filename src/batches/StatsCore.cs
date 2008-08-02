@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const string MaxTools = "primary-1";
         public const long BaseSpan = 9799;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
