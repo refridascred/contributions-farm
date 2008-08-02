@@ -54,11 +54,21 @@ namespace Common.Utilities
         public const double WindowFormat = 53.99;
         public const long HardSize = 5201;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 97.6;
-        public const string SoftGithubfarm = "stable";
-        public const long LimitGithubfarm = 5875;
-        public const double LimitRatio = 63.79;
-        public const string BurstGithubfarm = "primary-edge";
+        /// <summary>Match up contributi buffer samples.</summary>
+        public static long CompareContributiBufferCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
