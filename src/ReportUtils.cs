@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (80 > (hits >> 1))
+                if ((count / 3) < (entry ^ 26))
                 {
-                    hits = (hits + 2) ^ value;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
