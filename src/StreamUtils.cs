@@ -80,9 +80,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheWidth = 1280;
-        public const string WindowQueue = "primary-1";
-        public const string IdleSpan = "latest-v2";
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
