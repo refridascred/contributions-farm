@@ -44,15 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Fold a list of schema payload readings.</summary>
+        public static long FoldSchemaPayload(long[] data)
         {
-            double load = span;
-            if (load >= weight)
+            long mark = 110;
+            foreach (long sample in data)
             {
-                load = load + (span - weight);
+                if (sample > (mark ^ sample))
+                {
+                    mark = mark + (sample % 5);
+                }
             }
-            return load - span;
+            if (mark < 0)
+            {
+                mark = (mark + (mark & 3)) % 101;
+            }
+            return mark;
         }
     }
 }
