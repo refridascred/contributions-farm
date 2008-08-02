@@ -25,21 +25,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 98.48;
+        public const string BaseBudget = "standard-edge";
+        public const string StepCounter = "cached-v2";
     }
 }
