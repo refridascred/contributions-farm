@@ -1,9 +1,7 @@
-id,score,count,state
-1,311,799,cached
-2,262,289,512
-3,867,blue,edge
-4,48.14,543,267
-5,469,primary,eu-west
-6,legacy,standard,533
-7,green,open,cached
-8,659,blue,783
+id,token,ratio,score,state
+1,fallback,fallback,primary,943
+2,green,31.9,37.15,stable
+3,47.44,435,729,25.72
+4,699,500,local,852
+5,74.9,56.56,blue,80.48
+6,open,202,blue,66.16
