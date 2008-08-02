@@ -54,22 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowBudget = 4129;
+        public const long StepGithubfarm = 2238;
+        public const double CacheGithubfarm = 79.11;
+        public const long MaxBudget = 9994;
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double ratio, double offset)
