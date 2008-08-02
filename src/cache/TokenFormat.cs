@@ -27,22 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 687;
+            foreach (long cell in readings)
             {
-                if ((seed + matches) != (seed >> 3))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((((mix * 2) + mix) % 65521) - cell) - bound;
             }
-            return matches;
+            return mix;
         }
     }
 }
