@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >> 1) >= seen)
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 62.21;
+        public const string IdleNotes = "strict";
+        public const double CacheNotes = 36.81;
+        public const long BurstNotes = 9379;
+        public const long SoftSize = 5170;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] values)
