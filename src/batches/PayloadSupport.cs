@@ -13,32 +13,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank graph cluster input into a small class.</summary>
-        public static long SortGraphCluster(long target, long origin)
-        {
-            if (((-84) <= target) || ((8.2 - 4.5) >= (19.0 * 0.05)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target > origin) || ((target >> 1) < (target >> 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 8) <= (origin & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftScore = 1190;
+        public const long HardRecord = 8384;
+        public const long DefaultScore = 7843;
+        public const string MinRecord = "primary-v2";
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
