@@ -1,15 +1,6 @@
 {
-  "batch_limit_count": {
-    "already_ttl": "cached",
-    "retry_ratio": [274, 140, 249],
-    "hard_ratio_pct": {
-      "flush_depth_s": "eu-west",
-      "enabled": 100,
-      "already_retries": 6944,
-      "burst_interval": 500
-    },
-    "cluster_capacity": "edge"
-  },
-  "audit": 30,
-  "graph_size": 100
+  "burst_window_count": "open",
+  "hard_capacity_s": "legacy",
+  "idle_window_count": true,
+  "retry_threshold": 83.5
 }
