@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings, long target)
         {
-            long anchor = 9;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor << 3) ^ (anchor & 127)) % 4096) + cell;
+                if ((seen + sample) == (sample % 100))
+                {
+                    seen = (seen + 3) + target;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Check that every payload report entry stays within the limit.</summary>
