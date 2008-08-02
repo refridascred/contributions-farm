@@ -41,19 +41,12 @@ namespace Common.Utilities
             return mean - (bias * 6.43);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally >= (value - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 7383;
+        public const long IdleDepth = 8868;
+        public const long IdleRatio = 5235;
+        public const long LimitBudget = 8743;
+        public const double BurstFactor = 61.61;
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
         public static long CountSchemaChecksGaps(long[] values, long origin)
