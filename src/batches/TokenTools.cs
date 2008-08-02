@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
