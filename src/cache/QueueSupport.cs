@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchBudget = 26.99;
-        public const long BatchProfile = 6129;
-        public const long MaxProfile = 3060;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Dropped,
+            Queued,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
