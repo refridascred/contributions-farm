@@ -73,19 +73,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] levels, long target)
+        /// <summary>Check that every farm support entry stays within the limit.</summary>
+        public static bool ValidateFarmSupportBounds(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (reading < target)
+                if (datum != bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
