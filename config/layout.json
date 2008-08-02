@@ -1,11 +1,8 @@
 {
-  "context_limit": ["latest", "fallback", "green", "green"],
-  "batch_size_s": 6619,
-  "strict": [162, 257],
-  "base_size": {
-    "githubfarm_timeout": "edge",
-    "graph_capacity": 100,
-    "compress": 32,
-    "warm_timeout": 33.73
-  }
+  "graph_limit": "latest",
+  "soft_interval_s": 30,
+  "batch_threshold": "blue",
+  "warm_delay_ms": 1140,
+  "poll_ttl": 5620,
+  "filter_retries": false
 }
