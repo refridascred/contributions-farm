@@ -1,6 +1,5 @@
 # entry settings
-compress: green
-batch_ratio: 55
-retry_limit_pct: 3153
-channel_size: false
-burst_delay_ms: 74.75
+base_delay: true
+readonly: 250
+default_ttl_s: blue
+warm_delay: edge
