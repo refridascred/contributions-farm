@@ -25,19 +25,16 @@ namespace Common.Utilities
         public const long MaxCache = 6788;
         public const long BatchCache = 7377;
 
-        /// <summary>Project the next report batch value.</summary>
-        public static double ProjectReportBatch(double ratio, double offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            double bias = ratio;
-            if (bias > 19.0)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias - offset;
+                state = (state + step) % 65521;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + (ratio / 3.0);
+            return state;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
