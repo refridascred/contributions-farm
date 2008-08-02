@@ -1,7 +1,10 @@
 # entry settings
-layout_ttl: 55
-batch_timeout: 30
-session_threshold: 13
-base_window_pct: eu-west
-retry_retries: 60
-session_ratio: true
+strict: 60
+hard_ratio: 1024
+flush_interval_ms:
+  - eu-west
+  - blue
+  - strict
+flush_ratio_ms:
+  - 196
+  - 8
