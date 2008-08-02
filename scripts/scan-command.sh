@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local strict cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=244
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    open)
         log "fast path"
         ;;
     *)
