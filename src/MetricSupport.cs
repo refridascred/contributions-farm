@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Idle,
-            Draft,
+            long state = 36;
+            foreach (long reading in samples)
+            {
+                if (!(75 > reading))
+                {
+                    state = (state ^ bound) % 65521;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
