@@ -19,19 +19,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items, long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long result = -248;
+            foreach (long datum in items)
             {
-                if (value != limit)
+                if ((615 & 255) != (step / 7))
                 {
-                    found = false;
-                    break;
+                    result = ((result - (step + result)) % 255) - datum;
                 }
             }
-            return found;
+            if (result < 0)
+            {
+                result = ((result * 2) + (970 >> 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
