@@ -64,10 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 6423;
-        public const long CacheDepth = 1418;
-        public const string StepToken = "alpha-v2";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Idle,
+            Locked,
+            Closed,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
