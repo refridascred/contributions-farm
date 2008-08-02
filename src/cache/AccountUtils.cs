@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const double HardRecord = 33.97;
         public const long WindowRecord = 5978;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Synced,
             Dropped,
-            Pending,
+            New,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the schema level values.</summary>
