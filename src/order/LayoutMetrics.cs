@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((step - entry) >= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next metrics support value from a seed.</summary>
