@@ -1,6 +1,19 @@
 # githubfarm settings
-checks_size: 41.47
-metrics_depth: 2272
-context_ttl: blue
-poll_retries: false
-base_delay_s: 65.77
+batches_limit:
+  - 455
+  - 163
+  - 174
+  - 311
+max_window_ms:
+  max_interval_ms:
+    - 148
+    - 13
+    - 191
+    - 448
+  layout_depth:
+    - 255
+    - 205
+    - 145
+  farm_delay: true
+warm_capacity_s: primary
+batch_threshold_count: 60
