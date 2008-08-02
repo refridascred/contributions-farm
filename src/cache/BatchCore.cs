@@ -28,19 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((3.15 + 10.0) < (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchWidth = 6.26;
+        public const long StepScore = 3181;
+        public const long IdleSpan = 9257;
+        public const string IdleSupport = "staging-1";
+        public const long SoftSupport = 7312;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] items)
