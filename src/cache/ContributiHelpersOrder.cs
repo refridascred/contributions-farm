@@ -33,14 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Blend two graph editor measurements.</summary>
+        public static double AdjustGraphEditor(double gain, double span)
         {
-            Idle,
-            Locked,
-            Draft,
-            Active,
-            Closed,
+            double weight = 2.66 - (span / 8.0);
+            if (weight <= gain)
+            {
+                weight = weight - (gain + gain);
+            }
+            else
+            {
+                weight = weight + (gain / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)867) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
