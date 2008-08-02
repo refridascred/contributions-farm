@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
