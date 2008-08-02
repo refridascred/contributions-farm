@@ -69,12 +69,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 97.6;
+        public const string SoftGithubfarm = "stable";
+        public const long LimitGithubfarm = 5875;
+        public const double LimitRatio = 63.79;
+        public const string BurstGithubfarm = "primary-edge";
     }
 }
