@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the token already series from a seed.</summary>
-        public static long IterateTokenAlready(long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total + ((long)i ^ floor)) % 97;
-                total = ((total * 5) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a window info.</summary>
