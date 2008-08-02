@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 7794;
-        public const long LimitAlready = 8002;
-        public const double RetryAlready = 73.3;
-        public const long WindowAlready = 9129;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
