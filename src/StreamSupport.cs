@@ -31,18 +31,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long TallyAlreadyPayloadGaps(long[] items, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (step >= (103 + hits))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            double drift = bias2;
+            return (drift - (9.5 * 19.0)) + bias;
         }
     }
 }
