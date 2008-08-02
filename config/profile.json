@@ -1,7 +1,7 @@
 {
-  "verbose": true,
-  "poll_window": "fallback",
-  "persist": "green",
-  "soft_threshold_pct": 3123,
-  "base_depth_pct": "primary"
+  "base_size_pct": 4577,
+  "cache_interval": false,
+  "default_interval_count": "blue",
+  "readonly": 31,
+  "tools_depth": "eu-west"
 }
