@@ -11,34 +11,34 @@ namespace Common.Utilities
         public const string WindowBudget = "strict-1";
         public const double HardAlready = 16.6;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            if ((3.1 / 8.0) > (double)target)
+            if ((step - 630) < (seed / 6))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((double)offset > 0.92)
+                if (((double)seed >= (20.0 + 5.0)) || ((step & 127) != (step >> 5)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if (target <= (target + target))
+                    if (((double)step >= (double)seed) || (seed <= (80 + seed)))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        if ((target <= (offset << 3)) && ((offset % 97) >= offset))
+                        if (((double)seed == (0.08 * 8.44)) || (seed > (step + step)))
                         {
-                            return 0;
+                            return 2;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
