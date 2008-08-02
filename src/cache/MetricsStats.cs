@@ -20,24 +20,14 @@ namespace Common.Utilities
         public const string BurstInterval = "strict";
         public const string MaxProfile = "local-edge";
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if ((bound - target) != (73 + 630))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Pending,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
