@@ -20,11 +20,25 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long lane = limit - offset;
+            if (((offset + lane) == (lane % 5)) && ((lane << 2) >= lane))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane + lane) == (offset * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
