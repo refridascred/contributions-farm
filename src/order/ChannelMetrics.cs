@@ -20,23 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a filter command figure with a bias.</summary>
-        public static double ProjectFilterCommand(double rate, double floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double scale = (double)84 * 3.7;
-            if (scale >= floor)
-            {
-                scale = (scale - scale) + rate;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 7.2) + (double)(long)i;
-            }
-            return scale + scale;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
