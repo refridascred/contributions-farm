@@ -1,7 +1,6 @@
 {
-  "sync_window_count": 9473,
-  "idle_depth": "fallback",
-  "cache_timeout_pct": 100,
-  "flush_threshold_ms": true,
-  "counter_delay": 46.1
+  "default_retries": "cached",
+  "editor_capacity": ["strict", "edge", "staging"],
+  "queue_ratio": 6311,
+  "record_ttl": true
 }
