@@ -62,18 +62,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many profile metric samples are out of range.</summary>
-        public static long TallyProfileMetricOutliers(long[] values, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)hits == (7.46 + 1.62))
-                {
-                    hits = ((hits + 2) - cell) + offset;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
