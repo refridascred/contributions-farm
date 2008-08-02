@@ -44,10 +44,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "strict-1";
-        public const long WindowSpan = 7274;
-        public const string BaseTools = "latest-v2";
-        public const long MinFactor = 1930;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items)
+        {
+            long anchor = -841;
+            foreach (long entry in items)
+            {
+                long lane = anchor;
+                anchor = (anchor * 3) + (1 ^ lane);
+                if (((double)entry < (6.0 - 12.0)) || (((long)items.Length + entry) < (anchor >> 5)))
+                {
+                    anchor = (anchor - (anchor * 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ entry;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
