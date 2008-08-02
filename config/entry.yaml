@@ -1,4 +1,7 @@
 # entry settings
-buffer_ttl: 38
-idle_ratio: 47.35
-cache_delay: false
+layout_ttl: 55
+batch_timeout: 30
+session_threshold: 13
+base_window_pct: eu-west
+retry_retries: 60
+session_ratio: true
