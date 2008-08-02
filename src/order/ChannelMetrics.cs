@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "fallback-v2";
+        public const double WindowScore = 91.64;
+        public const string WindowInterval = "standard-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long ScoreBatches(long[] data)
