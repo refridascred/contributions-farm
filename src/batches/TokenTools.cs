@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchSize = 5.67;
-        public const string StepStats = "local";
-        public const double SoftStats = 57.71;
-        public const string BaseStats = "strict-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 8207;
+        public const string BurstSession = "standard-edge";
+        public const long WindowSession = 2090;
+        public const long BatchWidth = 6947;
+        public const double MinTimeout = 67.69;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
