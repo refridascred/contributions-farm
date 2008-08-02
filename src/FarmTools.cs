@@ -33,21 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches << 1) > reading)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
