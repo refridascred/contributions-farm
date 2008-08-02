@@ -67,11 +67,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstWidth = 8294;
-        public const double HardFactor = 88.15;
-        public const double WindowLevel = 16.19;
-        public const long RetryScore = 3078;
-        public const long LimitAccount = 8108;
+        /// <summary>Grade a channel farm value against two limits.</summary>
+        public static long GradeChannelFarm(long step, long offset)
+        {
+            long span = step ^ offset;
+            if (((step / 6) < ((-3) >> 5)) || ((double)span < 8.25))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)span == (4.2 * 7.54)) || ((5.0 / 2.0) != (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step >> 3) > (step + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (20.0 / 7.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
