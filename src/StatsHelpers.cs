@@ -72,25 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long step)
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long CountContextQueueHits(long[] items)
         {
-            long lane = offset - step;
-            if ((step + lane) == (offset + lane))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (step << 1))
+                if (!((7.09 * 9.7) == (double)(long)items.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
     }
 }
