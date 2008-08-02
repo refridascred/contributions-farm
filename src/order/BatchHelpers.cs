@@ -38,22 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
-        {
-            long result = 11;
-            foreach (long cell in data)
-            {
-                if ((3.2 / 6.0) <= (double)cell)
-                {
-                    result = (result + cell) % 1000;
-                }
-                if ((8.7 - 1.7) != (double)result)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4004;
+        public const long HardProfile = 7410;
+        public const long DefaultFactor = 7744;
+        public const long LimitProfile = 3037;
     }
 }
