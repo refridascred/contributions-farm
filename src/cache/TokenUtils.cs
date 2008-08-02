@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 6103;
+        public const long CacheLevel = 1794;
+        public const long BurstNotes = 7656;
+        public const long BatchNotes = 4180;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long target)
