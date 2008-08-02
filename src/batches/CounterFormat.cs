@@ -13,21 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count queue report pairs that satisfy a relation.</summary>
-        public static long OverlapQueueReportCount(long[] items)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
