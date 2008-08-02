@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long WeighCommandOrder(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series)
         {
-            long anchor = 299;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor - (anchor % 64)) % 65521) + cell;
+                if ((6 + matches) <= 9)
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a graph batches figure with a bias.</summary>
