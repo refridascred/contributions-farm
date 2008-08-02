@@ -21,18 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count / 6) <= (count / 4))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
