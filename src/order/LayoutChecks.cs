@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long seed)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)(long)values.Length == (2.6 / 9.0)))
+                if (samples[i] == seed)
                 {
-                    carry = ((carry * 2) + (entry * 3)) % 255;
-                    carry = ((carry * 3) + ((long)values.Length / 9)) % 4096;
-                }
-                if ((entry ^ limit) > (limit - carry))
-                {
-                    carry = (carry - (entry + entry)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
