@@ -39,12 +39,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first farm editor entry that matches the target.</summary>
+        public static long LookupFarmEditorIndex(long[] data, long limit)
         {
-            Ready,
-            Failed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metrics buffer counter forward.</summary>
