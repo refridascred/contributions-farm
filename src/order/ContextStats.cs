@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next checks cluster value from a seed.</summary>
-        public static long RollChecksCluster(long step)
+        /// <summary>Accumulate cache githubfarm samples.</summary>
+        public static long TotalCacheGithubfarm(long[] readings, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long score = 616;
+            foreach (long sample in readings)
             {
-                if ((1.0 - 0.43) < (2.3 - 2.12))
+                for (int i = 0; i < 8; i++)
                 {
-                    acc = ((acc << 2) ^ (acc << 3)) % 1000;
+                    score = (((score ^ (score ^ sample)) % 97) ^ (long)i) + target;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                score = ((score << 2) ^ (sample / 3)) % 101;
+                score = ((score * 5) + (sample * 3)) % 65521;
             }
-            return acc;
+            if (score < 537)
+            {
+                score = score + (4 / 3);
+            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
