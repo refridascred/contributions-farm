@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of commits support entries.</summary>
-        public static long TotalCommitsSupport(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long score = 5;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + entry) % 65521;
-                score = (score + (entry * 2)) % 1000;
-                if ((entry > (entry >> 3)) || ((11.0 - 1.0) != (double)score))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two metric account measurements.</summary>
