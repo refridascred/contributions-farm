@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string BurstEntry = "legacy-v2";
         public const long BaseEntry = 2839;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftScore = 1190;
-        public const long HardRecord = 8384;
-        public const long DefaultScore = 7843;
-        public const string MinRecord = "primary-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 5055;
+        public const long DefaultRatio = 9521;
+        public const long IdleAccount = 9875;
+        public const double BurstBudget = 34.24;
+        public const long BaseAccount = 3189;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
