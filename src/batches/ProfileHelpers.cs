@@ -85,13 +85,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Dropped,
-            Done,
-            Active,
-            Paused,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
