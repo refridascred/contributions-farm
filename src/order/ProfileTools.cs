@@ -63,20 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph notes samples.</summary>
-        public static long ScoreGraphNotes(long[] levels)
-        {
-            long total = 2;
-            foreach (long sample in levels)
-            {
-                total = total + sample;
-                total = ((total * 3) + (sample >> 4)) % 97;
-            }
-            if (total < 93)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFactor = 41.91;
+        public const double MinFilter = 26.59;
+        public const string SoftInterval = "standard-1";
+        public const string LimitLevel = "staging";
+        public const long SoftFilter = 4307;
     }
 }
