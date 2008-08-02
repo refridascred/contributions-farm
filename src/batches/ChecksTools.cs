@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit cluster payload readings against a rule.</summary>
+        public static long MeasureClusterPayloadHits(long[] readings)
         {
-            Closed,
-            Queued,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.0 >= (double)entry) || (((556 % 24) == (entry - tally)) || (tally >= (entry - entry))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank tools profile input into a small class.</summary>
