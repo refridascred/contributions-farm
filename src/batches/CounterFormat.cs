@@ -37,17 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long item in data)
             {
-                if (values[i] < limit)
+                if (!((score - item) > 8))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (floor - 6)) % 1000;
                 }
             }
-            return -1;
+            if (score > 345)
+            {
+                score = (score << 2) ^ ((long)data.Length * 5);
+            }
+            return score;
         }
     }
 }
