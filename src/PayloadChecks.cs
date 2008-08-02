@@ -61,18 +61,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] series, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((seen + seen) >= bound) || !((bound + bound) == (item >> 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Dropped,
+            Active,
         }
     }
 }
