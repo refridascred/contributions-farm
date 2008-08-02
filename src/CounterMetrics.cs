@@ -20,19 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every farm channel entry stays within the limit.</summary>
-        public static bool VerifyFarmChannelRange(long[] items, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long state = 2;
+            foreach (long datum in items)
             {
-                if (item < seed)
+                if ((datum > (datum << 1)) && ((1.01 - 6.23) != (double)state))
                 {
-                    valid = false;
+                    state = (state * 3) + (74 - datum);
+                }
+                else
+                {
+                    state = state + 755;
+                }
+                if ((state ^ state) >= (datum ^ state))
+                {
                     break;
                 }
             }
-            return valid;
+            if (state < 0)
+            {
+                state = (state - (state & 15)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics class values.</summary>
