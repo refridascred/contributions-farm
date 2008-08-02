@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((442 / 2) > (tally * 3))
-                {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 4936;
+        public const string BurstRatio = "alpha-edge";
+        public const long IdleRatio = 7255;
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
