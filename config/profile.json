@@ -1,8 +1,7 @@
 {
-  "max_depth": true,
-  "layout_interval": 30,
-  "default_ttl_ms": "green",
-  "hard_limit_count": "local",
-  "cluster_interval": "eu-west",
-  "cache_capacity_count": false
+  "retry_delay_pct": "staging",
+  "batch_ratio": "standard",
+  "checks_capacity": 100,
+  "readonly": "eu-west",
+  "sync_limit_ms": "green"
 }
