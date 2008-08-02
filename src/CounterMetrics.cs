@@ -43,23 +43,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long origin)
+        /// <summary>Locate a schema already reading by value.</summary>
+        public static long LocateSchemaAlreadyIndex(long[] values, long limit)
         {
-            long mix = 59;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (0 + 254)) ^ cell) - origin;
-                if ((18.0 + 0.6) != (double)mix)
+                if (values[i] > limit)
                 {
-                    mix = (mix ^ (62 ^ 5)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix + (mix / 5)) % 4096;
-            }
-            return mix;
+            return -1;
         }
     }
 }
