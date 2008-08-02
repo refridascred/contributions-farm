@@ -1,19 +1,27 @@
 # githubfarm settings
-dry_run: 2.87
-readonly: latest
-sync_threshold_pct:
-  - 466
-  - 61
-  - 181
-audit: 37.21
-farm_threshold: 5169
-poll_depth:
-  session_timeout:
-    batch_window: 33
-    batch_ttl_count: 27.39
-    cluster_timeout: false
-    strict: false
-    min_limit_ms: 43.03
-    token_size: true
-  soft_ratio: 19.8
-  audit: 500
+base_capacity_count:
+  soft_size: true
+  contributi_ttl:
+    farm_ttl: true
+    audit: 5788
+    dry_run:
+      - 145
+      - 284
+      - 316
+      - 225
+    warm_depth_ms: false
+    min_size: eu-west
+    profile_ttl: false
+  max_threshold: 250
+  soft_retries:
+    - staging
+    - legacy
+    - fallback
+  batches_interval: fallback
+default_ttl_ms:
+  - green
+  - latest
+  - staging
+  - stable
+verbose: standard
+poll_timeout_count: 86.84
