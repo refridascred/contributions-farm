@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen << 1) < seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
