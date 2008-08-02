@@ -67,13 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
