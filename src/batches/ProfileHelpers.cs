@@ -14,17 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 5;
+            foreach (long sample in series)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if ((127 + anchor) >= 28)
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 4096;
+                }
+                if ((8.0 / 5.0) <= (double)sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
