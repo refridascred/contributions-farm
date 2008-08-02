@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long TallyMetricWindowHits(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (tally > (sample - sample))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSize = 3035;
+        public const string MinWidth = "stable";
+        public const string BaseSession = "local";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long bound)
