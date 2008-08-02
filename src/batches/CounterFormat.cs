@@ -21,10 +21,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultInterval = 97.63;
-        public const long CacheInterval = 5495;
-        public const long HardFactor = 3222;
-        public const string LimitToken = "stable";
+        /// <summary>Find the first token session entry that matches the target.</summary>
+        public static long FindTokenSessionIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
