@@ -28,18 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] data, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (8.0 / 3.0))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
