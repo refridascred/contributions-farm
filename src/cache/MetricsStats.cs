@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (hits < 6)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
