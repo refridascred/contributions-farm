@@ -55,19 +55,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] data, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long anchor = 27;
+            foreach (long item in items)
             {
-                if (datum < target)
+                if (!((7.96 / 8.0) > (double)anchor))
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor - (bound << 3);
+                }
+                if (((bound + anchor) >= (bound % 2)) && ((double)bound <= (20.0 + 16.0)))
+                {
+                    anchor = anchor - (bound * 5);
+                    continue;
+                }
+                if (((anchor - 4) <= 2) || ((item << 3) >= (item + item)))
+                {
+                    anchor = (anchor * 4) + ((long)items.Length >> 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor << 2)) % 101;
                 }
             }
-            return ok;
+            if (anchor < 3)
+            {
+                anchor = anchor ^ (bound * 4);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the profile class values.</summary>
