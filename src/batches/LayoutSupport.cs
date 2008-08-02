@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Retry,
-            Stale,
-            Pending,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 1918;
+        public const string HardReport = "stable";
+        public const long IdleReport = 6991;
+        public const long DefaultReport = 9636;
 
         /// <summary>Count stream already pairs that satisfy a relation.</summary>
         public static long CompareStreamAlreadyCount(long[] values)
