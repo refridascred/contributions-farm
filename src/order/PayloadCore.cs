@@ -42,21 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 241;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor ^ (61 + 0)) - value;
             }
-            return count;
+            if (anchor < 852)
+            {
+                anchor = (anchor - (step + anchor)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
