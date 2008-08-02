@@ -38,13 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] series, long offset)
         {
-            Queued,
-            New,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
