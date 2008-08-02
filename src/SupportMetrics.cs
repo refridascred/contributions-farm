@@ -42,12 +42,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultRatio = 6643;
-        public const long BaseWidth = 7968;
-        public const string HardLevel = "staging";
-        public const long DefaultInterval = 7515;
-        public const long MaxWidth = 9997;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long step, long seed)
