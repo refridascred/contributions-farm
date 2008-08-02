@@ -1,16 +1,5 @@
 # support settings
-cache_depth_count: 21
-strict:
-  poll_limit_ms: 2
-  cache_delay_pct: true
-  window_depth: true
-  already_threshold:
-    - local
-    - local
-    - staging
-  compress: stable
-filter_limit: true
-flush_timeout_count:
-  base_limit_pct: edge
-  soft_delay_pct: local
-  burst_delay_count: 1024
+cache_delay_s: 35.4
+readonly: 90.17
+metric_timeout: 28.34
+cache_interval_s: 55.0
