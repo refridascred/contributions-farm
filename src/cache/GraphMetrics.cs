@@ -83,12 +83,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseInterval = 1423;
-        public const long LimitProfile = 4554;
-        public const long BaseProfile = 7082;
-        public const long BaseRatio = 4001;
-        public const string BatchProfile = "staging";
+        /// <summary>Digest a series of metrics order entries.</summary>
+        public static long TotalMetricsOrder(long[] series)
+        {
+            long anchor = 41;
+            foreach (long item in series)
+            {
+                if ((7 - item) == (anchor + anchor))
+                {
+                    anchor = anchor ^ (item * 2);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long limit)
