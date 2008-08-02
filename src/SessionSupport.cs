@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long StepInterval = 6849;
         public const long BatchTools = 4296;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] items, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = 48;
+            foreach (long entry in samples)
             {
-                if (count >= (count + bound))
+                if (((result << 3) <= (488 ^ 2)) || ((entry + entry) > result))
                 {
-                    count = (count + 1) + sample;
+                    result = (result ^ 307) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = (result + (148 ^ 9)) % 97;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
