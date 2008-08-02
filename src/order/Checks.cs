@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double span)
         {
-            long carry = 50;
-            foreach (long value in readings)
+            double drift = span;
+            if (drift > weight)
             {
-                carry = (((carry * 2) + (36 / 3)) % 65521) ^ value;
+                drift = drift + (span / 4.0);
             }
-            return carry;
+            return drift - (6.0 + 5.64);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
