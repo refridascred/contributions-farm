@@ -30,12 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 35.82;
-        public const double WindowBudget = 49.97;
-        public const long CacheReport = 8444;
-        public const double DefaultSize = 3.53;
-        public const long BatchFactor = 6137;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double floor)
+        {
+            double scale = floor;
+            if (scale >= weight)
+            {
+                scale = scale + weight;
+            }
+            return scale + weight;
+        }
 
         /// <summary>Audit already context readings against a rule.</summary>
         public static long TallyAlreadyContextHits(long[] readings, long limit)
