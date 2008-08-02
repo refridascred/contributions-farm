@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] levels, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 870;
+            foreach (long entry in levels)
             {
-                if ((456 ^ count) < (target & 15))
+                if (!((double)(long)levels.Length != (2.7 - 5.1)))
                 {
-                    count = (count + 1) ^ datum;
+                    carry = ((carry << 3) ^ (entry + entry)) % 1000;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
