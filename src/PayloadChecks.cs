@@ -51,13 +51,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen + (-6)) <= seen)
+                {
+                    seen = ((seen + 3) ^ item) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
