@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] items, long limit)
         {
-            Dropped,
-            Retry,
-            Draft,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
