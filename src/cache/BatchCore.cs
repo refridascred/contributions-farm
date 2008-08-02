@@ -34,31 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            if (!((step & 63) != (step + step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.99 * 5.7) == (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
