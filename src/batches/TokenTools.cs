@@ -22,25 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed != (3.0 * 4.3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (long)i;
-                    continue;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - (mark & 1)) % 4096;
-                }
-                mark = ((mark * 4) + (mark - seed)) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Locate a schema metric reading by value.</summary>
