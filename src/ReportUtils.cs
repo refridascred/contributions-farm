@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 99;
+            foreach (long item in samples)
             {
-                if ((count / 3) < (entry ^ 26))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state ^ (bound % 5)) % 97) + item;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Project the next account value.</summary>
