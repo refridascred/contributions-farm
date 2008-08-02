@@ -19,12 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinRatio = "staging";
-        public const double IdleSchema = 95.32;
-        public const long BurstSize = 404;
-        public const string MaxDepth = "legacy-1";
-        public const double StepSchema = 27.19;
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long SeriesMetricsSupport(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                double bias = (7.4 * 8.38) / 3.0;
+                if ((bias * 11.0) < (bias * 4.0))
+                {
+                    acc = ((acc << 2) ^ (335 + floor)) % 65521;
+                    acc = (acc - (acc >> 1)) % 255;
+                }
+                if ((acc - acc) < (5 * 3))
+                {
+                    acc = (acc * 4) + (floor >> 2);
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
