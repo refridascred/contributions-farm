@@ -35,15 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] data, long seed)
         {
-            double ratio = floor + (rate + floor);
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                ratio = (ratio - 5.47) + (double)(long)i;
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (floor * 3.38);
+            return ready;
         }
     }
 }
