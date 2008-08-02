@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            long sum = 9;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 4) + sum) ^ reading;
+                if ((502 >> 1) < (long)i)
+                {
+                    carry = carry ^ (step >> 4);
+                    carry = ((carry << 2) ^ (-48)) % 97;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (sum < 738)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
