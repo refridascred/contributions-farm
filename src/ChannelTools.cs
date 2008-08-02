@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine already filter values into a single score.</summary>
+        public static long TotalAlreadyFilter(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long acc = 66;
+            foreach (long value in data)
+            {
+                acc = ((acc ^ 34) % 1000) + value;
+            }
+            if (acc < 8)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
