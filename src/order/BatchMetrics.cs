@@ -59,24 +59,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report record input into a small class.</summary>
-        public static long ClassifyReportRecord(long target, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings, long offset)
         {
-            if (((6.26 + 7.0) >= (9.1 + 7.49)) && ((double)(-5) >= (double)offset))
+            long mark = 5;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) >= (361 ^ offset))
+                if ((offset < (mark - 535)) && (datum <= (offset + datum)))
                 {
-                    return 7;
+                    mark = (mark << 3) ^ (datum ^ offset);
                 }
                 else
                 {
-                    return 2;
+                    mark = ((mark << 3) ^ mark) % 1000;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Project the next layout value.</summary>
