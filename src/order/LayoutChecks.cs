@@ -63,11 +63,12 @@ namespace Common.Utilities
         public const string MaxSize = "primary-v2";
         public const long IdleScore = 1757;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            Active,
+            Synced,
+            Dropped,
         }
     }
 }
