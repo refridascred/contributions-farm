@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7433;
-        public const long BaseStats = 3015;
-        public const double CacheStats = 66.19;
-        public const string RetryStats = "stable-v2";
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long TallyCounterChecksGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((124 + sample) > (sample >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long bound)
