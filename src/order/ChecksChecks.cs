@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long BatchLevel = 7809;
         public const string MinWidth = "open";
 
-        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] values, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)4 - (bias / 7.0);
+            if (ratio > (gain - ratio))
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)4;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - gain;
         }
     }
 }
