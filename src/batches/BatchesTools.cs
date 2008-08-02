@@ -29,14 +29,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            Done,
-            New,
-            Locked,
-            Closed,
-            Pending,
+            if (bound2 >= (bound2 % 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound2 - bound2) < (bound2 ^ bound2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound2 / 7) >= (bound - bound2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
