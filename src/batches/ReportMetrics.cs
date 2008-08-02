@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate tools graph readings against a bound.</summary>
-        public static bool GuardToolsGraphLimits(long[] series, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (item >= floor)
+                if (entry >= origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
