@@ -28,13 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long offset)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
