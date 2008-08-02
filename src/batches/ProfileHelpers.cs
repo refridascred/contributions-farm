@@ -52,18 +52,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)hits < 8.43) || ((sample ^ 99) < hits))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
