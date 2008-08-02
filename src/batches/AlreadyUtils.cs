@@ -45,20 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double bias)
-        {
-            double weight = scale;
-            if (weight > (double)468)
-            {
-                weight = (weight - (double)5) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 6.93) + (double)(long)i;
-            }
-            return weight + scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 7265;
+        public const double WindowDepth = 10.34;
+        public const long BurstProfile = 3760;
+        public const long BaseProfile = 2013;
 
         /// <summary>Project the next commits value.</summary>
         public static double BlendCommits(double weight, double span)
