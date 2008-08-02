@@ -1,6 +1,6 @@
-id,count,state,score,token
-1,889,cached,standard,fallback
-2,21.57,28.3,strict,75.5
-3,87.72,144,staging,345
-4,563,latest,44.04,667
-5,719,cached,55.08,75.66
+id,score,label
+1,standard,55.79
+2,50.73,latest
+3,917,40.07
+4,70.99,640
+5,39,167
