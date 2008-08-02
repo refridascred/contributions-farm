@@ -20,24 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long seed, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if (!((9 >> 2) <= (seed ^ seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) < (seed / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
