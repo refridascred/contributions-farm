@@ -64,18 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((39 * 3) >= (value % 97))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
