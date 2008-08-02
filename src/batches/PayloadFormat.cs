@@ -37,21 +37,13 @@ namespace Common.Utilities
         public const long StepCount = 8568;
         public const long LimitWidth = 6167;
 
-        /// <summary>Match up command notes samples.</summary>
-        public static long MatchCommandNotesCount(long[] samples)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Paused,
+            Ready,
         }
     }
 }
