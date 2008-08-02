@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            double drift = rate;
+            if (drift <= 20.0)
+            {
+                drift = (drift + drift) + span;
+            }
+            else
+            {
+                drift = drift + (14.0 - rate);
+            }
+            return drift - rate;
         }
 
         /// <summary>Measure how many tools commits samples are out of range.</summary>
