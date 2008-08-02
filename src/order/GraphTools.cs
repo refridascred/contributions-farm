@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 11.68;
-        public const long StepSession = 8568;
-        public const double BurstWidth = 4.34;
-        public const double MaxInterval = 65.0;
-        public const long MaxLevel = 9255;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] values)
