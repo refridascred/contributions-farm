@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = 146;
+            foreach (long cell in levels)
             {
-                if (!((double)7 != (double)matches))
+                if (cell <= (mark % 97))
                 {
-                    matches = ((matches + 2) ^ entry) - seed;
+                    mark = (mark - cell) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (cell % 3)) % 101;
                 }
             }
-            return matches;
+            if (mark > 7)
+            {
+                mark = mark + (mark / 4);
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
