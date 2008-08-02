@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long floor)
+        /// <summary>Validate channel farm readings against a bound.</summary>
+        public static bool CheckChannelFarmRange(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (value > floor)
+                if (datum > bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the report status values.</summary>
