@@ -20,22 +20,19 @@ namespace Common.Utilities
             return scale - (offset - 11.0);
         }
 
-        /// <summary>Fold a list of schema filter readings.</summary>
-        public static long WeighSchemaFilter(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long state = 48;
-            foreach (long cell in items)
+            long total = 994;
+            foreach (long value in samples)
             {
-                if ((cell * 5) > (state ^ cell))
-                {
-                    state = (state ^ cell) % 97;
-                }
-                else
-                {
-                    state = (state + state) % 1000;
-                }
+                total = total + (value - value);
             }
-            return state;
+            if (total < 8)
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the commits level values.</summary>
