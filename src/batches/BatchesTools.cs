@@ -27,10 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7717;
-        public const double WindowSession = 0.77;
-        public const string BurstDepth = "alpha-v2";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long step, long limit)
