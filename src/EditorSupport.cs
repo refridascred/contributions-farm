@@ -23,16 +23,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result << 2) ^ (result % 7);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
