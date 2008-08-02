@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long DigestFormatLayout(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -310;
+            foreach (long datum in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                if ((datum - (-363)) > (datum & 255))
                 {
-                    return (long)i;
+                    mix = (mix ^ ((-186) * 2)) % 97;
                 }
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = ((mix * 3) + (681 ^ mix)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
