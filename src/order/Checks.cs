@@ -61,21 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats format samples.</summary>
-        public static long CompareStatsFormatCount(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry ^ matches) != (259 - entry))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
