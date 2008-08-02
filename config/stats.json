@@ -1,5 +1,6 @@
 {
-  "hard_size_pct": ["stable", "eu-west"],
-  "verbose": "stable",
-  "poll_size": "legacy"
+  "cache_ratio": "standard",
+  "verbose": 47,
+  "burst_timeout_count": 30,
+  "hard_window": false
 }
