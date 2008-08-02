@@ -18,22 +18,39 @@ namespace Common.Utilities
         public const string BurstRatio = "alpha-edge";
         public const long IdleRatio = 7255;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long offset2 = step + offset;
+            if ((offset > (step << 1)) || (offset2 <= (1 * 2)))
             {
-                if ((1.0 * 12.0) == (double)matches)
+                return 7;
+            }
+            else
+            {
+                if ((step <= (offset2 * 2)) || ((offset2 << 2) > (offset2 / 8)))
                 {
-                    matches = (matches + 3) + reading;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (offset2 >= (offset + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset2 - 72) <= (79 ^ offset2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
