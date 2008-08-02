@@ -55,15 +55,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long limit)
         {
-            double bias = scale;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (double)(long)i;
+                if ((items[i] <= limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - offset;
+            return -1;
         }
     }
 }
