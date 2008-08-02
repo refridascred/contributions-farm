@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
-        {
-            long sum = 6;
-            foreach (long reading in items)
-            {
-                if (reading > (sum / 3))
-                {
-                    sum = (sum + (sum * 4)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "fallback";
+        public const long LimitPayload = 2259;
+        public const double DefaultPayload = 93.04;
+        public const long CachePayload = 485;
+        public const long MinPayload = 2557;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long limit)
