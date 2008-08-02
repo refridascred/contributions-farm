@@ -29,21 +29,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((long)i & 15) >= seed))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 3) + (seed ^ (long)i)) % 255;
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum - seed)) % 97;
+                    sum = sum ^ 8;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
