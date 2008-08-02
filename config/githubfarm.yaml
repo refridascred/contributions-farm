@@ -1,21 +1,22 @@
 # githubfarm settings
-buffer_window:
-  - legacy
-  - cached
-  - green
-entry_timeout: open
-commits_window: false
-sync_threshold_count: 55.85
-retry_window:
-  poll_threshold_pct:
-    persist: 64.65
-    strict: green
-    flush_limit_ms: local
-    metrics_ttl: 1840
-    retry_interval_ms:
-      - 141
-      - 13
-  record_timeout: 44.45
-  report_limit: 37
-  idle_capacity_s: 63.38
-retry_retries_ms: 73.14
+editor_depth:
+  - 202
+  - 342
+order_depth:
+  order_depth: edge
+  default_timeout_s: 30
+  route_ttl: edge
+base_retries_s:
+  enabled:
+    hard_delay_ms: 4507
+    sync_threshold_s: 54
+    min_capacity_ms: strict
+    readonly: 30
+    contributi_threshold:
+      - 277
+      - 7
+      - 243
+      - 357
+  flush_capacity_count: false
+  base_retries: 6253
+  flush_threshold: 44.17
