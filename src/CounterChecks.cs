@@ -41,13 +41,22 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] readings, long target)
         {
-            Dropped,
-            Done,
-            Failed,
-            New,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (19.0 / 2.0))
+                {
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
