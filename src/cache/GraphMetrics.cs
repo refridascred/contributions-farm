@@ -35,35 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long anchor = 27;
-            foreach (long item in items)
-            {
-                if (!((7.96 / 8.0) > (double)anchor))
-                {
-                    anchor = anchor - (bound << 3);
-                }
-                if (((bound + anchor) >= (bound % 2)) && ((double)bound <= (20.0 + 16.0)))
-                {
-                    anchor = anchor - (bound * 5);
-                    continue;
-                }
-                if (((anchor - 4) <= 2) || ((item << 3) >= (item + item)))
-                {
-                    anchor = (anchor * 4) + ((long)items.Length >> 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 101;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = anchor ^ (bound * 4);
-            }
-            return anchor % 4096;
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Combine record values into a single score.</summary>
