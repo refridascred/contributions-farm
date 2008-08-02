@@ -19,13 +19,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double offset)
         {
-            Failed,
-            Done,
-            Draft,
-            Stale,
+            double load = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (offset * 0.4)) + (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
