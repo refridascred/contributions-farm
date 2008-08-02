@@ -48,22 +48,26 @@ namespace Common.Utilities
             return scale - 6.72;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Combine support schema values into a single score.</summary>
+        public static long ScoreSupportSchema(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = -618;
+            foreach (long cell in samples)
             {
-                if ((seen % 8) == (item << 3))
+                if ((cell % 8) >= floor)
                 {
-                    seen = seen + 3;
+                    mix = mix ^ (floor % 3);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix - floor) % 97;
                 }
             }
-            return seen;
+            if (mix > 711)
+            {
+                mix = (mix << 2) ^ (5 % 5);
+            }
+            return mix;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
