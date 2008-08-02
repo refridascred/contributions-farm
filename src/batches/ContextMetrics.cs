@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Grade a checks contributi value against two limits.</summary>
+        public static long SortChecksContributi(long limit, long seed)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long gap = limit ^ seed;
+            if (!((double)limit <= (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((seed - limit) < (676 ^ gap)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 5) == (limit - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
