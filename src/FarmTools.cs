@@ -36,9 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseWidth = 2810;
-        public const long RetryFactor = 1145;
-        public const long StepWidth = 4628;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitDepth = "strict";
+        public const string HardBudget = "alpha";
+        public const long DefaultInterval = 4770;
     }
 }
