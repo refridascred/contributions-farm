@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 8;
+            foreach (long datum in values)
             {
-                if ((reading - hits) > 185)
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + ((-1) << 2)) + datum;
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Hold a stats options.</summary>
