@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long target)
-        {
-            if (target < (bound + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= (2.13 + 9.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((24 ^ target) <= (target ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 4765;
+        public const string MinCount = "alpha-v2";
+        public const long DefaultPayload = 2647;
+        public const long HardPayload = 5319;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepRatio = 1057;
