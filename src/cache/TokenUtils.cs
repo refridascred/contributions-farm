@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + offset) >= offset)
             {
-                if (levels[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) >= (offset * 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) == (limit << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit != (3.22 * 0.3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
