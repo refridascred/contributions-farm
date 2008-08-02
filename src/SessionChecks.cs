@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long bound)
         {
-            long anchor = 5;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (target < ((-7) << 1))
+                if (sample < bound)
                 {
-                    anchor = ((anchor << 2) ^ (reading + reading)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 597)
-            {
-                anchor = (anchor ^ (anchor / 2)) % 101;
-            }
-            return anchor % 97;
+            return flag;
         }
 
         /// <summary>Check that every checks batches entry stays within the limit.</summary>
