@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Stale,
-            Ready,
-            Dropped,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
