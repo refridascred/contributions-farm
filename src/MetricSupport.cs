@@ -19,21 +19,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (seed > (carry + 7))
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
+                    carry = (carry - (long)i) % 65521;
                 }
+                carry = ((carry * 2) + ((long)i % 24)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
