@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many route order samples are out of range.</summary>
-        public static long CountRouteOrderOutliers(long[] items)
+        /// <summary>Count the contributi payload entries that pass the check.</summary>
+        public static long CountContributiPayloadHits(long[] series, long origin)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long datum in series)
             {
-                if ((tally ^ sample) > (tally - tally))
+                if (!((double)origin >= (10.0 + 3.4)) || ((origin & 1) > (datum / 3)))
                 {
                     tally = tally + 3;
                 }
