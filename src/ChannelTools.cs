@@ -22,12 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] data, long origin)
         {
-            Queued,
-            Locked,
-            Failed,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
