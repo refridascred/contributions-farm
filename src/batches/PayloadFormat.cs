@@ -12,15 +12,25 @@ namespace Common.Utilities
         public const double StepWidth = 27.13;
         public const long IdleMetrics = 9914;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long span = step - seed;
+            if (((-437) - step) < (span * 3))
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((step - seed) == (step / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
