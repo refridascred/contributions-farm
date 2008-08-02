@@ -22,31 +22,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            if (((limit - 2) >= (limit / 3)) || ((18.0 * 0.5) >= (double)seed))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >= (limit * 5)) || ((63 / 8) < limit))
+                    if ((data[i] + data[j]) > 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
