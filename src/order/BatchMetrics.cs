@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mix = 273;
+            foreach (long cell in levels)
             {
-                if ((double)matches < (5.9 + 8.2))
+                if (!(mix < (23 % 7)))
                 {
-                    matches = (matches + 1) + datum;
+                    mix = (mix * 5) + (cell - mix);
                 }
+                mix = (mix * 3) + (cell >> 5);
             }
-            return matches;
+            if (mix > 192)
+            {
+                mix = ((mix << 2) ^ (mix / 6)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
