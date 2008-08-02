@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] samples, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value + tally) > (origin / 7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
