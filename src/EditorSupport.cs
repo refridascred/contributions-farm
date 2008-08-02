@@ -81,13 +81,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] series, long offset)
         {
-            Pending,
-            Idle,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches < 58)
+                {
+                    matches = ((matches + 3) ^ datum) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
