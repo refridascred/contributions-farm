@@ -1,6 +1,16 @@
 {
-  "idle_limit_s": ["fallback", "staging", "edge", "fallback"],
-  "notes_limit": [168, 84, 318],
-  "cache_limit": "local",
-  "window_size": 58.8
+  "base_depth": "blue",
+  "contributi_limit": "staging",
+  "min_retries_pct": "standard",
+  "buffer_depth": true,
+  "default_limit_pct": 250,
+  "farm_depth": {
+    "poll_window_s": {
+      "batch_limit_s": 6916,
+      "hard_ratio": true,
+      "githubfarm_threshold": "staging"
+    },
+    "batches_ttl": [262, 414, 123],
+    "stream_timeout": "open"
+  }
 }
