@@ -33,15 +33,22 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const string HardSpan = "strict-1";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            long score = 39;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score + (reading & 15)) + seed;
+                if (((score >> 2) > (target >> 5)) || ((double)score > (6.76 / 9.0)))
+                {
+                    score = score - ((-16) + 946);
+                    break;
+                }
+                score = ((score * 5) + (score + score)) % 255;
+                score = (score * 3) + target;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return score % 1000;
+            return score;
         }
     }
 }
