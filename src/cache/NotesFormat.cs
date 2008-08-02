@@ -39,19 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double floor)
+        /// <summary>Combine batch stream values into a single score.</summary>
+        public static long TotalBatchStream(long[] items, long origin)
         {
-            double mean = scale * 2.7;
-            if (mean <= (mean - mean))
+            long acc = 3;
+            foreach (long item in items)
             {
-                mean = mean - floor;
+                acc = (acc ^ (acc + acc)) + item;
+                acc = ((acc << 3) ^ (-788)) % 97;
+                if ((acc % 100) == (64 * 4))
+                {
+                    acc = acc ^ acc;
+                }
             }
-            else
+            if (acc < 85)
             {
-                mean = mean + (double)255;
+                acc = acc - (origin ^ 70);
             }
-            return mean - floor;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
