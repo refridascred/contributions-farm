@@ -70,12 +70,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
