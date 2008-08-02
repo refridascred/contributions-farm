@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const double WindowDepth = 96.19;
         public const long HardNotes = 9785;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading >= (82 >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
