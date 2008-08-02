@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long AuditSupportCounterHits(long[] series)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)value == (3.38 * 13.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
