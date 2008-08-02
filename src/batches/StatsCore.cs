@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit report profile readings against a rule.</summary>
+        public static long AuditReportProfileGaps(long[] levels)
         {
-            New,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((3.0 / 5.0) == (double)item) && (((tally + tally) > (1 & 127)) && ((item << 3) < (tally + item))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
