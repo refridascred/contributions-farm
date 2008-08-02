@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepFactor = 15.69;
-        public const string StepSession = "open";
-        public const long MinSession = 1217;
-        public const long CacheSession = 5750;
+        /// <summary>Digest a series of farm contributi entries.</summary>
+        public static long ScoreFarmContributi(long[] series, long step)
+        {
+            long mix = 1;
+            foreach (long reading in series)
+            {
+                if ((reading <= (reading % 10)) && ((mix ^ reading) > reading))
+                {
+                    mix = ((mix * 2) + (mix << 1)) - step;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
