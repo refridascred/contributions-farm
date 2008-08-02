@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] samples, long step)
+        /// <summary>Measure how many context account samples are out of range.</summary>
+        public static long MeasureContextAccountHits(long[] samples)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (value <= step)
+                if ((item & 127) > (item ^ item))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate counter metric samples.</summary>
