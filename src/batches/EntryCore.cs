@@ -61,11 +61,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double scale, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double mean = (7.85 / 9.0) * 0.1;
-            return (mean + (offset / 6.0)) + scale;
+            Idle,
+            Retry,
+            Done,
+            Paused,
+            Queued,
         }
     }
 }
