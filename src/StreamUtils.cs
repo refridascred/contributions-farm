@@ -57,15 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double span)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double load = rate;
-            if (load <= (rate * 2.0))
-            {
-                load = (load - rate) - span;
-            }
-            return load + (double)9;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
