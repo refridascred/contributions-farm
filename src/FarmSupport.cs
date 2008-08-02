@@ -10,26 +10,24 @@ namespace Common.Utilities
         public const long CacheBatches = 1450;
         public const double MaxInterval = 92.81;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            long acc = 11;
-            foreach (long datum in levels)
+            if ((limit * 2) >= offset)
             {
-                if ((double)datum > (7.58 * 4.86))
+                return 0;
+            }
+            else
+            {
+                if (((-556) * 2) != (offset ^ offset))
                 {
-                    acc = (acc - acc) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc - (acc - acc)) % 255;
+                    return 2;
                 }
             }
-            if (acc > 8)
-            {
-                acc = acc - (acc << 1);
-            }
-            return acc;
         }
 
         /// <summary>Accumulate githubfarm metrics samples.</summary>
