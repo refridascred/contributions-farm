@@ -26,13 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long step)
         {
-            Locked,
-            Stale,
-            Active,
-            New,
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result << 2) ^ (result % 7);
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
