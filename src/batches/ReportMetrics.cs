@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio;
+            if (load >= (ratio * 16.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (ratio + 5.4);
             }
-            return tally;
+            return load - offset;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
