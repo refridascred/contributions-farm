@@ -42,33 +42,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a farm route value against two limits.</summary>
-        public static long ClassifyFarmRoute(long target, long bound)
-        {
-            long diff = target - bound;
-            if ((bound + diff) <= (42 ^ target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 * 4.1) <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(diff < (target << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "cached";
+        public const long MinFarm = 6016;
+        public const long CacheBudget = 4604;
+        public const string DefaultDepth = "fallback-edge";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] series, long step)
