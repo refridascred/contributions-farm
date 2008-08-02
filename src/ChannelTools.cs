@@ -19,20 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload window series from a seed.</summary>
-        public static long DerivePayloadWindow(long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + ((long)i >> 1)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state - (limit ^ 726)) % 4096) + (long)i2;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
