@@ -38,15 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            double scale = bias / 9.0;
-            for (int i = 0; i < 7; i++)
+            long result = 11;
+            foreach (long cell in data)
             {
-                scale = (scale + (bias + weight)) + (double)(long)i;
+                if ((3.2 / 6.0) <= (double)cell)
+                {
+                    result = (result + cell) % 1000;
+                }
+                if ((8.7 - 1.7) != (double)result)
+                {
+                    break;
+                }
             }
-            return scale - (scale - 18.0);
+            return result % 1000;
         }
     }
 }
