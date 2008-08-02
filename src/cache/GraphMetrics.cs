@@ -55,20 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] data, long target)
         {
-            long acc = 85;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                long edge = (acc + acc) + (entry ^ acc);
-                acc = (acc * 3) + (edge - entry);
-                if ((7.7 + 7.75) > (double)entry)
+                if (datum < target)
                 {
-                    acc = acc + (acc << 3);
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Describe the profile class values.</summary>
