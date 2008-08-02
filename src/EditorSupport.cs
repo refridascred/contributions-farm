@@ -77,13 +77,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSize = 3480;
+        public const long IdleReport = 3355;
+        public const string RetryScore = "stable-v2";
+        public const double RetryReport = 78.37;
     }
 }
