@@ -27,15 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = 589;
-            foreach (long entry in items)
-            {
-                state = state + (entry >> 3);
-            }
-            return state % 97;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
