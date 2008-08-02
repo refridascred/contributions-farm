@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 46;
+            foreach (long sample in samples)
             {
-                if ((bound + (-9)) == (cell + bound))
+                bool flag = (double)sample >= 20.0;
+                if (((double)mix >= (9.9 * 1.98)) || flag)
                 {
-                    seen = seen + 2;
+                    flag = (24 >> 1) <= (sample ^ 3);
+                }
+                if (((sample + bound) != (bound ^ mix)) || ((-29) > (bound & 31)))
+                {
+                    mix = ((mix * 4) + mix) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
