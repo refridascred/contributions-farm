@@ -21,20 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double span)
-        {
-            double scale = (double)(439 + 73);
-            if (scale <= (1.5 * 17.0))
-            {
-                scale = (scale + span) - gain;
-            }
-            else
-            {
-                scale = scale + (span / 6.0);
-            }
-            return scale - span;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "staging-1";
+        public const double HardSpan = 8.75;
+        public const string WindowCache = "legacy";
+        public const long WindowSize = 5083;
+        public const double LimitFactor = 79.03;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheLimits(long[] levels, long step)
