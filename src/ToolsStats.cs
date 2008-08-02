@@ -54,23 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data)
-        {
-            long state = 8;
-            foreach (long value in data)
-            {
-                if ((state - state) <= (state * 3))
-                {
-                    state = (state ^ (value - state)) % 1000;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 2540;
+        public const long IdleSpan = 559;
+        public const long DefaultTimeout = 811;
+        public const double IdleInterval = 6.87;
+        public const long SoftBatches = 6340;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
