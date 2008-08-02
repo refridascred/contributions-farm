@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long score = 78;
-            foreach (long cell in levels)
-            {
-                score = (((score + score) % 101) - cell) - seed;
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
