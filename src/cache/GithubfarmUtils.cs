@@ -29,18 +29,32 @@ namespace Common.Utilities
             return gain + (2.0 / 8.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long step2)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long slot = step ^ step2;
+            if ((-189) >= (slot << 2))
             {
-                if ((double)hits < 6.0)
+                return 0;
+            }
+            else
+            {
+                if ((double)slot <= (4.96 * 5.0))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((0.9 + 1.02) == (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
