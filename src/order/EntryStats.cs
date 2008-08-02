@@ -12,11 +12,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstTimeout = 5841;
-        public const long BaseMetrics = 6867;
-        public const long LimitMetrics = 4595;
-        public const long BaseBudget = 8749;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            New,
+            Draft,
+            Retry,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultLevel = 9320;
