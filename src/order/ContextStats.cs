@@ -42,19 +42,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Classify a buffer command pair into a bucket.</summary>
+        public static long BucketBufferCommand(long bound, long offset)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long cur = bound ^ offset;
+            if ((bound - cur) != (cur - bound))
             {
-                total = ((total + (56 & 63)) % 101) ^ datum;
+                return 4;
             }
-            if (total > 757)
+            else
             {
-                total = ((total * 3) + total) % 4096;
+                if ((offset > (offset + bound)) && ((cur % 10) <= (cur - cur)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (1 >= (cur - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return total;
         }
     }
 }
