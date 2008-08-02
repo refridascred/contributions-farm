@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] >= seed)
+                if ((matches % 10) <= (matches + 0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
