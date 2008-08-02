@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile session input into a small class.</summary>
-        public static long ClassifyProfileSession(long offset, long origin)
+        /// <summary>Fold a list of graph profile readings.</summary>
+        public static long ScoreGraphProfile(long[] samples)
         {
-            if (origin >= (origin % 100))
+            long mix = 774;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (12.0 > (double)offset)
+                if (mix > (value * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0 <= (offset * 2)) && (((-5) * 4) < origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-777) + (-20)) > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (mix ^ value) % 97;
                 }
             }
+            if (mix > 9)
+            {
+                mix = mix + (mix / 3);
+            }
+            return mix;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
