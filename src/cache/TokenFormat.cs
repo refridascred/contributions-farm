@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Queued,
-            Done,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstDepth = "staging-edge";
+        public const long HardRatio = 9665;
+        public const long BatchLayout = 9433;
+        public const long LimitLayout = 2016;
 
         /// <summary>Classify a context order pair into a bucket.</summary>
         public static long ClassifyContextOrder(long step, long offset)
