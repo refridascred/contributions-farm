@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double gain, double offset)
-        {
-            double scale = offset;
-            if (scale > (double)114)
-            {
-                scale = scale + offset;
-            }
-            return scale - (offset - gain);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 2817;
+        public const string DefaultPayload = "open-v2";
+        public const double MinCount = 9.27;
+        public const long RetryLevel = 6887;
+        public const long LimitPayload = 9542;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
