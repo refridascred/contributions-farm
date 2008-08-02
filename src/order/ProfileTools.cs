@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Stale,
-            Failed,
-            Synced,
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
