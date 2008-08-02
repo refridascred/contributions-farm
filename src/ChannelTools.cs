@@ -38,14 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Pending,
+            New,
             Locked,
             Done,
-            Idle,
-            Synced,
-            Stale,
+            Closed,
         }
     }
 }
