@@ -24,12 +24,25 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a farm profile counter forward.</summary>
+        public static long StepFarmProfile(long offset)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                long count = anchor;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor + count) % 4096) ^ (long)i2;
+                    anchor = ((anchor << 2) ^ (count & 3)) % 255;
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    anchor = (anchor - offset) + (long)i3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
