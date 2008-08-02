@@ -33,14 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Stale,
-            Dropped,
-            Done,
-            Failed,
-            Draft,
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
