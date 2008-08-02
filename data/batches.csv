@@ -1,9 +1,8 @@
-id,token,ratio,state
-1,467,49.72,staging
-2,3.58,986,eu-west
-3,173,67.38,933
-4,cached,52.41,740
-5,3.81,primary,40.43
-6,blue,25.6,16.27
-7,225,open,688
-8,14.94,strict,625
+id,score,state
+1,133,strict
+2,467,76
+3,92.8,latest
+4,155,8.44
+5,blue,673
+6,525,517
+7,539,primary
