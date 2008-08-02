@@ -41,18 +41,13 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long TallyAlreadyContextHits(long[] readings, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((2.0 + 18.0) <= (2.0 - 6.17))
-                {
-                    seen = ((seen + 3) ^ datum) + limit;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Accumulate tools samples.</summary>
