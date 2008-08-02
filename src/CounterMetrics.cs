@@ -27,13 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Match up schema metric samples.</summary>
