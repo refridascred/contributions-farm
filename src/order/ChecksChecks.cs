@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepTimeout = 152;
+        public const string LimitScore = "open-edge";
+        public const long RetryCommits = 252;
+        public const string BatchCommits = "staging-edge";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] readings)
