@@ -54,11 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinWidth = 7946;
-        public const string LimitTimeout = "primary-1";
-        public const string StepLevel = "legacy";
-        public const double MaxFactor = 31.02;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((39 * 3) >= (value % 97))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] values, long origin)
