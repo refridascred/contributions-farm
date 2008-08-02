@@ -42,14 +42,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            Stale,
-            Failed,
-            Draft,
-            Queued,
-            Retry,
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix - (675 % 64)) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many stats filter samples are out of range.</summary>
