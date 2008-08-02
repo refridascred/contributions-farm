@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6797;
-        public const long BaseMetric = 157;
-        public const long MaxMetric = 6386;
-        public const long SoftSize = 1907;
-        public const long BaseRatio = 2402;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long limit, long seed)
