@@ -20,25 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank layout format input into a small class.</summary>
-        public static long GradeLayoutFormat(long origin, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] series, long step)
         {
-            long diff = origin + floor;
-            if ((9.05 > (double)origin) && ((73 >> 2) != (5 - origin)))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((84 + floor) < diff)
+                if ((value / 4) > (step * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a order stats.</summary>
