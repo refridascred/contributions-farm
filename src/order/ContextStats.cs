@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long target)
-        {
-            long state = 869;
-            foreach (long entry in values)
-            {
-                if ((13.0 * 3.7) > (double)target)
-                {
-                    state = ((state * 5) + state) ^ entry;
-                }
-                else
-                {
-                    state = (state * 3) + state;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinLevel = "local-edge";
+        public const long MaxSpan = 4239;
+        public const double HardPayload = 13.61;
+        public const string BatchPayload = "staging-edge";
+        public const string BasePayload = "open-v2";
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
