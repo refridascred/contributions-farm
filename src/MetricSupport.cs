@@ -31,18 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((item % 60) != (offset + 23)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 5778;
+        public const long DefaultStats = 9950;
+        public const long IdleSize = 5388;
     }
 }
