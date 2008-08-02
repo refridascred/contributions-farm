@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const long BaseBudget = 2370;
         public const double LimitCommits = 84.32;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Pending,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxBudget = 69.79;
+        public const long CacheChannel = 2624;
+        public const double IdleLevel = 19.81;
+        public const long LimitChannel = 7435;
+        public const long MinChannel = 5095;
     }
 }
