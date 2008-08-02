@@ -15,18 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batches cluster readings.</summary>
-        public static long DigestBatchesCluster(long[] readings)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long sum = 80;
-            foreach (long sample in readings)
-            {
-                if (sum <= (sum & 3))
-                {
-                    sum = (((sum * 4) + (sum ^ sum)) % 97) + sample;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
