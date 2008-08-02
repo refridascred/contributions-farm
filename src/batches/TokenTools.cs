@@ -15,12 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Synced,
-            Idle,
-            Stale,
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
