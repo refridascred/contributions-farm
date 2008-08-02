@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long ScoreCounterChannel(long[] samples, long floor)
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool VerifyMetricSchemaLimits(long[] series, long target)
         {
-            long result = 11;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                result = ((((result * 3) + (result >> 2)) % 97) - reading) + floor;
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
