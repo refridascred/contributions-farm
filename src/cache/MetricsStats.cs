@@ -56,14 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Locate a batch window reading by value.</summary>
+        public static long LocateBatchWindowIndex(long[] values, long bound)
         {
-            Stale,
-            Ready,
-            Idle,
-            Retry,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
