@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter commits sample.</summary>
-        public static long LocateFilterCommitsIndex(long[] values, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 0;
+            foreach (long cell in items)
             {
-                if (values[i] == target)
+                if ((6.9 - 3.36) >= (double)cell)
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (cell << 1)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
