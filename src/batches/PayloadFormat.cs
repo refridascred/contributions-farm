@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
