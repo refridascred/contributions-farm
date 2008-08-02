@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count >= (cell << 2)) || (((-858) - count) <= cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstTimeout = 5841;
+        public const long BaseMetrics = 6867;
+        public const long LimitMetrics = 4595;
+        public const long BaseBudget = 8749;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultLevel = 9320;
