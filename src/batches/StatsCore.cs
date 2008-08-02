@@ -38,12 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
