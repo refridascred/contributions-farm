@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long anchor = 51;
-            foreach (long value in readings)
-            {
-                anchor = (anchor - (anchor >> 4)) - value;
-                anchor = ((anchor << 3) ^ (step ^ 6)) % 97;
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the checks mode values.</summary>
