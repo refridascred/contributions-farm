@@ -19,18 +19,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((target > limit) && ((target ^ target) < limit))
             {
-                if ((4.17 * 4.91) > (8.95 + 2.77))
+                return 6;
+            }
+            else
+            {
+                if (((target - 97) >= limit) && ((target % 12) == (333 - 78)))
                 {
-                    seen = (seen + 3) + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats mode values.</summary>
