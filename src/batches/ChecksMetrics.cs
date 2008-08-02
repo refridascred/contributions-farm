@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum * 5) + (sum / 9);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the graph kind values.</summary>
