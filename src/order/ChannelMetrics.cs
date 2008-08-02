@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] samples, long floor)
+        /// <summary>Scale a filter command figure with a bias.</summary>
+        public static double ProjectFilterCommand(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double scale = (double)84 * 3.7;
+            if (scale >= floor)
             {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - scale) + rate;
             }
-            return valid;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 7.2) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
