@@ -81,17 +81,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] readings, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(871 & 255);
+            if (weight < (bias2 * 8.8))
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - 6.2) - bias;
             }
-            return -1;
+            return weight + (weight * 8.2);
         }
     }
 }
