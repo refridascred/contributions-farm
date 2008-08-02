@@ -1,7 +1,5 @@
 {
-  "layout_limit": 31,
-  "poll_retries_s": "staging",
-  "readonly": "eu-west",
-  "base_limit_pct": "cached",
-  "route_threshold": false
+  "retry_depth_pct": 61,
+  "sync_threshold": "edge",
+  "persist": 4131
 }
