@@ -46,19 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2772;
+        public const long CacheChannel = 7467;
+        public const string RetryChannel = "cached-edge";
+        public const long IdleRatio = 1320;
+        public const long SoftSize = 7969;
     }
 }
