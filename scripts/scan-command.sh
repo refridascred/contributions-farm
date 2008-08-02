@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west green edge; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=86
+log "limit is ${COMMAND_LIMIT}"
+
+for item in green primary standard; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=464
-log "limit is ${COMMAND_LIMIT}"
