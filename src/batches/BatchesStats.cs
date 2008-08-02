@@ -19,15 +19,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double load = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (offset * 0.4)) + (double)(long)i;
-            }
-            return load + ratio;
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
