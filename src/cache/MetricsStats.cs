@@ -41,11 +41,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long target)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
