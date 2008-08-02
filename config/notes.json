@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "compress": 60.22,
-  "enabled": 60
+  "idle_limit": false,
+  "max_delay": 9924,
+  "verbose": [465, 188, 481]
 }
