@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long seed)
         {
-            long prev = seed ^ origin;
-            if (44 >= (seed + origin))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)prev != (9.9 - 1.63))
+                if (!((double)7 != (double)matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 2) ^ entry) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
