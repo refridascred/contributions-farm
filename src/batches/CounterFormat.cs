@@ -30,12 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Dropped,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultInterval = 97.63;
+        public const long CacheInterval = 5495;
+        public const long HardFactor = 3222;
+        public const string LimitToken = "stable";
     }
 }
