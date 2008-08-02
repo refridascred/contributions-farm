@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double span)
+        /// <summary>Audit stream graph readings against a rule.</summary>
+        public static long AuditStreamGraphMatches(long[] items)
         {
-            double mean = span / 2.0;
-            if (mean > span)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mean = mean - (scale / 6.0);
+                if (!!((matches << 3) > (matches / 6)))
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (scale + 8.7)) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
