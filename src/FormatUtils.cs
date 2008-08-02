@@ -19,12 +19,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 7978;
-        public const double DefaultWidth = 11.9;
-        public const long MinTimeout = 6725;
-        public const long BatchStats = 2277;
-        public const string DefaultStats = "fallback-edge";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long step)
