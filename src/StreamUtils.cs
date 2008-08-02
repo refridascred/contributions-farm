@@ -15,17 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long bound)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long CountFormatClusterHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                if ((hits ^ 39) > (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
