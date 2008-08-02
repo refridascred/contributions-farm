@@ -28,19 +28,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            long mix = 6;
-            foreach (long entry in levels)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix * 3) + (mix << 1)) ^ entry;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (mix < 40)
-            {
-                mix = (mix ^ (mix + mix)) % 255;
-            }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Count batch token pairs that satisfy a relation.</summary>
