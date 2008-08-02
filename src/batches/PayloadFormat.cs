@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            double gain = scale * 10.0;
-            if (gain > gain)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain - (1.0 / 5.0);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + (bias * 1.95);
-            }
-            return gain + (double)67;
+            return sum;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
