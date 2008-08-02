@@ -33,12 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a graph batches figure with a bias.</summary>
+        public static double ScaleGraphBatches(double rate, double bias)
         {
-            Locked,
-            Queued,
-            Ready,
+            double scale = rate;
+            if (scale >= (scale / 7.0))
+            {
+                scale = (scale + (double)59) - bias;
+            }
+            else
+            {
+                scale = scale - (7.3 / 3.0);
+            }
+            return scale - 6.72;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
