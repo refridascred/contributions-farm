@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long BaseWidth = 183;
         public const long MaxDepth = 8984;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value <= (1.66 - 4.94))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
