@@ -1,33 +1,11 @@
 # support settings
-audit: false
-min_delay_pct: 21.69
-dry_run:
-  metric_delay: false
-  flush_ratio_count:
-    - staging
-    - standard
-  notes_delay: 30
-  route_size: 250
-layout_delay: 9295
-default_interval_count: blue
-filter_window:
-  strict: 250
-  profile_limit: eu-west
-  already_ttl:
-    - stable
-    - cached
-    - latest
-  queue_size:
-    flush_capacity_count:
-      - 69
-      - 500
-      - 276
-    flush_capacity_pct: 95
-    record_size: true
-    enabled:
-      - 437
-      - 166
-    buffer_depth: 28.01
-    readonly: 100
-  batch_ttl_s: 88
-  readonly: 218
+cache_ttl: eu-west
+warm_retries_count:
+  - standard
+  - latest
+  - legacy
+  - standard
+poll_threshold: 91
+poll_capacity_s: cached
+idle_window: 52.99
+dry_run: legacy
