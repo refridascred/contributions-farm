@@ -40,14 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings, long limit)
         {
-            Pending,
-            Retry,
-            Dropped,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.0 + 8.29) >= (double)cell)
+                {
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
