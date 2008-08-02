@@ -22,11 +22,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] items)
         {
-            double weight = (scale - span) * 4.0;
-            return weight + (double)213;
+            long mix = 884;
+            foreach (long datum in items)
+            {
+                if ((mix + (long)items.Length) > mix)
+                {
+                    mix = ((mix - (mix ^ mix)) % 1000) - datum;
+                }
+                else
+                {
+                    mix = mix ^ (mix >> 3);
+                }
+            }
+            if (mix > 66)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
