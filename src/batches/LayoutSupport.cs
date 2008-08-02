@@ -54,16 +54,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 5.18;
+        public const long HardWindow = 8805;
+        public const long MaxCount = 8772;
+        public const long IdleWindow = 9012;
+        public const double MinInterval = 30.29;
 
         /// <summary>Fold a list of metrics route readings.</summary>
         public static long FoldMetricsRoute(long[] items, long origin)
