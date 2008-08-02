@@ -1,17 +1,5 @@
 {
-  "report_window": true,
-  "poll_capacity_count": "edge",
-  "notes_depth": "cached",
-  "hard_interval_pct": [13, 383],
-  "max_delay_ms": {
-    "warm_depth_s": {
-      "burst_capacity_s": [186, 333, 369],
-      "hard_retries": ["stable", "open", "legacy"],
-      "channel_interval": 250
-    },
-    "metrics_window": 83,
-    "filter_timeout": 2657,
-    "filter_capacity": "standard",
-    "soft_retries": ["open", "eu-west"]
-  }
+  "default_retries_ms": ["primary", "eu-west", "staging", "blue"],
+  "dry_run": [312, 327, 50, 374],
+  "cache_timeout": 12.42
 }
