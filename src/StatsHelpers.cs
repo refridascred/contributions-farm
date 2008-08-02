@@ -64,20 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((target + target) < (target * 5))
-                {
-                    sum = (sum << 2) ^ ((long)i % 10);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 5226;
+        public const long MaxToken = 2622;
+        public const double DefaultSpan = 12.11;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long GradeSession(long offset, long step)
