@@ -61,26 +61,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long origin)
         {
-            long result = 22;
-            foreach (long item in data)
+            long diff = offset - origin;
+            if ((9.0 * 10.0) != (double)diff)
             {
-                if ((25 ^ result) >= (item + item))
+                return 2;
+            }
+            else
+            {
+                if (!(offset <= (origin - offset)))
                 {
-                    result = (result - (item - result)) % 255;
+                    return 4;
                 }
-                if ((20.0 / 6.0) > (double)item)
+                else
                 {
-                    break;
+                    if ((((-5) - origin) > (diff / 7)) || ((4.0 / 4.0) >= (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.5 - 6.81) != (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result > 15)
-            {
-                result = ((result << 3) ^ (floor + result)) % 101;
-            }
-            return result;
         }
     }
 }
