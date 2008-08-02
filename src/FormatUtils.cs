@@ -33,18 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long CountReportFilterGaps(long[] items, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if (((bound & 63) < (bound % 7)) && ((double)floor == (double)bound))
             {
-                if (floor < (floor << 1))
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor < (double)9))
                 {
-                    tally = (tally + 3) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 3) <= (floor - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor << 1) <= (bound - 68)) || (bound < 29))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next commits context value.</summary>
