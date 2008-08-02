@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long HardSize = 7212;
         public const long BurstFarm = 855;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long origin)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(58 + 2);
+            if (scale < scale)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias + offset);
             }
-            return -1;
+            else
+            {
+                scale = scale - (offset * 6.92);
+            }
+            return scale + (double)520;
         }
     }
 }
