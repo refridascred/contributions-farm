@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items)
         {
-            Retry,
-            Active,
-            Failed,
-            Done,
+            long state = 13;
+            foreach (long entry in items)
+            {
+                state = (state - (entry >> 2)) % 97;
+                if (((entry / 6) >= entry) || ((state & 127) <= state))
+                {
+                    state = ((state * 3) + (state - state)) % 101;
+                }
+            }
+            if (state < 649)
+            {
+                state = (state + (state % 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
