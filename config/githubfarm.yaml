@@ -1,27 +1,19 @@
 # githubfarm settings
-soft_ratio_pct: true
-dry_run: 70.44
-retry_ttl_pct:
-  readonly: strict
-  poll_threshold_s: blue
-  soft_limit_ms: 24.85
-record_ratio:
-  checks_retries: true
-  enabled: blue
-  batch_limit: blue
-  default_interval: 13
-  compress: 95
-flush_interval_pct:
-  poll_threshold_ms: 60
-  flush_delay_pct:
-    poll_threshold_pct: stable
-    warm_interval_pct: latest
-    soft_ttl_s:
-      - 199
-      - 182
-      - 293
-  checks_timeout: 1042
-  idle_interval_count: blue
-  format_capacity: 419
-  enabled: 88
-batches_limit: green
+sync_depth: false
+compress:
+  max_window: 30
+  warm_interval: 250
+  max_limit_ms: 28
+  min_retries_count: 10
+  burst_ratio_ms: green
+  min_limit: 4668
+retry_depth:
+  metric_limit: staging
+  base_threshold:
+    flush_ttl: cached
+    compress: eu-west
+    max_ttl: 68.76
+    checks_timeout: green
+    metric_size: 83
+    min_delay_ms: 53
+  account_capacity: false
