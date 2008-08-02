@@ -24,19 +24,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (scale + scale);
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
