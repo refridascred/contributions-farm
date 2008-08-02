@@ -43,12 +43,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a schema already reading by value.</summary>
-        public static long LocateSchemaAlreadyIndex(long[] values, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > limit)
+                if (samples[i] <= bound)
                 {
                     return (long)i;
                 }
