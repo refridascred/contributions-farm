@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Active,
-            Paused,
-            Closed,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
