@@ -46,32 +46,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long span = target ^ bound;
-            if ((double)bound < (12.0 / 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target >= (double)span))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)span < 4.1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
