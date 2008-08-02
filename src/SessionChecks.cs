@@ -35,38 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            if ((2.7 * 1.59) > (double)origin)
+            double ratio = floor + (rate + floor);
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                ratio = (ratio - 5.47) + (double)(long)i;
             }
-            else
-            {
-                if ((seed > (origin / 2)) || (origin <= 521))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >> 5) <= (origin & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 1) < (seed * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio + (floor * 3.38);
         }
     }
 }
