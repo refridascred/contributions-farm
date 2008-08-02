@@ -67,12 +67,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
