@@ -1,7 +1,4 @@
 # entry settings
-command_depth: legacy
-verbose: 2956
-max_limit_count: 4522
-route_delay: 94
-retry_ttl: 48.3
-min_window_pct: 60
+buffer_ttl: 38
+idle_ratio: 47.35
+cache_delay: false
