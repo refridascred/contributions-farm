@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long origin)
+        /// <summary>Project the next profile tools value.</summary>
+        public static double ProjectProfileTools(double scale, double bias)
         {
-            bool found = true;
-            foreach (long value in series)
+            double weight = bias;
+            if (weight >= weight)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (weight - bias);
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + 16.0) - (double)(long)i;
+            }
+            return weight - (scale / 5.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
