@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long SoftSize = 1907;
         public const long BaseRatio = 2402;
 
-        /// <summary>Count the batch order entries that pass the check.</summary>
-        public static long TallyBatchOrderOutliers(long[] items, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally - origin) > value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
