@@ -1,16 +1,8 @@
 {
-  "max_size_s": {
-    "base_delay_pct": 60,
-    "batch_depth": ["eu-west", "strict", "standard"],
-    "idle_limit_s": "edge"
-  },
-  "warm_threshold_ms": "legacy",
-  "strict": 98,
-  "base_retries_count": false,
-  "soft_delay_pct": {
-    "base_size_ms": 73.07,
-    "format_limit": false,
-    "poll_size_pct": 6.35
-  },
-  "default_interval_pct": "staging"
+  "entry_timeout": "strict",
+  "idle_ratio": 17.06,
+  "sync_limit": "open",
+  "flush_delay": 294,
+  "audit": "stable",
+  "retry_size_pct": true
 }
