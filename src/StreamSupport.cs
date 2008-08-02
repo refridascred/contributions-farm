@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long step, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long next = step ^ offset;
-            if (((double)next > (2.4 / 6.0)) && ((double)next <= 0.82))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (next >= (offset ^ next))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset / 7) >= offset))
+                    if ((series[i] + series[j]) > 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
