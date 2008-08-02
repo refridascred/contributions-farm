@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data)
-        {
-            long state = 923;
-            foreach (long value in data)
-            {
-                if ((state + state) > value)
-                {
-                    state = (state - (state + value)) % 255;
-                }
-                if (((value + state) != (state / 2)) && ((state / 5) < (value >> 2)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 5042;
+        public const long WindowSchema = 7432;
+        public const long CacheDepth = 3464;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] readings, long target)
