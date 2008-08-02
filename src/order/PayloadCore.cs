@@ -46,22 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long target)
+        /// <summary>Project the next window stats value.</summary>
+        public static double BlendWindowStats(double rate, double floor)
         {
-            long score = 79;
-            foreach (long reading in samples)
-            {
-                if (!((score + score) == (reading << 3)))
-                {
-                    score = ((score * 5) + (score - target)) % 4096;
-                }
-                if ((double)target > (1.71 - 7.35))
-                {
-                    break;
-                }
-            }
-            return score;
+            double rate2 = floor;
+            return (rate2 - floor) + rate;
         }
     }
 }
