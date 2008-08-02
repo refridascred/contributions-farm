@@ -38,15 +38,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Stale,
-            Done,
-            Pending,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 62.15;
+        public const double BaseInterval = 89.66;
+        public const long RetryBudget = 3277;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsGaps(long[] readings)
