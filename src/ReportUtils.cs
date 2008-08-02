@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
