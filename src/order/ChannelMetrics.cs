@@ -37,21 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((matches % 3) < entry) || (((double)matches < (double)entry) && ((entry - matches) >= matches)))
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
