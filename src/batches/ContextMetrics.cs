@@ -36,28 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = 4;
-            foreach (long cell in levels)
-            {
-                state = state + (origin % 64);
-                if (((9.93 * 7.76) == (double)state) || ((double)state < (double)cell))
-                {
-                    long delta = cell;
-                    state = ((state * 5) + delta) % 255;
-                }
-                if ((104 / 9) <= origin)
-                {
-                    state = (state * 2) + origin;
-                }
-                if (((state % 10) != (5 - origin)) && ((state + cell) == (1 ^ origin)))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
