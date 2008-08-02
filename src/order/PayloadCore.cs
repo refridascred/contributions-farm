@@ -42,25 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long edge = step ^ seed;
+            if (((-46) + edge) > 6)
             {
-                if ((5.9 * 6.36) != (double)result)
+                return 4;
+            }
+            else
+            {
+                if ((edge >= (step << 1)) || ((seed - 145) >= (seed % 3)))
                 {
-                    result = result - seed;
-                    result = ((result << 2) ^ seed) % 1000;
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    result = (result - seed) % 1000;
+                    return 2;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
         }
     }
 }
