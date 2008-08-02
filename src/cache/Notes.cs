@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a format editor figure with a bias.</summary>
-        public static double ProjectFormatEditor(double bias, double span)
-        {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (double)92) - (double)(long)i) - span;
-            }
-            return weight + (bias + 11.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepFactor = 15.69;
+        public const string StepSession = "open";
+        public const long MinSession = 1217;
+        public const long CacheSession = 5750;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
