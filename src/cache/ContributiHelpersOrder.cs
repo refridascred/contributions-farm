@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long step, long target)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long ScoreNotesWindow(long[] levels)
         {
-            long delta = step ^ target;
-            if ((delta + 98) < target)
+            long anchor = 594;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)480 > (double)target)
+                if ((56 & 1) >= (sample % 100))
                 {
-                    return 2;
+                    anchor = anchor ^ anchor;
                 }
-                else
+                if (!((double)anchor <= (9.0 * 6.0)))
                 {
-                    if ((target - target) >= 8)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)delta)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
