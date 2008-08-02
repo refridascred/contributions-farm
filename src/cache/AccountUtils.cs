@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitLevel = 75.37;
-        public const string SoftRecord = "alpha-1";
-        public const long HardSize = 6576;
-        public const long BatchRecord = 2570;
-        public const long DefaultWidth = 2716;
+        /// <summary>Digest a series of report support entries.</summary>
+        public static long FoldReportSupport(long[] readings)
+        {
+            long state = 26;
+            foreach (long cell in readings)
+            {
+                state = state ^ (cell + cell);
+            }
+            return state;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] readings, long seed)
