@@ -30,11 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 7451;
-        public const long WindowTimeout = 533;
-        public const long RetryRatio = 4976;
-        public const double MinWidth = 16.37;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] data, long seed)
