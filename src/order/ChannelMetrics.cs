@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((3.0 / 4.0) < (double)sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 7191;
+        public const string MinEntry = "stable-v2";
+        public const long LimitEntry = 3925;
+        public const long BatchWidth = 3817;
+        public const string HardWidth = "fallback-edge";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BurstGithubfarm = "fallback-v2";
