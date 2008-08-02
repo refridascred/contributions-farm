@@ -32,19 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long bound)
+        /// <summary>Match up stream filter samples.</summary>
+        public static long OverlapStreamFilterCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
