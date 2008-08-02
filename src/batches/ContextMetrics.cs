@@ -67,17 +67,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route already entry that matches the target.</summary>
-        public static long SeekRouteAlreadyIndex(long[] data, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = bound - limit;
+            if ((prev + limit) == (prev ^ limit))
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((prev / 3) < (bound - prev))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (prev <= (bound / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound & 31) <= prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
