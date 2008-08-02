@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BatchRecord = 2570;
         public const long DefaultWidth = 2716;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Done,
-            Pending,
-            Closed,
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of buffer order readings.</summary>
