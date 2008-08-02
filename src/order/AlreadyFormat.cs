@@ -55,18 +55,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)bound < (9.8 - 15.0))
+                mix = (mix + ((long)i - 7)) % 4096;
+                if (bound >= (mix + bound))
                 {
-                    count = (count + 3) + item;
+                    mix = ((mix * 5) + mix) % 1000;
+                    mix = (mix * 5) + mix;
                 }
+                mix = (mix + mix) % 65521;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
