@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const string HardSpan = "strict-1";
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            long score = 39;
+            foreach (long reading in series)
+            {
+                score = (score + (reading & 15)) + seed;
+            }
+            return score % 1000;
         }
     }
 }
