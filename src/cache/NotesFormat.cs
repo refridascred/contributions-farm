@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long LookupGraphChannelIndex(long[] data, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] >= target)
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
