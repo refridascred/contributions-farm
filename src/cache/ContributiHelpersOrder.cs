@@ -23,18 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long AuditSessionBatchesHits(long[] items, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count << 3) >= cell)
-                {
-                    count = (count + 1) + floor;
-                }
+                result = (result << 2) ^ (long)i;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Match up stream filter samples.</summary>
