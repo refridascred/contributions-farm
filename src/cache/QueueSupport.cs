@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long origin)
         {
-            long result = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)result <= 5.15))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    result = (((result * 2) + (2 - result)) % 255) ^ entry;
+                    return (long)i;
                 }
             }
-            if (result < (-1))
-            {
-                result = result - limit;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
