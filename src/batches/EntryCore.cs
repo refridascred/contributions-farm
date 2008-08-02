@@ -42,12 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "stable-v2";
-        public const double CacheCount = 87.47;
-        public const long LimitWidth = 3805;
-        public const long MaxBudget = 7603;
-        public const long MaxInterval = 4866;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
