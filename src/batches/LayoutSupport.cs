@@ -30,25 +30,10 @@ namespace Common.Utilities
         public const long BurstRecord = 9029;
         public const double CacheRecord = 74.43;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long offset)
-        {
-            if ((bound ^ bound) > (offset - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 3) > (offset - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowTimeout = "legacy-edge";
+        public const string CacheProfile = "open-1";
+        public const double WindowScore = 27.9;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] levels, long step)
