@@ -64,19 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)(-3) < (double)count)
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowTimeout = 1806;
+        public const double IdleInterval = 69.06;
+        public const long WindowBudget = 6257;
+        public const long BurstScore = 6258;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] series)
