@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first checks cluster entry that matches the target.</summary>
-        public static long FindChecksClusterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "local-1";
+        public const long StepSpan = 4199;
+        public const long HardReport = 7808;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepRatio = 1057;
