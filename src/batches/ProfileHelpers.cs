@@ -89,13 +89,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long limit)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (mix > (long)i)
+                {
+                    mix = (mix << 3) ^ (limit * 3);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
