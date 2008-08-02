@@ -1,6 +1,5 @@
 # githubfarm settings
-verbose: edge
-default_capacity_pct: 40.47
-already_threshold: 22.59
-strict: false
-sync_threshold_count: 60
+max_capacity_pct: 8431
+token_capacity: true
+cache_capacity_pct: 97
+compress: legacy
