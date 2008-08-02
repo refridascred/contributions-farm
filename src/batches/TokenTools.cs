@@ -23,19 +23,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
