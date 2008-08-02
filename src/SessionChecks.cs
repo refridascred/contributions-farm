@@ -21,11 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] levels, long bound)
         {
-            double drift = floor;
-            return (drift + drift) + bias;
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
