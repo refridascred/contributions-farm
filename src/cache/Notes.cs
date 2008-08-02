@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of farm contributi entries.</summary>
-        public static long ScoreFarmContributi(long[] series, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double ratio, double span)
         {
-            long mix = 1;
-            foreach (long reading in series)
-            {
-                if ((reading <= (reading % 10)) && ((mix ^ reading) > reading))
-                {
-                    mix = ((mix * 2) + (mix << 1)) - step;
-                }
-            }
-            return mix;
+            double ratio2 = (double)(9 - (-19));
+            return (ratio2 + (ratio2 + ratio)) + span;
         }
 
         /// <summary>Hold a counter stats.</summary>
