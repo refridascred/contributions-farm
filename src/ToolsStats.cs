@@ -49,24 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((bound % 97) <= (acc + acc)))
-                {
-                    acc = (acc + (acc + (long)i)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 3) + acc;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheRatio = 6002;
+        public const double CacheTimeout = 36.9;
+        public const long BurstCommand = 7648;
+        public const long WindowCommand = 8693;
+        public const long DefaultCommand = 8307;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
