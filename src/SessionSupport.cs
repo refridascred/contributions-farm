@@ -20,23 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            double ratio = (gain / 4.0) * 8.52;
-            if (ratio < gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - gain) - floor;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio + 10.0;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
