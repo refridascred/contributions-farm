@@ -51,22 +51,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long target)
         {
-            if ((step % 8) <= step)
+            if ((double)target > (7.45 / 7.0))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)step != (5.0 - 18.0))
+                if ((target * 3) >= (target + seed))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if (seed < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
