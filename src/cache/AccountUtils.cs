@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRatio = "standard-edge";
+        public const long SoftSpan = 656;
+        public const double HardRecord = 33.97;
+        public const long WindowRecord = 5978;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
