@@ -42,18 +42,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long CountFormatEditorHits(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((seed ^ matches) == (sample / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "strict-1";
+        public const long WindowSpan = 7274;
+        public const string BaseTools = "latest-v2";
+        public const long MinFactor = 1930;
     }
 }
