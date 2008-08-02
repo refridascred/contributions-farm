@@ -42,15 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Draft,
-            Queued,
-            Ready,
-            Active,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "stable-v2";
+        public const double CacheCount = 87.47;
+        public const long LimitWidth = 3805;
+        public const long MaxBudget = 7603;
+        public const long MaxInterval = 4866;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
