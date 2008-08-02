@@ -1,8 +1,13 @@
 {
-  "graph_limit": "latest",
-  "soft_interval_s": 30,
-  "batch_threshold": "blue",
-  "warm_delay_ms": 1140,
-  "poll_ttl": 5620,
-  "filter_retries": false
+  "flush_size": ["blue", "eu-west", "eu-west"],
+  "idle_size_s": false,
+  "persist": true,
+  "default_retries_pct": {
+    "base_window_count": true,
+    "support_interval": 7.27,
+    "editor_limit": "fallback",
+    "context_limit": 7489,
+    "compress": 6.41,
+    "readonly": 500
+  }
 }
