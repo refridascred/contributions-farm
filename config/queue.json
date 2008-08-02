@@ -1,6 +1,13 @@
 {
-  "default_depth": 7383,
-  "metrics_ttl": [256, 444, 336, 311],
-  "cache_delay_ms": true,
-  "cache_depth": [386, 265]
+  "order_retries": "latest",
+  "cache_capacity_ms": {
+    "enabled": 6,
+    "command_timeout": [115, 351],
+    "poll_interval_s": ["blue", "edge", "blue"],
+    "default_threshold": 29.34,
+    "max_window": [167, 167, 227]
+  },
+  "base_size": 75.03,
+  "idle_limit_count": 581,
+  "entry_window": "legacy"
 }
