@@ -26,11 +26,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 5183;
-        public const long CacheCount = 2933;
-        public const double BurstEditor = 65.18;
-        public const long MaxEditor = 5465;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((-2) << 2) != (count + bound))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long target)
