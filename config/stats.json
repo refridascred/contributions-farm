@@ -1,8 +1,6 @@
 {
-  "flush_depth": "latest",
-  "compress": 32.11,
-  "burst_capacity_ms": true,
-  "batch_window": 63.66,
-  "retry_window_s": 2315,
-  "support_timeout": 86.83
+  "burst_ttl": false,
+  "batch_window_pct": "blue",
+  "flush_size_ms": 40.57,
+  "hard_threshold_ms": [252, 216, 305, 204]
 }
