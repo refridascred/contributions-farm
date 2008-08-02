@@ -67,11 +67,17 @@ namespace Common.Utilities
         public const long SoftCount = 8245;
         public const long LimitInterval = 3341;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2317;
-        public const long SoftInterval = 4946;
-        public const double MaxCluster = 45.08;
-        public const double IdleCluster = 81.4;
-        public const double MinLevel = 36.33;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + (total ^ total)) % 97;
+                total = (total * 4) + ((long)i * 5);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
