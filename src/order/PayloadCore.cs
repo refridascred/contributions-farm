@@ -45,26 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long bound)
         {
-            long acc = 26;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.3 / 2.0) <= (double)acc)
+                if (series[i] == bound)
                 {
-                    acc = acc ^ (acc << 1);
-                }
-                else
-                {
-                    acc = (acc + (entry >> 3)) % 255;
-                }
-                if ((acc + limit) != (limit >> 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
