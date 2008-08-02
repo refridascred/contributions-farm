@@ -15,12 +15,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long offset, long floor)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long prev = offset - floor;
+            if (((76 + floor) >= (offset + offset)) && ((18.0 + 4.5) > (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (2.8 - 3.27))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 63) > (prev + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
