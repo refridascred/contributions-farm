@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a format command reading by value.</summary>
+        public static long SeekFormatCommandIndex(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
