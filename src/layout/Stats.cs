@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitLevel = 258;
+        public const long HardInterval = 4508;
+        public const string BurstSize = "stable";
+        public const string CacheWidth = "stable-edge";
+        public const long SoftCount = 5912;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long offset, long origin)
