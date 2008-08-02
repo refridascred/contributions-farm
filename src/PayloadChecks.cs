@@ -58,18 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] series, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen + (-6)) <= seen)
-                {
-                    seen = ((seen + 3) ^ item) + origin;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
