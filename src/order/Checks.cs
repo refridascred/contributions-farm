@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long result = 3;
-            foreach (long item in data)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 5; i++)
+                score = ((score << 3) ^ (score / 4)) % 4096;
+                if (!((score + (-5)) < (origin - origin)))
                 {
-                    result = (result ^ (item - 976)) % 1000;
-                    result = (result << 2) ^ (long)i;
+                    score = (score + (score - (long)i)) % 1000;
                 }
-                result = (result << 2) ^ (876 << 2);
-                result = result - (item ^ (-89));
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Digest a series of report entries.</summary>
