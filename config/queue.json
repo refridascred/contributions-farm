@@ -1,5 +1,7 @@
 {
-  "queue_threshold": ["stable", "standard", "latest"],
-  "compress": ["legacy", "stable"],
-  "max_depth": "strict"
+  "batch_ratio_pct": 70.71,
+  "flush_capacity": "open",
+  "max_interval": 52,
+  "stats_interval": 2857,
+  "hard_ttl_pct": "local"
 }
