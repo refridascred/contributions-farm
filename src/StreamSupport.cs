@@ -26,31 +26,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long target)
-        {
-            if ((target <= (target << 3)) && (target < (bound + target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound >> 4) > (bound >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 5241;
+        public const double HardBudget = 81.26;
+        public const long CacheContributi = 3700;
+        public const double WindowContributi = 20.75;
     }
 }
