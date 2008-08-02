@@ -1,8 +1,13 @@
 {
-  "report_ratio": "eu-west",
-  "compress": [37, 337, 344, 234],
-  "entry_window": ["cached", "staging", "eu-west"],
-  "audit": 54.38,
-  "readonly": "latest",
-  "persist": [446, 338, 59]
+  "burst_capacity": "legacy",
+  "stream_ratio": {
+    "compress": 250,
+    "profile_timeout": [416, 170, 446, 8],
+    "batch_window": false,
+    "notes_interval": "edge",
+    "warm_ratio_ms": 100,
+    "verbose": 30
+  },
+  "dry_run": 68,
+  "cache_ratio_s": true
 }
