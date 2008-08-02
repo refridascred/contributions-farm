@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long sum = -53;
-            foreach (long cell in readings)
-            {
-                if (((4.8 - 0.85) != (double)cell) || (sum >= (sum ^ cell)))
-                {
-                    sum = (sum * 4) + cell;
-                }
-            }
-            return sum;
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
