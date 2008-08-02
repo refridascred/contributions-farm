@@ -1,8 +1,5 @@
 {
-  "retry_capacity_count": false,
-  "default_retries_s": "green",
-  "account_interval": "legacy",
-  "min_ratio_count": 2939,
-  "burst_window_pct": "primary",
-  "max_ratio_pct": 45
+  "compress": [188, 460, 110],
+  "cluster_window": 78.43,
+  "idle_interval_pct": "legacy"
 }
