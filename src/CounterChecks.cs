@@ -40,20 +40,19 @@ namespace Common.Utilities
         public const double DefaultSize = 3.53;
         public const long BatchFactor = 6137;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Project the next channel order value.</summary>
+        public static double ScaleChannelOrder(double gain, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            double scale = (double)(2 << 3);
+            if (scale >= (gain + gain))
             {
-                if ((3.2 - 9.44) == (double)carry)
-                {
-                    long slot = (long)i;
-                    carry = (carry ^ (step + slot)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                scale = scale + (span / 3.0);
             }
-            return carry;
+            else
+            {
+                scale = scale - (gain - scale);
+            }
+            return scale + scale;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
