@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 724;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result ^ result) % 101) ^ (long)i2;
-                }
-                if (((long)i ^ result) > floor)
-                {
-                    result = result + (437 + result);
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                mark = ((mark - mark) % 97) + sample;
             }
-            return result;
+            if (mark < 743)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
