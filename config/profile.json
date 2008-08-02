@@ -1,17 +1,6 @@
 {
-  "compress": "legacy",
-  "command_timeout": 30,
-  "readonly": 27.68,
-  "max_window_pct": {
-    "graph_capacity": {
-      "base_capacity": "stable",
-      "base_retries_s": "local",
-      "record_ttl": 69.35,
-      "flush_capacity_pct": "eu-west",
-      "readonly": "blue",
-      "min_threshold_count": "stable"
-    },
-    "flush_delay": ["fallback", "primary", "legacy"],
-    "audit": "primary"
-  }
+  "readonly": "open",
+  "default_ratio_pct": "primary",
+  "persist": 43,
+  "batch_timeout_ms": "stable"
 }
