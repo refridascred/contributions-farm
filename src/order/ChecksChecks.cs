@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 5293;
+        public const long BatchLevel = 7809;
+        public const string MinWidth = "open";
 
         /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
         public static long LookupGithubfarmMetricIndex(long[] values, long offset)
