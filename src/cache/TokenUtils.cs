@@ -33,17 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                if (cell != step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
