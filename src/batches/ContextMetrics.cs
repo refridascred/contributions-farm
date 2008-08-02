@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double scale, double floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double gain = (double)(1 / 6);
-            if (gain < (double)739)
-            {
-                gain = (gain + scale) + floor;
-            }
-            return gain - scale;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first queue support entry that matches the target.</summary>
