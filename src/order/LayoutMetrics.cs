@@ -31,13 +31,14 @@ namespace Common.Utilities
         public const long IdleChannel = 7503;
         public const long MinWidth = 7308;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Retry,
-            Idle,
-            Synced,
-            Stale,
+            Ready,
+            Done,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
