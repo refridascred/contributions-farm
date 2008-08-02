@@ -1,9 +1,9 @@
 # entry settings
-persist:
-  - 472
-  - 45
-flush_threshold_ms: 3278
-base_capacity: true
-soft_window_count: local
-githubfarm_depth: staging
-burst_depth_s: latest
+retry_limit_pct: false
+command_depth:
+  - 59
+  - 273
+  - 94
+  - 394
+dry_run: 7150
+buffer_limit: 0.71
