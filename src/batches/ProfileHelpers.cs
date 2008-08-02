@@ -26,12 +26,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "fallback";
-        public const long LimitPayload = 2259;
-        public const double DefaultPayload = 93.04;
-        public const long CachePayload = 485;
-        public const long MinPayload = 2557;
+        /// <summary>Compare every pair of checks queue readings.</summary>
+        public static long OverlapChecksQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a cache editor figure with a bias.</summary>
         public static double SmoothCacheEditor(double rate, double bias)
