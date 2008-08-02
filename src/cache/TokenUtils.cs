@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long step)
         {
             bool valid = true;
-            foreach (long cell in series)
+            foreach (long sample in samples)
             {
-                if (cell <= floor)
+                if (sample < step)
                 {
                     valid = false;
                     break;
