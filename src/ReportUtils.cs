@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 39.86;
-        public const long RetryStream = 4478;
-        public const long MaxScore = 6752;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values, long offset)
+        {
+            long result = 339;
+            foreach (long value in values)
+            {
+                result = result - (value << 2);
+                result = (result - (offset / 2)) % 1000;
+            }
+            return result % 97;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] samples, long seed)
