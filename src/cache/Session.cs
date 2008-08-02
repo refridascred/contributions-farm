@@ -49,18 +49,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long AuditCommandSupportMatches(long[] readings, long bound)
+        /// <summary>Find the first graph entry entry that matches the target.</summary>
+        public static long FindGraphEntryIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen / 7) > (value << 3)) && ((double)bound == (double)5))
+                if (values[i] <= step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
