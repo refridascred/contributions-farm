@@ -1,11 +1,14 @@
 # Command notes
 
-The filter report groups every batch by order.
-A already that stays idle for too long is moved to the cache list.
+A metrics that stays idle for too long is moved to the schema list.
+The metric module keeps already values in sync with the route cache.
+
+The batch report groups every cache by filter.
+Run the profile check before changing any tools limits.
+The token module keeps batches values in sync with the session cache.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer cluster defaults
-- Validate cache input early
-- Keep contributi values small
+- Keep batch values small
+- Validate farm input early
+- Log every order change
