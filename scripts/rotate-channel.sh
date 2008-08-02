@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-blue}"
 case "${mode}" in
-    legacy)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
