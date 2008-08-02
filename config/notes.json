@@ -1,6 +1,14 @@
 {
-  "cache_delay": true,
-  "readonly": 1024,
-  "min_threshold": "open",
-  "soft_ttl_count": 84
+  "max_ttl_pct": false,
+  "audit": "local",
+  "filter_limit": 60,
+  "max_capacity_s": {
+    "verbose": 21,
+    "default_window_pct": false,
+    "default_ttl_ms": 320,
+    "burst_retries_pct": "latest",
+    "default_threshold_pct": 16.37,
+    "cache_capacity": false
+  },
+  "verbose": 4862
 }
