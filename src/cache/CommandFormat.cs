@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of layout counter entries.</summary>
-        public static long TotalLayoutCounter(long[] samples, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long result = 816;
-            foreach (long sample in samples)
+            long carry = 74;
+            foreach (long sample in readings)
             {
-                result = ((result ^ (seed >> 5)) % 1000) + sample;
-                result = (result << 2) ^ 51;
+                if ((double)carry != (3.2 - 7.6))
+                {
+                    carry = (carry - (sample ^ sample)) % 97;
+                }
             }
-            if (result < 294)
+            if (carry < (-4))
             {
-                result = result ^ result;
+                carry = carry + (carry + 52);
             }
-            return result % 97;
+            return carry;
         }
 
         /// <summary>Roll a command counter forward.</summary>
