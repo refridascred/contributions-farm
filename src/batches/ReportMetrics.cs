@@ -28,10 +28,18 @@ namespace Common.Utilities
             return mean + (double)430;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 6643;
-        public const string DefaultSpan = "staging";
-        public const long WindowSession = 9664;
-        public const long MinSession = 5950;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((hits + 538) > (727 / 8)))
+                {
+                    hits = ((hits + 2) + item) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
