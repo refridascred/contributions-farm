@@ -38,19 +38,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Done,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
