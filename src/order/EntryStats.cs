@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const long RetryWidth = 4326;
         public const long DefaultEntry = 7444;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate command cluster readings against a bound.</summary>
+        public static bool GuardCommandClusterRange(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
