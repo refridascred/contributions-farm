@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)count == (9.64 - 8.0)) && ((6.3 + 9.8) != (double)count))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
