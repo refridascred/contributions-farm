@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale - (offset - 11.0);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long total = 994;
-            foreach (long value in samples)
-            {
-                total = total + (value - value);
-            }
-            if (total < 8)
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the commits level values.</summary>
