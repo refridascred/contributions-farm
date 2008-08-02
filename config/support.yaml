@@ -1,11 +1,4 @@
 # support settings
-cache_ttl: eu-west
-warm_retries_count:
-  - standard
-  - latest
-  - legacy
-  - standard
-poll_threshold: 91
-poll_capacity_s: cached
-idle_window: 52.99
-dry_run: legacy
+token_limit: staging
+order_threshold: true
+max_delay: 60
