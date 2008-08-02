@@ -1,17 +1,8 @@
 # githubfarm settings
-profile_limit: primary
-base_depth_pct: 13.08
-cache_timeout:
-  enabled:
-    strict: cached
-    soft_window_count:
-      - green
-      - stable
-      - blue
-      - strict
-    schema_threshold: stable
-    retry_delay_count: staging
-    checks_depth: true
-  batch_size_pct: standard
-  entry_depth: true
-max_limit: 53
+poll_delay_s: 38.52
+readonly: 250
+compress: 90.37
+hard_retries_s:
+  - 15
+  - 299
+max_depth_pct: local
