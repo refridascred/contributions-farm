@@ -1,8 +1,10 @@
 {
-  "batch_capacity": 500,
-  "entry_threshold": false,
-  "route_capacity": "open",
-  "schema_ratio": 8978,
-  "compress": 44,
-  "record_size": 63.68
+  "idle_limit": "open",
+  "max_interval_s": 250,
+  "tools_interval": {
+    "sync_window_count": ["primary", "edge", "fallback"],
+    "min_timeout": 6466,
+    "buffer_depth": false
+  },
+  "base_limit_pct": "edge"
 }
