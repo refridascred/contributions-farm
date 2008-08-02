@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const string SoftDepth = "alpha";
         public const long DefaultTools = 7147;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate channel batch readings against a bound.</summary>
