@@ -32,31 +32,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank layout stream input into a small class.</summary>
-        public static long GradeLayoutStream(long step, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long offset)
         {
-            if ((target + (-99)) > (step % 97))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)target < 18.0))
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target > (6.2 + 14.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
