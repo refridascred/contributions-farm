@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up editor format samples.</summary>
-        public static long PairEditorFormatCount(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit cluster route readings against a rule.</summary>
