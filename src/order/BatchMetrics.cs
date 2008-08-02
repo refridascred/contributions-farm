@@ -13,15 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of commits queue entries.</summary>
-        public static long CombineCommitsQueue(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long carry = 302;
-            foreach (long sample in levels)
-            {
-                carry = (carry - carry) - sample;
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
