@@ -14,17 +14,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first stats farm entry that matches the target.</summary>
-        public static long LookupStatsFarmIndex(long[] samples, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
