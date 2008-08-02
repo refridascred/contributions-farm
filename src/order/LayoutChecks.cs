@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const double WindowScore = 43.83;
         public const long WindowLevel = 3682;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long mix = 18;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)mix > (9.48 * 5.0)) && ((origin + datum) != (datum << 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix ^ (datum + 320);
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
