@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long acc = 280;
+            foreach (long reading in readings)
+            {
+                if ((acc ^ reading) >= (reading - acc))
+                {
+                    acc = (acc ^ reading) % 97;
+                }
+                acc = ((acc << 3) ^ (acc % 97)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
