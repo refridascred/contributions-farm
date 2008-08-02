@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count > (8.5 + 3.56))
+                if (levels[i] <= origin)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
