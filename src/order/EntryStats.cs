@@ -41,28 +41,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long anchor = 89;
-            foreach (long value in levels)
-            {
-                if ((double)value <= (3.71 * 3.6))
-                {
-                    anchor = (anchor - ((-24) + (long)levels.Length)) % 97;
-                    anchor = anchor - (anchor / 5);
-                }
-                anchor = (anchor ^ (80 + anchor)) % 4096;
-                if ((value - value) > (anchor + value))
-                {
-                    break;
-                }
-            }
-            if (anchor > 18)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            Active,
+            Dropped,
+            Closed,
         }
     }
 }
