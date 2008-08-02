@@ -30,18 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(hits < (hits + hits)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            Synced,
+            Stale,
         }
     }
 }
