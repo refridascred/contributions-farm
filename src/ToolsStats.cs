@@ -69,23 +69,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload token figure with a bias.</summary>
-        public static double ProjectPayloadToken(double scale, double bias)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long origin)
         {
-            double scale2 = 2.9;
-            if (scale2 > scale)
+            if ((seed << 3) == (451 + origin))
             {
-                scale2 = (scale2 + scale2) - bias;
+                return 0;
             }
             else
             {
-                scale2 = scale2 + (1.63 / 4.0);
+                if (((double)origin != (16.0 * 3.4)) || (seed < (origin + origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - origin) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = scale2 + (double)(long)i;
-            }
-            return scale2 + (double)92;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
