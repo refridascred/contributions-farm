@@ -30,22 +30,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long limit2)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long origin)
         {
-            if ((limit % 12) > (32 / 9))
+            if ((origin % 24) <= (offset * 3))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)limit2 != (double)69)
+                if (offset <= 6)
                 {
                     return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
