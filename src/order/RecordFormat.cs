@@ -24,11 +24,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 7286;
-        public const long RetryWindow = 1606;
-        public const string HardWindow = "primary-1";
-        public const string BatchLevel = "open-v2";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long floor)
+        {
+            long anchor = 55;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor - anchor) % 97) - datum;
+            }
+            if (anchor > 36)
+            {
+                anchor = (anchor ^ floor) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] values, long floor)
