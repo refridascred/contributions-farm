@@ -29,22 +29,21 @@ namespace Common.Utilities
         public const long BurstNotes = 7656;
         public const long BatchNotes = 4180;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] values, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits < (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
