@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long BatchWidth = 3817;
         public const string HardWidth = "fallback-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] values, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((6.6 + 4.3) >= (double)tally)
-                {
-                    tally = ((tally + 2) - datum) - seed;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
