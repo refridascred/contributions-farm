@@ -1,7 +1,13 @@
 {
-  "cache_size_count": false,
-  "max_limit": true,
-  "base_limit_pct": 60,
-  "retry_limit_s": 30,
-  "burst_ratio": "eu-west"
+  "hard_threshold": {
+    "default_retries_pct": true,
+    "default_interval": "open",
+    "dry_run": "fallback",
+    "soft_window_pct": 60
+  },
+  "hard_ttl_count": "cached",
+  "flush_ttl": "strict",
+  "stats_delay": 68,
+  "base_threshold": 7222,
+  "default_interval_count": 19.04
 }
