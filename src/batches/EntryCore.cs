@@ -46,14 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Queued,
-            Locked,
             Draft,
-            Done,
-            Closed,
+            Queued,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate commits samples.</summary>
