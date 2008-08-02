@@ -42,20 +42,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            long total = 79;
-            foreach (long reading in readings)
+            long lane = offset - floor;
+            if ((lane + floor) <= (34 / 8))
             {
-                total = total + total;
-                total = (total + (reading - 68)) % 1000;
-                if ((17.0 - 5.01) != (double)total)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor == (4.16 / 8.0))
                 {
-                    total = (total << 3) ^ total;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return total % 65521;
         }
     }
 }
