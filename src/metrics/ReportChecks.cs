@@ -36,20 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double rate, double bias)
-        {
-            double drift = 8.26;
-            if (drift > (bias + drift))
-            {
-                drift = drift - (bias - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 92.24;
+        public const long MaxQueue = 5966;
+        public const long BaseQueue = 3264;
+        public const long IdleQueue = 1883;
+        public const long BatchQueue = 8537;
 
         /// <summary>Scale a token cache figure with a bias.</summary>
         public static double BlendTokenCache(double weight, double span)
