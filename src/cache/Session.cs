@@ -31,12 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((14.0 + 3.3) >= (double)(long)series.Length)
+                {
+                    count = ((count + 1) ^ reading) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record options.</summary>
