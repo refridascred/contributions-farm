@@ -1,7 +1,16 @@
 # support settings
-command_delay: 7781
-graph_capacity: 1737
-checks_depth:
-  tools_window: local
-  readonly: primary
-  soft_ratio: local
+cache_ratio:
+  verbose:
+    - 479
+    - 165
+    - 258
+    - 246
+  max_window_ms: 66
+  githubfarm_size: 13
+  min_size_pct: strict
+  queue_capacity: latest
+command_interval: true
+sync_ttl_pct: 3790
+flush_capacity_ms: 4.83
+burst_ratio_ms: green
+enabled: 84
