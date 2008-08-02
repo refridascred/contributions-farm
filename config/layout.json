@@ -1,19 +1,8 @@
 {
-  "verbose": {
-    "enabled": [112, 369],
-    "queue_retries": "open",
-    "audit": "latest",
-    "strict": ["stable", "cached", "standard", "local"],
-    "persist": 28.22
-  },
-  "retry_limit": {
-    "hard_depth_ms": "strict",
-    "compress": "eu-west",
-    "batch_capacity_ms": false,
-    "base_window_s": "green"
-  },
-  "persist": 100,
-  "context_interval": 70.88,
-  "strict": 60,
-  "retry_retries_pct": "stable"
+  "report_ratio": "eu-west",
+  "compress": [37, 337, 344, 234],
+  "entry_window": ["cached", "staging", "eu-west"],
+  "audit": 54.38,
+  "readonly": "latest",
+  "persist": [446, 338, 59]
 }
