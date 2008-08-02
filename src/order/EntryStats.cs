@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 3136;
+        public const double StepLevel = 5.02;
+        public const long WindowTimeout = 8902;
+        public const long LimitTimeout = 5030;
+        public const string SoftFactor = "strict-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryDepth = 7178;
