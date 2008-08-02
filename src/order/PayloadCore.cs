@@ -59,32 +59,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long limit)
         {
-            long bound2 = target - bound;
-            if (((736 + target) < bound2) || ((double)target <= 18.0))
+            long acc = 26;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((40 ^ target) <= (bound + target)))
+                if ((5.3 / 2.0) <= (double)acc)
                 {
-                    return 6;
+                    acc = acc ^ (acc << 1);
                 }
                 else
                 {
-                    if ((bound ^ 7) <= (bound ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc + (entry >> 3)) % 255;
+                }
+                if ((acc + limit) != (limit >> 5))
+                {
+                    break;
                 }
             }
+            return acc % 4096;
         }
     }
 }
