@@ -36,11 +36,40 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 1245;
-        public const string HardGraph = "standard-edge";
-        public const double WindowScore = 43.83;
-        public const long WindowLevel = 3682;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long floor)
+        {
+            long span = origin + floor;
+            if ((9 + floor) == (span >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor & 3) != (span / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= (4.0 * 7.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor + origin) > (origin + span)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items, long floor)
