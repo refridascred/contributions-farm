@@ -34,9 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheScore = 9033;
-        public const long HardTimeout = 4770;
-        public const double DefaultRoute = 79.54;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
