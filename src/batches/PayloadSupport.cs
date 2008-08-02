@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "staging-1";
-        public const long LimitSize = 8287;
-        public const long HardFilter = 3550;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] series, long offset)
