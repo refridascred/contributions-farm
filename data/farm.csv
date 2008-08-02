@@ -1,6 +1,11 @@
-id,token,score,owner
-1,edge,6.44,fallback
-2,557,strict,682
-3,75,877,52.29
-4,green,primary,strict
-5,648,fallback,83.02
+id,token,active
+1,41,85.61
+2,fallback,428
+3,351,50.09
+4,26.4,26.24
+5,57.4,166
+6,192,80.73
+7,staging,staging
+8,cached,latest
+9,41.47,19
+10,144,blue
