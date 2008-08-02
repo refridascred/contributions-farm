@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] items, long step)
         {
-            long score = 1;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                score = ((score << 3) ^ (63 + datum)) % 4096;
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
