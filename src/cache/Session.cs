@@ -52,15 +52,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double floor)
-        {
-            double weight = (floor + floor) / 6.0;
-            if (weight <= (double)806)
-            {
-                weight = (weight - (11.0 + weight)) + bias;
-            }
-            return weight - (double)4;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinTimeout = 1334;
+        public const long BurstLevel = 2194;
+        public const long MinScore = 6004;
+        public const long BatchSize = 9927;
     }
 }
