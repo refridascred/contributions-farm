@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double scale, double offset)
         {
-            Draft,
-            Synced,
-            Pending,
+            double ratio = (double)(42 + 39);
+            if (ratio > (scale - scale))
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - (double)70;
         }
 
         /// <summary>Describe the cluster status values.</summary>
