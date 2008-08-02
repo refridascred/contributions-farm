@@ -1,12 +1,5 @@
 {
-  "strict": "legacy",
-  "max_interval_s": 35,
-  "cluster_capacity": 250,
-  "warm_threshold": 3697,
-  "cache_window_pct": 20,
-  "soft_window_pct": {
-    "counter_capacity": "green",
-    "audit": false,
-    "idle_size_s": [210, 268]
-  }
+  "poll_depth_pct": "fallback",
+  "queue_depth": "latest",
+  "burst_ttl": "local"
 }
