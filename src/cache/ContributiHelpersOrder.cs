@@ -23,16 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                result = (result << 2) ^ (long)i;
-                result = ((result * 5) + (long)i) % 4093;
+                if (entry < (origin - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up stream filter samples.</summary>
