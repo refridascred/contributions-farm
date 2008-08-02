@@ -52,19 +52,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 8452;
+        public const long BatchDepth = 3465;
+        public const double RetryLevel = 48.97;
     }
 }
