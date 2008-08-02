@@ -25,19 +25,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] readings, long step)
+        /// <summary>Accumulate counter metric samples.</summary>
+        public static long DigestCounterMetric(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = 85;
+            foreach (long cell in items)
             {
-                if (cell != step)
+                for (int i = 0; i < 6; i++)
                 {
-                    flag = false;
+                    result = ((result + (long)i) % 97) ^ cell;
+                }
+                result = (result << 3) ^ result;
+                if (((-924) + result) > result)
+                {
                     break;
                 }
             }
-            return flag;
+            if (result < 41)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result % 97;
         }
     }
 }
