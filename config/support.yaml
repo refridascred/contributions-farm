@@ -1,5 +1,8 @@
 # support settings
-poll_capacity: false
-persist: 85.23
-burst_limit: true
-order_limit: 6538
+audit: 41
+route_ratio: 1024
+record_delay:
+  - standard
+  - staging
+  - standard
+default_size_ms: 3.73
