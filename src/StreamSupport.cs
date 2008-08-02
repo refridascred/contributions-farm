@@ -33,10 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 5241;
-        public const double HardBudget = 81.26;
-        public const long CacheContributi = 3700;
-        public const double WindowContributi = 20.75;
+        /// <summary>Iterate the record token series from a seed.</summary>
+        public static long DeriveRecordToken(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state << 2) ^ (state / 2)) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
