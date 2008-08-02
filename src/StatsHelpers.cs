@@ -37,22 +37,13 @@ namespace Common.Utilities
             return scale + (span / 6.0);
         }
 
-        /// <summary>Fold a list of contributi notes readings.</summary>
-        public static long TotalContributiNotes(long[] series, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long state = -57;
-            foreach (long reading in series)
-            {
-                if ((double)state != (12.0 * 7.43))
-                {
-                    state = ((state << 2) ^ (283 << 3)) - reading;
-                }
-                else
-                {
-                    state = (state << 3) ^ (target ^ 37);
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
