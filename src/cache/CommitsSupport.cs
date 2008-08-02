@@ -78,19 +78,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] readings, long floor)
         {
-            double bias = (double)((-6) + 45);
-            if (bias > floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + floor) + gain;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (floor - bias)) + (double)(long)i;
-            }
-            return bias + (double)379;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
