@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long origin)
         {
-            Failed,
-            Pending,
-            Active,
-            Locked,
-            Queued,
+            long total = -210;
+            foreach (long value in values)
+            {
+                if (!(((total / 5) >= (total % 24)) && ((355 & 7) < origin)))
+                {
+                    total = (total + value) % 255;
+                    total = (total + ((-7) + value)) % 101;
+                }
+                if ((19.0 / 4.0) > (double)total)
+                {
+                    total = (total * 3) + (total ^ origin);
+                }
+                else
+                {
+                    total = ((total * 4) + (total & 3)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
