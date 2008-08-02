@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const long BurstNotes = 7656;
         public const long BatchNotes = 4180;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (levels[i] < target)
+                if ((double)hits < (double)floor)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
