@@ -15,10 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 8941;
-        public const long LimitContext = 593;
-        public const long StepContext = 1396;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)590 != (double)sample)
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long floor)
