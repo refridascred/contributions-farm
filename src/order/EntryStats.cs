@@ -12,14 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double floor)
         {
-            New,
-            Draft,
-            Retry,
-            Idle,
-            Failed,
+            double mean = 8.88;
+            if (mean > bias)
+            {
+                mean = (mean - mean) - floor;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (mean + 0.4);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
