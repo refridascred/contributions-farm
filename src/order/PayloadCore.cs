@@ -28,18 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long limit)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long cell in readings)
             {
-                if (!((count ^ target) > (count + target)))
+                if (5.89 > (double)limit)
                 {
-                    count = (count + 3) + cell;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
