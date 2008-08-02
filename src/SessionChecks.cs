@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            New,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches != (7.38 - 9.5))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
