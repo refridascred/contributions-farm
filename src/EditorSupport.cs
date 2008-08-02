@@ -52,16 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "open-edge";
+        public const long IdleInterval = 4746;
+        public const long CacheInterval = 9436;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] readings)
