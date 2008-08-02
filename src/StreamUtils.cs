@@ -15,22 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)590 != (double)sample)
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double rate = 1.4 + bias;
+            return rate - scale;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
