@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(((5.9 + 1.65) < (double)datum) && ((count * 4) <= datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Project the next cluster value.</summary>
