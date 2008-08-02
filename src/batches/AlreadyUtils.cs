@@ -77,22 +77,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of schema payload readings.</summary>
-        public static long FoldSchemaPayload(long[] data)
-        {
-            long mark = 110;
-            foreach (long sample in data)
-            {
-                if (sample > (mark ^ sample))
-                {
-                    mark = mark + (sample % 5);
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark + (mark & 3)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftFactor = "cached-edge";
+        public const double MaxQueue = 51.35;
+        public const double IdleSize = 57.56;
+        public const long MinScore = 5610;
+        public const string IdleSpan = "alpha";
     }
 }
