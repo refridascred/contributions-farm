@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long step)
         {
-            double ratio = span;
-            if (ratio < ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (8.9 - gain);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)44) + (double)(long)i;
-            }
-            return ratio - gain;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
