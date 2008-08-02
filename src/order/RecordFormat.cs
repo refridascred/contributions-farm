@@ -46,18 +46,10 @@ namespace Common.Utilities
         public const long LimitBudget = 8743;
         public const double BurstFactor = 61.61;
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long CountSchemaChecksGaps(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (count >= origin)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "stable-1";
+        public const long CacheContext = 2180;
+        public const long MinDepth = 3853;
+        public const long MaxContext = 7457;
     }
 }
