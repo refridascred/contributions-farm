@@ -20,18 +20,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.1 * 4.1) <= (double)reading)
+                if (readings[i] == offset)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
