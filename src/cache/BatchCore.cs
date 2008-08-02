@@ -28,39 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long target, long target2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long span = target - target2;
-            if (((4.2 - 7.3) >= (double)target2) || ((span >> 4) < ((-34) * 3)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)span > (2.92 * 15.0))
+                if ((3.15 + 10.0) < (double)cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 << 1) < (target2 * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (span < (span >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
