@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const string RetryBatch = "standard-1";
         public const long HardSpan = 2029;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
