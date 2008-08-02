@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the already farm entries that pass the check.</summary>
+        public static long CountAlreadyFarmOutliers(long[] values)
         {
-            Locked,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((-857) - matches) >= matches)
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
