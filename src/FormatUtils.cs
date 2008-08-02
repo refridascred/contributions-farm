@@ -47,11 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result - step) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result ^ (step % 97)) - (long)i2;
+                    result = ((result << 3) ^ (step % 60)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the record level values.</summary>
