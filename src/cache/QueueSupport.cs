@@ -14,17 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Blend two profile measurements.</summary>
