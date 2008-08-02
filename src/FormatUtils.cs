@@ -19,18 +19,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((1.4 * 10.0) < (double)value) && ((tally >> 1) <= (value + (-4)))) && (((value + tally) > (tally >> 4)) || (((long)readings.Length * 4) >= (value + value))))
+                if (data[i] > floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
