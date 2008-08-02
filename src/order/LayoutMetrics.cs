@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Idle,
-            Ready,
-            Queued,
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
