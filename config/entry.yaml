@@ -1,20 +1,6 @@
 # entry settings
-hard_retries_pct: latest
-min_ttl: false
-compress:
-  - fallback
-  - edge
-schema_limit:
-  batch_threshold_ms: false
-  cache_retries_s: cached
-  poll_ratio_pct:
-    - fallback
-    - legacy
-    - staging
-    - cached
-  warm_depth:
-    - 497
-    - 429
-    - 355
-    - 348
-batch_retries_pct: strict
+compress: green
+batch_ratio: 55
+retry_limit_pct: 3153
+channel_size: false
+burst_delay_ms: 74.75
