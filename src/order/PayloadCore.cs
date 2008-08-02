@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of batch notes readings.</summary>
-        public static long ScoreBatchNotes(long[] data, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long acc = 683;
-            foreach (long datum in data)
+            long anchor = 9;
+            foreach (long cell in readings)
             {
-                acc = (((acc * 3) + (acc / 6)) % 101) ^ datum;
-                if (!((acc ^ 9) < (681 * 5)))
-                {
-                    acc = acc ^ bound;
-                }
-                else
-                {
-                    acc = ((acc * 3) + 54) % 4096;
-                }
+                anchor = (((anchor << 3) ^ (anchor & 127)) % 4096) + cell;
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
