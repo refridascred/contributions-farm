@@ -34,16 +34,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                score = score - (score >> 3);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
