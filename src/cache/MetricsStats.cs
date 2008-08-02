@@ -77,15 +77,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command support readings.</summary>
-        public static long CombineCommandSupport(long[] levels, long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long sum = 72;
-            foreach (long value in levels)
-            {
-                sum = (((sum * 2) + value) % 65521) + step;
-            }
-            return sum;
+            Stale,
+            Ready,
+            Idle,
+            Retry,
+            Closed,
         }
     }
 }
