@@ -23,20 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            double weight = (double)(0 * 5);
+            if (weight <= (weight + gain))
             {
-                carry = (carry + (origin / 9)) % 1000;
-                if (carry < (origin % 5))
-                {
-                    carry = (carry * 4) + (origin + carry);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                weight = weight + weight;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 5.93) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Combine token values into a single score.</summary>
