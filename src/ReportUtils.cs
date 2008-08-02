@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long value in data)
             {
-                if (value <= (value >> 2))
+                if (80 > (hits >> 1))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) ^ value;
                 }
             }
             return hits;
