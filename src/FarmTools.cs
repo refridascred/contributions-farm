@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the route contributi entries that pass the check.</summary>
+        public static long TallyRouteContributiMatches(long[] values, long seed)
         {
-            Idle,
-            Synced,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((seed << 1) != (matches - seed))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
