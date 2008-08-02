@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const string BatchSpan = "primary";
         public const long BatchPayload = 1394;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long seed)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long TallyContextAccountOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (entry > seed)
+                if ((double)count != (7.0 / 3.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the already status values.</summary>
