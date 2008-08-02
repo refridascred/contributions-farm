@@ -40,18 +40,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 71;
+            foreach (long sample in series)
             {
-                if (!(count > (count * 5)))
+                if (!((bound - anchor) >= anchor))
                 {
-                    count = (count + 1) + entry;
+                    anchor = ((anchor + (anchor * 4)) % 101) + sample;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 255;
                 }
             }
-            return count;
+            if (anchor > (-2))
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
