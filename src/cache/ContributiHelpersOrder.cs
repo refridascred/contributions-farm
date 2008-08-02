@@ -33,23 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two graph editor measurements.</summary>
-        public static double AdjustGraphEditor(double gain, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data, long limit)
         {
-            double weight = 2.66 - (span / 8.0);
-            if (weight <= gain)
+            long sum = 22;
+            foreach (long reading in data)
             {
-                weight = weight - (gain + gain);
+                if (((sum + reading) != (limit >> 3)) && ((reading & 7) <= sum))
+                {
+                    sum = (sum ^ (limit - limit)) % 65521;
+                }
             }
-            else
-            {
-                weight = weight + (gain / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (double)867) + (double)(long)i;
-            }
-            return weight + weight;
+            return sum;
         }
     }
 }
