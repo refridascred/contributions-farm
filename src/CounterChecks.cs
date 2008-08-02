@@ -40,19 +40,18 @@ namespace Common.Utilities
         public const double DefaultSize = 3.53;
         public const long BatchFactor = 6137;
 
-        /// <summary>Project the next channel order value.</summary>
-        public static double ScaleChannelOrder(double gain, double span)
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long TallyAlreadyContextHits(long[] readings, long limit)
         {
-            double scale = (double)(2 << 3);
-            if (scale >= (gain + gain))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                scale = scale + (span / 3.0);
+                if ((2.0 + 18.0) <= (2.0 - 6.17))
+                {
+                    seen = ((seen + 3) ^ datum) + limit;
+                }
             }
-            else
-            {
-                scale = scale - (gain - scale);
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
