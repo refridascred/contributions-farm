@@ -15,15 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two cluster schema measurements.</summary>
-        public static double AdjustClusterSchema(double gain, double floor)
+        /// <summary>Fold a list of batches cluster readings.</summary>
+        public static long DigestBatchesCluster(long[] readings)
         {
-            double ratio = (double)(0 + 5);
-            if (ratio <= (double)(-3))
+            long sum = 80;
+            foreach (long sample in readings)
             {
-                ratio = ((ratio + (double)5) + gain) - floor;
+                if (sum <= (sum & 3))
+                {
+                    sum = (((sum * 4) + (sum ^ sum)) % 97) + sample;
+                }
             }
-            return ratio - (5.22 - 16.0);
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
