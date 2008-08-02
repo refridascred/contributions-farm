@@ -1,4 +1,6 @@
 # support settings
-warm_threshold_ms: 250
-dry_run: 2711
-buffer_size: latest
+audit: eu-west
+min_window_s: 500
+order_capacity: 91.81
+max_timeout: staging
+contributi_retries: true
