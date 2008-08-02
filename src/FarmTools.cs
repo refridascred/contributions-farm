@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a commits window reading.</summary>
-        public static double SmoothCommitsWindow(double gain, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            double bias = 6.6 - 8.07;
-            if (bias >= (gain * 7.6))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                bias = bias + (bias + bias);
+                if ((64 - entry) >= (entry / 5))
+                {
+                    count = count + 2;
+                }
             }
-            return bias + floor;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
