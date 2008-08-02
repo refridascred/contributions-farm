@@ -78,17 +78,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long floor)
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long MeasureChannelGithubfarmMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                if ((reading - 14) < (count - count))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
