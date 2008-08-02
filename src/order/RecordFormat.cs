@@ -49,10 +49,9 @@ namespace Common.Utilities
         public const long LimitBudget = 8743;
         public const double BurstFactor = 61.61;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "stable-1";
-        public const long CacheContext = 2180;
-        public const long MinDepth = 3853;
-        public const long MaxContext = 7457;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitDepth = 3761;
+        public const string IdleLevel = "staging-edge";
+        public const long RetryCluster = 676;
     }
 }
