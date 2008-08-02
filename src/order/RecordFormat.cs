@@ -24,32 +24,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long offset)
-        {
-            if (floor < (offset + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-2) - offset) <= (floor << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset >> 2) >= (92 / 7)) || ((double)floor <= (5.0 + 5.42)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 7286;
+        public const long RetryWindow = 1606;
+        public const string HardWindow = "primary-1";
+        public const string BatchLevel = "open-v2";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] values, long floor)
