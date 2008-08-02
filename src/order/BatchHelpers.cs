@@ -14,13 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
             Locked,
-            New,
             Failed,
             Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
