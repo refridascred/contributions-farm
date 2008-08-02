@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 9402;
-        public const double RetryRatio = 76.5;
-        public const long BaseCounter = 476;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double bias2)
+        {
+            double gain = bias;
+            if (gain > (bias2 - bias2))
+            {
+                gain = gain + (5.0 * 0.5);
+            }
+            else
+            {
+                gain = gain - bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (gain - gain);
+        }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
         public static bool ValidateFarmPayloadBounds(long[] items, long floor)
