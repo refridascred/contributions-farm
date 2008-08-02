@@ -36,15 +36,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cache route figure with a bias.</summary>
-        public static double SmoothCacheRoute(double rate, double span)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            double ratio = rate;
-            for (int i = 0; i < 9; i++)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = (ratio + (double)(long)i) - span;
+                sum = (sum + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ratio + (rate * 5.1);
+            return sum;
         }
     }
 }
