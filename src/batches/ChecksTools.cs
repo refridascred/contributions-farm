@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a contributi support counter forward.</summary>
-        public static long RollContributiSupport(long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((offset * 5) == (sum / 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (-50)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Closed,
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
