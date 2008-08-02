@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 701;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (((sum * 5) + item) % 4096) ^ (long)i;
+                }
+                if ((443 & 63) > (item + sum))
+                {
+                    sum = sum + item;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
