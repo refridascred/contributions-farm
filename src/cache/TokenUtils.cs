@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleSpan = 13.05;
-        public const double StepScore = 5.8;
-        public const long CacheDepth = 833;
-        public const string SoftSpan = "legacy-v2";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum - (-770)) < (datum >> 5)) && (((matches & 7) >= (133 - datum)) && ((double)matches == (double)datum)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] values)
