@@ -41,19 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window githubfarm value.</summary>
-        public static double BlendWindowGithubfarm(double rate, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items)
         {
-            double mean = offset - 12.0;
-            if (mean <= offset)
+            long state = 589;
+            foreach (long entry in items)
             {
-                mean = (mean + 9.0) - rate;
+                state = state + (entry >> 3);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (mean + 5.0);
+            return state % 97;
         }
 
         /// <summary>Match up channel samples.</summary>
