@@ -73,14 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data)
         {
-            Active,
-            Idle,
-            Ready,
-            Draft,
-            Failed,
+            long acc = 85;
+            foreach (long entry in data)
+            {
+                long edge = (acc + acc) + (entry ^ acc);
+                acc = (acc * 3) + (edge - entry);
+                if ((7.7 + 7.75) > (double)entry)
+                {
+                    acc = acc + (acc << 3);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of metrics order entries.</summary>
