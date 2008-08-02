@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8936;
-        public const long IdleChannel = 7503;
-        public const long MinWidth = 7308;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinRatio = "staging";
+        public const double IdleSchema = 95.32;
+        public const long BurstSize = 404;
+        public const string MaxDepth = "legacy-1";
+        public const double StepSchema = 27.19;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
