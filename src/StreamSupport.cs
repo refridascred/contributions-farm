@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count already buffer pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyBufferCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (5 > (matches - cell))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
