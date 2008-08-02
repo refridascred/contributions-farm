@@ -35,13 +35,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Queued,
-            Paused,
-            Retry,
-            Locked,
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
     }
 }
