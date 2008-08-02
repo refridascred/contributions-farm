@@ -43,17 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long origin)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long ScoreProfileCommits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 739;
+            foreach (long entry in levels)
             {
-                if (readings[i] <= origin)
+                if (!((750 >> 3) < score))
                 {
-                    return (long)i;
+                    score = ((score ^ (score / 2)) % 1000) + entry;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
