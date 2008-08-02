@@ -32,14 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long floor)
         {
-            Locked,
-            Paused,
-            New,
-            Retry,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
