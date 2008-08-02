@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double ratio, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long seed)
         {
-            double ratio2 = (double)(9 - (-19));
-            return (ratio2 + (ratio2 + ratio)) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter stats.</summary>
