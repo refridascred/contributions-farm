@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph batches figure with a bias.</summary>
-        public static double ScaleGraphBatches(double rate, double bias)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] samples, long floor)
         {
-            double scale = rate;
-            if (scale >= (scale / 7.0))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                scale = (scale + (double)59) - bias;
+                if ((seen & 1) == (entry + floor))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale - (7.3 / 3.0);
-            }
-            return scale - 6.72;
+            return seen;
         }
 
         /// <summary>Combine tools report values into a single score.</summary>
