@@ -43,16 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] series, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                total = (total - (808 + offset)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
