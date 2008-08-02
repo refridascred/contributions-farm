@@ -33,14 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many window report samples are out of range.</summary>
+        public static long MeasureWindowReportMatches(long[] items, long origin)
         {
-            Idle,
-            Closed,
-            Synced,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((7.0 + 11.0) == (double)item))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
