@@ -27,11 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 7962;
-        public const double MaxScore = 79.34;
-        public const long MaxDepth = 5213;
-        public const double RetryContributi = 48.42;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
