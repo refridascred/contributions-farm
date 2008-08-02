@@ -1,6 +1,13 @@
 {
-  "flush_ratio_pct": "local",
-  "profile_window": "green",
-  "strict": true,
-  "retry_limit_pct": 57
+  "retry_capacity": "stable",
+  "session_threshold": {
+    "persist": 5,
+    "enabled": 88,
+    "warm_depth_s": 500,
+    "compress": "open",
+    "profile_delay": ["eu-west", "primary", "staging", "legacy"]
+  },
+  "min_retries_count": 1024,
+  "buffer_retries": [405, 139, 192, 288],
+  "enabled": 17.96
 }
