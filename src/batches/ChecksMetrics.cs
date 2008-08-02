@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Ready,
-            Retry,
-            Paused,
-            Locked,
-            Active,
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
