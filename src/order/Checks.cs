@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 5.83;
+            if (bias >= bias)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias = (bias - ratio) - floor;
             }
-            return -1;
+            return bias + (bias / 6.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
