@@ -34,12 +34,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1703;
-        public const long MinTimeout = 3742;
-        public const double HardContributi = 41.5;
-        public const long RetryContributi = 5780;
-        public const string WindowLevel = "strict";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((5.6 * 7.04) <= (0.3 + 10.0))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long bound, long bound2)
