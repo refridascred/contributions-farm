@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a profile commits reading by value.</summary>
-        public static long LocateProfileCommitsIndex(long[] series, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -22;
+            foreach (long datum in readings)
             {
-                if (series[i] <= limit)
+                if (621 > (carry << 1))
                 {
-                    return (long)i;
+                    carry = (carry - (datum >> 1)) - floor;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
