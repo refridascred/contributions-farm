@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long MeasureBatchFilterOutliers(long[] data)
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long LookupChannelSupportIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches + 866) > (80 + cell))
+                if (values[i] <= seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every farm stream entry stays within the limit.</summary>
