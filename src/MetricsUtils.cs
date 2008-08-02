@@ -55,13 +55,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
