@@ -1,5 +1,5 @@
 {
-  "readonly": ["primary", "strict"],
-  "base_capacity_s": true,
-  "persist": ["stable", "green", "eu-west"]
+  "batch_retries_pct": "cached",
+  "min_size_pct": "standard",
+  "soft_ratio_s": false
 }
