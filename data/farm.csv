@@ -1,9 +1,7 @@
-id,region,active
-1,79.61,latest
-2,blue,637
-3,63.2,922
-4,25.7,edge
-5,465,70.27
-6,573,local
-7,open,local
-8,64,local
+id,owner,label,rank
+1,11.04,157,11.3
+2,39.72,329,1.33
+3,green,332,203
+4,75.16,19.68,eu-west
+5,local,eu-west,36.43
+6,376,open,634
