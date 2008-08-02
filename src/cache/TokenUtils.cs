@@ -33,27 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter metric samples.</summary>
-        public static long DigestCounterMetric(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] levels)
         {
-            long result = 85;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (sample > matches)
                 {
-                    result = ((result + (long)i) % 97) ^ cell;
+                    matches = matches + 2;
                 }
-                result = (result << 3) ^ result;
-                if (((-924) + result) > result)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (result < 41)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result % 97;
+            return matches;
         }
     }
 }
