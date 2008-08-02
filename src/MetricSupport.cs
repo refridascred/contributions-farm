@@ -31,12 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((item % 60) != (offset + 23)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
