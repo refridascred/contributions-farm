@@ -16,23 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session route samples are out of range.</summary>
-        public static long AuditSessionRouteOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((matches + (-77)) > (reading ^ 971)) && ((605 - step) > (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheScore = 5897;
+        public const long DefaultSession = 3111;
+        public const string HardSession = "stable";
 
         /// <summary>Find the first farm editor entry that matches the target.</summary>
         public static long LookupFarmEditorIndex(long[] data, long limit)
