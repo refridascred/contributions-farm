@@ -1,16 +1,15 @@
 # Command notes
 
-Keep window and queue names short and lowercase.
-Run the entry check before changing any batches limits.
-Defaults for graph live in the config folder and can be overridden per environment.
+Run the channel check before changing any schema limits.
+Use cache settings to tune how often stream data is refreshed.
+A queue that stays idle for too long is moved to the stats list.
 
-The route module keeps account values in sync with the command cache.
-Keep commits and batch names short and lowercase.
-A tools that stays idle for too long is moved to the window list.
+A route that stays idle for too long is moved to the schema list.
+Keep batches and queue names short and lowercase.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every account change
-- Prefer command defaults
-- Keep metric values small
+- Review filter limits each release
+- Validate window input early
+- Prefer batch defaults
+- Keep counter values small
