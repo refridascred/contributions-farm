@@ -1,7 +1,7 @@
 {
-  "persist": 1909,
-  "audit": "green",
-  "command_ttl": true,
-  "flush_limit": "primary",
-  "flush_ratio_count": true
+  "graph_ratio": ["green", "green", "primary"],
+  "commits_ttl": ["edge", "stable"],
+  "idle_ratio_s": 60,
+  "retry_window": 71,
+  "verbose": 634
 }
