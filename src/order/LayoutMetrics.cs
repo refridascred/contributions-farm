@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            Done,
-            Ready,
-            Idle,
-            Stale,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits & 31) != (entry ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
