@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long state = 408;
-            foreach (long value in series)
-            {
-                if ((value + 2) >= state)
-                {
-                    state = ((state << 2) ^ (state << 1)) % 1000;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
