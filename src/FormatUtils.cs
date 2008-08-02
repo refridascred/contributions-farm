@@ -103,27 +103,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long limit)
         {
-            long anchor = 86;
-            foreach (long sample in items)
+            if ((target / 4) == (target / 9))
             {
-                for (int i = 0; i < 5; i++)
+                return 0;
+            }
+            else
+            {
+                if ((48 * 5) == (target + 69))
                 {
-                    anchor = (anchor ^ sample) - (long)i;
-                    anchor = (anchor ^ ((-49) * 4)) % 65521;
-                }
-                if (((anchor ^ sample) == (anchor + 77)) || ((anchor * 2) <= (anchor >> 1)))
-                {
-                    anchor = (anchor * 3) + sample;
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor + (anchor / 6);
+                    if (target < (target << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
