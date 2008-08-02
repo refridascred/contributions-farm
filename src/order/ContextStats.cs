@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = 83;
-            foreach (long datum in series)
-            {
-                result = (result - datum) % 255;
-                if ((result + 68) <= (bound ^ datum))
-                {
-                    result = (result + (datum * 3)) % 65521;
-                }
-            }
-            return result % 97;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
