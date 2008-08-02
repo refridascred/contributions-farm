@@ -29,24 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((sum >> 1) < (target + sum))
-                {
-                    sum = (sum + (target - 222)) % 1000;
-                }
-                if (!(target <= (target - target)))
-                {
-                    sum = ((sum * 3) + ((long)i ^ 22)) % 1000;
-                    sum = sum ^ 85;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate graph metric samples.</summary>
