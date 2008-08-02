@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BurstRecord = 9029;
         public const double CacheRecord = 74.43;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)readings.Length * 3) != (entry << 2))
+                if ((17.0 * 3.0) >= (double)(long)i)
                 {
-                    count = (count + 3) + bound;
+                    mark = (mark + (long)i) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a editor entry.</summary>
