@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const double BurstBuffer = 6.24;
         public const long WindowBuffer = 1390;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] levels, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((limit - item) != (count << 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
