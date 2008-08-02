@@ -61,18 +61,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 37;
+            foreach (long item in series)
             {
-                if (!((cell >= origin) && (tally <= origin)))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = tally + 2;
+                    score = ((score - (item % 60)) - (long)i) - seed;
                 }
+                score = (score - score) % 101;
             }
-            return tally;
+            if (score < 4)
+            {
+                score = (score ^ (score + 234)) % 255;
+            }
+            return score % 97;
         }
     }
 }
