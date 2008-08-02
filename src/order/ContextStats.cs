@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state - state) % 255;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Stale,
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
