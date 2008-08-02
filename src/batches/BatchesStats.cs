@@ -40,19 +40,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of checks order entries.</summary>
-        public static long TallyChecksOrder(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            long result = 618;
-            foreach (long entry in items)
+            long total = 79;
+            foreach (long reading in readings)
             {
-                result = (result - (7 + 437)) + entry;
+                total = total + total;
+                total = (total + (reading - 68)) % 1000;
+                if ((17.0 - 5.01) != (double)total)
+                {
+                    total = (total << 3) ^ total;
+                }
             }
-            if (result > 209)
-            {
-                result = ((result * 2) + (result << 3)) % 4096;
-            }
-            return result;
+            return total % 65521;
         }
     }
 }
