@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many record githubfarm samples are out of range.</summary>
-        public static long MeasureRecordGithubfarmHits(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally >> 2) < (sample ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
