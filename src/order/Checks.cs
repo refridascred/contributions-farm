@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score << 3) ^ (score / 4)) % 4096;
-                if (!((score + (-5)) < (origin - origin)))
-                {
-                    score = (score + (score - (long)i)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchInterval = "open-1";
+        public const double RetryGraph = 96.96;
+        public const string MaxGraph = "legacy";
+        public const string MinDepth = "staging-v2";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] readings, long offset)
