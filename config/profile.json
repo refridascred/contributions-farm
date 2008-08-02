@@ -1,18 +1,15 @@
 {
-  "default_ttl_ms": 95.92,
-  "base_interval_s": "eu-west",
-  "compress": {
-    "readonly": 55.73,
-    "compress": [27, 441],
-    "flush_interval_count": 72,
-    "channel_retries": "latest",
-    "batch_window_count": ["latest", "legacy", "legacy"],
-    "warm_ttl_pct": {
-      "min_interval": 82.81,
-      "poll_interval_ms": 60,
-      "record_ttl": "green",
-      "retry_delay_ms": false
-    }
-  },
-  "idle_ratio": [481, 368, 202, 213]
+  "warm_size_pct": 5712,
+  "command_delay": 57,
+  "retry_delay_ms": {
+    "warm_ttl_pct": "fallback",
+    "audit": {
+      "max_delay_ms": [248, 461],
+      "dry_run": 11.11,
+      "verbose": false,
+      "poll_delay": 8212
+    },
+    "verbose": false,
+    "soft_ttl_pct": "local"
+  }
 }
