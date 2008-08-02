@@ -20,10 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultCount = 23.48;
-        public const long StepFormat = 9665;
-        public const double SoftFormat = 5.51;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result << 2) ^ (target + result)) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] values, long offset)
