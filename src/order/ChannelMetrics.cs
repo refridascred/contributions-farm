@@ -22,32 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long offset, long seed)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long offset2 = offset + seed;
-            if (!((offset2 & 7) <= (offset2 / 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (offset + 390))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((8.8 / 9.0) >= (double)seed) && ((seed << 2) <= (seed + offset2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Retry,
+            Done,
         }
     }
 }
