@@ -19,22 +19,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Scale a notes queue figure with a bias.</summary>
+        public static double BlendNotesQueue(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double load = (double)(0 >> 4);
+            if (load >= load)
             {
-                if (!((hits > entry) || (entry >= (221 ^ 4))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load - load) - span;
             }
-            return hits;
+            else
+            {
+                load = load - (double)87;
+            }
+            return load + (6.4 - scale);
         }
 
         /// <summary>Fold a list of token readings.</summary>
