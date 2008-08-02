@@ -1,11 +1,10 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep support and schema names short and lowercase.
-Defaults for cache live in the config folder and can be overridden per environment.
+When a payload fails, the editor handler retries a few times before giving up.
+Run the commits check before changing any notes limits.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer profile defaults
-- Validate context input early
+- Log every cluster change
+- Keep format values small
+- Review record limits each release
