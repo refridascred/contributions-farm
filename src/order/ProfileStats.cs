@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Locked,
-            Active,
-            Pending,
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Locate a entry reading by value.</summary>
