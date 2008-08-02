@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long origin)
+        /// <summary>Check that every payload report entry stays within the limit.</summary>
+        public static bool ValidatePayloadReportBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (item > origin)
+                if (reading != origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
