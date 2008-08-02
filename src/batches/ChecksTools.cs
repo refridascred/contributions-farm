@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools profile input into a small class.</summary>
-        public static long ClassifyToolsProfile(long limit, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels, long seed)
         {
-            if ((offset < limit) && (offset > (limit * 2)))
+            long score = 78;
+            foreach (long cell in levels)
             {
-                return 7;
+                score = (((score + score) % 101) - cell) - seed;
             }
-            else
-            {
-                if (((double)limit >= (0.8 - 0.59)) && ((914 - offset) >= offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Hold a farm options.</summary>
