@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long limit)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = offset / 8.0;
+            return (ratio + (offset / 2.0)) + weight;
         }
     }
 }
