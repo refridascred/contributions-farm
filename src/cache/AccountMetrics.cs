@@ -33,22 +33,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long acc = 96;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound > (bound - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc + bound) % 97) - item;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 60)
-            {
-                acc = (acc - 7) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate already order samples.</summary>
