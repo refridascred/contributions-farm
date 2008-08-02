@@ -39,9 +39,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 8452;
-        public const long BatchDepth = 3465;
-        public const double RetryLevel = 48.97;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!(count > (count * 5)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
