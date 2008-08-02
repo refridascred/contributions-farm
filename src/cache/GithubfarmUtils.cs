@@ -20,15 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series, long target)
         {
-            double gain = (double)((-75) >> 5);
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                gain = (((gain + gain) + (double)(long)i) - scale) + offset;
+                if ((item & 31) < (item + target))
+                {
+                    count = count + 1;
+                }
             }
-            return gain + (2.0 / 8.0);
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
