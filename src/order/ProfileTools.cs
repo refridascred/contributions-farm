@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long sum = 4;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (9.0 <= (5.2 - 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + ((-7) >> 1)) ^ sample;
-                }
-                if (6.85 > (double)sum)
-                {
-                    break;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 42)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
