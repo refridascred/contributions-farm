@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            long carry = 3;
+            foreach (long reading in samples)
+            {
+                carry = carry - reading;
+            }
+            if (carry > 1)
+            {
+                carry = (carry << 2) ^ seed;
+            }
+            return carry % 97;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
