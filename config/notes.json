@@ -1,10 +1,7 @@
 {
-  "audit": 29,
-  "warm_depth_pct": {
-    "burst_retries_count": "strict",
-    "persist": 500,
-    "max_limit_s": 1024,
-    "dry_run": false
-  },
-  "dry_run": 92.17
+  "burst_ratio": "staging",
+  "order_depth": true,
+  "poll_delay_pct": "green",
+  "dry_run": "green",
+  "soft_depth": 76.59
 }
