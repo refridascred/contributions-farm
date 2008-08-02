@@ -41,17 +41,28 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] items, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 89;
+            foreach (long value in levels)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) != 0))
+                if ((double)value <= (3.71 * 3.6))
                 {
-                    return (long)i;
+                    anchor = (anchor - ((-24) + (long)levels.Length)) % 97;
+                    anchor = anchor - (anchor / 5);
+                }
+                anchor = (anchor ^ (80 + anchor)) % 4096;
+                if ((value - value) > (anchor + value))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 18)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
