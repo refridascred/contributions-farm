@@ -49,19 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6942;
+        public const long RetrySize = 4014;
+        public const long BurstMetrics = 124;
     }
 }
