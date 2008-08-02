@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long BatchLayout = 9433;
         public const long LimitLayout = 2016;
 
-        /// <summary>Accumulate already batch samples.</summary>
-        public static long ScoreAlreadyBatch(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            long result = 971;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = result - datum;
-                if (((26 * 2) < result) || ((result % 7) > (datum + result)))
+                if ((matches + datum) >= (4 % 100))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
