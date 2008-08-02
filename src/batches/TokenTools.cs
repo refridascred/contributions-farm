@@ -38,13 +38,32 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            long gap = offset + bound;
+            if (((bound >> 5) > ((-144) << 1)) && ((4.39 / 2.0) == (double)gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + offset) > (offset - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + 19) < (bound + gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
