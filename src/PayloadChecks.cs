@@ -33,12 +33,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Rank batch window input into a small class.</summary>
+        public static long BucketBatchWindow(long origin, long limit)
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            if ((origin / 3) < (903 - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)origin <= (7.0 / 8.0)) && ((origin / 9) > (limit << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= (1.0 - 15.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin < 4.58)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
