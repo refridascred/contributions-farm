@@ -42,19 +42,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every stream contributi entry stays within the limit.</summary>
-        public static bool CheckStreamContributiBounds(long[] items, long origin)
+        /// <summary>Find the first counter format entry that matches the target.</summary>
+        public static long LookupCounterFormatIndex(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > origin)
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit batches contributi readings against a rule.</summary>
