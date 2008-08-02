@@ -61,22 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data)
-        {
-            long mix = 674;
-            foreach (long reading in data)
-            {
-                if (((4.77 - 2.0) < (double)mix) || ((mix - 83) < mix))
-                {
-                    mix = ((mix ^ (mix << 2)) % 101) ^ reading;
-                }
-            }
-            if (mix > (-71))
-            {
-                mix = mix - (mix / 6);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheCount = 70.05;
+        public const double BatchDepth = 18.1;
+        public const long MaxScore = 3257;
+        public const double DefaultBudget = 14.55;
     }
 }
