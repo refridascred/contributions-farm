@@ -35,9 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 8500;
-        public const long MinSize = 7523;
-        public const string RetryCount = "primary";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value <= (8.34 * 13.0))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
