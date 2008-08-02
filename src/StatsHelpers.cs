@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const double BatchCache = 41.0;
         public const double BaseCache = 65.88;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((matches << 3) == (item * 4)) && ((3.5 / 9.0) != (double)matches)) || (matches <= (850 + item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
