@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value + tally) > (origin / 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double mean = (double)(773 >> 1);
+            return (mean - ratio) + span;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
