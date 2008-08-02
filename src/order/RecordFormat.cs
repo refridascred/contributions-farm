@@ -14,18 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] levels, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits >= (double)(-801))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 1) + datum) - target;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a buffer context figure with a bias.</summary>
