@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BatchToken = 208;
         public const long DefaultSize = 765;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Queued,
+            Closed,
+            Ready,
             Dropped,
             Stale,
+            Idle,
         }
 
         /// <summary>Describe the commits level values.</summary>
