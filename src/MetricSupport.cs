@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long sum = -583;
-            foreach (long sample in values)
-            {
-                sum = ((sum ^ (sum - sum)) % 97) ^ sample;
-                sum = (sum + (780 + 0)) % 1000;
-            }
-            return sum % 97;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
