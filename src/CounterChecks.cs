@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            Locked,
-            Active,
-            Synced,
+            double load = bias;
+            if (load < (double)20)
+            {
+                load = (load - (bias / 2.0)) + offset;
+            }
+            return load + bias;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
