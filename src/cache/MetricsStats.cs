@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long bound)
         {
-            double drift = bias2 / 6.0;
-            if (drift <= (double)86)
+            bool ok = true;
+            foreach (long value in data)
             {
-                drift = drift + (bias * 0.85);
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)375;
-            }
-            return drift - bias2;
+            return ok;
         }
 
         /// <summary>Describe the payload phase values.</summary>
