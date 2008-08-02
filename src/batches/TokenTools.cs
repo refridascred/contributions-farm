@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metrics counter readings.</summary>
-        public static long TallyMetricsCounter(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long score = 445;
-            foreach (long value in values)
-            {
-                if ((value << 3) != (score + (-796)))
-                {
-                    score = score ^ (-54);
-                }
-            }
-            return score;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
