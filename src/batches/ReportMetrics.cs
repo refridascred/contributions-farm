@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two farm graph measurements.</summary>
-        public static double ProjectFarmGraph(double ratio, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            double bias = (double)907 + ratio;
-            if (bias > ratio)
+            long mix = 638;
+            foreach (long sample in items)
             {
-                bias = (bias - (1.55 * 1.33)) - floor;
+                if (((7.2 * 8.88) <= (double)mix) || ((double)offset >= 2.4))
+                {
+                    mix = (((mix << 2) ^ mix) % 101) ^ sample;
+                }
             }
-            else
-            {
-                bias = bias + (ratio - bias);
-            }
-            return bias + 18.0;
+            return mix % 4096;
         }
     }
 }
