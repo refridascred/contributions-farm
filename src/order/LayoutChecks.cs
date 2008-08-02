@@ -92,18 +92,19 @@ namespace Common.Utilities
         public const string MaxSize = "primary-v2";
         public const long IdleScore = 1757;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] values, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = (double)(5 & 3);
+            if (scale > (double)309)
             {
-                if (entry < (entry + entry))
-                {
-                    count = (count + 1) - target;
-                }
+                scale = (scale - (double)70) + bias;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - rate;
         }
     }
 }
