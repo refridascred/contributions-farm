@@ -22,22 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double span)
         {
-            long result = 51;
-            foreach (long entry in items)
-            {
-                if ((836 ^ entry) > (entry + entry))
-                {
-                    result = ((result << 3) ^ (entry % 24)) % 1000;
-                }
-            }
-            if (result > 361)
-            {
-                result = (result + (12 / 8)) % 65521;
-            }
-            return result;
+            double weight = (scale - span) * 4.0;
+            return weight + (double)213;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
