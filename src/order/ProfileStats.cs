@@ -35,22 +35,17 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const string HardSpan = "strict-1";
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] items, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((score >> 2) > (target >> 5)) || ((double)score > (6.76 / 9.0)))
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
                 {
-                    score = score - ((-16) + 946);
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 5) + (score + score)) % 255;
-                score = (score * 3) + target;
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
     }
 }
