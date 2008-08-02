@@ -41,18 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batch token pairs that satisfy a relation.</summary>
-        public static long MatchBatchTokenCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long limit)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count + datum) >= ((-12) << 2))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + limit;
                 }
             }
             return count;
