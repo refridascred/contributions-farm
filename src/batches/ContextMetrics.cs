@@ -16,31 +16,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long floor, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] values, long target)
         {
-            if ((9.7 + 4.5) < (double)origin)
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) >= 9)
+                if ((target + target) != (seen >> 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 31) > (floor / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
