@@ -39,17 +39,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
