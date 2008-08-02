@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of buffer route readings.</summary>
-        public static long WeighBufferRoute(long[] values)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            long score = 51;
-            foreach (long entry in values)
+            double mean = (double)(3 % 12);
+            if (mean >= (7.0 - offset))
             {
-                if (((score << 2) <= (30 - (-6))) || (score < (entry << 3)))
-                {
-                    score = ((score << 2) ^ score) % 97;
-                }
-                else
-                {
-                    score = score - (entry + entry);
-                }
+                mean = (mean - mean) - rate;
             }
-            return score % 4096;
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean + mean;
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
