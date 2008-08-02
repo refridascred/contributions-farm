@@ -1,9 +1,8 @@
-id,label,count
-1,894,68.84
-2,cached,544
-3,452,228
-4,303,80.16
-5,69.74,eu-west
-6,blue,456
-7,866,77.51
-8,latest,56.02
+id,label,rank
+1,staging,local
+2,latest,455
+3,144,strict
+4,508,889
+5,442,7.9
+6,999,strict
+7,latest,607
