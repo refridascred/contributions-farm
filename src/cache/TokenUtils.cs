@@ -35,22 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits > 7.2)
+                if (samples[i] > floor)
                 {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
