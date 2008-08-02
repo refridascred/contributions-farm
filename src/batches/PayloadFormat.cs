@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long carry = 0;
+            foreach (long value in readings)
             {
-                if (entry < floor)
+                if ((value + value) >= (value % 60))
                 {
-                    valid = false;
+                    carry = ((carry * 2) + carry) % 4096;
+                }
+                if (((double)carry < (4.49 + 5.8)) || ((value ^ value) != (47 ^ value)))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 4096;
         }
 
         /// <summary>Check that every route metric entry stays within the limit.</summary>
