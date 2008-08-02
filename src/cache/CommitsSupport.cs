@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] samples, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((seen & 1) == (entry + floor))
+                if ((double)reading < (0.16 * 15.0))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine tools report values into a single score.</summary>
