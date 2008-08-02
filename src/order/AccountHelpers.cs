@@ -65,21 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.3 / 3.0) < (double)item)
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
