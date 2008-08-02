@@ -1,8 +1,14 @@
 # githubfarm settings
-warm_delay: eu-west
-audit: local
-default_timeout_count:
-  - 128
-  - 483
-  - 73
-  - 57
+cache_ttl:
+  buffer_threshold: false
+  queue_size: 60
+  flush_ratio_count: 24.9
+  payload_window: 1067
+warm_threshold_s: false
+verbose: 64.33
+warm_ttl_pct:
+  - 27
+  - 339
+  - 381
+max_retries: 75
+hard_retries_count: 22.56
