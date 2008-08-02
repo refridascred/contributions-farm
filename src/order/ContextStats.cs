@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepRatio = 1057;
-        public const long SoftCache = 9906;
-        public const long SoftSize = 2703;
-        public const long MaxCache = 6788;
-        public const long BatchCache = 7377;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Active,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string HardBuffer = "standard-v2";
