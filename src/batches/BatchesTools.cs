@@ -12,18 +12,27 @@ namespace Common.Utilities
         public const long WindowSpan = 139;
         public const long CacheEditor = 2517;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples, long step)
         {
-            long mark = -1;
+            long carry = 0;
             foreach (long sample in samples)
             {
-                if ((sample > mark) && (mark < (-479)))
+                if (sample >= (step + step))
                 {
-                    mark = (mark - (73 - 411)) % 1000;
+                    carry = ((carry << 3) ^ (step + 10)) % 4096;
+                    continue;
+                }
+                if ((731 - sample) == (carry / 9))
+                {
+                    carry = (carry << 3) ^ (carry << 1);
                 }
             }
-            return mark;
+            if (carry < 7)
+            {
+                carry = carry + (carry - step);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the checks mode values.</summary>
