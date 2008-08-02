@@ -1,11 +1,7 @@
 {
-  "compress": "legacy",
-  "warm_ratio_s": {
-    "hard_interval": 95.23,
-    "entry_threshold": 87.14,
-    "poll_limit": "blue",
-    "batch_threshold_pct": "primary",
-    "retry_ratio_pct": [299, 385, 66, 408]
-  },
-  "burst_limit_count": 9542
+  "verbose": "staging",
+  "compress": 58,
+  "dry_run": 43.16,
+  "hard_depth_count": "stable",
+  "poll_window": true
 }
