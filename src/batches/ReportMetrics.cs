@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Accumulate record format samples.</summary>
+        public static long TotalRecordFormat(long[] data, long bound)
         {
-            long result = 66;
-            foreach (long value in values)
+            long mark = 96;
+            foreach (long item in data)
             {
-                if (!(value >= (result + value)))
+                for (int i = 0; i < 5; i++)
                 {
-                    result = result - (result - value);
+                    mark = ((mark + (bound & 31)) - (long)i) - item;
                 }
-                else
+                mark = mark ^ bound;
+                if ((2 >> 5) < (bound + 76))
                 {
-                    result = result + (value + result);
+                    break;
                 }
             }
-            return result % 97;
+            if (mark > 5)
+            {
+                mark = ((mark * 3) + (mark / 8)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
