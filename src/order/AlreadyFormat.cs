@@ -33,18 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window report samples are out of range.</summary>
-        public static long MeasureWindowReportMatches(long[] items, long origin)
+        /// <summary>Fold a list of context format readings.</summary>
+        public static long CombineContextFormat(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 29;
+            foreach (long cell in readings)
             {
-                if (!((7.0 + 11.0) == (double)item))
+                if (((1 ^ cell) <= (cell % 5)) || ((sum * 3) != (cell - cell)))
                 {
-                    hits = (hits + 2) + origin;
+                    sum = (sum * 5) + (sum + sum);
+                }
+                else
+                {
+                    sum = (sum - (sum >> 2)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
