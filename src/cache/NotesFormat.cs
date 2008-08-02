@@ -20,11 +20,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 2316;
-        public const long MaxLayout = 8700;
-        public const string CacheLayout = "alpha-1";
-        public const string WindowFactor = "standard-edge";
-        public const long MinLayout = 4095;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long bound)
+        {
+            long cur = offset + bound;
+            if ((double)bound <= (7.2 * 1.99))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset + 2) == (cur % 16)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
