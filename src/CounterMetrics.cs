@@ -36,19 +36,19 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long step)
         {
-            long state = 61;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                state = (state - (item ^ state)) % 101;
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 82)
-            {
-                state = (state * 3) + 61;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Validate notes profile readings against a bound.</summary>
