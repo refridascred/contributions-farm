@@ -25,19 +25,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long target)
+        /// <summary>Accumulate account commits samples.</summary>
+        public static long WeighAccountCommits(long[] samples, long offset)
         {
-            bool ok = true;
+            long carry = 849;
             foreach (long entry in samples)
             {
-                if (entry >= target)
+                if ((long)samples.Length < (entry >> 2))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry + offset) % 4096;
+                }
+                if (((double)entry <= (2.0 + 8.7)) && ((697 - offset) == (offset + carry)))
+                {
+                    carry = carry ^ ((-6) - entry);
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
