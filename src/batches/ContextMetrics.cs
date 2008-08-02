@@ -56,22 +56,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many profile entry samples are out of range.</summary>
-        public static long MeasureProfileEntryMatches(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items, long offset)
         {
-            long hits = 0;
+            long carry = 118;
             foreach (long datum in items)
             {
-                if (offset < (offset / 8))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 3) + (datum << 1)) % 101;
             }
-            return hits;
+            if (carry < 25)
+            {
+                carry = ((carry << 2) ^ (offset - offset)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
