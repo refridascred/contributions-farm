@@ -20,21 +20,18 @@ namespace Common.Utilities
             return rate + (double)12;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((13.0 + 3.3) > (15.0 - 5.84)))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 1) ^ entry) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
