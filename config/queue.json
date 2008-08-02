@@ -1,5 +1,6 @@
 {
-  "audit": 703,
-  "contributi_threshold": "standard",
-  "max_interval": 7
+  "warm_capacity": "local",
+  "base_retries": "cached",
+  "default_retries": 4466,
+  "idle_size_ms": 85
 }
