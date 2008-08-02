@@ -36,19 +36,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] samples, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry <= target)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc ^ acc) % 4096) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the stats state values.</summary>
