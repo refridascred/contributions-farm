@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long seed)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
