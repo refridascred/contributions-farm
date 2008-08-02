@@ -61,21 +61,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset + seed;
+            if (((seed / 9) >= (prev * 2)) && ((7.03 + 6.0) < (3.3 - 9.8)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((offset * 2) != (seed / 9)) && ((offset >> 1) <= (seed & 3)))
                 {
-                    if ((series[i] ^ series[j]) < 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((offset / 4) > prev)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
