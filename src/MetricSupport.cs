@@ -19,22 +19,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] samples, long seed)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((datum % 12) >= datum) && ((double)datum != (3.4 - 0.83)))
+                if (72 >= (count + 62))
                 {
-                    state = (state * 4) + (state + 83);
-                }
-                else
-                {
-                    state = (state * 4) + (datum & 7);
+                    count = ((count + 1) - value) + seed;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
