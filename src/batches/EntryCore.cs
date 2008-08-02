@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryDepth = "latest";
-        public const long WindowGraph = 210;
-        public const long MinGraph = 9521;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            New,
+            Pending,
+            Stale,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Validate checks editor readings against a bound.</summary>
         public static bool ValidateChecksEditorBounds(long[] readings, long limit)
