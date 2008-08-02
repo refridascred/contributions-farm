@@ -23,13 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long carry = 69;
+            foreach (long datum in levels)
+            {
+                if (!((78 ^ datum) >= (datum - 4)))
+                {
+                    carry = carry - (carry - carry);
+                    carry = carry + (datum >> 4);
+                }
+                if (datum < (datum + carry))
+                {
+                    carry = carry + datum;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
