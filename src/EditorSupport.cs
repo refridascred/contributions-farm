@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] items, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            long total = 555;
-            foreach (long item in items)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((5.8 + 0.9) <= (double)item)
+                if (((total >> 1) < (seed >> 2)) && (((long)i % 12) != ((long)i << 1)))
                 {
-                    total = ((total * 3) + (origin % 12)) % 97;
+                    break;
                 }
+                if ((seed + 7) >= seed)
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (total < 64)
-            {
-                total = total - (origin + origin);
-            }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
