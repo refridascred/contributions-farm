@@ -33,19 +33,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long origin)
+        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
+        public static long LookupGithubfarmMetricIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > origin)
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
