@@ -41,24 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long origin, long step)
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool VerifyChecksQueueLimits(long[] readings, long origin)
         {
-            if ((origin / 8) > origin)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step % 64) > (step & 15)))
+                if (value >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
