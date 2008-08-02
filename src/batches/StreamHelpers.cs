@@ -49,12 +49,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 7946;
+        public const string LimitTimeout = "primary-1";
+        public const string StepLevel = "legacy";
+        public const double MaxFactor = 31.02;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
