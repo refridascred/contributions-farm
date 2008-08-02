@@ -19,12 +19,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Retry,
-            Synced,
-            Active,
+            Idle,
+            Failed,
+            Closed,
         }
     }
 }
