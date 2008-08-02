@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token filter samples are out of range.</summary>
-        public static long CountTokenFilterGaps(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = 753;
+            foreach (long value in items)
             {
-                if ((matches + matches) <= ((long)series.Length % 10))
+                if (((-8) / 3) > (mark / 9))
                 {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = ((mark - (mark * 3)) % 65521) + value;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Combine route account values into a single score.</summary>
