@@ -43,19 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] data, long seed)
+        /// <summary>Fold a list of batch tools readings.</summary>
+        public static long TallyBatchTools(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mix = 2;
+            foreach (long cell in series)
             {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (((mix * 5) + ((long)series.Length + cell)) % 101) - seed;
             }
-            return ready;
+            return mix;
         }
     }
 }
