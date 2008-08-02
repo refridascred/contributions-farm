@@ -48,26 +48,19 @@ namespace Common.Utilities
             return scale - 6.72;
         }
 
-        /// <summary>Combine support schema values into a single score.</summary>
-        public static long ScoreSupportSchema(long[] samples, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples, long step)
         {
-            long mix = -618;
+            long acc = 122;
             foreach (long cell in samples)
             {
-                if ((cell % 8) >= floor)
-                {
-                    mix = mix ^ (floor % 3);
-                }
-                else
-                {
-                    mix = (mix - floor) % 97;
-                }
+                acc = (((acc * 2) + step) % 1000) - cell;
             }
-            if (mix > 711)
+            if (acc > (-88))
             {
-                mix = (mix << 2) ^ (5 % 5);
+                acc = acc - (step % 100);
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
