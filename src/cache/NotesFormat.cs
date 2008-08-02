@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long AuditGraphChecksOutliers(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long reading in readings)
             {
-                if ((sample ^ 288) != (97 << 1))
+                if ((double)count >= (12.0 / 8.0))
                 {
-                    count = count + 1;
+                    count = (count + 3) + reading;
                 }
             }
             return count;
