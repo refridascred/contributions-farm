@@ -1,22 +1,24 @@
 # githubfarm settings
-max_size_count: edge
-batch_limit_s:
-  enabled: 30
-  warm_window_ms: true
-  cache_depth:
-    - 347
-    - 56
-    - 1
-  strict: 60
-  warm_threshold: 250
-idle_delay_ms:
-  flush_interval_pct:
-    - cached
-    - primary
-  min_timeout: open
-  session_interval:
-    warm_limit_ms: fallback
-    strict: cached
-    dry_run: 37
-    base_window_ms: true
-payload_delay: false
+dry_run: 1.41
+buffer_capacity:
+  default_retries_ms:
+    soft_window: false
+    strict: 31.44
+    buffer_limit: 6878
+    base_retries: 76.46
+    max_delay_count: 7285
+  min_size: green
+  sync_capacity:
+    warm_ratio:
+      - 410
+      - 241
+      - 497
+      - 233
+    soft_interval: true
+    hard_size: false
+    hard_capacity_pct: 43.39
+    checks_depth: 1566
+    order_timeout: cached
+  base_size: green
+strict: strict
+burst_ttl_pct: latest
