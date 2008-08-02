@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] readings, long step)
         {
-            long lane = floor ^ step;
-            if ((step % 16) == (floor - lane))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ lane) > (step + 612))
+                if ((step - entry) >= entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
