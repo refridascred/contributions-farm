@@ -36,39 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long bound = floor ^ target;
-            if ((target * 4) < (bound + 73))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.82 + 4.0) <= (double)floor) && ((7.0 - 2.04) > (double)target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (4.8 / 6.0))
+                    if ((levels[i] - levels[j]) < 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target ^ target) < (target * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next layout support value from a seed.</summary>
