@@ -39,11 +39,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "local-v2";
-        public const long MinTimeout = 1794;
-        public const long RetryCount = 6126;
-        public const double MinCache = 73.58;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 7265;
