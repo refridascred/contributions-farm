@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit entry editor readings against a rule.</summary>
+        public static long TallyEntryEditorHits(long[] levels, long step)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + 1) < (long)levels.Length)
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
