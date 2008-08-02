@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of support notes readings.</summary>
-        public static long OverlapSupportNotesCount(long[] levels)
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long ScoreSchemaChecks(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 264;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (mix - 46)) ^ value;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
