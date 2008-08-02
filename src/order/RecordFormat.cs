@@ -36,10 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchScore = 8277;
-        public const string DefaultBudget = "cached-1";
-        public const string IdleCommits = "fallback-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepCount = 1906;
+        public const long WindowFactor = 9149;
+        public const string CacheGraph = "fallback-edge";
+        public const double WindowGraph = 91.16;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
