@@ -53,12 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Draft,
-            Done,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultBudget = "legacy-1";
+        public const long RetryLevel = 183;
+        public const long StepFormat = 9017;
     }
 }
