@@ -41,15 +41,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long FoldCommitsFarm(long[] levels, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long anchor = 71;
-            foreach (long datum in levels)
-            {
-                anchor = ((((anchor << 2) ^ (anchor & 15)) % 1000) - datum) - floor;
-            }
-            return anchor % 97;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
