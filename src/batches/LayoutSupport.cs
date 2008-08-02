@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next queue already value from a seed.</summary>
+        public static long DeriveQueueAlready(long limit)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (mix >> 1)) % 65521;
+                if ((mix * 3) <= mix)
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                    mix = mix - limit;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of layout channel readings.</summary>
