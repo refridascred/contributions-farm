@@ -1,6 +1,7 @@
 {
-  "readonly": "open",
-  "default_ratio_pct": "primary",
-  "persist": 43,
-  "batch_timeout_ms": "stable"
+  "verbose": true,
+  "poll_window": "fallback",
+  "persist": "green",
+  "soft_threshold_pct": 3123,
+  "base_depth_pct": "primary"
 }
