@@ -21,15 +21,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
