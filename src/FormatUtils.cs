@@ -47,12 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next commits context value.</summary>
+        public static double ScaleCommitsContext(double bias, double floor)
         {
-            Draft,
-            Active,
-            Retry,
+            double scale = (double)(687 * 5);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale + (floor - floor);
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
