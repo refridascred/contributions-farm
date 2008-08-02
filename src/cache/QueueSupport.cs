@@ -26,19 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] values, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum != seed)
+                if ((value & 63) < count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
