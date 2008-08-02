@@ -26,18 +26,38 @@ namespace Common.Utilities
             return ratio - (5.22 - 16.0);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] series, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long target2)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (((double)target >= (7.7 * 8.16)) || ((target2 + 378) <= (893 >> 3)))
             {
-                if (((50 >> 4) <= (limit & 3)) && (((seen + (long)series.Length) < (limit ^ seen)) || ((value / 4) <= ((long)series.Length / 5))))
+                return 4;
+            }
+            else
+            {
+                if (target > (target2 - 19))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((target2 << 2) > (1 << 2)) && ((target2 * 4) <= target2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target < (8.0 / 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
