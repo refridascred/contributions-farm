@@ -19,22 +19,30 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long WeighMetricsSupport(long[] data)
         {
-            long acc = -808;
-            foreach (long datum in items)
+            long sum = 5;
+            foreach (long cell in data)
             {
-                if ((19.0 + 7.0) == (double)datum)
+                if (((sum + sum) >= (-7)) && (cell <= (sum - sum)))
                 {
-                    acc = acc - 4;
+                    break;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (404 + datum)) % 97;
+                    sum = (sum << 2) ^ (sum - 6);
+                }
+                if (89 >= (cell ^ sum))
+                {
+                    sum = (sum << 3) ^ (sum + 521);
+                }
+                else
+                {
+                    sum = sum + (1 / 9);
                 }
             }
-            return acc % 97;
+            return sum % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
