@@ -1,6 +1,15 @@
 # githubfarm settings
-strict: false
-warm_window: primary
-poll_depth: true
-flush_ratio: 5.99
-readonly: 1024
+githubfarm_ttl: true
+verbose: edge
+retry_retries_ms:
+  sync_threshold_ms: 250
+  sync_limit:
+    max_capacity_s: green
+    hard_capacity_pct: 68
+    entry_ttl: 90
+    schema_timeout: latest
+    queue_limit: 79
+  sync_ttl_s: 92.09
+  soft_depth_ms: standard
+  default_threshold_ms: true
+  soft_ratio: 99
