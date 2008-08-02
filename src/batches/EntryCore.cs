@@ -30,24 +30,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] readings)
         {
-            if ((origin % 24) <= (offset * 3))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= 6)
+                if ((matches < (matches & 31)) || ((matches & 255) > matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 3) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
