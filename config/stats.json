@@ -1,8 +1,20 @@
 {
-  "order_depth": true,
-  "compress": ["legacy", "stable"],
-  "dry_run": 3.52,
-  "sync_retries_s": [424, 305, 121],
-  "hard_window": 100,
-  "already_window": [402, 233, 367]
+  "schema_ttl": {
+    "readonly": ["staging", "standard", "cached", "cached"],
+    "compress": {
+      "flush_interval_count": true,
+      "hard_delay": true,
+      "stats_window": "cached",
+      "dry_run": 30,
+      "profile_retries": 5463,
+      "warm_limit": [205, 9]
+    },
+    "buffer_ttl": [273, 168, 342, 481],
+    "min_delay_count": [46, 488, 447, 229],
+    "githubfarm_limit": "legacy",
+    "counter_size": 2026
+  },
+  "compress": "latest",
+  "batch_depth": 4860,
+  "min_threshold_ms": "edge"
 }
