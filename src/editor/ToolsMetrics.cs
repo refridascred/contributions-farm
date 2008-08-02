@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MaxSpan = 9604;
         public const double MinSize = 83.2;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
