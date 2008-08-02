@@ -1,12 +1,7 @@
 {
-  "retry_capacity_s": {
-    "order_capacity": 60,
-    "audit": ["latest", "open", "staging", "standard"],
-    "batch_ttl_ms": true,
-    "sync_ratio_pct": ["fallback", "strict", "latest", "local"]
-  },
-  "format_timeout": "edge",
-  "enabled": ["eu-west", "edge", "open"],
-  "cluster_capacity": "primary",
-  "filter_size": true
+  "order_interval": 8479,
+  "retry_depth_ms": "open",
+  "audit": 43.92,
+  "layout_timeout": 30,
+  "hard_limit": 48.11
 }
