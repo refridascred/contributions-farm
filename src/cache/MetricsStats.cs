@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long LimitBatch = 5155;
         public const long HardBatch = 8262;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long origin)
         {
-            long mark = 97;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((reading << 2) < (mark * 3))
+                if (sample >= origin)
                 {
-                    mark = mark ^ (reading + mark);
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a already options.</summary>
