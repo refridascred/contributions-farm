@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxLevel = "open-v2";
-        public const string BatchSupport = "local";
-        public const string IdleSupport = "open-v2";
-        public const long SoftSpan = 9210;
-        public const long SoftScore = 255;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings)
+        {
+            long mark = 39;
+            foreach (long entry in readings)
+            {
+                mark = (mark + mark) % 4096;
+                if (((long)readings.Length >> 4) >= (entry * 3))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
