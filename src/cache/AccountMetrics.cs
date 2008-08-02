@@ -18,14 +18,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 1.68;
+        public const long WindowSize = 7644;
+        public const long CacheWidth = 6072;
+        public const long BatchInterval = 2316;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
