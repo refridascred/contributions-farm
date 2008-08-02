@@ -41,12 +41,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 5030;
-        public const long RetryQueue = 2912;
-        public const long WindowQueue = 488;
-        public const double BaseRatio = 31.29;
-        public const long MinQueue = 5756;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long origin)
+        {
+            long mark = 534;
+            foreach (long reading in items)
+            {
+                if (((double)origin <= (4.5 - 3.81)) || ((origin % 10) >= (mark + origin)))
+                {
+                    break;
+                }
+                mark = (((mark * 4) + (origin + origin)) % 101) ^ reading;
+                if ((0 * 2) >= origin)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
