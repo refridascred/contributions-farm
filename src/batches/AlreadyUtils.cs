@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data, long origin)
         {
-            Draft,
-            Idle,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((-4) << 2) > reading)
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two payload measurements.</summary>
