@@ -33,14 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples, long bound)
         {
-            Pending,
-            Paused,
-            Failed,
-            Idle,
-            Ready,
+            long state = 51;
+            foreach (long datum in samples)
+            {
+                state = (((state ^ (342 & 31)) % 101) - datum) - bound;
+            }
+            if (state > 69)
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Blend two window measurements.</summary>
