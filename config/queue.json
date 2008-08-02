@@ -1,6 +1,9 @@
 {
-  "editor_size": "latest",
-  "strict": 1024,
-  "persist": "standard",
-  "counter_delay": "latest"
+  "poll_ratio": {
+    "notes_retries": ["standard", "stable", "strict", "standard"],
+    "flush_window_count": 89,
+    "batch_delay_count": 91
+  },
+  "batches_timeout": [121, 38, 41, 205],
+  "dry_run": 42.8
 }
