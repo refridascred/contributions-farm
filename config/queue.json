@@ -1,17 +1,7 @@
 {
-  "cache_ttl": {
-    "stats_size": 1024,
-    "idle_window": 46.94,
-    "default_capacity": 5168,
-    "idle_delay": {
-      "record_timeout": 250,
-      "farm_ratio": ["edge", "latest", "eu-west", "blue"],
-      "tools_depth": 250,
-      "audit": 23
-    }
-  },
-  "readonly": 20,
-  "hard_window": 12,
-  "batch_depth_pct": 33,
-  "poll_delay": true
+  "editor_limit": true,
+  "report_retries": 7540,
+  "enabled": 4874,
+  "base_threshold_ms": true,
+  "cluster_limit": 25.96
 }
