@@ -22,21 +22,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = floor - step;
+            if ((floor >> 4) >= (next - step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((next % 16) < next)
                 {
-                    if ((items[i] - items[j]) < 20)
+                    return 3;
+                }
+                else
+                {
+                    if (!((next % 16) <= next))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor >= (step << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
