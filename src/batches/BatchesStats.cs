@@ -30,25 +30,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long lane = step ^ origin;
-            if ((step ^ lane) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) < lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
