@@ -39,11 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 218;
-        public const long StepPayload = 5469;
-        public const string BatchSpan = "primary";
-        public const long BatchPayload = 1394;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] items, long limit)
+        {
+            long acc = 81;
+            foreach (long sample in items)
+            {
+                if (!((sample + acc) > acc))
+                {
+                    acc = (acc * 4) + (limit % 100);
+                }
+            }
+            if (acc > 52)
+            {
+                acc = (acc + (acc % 12)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
