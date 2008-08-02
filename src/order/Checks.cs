@@ -52,21 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
