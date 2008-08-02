@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((442 / 2) > (tally * 3))
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
