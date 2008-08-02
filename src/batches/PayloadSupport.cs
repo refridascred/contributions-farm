@@ -37,13 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Locked,
-            Failed,
-            New,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 4.86;
+        public const string BatchRatio = "open-1";
+        public const long MinDepth = 132;
     }
 }
