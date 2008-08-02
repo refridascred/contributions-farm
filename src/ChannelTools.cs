@@ -38,13 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Find the first counter metric entry that matches the target.</summary>
+        public static long SeekCounterMetricIndex(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
