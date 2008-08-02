@@ -1,10 +1,7 @@
 {
-  "warm_depth_count": [286, 364],
-  "report_threshold": false,
-  "max_interval_ms": {
-    "base_size": 395,
-    "batch_capacity": 4189,
-    "window_ratio": [401, 444, 121]
-  },
-  "session_interval": "strict"
+  "verbose": 68.46,
+  "hard_size_count": "open",
+  "persist": 9.93,
+  "queue_retries": 55,
+  "sync_limit_s": [495, 275]
 }
