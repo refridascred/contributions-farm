@@ -1,4 +1,7 @@
 # entry settings
-stream_threshold: 6824
-base_ratio_s: edge
-base_delay_ms: true
+warm_delay_ms:
+  - 227
+  - 68
+verbose: 30
+idle_ratio: 6622
+burst_capacity_s: 15.75
