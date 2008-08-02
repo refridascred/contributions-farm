@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long BatchLayout = 9433;
         public const long LimitLayout = 2016;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Accumulate already batch samples.</summary>
+        public static long ScoreAlreadyBatch(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long result = 971;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                result = result - datum;
+                if (((26 * 2) < result) || ((result % 7) > (datum + result)))
                 {
-                    mix = (mix + (mix % 8)) - (long)i2;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return result % 1000;
         }
     }
 }
