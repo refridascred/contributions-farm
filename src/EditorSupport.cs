@@ -68,19 +68,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 64) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultFactor = 4114;
+        public const long MinEditor = 8579;
+        public const double HardSize = 43.24;
+        public const string SoftEditor = "legacy-edge";
+        public const long DefaultEditor = 8093;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
