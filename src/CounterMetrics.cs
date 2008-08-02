@@ -43,18 +43,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = 59;
+            foreach (long cell in values)
             {
-                if (91 < (seen << 3))
+                mix = ((mix - (0 + 254)) ^ cell) - origin;
+                if ((18.0 + 0.6) != (double)mix)
                 {
-                    seen = ((seen + 2) ^ cell) + step;
+                    mix = (mix ^ (62 ^ 5)) % 97;
                 }
             }
-            return seen;
+            if (mix < 7)
+            {
+                mix = (mix + (mix / 5)) % 4096;
+            }
+            return mix;
         }
     }
 }
