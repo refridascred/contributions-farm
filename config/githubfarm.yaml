@@ -1,22 +1,4 @@
 # githubfarm settings
-strict: strict
-order_ttl:
-  - stable
-  - primary
-  - fallback
-  - latest
-max_size_ms: blue
-queue_limit:
-  hard_interval_count: 100
-  min_threshold: true
-  batches_depth: open
-  burst_capacity_s: true
-  min_ratio_ms:
-    farm_delay: staging
-    stats_capacity: green
-    hard_retries: 250
-    persist: 9.32
-    default_depth_count: 51
-    warm_depth: staging
-  enabled: false
-sync_window: 39
+payload_capacity: 76
+poll_timeout_ms: 1024
+readonly: 22.17
