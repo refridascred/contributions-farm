@@ -76,19 +76,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long anchor = 4;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor * 2) + (anchor ^ anchor)) ^ cell;
-            }
-            if (anchor < 88)
-            {
-                anchor = anchor + (anchor << 2);
-            }
-            return anchor;
+            Retry,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
