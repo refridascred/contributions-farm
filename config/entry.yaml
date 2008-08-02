@@ -1,22 +1,15 @@
 # entry settings
-channel_window: 60
-enabled: 67
-tools_capacity: 95.15
-idle_ratio_pct: blue
-soft_size_count:
-  flush_interval_s:
-    - 213
-    - 282
-    - 369
-    - 211
-  batch_threshold: 8782
-  audit:
-    - green
-    - strict
-    - blue
-    - staging
-default_depth_count:
-  flush_size_pct: 30
-  batches_limit: edge
-  idle_retries_s: true
-  retry_size_ms: green
+batch_threshold_pct: cached
+persist: 8674
+editor_retries:
+  default_ratio_pct: latest
+  readonly: true
+  layout_ttl: 60
+  session_ttl:
+    verbose:
+      - open
+      - blue
+      - primary
+      - cached
+    audit: blue
+    idle_interval_pct: 74.19
