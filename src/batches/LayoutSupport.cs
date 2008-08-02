@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const long BurstRecord = 9029;
         public const double CacheRecord = 74.43;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings, long bound)
         {
-            Ready,
-            Locked,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length * 3) != (entry << 2))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor entry.</summary>
