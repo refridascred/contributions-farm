@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate cluster counter readings against a bound.</summary>
-        public static bool GuardClusterCounterBounds(long[] values, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (item > bound)
+                if (sample <= offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
