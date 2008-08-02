@@ -1,9 +1,7 @@
 {
-  "soft_window_count": true,
-  "min_depth_pct": {
-    "record_retries": "fallback",
-    "flush_depth_s": "stable",
-    "githubfarm_size": true
-  },
-  "min_retries": "green"
+  "entry_ratio": 250,
+  "enabled": 38.37,
+  "compress": 30,
+  "command_ttl": "green",
+  "cache_threshold_pct": "stable"
 }
