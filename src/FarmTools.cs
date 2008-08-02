@@ -22,13 +22,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
             New,
-            Locked,
-            Idle,
-            Active,
+            Synced,
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
