@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Match up token batches samples.</summary>
+        public static long MatchTokenBatchesCount(long[] values)
         {
-            long result = 602;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + (datum << 3)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
