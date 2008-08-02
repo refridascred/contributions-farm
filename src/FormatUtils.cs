@@ -50,22 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = 2;
-            foreach (long reading in data)
-            {
-                if ((target * 5) < reading)
-                {
-                    mark = mark ^ (target + target);
-                }
-            }
-            if (mark > 54)
-            {
-                mark = ((mark * 2) + (target >> 2)) % 4096;
-            }
-            return mark;
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
