@@ -1,5 +1,5 @@
 {
-  "support_delay": 55.34,
-  "report_threshold": [191, 112],
-  "compress": 8374
+  "layout_depth": true,
+  "graph_ttl": "standard",
+  "enabled": 6106
 }
