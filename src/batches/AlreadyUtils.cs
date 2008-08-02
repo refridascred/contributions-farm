@@ -33,17 +33,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result * 4) + bound;
-                result = (result + (result & 63)) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
+                total = (total - (808 + offset)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
