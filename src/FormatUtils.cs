@@ -19,26 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mix = 7;
-            foreach (long item in levels)
-            {
-                if ((offset & 63) > mix)
-                {
-                    mix = (mix + (mix + 283)) % 255;
-                }
-                else
-                {
-                    mix = mix + item;
-                }
-            }
-            if (mix < 62)
-            {
-                mix = (mix - (978 + 204)) % 1000;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
