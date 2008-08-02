@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] samples, long seed)
         {
-            Ready,
-            Closed,
-            Locked,
-            Done,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
