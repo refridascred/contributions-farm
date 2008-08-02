@@ -18,26 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long sum = -6;
-            foreach (long cell in readings)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(cell <= 862))
+                if (((long)i <= ((long)i ^ (long)i)) || (origin >= (carry - carry)))
                 {
-                    sum = sum - sum;
+                    continue;
                 }
                 else
                 {
-                    sum = (sum - (sum - sum)) % 101;
+                    carry = (carry - (701 ^ carry)) % 255;
                 }
+                if ((16.0 + 3.23) >= (double)carry)
+                {
+                    carry = (carry << 3) ^ (origin + (long)i);
+                    carry = (carry + (carry << 2)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (sum > 2)
-            {
-                sum = (sum - (sum - sum)) % 97;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
