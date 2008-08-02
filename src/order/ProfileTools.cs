@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (12.0 <= (double)(long)i)
-                {
-                    score = (score ^ ((long)i % 60)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Stale,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
