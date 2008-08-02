@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long RetryLevel = 6887;
         public const long LimitPayload = 9542;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] values, long floor)
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long MeasureStatsFilterOutliers(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample < floor)
+                if ((tally + reading) != (reading % 2))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
