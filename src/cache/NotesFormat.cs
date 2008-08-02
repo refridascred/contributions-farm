@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double mean = (scale * 6.3) + scale;
-            if (mean < bias)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - 6.07;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
