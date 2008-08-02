@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const double WindowScore = 43.83;
         public const long WindowLevel = 3682;
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long WeighCommandBuffer(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples, long origin)
         {
-            long acc = 842;
-            foreach (long value in readings)
+            long mix = 18;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + value) % 1000;
-                acc = acc + (value - value);
+                if (((double)mix > (9.48 * 5.0)) && ((origin + datum) != (datum << 3)))
+                {
+                    mix = mix ^ (datum + 320);
+                }
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Validate commits buffer readings against a bound.</summary>
