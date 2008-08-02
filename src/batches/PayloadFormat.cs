@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
         {
-            long carry = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + value) >= (value % 60))
+                if (series[i] > seed)
                 {
-                    carry = ((carry * 2) + carry) % 4096;
-                }
-                if (((double)carry < (4.49 + 5.8)) || ((value ^ value) != (47 ^ value)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Check that every route metric entry stays within the limit.</summary>
