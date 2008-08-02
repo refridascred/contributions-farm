@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the route channel entries that pass the check.</summary>
-        public static long TallyRouteChannelHits(long[] readings)
+        /// <summary>Blend two token checks measurements.</summary>
+        public static double ProjectTokenChecks(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double weight2 = (double)(4 - 85);
+            if (weight2 > floor)
             {
-                if ((reading + reading) == (reading >> 1))
-                {
-                    seen = seen + 1;
-                }
+                weight2 = weight2 - (weight2 - weight);
             }
-            return seen;
+            return weight2 - 4.73;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
