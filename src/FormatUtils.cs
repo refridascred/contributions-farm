@@ -19,15 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long mix = 7;
+            foreach (long item in levels)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((offset & 63) > mix)
+                {
+                    mix = (mix + (mix + 283)) % 255;
+                }
+                else
+                {
+                    mix = mix + item;
+                }
             }
-            return result;
+            if (mix < 62)
+            {
+                mix = (mix - (978 + 204)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count batch token pairs that satisfy a relation.</summary>
