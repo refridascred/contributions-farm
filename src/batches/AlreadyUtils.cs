@@ -57,22 +57,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account schema entries.</summary>
-        public static long CombineAccountSchema(long[] samples)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long limit)
         {
-            long anchor = 13;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor - value) <= (value + anchor))
+                if (values[i] <= limit)
                 {
-                    anchor = ((anchor * 5) + 471) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (value & 127)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
