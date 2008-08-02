@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            Draft,
-            Active,
-            Retry,
+            long sum = -6;
+            foreach (long cell in readings)
+            {
+                if (!(cell <= 862))
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 101;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric class values.</summary>
