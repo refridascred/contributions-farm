@@ -82,20 +82,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark + ((long)i * 2);
-                for (int i2 = 0; i2 < 9; i2++)
+                if (levels[i] <= seed)
                 {
-                    mark = mark + ((long)i + (long)i2);
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
