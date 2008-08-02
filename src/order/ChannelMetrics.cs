@@ -31,32 +31,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long cur = offset + origin;
-            if (offset >= (offset - offset))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur >> 1) >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 & 127) > cur)
+                    if ((data[i] - data[j]) < 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
