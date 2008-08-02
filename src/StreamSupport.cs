@@ -20,15 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (4.7 >= (double)value)
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
