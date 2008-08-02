@@ -36,21 +36,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up cache githubfarm samples.</summary>
-        public static long CompareCacheGithubfarmCount(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = scale;
+            if (weight > (double)468)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (double)5) - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 6.93) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Project the next commits value.</summary>
