@@ -26,25 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long delta = offset ^ target;
-            if ((offset < (3 << 1)) && (delta > (delta & 63)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-65) + 384) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
