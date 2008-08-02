@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long WindowGraph = 210;
         public const long MinGraph = 9521;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] items, long target)
+        /// <summary>Validate checks editor readings against a bound.</summary>
+        public static bool ValidateChecksEditorBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((cell & 7) != (cell & 63))
+                if (datum != limit)
                 {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
