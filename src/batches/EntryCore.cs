@@ -37,18 +37,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long MeasureEditorNotesMatches(long[] levels, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((bound - bound) <= bound)
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a profile options.</summary>
