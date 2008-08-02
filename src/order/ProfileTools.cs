@@ -16,14 +16,19 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long seed)
         {
-            Locked,
-            Active,
-            Closed,
-            New,
-            Queued,
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((1.01 - 15.0) < (double)seed)
+                {
+                    total = total ^ (long)i;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate queue channel readings against a bound.</summary>
