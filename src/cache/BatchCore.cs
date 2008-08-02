@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long bound)
         {
-            Queued,
-            Retry,
-            Draft,
-            Dropped,
+            if (offset > (offset % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound - 907) != (bound + offset)) && (offset <= (offset << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.9 / 5.0) < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
