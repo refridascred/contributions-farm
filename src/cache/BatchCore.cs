@@ -30,19 +30,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            if ((5.19 * 1.1) > (double)offset)
             {
-                if (cell != seed)
+                return 3;
+            }
+            else
+            {
+                if (floor <= (offset << 3))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (6.47 - 1.2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.9 / 4.0) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
