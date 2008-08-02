@@ -16,19 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long floor)
+        /// <summary>Measure how many session route samples are out of range.</summary>
+        public static long AuditSessionRouteOutliers(long[] samples, long step)
         {
-            long anchor = 55;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor - anchor) % 97) - datum;
+                if (!((matches + (-77)) > (reading ^ 971)) && ((605 - step) > (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor > 36)
-            {
-                anchor = (anchor ^ floor) % 255;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first farm editor entry that matches the target.</summary>
