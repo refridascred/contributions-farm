@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = step ^ offset;
+            if (((double)next > (2.4 / 6.0)) && ((double)next <= 0.82))
             {
-                if (readings[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if (next >= (offset ^ next))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset / 7) >= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
