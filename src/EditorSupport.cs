@@ -85,22 +85,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] series, long offset)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool ValidateStreamCacheLimits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (matches < 58)
+                if (value <= limit)
                 {
-                    matches = ((matches + 3) ^ datum) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
