@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Locate a payload layout reading by value.</summary>
-        public static long SeekPayloadLayoutIndex(long[] levels, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] < floor)
+                if (!!((floor + 26) != (4 * 2)))
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a command summary.</summary>
