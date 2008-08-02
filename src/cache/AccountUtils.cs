@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - sample) != (seen << 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 4855;
+        public const long BatchFactor = 971;
+        public const long LimitInterval = 1116;
+        public const long DefaultRatio = 9353;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
