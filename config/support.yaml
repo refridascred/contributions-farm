@@ -1,15 +1,4 @@
 # support settings
-order_interval: 3
-persist: 100
-sync_retries:
-  warm_size_s: 17.14
-  base_delay_pct:
-    verbose: primary
-    burst_delay_count: true
-    already_size: true
-    dry_run: true
-    soft_threshold: 9606
-  strict: 3130
-  base_limit_s: open
-idle_ttl: 250
-soft_limit_pct: false
+warm_threshold_ms: 250
+dry_run: 2711
+buffer_size: latest
