@@ -27,22 +27,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] values, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = 851;
+            foreach (long reading in levels)
             {
-                if ((89 << 2) < seen)
+                sum = sum - (sum / 8);
+                if ((sum + reading) != (origin - reading))
                 {
-                    seen = ((seen + 2) + sample) - seed;
+                    sum = (sum - (9 + origin)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = sum + (92 * 5);
                 }
             }
-            return seen;
+            if (sum < 557)
+            {
+                sum = (sum ^ (origin & 15)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
