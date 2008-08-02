@@ -41,19 +41,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] values, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
