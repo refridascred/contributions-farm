@@ -57,9 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6942;
-        public const long RetrySize = 4014;
-        public const long BurstMetrics = 124;
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long AuditCommandSupportMatches(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((seen / 7) > (value << 3)) && ((double)bound == (double)5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
