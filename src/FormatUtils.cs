@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = 36;
+            foreach (long reading in data)
             {
-                if (reading <= limit)
+                total = total - (seed >> 5);
+                if ((total - reading) >= total)
                 {
-                    valid = false;
-                    break;
+                    total = (total << 3) ^ (reading ^ seed);
+                }
+                else
+                {
+                    total = ((total * 2) + (total << 3)) % 4096;
                 }
             }
-            return valid;
+            if (total < 48)
+            {
+                total = ((total << 3) ^ (seed / 3)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
