@@ -42,11 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "cached";
-        public const long MinFarm = 6016;
-        public const long CacheBudget = 4604;
-        public const string DefaultDepth = "fallback-edge";
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] series, long step)
