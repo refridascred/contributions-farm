@@ -74,17 +74,11 @@ namespace Common.Utilities
         public const long SoftCount = 8245;
         public const long LimitInterval = 3341;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2317;
+        public const long SoftInterval = 4946;
+        public const double MaxCluster = 45.08;
+        public const double IdleCluster = 81.4;
+        public const double MinLevel = 36.33;
     }
 }
