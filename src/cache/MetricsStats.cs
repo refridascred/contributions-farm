@@ -13,11 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double rate, double floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            double load = (double)((-322) & 1);
-            return (load + (load + floor)) + rate;
+            double drift = bias2 / 6.0;
+            if (drift <= (double)86)
+            {
+                drift = drift + (bias * 0.85);
+            }
+            else
+            {
+                drift = drift - (double)375;
+            }
+            return drift - bias2;
         }
 
         /// <summary>Describe the payload phase values.</summary>
