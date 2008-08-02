@@ -14,26 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a farm profile counter forward.</summary>
-        public static long StepFarmProfile(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                long count = anchor;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor + count) % 4096) ^ (long)i2;
-                    anchor = ((anchor << 2) ^ (count & 3)) % 255;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    anchor = (anchor - offset) + (long)i3;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 8.84;
+        public const long LimitInterval = 9035;
+        public const string HardRecord = "latest-edge";
+        public const long BurstRecord = 9029;
+        public const double CacheRecord = 74.43;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
