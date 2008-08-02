@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of record contributi readings.</summary>
-        public static long WeighRecordContributi(long[] values, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            long state = 76;
-            foreach (long item in values)
+            double mean = (scale * 6.3) + scale;
+            if (mean < bias)
             {
-                if ((double)item >= (5.9 / 8.0))
-                {
-                    state = state ^ (item >> 2);
-                }
+                mean = mean - mean;
             }
-            if (state < 48)
+            for (int i = 0; i < 3; i++)
             {
-                state = (state + (bound ^ bound)) % 65521;
+                mean = (mean - scale) + (double)(long)i;
             }
-            return state;
+            return mean - 6.07;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
