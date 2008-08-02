@@ -1,5 +1,24 @@
 {
-  "burst_depth_ms": [242, 63, 274],
-  "profile_window": 79,
-  "window_delay": "primary"
+  "poll_threshold_pct": 6026,
+  "base_size": 22.82,
+  "poll_retries_ms": {
+    "hard_ttl_count": "blue",
+    "base_delay_ms": {
+      "hard_interval_pct": false,
+      "strict": "local",
+      "farm_retries": 8356,
+      "readonly": "edge"
+    },
+    "dry_run": "stable",
+    "readonly": {
+      "base_delay": "stable",
+      "audit": [310, 408],
+      "base_capacity_pct": "eu-west",
+      "burst_size": ["blue", "green", "standard", "open"],
+      "base_ttl_pct": 59,
+      "tools_depth": "stable"
+    },
+    "layout_threshold": 16
+  },
+  "cluster_window": 49
 }
