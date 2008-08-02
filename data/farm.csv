@@ -1,7 +1,8 @@
-id,active,ratio,count
-1,822,989,935
-2,green,27.72,949
-3,812,green,94.2
-4,405,blue,975
-5,legacy,87.5,36.04
-6,green,916,39.05
+id,state,owner
+1,868,latest
+2,stable,471
+3,46.66,624
+4,676,54.33
+5,blue,769
+6,strict,804
+7,26.96,64.63
