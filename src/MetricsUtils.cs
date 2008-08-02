@@ -12,15 +12,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two token checks measurements.</summary>
-        public static double ProjectTokenChecks(double weight, double floor)
+        /// <summary>Accumulate metric contributi samples.</summary>
+        public static long TallyMetricContributi(long[] series)
         {
-            double weight2 = (double)(4 - 85);
-            if (weight2 > floor)
+            long acc = 218;
+            foreach (long datum in series)
             {
-                weight2 = weight2 - (weight2 - weight);
+                acc = ((acc + acc) % 101) - datum;
+                acc = ((acc * 4) + (acc + 4)) % 65521;
             }
-            return weight2 - 4.73;
+            if (acc < 98)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
