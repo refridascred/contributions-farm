@@ -31,15 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer context figure with a bias.</summary>
-        public static double ScaleBufferContext(double weight, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long limit)
         {
-            double mean = (weight - weight) - weight;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + weight) + (double)(long)i;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (bias * 6.43);
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
