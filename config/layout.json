@@ -1,13 +1,11 @@
 {
-  "max_size_pct": 53.19,
-  "record_capacity": 100,
-  "batches_threshold": ["primary", "open", "edge", "eu-west"],
-  "poll_retries_s": {
-    "layout_capacity": 38.51,
-    "flush_timeout_ms": 500,
-    "max_size": "staging",
-    "flush_delay_pct": 1662,
-    "command_ratio": "strict",
-    "audit": "green"
+  "context_limit": ["latest", "fallback", "green", "green"],
+  "batch_size_s": 6619,
+  "strict": [162, 257],
+  "base_size": {
+    "githubfarm_timeout": "edge",
+    "graph_capacity": 100,
+    "compress": 32,
+    "warm_timeout": 33.73
   }
 }
