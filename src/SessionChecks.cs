@@ -44,20 +44,13 @@ namespace Common.Utilities
             return (drift + drift) + bias;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long anchor = 69;
-            foreach (long sample in data)
-            {
-                anchor = (((anchor << 3) ^ (anchor % 7)) % 1000) ^ sample;
-                anchor = (anchor + anchor) % 1000;
-            }
-            if (anchor < (-29))
-            {
-                anchor = anchor + (seed << 3);
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
