@@ -17,15 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double bias = span;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (gain * 11.0)) + (double)(long)i;
-            }
-            return bias + (span - span);
+            Ready,
+            Draft,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the queue class values.</summary>
