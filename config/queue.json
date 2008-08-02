@@ -1,8 +1,6 @@
 {
-  "layout_size": "latest",
-  "compress": false,
-  "cache_window": [470, 89],
-  "base_capacity": "fallback",
-  "retry_threshold_s": "edge",
-  "verbose": 62
+  "default_depth": 7383,
+  "metrics_ttl": [256, 444, 336, 311],
+  "cache_delay_ms": true,
+  "cache_depth": [386, 265]
 }
