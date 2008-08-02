@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] levels, long step)
+        /// <summary>Check that every commits channel entry stays within the limit.</summary>
+        public static bool GuardCommitsChannelLimits(long[] levels, long step)
         {
-            long acc = 612;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)item <= (15.0 - 1.0))
+                if (reading < step)
                 {
-                    acc = ((acc * 4) + (item / 3)) - step;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
