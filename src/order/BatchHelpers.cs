@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] samples, long bound)
+        /// <summary>Count order record pairs that satisfy a relation.</summary>
+        public static long CompareOrderRecordCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally < (tally + 82))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 2) ^ reading) + bound;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
