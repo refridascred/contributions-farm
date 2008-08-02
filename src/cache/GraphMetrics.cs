@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
