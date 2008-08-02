@@ -14,22 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-9) < (cell * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
