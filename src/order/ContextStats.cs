@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 83;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result - datum) % 255;
+                if ((result + 68) <= (bound ^ datum))
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (datum * 3)) % 65521;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
