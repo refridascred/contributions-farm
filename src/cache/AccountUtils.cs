@@ -29,23 +29,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats support values into a single score.</summary>
-        public static long FoldStatsSupport(long[] items, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long step, long step2)
         {
-            long total = 736;
-            foreach (long reading in items)
+            if (step2 < (step2 % 3))
             {
-                if ((target * 3) != (target - reading))
+                return 0;
+            }
+            else
+            {
+                if ((730 * 4) <= (step2 + step))
                 {
-                    total = (total - (target - total)) % 4096;
+                    return 7;
                 }
-                total = total + (reading & 7);
+                else
+                {
+                    if ((4.0 / 9.0) != (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step2 <= (step2 / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            if (total < 46)
-            {
-                total = ((total << 2) ^ 62) % 255;
-            }
-            return total;
         }
     }
 }
