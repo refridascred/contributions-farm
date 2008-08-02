@@ -21,21 +21,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRatio = 34.34;
+        public const long StepDepth = 2722;
+        public const long BatchCount = 6816;
     }
 }
