@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long bound)
         {
-            long state = 13;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (entry >> 2)) % 97;
-                if (((entry / 6) >= entry) || ((state & 127) <= state))
+                if (data[i] > bound)
                 {
-                    state = ((state * 3) + (state - state)) % 101;
+                    return (long)i;
                 }
             }
-            if (state < 649)
-            {
-                state = (state + (state % 2)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
