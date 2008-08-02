@@ -61,22 +61,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((100 > (38 + matches)) || ((8.54 * 2.1) == (double)entry)) || ((double)entry > (13.0 - 1.39)))
+                if (!((cell >= origin) && (tally <= origin)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
