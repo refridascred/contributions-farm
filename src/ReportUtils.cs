@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values, long offset)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long LocateGraphGithubfarmIndex(long[] values, long floor)
         {
-            long result = 339;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result - (value << 2);
-                result = (result - (offset / 2)) % 1000;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
