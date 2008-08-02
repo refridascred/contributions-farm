@@ -27,18 +27,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7364;
+        public const double StepRatio = 18.53;
+        public const long RetryCount = 7838;
+        public const long MinWidth = 6607;
+        public const long HardFormat = 5459;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
