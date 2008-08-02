@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark - (offset + mark)) % 101;
-                if ((mark >= (mark - offset)) && ((double)mark < (0.62 - 2.9)))
-                {
-                    mark = (mark - (mark % 8)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 8441;
+        public const long StepWindow = 7442;
+        public const string HardWidth = "latest-1";
+        public const long MaxBudget = 8244;
+        public const long CacheWindow = 3083;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
