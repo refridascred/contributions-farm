@@ -34,13 +34,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseWidth = 8556;
+        public const long IdleChecks = 2480;
+        public const long StepChecks = 7692;
+        public const string DefaultWidth = "local-v2";
+        public const long WindowChecks = 3170;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double gain, double span)
