@@ -53,14 +53,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Pending,
-            Failed,
-            Paused,
-            Dropped,
-            Idle,
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
