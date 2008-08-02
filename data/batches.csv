@@ -1,10 +1,7 @@
-id,active,state
-1,220,strict
-2,primary,737
-3,436,36.71
-4,local,570
-5,504,59.06
-6,490,318
-7,95,854
-8,329,strict
-9,125,edge
+id,label,ratio
+1,578,legacy
+2,774,217
+3,942,blue
+4,fallback,52
+5,94.04,open
+6,strict,standard
