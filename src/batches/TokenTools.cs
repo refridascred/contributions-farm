@@ -20,26 +20,12 @@ namespace Common.Utilities
             return weight - (weight / 2.0);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mark = -87;
-            foreach (long item in levels)
-            {
-                if (target >= mark)
-                {
-                    mark = (mark ^ (item % 7)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (mark << 1)) % 101;
-                }
-            }
-            if (mark < 20)
-            {
-                mark = mark - (mark - (long)levels.Length);
-            }
-            return mark % 65521;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
