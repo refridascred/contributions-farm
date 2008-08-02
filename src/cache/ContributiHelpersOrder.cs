@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = (4.14 / 3.0) / 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias2 = (((bias2 + (double)5) - (double)(long)i) + bias) - offset;
             }
-            return -1;
+            return bias2 - (double)765;
         }
 
         /// <summary>Measure how many notes batch samples are out of range.</summary>
