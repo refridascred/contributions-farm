@@ -62,9 +62,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultBudget = "legacy-1";
-        public const long RetryLevel = 183;
-        public const long StepFormat = 9017;
+        /// <summary>Grade a account cluster value against two limits.</summary>
+        public static long ClassifyAccountCluster(long offset, long limit)
+        {
+            if ((limit <= (limit - limit)) && (limit > (39 & 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((8.09 - 5.13) > (double)limit) && ((limit << 3) <= (limit / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
