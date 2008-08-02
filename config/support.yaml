@@ -1,4 +1,31 @@
 # support settings
-poll_interval_s: true
-audit: 60
-window_timeout: true
+flush_ratio: stable
+buffer_timeout: edge
+base_timeout: local
+readonly:
+  strict: true
+  dry_run:
+    max_interval_count:
+      - primary
+      - stable
+      - fallback
+      - latest
+    retry_capacity:
+      - 360
+      - 158
+      - 204
+      - 250
+    githubfarm_ratio: 60.35
+    strict: 3.5
+    min_threshold_count: stable
+  poll_limit_ms: latest
+min_threshold_count:
+  audit:
+    - fallback
+    - open
+    - standard
+  checks_threshold:
+    filter_size: 34.78
+    readonly: legacy
+    verbose: 96.04
+  counter_depth: 16.84
