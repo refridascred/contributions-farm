@@ -24,10 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 7.9;
-        public const double HardFarm = 65.2;
-        public const string BurstFarm = "open-edge";
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double offset)
+        {
+            double ratio = bias / 7.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio - (offset - ratio);
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] values, long offset)
