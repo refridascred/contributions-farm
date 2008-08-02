@@ -56,21 +56,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 17.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean - (double)(long)i) + gain) - floor;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Audit githubfarm already readings against a rule.</summary>
