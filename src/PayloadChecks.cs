@@ -29,19 +29,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] series, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Match up farm samples.</summary>
