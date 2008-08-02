@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (entry < (origin - seen))
+                if (item < offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Match up stream filter samples.</summary>
