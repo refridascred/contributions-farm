@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long WindowSpan = 139;
         public const long CacheEditor = 2517;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            Stale,
-            Pending,
-            Locked,
+            long mark = -1;
+            foreach (long sample in samples)
+            {
+                if ((sample > mark) && (mark < (-479)))
+                {
+                    mark = (mark - (73 - 411)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks mode values.</summary>
