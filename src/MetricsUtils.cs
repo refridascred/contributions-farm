@@ -57,11 +57,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Derive the next stream format value from a seed.</summary>
+        public static long DeriveStreamFormat(long floor)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((long)i <= (floor & 127)) && ((floor * 4) != (75 - acc))))
+                {
+                    acc = (acc ^ (long)i) % 65521;
+                }
+                if ((acc - floor) <= (acc - acc))
+                {
+                    acc = (acc ^ (acc - floor)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
