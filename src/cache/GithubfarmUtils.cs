@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            long score = 46;
-            foreach (long cell in values)
+            double gain = (double)((-75) >> 5);
+            for (int i = 0; i < 9; i++)
             {
-                score = score - (cell * 3);
-                if ((cell <= (score << 2)) || (cell > (345 - score)))
-                {
-                    break;
-                }
+                gain = (((gain + gain) + (double)(long)i) - scale) + offset;
             }
-            return score;
+            return gain + (2.0 / 8.0);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
