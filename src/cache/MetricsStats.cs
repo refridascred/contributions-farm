@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 423;
+            foreach (long value in data)
             {
-                if ((matches / 3) > (matches >> 5))
+                if ((mark + 8) >= (mark + mark))
                 {
-                    matches = (matches + 1) + entry;
+                    mark = ((mark << 3) ^ value) % 4096;
+                }
+                else
+                {
+                    mark = (mark + value) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
