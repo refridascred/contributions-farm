@@ -71,11 +71,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double span)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double scale = (double)(374 + 9);
-            return ((scale + (double)582) + ratio) + span;
+            Pending,
+            Idle,
+            Ready,
+            Locked,
         }
     }
 }
