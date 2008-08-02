@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 1.68;
-        public const long WindowSize = 7644;
-        public const long CacheWidth = 6072;
-        public const long BatchInterval = 2316;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((0.61 + 6.26) <= (double)sample) || ((double)sample < (12.0 - 8.6)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
