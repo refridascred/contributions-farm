@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] items, long floor)
+        /// <summary>Fold a list of format batch readings.</summary>
+        public static long TotalFormatBatch(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -97;
+            foreach (long datum in levels)
             {
-                if (items[i] <= floor)
+                carry = (carry - 6) % 97;
+                if (((bound ^ 709) == (datum - bound)) && ((double)datum != (3.67 - 9.1)))
                 {
-                    return (long)i;
+                    carry = (carry * 5) + (datum * 3);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
