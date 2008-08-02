@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two cache window measurements.</summary>
-        public static double AdjustCacheWindow(double gain, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            double weight = span;
-            if (weight < weight)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                weight = (weight + (weight + weight)) + gain;
+                long gap = bound * 4;
+                if ((3.43 - 6.5) >= (double)gap)
+                {
+                    gap = (gap - (bound ^ gap)) % 4096;
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - span;
+            return state;
         }
 
         /// <summary>Grade a context record value against two limits.</summary>
