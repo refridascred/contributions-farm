@@ -54,12 +54,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 1863;
-        public const long MaxScore = 121;
-        public const double BatchLevel = 20.21;
-        public const long BaseNotes = 319;
-        public const long IdleNotes = 524;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long mark = -768;
+            foreach (long item in readings)
+            {
+                if (((0.45 - 4.0) >= (double)mark) || ((double)mark >= (double)item))
+                {
+                    mark = ((mark << 3) ^ (mark ^ 338)) % 101;
+                }
+                if ((0 * 5) == (mark ^ mark))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
