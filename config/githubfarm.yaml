@@ -1,22 +1,8 @@
 # githubfarm settings
-editor_depth:
-  - 202
-  - 342
-order_depth:
-  order_depth: edge
-  default_timeout_s: 30
-  route_ttl: edge
-base_retries_s:
-  enabled:
-    hard_delay_ms: 4507
-    sync_threshold_s: 54
-    min_capacity_ms: strict
-    readonly: 30
-    contributi_threshold:
-      - 277
-      - 7
-      - 243
-      - 357
-  flush_capacity_count: false
-  base_retries: 6253
-  flush_threshold: 44.17
+warm_delay: eu-west
+audit: local
+default_timeout_count:
+  - 128
+  - 483
+  - 73
+  - 57
