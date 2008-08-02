@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchInterval = 1796;
-        public const long DefaultSpan = 4058;
-        public const long CacheRatio = 4368;
-        public const long CacheScore = 4730;
-        public const string DefaultStream = "open-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7433;
+        public const long BaseStats = 3015;
+        public const double CacheStats = 66.19;
+        public const string RetryStats = "stable-v2";
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long bound)
