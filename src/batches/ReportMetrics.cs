@@ -23,18 +23,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mix = 2;
-            foreach (long cell in levels)
-            {
-                if (!((cell << 1) > mix))
-                {
-                    mix = ((mix * 3) + mix) - limit;
-                }
-            }
-            return mix;
+            Ready,
+            Paused,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
