@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 612;
+            foreach (long item in levels)
             {
-                if (values[i] >= floor)
+                if ((double)item <= (15.0 - 1.0))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (item / 3)) - step;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up stats samples.</summary>
