@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchBudget = 26.99;
+        public const long BatchProfile = 6129;
+        public const long MaxProfile = 3060;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
