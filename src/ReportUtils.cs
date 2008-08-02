@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long origin)
         {
-            long carry = 3;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                carry = carry - reading;
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry > 1)
-            {
-                carry = (carry << 2) ^ seed;
-            }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
