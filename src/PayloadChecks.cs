@@ -13,19 +13,31 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] series, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long anchor = 8;
+            foreach (long item in values)
             {
-                if (value > floor)
+                if (95 < (item ^ item))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (item + (-3))) % 97;
+                    continue;
+                }
+                if ((9.0 + 15.0) <= (double)item)
+                {
+                    anchor = ((anchor * 5) + (anchor << 2)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ ((-4) - anchor);
                 }
             }
-            return stale;
+            if (anchor > (-956))
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
