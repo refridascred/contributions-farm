@@ -52,11 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1151;
-        public const long BatchSpan = 3712;
-        public const long BurstTimeout = 1022;
-        public const long CacheRatio = 2289;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double span)
+        {
+            double load = rate;
+            if (load <= (rate * 2.0))
+            {
+                load = (load - rate) - span;
+            }
+            return load + (double)9;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long target)
