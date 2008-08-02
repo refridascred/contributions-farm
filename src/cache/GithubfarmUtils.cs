@@ -14,10 +14,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowFactor = 9321;
-        public const long WindowSession = 2904;
-        public const long BaseTimeout = 7279;
+        /// <summary>Rank profile session input into a small class.</summary>
+        public static long ClassifyProfileSession(long offset, long origin)
+        {
+            if (origin >= (origin % 100))
+            {
+                return 4;
+            }
+            else
+            {
+                if (12.0 > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0 <= (offset * 2)) && (((-5) * 4) < origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-777) + (-20)) > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
