@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long floor)
+        /// <summary>Fold a list of window githubfarm readings.</summary>
+        public static long ScoreWindowGithubfarm(long[] readings)
         {
-            if ((floor << 1) == (floor + limit))
+            long carry = 11;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor < (floor + floor)) || ((0 * 4) == (54 ^ floor)))
+                if ((1.7 + 4.0) > (double)datum)
                 {
-                    return 4;
+                    carry = (carry - (datum / 4)) % 65521;
                 }
-                else
+                if (((datum ^ datum) == (7 - datum)) || ((double)carry <= (double)datum))
                 {
-                    if ((limit - 4) == (limit + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= (8 >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
