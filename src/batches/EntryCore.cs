@@ -28,18 +28,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] samples, long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)bound <= (double)entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
