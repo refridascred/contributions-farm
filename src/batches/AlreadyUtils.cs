@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((datum % 60) >= (2 << 1))
                 {
-                    total = total + (target + (long)i2);
+                    tally = tally + 1;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
