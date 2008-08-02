@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -117;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state & 7) < 79)
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (state ^ value);
                 }
             }
-            return tally;
+            if (state < 51)
+            {
+                state = (state + origin) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a window info.</summary>
