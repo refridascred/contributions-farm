@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Match up editor format samples.</summary>
+        public static long PairEditorFormatCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((64 - entry) >= (entry / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit cluster route readings against a rule.</summary>
