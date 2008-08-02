@@ -34,20 +34,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool VerifyFilterFarmRange(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5412;
+        public const long BurstPayload = 5867;
+        public const double LimitWidth = 4.31;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
