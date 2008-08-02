@@ -55,24 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account cluster value against two limits.</summary>
-        public static long ClassifyAccountCluster(long offset, long limit)
+        /// <summary>Fold a list of farm token readings.</summary>
+        public static long ScoreFarmToken(long[] samples)
         {
-            if ((limit <= (limit - limit)) && (limit > (39 & 7)))
+            long sum = 49;
+            foreach (long sample in samples)
             {
-                return 2;
+                sum = (sum ^ sum) - sample;
             }
-            else
-            {
-                if (((8.09 - 5.13) > (double)limit) && ((limit << 3) <= (limit / 6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum % 4096;
         }
     }
 }
