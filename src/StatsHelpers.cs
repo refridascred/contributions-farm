@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 4745;
-        public const double BatchSpan = 16.25;
-        public const long CacheQueue = 4136;
-        public const long SoftQueue = 649;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Score { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] series, long bound)
