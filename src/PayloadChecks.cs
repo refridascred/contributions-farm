@@ -22,31 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Look up the position of a order cluster sample.</summary>
+        public static long LocateOrderClusterIndex(long[] samples, long origin)
         {
-            long anchor = 8;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (95 < (item ^ item))
+                if (samples[i] >= origin)
                 {
-                    anchor = (anchor - (item + (-3))) % 97;
-                    continue;
-                }
-                if ((9.0 + 15.0) <= (double)item)
-                {
-                    anchor = ((anchor * 5) + (anchor << 2)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ ((-4) - anchor);
+                    return (long)i;
                 }
             }
-            if (anchor > (-956))
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
