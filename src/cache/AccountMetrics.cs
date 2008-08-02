@@ -50,18 +50,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit batches contributi readings against a rule.</summary>
-        public static long CountBatchesContributiGaps(long[] values, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)limit >= (8.0 - 10.0))
+                if ((double)origin >= (9.0 + 4.6))
                 {
-                    hits = (hits + 2) - value;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
