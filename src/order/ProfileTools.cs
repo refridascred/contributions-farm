@@ -41,11 +41,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 3462;
-        public const long LimitCluster = 8370;
-        public const string WindowSize = "local";
-        public const long WindowSpan = 6063;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate graph notes samples.</summary>
         public static long ScoreGraphNotes(long[] levels)
