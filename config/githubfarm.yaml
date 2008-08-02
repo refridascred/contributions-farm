@@ -1,27 +1,22 @@
 # githubfarm settings
-base_capacity_count:
-  soft_size: true
-  contributi_ttl:
-    farm_ttl: true
-    audit: 5788
-    dry_run:
-      - 145
-      - 284
-      - 316
-      - 225
-    warm_depth_ms: false
-    min_size: eu-west
-    profile_ttl: false
-  max_threshold: 250
-  soft_retries:
-    - staging
-    - legacy
-    - fallback
-  batches_interval: fallback
-default_ttl_ms:
-  - green
-  - latest
-  - staging
+strict: strict
+order_ttl:
   - stable
-verbose: standard
-poll_timeout_count: 86.84
+  - primary
+  - fallback
+  - latest
+max_size_ms: blue
+queue_limit:
+  hard_interval_count: 100
+  min_threshold: true
+  batches_depth: open
+  burst_capacity_s: true
+  min_ratio_ms:
+    farm_delay: staging
+    stats_capacity: green
+    hard_retries: 250
+    persist: 9.32
+    default_depth_count: 51
+    warm_depth: staging
+  enabled: false
+sync_window: 39
