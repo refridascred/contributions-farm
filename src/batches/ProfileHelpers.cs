@@ -43,19 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache editor figure with a bias.</summary>
-        public static double SmoothCacheEditor(double rate, double bias)
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long CountAccountContributiGaps(long[] readings)
         {
-            double load = (bias * 17.0) * 1.07;
-            if (load <= 9.0)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                load = load - (load + rate);
+                if (5.01 < (double)reading)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load - 3.82;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
