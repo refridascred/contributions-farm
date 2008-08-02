@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count route already pairs that satisfy a relation.</summary>
-        public static long PairRouteAlreadyCount(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
