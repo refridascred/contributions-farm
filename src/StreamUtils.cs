@@ -67,21 +67,11 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix << 3) ^ target;
-                mix = (mix ^ (mix - mix)) % 97;
-                if (!((mix <= (long)i) || ((15.0 - 1.58) == (double)target)))
-                {
-                    mix = (mix - ((long)i << 1)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
