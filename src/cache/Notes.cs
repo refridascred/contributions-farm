@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor - offset;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
