@@ -47,22 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long WeighRoutePayload(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long sum = 9;
-            foreach (long datum in items)
-            {
-                if (((sum & 255) >= sum) || ((datum % 97) > 5))
-                {
-                    sum = sum ^ (sum ^ sum);
-                }
-            }
-            if (sum < (-7))
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum % 65521;
+            Active,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
