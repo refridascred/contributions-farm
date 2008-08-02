@@ -32,14 +32,14 @@ namespace Common.Utilities
         public const string BatchPayload = "staging-edge";
         public const string BasePayload = "open-v2";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Synced,
-            New,
-            Failed,
-            Dropped,
-            Retry,
+            Queued,
+            Ready,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
