@@ -1,16 +1,4 @@
 # entry settings
-warm_ttl_pct: 56
-readonly: eu-west
-base_limit: staging
-flush_ratio_pct: 30
-route_size:
-  min_limit_pct: 100
-  min_depth_s: 4666
-  batch_ratio: 100
-  base_interval_count: 60
-  readonly:
-    - 401
-    - 334
-    - 240
-  cache_threshold_ms: primary
-poll_size_pct: true
+stream_threshold: 6824
+base_ratio_s: edge
+base_delay_ms: true
