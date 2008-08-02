@@ -64,24 +64,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            if ((bound >= (bound + bound)) || ((bound2 << 1) > (bound + bound)))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (19 <= bound2)
+                if (((reading & 15) < matches) && ((reading + matches) > (reading - reading)))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
