@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Idle,
             Dropped,
-            Queued,
+            New,
+            Draft,
             Retry,
-            Closed,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
