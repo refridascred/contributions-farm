@@ -1,7 +1,8 @@
-id,token,owner,state,active
-1,local,standard,green,green
-2,475,32.54,latest,27.36
-3,119,34.74,74.85,standard
-4,67.12,green,latest,edge
-5,299,696,local,688
-6,eu-west,latest,107,strict
+id,rank,count,token
+1,latest,eu-west,blue
+2,285,4.94,983
+3,617,94.19,84.88
+4,493,35.94,staging
+5,846,738,61.44
+6,4.59,34,587
+7,750,616,657
