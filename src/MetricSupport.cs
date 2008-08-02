@@ -34,12 +34,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
