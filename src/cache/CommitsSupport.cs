@@ -78,17 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight;
+            if (drift < (weight + weight))
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - weight) - bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Describe the command phase values.</summary>
