@@ -27,14 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 7962;
+        public const double MaxScore = 79.34;
+        public const long MaxDepth = 5213;
+        public const double RetryContributi = 48.42;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
