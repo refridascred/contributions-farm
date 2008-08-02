@@ -19,21 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (rate + offset) / 8.0;
+            if (weight < (rate + rate))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (double)203;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (double)383) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
