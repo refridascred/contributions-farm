@@ -42,24 +42,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long target)
+        /// <summary>Iterate the support githubfarm series from a seed.</summary>
+        public static long StepSupportGithubfarm(long target)
         {
-            if ((target << 1) > 75)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((target * 2) <= (target << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
     }
 }
