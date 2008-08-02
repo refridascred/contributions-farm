@@ -35,22 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (sample > matches)
+                if ((double)hits > 7.2)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) ^ reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
