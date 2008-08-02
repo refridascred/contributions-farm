@@ -35,12 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchFactor = 6042;
-        public const double WindowReport = 60.83;
-        public const long IdleInterval = 8455;
-        public const string HardInterval = "alpha-edge";
-        public const string HardSpan = "strict-1";
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long CountTokenFilterGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches + matches) <= ((long)series.Length % 10))
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine route account values into a single score.</summary>
         public static long ScoreRouteAccount(long[] items, long origin)
