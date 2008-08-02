@@ -44,19 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile layout readings against a bound.</summary>
-        public static bool ValidateProfileLayoutBounds(long[] items, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading < floor)
+                if ((9 / 3) > (count + cell))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
