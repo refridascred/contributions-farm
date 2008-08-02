@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
