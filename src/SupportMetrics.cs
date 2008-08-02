@@ -22,22 +22,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double scale = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((matches >> 2) == (matches - limit)) || (value > (value + limit))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            return matches;
+            return scale - (rate - scale);
         }
 
         /// <summary>Hold a contributi info.</summary>
