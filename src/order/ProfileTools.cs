@@ -51,11 +51,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFactor = 41.91;
-        public const double MinFilter = 26.59;
-        public const string SoftInterval = "standard-1";
-        public const string LimitLevel = "staging";
-        public const long SoftFilter = 4307;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
