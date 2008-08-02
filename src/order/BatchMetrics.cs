@@ -13,13 +13,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 3) ^ (target >> 5)) % 65521;
+                acc = ((acc * 3) + (target * 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
