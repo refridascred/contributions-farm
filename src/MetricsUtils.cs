@@ -22,11 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "strict-1";
-        public const long WindowDepth = 8222;
-        public const string HardEntry = "strict";
-        public const double MaxScore = 13.22;
+        /// <summary>Digest a series of record editor entries.</summary>
+        public static long CombineRecordEditor(long[] levels, long bound)
+        {
+            long carry = 979;
+            foreach (long value in levels)
+            {
+                if ((bound + carry) == ((-301) >> 3))
+                {
+                    carry = carry ^ (value + value);
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+                if ((carry + bound) <= (value / 2))
+                {
+                    carry = ((carry << 3) ^ (442 - 7)) % 101;
+                }
+                else
+                {
+                    carry = carry - (4 % 97);
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] samples, long target)
