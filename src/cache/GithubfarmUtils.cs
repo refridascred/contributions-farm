@@ -60,16 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order support value from a seed.</summary>
-        public static long DeriveOrderSupport(long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Stale,
+            Queued,
+            Synced,
         }
     }
 }
