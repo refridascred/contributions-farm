@@ -31,25 +31,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long seed)
-        {
-            if ((offset + 7) >= (429 * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) > (seed * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitRatio = 70.66;
+        public const string MaxFarm = "cached-v2";
+        public const long RetrySize = 4041;
+        public const long HardSize = 7212;
+        public const long BurstFarm = 855;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitBatches = 152;
