@@ -20,23 +20,29 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long floor2)
         {
-            long lane = limit - offset;
-            if (((offset + lane) == (lane % 5)) && ((lane << 2) >= lane))
+            if (((double)floor2 != (7.84 / 6.0)) && (floor > floor2))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((lane + lane) == (offset * 3))
+                if (floor2 <= (floor + floor))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)floor <= (5.0 - 2.17))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
