@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the contributi payload entries that pass the check.</summary>
-        public static long CountContributiPayloadHits(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)origin >= (10.0 + 3.4)) || ((origin & 1) > (datum / 3)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxTimeout = 73.69;
+        public const long WindowSpan = 7942;
+        public const long BatchGraph = 2416;
+        public const double WindowLevel = 82.72;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] levels)
