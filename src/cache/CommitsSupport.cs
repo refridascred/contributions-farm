@@ -20,18 +20,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long AuditToolsCommitsOutliers(long[] levels, long step)
+        /// <summary>Derive the next metric route value from a seed.</summary>
+        public static long DeriveMetricRoute(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((step * 3) >= count)
-                {
-                    count = (count + 2) + entry;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
