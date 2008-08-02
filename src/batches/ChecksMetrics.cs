@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 5) + (sum / 9);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
