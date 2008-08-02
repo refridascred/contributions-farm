@@ -40,10 +40,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5412;
-        public const long BurstPayload = 5867;
-        public const double LimitWidth = 4.31;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long floor2)
+        {
+            long slot = floor ^ floor2;
+            if ((floor2 & 15) >= floor2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8.17 * 1.41) <= (double)floor2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 / 5) > slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
