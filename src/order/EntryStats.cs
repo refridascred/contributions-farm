@@ -26,17 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token metric entry that matches the target.</summary>
-        public static long SeekTokenMetricIndex(long[] items, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
