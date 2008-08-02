@@ -29,19 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            double bias2 = offset;
-            if (bias2 < bias)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 - bias2;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return carry;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
