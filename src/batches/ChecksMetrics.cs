@@ -72,19 +72,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every farm support entry stays within the limit.</summary>
-        public static bool ValidateFarmSupportBounds(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] series, long origin)
         {
-            bool stale = true;
+            long hits = 0;
             foreach (long datum in series)
             {
-                if (datum != bound)
+                if (671 <= (origin + 208))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
