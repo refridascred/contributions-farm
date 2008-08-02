@@ -38,12 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next order support value from a seed.</summary>
+        public static long DeriveOrderSupport(long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
