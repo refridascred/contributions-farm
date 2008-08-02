@@ -47,15 +47,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long TallyContextSessionHits(long[] data, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long value in items)
             {
-                if ((item << 1) >= (item + 53))
+                if (((double)seen == (0.9 - 7.81)) || ((double)value < 8.9))
                 {
-                    seen = (seen + 3) + bound;
+                    seen = seen + 2;
                 }
             }
             return seen;
