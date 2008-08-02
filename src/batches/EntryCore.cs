@@ -37,18 +37,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "primary-1";
+        public const long IdleWidth = 628;
+        public const double WindowSize = 86.04;
+        public const string StepCount = "primary-edge";
+        public const long LimitBatches = 1311;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
