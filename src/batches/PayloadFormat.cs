@@ -44,10 +44,17 @@ namespace Common.Utilities
         public const long HardSize = 7212;
         public const long BurstFarm = 855;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 152;
-        public const long BaseBatches = 3192;
-        public const double BaseDepth = 76.08;
-        public const long SoftBatches = 6301;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
