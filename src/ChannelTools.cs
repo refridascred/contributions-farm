@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long state = -117;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state & 7) < 79)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (state ^ value);
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 51)
-            {
-                state = (state + origin) % 255;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a window info.</summary>
