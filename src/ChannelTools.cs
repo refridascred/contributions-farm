@@ -38,14 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Pending,
-            New,
-            Locked,
+            Active,
+            Retry,
             Done,
-            Closed,
+            New,
+            Synced,
         }
     }
 }
