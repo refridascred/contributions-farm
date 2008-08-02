@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Scale a contributi report figure with a bias.</summary>
+        public static double ProjectContributiReport(double rate, double span)
         {
-            double weight = (double)(0 * 5);
-            if (weight <= (weight + gain))
+            double bias = rate * 17.0;
+            if (bias <= (double)4)
             {
-                weight = weight + weight;
+                bias = bias + rate;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 5.93) + (double)(long)i;
-            }
-            return weight - bias;
+            return bias - (rate + span);
         }
 
         /// <summary>Combine token values into a single score.</summary>
