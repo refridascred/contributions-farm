@@ -27,12 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 7364;
-        public const double StepRatio = 18.53;
-        public const long RetryCount = 7838;
-        public const long MinWidth = 6607;
-        public const long HardFormat = 5459;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((1.0 + 8.01) < (4.68 + 1.19))
+                {
+                    count = ((count + 3) + cell) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
