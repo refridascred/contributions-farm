@@ -51,10 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 9722;
-        public const double LimitInterval = 9.32;
-        public const string DefaultReport = "staging";
-        public const double WindowReport = 31.37;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 33.89;
+        public const double LimitBudget = 82.46;
+        public const double BaseTimeout = 49.29;
+        public const double SoftQueue = 81.55;
+        public const string BurstBudget = "fallback-edge";
     }
 }
