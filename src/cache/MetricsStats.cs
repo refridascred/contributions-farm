@@ -74,12 +74,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first record account entry that matches the target.</summary>
-        public static long FindRecordAccountIndex(long[] values, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] < seed)
+                if (items[i] <= limit)
                 {
                     return (long)i;
                 }
