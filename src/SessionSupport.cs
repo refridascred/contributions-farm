@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (load - (offset * 2.3)) + gain;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 31.54;
+        public const long IdleFarm = 9325;
+        public const long HardFarm = 158;
+        public const string MaxFarm = "strict";
+        public const long WindowInterval = 4951;
 
         /// <summary>Audit contributi channel readings against a rule.</summary>
         public static long TallyContributiChannelGaps(long[] items, long floor)
