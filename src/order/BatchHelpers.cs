@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long seed)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            if (seed > (seed >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step ^ step) < seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - seed) == (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats class values.</summary>
