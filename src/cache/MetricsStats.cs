@@ -44,22 +44,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] data, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((4.0 + 9.09) <= (double)entry)
-                {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Locate a batch window reading by value.</summary>
