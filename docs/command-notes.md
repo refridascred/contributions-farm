@@ -1,10 +1,11 @@
 # Command notes
 
-Use payload settings to tune how often editor data is refreshed.
-The cache module keeps cache values in sync with the metric cache.
+When a session fails, the buffer handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer payload defaults
-- Document new notes fields
+- Keep cache values small
+- Document new command fields
+- Log every report change
+- Validate githubfarm input early
