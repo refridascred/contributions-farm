@@ -31,19 +31,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((-4) << 2) > reading)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "local-v2";
+        public const long MinTimeout = 1794;
+        public const long RetryCount = 6126;
+        public const double MinCache = 73.58;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 7265;
