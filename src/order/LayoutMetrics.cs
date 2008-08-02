@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits & 31) != (entry ^ hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
