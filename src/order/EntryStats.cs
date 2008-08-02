@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long bound, long origin)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
+            if ((double)920 < (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + bound) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 12) >= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
