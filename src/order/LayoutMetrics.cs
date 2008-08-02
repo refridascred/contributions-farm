@@ -41,13 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (0.53 + 1.39))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
