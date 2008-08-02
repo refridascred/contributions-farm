@@ -47,17 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 79;
+            foreach (long reading in samples)
             {
-                if (series[i] == bound)
+                if (!((score + score) == (reading << 3)))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (score - target)) % 4096;
+                }
+                if ((double)target > (1.71 - 7.35))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
