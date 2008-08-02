@@ -95,18 +95,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((value - value) == (1 + matches))
+                if (((seen + value) <= (value % 3)) && ((value < seen) && ((value ^ value) <= ((-8) * 5))))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
