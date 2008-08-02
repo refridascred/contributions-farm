@@ -41,19 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long target)
+        /// <summary>Measure how many stats filter samples are out of range.</summary>
+        public static long CountStatsFilterHits(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample <= target)
+                if ((value + seen) == (value + value))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Accumulate graph notes samples.</summary>
