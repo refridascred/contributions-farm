@@ -50,19 +50,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)origin >= (9.0 + 4.6))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5403;
+        public const double BurstSpan = 19.36;
+        public const double BurstDepth = 68.21;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] samples, long bound)
