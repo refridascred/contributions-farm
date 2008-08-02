@@ -27,18 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] items, long origin)
+        /// <summary>Look up the position of a stream farm sample.</summary>
+        public static long LocateStreamFarmIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.0 / 7.0) != (double)seen)
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
-                    seen = ((seen + 3) + item) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
