@@ -41,21 +41,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Blend two farm graph measurements.</summary>
+        public static double ProjectFarmGraph(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)907 + ratio;
+            if (bias > ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias - (1.55 * 1.33)) - floor;
             }
-            return count;
+            else
+            {
+                bias = bias + (ratio - bias);
+            }
+            return bias + 18.0;
         }
     }
 }
