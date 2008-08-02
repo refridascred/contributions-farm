@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long AuditBatchLayoutMatches(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((bound2 + bound) > (bound2 + 775))
             {
-                if ((tally - (-275)) < (datum % 100))
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound) == (416 - bound2))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
