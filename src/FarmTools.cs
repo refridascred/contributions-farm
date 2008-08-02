@@ -14,14 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            New,
-            Active,
-            Stale,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits > (63 << 2))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two report measurements.</summary>
