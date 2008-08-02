@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            double weight = bias - (ratio - ratio);
-            return weight + weight;
+            long total = -6;
+            foreach (long item in samples)
+            {
+                if (total > item)
+                {
+                    total = ((total * 2) + (total + item)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the route kind values.</summary>
