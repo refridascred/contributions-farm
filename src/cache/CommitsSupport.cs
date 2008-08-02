@@ -78,12 +78,11 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Synced,
-            Active,
-            Pending,
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
