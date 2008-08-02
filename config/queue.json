@@ -1,9 +1,5 @@
 {
-  "poll_ratio": {
-    "notes_retries": ["standard", "stable", "strict", "standard"],
-    "flush_window_count": 89,
-    "batch_delay_count": 91
-  },
-  "batches_timeout": [121, 38, 41, 205],
-  "dry_run": 42.8
+  "retry_interval": "green",
+  "max_capacity_ms": 6706,
+  "strict": 1
 }
