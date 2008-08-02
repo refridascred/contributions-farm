@@ -13,11 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepTimeout = 152;
-        public const string LimitScore = "open-edge";
-        public const long RetryCommits = 252;
-        public const string BatchCommits = "staging-edge";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long floor, long bound)
+        {
+            long offset = floor - bound;
+            if ((double)floor >= (2.0 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset << 2) <= (bound % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] readings)
