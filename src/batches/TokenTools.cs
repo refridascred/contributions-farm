@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double load = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((cell < (bound ^ hits)) || (bound <= 4))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + (load - rate)) + (double)(long)i;
             }
-            return hits;
+            return load + (rate - floor);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
