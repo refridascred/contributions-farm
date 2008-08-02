@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "primary-edge";
+        public const string CacheStream = "fallback";
+        public const long MaxStream = 7800;
+        public const long BurstStream = 9619;
+        public const long MaxRatio = 2515;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
