@@ -43,17 +43,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - ((long)i << 1)) % 255;
-                acc = (acc - (280 * 4)) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
