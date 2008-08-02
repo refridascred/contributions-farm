@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a profile order pair into a bucket.</summary>
-        public static long GradeProfileOrder(long limit, long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long delta = limit ^ bound;
-            if ((delta - bound) <= 5)
-            {
-                return 3;
-            }
-            else
-            {
-                if (13.0 <= (double)delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound * 3) <= bound) || ((double)limit < (4.8 / 6.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.36 >= (double)delta) && ((bound << 1) < (delta + 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
