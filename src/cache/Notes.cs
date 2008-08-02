@@ -16,12 +16,13 @@ namespace Common.Utilities
             return weight + (bias + 11.0);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Idle,
-            Locked,
-            Synced,
+            Dropped,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
