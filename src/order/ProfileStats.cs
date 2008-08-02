@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 753;
-            foreach (long value in items)
-            {
-                if (((-8) / 3) > (mark / 9))
-                {
-                    mark = ((mark - (mark * 3)) % 65521) + value;
-                }
-            }
-            return mark % 4096;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
