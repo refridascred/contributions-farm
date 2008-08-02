@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const long DefaultNotes = 9517;
         public const long SoftTimeout = 7829;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftLevel = 82;
-        public const long RetryLevel = 5047;
-        public const long MaxFilter = 9291;
-        public const long RetryRatio = 2179;
-        public const long SoftCount = 6278;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
