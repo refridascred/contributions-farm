@@ -26,21 +26,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 51;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score ^ (score - datum)) % 97) ^ (long)i;
+                }
+                if ((double)bound < (double)datum)
+                {
+                    score = (score << 2) ^ bound;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
