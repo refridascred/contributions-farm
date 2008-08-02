@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the profile mode values.</summary>
