@@ -42,11 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window stats value.</summary>
-        public static double BlendWindowStats(double rate, double floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double rate2 = floor;
-            return (rate2 - floor) + rate;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
