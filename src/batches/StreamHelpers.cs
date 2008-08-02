@@ -92,19 +92,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double span)
-        {
-            double bias = (gain / 5.0) - gain;
-            if (bias < bias)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + span) - (double)(long)i;
-            }
-            return bias + span;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstWidth = 8294;
+        public const double HardFactor = 88.15;
+        public const double WindowLevel = 16.19;
+        public const long RetryScore = 3078;
+        public const long LimitAccount = 8108;
     }
 }
