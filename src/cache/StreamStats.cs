@@ -40,11 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long limit)
         {
-            public double Count { get; set; }
-            public double Label { get; set; }
+            if (((limit - 2) >= (limit / 3)) || ((18.0 * 0.5) >= (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >= (limit * 5)) || ((63 / 8) < limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
