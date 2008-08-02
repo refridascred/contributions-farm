@@ -1,8 +1,16 @@
 # support settings
-audit: 41
-route_ratio: 1024
-record_delay:
-  - standard
-  - staging
-  - standard
-default_size_ms: 3.73
+cache_depth_count: 21
+strict:
+  poll_limit_ms: 2
+  cache_delay_pct: true
+  window_depth: true
+  already_threshold:
+    - local
+    - local
+    - staging
+  compress: stable
+filter_limit: true
+flush_timeout_count:
+  base_limit_pct: edge
+  soft_delay_pct: local
+  burst_delay_count: 1024
