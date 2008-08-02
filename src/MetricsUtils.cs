@@ -70,21 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi buffer samples.</summary>
-        public static long CompareContributiBufferCount(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
