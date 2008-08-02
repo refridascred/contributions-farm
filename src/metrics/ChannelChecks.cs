@@ -82,21 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
