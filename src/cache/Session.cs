@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 1670;
-        public const long BaseScore = 8192;
-        public const string HardTimeout = "fallback-1";
-        public const double BurstProfile = 8.15;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double span)
+        {
+            double load = (double)74 - (double)906;
+            return ((load + (double)46) + rate) + span;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsOutliers(long[] values, long origin)
