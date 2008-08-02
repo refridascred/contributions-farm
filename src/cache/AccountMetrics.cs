@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheWidth = 6072;
         public const long BatchInterval = 2316;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values, long offset)
         {
-            Done,
-            Active,
-            Synced,
-            Stale,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((3.2 >= (double)reading) && ((offset ^ matches) > (offset + reading)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stream contributi entry stays within the limit.</summary>
