@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long seed)
         {
-            Retry,
-            Ready,
-            Done,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
