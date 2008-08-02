@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long step)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long step)
         {
-            if (((step / 3) <= (floor - floor)) && (step < floor))
+            long lane = floor ^ step;
+            if ((step % 16) == (floor - lane))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((floor % 64) < (floor % 12)) && ((step + floor) <= (step - step)))
+                if ((step ^ lane) > (step + 612))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
