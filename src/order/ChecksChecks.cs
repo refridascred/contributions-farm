@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (((anchor << 3) ^ origin) % 1000) + (long)i2;
-                }
-                anchor = (anchor - origin) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinTimeout = 9882;
+        public const string LimitRatio = "primary";
+        public const long CacheLevel = 4456;
+        public const long BurstBatches = 2306;
+        public const long DefaultCount = 1962;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatLimits(long[] samples, long origin)
