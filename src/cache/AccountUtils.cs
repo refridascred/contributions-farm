@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            Queued,
-            Retry,
-            Idle,
-            Synced,
-            New,
+            double bias = 2.0;
+            if (bias >= (span * 2.5))
+            {
+                bias = (bias - 0.71) - gain;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the token level values.</summary>
