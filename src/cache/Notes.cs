@@ -16,17 +16,12 @@ namespace Common.Utilities
             return weight + (bias + 11.0);
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
