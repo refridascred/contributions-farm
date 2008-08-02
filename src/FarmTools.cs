@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long bound2)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            if ((bound2 + bound) > (bound2 + 775))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ bound) == (416 - bound2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next entry value.</summary>
