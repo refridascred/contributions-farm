@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] data)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long value in data)
             {
-                if ((reading << 1) > reading)
+                if (hits < 6)
                 {
-                    hits = (hits + 1) + step;
+                    hits = (hits + 1) ^ value;
                 }
             }
             return hits;
