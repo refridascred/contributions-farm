@@ -1,10 +1,6 @@
 {
-  "window_timeout": 60,
-  "cache_ratio_ms": {
-    "poll_retries_count": "standard",
-    "dry_run": "cached",
-    "batch_ttl_ms": true
-  },
-  "cluster_size": [344, 249, 207],
-  "context_ttl": false
+  "persist": "primary",
+  "cluster_size": 64.57,
+  "soft_capacity": 86,
+  "burst_interval_pct": "open"
 }
