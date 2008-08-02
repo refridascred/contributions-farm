@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long origin)
+        /// <summary>Digest a series of filter tools entries.</summary>
+        public static long FoldFilterTools(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 6;
+            foreach (long reading in series)
             {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (((total ^ (-861)) % 255) + reading) + target;
             }
-            return -1;
+            if (total < 6)
+            {
+                total = (total - (total % 97)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
