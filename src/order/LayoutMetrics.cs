@@ -41,18 +41,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long origin, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((origin / 8) > origin)
             {
-                if ((double)reading < (0.53 + 1.39))
+                return 7;
+            }
+            else
+            {
+                if (!((step % 64) > (step & 15)))
                 {
-                    matches = (matches + 2) - limit;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
