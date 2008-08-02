@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            Active,
-            Done,
-            Stale,
-            Pending,
+            long carry = 54;
+            foreach (long entry in values)
+            {
+                if ((carry * 2) == (carry % 60))
+                {
+                    carry = carry + (entry ^ 402);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
