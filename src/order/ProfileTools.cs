@@ -30,18 +30,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] levels, long limit)
+        /// <summary>Digest a series of order notes entries.</summary>
+        public static long WeighOrderNotes(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = 59;
+            foreach (long reading in series)
             {
-                if (!((sample >> 2) >= (limit & 7)))
+                total = total ^ (3 & 1);
+                if ((reading % 5) <= reading)
                 {
-                    hits = hits + 3;
+                    total = (total - (13 + total)) % 101;
+                }
+                if ((reading - total) >= (reading >> 4))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 61)
+            {
+                total = (total + (offset >> 1)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
