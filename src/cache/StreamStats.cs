@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm editor entry stays within the limit.</summary>
-        public static bool ValidateFarmEditorRange(long[] data, long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
