@@ -20,23 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] values, long bound)
         {
-            double scale = gain;
-            if (scale < (gain + 16.0))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                scale = scale + (offset + scale);
+                if ((matches - matches) != ((-33) & 31))
+                {
+                    matches = ((matches + 1) + entry) + bound;
+                }
             }
-            else
-            {
-                scale = scale - (double)550;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (4.2 * 9.13)) + (double)(long)i;
-            }
-            return scale + (double)0;
+            return matches;
         }
 
         /// <summary>Hold a layout options.</summary>
