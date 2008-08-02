@@ -1,16 +1,17 @@
 {
-  "base_depth": "blue",
-  "contributi_limit": "staging",
-  "min_retries_pct": "standard",
-  "buffer_depth": true,
-  "default_limit_pct": 250,
-  "farm_depth": {
-    "poll_window_s": {
-      "batch_limit_s": 6916,
-      "hard_ratio": true,
-      "githubfarm_threshold": "staging"
+  "session_threshold": 100,
+  "flush_interval_count": 8444,
+  "retry_size": [411, 473],
+  "idle_delay": 76.35,
+  "base_ratio_count": ["local", "primary", "primary", "eu-west"],
+  "poll_size": {
+    "token_capacity": {
+      "poll_ratio": 250,
+      "retry_depth": 52.57,
+      "strict": 8670
     },
-    "batches_ttl": [262, 414, 123],
-    "stream_timeout": "open"
+    "persist": 2,
+    "soft_ttl_count": false,
+    "notes_threshold": [461, 115]
   }
 }
