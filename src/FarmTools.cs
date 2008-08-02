@@ -16,19 +16,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Active,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Blend two report measurements.</summary>
