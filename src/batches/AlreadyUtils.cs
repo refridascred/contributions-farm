@@ -27,12 +27,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            if ((2.0 + 9.1) >= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4 % 7) != (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 / 9.0) == (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support snapshot.</summary>
