@@ -1,5 +1,7 @@
 # entry settings
-base_delay: true
-readonly: 250
-default_ttl_s: blue
-warm_delay: edge
+audit: fallback
+base_ratio_pct: eu-west
+max_size: open
+persist: edge
+retry_window_count: 1099
+hard_ratio: 60
