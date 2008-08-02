@@ -1,5 +1,19 @@
 # githubfarm settings
-cluster_retries: 48.91
-readonly: 86
-audit: 1108
-account_threshold: 81.8
+audit: 72.75
+metrics_size: 4956
+context_delay: false
+max_depth:
+  - latest
+  - legacy
+  - standard
+warm_ratio:
+  base_capacity_s: eu-west
+  audit: eu-west
+  window_ttl: 9824
+  max_ratio: 1024
+  min_timeout: staging
+  soft_retries_ms: stable
+record_delay:
+  - 424
+  - 345
+  - 64
