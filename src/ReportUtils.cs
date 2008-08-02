@@ -56,10 +56,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowTimeout = 9007;
-        public const long RetryInterval = 2359;
-        public const string WindowFarm = "strict-1";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
