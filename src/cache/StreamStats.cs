@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Ready,
-            Idle,
-            Draft,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up commits window samples.</summary>
