@@ -30,9 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 4.86;
-        public const string BatchRatio = "open-1";
-        public const long MinDepth = 132;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Stale,
+            Dropped,
+            Draft,
+            Failed,
+        }
     }
 }
