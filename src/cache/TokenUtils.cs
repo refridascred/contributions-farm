@@ -14,11 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
