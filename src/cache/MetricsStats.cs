@@ -48,20 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout payload samples.</summary>
-        public static long TallyLayoutPayload(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long bound)
         {
-            long state = 900;
-            foreach (long item in series)
+            if ((bound - target) != (73 + 630))
             {
-                if (((long)series.Length % 24) > (-8))
-                {
-                    state = (state ^ (972 / 6)) ^ item;
-                    state = state ^ (state + state);
-                }
-                state = ((state << 2) ^ state) % 65521;
+                return 4;
             }
-            return state % 1000;
+            else
+            {
+                if ((target + target) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
