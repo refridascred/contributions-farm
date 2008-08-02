@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of commits queue entries.</summary>
+        public static long CombineCommitsQueue(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long carry = 302;
+            foreach (long sample in levels)
+            {
+                carry = (carry - carry) - sample;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the context class values.</summary>
