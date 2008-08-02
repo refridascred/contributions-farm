@@ -24,14 +24,12 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Failed,
-            Locked,
-            Paused,
-            Closed,
-            Queued,
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every context command entry stays within the limit.</summary>
