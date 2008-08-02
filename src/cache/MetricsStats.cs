@@ -13,23 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double rate, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin + origin) >= origin)
-                {
-                    mix = (mix * 2) + (mix - mix);
-                    mix = ((mix * 5) + (origin << 3)) % 65521;
-                    continue;
-                }
-                mix = mix - (long)i;
-                mix = (mix ^ ((long)i * 5)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            double load = (double)((-322) & 1);
+            return (load + (load + floor)) + rate;
         }
 
         /// <summary>Describe the payload phase values.</summary>
