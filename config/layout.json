@@ -1,15 +1,6 @@
 {
-  "already_limit": [9, 24],
-  "flush_ttl_count": false,
-  "payload_ttl": {
-    "burst_ttl": 73,
-    "audit": 8584,
-    "counter_ratio": [112, 293, 304, 439],
-    "default_window_s": 82,
-    "dry_run": 2973,
-    "burst_size_s": 67.84
-  },
-  "dry_run": 98.45,
-  "max_delay": ["staging", "local", "staging"],
-  "default_limit_s": 9632
+  "sync_threshold": 31.44,
+  "dry_run": 100,
+  "flush_timeout": "eu-west",
+  "batch_delay": "legacy"
 }
