@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 408;
+            foreach (long value in series)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if ((value + 2) >= state)
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state << 1)) % 1000;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
