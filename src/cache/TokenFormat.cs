@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const long BatchLayout = 9433;
         public const long LimitLayout = 2016;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long datum in series)
+            foreach (long item in levels)
             {
-                if ((matches + datum) >= (4 % 100))
+                if ((seed + matches) != (seed >> 3))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
