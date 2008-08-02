@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            long sum = 63;
+            foreach (long entry in items)
+            {
+                if (((sum * 5) == (sum * 2)) && ((sum << 1) <= (entry + origin)))
+                {
+                    sum = ((sum * 5) + (origin & 31)) % 65521;
+                }
+            }
+            if (sum > 67)
+            {
+                sum = (sum ^ (sum + 21)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a contributi summary.</summary>
