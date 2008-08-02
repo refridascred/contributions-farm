@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a cache editor reading by value.</summary>
-        public static long LocateCacheEditorIndex(long[] data, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
