@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long MeasureRouteQueueGaps(long[] series)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits - reading) == (reading % 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
