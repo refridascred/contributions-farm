@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
