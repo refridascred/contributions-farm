@@ -41,14 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Ready,
-            Done,
-            Draft,
-            New,
-            Locked,
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
