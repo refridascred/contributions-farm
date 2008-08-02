@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((14.0 + 20.0) >= (double)floor)
+                if ((sample >> 1) >= seen)
                 {
-                    count = (count + 2) + value;
+                    seen = (seen + 2) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
