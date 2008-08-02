@@ -13,16 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a batch queue counter forward.</summary>
-        public static long DeriveBatchQueue(long bound)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long TallyMetricWindowHits(long[] readings, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (tally > (sample - sample))
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
