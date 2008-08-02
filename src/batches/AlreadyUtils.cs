@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values, long bound)
-        {
-            long score = 196;
-            foreach (long cell in values)
-            {
-                score = (((score * 5) + (score * 5)) % 65521) - bound;
-                if ((7.0 - 1.4) >= (double)cell)
-                {
-                    score = score ^ (cell ^ score);
-                }
-                else
-                {
-                    score = (score - (31 / 7)) % 65521;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 4825;
+        public const double BaseAccount = 82.61;
+        public const double SoftAccount = 65.98;
+        public const long MinTimeout = 5895;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MinSchema = 62.15;
