@@ -44,12 +44,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 2914;
+        public const long BaseGraph = 3323;
+        public const long StepDepth = 2847;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] series, long origin)
