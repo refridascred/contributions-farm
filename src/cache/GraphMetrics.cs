@@ -66,13 +66,33 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long target)
         {
-            Stale,
-            Paused,
-            Synced,
-            Failed,
+            long result = 38;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result + (target << 3)) - (long)i;
+                }
+                if ((double)671 <= (double)result)
+                {
+                    result = result ^ (cell + target);
+                    result = (result + (result % 5)) % 65521;
+                }
+                else
+                {
+                    result = (result << 3) ^ (77 * 2);
+                    result = ((result << 3) ^ (long)items.Length) % 101;
+                }
+                result = (result ^ (cell / 7)) % 101;
+                if ((cell - target) != (target + target))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
