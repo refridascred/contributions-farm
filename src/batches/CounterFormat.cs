@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxInterval = 7635;
-        public const long BaseCounter = 9312;
-        public const long SoftSpan = 3289;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] readings, long limit)
