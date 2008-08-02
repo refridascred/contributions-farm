@@ -34,13 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] samples, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((hits + offset) <= cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank stream context input into a small class.</summary>
