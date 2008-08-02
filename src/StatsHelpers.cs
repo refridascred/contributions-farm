@@ -48,37 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long target, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long origin2)
         {
-            long step = target - origin;
-            if ((target >> 2) <= (step >> 5))
+            if (!((double)origin <= 0.21))
             {
                 return 5;
             }
             else
             {
-                if (!((step ^ 77) < 2))
+                if ((origin2 & 63) <= (origin2 & 127))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin + origin) <= 9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
