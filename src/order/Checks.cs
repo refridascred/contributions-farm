@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Roll a window graph counter forward.</summary>
+        public static long DeriveWindowGraph(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (result + result)) ^ (long)i2;
                 }
+                result = (result - (long)i) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
