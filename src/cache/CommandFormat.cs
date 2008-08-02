@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] items, long step)
         {
-            Queued,
-            Idle,
-            Stale,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a account options.</summary>
