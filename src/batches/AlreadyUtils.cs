@@ -36,14 +36,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Match up cache githubfarm samples.</summary>
+        public static long CompareCacheGithubfarmCount(long[] data)
         {
-            New,
-            Failed,
-            Idle,
-            Locked,
-            Done,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
