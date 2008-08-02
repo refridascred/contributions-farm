@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((1.01 - 15.0) < (double)seed)
+                if (((double)count == (9.64 - 8.0)) && ((6.3 + 9.8) != (double)count))
                 {
-                    total = total ^ (long)i;
+                    count = (count + 3) + datum;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
