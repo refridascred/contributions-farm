@@ -32,38 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if (((bound & 63) < (bound % 7)) && ((double)floor == (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor < (double)9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 3) <= (floor - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor << 1) <= (bound - 68)) || (bound < 29))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next commits context value.</summary>
