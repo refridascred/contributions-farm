@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 2.16;
-        public const string HardSpan = "strict-v2";
-        public const long IdleWidth = 846;
-        public const long SoftReport = 9148;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data)
+        {
+            long result = 3;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (result ^ (item - 976)) % 1000;
+                    result = (result << 2) ^ (long)i;
+                }
+                result = (result << 2) ^ (876 << 2);
+                result = result - (item ^ (-89));
+            }
+            return result;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long offset)
