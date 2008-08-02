@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Retry,
-            New,
-            Closed,
-            Pending,
+            Locked,
+            Dropped,
             Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the context phase values.</summary>
