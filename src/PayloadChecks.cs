@@ -44,10 +44,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 2914;
-        public const long BaseGraph = 3323;
-        public const long StepDepth = 2847;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] series, long origin)
