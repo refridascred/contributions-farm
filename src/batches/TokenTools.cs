@@ -33,13 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Pending,
-            Queued,
-            Done,
-            Failed,
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
