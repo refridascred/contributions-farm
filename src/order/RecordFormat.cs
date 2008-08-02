@@ -44,18 +44,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally >= (value - tally))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
