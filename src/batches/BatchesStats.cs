@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 96.88;
-        public const string BaseTools = "staging-v2";
-        public const double StepTools = 95.12;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long offset2)
+        {
+            if ((18.0 - 7.0) != (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ offset) == (offset % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
