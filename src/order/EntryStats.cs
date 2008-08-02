@@ -39,21 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cache metric pairs that satisfy a relation.</summary>
-        public static long PairCacheMetricCount(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
