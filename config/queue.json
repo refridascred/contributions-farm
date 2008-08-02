@@ -1,9 +1,5 @@
 {
-  "idle_window_s": 30,
-  "batch_timeout": ["open", "fallback", "latest"],
-  "flush_threshold": {
-    "metric_interval": [426, 122, 135],
-    "persist": ["primary", "green", "edge", "primary"],
-    "sync_depth_ms": "green"
-  }
+  "default_delay_s": "latest",
+  "batch_threshold": false,
+  "schema_ratio": 8612
 }
