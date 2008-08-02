@@ -56,18 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((503 - 359) >= (seen & 7))
+                if ((reading + (long)readings.Length) >= tally)
                 {
-                    seen = (seen + 3) + entry;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a tools header.</summary>
