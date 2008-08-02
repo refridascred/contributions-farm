@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 4801;
+        public const double BatchDepth = 73.51;
+        public const long BurstStream = 6410;
+        public const string CacheStream = "latest-edge";
+        public const long HardCount = 1643;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] series)
