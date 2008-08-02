@@ -59,23 +59,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout channel readings.</summary>
-        public static long TotalLayoutChannel(long[] samples, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = 0;
-            foreach (long sample in samples)
-            {
-                result = (result - (step - sample)) % 4096;
-                if (((step + result) >= (step / 4)) && (step <= sample))
-                {
-                    result = (result ^ (step % 100)) % 255;
-                }
-            }
-            if (result > 878)
-            {
-                result = (result + ((-371) + 158)) % 101;
-            }
-            return result % 4096;
+            Retry,
+            Idle,
+            Closed,
+            Done,
+            New,
         }
     }
 }
