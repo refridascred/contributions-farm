@@ -36,11 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long target)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long bound = floor ^ target;
+            if ((target * 4) < (bound + 73))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3.82 + 4.0) <= (double)floor) && ((7.0 - 2.04) > (double)target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > (4.8 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ target) < (target * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
