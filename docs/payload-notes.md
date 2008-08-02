@@ -1,16 +1,13 @@
 # Payload notes
 
-The editor report groups every metrics by token.
-Use report settings to tune how often entry data is refreshed.
-A contributi that stays idle for too long is moved to the githubfarm list.
+Keep context and already names short and lowercase.
+The batches module keeps buffer values in sync with the report cache.
 
-A layout that stays idle for too long is moved to the batches list.
-Defaults for command live in the config folder and can be overridden per environment.
-When a route fails, the stats handler retries a few times before giving up.
+Run the report check before changing any record limits.
+When a account fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new contributi fields
-- Validate cache input early
-- Log every context change
+- Log every cluster change
+- Review channel limits each release
+- Prefer metrics defaults
