@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long target)
         {
-            long acc = 555;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((1.2 - 8.82) == (double)acc) || ((datum << 3) >= acc))
+                if (data[i] >= target)
                 {
-                    acc = (acc << 3) ^ acc;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
