@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= (double)8)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstScore = 744;
+        public const long BurstTimeout = 5001;
+        public const double RetryRoute = 56.42;
 
         /// <summary>Compare every pair of batch support readings.</summary>
         public static long OverlapBatchSupportCount(long[] readings)
