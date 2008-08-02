@@ -1,10 +1,13 @@
 {
-  "base_depth_count": 30,
-  "contributi_capacity": {
-    "idle_size_s": true,
-    "soft_depth_s": "staging",
-    "token_timeout": "eu-west"
+  "report_timeout": 6554,
+  "persist": 78.91,
+  "cache_depth_ms": ["open", "edge", "latest", "stable"],
+  "hard_threshold_s": ["fallback", "primary", "fallback", "standard"],
+  "sync_limit_pct": {
+    "enabled": 4657,
+    "hard_ttl_s": 53.06,
+    "hard_retries": "legacy",
+    "contributi_threshold": "stable"
   },
-  "batch_size_s": true,
-  "batch_depth": "legacy"
+  "queue_ttl": 56.55
 }
