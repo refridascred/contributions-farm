@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double offset)
         {
-            double gain = (double)(72 % 7);
-            if (gain <= ratio)
+            double bias = (double)487;
+            if (bias <= (double)(-837))
             {
-                gain = gain + gain;
+                bias = bias - (ratio * 3.3);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain - (ratio - bias);
+                bias = (bias - offset) + (double)(long)i;
             }
-            return gain + (gain - gain);
+            return bias - offset;
         }
     }
 }
