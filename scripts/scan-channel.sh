@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue standard strict; do
+CHANNEL_LIMIT=278
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback stable strict green; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=181
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
