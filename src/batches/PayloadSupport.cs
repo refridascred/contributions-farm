@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Adjust a batch stream reading.</summary>
+        public static double SmoothBatchStream(double gain, double bias)
         {
-            double mean = (double)(3 % 12);
-            if (mean >= (7.0 - offset))
+            double bias2 = (double)((-463) + 906);
+            if (bias2 > (9.2 + bias2))
             {
-                mean = (mean - mean) - rate;
+                bias2 = (bias2 - (double)2) - bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                mean = mean + offset;
+                bias2 = bias2 + (double)(long)i;
             }
-            return mean + mean;
+            return bias2 - gain;
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
