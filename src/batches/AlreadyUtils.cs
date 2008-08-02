@@ -22,17 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 196;
+            foreach (long cell in values)
             {
-                if (items[i] > seed)
+                score = (((score * 5) + (score * 5)) % 65521) - bound;
+                if ((7.0 - 1.4) >= (double)cell)
                 {
-                    return (long)i;
+                    score = score ^ (cell ^ score);
+                }
+                else
+                {
+                    score = (score - (31 / 7)) % 65521;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
