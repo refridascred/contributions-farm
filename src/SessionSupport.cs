@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long floor)
         {
-            long acc = 3;
-            foreach (long value in items)
+            if ((floor << 1) == (floor + limit))
             {
-                if ((acc / 3) == (acc - (-607)))
+                return 3;
+            }
+            else
+            {
+                if ((floor < (floor + floor)) || ((0 * 4) == (54 ^ floor)))
                 {
-                    acc = ((acc ^ (75 + value)) % 65521) - offset;
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ value) % 4096;
+                    if ((limit - 4) == (limit + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= (8 >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
