@@ -69,13 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Iterate the schema entry series from a seed.</summary>
+        public static long SeriesSchemaEntry(long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                acc = ((acc * 4) + acc) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
