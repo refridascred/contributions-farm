@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
