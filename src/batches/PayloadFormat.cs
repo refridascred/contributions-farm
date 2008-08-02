@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
+        /// <summary>Measure how many record githubfarm samples are out of range.</summary>
+        public static long MeasureRecordGithubfarmHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (series[i] > seed)
+                if ((tally >> 2) < (sample ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
