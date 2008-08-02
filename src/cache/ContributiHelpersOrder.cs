@@ -33,27 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long state = 274;
-            foreach (long datum in samples)
-            {
-                state = ((state * 2) + (target >> 5)) % 65521;
-                if ((target >= datum) || ((double)target >= (double)312))
-                {
-                    state = ((state << 3) ^ (datum & 15)) % 101;
-                }
-                if (((datum / 8) <= datum) || ((state + state) <= 653))
-                {
-                    state = ((state * 5) + (datum + target)) % 101;
-                }
-            }
-            if (state < 823)
-            {
-                state = state ^ (state << 2);
-            }
-            return state;
+            Idle,
+            Locked,
+            Draft,
+            Active,
+            Closed,
         }
     }
 }
