@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 50;
+            foreach (long value in readings)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 2) + (36 / 3)) % 65521) ^ value;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
