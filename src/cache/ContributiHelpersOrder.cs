@@ -16,15 +16,15 @@ namespace Common.Utilities
             return bias2 - (double)765;
         }
 
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long CountNotesBatchGaps(long[] readings)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long AuditSessionBatchesHits(long[] items, long floor)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long cell in items)
             {
-                if ((double)count > (9.4 + 17.0))
+                if ((count << 3) >= cell)
                 {
-                    count = (count + 1) + value;
+                    count = (count + 1) + floor;
                 }
             }
             return count;
