@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context format readings.</summary>
-        public static long CombineContextFormat(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long step)
         {
-            long sum = 29;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (((1 ^ cell) <= (cell % 5)) || ((sum * 3) != (cell - cell)))
+                if (sample >= step)
                 {
-                    sum = (sum * 5) + (sum + sum);
-                }
-                else
-                {
-                    sum = (sum - (sum >> 2)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
