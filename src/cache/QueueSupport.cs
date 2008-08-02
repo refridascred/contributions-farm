@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many order layout samples are out of range.</summary>
-        public static long AuditOrderLayoutOutliers(long[] values)
+        /// <summary>Find the first githubfarm counter entry that matches the target.</summary>
+        public static long LookupGithubfarmCounterIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (17.0 <= (double)cell)
+                if (values[i] < origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
