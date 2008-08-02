@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items, long bound)
         {
-            Idle,
-            Ready,
-            Draft,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell < (bound ^ hits)) || (bound <= 4))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
