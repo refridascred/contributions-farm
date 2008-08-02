@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every commits channel entry stays within the limit.</summary>
-        public static bool GuardCommitsChannelLimits(long[] levels, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 90;
+            foreach (long cell in values)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc * 2) + (acc & 3)) % 4096) ^ cell;
             }
-            return found;
+            if (acc > 9)
+            {
+                acc = acc + (acc & 255);
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
