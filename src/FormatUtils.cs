@@ -56,28 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long acc = 865;
-            foreach (long value in series)
-            {
-                if (!(((7 - value) == (acc ^ value)) && ((acc / 5) == (acc << 2))))
-                {
-                    acc = acc + acc;
-                    acc = ((acc * 2) + (acc - acc)) % 101;
-                }
-                acc = acc - value;
-                if ((5 & 255) <= value)
-                {
-                    break;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc - (acc & 3)) % 1000;
-            }
-            return acc % 65521;
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
