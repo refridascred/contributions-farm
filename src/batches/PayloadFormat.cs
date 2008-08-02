@@ -23,40 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long target)
-        {
-            long bound = origin - target;
-            if ((origin << 2) >= 147)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((83 ^ origin) < bound) || (target <= origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((-4) >= (origin ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target << 2) < origin) || ((origin - bound) >= (target - bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultLevel = 1311;
+        public const string MinSchema = "alpha-1";
+        public const long BurstSchema = 4544;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 1471;
