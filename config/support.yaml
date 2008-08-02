@@ -1,7 +1,13 @@
 # support settings
-retry_depth: blue
-soft_window_count:
-  - 53
-  - 96
-  - 484
-compress: 60
+contributi_timeout: false
+githubfarm_depth: blue
+warm_retries_pct: 85
+support_limit:
+  min_interval: cached
+  strict: eu-west
+  soft_size: latest
+notes_ratio: green
+burst_capacity_ms:
+  - 467
+  - 325
+  - 12
