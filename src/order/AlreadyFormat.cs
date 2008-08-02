@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine metric cluster values into a single score.</summary>
-        public static long WeighMetricCluster(long[] levels, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + (sample + sample)) % 101) + bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
