@@ -1,6 +1,8 @@
 # githubfarm settings
-audit: 60
-readonly: 30
-warm_size_count: 4013
-verbose: 59.1
-enabled: true
+retry_limit_pct: 500
+min_ratio_count: cached
+poll_size_s:
+  - 347
+  - 427
+compress: 4711
+sync_depth_count: true
