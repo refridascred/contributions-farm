@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const string CacheStream = "latest-edge";
         public const long HardCount = 1643;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 995;
-        public const long BurstLevel = 1117;
-        public const long RetryFilter = 1919;
-        public const long MinBudget = 4720;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Done,
+            Active,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] samples, long floor)
