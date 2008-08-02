@@ -84,22 +84,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long MeasureChannelGithubfarmMatches(long[] levels)
+        /// <summary>Rank token tools input into a small class.</summary>
+        public static long ClassifyTokenTools(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long slot = origin - origin2;
+            if ((double)slot >= (16.0 - 10.0))
             {
-                if ((reading - 14) < (count - count))
+                return 4;
+            }
+            else
+            {
+                if (((double)origin2 < (2.6 * 5.85)) || ((slot >> 1) <= (slot >> 2)))
                 {
-                    count = count + 3;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin2 + origin) >= (origin - slot))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
     }
 }
