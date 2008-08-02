@@ -41,22 +41,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long CountAccountContributiGaps(long[] readings)
+        /// <summary>Grade a channel cache value against two limits.</summary>
+        public static long ClassifyChannelCache(long offset, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if (!((offset << 2) < (floor & 255)))
             {
-                if (5.01 < (double)reading)
+                return 3;
+            }
+            else
+            {
+                if (!(offset < (floor & 31)))
                 {
-                    count = count + 3;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((floor >> 1) >= offset) || ((floor + (-10)) >= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (196 % 60))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
