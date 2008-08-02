@@ -20,39 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long next = seed - step;
-            if (6 >= (step >> 5))
+            long sum = -53;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - step) > (next - next))
+                if (((4.8 - 0.85) != (double)cell) || (sum >= (sum ^ cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((8.7 * 9.0) == (double)seed) && ((step * 2) < (519 + 927)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((20.0 * 18.0) < (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum * 4) + cell;
                 }
             }
+            return sum;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
