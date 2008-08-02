@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Active,
-            Retry,
-            Done,
-            New,
-            Synced,
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
