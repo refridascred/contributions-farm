@@ -24,23 +24,21 @@ namespace Common.Utilities
         public const double WindowSession = 0.77;
         public const string BurstDepth = "alpha-v2";
 
-        /// <summary>Blend two metrics report measurements.</summary>
-        public static double ScaleMetricsReport(double bias, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            double drift = (double)15 + (double)73;
-            if (drift >= offset)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - drift) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (8.96 - drift);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + offset;
+            return matches;
         }
     }
 }
