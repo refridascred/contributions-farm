@@ -63,38 +63,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a session command value against two limits.</summary>
-        public static long BucketSessionCommand(long origin, long seed)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long CombineStreamChannel(long[] items, long bound)
         {
-            if ((double)origin > (double)seed)
+            long result = 60;
+            foreach (long entry in items)
             {
-                return 1;
+                result = ((result + result) % 1000) ^ entry;
+                result = result + (bound % 12);
             }
-            else
-            {
-                if ((origin % 3) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >= (origin + 4)) || (seed >= (908 * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - origin) < (origin * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
