@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Iterate the cluster route series from a seed.</summary>
+        public static long RollClusterRoute(long step)
         {
-            Active,
-            Done,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((step >> 5) > 77)
+                {
+                    mix = (mix - (mix - mix)) % 65521;
+                    mix = mix + (step / 7);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
