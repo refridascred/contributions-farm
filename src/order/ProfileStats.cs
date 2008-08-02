@@ -42,17 +42,23 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const string HardSpan = "strict-1";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] items, long offset)
+        /// <summary>Combine route account values into a single score.</summary>
+        public static long ScoreRouteAccount(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 23;
+            foreach (long entry in items)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                acc = acc ^ origin;
+                if ((3.0 / 3.0) >= (double)entry)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ origin) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (405 - acc)) % 65521;
                 }
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
