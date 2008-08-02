@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long SeekCounterMetricIndex(long[] items, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                if (values[i] < step)
                 {
                     return (long)i;
                 }
