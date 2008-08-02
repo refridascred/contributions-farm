@@ -44,14 +44,12 @@ namespace Common.Utilities
         public const string StepCount = "primary-edge";
         public const long LimitBatches = 1311;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Idle,
-            Retry,
-            Done,
-            Paused,
-            Queued,
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
