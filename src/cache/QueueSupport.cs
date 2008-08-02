@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const long SoftSize = 1907;
         public const long BaseRatio = 2402;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long seed)
         {
-            Retry,
-            Active,
-            Locked,
+            long gap = limit - seed;
+            if (!(seed >= (7 & 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (6 < (seed % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit - limit) != (seed ^ seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)gap < (1.53 + 2.33)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
