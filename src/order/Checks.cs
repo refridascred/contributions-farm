@@ -50,12 +50,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] >= offset)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
