@@ -61,22 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long acc = 8;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)bound >= (double)acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc - item) % 255;
-                }
-                if ((acc >= (acc >> 2)) && ((double)bound >= (17.0 + 7.7)))
-                {
-                    acc = (acc ^ (item ^ bound)) % 97;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
