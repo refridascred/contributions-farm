@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm stream entry stays within the limit.</summary>
-        public static bool GuardFarmStreamLimits(long[] series, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long acc = -808;
+            foreach (long datum in items)
             {
-                if (cell <= floor)
+                if ((19.0 + 7.0) == (double)datum)
                 {
-                    valid = false;
-                    break;
+                    acc = acc - 4;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (404 + datum)) % 97;
                 }
             }
-            return valid;
+            return acc % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
