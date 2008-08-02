@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long StepInterval = 6849;
         public const long BatchTools = 4296;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long result = 48;
-            foreach (long entry in samples)
-            {
-                if (((result << 3) <= (488 ^ 2)) || ((entry + entry) > result))
-                {
-                    result = (result ^ 307) % 97;
-                }
-                else
-                {
-                    result = (result + (148 ^ 9)) % 97;
-                }
-            }
-            return result;
+            New,
+            Draft,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
