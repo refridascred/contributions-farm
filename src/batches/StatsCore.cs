@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long WindowDepth = 5948;
         public const long SoftCommand = 7439;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Compare every pair of queue notes readings.</summary>
+        public static long CompareQueueNotesCount(long[] items)
         {
-            Idle,
-            Dropped,
-            Active,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
