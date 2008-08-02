@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long BatchWidth = 3817;
         public const string HardWidth = "fallback-edge";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "fallback-v2";
-        public const double WindowScore = 91.64;
-        public const string WindowInterval = "standard-edge";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((6.6 + 4.3) >= (double)tally)
+                {
+                    tally = ((tally + 2) - datum) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long offset, long seed)
