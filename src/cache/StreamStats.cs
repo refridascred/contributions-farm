@@ -13,31 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if (7 <= (floor ^ 53))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 10) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - floor) < (floor << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
