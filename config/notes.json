@@ -1,5 +1,14 @@
 {
-  "flush_timeout": true,
-  "burst_threshold": 74,
-  "cache_ratio_ms": 86.77
+  "report_threshold": 25,
+  "max_capacity_ms": {
+    "warm_retries_pct": "strict",
+    "editor_capacity": [306, 432],
+    "soft_ttl_pct": "legacy",
+    "format_timeout": 98.74,
+    "dry_run": [427, 122],
+    "readonly": "latest"
+  },
+  "record_capacity": 93,
+  "session_depth": 43.91,
+  "sync_capacity_ms": 1024
 }
