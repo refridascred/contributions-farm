@@ -31,17 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
