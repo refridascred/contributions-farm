@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long WindowDepth = 5948;
         public const long SoftCommand = 7439;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheDepth = 6844;
-        public const long MaxCount = 2981;
-        public const double RetryFarm = 2.95;
-        public const long HardFarm = 5957;
-        public const double IdleFarm = 11.36;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Idle,
+            Dropped,
+            Active,
+            Closed,
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
