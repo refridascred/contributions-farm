@@ -50,10 +50,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5403;
-        public const double BurstSpan = 19.36;
-        public const double BurstDepth = 68.21;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double weight, double offset)
+        {
+            double weight2 = (double)(589 << 3);
+            if (weight2 >= offset)
+            {
+                weight2 = weight2 + offset;
+            }
+            else
+            {
+                weight2 = weight2 - (weight * 1.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (offset - weight)) + (double)(long)i;
+            }
+            return weight2 + 11.0;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] samples, long bound)
