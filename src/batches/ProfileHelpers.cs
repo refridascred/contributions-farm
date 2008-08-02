@@ -75,22 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry graph counter forward.</summary>
-        public static long SeriesEntryGraph(long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ ((long)i + total)) % 1000;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (series[i] == step)
                 {
-                    long gap = (seed - 568) >> 1;
-                    total = (total - (gap + gap)) - (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 2) + (seed - total)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
