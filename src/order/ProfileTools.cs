@@ -42,19 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate queue channel readings against a bound.</summary>
-        public static bool CheckQueueChannelBounds(long[] values, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Failed,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Measure how many stats filter samples are out of range.</summary>
