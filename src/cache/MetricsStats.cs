@@ -49,17 +49,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a batch window reading by value.</summary>
-        public static long LocateBatchWindowIndex(long[] values, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (values[i] > bound)
+                if ((hits + offset) > (offset - datum))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
