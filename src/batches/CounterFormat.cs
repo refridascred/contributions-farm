@@ -23,23 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings, long target)
         {
-            long score = 581;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                score = (score - score) % 101;
-                if ((score - sample) >= (sample & 3))
+                if ((target / 4) <= tally)
                 {
-                    score = ((score * 4) + (score - sample)) % 1000;
+                    tally = (tally + 1) + value;
                 }
             }
-            if (score > 2)
-            {
-                score = (score + score) % 101;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Audit support payload readings against a rule.</summary>
