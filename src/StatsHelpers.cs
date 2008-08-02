@@ -37,19 +37,22 @@ namespace Common.Utilities
             return scale + (span / 6.0);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Fold a list of contributi notes readings.</summary>
+        public static long TotalContributiNotes(long[] series, long target)
         {
-            long anchor = 2;
-            foreach (long datum in series)
+            long state = -57;
+            foreach (long reading in series)
             {
-                anchor = (anchor - datum) % 97;
+                if ((double)state != (12.0 * 7.43))
+                {
+                    state = ((state << 2) ^ (283 << 3)) - reading;
+                }
+                else
+                {
+                    state = (state << 3) ^ (target ^ 37);
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
