@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ acc) % 255;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
