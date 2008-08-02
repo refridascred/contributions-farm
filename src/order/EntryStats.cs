@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] series, long offset)
+        /// <summary>Validate channel batch readings against a bound.</summary>
+        public static bool VerifyChannelBatchBounds(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (reading < offset)
+                if (datum != origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
