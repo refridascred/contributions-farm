@@ -46,17 +46,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = span;
+            if (gain < scale)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            return gain - (8.5 - span);
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
