@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stream graph readings against a rule.</summary>
-        public static long AuditStreamGraphMatches(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((matches << 3) > (matches / 6)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + datum;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
