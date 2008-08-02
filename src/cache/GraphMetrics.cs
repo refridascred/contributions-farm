@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a token context value against two limits.</summary>
-        public static long BucketTokenContext(long step, long step2)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            if (((step / 8) >= (step & 3)) || ((11.0 / 3.0) < (double)step2))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ 3) > (80 / 6))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 0;
+                    sum = ((sum ^ (6 ^ (long)i)) % 97) + (long)i2;
                 }
-                else
-                {
-                    if (((3.71 + 7.3) < (double)step) && ((step ^ step) <= step2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((464 / 5) >= (step2 << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = sum ^ sum;
+                sum = ((sum * 2) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
