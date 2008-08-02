@@ -33,12 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
+            Stale,
+            Dropped,
+            Done,
+            Failed,
             Draft,
-            Idle,
-            Queued,
         }
 
         /// <summary>Match up farm samples.</summary>
