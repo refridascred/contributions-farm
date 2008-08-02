@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = anchor - offset;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
