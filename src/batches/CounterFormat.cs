@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long RetryWidth = 6621;
         public const double MinRatio = 91.41;
 
-        /// <summary>Find the first token session entry that matches the target.</summary>
-        public static long FindTokenSessionIndex(long[] levels, long offset)
+        /// <summary>Audit support payload readings against a rule.</summary>
+        public static long AuditSupportPayloadHits(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= offset)
+                if ((count - (-649)) <= (offset % 2))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
