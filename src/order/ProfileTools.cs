@@ -15,12 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinBudget = 5438;
-        public const long StepChecks = 3186;
-        public const long IdleChecks = 662;
-        public const double IdleBudget = 32.34;
-        public const long SoftRatio = 6063;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Locked,
+            Active,
+            Closed,
+            New,
+            Queued,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] items)
