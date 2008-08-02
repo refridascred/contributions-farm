@@ -44,13 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long seed)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Failed,
+            long sum = 355;
+            foreach (long value in values)
+            {
+                if ((43 < (seed % 100)) || (((-168) & 127) > sum))
+                {
+                    sum = (sum - sum) + value;
+                }
+            }
+            if (sum < 374)
+            {
+                sum = sum ^ (long)values.Length;
+            }
+            return sum % 4096;
         }
     }
 }
