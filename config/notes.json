@@ -1,5 +1,5 @@
 {
-  "min_threshold_ms": "cached",
-  "account_threshold": [446, 482],
-  "default_timeout_pct": 8280
+  "base_window_pct": "open",
+  "readonly": 5337,
+  "hard_capacity_pct": 3688
 }
