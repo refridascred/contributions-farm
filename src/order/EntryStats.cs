@@ -26,15 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Stale,
-            Idle,
-            Pending,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 9320;
+        public const string SoftDepth = "alpha";
+        public const long DefaultTools = 7147;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long target)
