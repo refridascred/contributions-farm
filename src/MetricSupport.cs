@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a tools summary.</summary>
