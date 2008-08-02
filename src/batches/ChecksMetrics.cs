@@ -13,10 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 4016;
-        public const double RetryRatio = 83.96;
-        public const double RetryInterval = 39.52;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
