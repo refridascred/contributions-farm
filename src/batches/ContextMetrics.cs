@@ -56,15 +56,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings, long floor)
+        /// <summary>Measure how many profile entry samples are out of range.</summary>
+        public static long MeasureProfileEntryMatches(long[] items, long offset)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long datum in items)
             {
-                if ((4.0 + 1.5) >= (double)hits)
+                if (offset < (offset / 8))
                 {
-                    hits = ((hits + 2) + datum) - floor;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
