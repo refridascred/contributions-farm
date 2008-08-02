@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
