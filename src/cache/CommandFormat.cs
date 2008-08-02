@@ -21,39 +21,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            long step = seed ^ limit;
-            if (!((double)step < 3.34))
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((step >> 5) == (seed * 5)) || ((48 + seed) < (seed % 12)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - seed) == (639 - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step == (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a editor options.</summary>
