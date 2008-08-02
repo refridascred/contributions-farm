@@ -22,11 +22,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] values, long seed)
         {
-            double bias = (double)103;
-            return ((bias + bias) + weight) + offset;
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
