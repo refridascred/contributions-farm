@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Derive the next checks cluster value from a seed.</summary>
+        public static long RollChecksCluster(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.0 - 0.43) < (2.3 - 2.12))
                 {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc << 3)) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the channel state values.</summary>
