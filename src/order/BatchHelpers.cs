@@ -42,15 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support githubfarm series from a seed.</summary>
-        public static long StepSupportGithubfarm(long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
