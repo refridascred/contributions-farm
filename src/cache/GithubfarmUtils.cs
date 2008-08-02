@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (series[i] > origin)
+                if ((count >> 2) > step)
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
