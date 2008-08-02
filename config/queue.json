@@ -1,11 +1,5 @@
 {
-  "warm_window_count": {
-    "command_delay": 250,
-    "audit": ["fallback", "blue"],
-    "already_retries": "primary"
-  },
-  "burst_ratio_pct": 65.56,
-  "strict": "eu-west",
-  "soft_interval_pct": ["stable", "edge"],
-  "poll_delay_count": "primary"
+  "support_delay": 55.34,
+  "report_threshold": [191, 112],
+  "compress": 8374
 }
