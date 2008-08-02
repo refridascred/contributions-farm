@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "local-1";
-        public const double MaxAlready = 78.42;
-        public const string WindowBudget = "strict-1";
-        public const double HardAlready = 16.6;
+        /// <summary>Grade a token context value against two limits.</summary>
+        public static long BucketTokenContext(long step, long step2)
+        {
+            if (((step / 8) >= (step & 3)) || ((11.0 / 3.0) < (double)step2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ 3) > (80 / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((3.71 + 7.3) < (double)step) && ((step ^ step) <= step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((464 / 5) >= (step2 << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long seed, long step)
