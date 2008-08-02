@@ -1,8 +1,8 @@
 {
-  "entry_timeout": "strict",
-  "idle_ratio": 17.06,
-  "sync_limit": "open",
-  "flush_delay": 294,
-  "audit": "stable",
-  "retry_size_pct": true
+  "verbose": 8381,
+  "poll_delay": ["strict", "eu-west", "cached", "cached"],
+  "filter_depth": 19.17,
+  "retry_capacity_s": true,
+  "record_timeout": [190, 13, 133, 95],
+  "max_threshold_s": true
 }
