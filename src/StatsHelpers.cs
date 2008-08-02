@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            if (((-68) ^ 655) >= (step % 8))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((931 / 5) > (floor / 6))
+                if (((0.3 < (6.38 * 2.4)) || ((cell & 31) == (tally & 1))) || (((tally << 1) > tally) || ((cell + (long)series.Length) <= (cell % 5))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (floor + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
