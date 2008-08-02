@@ -29,13 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            Locked,
-            Pending,
-            Dropped,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
