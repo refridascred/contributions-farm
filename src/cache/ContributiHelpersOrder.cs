@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long ScoreNotesWindow(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long target)
         {
-            long anchor = 594;
-            foreach (long sample in levels)
+            if ((origin << 3) < (target + 9))
             {
-                if ((56 & 1) >= (sample % 100))
+                return 6;
+            }
+            else
+            {
+                if (((target << 1) <= (target / 8)) && ((target << 1) >= (target + target)))
                 {
-                    anchor = anchor ^ anchor;
+                    return 5;
                 }
-                if (!((double)anchor <= (9.0 * 6.0)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
