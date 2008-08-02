@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxCount = 2.49;
-        public const long CacheWidth = 4367;
-        public const string CacheStream = "primary-edge";
-        public const long RetryFactor = 2347;
-        public const long IdleStream = 6181;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
