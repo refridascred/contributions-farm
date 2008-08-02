@@ -1,6 +1,7 @@
 # support settings
-cache_interval: 81.72
-metrics_delay: false
-already_interval: open
-audit: strict
-base_limit_ms: legacy
+default_threshold_count: 500
+payload_timeout: 49
+already_window: latest
+filter_limit: 1024
+max_ratio: staging
+min_timeout: standard
