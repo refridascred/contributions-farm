@@ -25,15 +25,25 @@ namespace Common.Utilities
         public const double BurstBatch = 96.32;
         public const long StepBudget = 621;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long bound, long step)
         {
-            double weight = gain / 4.0;
-            if (weight >= 3.0)
+            long prev = bound ^ step;
+            if ((bound <= (prev + prev)) && ((3.7 - 11.0) < (double)prev))
             {
-                weight = (weight - weight) - floor;
+                return 7;
             }
-            return weight - (weight + 4.02);
+            else
+            {
+                if (((bound * 2) >= (prev << 2)) && (step > (7 & 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
