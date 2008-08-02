@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Closed,
-            Active,
-            Ready,
-            Stale,
+            Failed,
+            Locked,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the filter kind values.</summary>
