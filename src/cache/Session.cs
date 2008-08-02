@@ -43,17 +43,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first graph entry entry that matches the target.</summary>
-        public static long FindGraphEntryIndex(long[] values, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (floor + floor) / 6.0;
+            if (weight <= (double)806)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (11.0 + weight)) + bias;
             }
-            return -1;
+            return weight - (double)4;
         }
     }
 }
