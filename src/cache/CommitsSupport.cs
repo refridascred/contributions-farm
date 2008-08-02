@@ -60,24 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels)
         {
-            long sum = -630;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                sum = sum + sum;
-                sum = sum + sum;
-                if (((double)sample == (double)sum) && ((333 ^ 25) != (sample * 4)))
+                if ((seen % 8) == (item << 3))
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum > (-9))
-            {
-                sum = (sum ^ (sum << 1)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
