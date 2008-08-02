@@ -20,18 +20,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] series, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value & 63) < count)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 3) + seed;
+                    anchor = (anchor - (floor % 8)) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
