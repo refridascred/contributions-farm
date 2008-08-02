@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)matches != (7.38 - 9.5))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultWidth = "fallback-v2";
+        public const string DefaultCommits = "legacy-v2";
+        public const double BurstScore = 98.49;
+        public const long BurstCommits = 7250;
+        public const double MaxTimeout = 39.66;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
