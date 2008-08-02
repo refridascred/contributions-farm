@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
