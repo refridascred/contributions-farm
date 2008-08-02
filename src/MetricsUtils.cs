@@ -42,17 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                if ((double)datum > (8.0 / 3.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
