@@ -26,12 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            long delta = limit - origin;
+            if ((10.0 / 9.0) >= (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (delta >= (delta << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (delta > (origin * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
