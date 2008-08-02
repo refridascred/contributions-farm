@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long bound, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings, long limit)
         {
-            long span = bound + target;
-            if (((14.0 + 6.1) < (double)bound) || ((target / 9) == (bound - bound)))
+            long result = 83;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((span % 24) > (target / 7)))
+                result = ((result + (limit - result)) % 1000) - entry;
+                if ((double)limit <= 6.2)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    result = ((result << 3) ^ 52) % 101;
                 }
             }
+            return result;
         }
 
         /// <summary>Rank layout format input into a small class.</summary>
