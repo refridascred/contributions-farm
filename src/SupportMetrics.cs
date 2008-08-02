@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstFactor = 6.79;
-        public const long BurstSpan = 9048;
-        public const long StepCommits = 6884;
+        /// <summary>Look up the position of a booking sample.</summary>
+        public static long LocateBookingIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long origin)
