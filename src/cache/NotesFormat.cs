@@ -20,25 +20,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long cur = offset + bound;
-            if ((double)bound <= (7.2 * 1.99))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset + 2) == (cur % 16)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Closed,
+            Dropped,
+            Paused,
+            Done,
         }
     }
 }
