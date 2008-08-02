@@ -71,24 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples, long target)
+        /// <summary>Derive the next layout support value from a seed.</summary>
+        public static long StepLayoutSupport(long floor)
         {
-            long mix = 80;
-            foreach (long datum in samples)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mix & 127) < (target - target))
+                mix = (mix << 3) ^ floor;
+                mix = mix ^ (mix - floor);
+                if ((mix ^ mix) < mix)
                 {
-                    mix = (mix + (2 * 2)) % 4096;
+                    mix = (mix ^ mix) % 65521;
+                    mix = ((mix * 2) + (floor + 7)) % 97;
                 }
-                else
-                {
-                    mix = mix ^ datum;
-                }
-            }
-            if (mix < 67)
-            {
-                mix = (mix + (0 - mix)) % 4096;
+                mix = ((mix * 2) + (long)i) % 101;
             }
             return mix;
         }
