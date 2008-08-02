@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const double WindowSession = 0.77;
         public const string BurstDepth = "alpha-v2";
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)(51 % 12);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (((gain - gain) + (double)(long)i) + scale) - span;
             }
-            return matches;
+            return gain + (double)(-14);
         }
     }
 }
