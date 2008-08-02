@@ -20,11 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double floor)
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long LookupGraphChannelIndex(long[] data, long target)
         {
-            double weight = 2.8 / 2.0;
-            return (weight + floor) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
