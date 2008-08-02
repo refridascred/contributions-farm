@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long FoldChecksToken(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long mark = 90;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark + 0) <= (mark << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (((mark * 2) + (mark ^ mark)) % 101) + cell;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark << 3) ^ (mark + 660);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
