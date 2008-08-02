@@ -19,19 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel farm readings against a bound.</summary>
-        public static bool CheckChannelFarmRange(long[] data, long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of context format readings.</summary>
