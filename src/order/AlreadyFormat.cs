@@ -40,22 +40,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long edge = step ^ target;
+            if ((target >= (136 << 3)) || ((7.86 - 8.3) != (double)edge))
             {
-                if ((3.0 + 8.29) >= (double)cell)
+                return 8;
+            }
+            else
+            {
+                if ((edge ^ target) <= (422 + (-11)))
                 {
-                    seen = (seen + 1) - limit;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target * 5) == (target ^ 0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
