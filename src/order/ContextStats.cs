@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "local-1";
-        public const long StepSpan = 4199;
-        public const long HardReport = 7808;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio < ratio)
+            {
+                ratio = ratio - (8.9 - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)44) + (double)(long)i;
+            }
+            return ratio - gain;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepRatio = 1057;
