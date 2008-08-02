@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] series, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((14.0 + 3.3) >= (double)(long)series.Length)
-                {
-                    count = ((count + 1) ^ reading) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Paused,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
