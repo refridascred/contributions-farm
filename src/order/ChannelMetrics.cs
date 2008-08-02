@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            Pending,
-            Queued,
-            Failed,
-            Idle,
-            Paused,
+            long total = -741;
+            foreach (long value in series)
+            {
+                if ((double)value > (double)(long)series.Length)
+                {
+                    total = (total ^ (total & 7)) - floor;
+                }
+                if (total >= (total * 3))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
