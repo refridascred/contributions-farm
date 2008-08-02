@@ -40,17 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 5;
+            foreach (long value in readings)
             {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
+                if (result <= (result + result))
                 {
-                    return (long)i;
+                    result = ((result - (result & 63)) % 97) ^ value;
                 }
             }
-            return -1;
+            if (result < (-47))
+            {
+                result = (result - (result + 944)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate stats samples.</summary>
