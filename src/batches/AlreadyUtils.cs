@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Digest a series of order buffer entries.</summary>
+        public static long DigestOrderBuffer(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 83;
+            foreach (long cell in data)
             {
-                if ((datum % 60) >= (2 << 1))
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = tally + 1;
+                    mark = (mark - (cell - target)) + (long)i;
+                }
+                if ((target ^ target) <= (target + cell))
+                {
+                    mark = mark ^ (target - target);
                 }
             }
-            return tally;
+            if (mark > 8)
+            {
+                mark = mark + (mark >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload stats.</summary>
