@@ -20,31 +20,17 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long floor2)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            if (((double)floor2 != (7.84 / 6.0)) && (floor > floor2))
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                state = (state * 5) + (state * 5);
+                state = (state - (long)i) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor2 <= (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor <= (5.0 - 2.17))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
