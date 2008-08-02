@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mark = 423;
-            foreach (long value in data)
-            {
-                if ((mark + 8) >= (mark + mark))
-                {
-                    mark = ((mark << 3) ^ value) % 4096;
-                }
-                else
-                {
-                    mark = (mark + value) % 4096;
-                }
-            }
-            return mark;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
