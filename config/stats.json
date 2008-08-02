@@ -1,5 +1,5 @@
 {
-  "enabled": 26.09,
-  "warm_ttl": false,
-  "compress": ["staging", "staging", "green"]
+  "hard_size_pct": ["stable", "eu-west"],
+  "verbose": "stable",
+  "poll_size": "legacy"
 }
