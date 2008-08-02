@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 4825;
-        public const double BaseAccount = 82.61;
-        public const double SoftAccount = 65.98;
-        public const long MinTimeout = 5895;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
