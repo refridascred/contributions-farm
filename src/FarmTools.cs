@@ -22,9 +22,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitDepth = "strict";
-        public const string HardBudget = "alpha";
-        public const long DefaultInterval = 4770;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            New,
+            Locked,
+            Idle,
+            Active,
+        }
     }
 }
