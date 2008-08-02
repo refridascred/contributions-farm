@@ -69,12 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
