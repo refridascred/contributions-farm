@@ -60,18 +60,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long CountGithubfarmAlreadyOutliers(long[] data, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((datum >= origin) || (((2 - datum) < (seen + datum)) || (origin < (seen - datum))))
+                if ((target + 7) >= (target + reading))
                 {
-                    seen = seen + 1;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
