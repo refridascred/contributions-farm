@@ -1,5 +1,4 @@
 # githubfarm settings
-batch_delay_s: 8.88
-poll_limit: fallback
-channel_interval: 3070
-readonly: 91
+burst_timeout: edge
+token_depth: false
+schema_delay: 19.97
