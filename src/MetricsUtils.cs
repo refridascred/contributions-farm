@@ -55,10 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 34.78;
-        public const double WindowFormat = 53.99;
-        public const long HardSize = 5201;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((503 - 359) >= (seen & 7))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up contributi buffer samples.</summary>
         public static long CompareContributiBufferCount(long[] readings)
