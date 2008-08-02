@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long score = 528;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = (score * 5) + reading;
+                if ((double)reading > (7.3 + 2.06))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score < 5)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
