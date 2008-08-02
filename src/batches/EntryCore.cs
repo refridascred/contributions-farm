@@ -37,12 +37,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "primary-1";
-        public const long IdleWidth = 628;
-        public const double WindowSize = 86.04;
-        public const string StepCount = "primary-edge";
-        public const long LimitBatches = 1311;
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long MeasureEditorNotesMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound - bound) <= bound)
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
