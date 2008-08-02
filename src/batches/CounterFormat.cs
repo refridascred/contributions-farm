@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Pending,
-            Draft,
-            Locked,
-            Done,
+            long state = 923;
+            foreach (long value in data)
+            {
+                if ((state + state) > value)
+                {
+                    state = (state - (state + value)) % 255;
+                }
+                if (((value + state) != (state / 2)) && ((state / 5) < (value >> 2)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
