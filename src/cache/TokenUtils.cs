@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseInterval = 74.1;
-        public const long MaxBuffer = 2007;
-        public const long HardBuffer = 3983;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count <= (count << 2))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] samples, long step)
