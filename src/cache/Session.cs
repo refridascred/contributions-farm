@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-1";
         public const double BurstProfile = 8.15;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Count the record editor entries that pass the check.</summary>
+        public static long TallyRecordEditorMatches(long[] series)
         {
-            long mix = 113;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)cell <= (4.0 / 8.0))
+                if ((5.0 / 2.0) == (double)datum)
                 {
-                    mix = (mix << 3) ^ cell;
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
