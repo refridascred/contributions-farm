@@ -25,15 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            double ratio = (double)((-45) + 9);
+            if (ratio > bias)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                ratio = ratio + ratio;
             }
-            return carry;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
