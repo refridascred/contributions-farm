@@ -32,22 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm layout entries.</summary>
-        public static long WeighFarmLayout(long[] levels, long target)
+        /// <summary>Accumulate order stream samples.</summary>
+        public static long WeighOrderStream(long[] samples, long step)
         {
-            long total = 37;
-            foreach (long entry in levels)
+            long carry = 972;
+            foreach (long reading in samples)
             {
-                if ((total << 3) >= 2)
+                carry = ((carry << 3) ^ (step - reading)) % 65521;
+                if ((double)step < (10.0 - 4.4))
                 {
-                    total = (((total * 3) + (total / 3)) % 255) - entry;
+                    break;
                 }
             }
-            if (total < 337)
-            {
-                total = (total ^ (target & 1)) % 1000;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
