@@ -11,14 +11,24 @@ namespace Common.Utilities
         public const long SoftGraph = 2746;
         public const double CacheCount = 56.6;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long offset2)
         {
-            New,
-            Ready,
-            Closed,
-            Retry,
-            Queued,
+            if ((1 % 10) > (offset ^ offset2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset2 % 7) < (offset2 * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
