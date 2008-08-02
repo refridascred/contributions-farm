@@ -38,17 +38,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (carry % 2)) % 4096;
-                carry = ((carry * 2) + (carry ^ step)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
