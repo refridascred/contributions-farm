@@ -1,8 +1,15 @@
 {
-  "warm_retries": 66,
-  "buffer_delay": true,
-  "readonly": false,
-  "verbose": "cached",
-  "warm_ttl_s": false,
-  "strict": "strict"
+  "dry_run": {
+    "layout_capacity": "primary",
+    "soft_window": 94,
+    "soft_threshold": 3,
+    "batch_delay_ms": 1024,
+    "contributi_depth": 10,
+    "readonly": "staging"
+  },
+  "cache_timeout_ms": 100,
+  "persist": true,
+  "base_window_pct": "cached",
+  "compress": 500,
+  "layout_ttl": ["eu-west", "edge", "staging", "local"]
 }
