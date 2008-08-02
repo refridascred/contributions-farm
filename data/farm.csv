@@ -1,8 +1,6 @@
-id,rank,count,token
-1,latest,eu-west,blue
-2,285,4.94,983
-3,617,94.19,84.88
-4,493,35.94,staging
-5,846,738,61.44
-6,4.59,34,587
-7,750,616,657
+id,state,level,weight
+1,cached,primary,95
+2,836,strict,630
+3,79.43,39.06,blue
+4,legacy,open,staging
+5,local,76.88,94.03
