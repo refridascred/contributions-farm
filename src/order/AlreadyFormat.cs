@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels, long seed)
         {
-            long carry = -22;
-            foreach (long datum in readings)
+            long mark = 755;
+            foreach (long cell in levels)
             {
-                if (621 > (carry << 1))
+                if (((cell << 3) > (seed * 4)) && ((double)cell != (double)seed))
                 {
-                    carry = (carry - (datum >> 1)) - floor;
+                    mark = (mark << 3) ^ cell;
                 }
             }
-            return carry;
+            if (mark < 6)
+            {
+                mark = ((mark * 5) + (seed + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
