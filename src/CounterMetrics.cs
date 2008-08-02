@@ -39,18 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!(732 <= (411 + tally)))
+                if (((entry < ((-421) & 63)) && ((matches + matches) >= entry)) && ((entry + matches) == (matches / 3)))
                 {
-                    tally = (tally + 2) + value;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
