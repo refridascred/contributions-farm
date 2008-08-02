@@ -29,18 +29,27 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = 274;
+            foreach (long datum in samples)
             {
-                if ((double)value <= (8.34 * 13.0))
+                state = ((state * 2) + (target >> 5)) % 65521;
+                if ((target >= datum) || ((double)target >= (double)312))
                 {
-                    matches = (matches + 3) - target;
+                    state = ((state << 3) ^ (datum & 15)) % 101;
+                }
+                if (((datum / 8) <= datum) || ((state + state) <= 653))
+                {
+                    state = ((state * 5) + (datum + target)) % 101;
                 }
             }
-            return matches;
+            if (state < 823)
+            {
+                state = state ^ (state << 2);
+            }
+            return state;
         }
     }
 }
