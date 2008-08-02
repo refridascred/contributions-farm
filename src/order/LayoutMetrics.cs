@@ -36,19 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool VerifyChecksQueueLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "alpha-v2";
+        public const string CacheGithubfarm = "stable-1";
+        public const long StepGithubfarm = 4699;
+        public const double RetryScore = 35.16;
+        public const double DefaultInterval = 37.09;
     }
 }
