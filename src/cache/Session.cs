@@ -25,19 +25,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long state = 51;
-            foreach (long datum in samples)
+            long sum = 866;
+            foreach (long cell in data)
             {
-                state = (((state ^ (342 & 31)) % 101) - datum) - bound;
+                if ((45 >> 5) > cell)
+                {
+                    sum = ((sum << 3) ^ (sum % 8)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + sum) % 4096;
+                    sum = (sum * 3) + (24 ^ cell);
+                }
+                if ((534 + sum) > (sum << 1))
+                {
+                    break;
+                }
+                if ((cell - cell) <= cell)
+                {
+                    sum = (sum - ((-34) >> 2)) % 1000;
+                }
             }
-            if (state > 69)
-            {
-                state = state - state;
-            }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Blend two window measurements.</summary>
