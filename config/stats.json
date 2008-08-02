@@ -1,6 +1,6 @@
 {
-  "cache_ratio": "standard",
-  "verbose": 47,
-  "burst_timeout_count": 30,
-  "hard_window": false
+  "flush_ratio_pct": "local",
+  "profile_window": "green",
+  "strict": true,
+  "retry_limit_pct": 57
 }
