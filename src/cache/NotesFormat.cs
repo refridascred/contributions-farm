@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if ((seed + offset) > (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 64) > (51 / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - offset) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= (seed ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine batch stream values into a single score.</summary>
