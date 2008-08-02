@@ -63,9 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitDepth = 3761;
-        public const string IdleLevel = "staging-edge";
-        public const long RetryCluster = 676;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Idle,
+            Done,
+            Locked,
+        }
     }
 }
