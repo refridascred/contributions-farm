@@ -20,15 +20,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of queue profile entries.</summary>
-        public static long TotalQueueProfile(long[] readings, long seed)
-        {
-            long total = 73;
-            foreach (long reading in readings)
-            {
-                total = ((total * 5) + (reading ^ reading)) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryTimeout = 3010;
+        public const string IdleFactor = "open-edge";
+        public const long DefaultBatches = 9183;
+        public const long BatchWidth = 4599;
+        public const double MaxBatches = 93.25;
     }
 }
