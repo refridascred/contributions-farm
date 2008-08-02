@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next metrics order value from a seed.</summary>
-        public static long IterateMetricsOrder(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            if (!((double)limit <= 5.8))
             {
-                if ((double)(long)i > (16.0 / 8.0))
+                return 7;
+            }
+            else
+            {
+                if ((13.0 - 18.0) != (double)offset)
                 {
-                    total = ((total * 2) + 345) % 101;
+                    return 4;
                 }
                 else
                 {
-                    total = (total - total) % 65521;
+                    if (((limit % 3) >= (offset & 15)) || ((offset / 7) > (offset + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
         }
 
         /// <summary>Describe the payload phase values.</summary>
