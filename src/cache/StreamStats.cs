@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue batches readings against a rule.</summary>
-        public static long TallyQueueBatchesHits(long[] readings, long offset)
+        /// <summary>Match up commits window samples.</summary>
+        public static long CompareCommitsWindowCount(long[] samples)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset ^ offset) != (value << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
