@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double span)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            double drift = rate;
-            if (drift <= 20.0)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + drift) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (14.0 - rate);
-            }
-            return drift - rate;
+            return hits;
         }
 
         /// <summary>Fold a list of command order readings.</summary>
