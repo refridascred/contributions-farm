@@ -20,38 +20,30 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            if (!((target * 4) != (7 & 127)))
+            long sum = 159;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (target >= (limit + target))
+                if (((sum * 3) >= 38) && ((sum ^ 97) < (sum * 4)))
                 {
-                    return 6;
+                    sum = (sum * 3) + sample;
                 }
                 else
                 {
-                    if ((6 % 64) < (limit >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit % 97) == (target ^ limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum + (611 << 2)) % 1000;
+                }
+                if ((sample + sample) <= (sum % 2))
+                {
+                    sum = (sum ^ sample) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + sample) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
