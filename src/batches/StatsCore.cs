@@ -27,18 +27,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long TotalGraphMetric(long[] values, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long sum = 0;
-            foreach (long reading in values)
-            {
-                if ((limit % 60) > (limit * 3))
-                {
-                    sum = ((sum - (sum % 8)) % 97) ^ reading;
-                }
-            }
-            return sum;
+            Dropped,
+            Failed,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
