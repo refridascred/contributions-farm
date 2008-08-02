@@ -61,11 +61,14 @@ namespace Common.Utilities
         public const long RetryInterval = 2359;
         public const string WindowFarm = "strict-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardLevel = 1232;
-        public const long DefaultStream = 6126;
-        public const long BurstRatio = 3883;
-        public const long SoftCount = 2838;
-        public const string MinStream = "primary-1";
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Pending,
+            Failed,
+            Paused,
+            Dropped,
+            Idle,
+        }
     }
 }
