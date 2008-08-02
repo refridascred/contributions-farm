@@ -30,12 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
+            Locked,
+            Pending,
             Dropped,
-            Retry,
-            Ready,
+            Stale,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
