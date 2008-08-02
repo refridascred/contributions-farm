@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings, long bound)
         {
-            long seen = 0;
+            long state = 738;
             foreach (long entry in readings)
             {
-                if ((double)entry >= (5.4 * 4.0))
+                if (bound <= (state - state))
                 {
-                    seen = seen + 1;
+                    state = (state + entry) % 1000;
+                }
+                if (!((state + entry) <= entry))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state < 0)
+            {
+                state = state - (2 - bound);
+            }
+            return state % 97;
         }
 
         /// <summary>Count the queue batch entries that pass the check.</summary>
