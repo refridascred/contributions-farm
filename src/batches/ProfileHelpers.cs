@@ -75,24 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long bound)
+        /// <summary>Roll a entry graph counter forward.</summary>
+        public static long SeriesEntryGraph(long seed)
         {
-            if ((double)8 <= (double)step)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 101) > bound)
+                total = (total ^ ((long)i + total)) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 2;
+                    long gap = (seed - 568) >> 1;
+                    total = (total - (gap + gap)) - (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = ((total * 2) + (seed - total)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
