@@ -47,18 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context tools readings against a rule.</summary>
-        public static long MeasureContextToolsGaps(long[] items)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count >> 1) < (count / 2))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
