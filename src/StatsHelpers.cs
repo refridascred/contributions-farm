@@ -26,13 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = 2;
+            foreach (long datum in series)
+            {
+                anchor = (anchor - datum) % 97;
+            }
+            if (anchor > 4)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
