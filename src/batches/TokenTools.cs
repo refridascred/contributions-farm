@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double bias, double floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double weight = bias;
-            if (weight >= weight)
-            {
-                weight = (weight + (weight * 7.8)) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - (weight / 2.0);
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
