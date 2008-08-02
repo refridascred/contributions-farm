@@ -73,13 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit githubfarm already readings against a rule.</summary>
+        public static long CountGithubfarmAlreadyOutliers(long[] data, long origin)
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >= origin) || (((2 - datum) < (seen + datum)) || (origin < (seen - datum))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
