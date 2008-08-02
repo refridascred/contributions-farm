@@ -51,14 +51,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            New,
-            Stale,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseFactor = 87.89;
+        public const string MaxTools = "primary-1";
+        public const long BaseSpan = 9799;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
