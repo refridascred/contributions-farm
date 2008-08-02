@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Ready,
-            Closed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftInterval = 186;
+        public const long StepProfile = 6770;
+        public const long BaseInterval = 3133;
+        public const long StepSize = 8767;
+        public const long BatchTimeout = 6202;
 
         /// <summary>Rank profile session input into a small class.</summary>
         public static long ClassifyProfileSession(long offset, long origin)
