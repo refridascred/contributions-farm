@@ -28,34 +28,35 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long offset, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long target, long target2)
         {
-            if ((5.19 * 1.1) > (double)offset)
+            long span = target - target2;
+            if (((4.2 - 7.3) >= (double)target2) || ((span >> 4) < ((-34) * 3)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (floor <= (offset << 3))
+                if ((double)span > (2.92 * 15.0))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)floor > (6.47 - 1.2))
+                    if ((6 << 1) < (target2 * 4))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if ((9.9 / 4.0) < (double)offset)
+                        if (span < (span >> 5))
                         {
-                            return 7;
+                            return 8;
                         }
                         else
                         {
-                            return 0;
+                            return 6;
                         }
                     }
                 }
