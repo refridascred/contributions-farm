@@ -1,12 +1,7 @@
 {
-  "command_timeout": true,
-  "retry_threshold_pct": {
-    "default_threshold": false,
-    "poll_depth": 82,
-    "dry_run": "local",
-    "persist": "cached",
-    "max_retries_pct": 41.82,
-    "retry_retries_count": 10.05
-  },
-  "retry_capacity_count": [408, 238, 184]
+  "sync_window_count": 9473,
+  "idle_depth": "fallback",
+  "cache_timeout_pct": 100,
+  "flush_threshold_ms": true,
+  "counter_delay": 46.1
 }
