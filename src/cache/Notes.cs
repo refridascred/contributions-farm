@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double RetryRatio = 76.5;
         public const long BaseCounter = 476;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool ValidateFarmPayloadBounds(long[] items, long floor)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
