@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "stable-1";
-        public const string WindowCount = "standard";
-        public const string HardInterval = "open-1";
-        public const long LimitBatch = 5155;
-        public const long HardBatch = 8262;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count > (count - 7))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] levels, long origin)
