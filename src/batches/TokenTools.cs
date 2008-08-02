@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseLevel = 8207;
-        public const string BurstSession = "standard-edge";
-        public const long WindowSession = 2090;
-        public const long BatchWidth = 6947;
-        public const double MinTimeout = 67.69;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Pending,
+            New,
+            Synced,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
