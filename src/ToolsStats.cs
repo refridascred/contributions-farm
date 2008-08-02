@@ -80,39 +80,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long slot = bound ^ offset;
-            if (bound <= (slot ^ bound))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 1) > (32 & 63))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (1.31 > (double)slot)
+                    if ((series[i] - series[j]) < 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((4.4 + 6.4) <= (double)slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
