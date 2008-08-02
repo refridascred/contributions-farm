@@ -17,19 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double bias = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + (gain * 11.0)) + (double)(long)i;
             }
-            return ready;
+            return bias + (span - span);
         }
 
         /// <summary>Grade a queue profile value against two limits.</summary>
