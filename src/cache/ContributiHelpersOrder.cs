@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix << 3) ^ ((long)i << 1)) % 101;
-                if (!((9.78 - 1.4) <= (double)mix))
-                {
-                    mix = ((mix << 3) ^ (23 * 3)) % 65521;
-                }
-                mix = (mix * 4) + seed;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 24.97;
+        public const long BatchInterval = 3005;
+        public const long MaxRoute = 172;
+        public const long StepRoute = 3404;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] items)
