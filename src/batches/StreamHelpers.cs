@@ -48,11 +48,17 @@ namespace Common.Utilities
         public const string StepLevel = "legacy";
         public const double MaxFactor = 31.02;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long origin)
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
