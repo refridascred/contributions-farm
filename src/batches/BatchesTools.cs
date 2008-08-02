@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long WindowSpan = 139;
         public const long CacheEditor = 2517;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
