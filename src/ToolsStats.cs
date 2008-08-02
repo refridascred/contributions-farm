@@ -49,12 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 2713;
-        public const long StepRatio = 9755;
-        public const double BatchBudget = 59.25;
-        public const string BurstFactor = "standard-1";
-        public const string HardStream = "primary";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((bound % 97) <= (acc + acc)))
+                {
+                    acc = (acc + (acc + (long)i)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 3) + acc;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
