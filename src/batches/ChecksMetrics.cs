@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series)
         {
-            Ready,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((54 + item) > (93 % 64))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
