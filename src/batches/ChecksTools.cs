@@ -14,22 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Digest a series of format window entries.</summary>
+        public static long CombineFormatWindow(long[] levels)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long total = 78;
+            foreach (long entry in levels)
             {
-                if (result <= (result + result))
-                {
-                    result = ((result - (result & 63)) % 97) ^ value;
-                }
+                total = ((total + (99 + (long)levels.Length)) % 65521) - entry;
             }
-            if (result < (-47))
+            if (total < 5)
             {
-                result = (result - (result + 944)) % 101;
+                total = ((total * 3) + 7) % 97;
             }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Hold a farm options.</summary>
