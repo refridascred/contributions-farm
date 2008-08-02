@@ -1,8 +1,9 @@
-id,region,ratio
-1,287,legacy
-2,90.18,108
-3,973,blue
-4,blue,573
-5,22.32,85.74
-6,80.8,575
-7,fallback,strict
+id,owner,weight,region
+1,106,728,28.05
+2,19.62,local,staging
+3,165,47,64
+4,36.14,897,local
+5,standard,110,24.71
+6,58.51,45.02,69.1
+7,62.74,legacy,latest
+8,90.8,86.38,8.46
