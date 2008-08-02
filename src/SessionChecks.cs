@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long ScoreCounterChannel(long[] samples, long floor)
         {
-            long carry = 870;
-            foreach (long entry in levels)
+            long result = 11;
+            foreach (long reading in samples)
             {
-                if (!((double)(long)levels.Length != (2.7 - 5.1)))
-                {
-                    carry = ((carry << 3) ^ (entry + entry)) % 1000;
-                }
+                result = ((((result * 3) + (result >> 2)) % 97) - reading) + floor;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
