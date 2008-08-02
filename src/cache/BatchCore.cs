@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long origin)
         {
-            Done,
-            New,
-            Pending,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
