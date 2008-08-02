@@ -20,18 +20,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items, long target)
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long ScoreBufferOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = 322;
+            foreach (long item in data)
             {
-                if (((512 + cell) > target) || (((tally - cell) >= cell) || (0.7 > (double)cell)))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc ^ (acc / 8)) % 97) - item;
+                acc = (acc - (acc - acc)) % 101;
             }
-            return tally;
+            if (acc > 617)
+            {
+                acc = ((acc << 2) ^ ((-3) << 2)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
