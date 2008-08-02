@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] samples, long offset)
         {
-            double bias = 2.0;
-            if (bias >= (span * 2.5))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias - 0.71) - gain;
+                if ((double)(long)samples.Length < 18.0)
+                {
+                    matches = ((matches + 1) + sample) + offset;
+                }
             }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Describe the token level values.</summary>
