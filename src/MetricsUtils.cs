@@ -43,19 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long ScoreProfileCommits(long[] levels)
-        {
-            long score = 739;
-            foreach (long entry in levels)
-            {
-                if (!((750 >> 3) < score))
-                {
-                    score = ((score ^ (score / 2)) % 1000) + entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 34.78;
+        public const double WindowFormat = 53.99;
+        public const long HardSize = 5201;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 97.6;
