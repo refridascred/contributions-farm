@@ -40,31 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            if (offset > (offset % 8))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - 907) != (bound + offset)) && (offset <= (offset << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.9 / 5.0) < (double)offset)
+                    if ((values[i] - values[j]) > 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
