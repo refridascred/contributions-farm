@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum ^ (6 ^ (long)i)) % 97) + (long)i2;
-                }
-                sum = sum ^ sum;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token snapshot.</summary>
