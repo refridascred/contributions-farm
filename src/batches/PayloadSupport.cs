@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of counter graph entries.</summary>
-        public static long TotalCounterGraph(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] readings)
         {
-            long mark = -20;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark + entry) % 1000;
-                if (((mark / 8) != (entry + entry)) || ((15.0 * 8.2) < (double)mark))
+                if (!((3 / 2) == (seen % 12)) || ((seen >> 3) <= (entry - seen)))
                 {
-                    mark = mark ^ 743;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    mark = mark + (entry + mark);
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                mark = (mark * 2) + entry;
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
