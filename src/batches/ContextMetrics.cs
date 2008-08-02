@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a checks contributi value against two limits.</summary>
-        public static long SortChecksContributi(long limit, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double scale, double floor)
         {
-            long gap = limit ^ seed;
-            if (!((double)limit <= (double)seed))
+            double gain = (double)(1 / 6);
+            if (gain < (double)739)
             {
-                return 0;
+                gain = (gain + scale) + floor;
             }
-            else
-            {
-                if (!((seed - limit) < (676 ^ gap)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 5) == (limit - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain - scale;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
