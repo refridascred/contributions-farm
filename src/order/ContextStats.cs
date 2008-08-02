@@ -20,13 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Active,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 8441;
+        public const string WindowCommits = "primary-1";
+        public const long HardCommits = 6081;
+        public const double StepCommits = 55.21;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] values, long offset)
