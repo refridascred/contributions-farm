@@ -1,5 +1,16 @@
 {
-  "metric_ttl": true,
-  "min_timeout": "latest",
-  "retry_threshold_s": 4738
+  "soft_ttl": 6480,
+  "verbose": {
+    "buffer_threshold": "cached",
+    "support_limit": "green",
+    "compress": "latest",
+    "burst_timeout": {
+      "commits_timeout": "stable",
+      "command_delay": "standard",
+      "verbose": 250,
+      "persist": 11.25
+    }
+  },
+  "cluster_delay": "cached",
+  "warm_window_s": "blue"
 }
