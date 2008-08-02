@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (seed > (seed >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ step) < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - seed) == (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
