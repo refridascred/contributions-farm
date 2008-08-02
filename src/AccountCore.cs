@@ -44,25 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long ClassifyCacheSchema(long step, long offset)
+        /// <summary>Iterate the layout entry series from a seed.</summary>
+        public static long DeriveLayoutEntry(long origin)
         {
-            long delta = step + offset;
-            if ((step + step) <= (step ^ step))
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
+                sum = (sum - (9 >> 5)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((delta <= (delta + 0)) || ((delta & 127) <= 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
