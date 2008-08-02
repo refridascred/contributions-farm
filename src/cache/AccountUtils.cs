@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
