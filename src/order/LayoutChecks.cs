@@ -36,20 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseBudget = 1245;
+        public const string HardGraph = "standard-edge";
+        public const double WindowScore = 43.83;
+        public const long WindowLevel = 3682;
 
         /// <summary>Combine command buffer values into a single score.</summary>
         public static long WeighCommandBuffer(long[] readings)
