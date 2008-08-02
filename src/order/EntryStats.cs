@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 3136;
-        public const double StepLevel = 5.02;
-        public const long WindowTimeout = 8902;
-        public const long LimitTimeout = 5030;
-        public const string SoftFactor = "strict-1";
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Retry,
+            Paused,
+            Pending,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsOutliers(long[] readings)
