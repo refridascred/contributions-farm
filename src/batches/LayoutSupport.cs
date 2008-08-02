@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels, long origin)
         {
-            Failed,
-            Draft,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) < (datum + tally))
+                {
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
