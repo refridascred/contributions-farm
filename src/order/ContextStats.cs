@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const long HardCommits = 6081;
         public const double StepCommits = 55.21;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] values, long offset)
+        /// <summary>Combine batch report values into a single score.</summary>
+        public static long TallyBatchReport(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                if (((count + offset) <= (value / 6)) || (((count - 8) != (count + offset)) || (count >= (count * 5))))
+                if ((7.0 * 0.2) >= (double)acc)
                 {
-                    count = count + 3;
+                    acc = ((acc - (limit + acc)) % 97) + cell;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a notes summary.</summary>
