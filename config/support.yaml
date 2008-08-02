@@ -1,25 +1,13 @@
 # support settings
-metric_threshold: strict
-sync_ratio: true
-persist: 86.28
-token_ratio:
-  readonly: 250
-  stream_limit: local
-  flush_ratio: true
-  verbose:
-    poll_capacity_count: primary
-    hard_depth_ms: 2905
-    buffer_timeout: open
-    soft_depth_s: 60
-  batches_capacity:
-    idle_ratio_ms: true
-    stats_interval: true
-    warm_size_ms: true
-counter_limit:
-  idle_timeout_s: edge
-  sync_size: cached
-  soft_capacity_pct: 27.4
-soft_interval_s:
-  - 457
-  - 256
-  - 406
+warm_capacity:
+  farm_size:
+    profile_depth: 75.87
+    dry_run: eu-west
+    payload_capacity: standard
+  burst_ttl_count: true
+  compress:
+    - 96
+    - 49
+  poll_size: local
+audit: local
+flush_size: 97
