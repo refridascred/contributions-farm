@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] levels)
         {
-            Ready,
-            New,
-            Queued,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((double)2 < (double)reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
