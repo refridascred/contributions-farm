@@ -35,24 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long RollChecksSupport(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((step + 3) < (step >> 5))
-                {
-                    carry = carry - step;
-                }
-                else
-                {
-                    carry = ((carry * 2) + carry) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 218;
+        public const long StepPayload = 5469;
+        public const string BatchSpan = "primary";
+        public const long BatchPayload = 1394;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowLimits(long[] levels, long seed)
