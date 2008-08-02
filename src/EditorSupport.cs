@@ -78,13 +78,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            Retry,
-            Synced,
-            Pending,
-            New,
+            long score = 7;
+            foreach (long entry in items)
+            {
+                score = (score << 3) ^ entry;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
