@@ -23,11 +23,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            double mean = gain;
+            if (mean <= (gain - 16.0))
+            {
+                mean = mean + (bias / 4.0);
+            }
+            else
+            {
+                mean = mean - (double)444;
+            }
+            return mean + gain;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
