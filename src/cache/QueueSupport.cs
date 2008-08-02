@@ -23,9 +23,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxFactor = 7982;
-        public const long DefaultRecord = 1131;
-        public const long DefaultCount = 232;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchTimeout = 3610;
+        public const double MinTimeout = 50.22;
+        public const double IdleProfile = 3.78;
+        public const long HardProfile = 1806;
     }
 }
