@@ -34,12 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of farm layout entries.</summary>
+        public static long WeighFarmLayout(long[] levels, long target)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long total = 37;
+            foreach (long entry in levels)
+            {
+                if ((total << 3) >= 2)
+                {
+                    total = (((total * 3) + (total / 3)) % 255) - entry;
+                }
+            }
+            if (total < 337)
+            {
+                total = (total ^ (target & 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
