@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] readings, long limit)
         {
-            long score = 92;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                score = ((score << 3) ^ (entry % 10)) % 97;
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Hold a support info.</summary>
