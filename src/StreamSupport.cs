@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Accumulate already metrics samples.</summary>
+        public static long ScoreAlreadyMetrics(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (((anchor - (anchor - anchor)) % 1000) - entry) - target;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a window info.</summary>
