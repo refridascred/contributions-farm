@@ -20,23 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long bound)
         {
-            long anchor = 81;
-            foreach (long item in levels)
+            long diff = floor + bound;
+            if (!(floor > 3))
             {
-                if (anchor > (item % 60))
+                return 2;
+            }
+            else
+            {
+                if (272 > (floor & 127))
                 {
-                    continue;
+                    return 5;
                 }
-                anchor = ((anchor * 5) + (anchor << 3)) % 1000;
+                else
+                {
+                    if (((-99) & 1) == (diff / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (diff >= (-813))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor ^ (80 - anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
