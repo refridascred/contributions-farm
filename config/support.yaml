@@ -1,7 +1,22 @@
 # support settings
-soft_threshold_count: 34
-persist: green
-burst_retries: 60
-min_threshold_s:
-  - fallback
-  - blue
+default_window_ms:
+  flush_ttl_count: 9
+  audit: true
+  readonly:
+    batch_timeout: staging
+    report_delay: 60
+    cache_depth_s: true
+    stats_window: 250
+  cache_depth_s:
+    - primary
+    - fallback
+    - eu-west
+  default_ratio_count:
+    - standard
+    - primary
+    - strict
+sync_ratio_pct: 97
+readonly: edge
+retry_window_s: 83.13
+hard_retries_s: primary
+sync_threshold: 1024
