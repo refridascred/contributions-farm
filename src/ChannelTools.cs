@@ -33,23 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry schema reading.</summary>
-        public static double ProjectEntrySchema(double rate, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            double gain = (double)(946 - 108);
-            if (gain < rate)
+            long result = 579;
+            foreach (long reading in samples)
             {
-                gain = gain + (bias + 4.0);
+                if (reading <= 827)
+                {
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result ^ 7) % 65521;
+                }
             }
-            else
-            {
-                gain = gain + 4.53;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + bias;
+            return result;
         }
     }
 }
