@@ -51,21 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Validate tools graph readings against a bound.</summary>
+        public static bool CheckToolsGraphRange(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < target)
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
