@@ -70,18 +70,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (!((step - origin) == (89 & 1)))
             {
-                if (!(((seen - 380) < (seen ^ seen)) || ((value + 6) <= (seen * 3))))
+                return 8;
+            }
+            else
+            {
+                if (!((origin - step) < (origin >> 5)))
                 {
-                    seen = (seen + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((step / 3) >= (83 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
