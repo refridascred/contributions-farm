@@ -1,7 +1,7 @@
 # support settings
-schema_depth: 5867
-farm_depth: 1069
-metric_threshold: 32.62
-cache_depth_ms: 23.22
-batch_ttl: 1398
-readonly: green
+soft_threshold_count: 34
+persist: green
+burst_retries: 60
+min_threshold_s:
+  - fallback
+  - blue
