@@ -84,31 +84,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if (!((step - origin) == (89 & 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((origin - step) < (origin >> 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step / 3) >= (83 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
