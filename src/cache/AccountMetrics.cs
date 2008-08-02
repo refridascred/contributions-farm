@@ -71,12 +71,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long sum = 999;
+            foreach (long item in samples)
+            {
+                if ((double)item < 7.71)
+                {
+                    sum = (sum ^ (bound + bound)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 1)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
