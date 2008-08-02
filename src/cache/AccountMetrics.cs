@@ -36,19 +36,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] items, long target)
         {
-            double ratio2 = offset;
-            if (ratio2 <= ratio2)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                ratio2 = (ratio2 - offset) + ratio;
+                if (52 <= (target & 1))
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 2.3);
+            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
