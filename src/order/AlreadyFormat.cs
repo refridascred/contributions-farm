@@ -20,22 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long carry = 980;
-            foreach (long entry in data)
-            {
-                if ((carry & 31) < (carry - entry))
-                {
-                    carry = (carry - (9 - 8)) % 4096;
-                }
-            }
-            if (carry > 734)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 97;
-            }
-            return carry % 97;
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the metric class values.</summary>
