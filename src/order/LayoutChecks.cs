@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] data, long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) >= 49)
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
