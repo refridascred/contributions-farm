@@ -35,24 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long step)
         {
-            if (bound < origin)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound < (bound + origin)) || ((double)bound != (0.86 + 4.0)))
+                if (91 < (seen << 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = ((seen + 2) ^ cell) + step;
                 }
             }
+            return seen;
         }
     }
 }
