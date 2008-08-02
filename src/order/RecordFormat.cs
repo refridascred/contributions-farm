@@ -47,17 +47,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long bound)
+        /// <summary>Blend two layout support measurements.</summary>
+        public static double ScaleLayoutSupport(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = 7.2;
+            if (scale < offset)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - offset;
             }
-            return -1;
+            else
+            {
+                scale = scale - 7.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (scale + gain);
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
