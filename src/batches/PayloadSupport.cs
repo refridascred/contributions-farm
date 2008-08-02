@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 43.82;
-        public const double BaseNotes = 71.76;
-        public const long StepFactor = 4403;
-        public const double WindowDepth = 96.19;
-        public const long HardNotes = 9785;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((115 % 60) > (4 ^ hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
