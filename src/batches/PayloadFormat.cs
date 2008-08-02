@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long AuditBatchesToolsOutliers(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length >> 1) < (reading / 8))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 22.62;
+        public const long IdleLevel = 782;
+        public const string IdleDepth = "fallback-edge";
+        public const long StepScore = 1337;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] samples, long floor)
