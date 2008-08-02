@@ -1,8 +1,5 @@
 {
-  "idle_timeout_pct": 4,
-  "sync_retries_s": ["eu-west", "cached"],
-  "retry_depth": 15.65,
-  "report_ratio": "blue",
-  "burst_ttl_pct": [341, 488],
-  "batch_size_s": [263, 110, 151, 443]
+  "min_window_pct": 100,
+  "stream_retries": false,
+  "counter_limit": [339, 142]
 }
