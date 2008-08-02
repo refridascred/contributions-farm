@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context account samples are out of range.</summary>
-        public static long MeasureContextAccountHits(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((item & 127) > (item ^ item))
+                if (cell <= floor)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
