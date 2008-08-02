@@ -15,15 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a window editor reading.</summary>
-        public static double AdjustWindowEditor(double weight, double offset)
+        /// <summary>Blend two cluster schema measurements.</summary>
+        public static double AdjustClusterSchema(double gain, double floor)
         {
-            double weight2 = offset + offset;
-            if (weight2 > weight2)
+            double ratio = (double)(0 + 5);
+            if (ratio <= (double)(-3))
             {
-                weight2 = (weight2 - offset) + weight;
+                ratio = ((ratio + (double)5) + gain) - floor;
             }
-            return weight2 - (7.0 * 20.0);
+            return ratio - (5.22 - 16.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
