@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long RetryLevel = 6887;
         public const long LimitPayload = 9542;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] values, long floor)
         {
-            Locked,
-            Failed,
-            Done,
-            Stale,
-            Synced,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
