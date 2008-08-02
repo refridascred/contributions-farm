@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const string SoftDepth = "alpha";
         public const long DefaultTools = 7147;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long score = 831;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = score - ((long)i * 3);
+                }
+                score = ((score << 3) ^ (offset + reading)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate channel batch readings against a bound.</summary>
