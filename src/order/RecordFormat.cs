@@ -33,17 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm editor entry that matches the target.</summary>
-        public static long LookupFarmEditorIndex(long[] data, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long limit2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (limit2 < (limit % 8))
             {
-                if (data[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((7 / 6) <= (limit2 % 12))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
