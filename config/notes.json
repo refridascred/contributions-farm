@@ -1,5 +1,22 @@
 {
-  "poll_depth_pct": "fallback",
-  "queue_depth": "latest",
-  "burst_ttl": "local"
+  "min_interval_s": 7347,
+  "report_threshold": "eu-west",
+  "flush_depth_s": "legacy",
+  "audit": 91.45,
+  "stream_threshold": {
+    "profile_threshold": "legacy",
+    "queue_timeout": 30,
+    "tools_limit": {
+      "sync_interval_count": 36.67,
+      "hard_interval_ms": 1440,
+      "cache_window": 30
+    },
+    "metric_threshold": {
+      "entry_ttl": "staging",
+      "cache_limit_pct": false,
+      "warm_window_s": true,
+      "base_threshold": ["standard", "blue", "edge"]
+    }
+  },
+  "readonly": 3271
 }
