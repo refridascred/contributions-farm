@@ -1,6 +1,6 @@
 {
-  "warm_capacity": "local",
-  "base_retries": "cached",
-  "default_retries": 4466,
-  "idle_size_ms": 85
+  "burst_threshold": "blue",
+  "cluster_delay": true,
+  "batch_limit_ms": "blue",
+  "hard_depth_count": 415
 }
