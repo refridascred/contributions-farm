@@ -44,12 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Paused,
-            Stale,
-            Queued,
+            Pending,
+            New,
+            Locked,
             Synced,
         }
     }
