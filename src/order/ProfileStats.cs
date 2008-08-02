@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const string StepSpan = "open-1";
         public const long IdleLevel = 8836;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Pending,
-            Idle,
-            Locked,
-            Done,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchScore = 7996;
+        public const double MaxSession = 18.25;
+        public const long StepScore = 7347;
+        public const long MaxDepth = 4030;
+        public const long IdleDepth = 4436;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
