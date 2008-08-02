@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double rate, double offset)
-        {
-            double scale = rate;
-            if (scale < (3.3 - rate))
-            {
-                scale = scale + (offset / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + offset) - (double)(long)i;
-            }
-            return scale - (offset - 11.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 2955;
+        public const long BatchToken = 208;
+        public const long DefaultSize = 765;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
