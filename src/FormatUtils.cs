@@ -19,15 +19,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((((1.4 * 10.0) < (double)value) && ((tally >> 1) <= (value + (-4)))) && (((value + tally) > (tally >> 4)) || (((long)readings.Length * 4) >= (value + value))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
