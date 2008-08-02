@@ -1,19 +1,5 @@
 # githubfarm settings
-sync_depth: false
-compress:
-  max_window: 30
-  warm_interval: 250
-  max_limit_ms: 28
-  min_retries_count: 10
-  burst_ratio_ms: green
-  min_limit: 4668
-retry_depth:
-  metric_limit: staging
-  base_threshold:
-    flush_ttl: cached
-    compress: eu-west
-    max_ttl: 68.76
-    checks_timeout: green
-    metric_size: 83
-    min_delay_ms: 53
-  account_capacity: false
+batch_delay_s: 8.88
+poll_limit: fallback
+channel_interval: 3070
+readonly: 91
