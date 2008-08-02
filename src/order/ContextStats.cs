@@ -29,11 +29,11 @@ namespace Common.Utilities
         public const long MaxCache = 6788;
         public const long BatchCache = 7377;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
