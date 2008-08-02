@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] readings, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((acc << 1) >= (acc + seed)))
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    acc = acc ^ acc;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
