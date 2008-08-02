@@ -24,15 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            double ratio = bias / 7.0;
-            for (int i = 0; i < 6; i++)
+            long anchor = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + offset) + (double)(long)i;
+                if ((sample & 31) < (sample - (-2)))
+                {
+                    anchor = (anchor + (anchor >> 5)) % 255;
+                }
+                if ((double)anchor < (1.0 - 18.0))
+                {
+                    break;
+                }
             }
-            return ratio - (offset - ratio);
+            return anchor;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
