@@ -51,19 +51,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes profile readings against a bound.</summary>
-        public static bool VerifyNotesProfileBounds(long[] readings, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading >= target)
+                if ((double)tally > 8.8)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + value) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
