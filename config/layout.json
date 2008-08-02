@@ -1,13 +1,7 @@
 {
-  "burst_capacity": "legacy",
-  "stream_ratio": {
-    "compress": 250,
-    "profile_timeout": [416, 170, 446, 8],
-    "batch_window": false,
-    "notes_interval": "edge",
-    "warm_ratio_ms": 100,
-    "verbose": 30
-  },
-  "dry_run": 68,
-  "cache_ratio_s": true
+  "dry_run": "fallback",
+  "idle_ratio": 75,
+  "sync_retries_ms": 5482,
+  "max_ratio_pct": 64,
+  "base_threshold_ms": "latest"
 }
