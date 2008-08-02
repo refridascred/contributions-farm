@@ -54,11 +54,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowBudget = 4129;
-        public const long StepGithubfarm = 2238;
-        public const double CacheGithubfarm = 79.11;
-        public const long MaxBudget = 9994;
+        /// <summary>Rank report record input into a small class.</summary>
+        public static long ClassifyReportRecord(long target, long offset)
+        {
+            if (((6.26 + 7.0) >= (9.1 + 7.49)) && ((double)(-5) >= (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) >= (361 ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double ratio, double offset)
