@@ -31,22 +31,12 @@ namespace Common.Utilities
             return bias - (rate + span);
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] items, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = 81;
-            foreach (long sample in items)
-            {
-                if (!((sample + acc) > acc))
-                {
-                    acc = (acc * 4) + (limit % 100);
-                }
-            }
-            if (acc > 52)
-            {
-                acc = (acc + (acc % 12)) % 4096;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit profile graph readings against a rule.</summary>
