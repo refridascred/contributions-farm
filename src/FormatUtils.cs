@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + datum) <= 351)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardScore = 2716;
+        public const string HardCount = "alpha-edge";
+        public const long IdleTools = 2487;
+        public const long IdleWidth = 6018;
+        public const string BaseFactor = "cached-v2";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
