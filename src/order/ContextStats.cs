@@ -44,14 +44,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data, long origin)
         {
-            Idle,
-            Active,
-            New,
-            Locked,
-            Closed,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((tally << 1) > sample))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
     }
 }
