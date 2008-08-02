@@ -72,16 +72,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long CombineStreamChannel(long[] items, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long result = 60;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result + result) % 1000) ^ entry;
-                result = result + (bound % 12);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
