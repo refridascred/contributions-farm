@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits != (9.04 + 4.9))
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
