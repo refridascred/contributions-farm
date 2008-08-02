@@ -40,22 +40,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (!((limit % 3) == (limit + 76)))
             {
-                if ((hits ^ hits) == (10 << 1))
+                return 0;
+            }
+            else
+            {
+                if (((double)limit2 < (double)(-6)) || ((limit2 / 3) <= limit))
                 {
-                    hits = (hits + 3) + entry;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit >> 1) >= (limit2 - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit < (limit2 % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
