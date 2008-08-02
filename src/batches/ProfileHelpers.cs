@@ -33,16 +33,19 @@ namespace Common.Utilities
         public const long CachePayload = 485;
         public const long MinPayload = 2557;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Scale a cache editor figure with a bias.</summary>
+        public static double SmoothCacheEditor(double rate, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            double load = (bias * 17.0) * 1.07;
+            if (load <= 9.0)
             {
-                mix = (mix + 27) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
+                load = load - (load + rate);
             }
-            return mix;
+            else
+            {
+                load = load - bias;
+            }
+            return load - 3.82;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
