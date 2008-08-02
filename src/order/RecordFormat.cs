@@ -58,12 +58,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Idle,
-            Done,
-            Locked,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
