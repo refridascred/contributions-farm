@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a buffer record reading.</summary>
-        public static double SmoothBufferRecord(double gain, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            double bias = offset;
-            if (bias > offset)
+            long sum = 4;
+            foreach (long sample in levels)
             {
-                bias = (bias - (double)61) + gain;
+                if (9.0 <= (5.2 - 5.0))
+                {
+                    sum = (sum + ((-7) >> 1)) ^ sample;
+                }
+                if (6.85 > (double)sum)
+                {
+                    break;
+                }
             }
-            return bias + offset;
+            if (sum > 42)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
