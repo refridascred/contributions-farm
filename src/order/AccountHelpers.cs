@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the notes session entries that pass the check.</summary>
-        public static long MeasureNotesSessionGaps(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = -5;
+            foreach (long item in levels)
             {
-                if (!((hits + 340) < value))
+                if ((result - origin) == (item + item))
                 {
-                    hits = hits + 2;
+                    result = (result * 2) + origin;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
