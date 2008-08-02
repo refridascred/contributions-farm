@@ -1,5 +1,11 @@
 # support settings
-batch_depth: 54.04
-persist: 60.14
-default_ttl_ms: false
-min_ttl_ms: 87.62
+default_delay: 14.9
+compress: primary
+poll_threshold_count: latest
+burst_size: 89.01
+dry_run:
+  - 231
+  - 319
+  - 155
+  - 319
+enabled: strict
