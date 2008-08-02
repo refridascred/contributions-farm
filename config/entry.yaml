@@ -1,21 +1,7 @@
 # entry settings
-retry_window:
-  verbose: true
-  strict:
-    max_timeout_ms: true
-    graph_threshold: 30
-    base_retries_ms:
-      - 476
-      - 93
-    cache_size:
-      - strict
-      - open
-  flush_depth_ms: 82.39
-  farm_depth: stable
-queue_ratio: staging
-cache_delay: 1024
-enabled: 46
-flush_depth_pct:
-  - 76
-  - 218
-poll_retries_count: 4612
+hard_limit_count: staging
+sync_depth_ms: standard
+cache_delay_count: 5353
+layout_timeout: 30
+base_retries_s: 41
+order_timeout: 23.65
