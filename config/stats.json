@@ -1,7 +1,6 @@
 {
-  "flush_limit_s": "fallback",
-  "dry_run": ["eu-west", "eu-west", "legacy"],
-  "retry_depth": "fallback",
-  "burst_limit_s": 8250,
-  "hard_retries": [169, 78, 266, 104]
+  "max_capacity_pct": 76.22,
+  "already_timeout": "latest",
+  "readonly": "primary",
+  "burst_size_pct": 90
 }
