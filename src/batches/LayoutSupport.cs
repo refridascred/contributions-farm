@@ -14,21 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count stream already pairs that satisfy a relation.</summary>
-        public static long CompareStreamAlreadyCount(long[] values)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Check that every context command entry stays within the limit.</summary>
