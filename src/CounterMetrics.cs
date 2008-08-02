@@ -43,22 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series, long bound)
+        /// <summary>Adjust a queue metric reading.</summary>
+        public static double ProjectQueueMetric(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = (double)(20 & 127);
+            if (mean <= (0.2 + offset))
             {
-                if ((double)tally > 8.8)
-                {
-                    tally = ((tally + 1) + value) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean + (offset / 2.0)) - rate;
             }
-            return tally;
+            return mean + (mean / 5.0);
         }
     }
 }
