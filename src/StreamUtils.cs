@@ -22,14 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Failed,
-            Closed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 4971;
+        public const string WindowDepth = "standard-v2";
+        public const long BaseBudget = 740;
+        public const long LimitInterval = 4095;
+        public const long MinFactor = 2740;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long floor)
