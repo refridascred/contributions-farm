@@ -26,13 +26,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)hits < 6.0)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel header.</summary>
