@@ -52,21 +52,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((step & 7) < (step - step)) && ((double)value <= (9.0 + 8.65))) && !((value * 5) != (step >> 3)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
