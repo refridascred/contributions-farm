@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            Dropped,
-            New,
-            Done,
-            Closed,
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
