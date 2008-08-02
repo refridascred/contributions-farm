@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] items, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (cell <= bound)
+                if (datum > bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
