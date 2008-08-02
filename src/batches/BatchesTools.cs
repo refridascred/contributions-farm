@@ -24,15 +24,24 @@ namespace Common.Utilities
         public const double WindowSession = 0.77;
         public const string BurstDepth = "alpha-v2";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long limit)
         {
-            double gain = (double)(51 % 12);
-            for (int i = 0; i < 5; i++)
+            if ((limit + step) > (step >> 4))
             {
-                gain = (((gain - gain) + (double)(long)i) + scale) - span;
+                return 7;
             }
-            return gain + (double)(-14);
+            else
+            {
+                if ((double)limit >= (8.0 * 8.07))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
