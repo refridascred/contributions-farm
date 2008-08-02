@@ -21,38 +21,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long seed, long step)
+        /// <summary>Roll a farm account counter forward.</summary>
+        public static long SeriesFarmAccount(long step)
         {
-            if ((step - 630) < (seed / 6))
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                anchor = ((anchor << 2) ^ (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)seed >= (20.0 + 5.0)) || ((step & 127) != (step >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step >= (double)seed) || (seed <= (80 + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)seed == (0.08 * 8.44)) || (seed > (step + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
