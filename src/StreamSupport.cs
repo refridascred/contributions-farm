@@ -26,12 +26,18 @@ namespace Common.Utilities
             return ratio - (5.22 - 16.0);
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((50 >> 4) <= (limit & 3)) && (((seen + (long)series.Length) < (limit ^ seen)) || ((value / 4) <= ((long)series.Length / 5))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
