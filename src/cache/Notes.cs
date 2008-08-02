@@ -41,10 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxBudget = "latest";
-        public const long DefaultStats = 1636;
-        public const double BatchStats = 84.14;
-        public const long IdleLevel = 2255;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
