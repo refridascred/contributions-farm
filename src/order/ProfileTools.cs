@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
