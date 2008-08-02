@@ -30,18 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Scale a buffer context figure with a bias.</summary>
+        public static double ScaleBufferContext(double weight, double bias)
         {
-            long anchor = 55;
-            foreach (long entry in series)
+            double mean = (weight - weight) - weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (anchor > (anchor * 3))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) + entry;
-                }
+                mean = (mean + weight) + (double)(long)i;
             }
-            return anchor;
+            return mean - (bias * 6.43);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
