@@ -1,4 +1,23 @@
 # support settings
-hard_ratio_count: 8229
-verbose: true
-checks_limit: fallback
+burst_delay_ms: 1288
+min_size_s:
+  - open
+  - staging
+  - green
+format_delay:
+  queue_depth: 77.57
+  enabled: true
+  cache_capacity:
+    batch_size_pct: strict
+    readonly: cached
+    hard_limit: 500
+  metric_ratio: 71
+compress: 250
+soft_timeout_ms: fallback
+dry_run:
+  sync_retries_count: edge
+  max_ratio: staging
+  sync_retries:
+    compress: 8139
+    burst_size_ms: 60
+    hard_window_pct: primary
