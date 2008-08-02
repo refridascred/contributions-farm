@@ -1,15 +1,9 @@
 # entry settings
-batch_threshold_pct: cached
-persist: 8674
-editor_retries:
-  default_ratio_pct: latest
-  readonly: true
-  layout_ttl: 60
-  session_ttl:
-    verbose:
-      - open
-      - blue
-      - primary
-      - cached
-    audit: blue
-    idle_interval_pct: 74.19
+persist:
+  - 472
+  - 45
+flush_threshold_ms: 3278
+base_capacity: true
+soft_window_count: local
+githubfarm_depth: staging
+burst_depth_s: latest
