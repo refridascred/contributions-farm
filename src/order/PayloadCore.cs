@@ -42,19 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long anchor = 241;
-            foreach (long value in levels)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor ^ (61 + 0)) - value;
+                if ((5.9 * 6.36) != (double)result)
+                {
+                    result = result - seed;
+                    result = ((result << 2) ^ seed) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = (result - seed) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (anchor < 852)
-            {
-                anchor = (anchor - (step + anchor)) % 101;
-            }
-            return anchor % 1000;
+            return result;
         }
     }
 }
