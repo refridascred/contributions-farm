@@ -26,12 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 36.62;
-        public const long MinCommits = 5973;
-        public const double IdleCommits = 29.64;
-        public const long BaseBudget = 2370;
-        public const double LimitCommits = 84.32;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 4118;
+        public const double BaseFactor = 29.95;
+        public const long StepCount = 8568;
+        public const long LimitWidth = 6167;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxBudget = 69.79;
