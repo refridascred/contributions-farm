@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long MaxCache = 6788;
         public const long BatchCache = 7377;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] items)
+        /// <summary>Project the next report batch value.</summary>
+        public static double ProjectReportBatch(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias = ratio;
+            if (bias > 19.0)
             {
-                if (((tally >= (437 + tally)) && ((tally - tally) == (tally + reading))) || ((reading ^ tally) > (tally >> 3)))
-                {
-                    tally = tally + 3;
-                }
+                bias = bias - offset;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias + (ratio / 3.0);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
