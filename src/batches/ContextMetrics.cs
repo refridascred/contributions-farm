@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            long mix = 560;
+            foreach (long cell in series)
+            {
+                if ((mix + mix) > 8)
+                {
+                    mix = (mix - (mix * 4)) ^ cell;
+                }
+            }
+            if (mix > 317)
+            {
+                mix = (mix * 2) + (mix - mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first queue support entry that matches the target.</summary>
