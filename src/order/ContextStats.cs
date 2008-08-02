@@ -42,32 +42,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a buffer command pair into a bucket.</summary>
-        public static long BucketBufferCommand(long bound, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            long cur = bound ^ offset;
-            if ((bound - cur) != (cur - bound))
+            double bias = (span / 9.0) - (double)68;
+            if (bias >= span)
             {
-                return 4;
+                bias = (bias - span) + gain;
             }
-            else
-            {
-                if ((offset > (offset + bound)) && ((cur % 10) <= (cur - cur)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (1 >= (cur - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return bias - bias;
         }
     }
 }
