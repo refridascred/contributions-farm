@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + 12.0;
         }
 
-        /// <summary>Fold a list of batch metric readings.</summary>
-        public static long TallyBatchMetric(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] values, long floor)
         {
-            long total = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = (((total << 2) ^ (1 - total)) % 65521) - value;
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 9)
-            {
-                total = (total + (58 & 255)) % 65521;
-            }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
