@@ -32,19 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (datum <= offset)
+                if ((0.2 - 12.0) < (double)value)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
