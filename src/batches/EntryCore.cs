@@ -20,12 +20,22 @@ namespace Common.Utilities
             return scale - (offset - 11.0);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of schema filter readings.</summary>
+        public static long WeighSchemaFilter(long[] items)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            long state = 48;
+            foreach (long cell in items)
+            {
+                if ((cell * 5) > (state ^ cell))
+                {
+                    state = (state ^ cell) % 97;
+                }
+                else
+                {
+                    state = (state + state) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the commits level values.</summary>
