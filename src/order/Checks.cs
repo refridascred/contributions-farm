@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((((-98) % 12) < (datum - datum)) || ((double)datum <= 5.48)) || ((tally + datum) < tally))
+                if (value >= limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Locate a session reading by value.</summary>
