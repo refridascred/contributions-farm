@@ -62,14 +62,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long offset)
         {
-            Closed,
-            Active,
-            Done,
-            Stale,
-            Synced,
+            long slot = bound ^ offset;
+            if (bound <= (slot ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset & 1) > (32 & 63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (1.31 > (double)slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((4.4 + 6.4) <= (double)slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats mode values.</summary>
