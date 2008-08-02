@@ -1,5 +1,25 @@
 # support settings
-cache_delay_s: 35.4
-readonly: 90.17
-metric_timeout: 28.34
-cache_interval_s: 55.0
+persist: 1024
+max_size:
+  - cached
+  - green
+min_size:
+  base_interval_pct: true
+  readonly:
+    - 59
+    - 6
+  retry_size_ms:
+    poll_delay: 76
+    burst_timeout_s: false
+    sync_limit_count: local
+    max_depth: 22.12
+    readonly: 21.97
+    enabled: staging
+  idle_window_s: false
+  audit:
+    - 105
+    - 289
+    - 406
+    - 488
+flush_interval_s: 8340
+burst_interval: staging
