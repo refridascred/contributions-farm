@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] samples, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (datum >= bound)
+                if (((double)(long)readings.Length < 4.81) && !((double)tally <= 7.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
