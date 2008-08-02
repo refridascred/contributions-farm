@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = -84;
-            foreach (long sample in samples)
-            {
-                total = ((total * 4) + ((long)samples.Length << 2)) ^ sample;
-            }
-            if (total < (-849))
-            {
-                total = ((total * 5) + (limit - 6)) % 101;
-            }
-            return total;
+            Ready,
+            Draft,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Combine profile account values into a single score.</summary>
