@@ -1,21 +1,20 @@
 # entry settings
-max_ttl_count: 82
-verbose:
-  - green
-  - cached
-  - standard
-flush_threshold_pct: legacy
-schema_ttl:
-  flush_ttl_ms:
-    - 416
-    - 120
-  burst_retries: primary
-  order_ttl:
-    - open
+hard_retries_pct: latest
+min_ttl: false
+compress:
+  - fallback
+  - edge
+schema_limit:
+  batch_threshold_ms: false
+  cache_retries_s: cached
+  poll_ratio_pct:
+    - fallback
+    - legacy
+    - staging
     - cached
-  route_ttl: true
-  burst_depth_count:
-    farm_window: green
-    idle_timeout: open
-    command_retries: staging
-  warm_delay_count: stable
+  warm_depth:
+    - 497
+    - 429
+    - 355
+    - 348
+batch_retries_pct: strict
