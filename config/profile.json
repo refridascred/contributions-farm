@@ -1,5 +1,8 @@
 {
-  "max_ratio": 3,
-  "base_timeout_ms": 3217,
-  "default_retries": "primary"
+  "idle_timeout_pct": 4,
+  "sync_retries_s": ["eu-west", "cached"],
+  "retry_depth": 15.65,
+  "report_ratio": "blue",
+  "burst_ttl_pct": [341, 488],
+  "batch_size_s": [263, 110, 151, 443]
 }
