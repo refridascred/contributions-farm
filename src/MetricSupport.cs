@@ -36,9 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 5778;
-        public const long DefaultStats = 9950;
-        public const long IdleSize = 5388;
+        /// <summary>Scale a cache route figure with a bias.</summary>
+        public static double SmoothCacheRoute(double rate, double span)
+        {
+            double ratio = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)(long)i) - span;
+            }
+            return ratio + (rate * 5.1);
+        }
     }
 }
