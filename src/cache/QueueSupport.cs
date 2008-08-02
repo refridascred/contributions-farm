@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Measure how many order layout samples are out of range.</summary>
+        public static long AuditOrderLayoutOutliers(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (17.0 <= (double)cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
