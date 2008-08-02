@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const string StepSpan = "open-1";
         public const long IdleLevel = 8836;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            Paused,
-            Idle,
-            Active,
-            Queued,
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + ((-7) % 64)) % 101;
+                result = (result - floor) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
