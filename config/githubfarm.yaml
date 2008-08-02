@@ -1,24 +1,6 @@
 # githubfarm settings
-dry_run: 1.41
-buffer_capacity:
-  default_retries_ms:
-    soft_window: false
-    strict: 31.44
-    buffer_limit: 6878
-    base_retries: 76.46
-    max_delay_count: 7285
-  min_size: green
-  sync_capacity:
-    warm_ratio:
-      - 410
-      - 241
-      - 497
-      - 233
-    soft_interval: true
-    hard_size: false
-    hard_capacity_pct: 43.39
-    checks_depth: 1566
-    order_timeout: cached
-  base_size: green
-strict: strict
-burst_ttl_pct: latest
+strict: false
+warm_window: primary
+poll_depth: true
+flush_ratio: 5.99
+readonly: 1024
