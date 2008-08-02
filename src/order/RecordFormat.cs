@@ -44,23 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout support measurements.</summary>
-        public static double ScaleLayoutSupport(double gain, double offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            double scale = 7.2;
-            if (scale < offset)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - 7.9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (scale + gain);
+            return tally;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
