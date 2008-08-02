@@ -30,15 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double scale, double bias)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double bias2 = (double)(5 % 24);
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (scale / 4.0);
+            Pending,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
