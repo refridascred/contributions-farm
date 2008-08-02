@@ -1,7 +1,16 @@
 # entry settings
-hard_limit_count: staging
-sync_depth_ms: standard
-cache_delay_count: 5353
-layout_timeout: 30
-base_retries_s: 41
-order_timeout: 23.65
+warm_ttl_pct: 56
+readonly: eu-west
+base_limit: staging
+flush_ratio_pct: 30
+route_size:
+  min_limit_pct: 100
+  min_depth_s: 4666
+  batch_ratio: 100
+  base_interval_count: 60
+  readonly:
+    - 401
+    - 334
+    - 240
+  cache_threshold_ms: primary
+poll_size_pct: true
