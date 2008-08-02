@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (count <= (count << 2))
+                if (datum < seed)
                 {
-                    count = (count + 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
