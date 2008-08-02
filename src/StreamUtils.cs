@@ -15,14 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Pending,
-            Active,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 8941;
+        public const long LimitContext = 593;
+        public const long StepContext = 1396;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long floor)
