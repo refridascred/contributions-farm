@@ -1,9 +1,4 @@
 # entry settings
-retry_limit_pct: false
-command_depth:
-  - 59
-  - 273
-  - 94
-  - 394
-dry_run: 7150
-buffer_limit: 0.71
+enabled: 250
+compress: 65.18
+base_size: true
