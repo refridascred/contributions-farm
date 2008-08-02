@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheBudget = "stable";
+        public const double LimitNotes = 38.78;
+        public const string DefaultNotes = "strict-edge";
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] levels, long limit)
