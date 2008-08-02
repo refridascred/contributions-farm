@@ -23,19 +23,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long seed)
         {
-            double mean = gain;
-            if (mean <= (gain - 16.0))
+            long lane = step + seed;
+            if ((9.58 + 0.21) >= (double)lane)
             {
-                mean = mean + (bias / 4.0);
+                return 6;
             }
             else
             {
-                mean = mean - (double)444;
+                if ((lane & 3) != (7 - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed < (14.0 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mean + gain;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
