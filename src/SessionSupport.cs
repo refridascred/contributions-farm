@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 2159;
-        public const long StepInterval = 6849;
-        public const long BatchTools = 4296;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Draft,
+            Idle,
+            Stale,
+            Active,
+            Locked,
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
