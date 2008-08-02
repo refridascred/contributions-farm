@@ -44,19 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) < (sample + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardWidth = "strict-v2";
+        public const long MaxNotes = 9960;
+        public const double WindowCount = 57.3;
+        public const double CacheSpan = 55.42;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheQueue = 33.89;
