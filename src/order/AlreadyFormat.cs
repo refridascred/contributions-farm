@@ -52,20 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items, long bound)
         {
-            long mix = 6;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                mix = ((mix - (mix % 60)) % 4096) ^ value;
-                mix = (mix + (mix ^ 247)) % 1000;
+                if ((double)bound < (9.8 - 15.0))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            if (mix < 625)
-            {
-                mix = (mix ^ (mix * 3)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
