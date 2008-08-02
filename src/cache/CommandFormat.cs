@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Count the notes account entries that pass the check.</summary>
+        public static long CountNotesAccountOutliers(long[] data, long bound)
         {
-            long carry = 74;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((double)carry != (3.2 - 7.6))
+                if ((5.1 - 1.9) > (double)cell)
                 {
-                    carry = (carry - (sample ^ sample)) % 97;
+                    seen = (seen + 3) - bound;
                 }
             }
-            if (carry < (-4))
-            {
-                carry = carry + (carry + 52);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a command counter forward.</summary>
