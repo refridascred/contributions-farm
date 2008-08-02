@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long WindowSpan = 139;
         public const long CacheEditor = 2517;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((-7) * 3) >= (hits * 3))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
