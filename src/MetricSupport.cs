@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
