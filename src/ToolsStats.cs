@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const long LimitRatio = 528;
         public const long IdleGraph = 2979;
 
-        /// <summary>Compare every pair of batch batches readings.</summary>
-        public static long PairBatchBatchesCount(long[] series)
+        /// <summary>Grade a commits route value against two limits.</summary>
+        public static long RankCommitsRoute(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = target + offset;
+            if (!((double)44 == (double)prev))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target << 1) >= (prev ^ prev))
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    return 2;
+                }
+                else
+                {
+                    if ((0.2 * 10.0) <= (double)prev)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev >> 5) <= prev)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
