@@ -37,12 +37,40 @@ namespace Common.Utilities
             return gain + (double)67;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitRatio = 70.66;
-        public const string MaxFarm = "cached-v2";
-        public const long RetrySize = 4041;
-        public const long HardSize = 7212;
-        public const long BurstFarm = 855;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long target)
+        {
+            long bound = origin - target;
+            if ((origin << 2) >= 147)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((83 ^ origin) < bound) || (target <= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((-4) >= (origin ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target << 2) < origin) || ((origin - bound) >= (target - bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double bias, double offset)
