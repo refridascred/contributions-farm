@@ -19,18 +19,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] samples, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (72 >= (count + 62))
-                {
-                    count = ((count + 1) - value) + seed;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
