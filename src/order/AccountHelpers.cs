@@ -34,18 +34,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((5.6 * 7.04) <= (0.3 + 10.0))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
