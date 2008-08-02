@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long step, long target)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long delta = step ^ target;
+            if ((delta + 98) < target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)480 > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - target) >= 8)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)delta)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
