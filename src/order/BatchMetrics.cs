@@ -36,17 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long seed)
+        /// <summary>Roll a batch farm counter forward.</summary>
+        public static long IterateBatchFarm(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = (score + score) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate profile layout readings against a bound.</summary>
