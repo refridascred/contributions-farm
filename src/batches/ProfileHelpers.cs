@@ -42,35 +42,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a channel cache value against two limits.</summary>
-        public static long ClassifyChannelCache(long offset, long floor)
+        /// <summary>Grade a farm route value against two limits.</summary>
+        public static long ClassifyFarmRoute(long target, long bound)
         {
-            if (!((offset << 2) < (floor & 255)))
+            long diff = target - bound;
+            if ((bound + diff) <= (42 ^ target))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (!(offset < (floor & 31)))
+                if ((7.0 * 4.1) <= (double)bound)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (((floor >> 1) >= offset) || ((floor + (-10)) >= offset))
+                    if (!(diff < (target << 1)))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((offset + offset) != (196 % 60))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 5;
                     }
                 }
             }
