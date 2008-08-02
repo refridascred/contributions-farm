@@ -25,11 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "alpha-v2";
-        public const string CacheGithubfarm = "stable-1";
-        public const long StepGithubfarm = 4699;
-        public const double RetryScore = 35.16;
-        public const double DefaultInterval = 37.09;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
