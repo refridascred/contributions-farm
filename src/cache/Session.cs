@@ -11,39 +11,14 @@ namespace Common.Utilities
         public const long SoftGraph = 2746;
         public const double CacheCount = 56.6;
 
-        /// <summary>Grade a schema graph value against two limits.</summary>
-        public static long BucketSchemaGraph(long target, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long prev = target - floor;
-            if ((target & 255) == (prev * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target < (-143))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + 9) < (prev << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.0 / 7.0) != (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
