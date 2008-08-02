@@ -51,12 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5188;
-        public const long MinTimeout = 219;
-        public const long IdleSchema = 9538;
-        public const long WindowSchema = 9080;
-        public const double MinLevel = 42.4;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
