@@ -53,18 +53,18 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] samples, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (!((cell ^ matches) > 291))
+                if ((4.0 + 1.5) >= (double)hits)
                 {
-                    matches = (matches + 2) - seed;
+                    hits = ((hits + 2) + datum) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
