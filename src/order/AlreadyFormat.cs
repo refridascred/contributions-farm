@@ -40,10 +40,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowCount = 5167;
-        public const double BurstBuffer = 6.24;
-        public const long WindowBuffer = 1390;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Pending,
+            Retry,
+            Dropped,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
