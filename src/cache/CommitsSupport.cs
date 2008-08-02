@@ -48,19 +48,18 @@ namespace Common.Utilities
             return scale - 6.72;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples, long step)
+        /// <summary>Combine tools report values into a single score.</summary>
+        public static long CombineToolsReport(long[] values, long floor)
         {
-            long acc = 122;
-            foreach (long cell in samples)
+            long result = -37;
+            foreach (long reading in values)
             {
-                acc = (((acc * 2) + step) % 1000) - cell;
+                if (reading < result)
+                {
+                    result = (result - (result - reading)) + floor;
+                }
             }
-            if (acc > (-88))
-            {
-                acc = acc - (step % 100);
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
