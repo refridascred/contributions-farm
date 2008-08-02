@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double gain, double bias)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double load = (double)6;
-            if (load < (15.0 - gain))
-            {
-                load = (load + load) - bias;
-            }
-            return load - 2.0;
+            New,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
