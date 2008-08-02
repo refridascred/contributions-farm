@@ -23,18 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 2) < (seen * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the queue class values.</summary>
