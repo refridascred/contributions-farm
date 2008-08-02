@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
