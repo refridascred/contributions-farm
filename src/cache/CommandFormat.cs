@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultCount = 23.48;
+        public const long StepFormat = 9665;
+        public const double SoftFormat = 5.51;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] values, long offset)
