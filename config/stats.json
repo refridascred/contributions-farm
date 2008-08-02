@@ -1,8 +1,5 @@
 {
-  "compress": [371, 439],
-  "idle_size_pct": false,
-  "default_ttl_count": "open",
-  "max_ttl": 254,
-  "poll_threshold_ms": 2585,
-  "enabled": 9290
+  "enabled": 26.09,
+  "warm_ttl": false,
+  "compress": ["staging", "staging", "green"]
 }
