@@ -28,12 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
