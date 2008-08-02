@@ -45,12 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Stale,
             Dropped,
+            Idle,
             Draft,
+            Ready,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
