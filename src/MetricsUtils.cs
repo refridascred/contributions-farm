@@ -23,19 +23,15 @@ namespace Common.Utilities
             return weight2 - 4.73;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long carry = 5;
+            foreach (long cell in data)
             {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry - cell) % 97) + bound;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
