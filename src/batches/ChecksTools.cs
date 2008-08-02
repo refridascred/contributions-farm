@@ -42,23 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 65;
-            foreach (long reading in series)
-            {
-                result = (result ^ (889 + 230)) % 255;
-                if (reading < (result << 3))
-                {
-                    result = ((result * 5) + reading) % 255;
-                }
-                if (reading >= (result % 8))
-                {
-                    break;
-                }
-            }
-            return result;
+            New,
+            Idle,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
