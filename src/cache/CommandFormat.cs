@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long MeasureBatchFilterOutliers(long[] data)
         {
-            Done,
-            Draft,
-            Pending,
-            Paused,
-            Queued,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches + 866) > (80 + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every farm stream entry stays within the limit.</summary>
