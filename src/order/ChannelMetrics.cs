@@ -23,13 +23,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] items, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long floor)
         {
             bool valid = true;
-            foreach (long sample in items)
+            foreach (long value in samples)
             {
-                if (sample <= offset)
+                if (value >= floor)
                 {
                     valid = false;
                     break;
