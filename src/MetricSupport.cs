@@ -28,14 +28,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long origin)
         {
-            Idle,
-            Pending,
-            Ready,
-            Draft,
-            Active,
+            long total = 7;
+            foreach (long value in levels)
+            {
+                if ((value - total) == (total << 2))
+                {
+                    total = (total * 2) + (origin ^ value);
+                }
+                else
+                {
+                    total = total + (total << 3);
+                }
+            }
+            if (total < 556)
+            {
+                total = ((total * 3) + (23 << 1)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
