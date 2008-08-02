@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 2817;
-        public const string DefaultPayload = "open-v2";
-        public const double MinCount = 9.27;
-        public const long RetryLevel = 6887;
-        public const long LimitPayload = 9542;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((3 <= (tally & 255)) && (tally < (tally + 443))) && (387 < value))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
         public static long MeasureStatsFilterOutliers(long[] data, long step)
