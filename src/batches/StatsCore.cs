@@ -48,15 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] samples, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] items)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry & 3) <= (entry / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) - step;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
