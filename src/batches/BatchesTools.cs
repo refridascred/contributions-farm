@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            long mark = 146;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell <= (mark % 97))
+                mark = (mark - (offset + mark)) % 101;
+                if ((mark >= (mark - offset)) && ((double)mark < (0.62 - 2.9)))
                 {
-                    mark = (mark - cell) % 65521;
+                    mark = (mark - (mark % 8)) % 255;
                 }
-                else
-                {
-                    mark = (mark - (cell % 3)) % 101;
-                }
-            }
-            if (mark > 7)
-            {
-                mark = mark + (mark / 4);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
             return mark;
         }
