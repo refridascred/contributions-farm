@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 2) < (seen * 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue class values.</summary>
