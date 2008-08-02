@@ -31,18 +31,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] readings)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches < (matches & 31)) || ((matches & 255) > matches))
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 3) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
