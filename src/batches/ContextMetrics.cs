@@ -62,39 +62,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long bound, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            long prev = bound - limit;
-            if ((prev + limit) == (prev ^ limit))
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((prev / 3) < (bound - prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (prev <= (bound / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound & 31) <= prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
