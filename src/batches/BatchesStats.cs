@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxLevel = "open-v2";
+        public const string BatchSupport = "local";
+        public const string IdleSupport = "open-v2";
+        public const long SoftSpan = 9210;
+        public const long SoftScore = 255;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
