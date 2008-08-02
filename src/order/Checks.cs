@@ -61,10 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheCount = 70.05;
-        public const double BatchDepth = 18.1;
-        public const long MaxScore = 3257;
-        public const double DefaultBudget = 14.55;
+        /// <summary>Match up stats format samples.</summary>
+        public static long CompareStatsFormatCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
