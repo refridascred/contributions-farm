@@ -33,18 +33,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long seed, long origin)
         {
-            long mix = 638;
-            foreach (long sample in items)
+            long next = seed + origin;
+            if ((53 ^ origin) <= seed)
             {
-                if (((7.2 * 8.88) <= (double)mix) || ((double)offset >= 2.4))
+                return 4;
+            }
+            else
+            {
+                if (!((double)465 == (double)next))
                 {
-                    mix = (((mix << 2) ^ mix) % 101) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((16.0 * 4.9) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 4096;
         }
     }
 }
