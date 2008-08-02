@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const long WindowBudget = 6257;
         public const long BurstScore = 6258;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Find the first already window entry that matches the target.</summary>
+        public static long LocateAlreadyWindowIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits * 3) <= (value ^ value))
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a channel farm value against two limits.</summary>
