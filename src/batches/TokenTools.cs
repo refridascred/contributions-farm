@@ -22,21 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seed != (3.0 * 4.3))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (long)i;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark - (mark & 1)) % 4096;
+                }
+                mark = ((mark * 4) + (mark - seed)) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a schema metric reading by value.</summary>
