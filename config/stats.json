@@ -1,18 +1,7 @@
 {
-  "default_window_s": "stable",
-  "cache_size_ms": "green",
-  "enabled": false,
-  "strict": {
-    "cluster_timeout": {
-      "persist": false,
-      "retry_capacity_ms": 4122,
-      "enabled": 20.04,
-      "max_timeout_count": 42,
-      "max_ttl_s": 81
-    },
-    "token_retries": 1024,
-    "readonly": 14,
-    "compress": "latest"
-  },
-  "burst_threshold_count": "staging"
+  "warm_window_pct": 60,
+  "graph_depth": "strict",
+  "account_timeout": "latest",
+  "soft_timeout_ms": "cached",
+  "checks_ratio": [112, 422, 467]
 }
