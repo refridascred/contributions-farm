@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((0 > (target + target)) && (((long)data.Length ^ 630) >= (694 << 1))))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 11.68;
+        public const long StepSession = 8568;
+        public const double BurstWidth = 4.34;
+        public const double MaxInterval = 65.0;
+        public const long MaxLevel = 9255;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] values)
