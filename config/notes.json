@@ -1,12 +1,10 @@
 {
-  "min_delay": "legacy",
-  "hard_ttl": {
-    "session_limit": true,
-    "flush_limit_count": 67.94,
-    "session_depth": 11.13
+  "audit": 29,
+  "warm_depth_pct": {
+    "burst_retries_count": "strict",
+    "persist": 500,
+    "max_limit_s": 1024,
+    "dry_run": false
   },
-  "poll_limit": ["eu-west", "edge", "staging", "fallback"],
-  "audit": "standard",
-  "notes_timeout": 7738,
-  "batch_ttl": 9866
+  "dry_run": 92.17
 }
