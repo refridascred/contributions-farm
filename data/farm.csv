@@ -1,7 +1,9 @@
-id,rank,level,token
-1,eu-west,staging,16
-2,81.51,907,38
-3,eu-west,local,10.73
-4,60.51,62.34,40.55
-5,918,693,499
-6,strict,staging,79.97
+id,rank,owner
+1,primary,43.19
+2,edge,stable
+3,25.18,47.14
+4,latest,latest
+5,strict,84
+6,329,631
+7,latest,315
+8,21.74,670
