@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
