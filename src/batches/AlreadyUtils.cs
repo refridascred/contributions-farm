@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order buffer entries.</summary>
-        public static long DigestOrderBuffer(long[] data, long target)
-        {
-            long mark = 83;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = (mark - (cell - target)) + (long)i;
-                }
-                if ((target ^ target) <= (target + cell))
-                {
-                    mark = mark ^ (target - target);
-                }
-            }
-            if (mark > 8)
-            {
-                mark = mark + (mark >> 3);
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitCount = 94.78;
+        public const long MaxToken = 40;
+        public const long BatchWidth = 6931;
 
         /// <summary>Fold a list of already token readings.</summary>
         public static long DigestAlreadyToken(long[] items, long bound)
