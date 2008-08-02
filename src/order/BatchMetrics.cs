@@ -48,17 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a batch buffer reading by value.</summary>
-        public static long LookupBatchBufferIndex(long[] levels, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next layout value.</summary>
