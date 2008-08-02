@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the checks token series from a seed.</summary>
-        public static long SeriesChecksToken(long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
