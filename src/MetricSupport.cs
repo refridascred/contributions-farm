@@ -28,26 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] items)
         {
-            long total = 7;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((value - total) == (total << 2))
+                if ((sample << 2) > count)
                 {
-                    total = (total * 2) + (origin ^ value);
+                    count = count + 1;
                 }
                 else
                 {
-                    total = total + (total << 3);
+                    count = count - 1;
                 }
             }
-            if (total < 556)
-            {
-                total = ((total * 3) + (23 << 1)) % 65521;
-            }
-            return total % 65521;
+            return count;
         }
     }
 }
