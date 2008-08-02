@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double load = ratio;
-            if (load >= (ratio * 16.0))
-            {
-                load = load + (ratio + 5.4);
-            }
-            return load - offset;
+            Locked,
+            New,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
