@@ -1,18 +1,6 @@
 # entry settings
-dry_run: true
-session_delay: false
-base_limit_s:
-  tools_depth:
-    filter_depth: 30
-    default_depth_s: 2669
-    enabled: stable
-    base_interval_count: 100
-  session_ratio: true
-  report_capacity: 89
-  warm_size:
-    - primary
-    - eu-west
-    - standard
-    - legacy
-sync_delay_count: 500
-batch_capacity: latest
+cache_ratio_s: blue
+soft_capacity_s: true
+contributi_interval: 73.74
+base_capacity_pct: blue
+max_retries_pct: 92
