@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the notes account entries that pass the check.</summary>
-        public static long CountNotesAccountOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((5.1 - 1.9) > (double)cell)
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepInterval = 9988;
+        public const double IdleAlready = 80.62;
+        public const long BaseAlready = 7901;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
