@@ -34,12 +34,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Retry,
-            Paused,
-            Ready,
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
