@@ -19,19 +19,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count + datum) >= ((-12) << 2))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7978;
+        public const double DefaultWidth = 11.9;
+        public const long MinTimeout = 6725;
+        public const long BatchStats = 2277;
+        public const string DefaultStats = "fallback-edge";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long step)
