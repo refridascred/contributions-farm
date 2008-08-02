@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double weight, double span)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            double scale = (5.0 + span) / 4.0;
+            if (scale > 4.0)
+            {
+                scale = (scale + scale) - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (7.2 + 4.19)) + (double)(long)i;
+            }
+            return scale + (span / 6.0);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
