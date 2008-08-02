@@ -61,30 +61,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double scale, double offset)
         {
-            long score = 2;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length / 3) >= (3 >> 3))
-                {
-                    score = (score * 5) + (sample + sample);
-                }
-                else
-                {
-                    score = (score - (sample ^ sample)) % 1000;
-                }
-                if ((157 << 2) <= score)
-                {
-                    break;
-                }
-            }
-            if (score > 0)
-            {
-                score = score ^ (score / 2);
-            }
-            return score % 97;
+            double mean = (7.85 / 9.0) * 0.1;
+            return (mean + (offset / 6.0)) + scale;
         }
     }
 }
