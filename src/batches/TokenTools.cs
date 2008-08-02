@@ -40,11 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 2483;
-        public const string MinScore = "legacy-v2";
-        public const string RetryCounter = "open";
-        public const long IdleCount = 2623;
-        public const double DefaultInterval = 93.69;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
