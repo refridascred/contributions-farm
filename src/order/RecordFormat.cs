@@ -39,23 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long result = 53;
-            foreach (long sample in values)
-            {
-                if (593 >= (sample & 63))
-                {
-                    result = result + floor;
-                    result = result ^ (result - result);
-                }
-                if (sample >= (floor & 3))
-                {
-                    result = (result + (9 + floor)) % 1000;
-                }
-            }
-            return result;
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a metrics buffer counter forward.</summary>
