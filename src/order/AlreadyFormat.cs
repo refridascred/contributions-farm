@@ -38,20 +38,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 4923;
+        public const long DefaultNotes = 9517;
+        public const long SoftTimeout = 7829;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftLevel = 82;
