@@ -36,16 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] levels, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix - (675 % 64)) % 255;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (!((sample >> 2) >= (limit & 7)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
