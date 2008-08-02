@@ -1,11 +1,11 @@
 # support settings
-account_size:
-  hard_threshold: strict
-  strict:
-    - 386
-    - 410
-    - 449
-    - 84
-  idle_retries: true
-base_timeout_count: true
-default_ratio_s: 3.1
+verbose:
+  sync_ttl_pct:
+    readonly: 33
+    flush_interval: 8093
+    persist: cached
+  retry_ratio: 25.31
+  retry_threshold: stable
+  compress: 250
+dry_run: true
+default_ttl: blue
