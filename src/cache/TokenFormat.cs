@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
