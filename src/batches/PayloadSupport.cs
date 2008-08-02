@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((3 / 2) == (seen % 12)) || ((seen >> 3) <= (entry - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "staging-1";
+        public const long LimitSize = 8287;
+        public const long HardFilter = 3550;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] series, long offset)
