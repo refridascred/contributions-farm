@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((double)tally != (3.04 - 4.5)) && ((1 + cell) != (tally % 100))) || !(8.0 >= (double)tally))
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
