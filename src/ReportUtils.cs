@@ -31,10 +31,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "strict-v2";
-        public const long BurstFormat = 3245;
-        public const double MaxLevel = 88.7;
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long RollChecksSupport(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((step + 3) < (step >> 5))
+                {
+                    carry = carry - step;
+                }
+                else
+                {
+                    carry = ((carry * 2) + carry) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowTimeout = 9007;
