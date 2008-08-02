@@ -1,9 +1,8 @@
-id,region,score,active,label
-1,168,blue,staging,standard
-2,34,fallback,834,primary
-3,cached,strict,821,224
-4,eu-west,197,40.2,68.88
-5,26.74,7.29,95.03,77.54
-6,strict,251,legacy,staging
-7,906,primary,70.24,992
-8,79.25,41.94,917,486
+id,token,level,ratio,rank
+1,98.7,874,79.48,679
+2,304,strict,30.16,fallback
+3,92.08,24,89.13,44.15
+4,179,staging,50.25,73.78
+5,staging,latest,primary,423
+6,13.49,cached,333,889
+7,738,44.6,90.1,555
