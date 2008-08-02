@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 137;
-        public const long RetryGraph = 7538;
-        public const long StepCount = 7150;
-        public const double IdleTimeout = 78.56;
-        public const long MaxGraph = 7661;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "strict-1";
+        public const long WindowDepth = 8222;
+        public const string HardEntry = "strict";
+        public const double MaxScore = 13.22;
 
         /// <summary>Grade a cluster counter value against two limits.</summary>
         public static long GradeClusterCounter(long seed, long floor)
