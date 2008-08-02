@@ -41,12 +41,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] levels, long seed)
         {
-            Active,
-            Dropped,
-            Closed,
+            long result = 2;
+            foreach (long reading in levels)
+            {
+                if (!!((double)seed <= 4.0))
+                {
+                    result = ((result << 2) ^ (reading + (-955))) % 4096;
+                    result = result + 821;
+                }
+                if ((4.7 > (double)result) && (30 < seed))
+                {
+                    result = ((result * 4) + (seed + result)) % 255;
+                }
+                if ((seed ^ seed) > (seed - seed))
+                {
+                    break;
+                }
+            }
+            if (result < 352)
+            {
+                result = (result ^ (result ^ seed)) % 101;
+            }
+            return result % 97;
         }
     }
 }
