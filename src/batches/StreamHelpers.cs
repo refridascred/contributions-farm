@@ -14,39 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long diff = floor + bound;
-            if (!(floor > 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (272 > (floor & 127))
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-99) & 1) == (diff / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (diff >= (-813))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
