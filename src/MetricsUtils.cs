@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the route channel entries that pass the check.</summary>
+        public static long TallyRouteChannelHits(long[] readings)
         {
-            Draft,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) == (reading >> 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
