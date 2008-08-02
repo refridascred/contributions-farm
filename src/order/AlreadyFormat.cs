@@ -60,17 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Pending,
+            Stale,
         }
     }
 }
