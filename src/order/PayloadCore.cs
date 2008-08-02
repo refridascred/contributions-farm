@@ -31,24 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings, long target)
         {
-            long mark = 3;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((count ^ target) > (count + target)))
                 {
-                    long next = reading - (reading - (-344));
-                    mark = ((mark * 4) + (next - 192)) - (long)i;
-                }
-                mark = mark + (67 << 3);
-                if ((double)mark < (19.0 + 3.13))
-                {
-                    mark = (mark + (step - reading)) % 4096;
+                    count = (count + 3) + cell;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
