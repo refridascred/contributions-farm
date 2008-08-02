@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items, long origin)
+        /// <summary>Locate a cache editor reading by value.</summary>
+        public static long LocateCacheEditorIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits <= (hits + reading))
+                if (data[i] == limit)
                 {
-                    hits = (hits + 2) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
