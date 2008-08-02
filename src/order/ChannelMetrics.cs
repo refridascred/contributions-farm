@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels, long floor)
+        /// <summary>Blend two cache window measurements.</summary>
+        public static double AdjustCacheWindow(double gain, double span)
         {
-            long sum = -5;
-            foreach (long entry in levels)
+            double weight = span;
+            if (weight < weight)
             {
-                sum = (sum - entry) % 97;
+                weight = (weight + (weight + weight)) + gain;
             }
-            if (sum > 423)
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum + floor) % 65521;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return sum;
+            return weight - span;
         }
 
         /// <summary>Hold a graph entry.</summary>
