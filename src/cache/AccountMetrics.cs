@@ -58,22 +58,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)item >= (double)count) && ((item % 64) < item))
+                if (((2 - limit) != (limit >> 4)) || ((carry - (long)i) <= carry))
                 {
-                    count = count + 3;
+                    carry = ((carry << 3) ^ (carry & 15)) % 97;
                 }
-                else
+                if ((double)(long)i < (6.95 + 3.0))
                 {
-                    count = count - 1;
+                    carry = carry - ((-64) ^ 43);
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
     }
 }
