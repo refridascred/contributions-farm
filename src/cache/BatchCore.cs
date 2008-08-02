@@ -35,18 +35,24 @@ namespace Common.Utilities
         public const string IdleSupport = "staging-1";
         public const long SoftSupport = 7312;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((3.23 - 6.14) != (double)origin)
+                if ((double)(long)i > 19.0)
                 {
-                    matches = (matches + 1) ^ value;
+                    mark = ((mark << 3) ^ limit) % 97;
                 }
+                else
+                {
+                    mark = (mark ^ (limit ^ limit)) % 1000;
+                }
+                mark = (mark ^ 0) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
