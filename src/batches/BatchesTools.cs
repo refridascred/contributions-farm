@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
-        {
-            long carry = 882;
-            foreach (long item in data)
-            {
-                if (carry <= item)
-                {
-                    carry = ((carry << 3) ^ item) % 1000;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "legacy-1";
+        public const long IdleEditor = 8904;
+        public const long LimitSpan = 4129;
+        public const long WindowSpan = 139;
+        public const long CacheEditor = 2517;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
