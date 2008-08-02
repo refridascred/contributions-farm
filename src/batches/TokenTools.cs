@@ -39,17 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema metric reading by value.</summary>
-        public static long LookupSchemaMetricIndex(long[] values, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((values[i] == origin) && ((values[i] % 3) == 0))
+                if ((double)item == (8.27 + 6.55))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
