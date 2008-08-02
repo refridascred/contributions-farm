@@ -19,15 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Draft,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every farm stream entry stays within the limit.</summary>
