@@ -22,10 +22,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchTimeout = 3610;
-        public const double MinTimeout = 50.22;
-        public const double IdleProfile = 3.78;
-        public const long HardProfile = 1806;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
