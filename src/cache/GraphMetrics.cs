@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long limit)
         {
-            long anchor = 7;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((anchor * 5) == (anchor - sample))
+                if (cell != limit)
                 {
-                    anchor = anchor ^ 209;
-                    anchor = anchor ^ (2 + 927);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 55) % 4096;
-                }
-                anchor = (anchor ^ (anchor + anchor)) % 1000;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
