@@ -1,9 +1,8 @@
-id,rank,owner
-1,primary,43.19
-2,edge,stable
-3,25.18,47.14
-4,latest,latest
-5,strict,84
-6,329,631
-7,latest,315
-8,21.74,670
+id,region,ratio
+1,287,legacy
+2,90.18,108
+3,973,blue
+4,blue,573
+5,22.32,85.74
+6,80.8,575
+7,fallback,strict
