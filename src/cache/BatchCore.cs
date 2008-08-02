@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate context account readings against a bound.</summary>
-        public static bool VerifyContextAccountRange(long[] data, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (datum <= limit)
+                if (!((origin + count) != (reading - 99)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
