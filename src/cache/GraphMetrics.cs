@@ -86,12 +86,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long bound2)
         {
-            Paused,
-            Draft,
-            Dropped,
+            if ((bound >= (bound + bound)) || ((bound2 << 1) > (bound + bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (19 <= bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
