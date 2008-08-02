@@ -21,19 +21,24 @@ namespace Common.Utilities
         public const long BurstRecord = 9029;
         public const double CacheRecord = 74.43;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            if ((bound ^ bound) > (offset - bound))
             {
-                if ((17.0 * 3.0) >= (double)(long)i)
-                {
-                    mark = (mark + (long)i) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((offset * 3) > (offset - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
