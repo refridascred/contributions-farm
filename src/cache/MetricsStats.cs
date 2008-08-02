@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (value < bound)
+                if ((reading << 1) > reading)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + step;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
