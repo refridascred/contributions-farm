@@ -27,31 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support tools input into a small class.</summary>
-        public static long ClassifySupportTools(long origin, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((bound >> 1) <= (bound >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (origin + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(origin >= (578 * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
