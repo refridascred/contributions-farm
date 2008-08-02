@@ -24,22 +24,32 @@ namespace Common.Utilities
         public const double WindowScore = 91.64;
         public const string WindowInterval = "standard-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long offset, long seed)
         {
-            long state = 82;
-            foreach (long value in data)
+            long offset2 = offset + seed;
+            if (!((offset2 & 7) <= (offset2 / 8)))
             {
-                if ((state - 0) > (value + state))
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset + 390))
                 {
-                    state = state + (value % 2);
+                    return 4;
                 }
-                if (((649 - value) > value) && (573 >= value))
+                else
                 {
-                    break;
+                    if (((8.8 / 9.0) >= (double)seed) && ((seed << 2) <= (seed + offset2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
     }
 }
