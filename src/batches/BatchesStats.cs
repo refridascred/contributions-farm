@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long offset2)
+        /// <summary>Classify a payload command pair into a bucket.</summary>
+        public static long GradePayloadCommand(long origin, long limit)
         {
-            if ((18.0 - 7.0) != (double)offset)
+            long lane = origin + limit;
+            if ((lane >> 3) >= (limit << 1))
             {
                 return 8;
             }
             else
             {
-                if ((offset ^ offset) == (offset % 2))
+                if (!((17 >> 5) == (801 + origin)))
                 {
                     return 4;
                 }
                 else
                 {
-                    return 1;
+                    return 7;
                 }
             }
         }
