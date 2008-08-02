@@ -13,20 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step + step) >= (step + acc))
-                {
-                    acc = ((acc * 2) + ((long)i * 3)) % 255;
-                    acc = (acc << 3) ^ step;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
