@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool ValidatePayloadReportBounds(long[] values, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long score = 415;
+            foreach (long sample in readings)
             {
-                if (reading != origin)
+                if (((sample >> 2) > sample) || ((double)score > (9.0 * 5.5)))
                 {
-                    stale = false;
-                    break;
+                    score = (score - (score >> 3)) % 1000;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
