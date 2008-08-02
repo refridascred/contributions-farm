@@ -1,10 +1,11 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The report helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every batch by order.
+A already that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new notes fields
-- Review format limits each release
+- Document new filter fields
+- Prefer cluster defaults
+- Validate cache input early
+- Keep contributi values small
