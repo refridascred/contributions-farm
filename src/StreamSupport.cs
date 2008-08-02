@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Retry,
-            Draft,
-            Locked,
-            New,
-            Active,
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
