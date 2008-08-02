@@ -13,12 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6285;
-        public const double BaseProfile = 5.87;
-        public const string MaxCount = "open-1";
-        public const string BurstInterval = "strict";
-        public const string MaxProfile = "local-edge";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin + origin) >= origin)
+                {
+                    mix = (mix * 2) + (mix - mix);
+                    mix = ((mix * 5) + (origin << 3)) % 65521;
+                    continue;
+                }
+                mix = mix - (long)i;
+                mix = (mix ^ ((long)i * 5)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
