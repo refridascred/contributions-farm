@@ -56,20 +56,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool CheckCommitsBufferBounds(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleTimeout = 28.14;
+        public const long LimitLevel = 8052;
+        public const string WindowFilter = "stable-v2";
+        public const string MaxSize = "primary-v2";
+        public const long IdleScore = 1757;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
