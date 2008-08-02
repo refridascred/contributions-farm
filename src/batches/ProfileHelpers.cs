@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] readings, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
