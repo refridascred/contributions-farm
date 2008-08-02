@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
