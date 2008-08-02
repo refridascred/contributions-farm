@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long diff = limit + offset;
+            if (offset <= (limit % 24))
             {
-                if (count > (count - 7))
+                return 7;
+            }
+            else
+            {
+                if ((offset * 2) > diff)
                 {
-                    count = (count + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((3.8 / 2.0) == (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (double)diff)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate layout payload samples.</summary>
