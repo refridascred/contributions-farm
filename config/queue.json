@@ -1,16 +1,8 @@
 {
-  "entry_limit": {
-    "audit": "blue",
-    "min_timeout_s": {
-      "warm_ratio": "standard",
-      "metric_window": ["blue", "edge", "stable", "strict"],
-      "strict": 19.81
-    },
-    "retry_retries": "edge",
-    "base_timeout": "edge",
-    "order_retries": "fallback"
-  },
-  "default_interval_count": false,
-  "poll_ratio_count": [238, 366, 104, 349],
-  "farm_capacity": true
+  "layout_size": "latest",
+  "compress": false,
+  "cache_window": [470, 89],
+  "base_capacity": "fallback",
+  "retry_threshold_s": "edge",
+  "verbose": 62
 }
