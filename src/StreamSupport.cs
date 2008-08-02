@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long slot = seed - step;
-            if ((slot + seed) != (seed + slot))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + slot) < (4 / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step >= (seed + slot))
+                    if ((series[i] + series[j]) > 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((step * 5) != (3 + slot)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a window info.</summary>
