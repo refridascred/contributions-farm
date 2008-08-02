@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter tools entries.</summary>
-        public static long FoldFilterTools(long[] series, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long total = 6;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                total = (((total ^ (-861)) % 255) + reading) + target;
-            }
-            if (total < 6)
-            {
-                total = (total - (total % 97)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
