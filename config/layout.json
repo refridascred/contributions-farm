@@ -1,7 +1,13 @@
 {
-  "readonly": true,
-  "dry_run": 250,
-  "hard_window_pct": 89,
-  "batch_retries": "edge",
-  "farm_window": [410, 479, 286]
+  "max_size_pct": 53.19,
+  "record_capacity": 100,
+  "batches_threshold": ["primary", "open", "edge", "eu-west"],
+  "poll_retries_s": {
+    "layout_capacity": 38.51,
+    "flush_timeout_ms": 500,
+    "max_size": "staging",
+    "flush_delay_pct": 1662,
+    "command_ratio": "strict",
+    "audit": "green"
+  }
 }
