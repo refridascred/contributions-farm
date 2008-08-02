@@ -50,24 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long origin)
+        /// <summary>Accumulate already order samples.</summary>
+        public static long FoldAlreadyOrder(long[] samples)
         {
-            if ((origin + 43) <= (offset ^ offset))
+            long mark = 742;
+            foreach (long item in samples)
             {
-                return 2;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (mark + (mark ^ (long)i)) % 1000;
+                    mark = mark + (item - (-9));
+                }
+                mark = (mark << 3) ^ (924 + mark);
             }
-            else
+            if (mark < 211)
             {
-                if ((origin % 3) > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = mark + (mark * 2);
             }
+            return mark % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
