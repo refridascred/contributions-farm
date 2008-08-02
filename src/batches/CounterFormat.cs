@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "latest-edge";
+        public const long RetryWidth = 6621;
+        public const double MinRatio = 91.41;
 
         /// <summary>Find the first token session entry that matches the target.</summary>
         public static long FindTokenSessionIndex(long[] levels, long offset)
