@@ -1,7 +1,9 @@
 # support settings
-default_threshold_count: 500
-payload_timeout: 49
-already_window: latest
-filter_limit: 1024
-max_ratio: staging
-min_timeout: standard
+sync_ttl_count: 583
+max_limit: false
+min_window_pct:
+  - local
+  - eu-west
+cache_interval_count: latest
+sync_depth_pct: 695
+min_capacity_pct: 82.02
