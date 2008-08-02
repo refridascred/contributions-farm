@@ -58,11 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultSize = "alpha";
-        public const long BurstInterval = 1191;
-        public const string LimitBudget = "primary-edge";
-        public const string CacheBatches = "fallback-v2";
-        public const long CacheWidth = 9475;
+        /// <summary>Digest a series of account schema entries.</summary>
+        public static long CombineAccountSchema(long[] samples)
+        {
+            long anchor = 13;
+            foreach (long value in samples)
+            {
+                if ((anchor - value) <= (value + anchor))
+                {
+                    anchor = ((anchor * 5) + 471) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (value & 127)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
