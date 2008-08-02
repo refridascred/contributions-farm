@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Measure how many route order samples are out of range.</summary>
+        public static long CountRouteOrderOutliers(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if ((tally ^ sample) > (tally - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
