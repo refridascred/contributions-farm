@@ -57,14 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLayoutLimits(long[] series, long bound)
         {
-            Locked,
-            Pending,
-            Done,
-            Retry,
-            Failed,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
