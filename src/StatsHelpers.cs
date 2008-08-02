@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 28.32;
-        public const long RetryTimeout = 4421;
-        public const double BatchCache = 41.0;
-        public const double BaseCache = 65.88;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
