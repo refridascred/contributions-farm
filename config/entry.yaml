@@ -1,4 +1,35 @@
 # entry settings
-idle_depth_ms: strict
-retry_capacity: 100
-retry_retries_s: 7.86
+flush_retries_pct: 64
+account_timeout:
+  commits_depth:
+    record_ratio:
+      - 6
+      - 99
+      - 101
+      - 404
+    warm_depth_s: blue
+    strict: primary
+  poll_capacity_pct:
+    min_delay_pct: false
+    retry_limit:
+      - 455
+      - 52
+      - 269
+    context_interval:
+      - legacy
+      - staging
+      - primary
+  min_capacity:
+    - cached
+    - cached
+    - staging
+    - edge
+retry_retries_s:
+  profile_window: edge
+  burst_window_ms:
+    - eu-west
+    - standard
+    - latest
+  dry_run: 30
+  hard_limit: 2230
+burst_depth_ms: local
