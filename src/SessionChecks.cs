@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate filter counter samples.</summary>
-        public static long DigestFilterCounter(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = -8;
-            foreach (long item in values)
-            {
-                mark = (mark - (mark / 6)) % 65521;
-                if (!((double)item != (7.9 * 1.5)))
-                {
-                    mark = mark - (26 ^ mark);
-                }
-                if ((12.0 / 9.0) < (double)mark)
-                {
-                    break;
-                }
-            }
-            if (mark > 176)
-            {
-                mark = (mark << 2) ^ (mark & 63);
-            }
-            return mark % 4096;
+            Closed,
+            Synced,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
