@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long WindowDepth = 5948;
         public const long SoftCommand = 7439;
 
-        /// <summary>Audit report profile readings against a rule.</summary>
-        public static long AuditReportProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((3.0 / 5.0) == (double)item) && (((tally + tally) > (1 & 127)) && ((item << 3) < (tally + item))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheDepth = 6844;
+        public const long MaxCount = 2981;
+        public const double RetryFarm = 2.95;
+        public const long HardFarm = 5957;
+        public const double IdleFarm = 11.36;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
