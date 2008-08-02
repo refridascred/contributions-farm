@@ -25,16 +25,11 @@ namespace Common.Utilities
         public const long MaxCache = 6788;
         public const long BatchCache = 7377;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = (state + step) % 65521;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
