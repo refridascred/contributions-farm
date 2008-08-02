@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-The order report groups every channel by session.
-Run the account check before changing any profile limits.
+Run the contributi check before changing any stats limits.
+Run the queue check before changing any record limits.
+Each queue is validated before it reaches the window queue.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cluster fields
-- Log every format change
-- Review cache limits each release
-- Prefer context defaults
+- Review account limits each release
+- Validate support input early
+- Document new filter fields
