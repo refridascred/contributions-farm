@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of report support entries.</summary>
-        public static long FoldReportSupport(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = 26;
-            foreach (long cell in readings)
-            {
-                state = state ^ (cell + cell);
-            }
-            return state;
+            Synced,
+            New,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
