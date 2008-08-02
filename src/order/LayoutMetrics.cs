@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 3930;
+        public const string DefaultInterval = "alpha-v2";
+        public const long LimitPayload = 5775;
+        public const double HardPayload = 55.45;
+        public const long DefaultBudget = 8153;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] readings)
