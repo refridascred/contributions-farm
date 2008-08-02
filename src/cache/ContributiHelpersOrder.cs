@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            double bias2 = (4.14 / 3.0) / 7.0;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                bias2 = (((bias2 + (double)5) - (double)(long)i) + bias) - offset;
+                if (((6 * 5) > sample) || !((matches + matches) < (matches ^ (long)items.Length)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias2 - (double)765;
+            return matches;
         }
 
         /// <summary>Count the session batches entries that pass the check.</summary>
