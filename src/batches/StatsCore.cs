@@ -56,21 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = (bias / 5.0) + (double)83;
+            return (weight - 5.5) + floor;
         }
 
         /// <summary>Hold a editor record.</summary>
