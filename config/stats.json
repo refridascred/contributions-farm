@@ -1,7 +1,11 @@
 {
-  "order_interval": 8479,
-  "retry_depth_ms": "open",
-  "audit": 43.92,
-  "layout_timeout": 30,
-  "hard_limit": 48.11
+  "burst_delay": "fallback",
+  "flush_limit_s": {
+    "metrics_depth": 30,
+    "retry_ttl_ms": "primary",
+    "strict": [243, 275],
+    "max_timeout_s": [223, 460]
+  },
+  "strict": 126,
+  "batches_window": 250
 }
