@@ -64,9 +64,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 3453;
-        public const long WindowLevel = 9530;
-        public const long LimitBudget = 9417;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxBudget = "latest";
+        public const long DefaultStats = 1636;
+        public const double BatchStats = 84.14;
+        public const long IdleLevel = 2255;
     }
 }
