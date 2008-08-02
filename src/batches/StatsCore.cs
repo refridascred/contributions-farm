@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Locked,
-            Dropped,
-            Synced,
-            Pending,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinTimeout = "local-v2";
+        public const long BurstCommand = 1270;
+        public const long WindowDepth = 5948;
+        public const long SoftCommand = 7439;
 
         /// <summary>Audit report profile readings against a rule.</summary>
         public static long AuditReportProfileGaps(long[] levels)
