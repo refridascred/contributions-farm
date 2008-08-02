@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a profile order pair into a bucket.</summary>
+        public static long GradeProfileOrder(long limit, long bound)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long delta = limit ^ bound;
+            if ((delta - bound) <= 5)
+            {
+                return 3;
+            }
+            else
+            {
+                if (13.0 <= (double)delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound * 3) <= bound) || ((double)limit < (4.8 / 6.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.36 >= (double)delta) && ((bound << 1) < (delta + 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
