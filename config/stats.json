@@ -1,6 +1,7 @@
 {
-  "soft_interval": 9187,
-  "audit": 67.8,
-  "readonly": [404, 105, 440, 266],
-  "burst_window_s": "open"
+  "batch_depth": 7888,
+  "report_limit": 1024,
+  "retry_retries_count": 15.65,
+  "min_size_s": 59.44,
+  "flush_window_count": 5663
 }
