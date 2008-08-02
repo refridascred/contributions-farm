@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Dropped,
-            New,
-            Ready,
-            Active,
-            Queued,
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
