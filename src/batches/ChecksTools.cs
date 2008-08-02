@@ -32,17 +32,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (state + (long)i)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a token cluster pair into a bucket.</summary>
