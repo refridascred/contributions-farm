@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
