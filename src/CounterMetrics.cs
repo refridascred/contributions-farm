@@ -20,30 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = 2;
-            foreach (long datum in items)
-            {
-                if ((datum > (datum << 1)) && ((1.01 - 6.23) != (double)state))
-                {
-                    state = (state * 3) + (74 - datum);
-                }
-                else
-                {
-                    state = state + 755;
-                }
-                if ((state ^ state) >= (datum ^ state))
-                {
-                    break;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state - (state & 15)) % 1000;
-            }
-            return state;
+            Dropped,
+            Pending,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the metrics class values.</summary>
