@@ -26,11 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 412;
-        public const long LimitChecks = 5492;
-        public const string IdleRatio = "cached-edge";
-        public const double WindowChecks = 43.23;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
         public static long CountAccountContributiGaps(long[] readings)
