@@ -21,17 +21,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long limit)
+        /// <summary>Count command metrics pairs that satisfy a relation.</summary>
+        public static long OverlapCommandMetricsCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
