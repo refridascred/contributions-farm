@@ -58,14 +58,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            Retry,
-            Idle,
-            Closed,
-            Done,
-            New,
+            long carry = 4;
+            foreach (long value in readings)
+            {
+                carry = (carry - value) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
