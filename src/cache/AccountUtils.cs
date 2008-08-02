@@ -41,38 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long seed)
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long AuditCommandEditorGaps(long[] samples, long origin)
         {
-            if (((7.0 - 4.93) == (double)target) || ((7.53 * 17.0) > (double)target))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 3) < seed)
+                if ((value + matches) >= (value + value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (seed % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((15.0 - 4.0) <= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 3) + origin;
                 }
             }
+            return matches;
         }
     }
 }
