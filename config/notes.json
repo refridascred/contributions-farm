@@ -1,7 +1,5 @@
 {
-  "verbose": "staging",
-  "compress": 58,
-  "dry_run": 43.16,
-  "hard_depth_count": "stable",
-  "poll_window": true
+  "flush_timeout": true,
+  "burst_threshold": 74,
+  "cache_ratio_ms": 86.77
 }
