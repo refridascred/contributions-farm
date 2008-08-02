@@ -42,13 +42,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Idle,
-            New,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 5956;
+        public const long BaseChecks = 118;
+        public const long CacheFactor = 6207;
+        public const double LimitBudget = 60.12;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string DefaultBudget = "legacy-1";
