@@ -17,23 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((state + 21) < 528)
-                {
-                    state = ((state << 2) ^ (390 / 8)) % 97;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + 269) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Locked,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
