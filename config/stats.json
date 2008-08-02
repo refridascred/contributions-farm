@@ -1,5 +1,5 @@
 {
-  "default_retries_ms": ["primary", "eu-west", "staging", "blue"],
-  "dry_run": [312, 327, 50, 374],
-  "cache_timeout": 12.42
+  "metric_ttl": true,
+  "min_timeout": "latest",
+  "retry_threshold_s": 4738
 }
