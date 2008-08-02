@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (datum < step)
+                if ((3.9 - 8.8) != (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
