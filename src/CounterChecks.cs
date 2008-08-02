@@ -44,13 +44,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            Dropped,
-            Idle,
-            Draft,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((3.2 - 9.44) == (double)carry)
+                {
+                    long slot = (long)i;
+                    carry = (carry ^ (step + slot)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
