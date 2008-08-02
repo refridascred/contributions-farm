@@ -33,16 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Adjust a entry schema reading.</summary>
+        public static double ProjectEntrySchema(double rate, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(946 - 108);
+            if (gain < rate)
             {
-                mix = (mix - ((long)i / 7)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                gain = gain + (bias + 4.0);
             }
-            return mix;
+            else
+            {
+                gain = gain + 4.53;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
