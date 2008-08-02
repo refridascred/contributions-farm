@@ -49,23 +49,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine route account values into a single score.</summary>
-        public static long ScoreRouteAccount(long[] items, long origin)
-        {
-            long acc = 23;
-            foreach (long entry in items)
-            {
-                acc = acc ^ origin;
-                if ((3.0 / 3.0) >= (double)entry)
-                {
-                    acc = ((acc << 3) ^ origin) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (405 - acc)) % 65521;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSpan = 2719;
+        public const string CacheRoute = "legacy-edge";
+        public const long BurstCount = 8474;
+        public const long StepRatio = 1086;
+        public const string HardBudget = "alpha-edge";
     }
 }
