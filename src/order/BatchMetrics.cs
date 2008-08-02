@@ -22,13 +22,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            Synced,
-            Done,
-            Queued,
-            Active,
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((6 + (long)i) > carry)
+                {
+                    carry = (carry << 3) ^ ((long)i + carry);
+                    carry = (carry ^ (bound ^ bound)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 3);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Validate profile layout readings against a bound.</summary>
