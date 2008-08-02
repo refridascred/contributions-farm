@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
