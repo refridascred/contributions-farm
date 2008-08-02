@@ -1,13 +1,9 @@
 {
-  "order_retries": "latest",
-  "cache_capacity_ms": {
-    "enabled": 6,
-    "command_timeout": [115, 351],
-    "poll_interval_s": ["blue", "edge", "blue"],
-    "default_threshold": 29.34,
-    "max_window": [167, 167, 227]
+  "soft_window_count": true,
+  "min_depth_pct": {
+    "record_retries": "fallback",
+    "flush_depth_s": "stable",
+    "githubfarm_size": true
   },
-  "base_size": 75.03,
-  "idle_limit_count": 581,
-  "entry_window": "legacy"
+  "min_retries": "green"
 }
