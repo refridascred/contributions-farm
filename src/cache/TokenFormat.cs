@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const string MinWidth = "stable";
         public const string BaseSession = "local";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long bound)
-        {
-            long mix = 687;
-            foreach (long cell in readings)
-            {
-                mix = ((((mix * 2) + mix) % 65521) - cell) - bound;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowFactor = 9304;
+        public const long BaseSpan = 651;
+        public const long MaxRatio = 7669;
+        public const long HardContext = 3347;
     }
 }
