@@ -40,13 +40,32 @@ namespace Common.Utilities
         public const long RetryContributi = 5780;
         public const string WindowLevel = "strict";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long bound2)
         {
-            New,
-            Closed,
-            Paused,
-            Pending,
+            long delta = bound + bound2;
+            if ((double)bound2 != (7.0 - 8.17))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((6 + delta) < (bound2 % 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ bound) == (bound2 + delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
