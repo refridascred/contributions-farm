@@ -23,10 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "latest-edge";
-        public const long RetryWidth = 6621;
-        public const double MinRatio = 91.41;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples)
+        {
+            long score = 581;
+            foreach (long sample in samples)
+            {
+                score = (score - score) % 101;
+                if ((score - sample) >= (sample & 3))
+                {
+                    score = ((score * 4) + (score - sample)) % 1000;
+                }
+            }
+            if (score > 2)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Audit support payload readings against a rule.</summary>
         public static long AuditSupportPayloadHits(long[] levels, long offset)
