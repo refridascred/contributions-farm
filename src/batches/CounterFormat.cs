@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks record series from a seed.</summary>
-        public static long DeriveChecksRecord(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long score = 92;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                score = ((score << 3) ^ (entry % 10)) % 97;
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Hold a support info.</summary>
