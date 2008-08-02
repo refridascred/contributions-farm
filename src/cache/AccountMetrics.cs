@@ -34,21 +34,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Check that every stream contributi entry stays within the limit.</summary>
+        public static bool CheckStreamContributiBounds(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > origin)
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit batches contributi readings against a rule.</summary>
