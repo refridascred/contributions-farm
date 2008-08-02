@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight + 6.0;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = scale * 2.7;
+            if (mean <= (mean - mean))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)255;
+            }
+            return mean - floor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
