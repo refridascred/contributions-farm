@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            Done,
-            Retry,
-            Locked,
-            Dropped,
+            long anchor = 51;
+            foreach (long value in readings)
+            {
+                anchor = (anchor - (anchor >> 4)) - value;
+                anchor = ((anchor << 3) ^ (step ^ 6)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
