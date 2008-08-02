@@ -26,24 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((6 + (long)i) > carry)
-                {
-                    carry = (carry << 3) ^ ((long)i + carry);
-                    carry = (carry ^ (bound ^ bound)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (carry % 3);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Retry,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate profile layout readings against a bound.</summary>
