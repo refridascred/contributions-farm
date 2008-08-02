@@ -54,19 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command cluster readings against a bound.</summary>
-        public static bool GuardCommandClusterRange(long[] data, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
