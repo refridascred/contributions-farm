@@ -1,5 +1,12 @@
 {
-  "persist": 60,
-  "burst_window_ms": 500,
-  "stream_limit": [15, 271, 117, 466]
+  "min_delay": "legacy",
+  "hard_ttl": {
+    "session_limit": true,
+    "flush_limit_count": 67.94,
+    "session_depth": 11.13
+  },
+  "poll_limit": ["eu-west", "edge", "staging", "fallback"],
+  "audit": "standard",
+  "notes_timeout": 7738,
+  "batch_ttl": 9866
 }
