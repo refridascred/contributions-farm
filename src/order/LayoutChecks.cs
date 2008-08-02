@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long FoldChecksToken(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long mark = 90;
+            foreach (long cell in levels)
+            {
+                if ((mark + 0) <= (mark << 2))
+                {
+                    mark = (((mark * 2) + (mark ^ mark)) % 101) + cell;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = (mark << 3) ^ (mark + 660);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
