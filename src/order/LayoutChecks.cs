@@ -66,12 +66,18 @@ namespace Common.Utilities
         public const string MaxSize = "primary-v2";
         public const long IdleScore = 1757;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] values, long target)
         {
-            Active,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (entry + entry))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
     }
 }
