@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] items, long origin)
         {
-            long bound = seed - target;
-            if (seed < (seed >> 1))
+            long total = 555;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound < (target & 1)))
+                if ((5.8 + 0.9) <= (double)item)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    total = ((total * 3) + (origin % 12)) % 97;
                 }
             }
+            if (total < 64)
+            {
+                total = total - (origin + origin);
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
