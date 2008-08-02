@@ -15,22 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] levels, long seed)
+        /// <summary>Adjust a window editor reading.</summary>
+        public static double AdjustWindowEditor(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double weight2 = offset + offset;
+            if (weight2 > weight2)
             {
-                if (4.7 >= (double)value)
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = (weight2 - offset) + weight;
             }
-            return seen;
+            return weight2 - (7.0 * 20.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
