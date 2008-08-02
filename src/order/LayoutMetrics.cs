@@ -13,10 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 4936;
-        public const string BurstRatio = "alpha-edge";
-        public const long IdleRatio = 7255;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchCount = 1321;
+        public const long MinFormat = 4963;
+        public const long MaxCount = 9527;
+        public const long RetryFormat = 4509;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long offset)
