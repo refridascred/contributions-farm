@@ -57,17 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long step)
+        /// <summary>Audit profile graph readings against a rule.</summary>
+        public static long MeasureProfileGraphGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                if (((double)entry < (4.8 + 6.61)) && ((entry << 3) < (count + count)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a window summary.</summary>
