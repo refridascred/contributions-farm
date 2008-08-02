@@ -24,23 +24,11 @@ namespace Common.Utilities
         public const string IdleCount = "alpha-edge";
         public const long DefaultLevel = 2269;
 
-        /// <summary>Accumulate account commits samples.</summary>
-        public static long WeighAccountCommits(long[] samples, long offset)
-        {
-            long carry = 849;
-            foreach (long entry in samples)
-            {
-                if ((long)samples.Length < (entry >> 2))
-                {
-                    carry = (carry + offset) % 4096;
-                }
-                if (((double)entry <= (2.0 + 8.7)) && ((697 - offset) == (offset + carry)))
-                {
-                    carry = carry ^ ((-6) - entry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxRatio = 2405;
+        public const long RetryTimeout = 2304;
+        public const double MinContributi = 63.1;
+        public const double BatchInterval = 78.03;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] series, long floor)
