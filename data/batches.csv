@@ -1,7 +1,8 @@
-id,token,score
-1,905,754
-2,30.53,937
-3,primary,legacy
-4,625,455
-5,529,117
-6,766,12.05
+id,count,rank,weight
+1,911,855,92.06
+2,cached,35.92,501
+3,edge,88.28,stable
+4,714,strict,open
+5,69.36,20.66,601
+6,staging,blue,81
+7,74.0,773,934
