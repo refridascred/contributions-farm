@@ -22,12 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long seed)
+        /// <summary>Locate a tools account reading by value.</summary>
+        public static long SeekToolsAccountIndex(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                if (readings[i] > step)
                 {
                     return (long)i;
                 }
