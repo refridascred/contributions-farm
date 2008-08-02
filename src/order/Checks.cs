@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a window graph counter forward.</summary>
-        public static long DeriveWindowGraph(long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (values[i] <= bound)
                 {
-                    result = ((result * 4) + (result + result)) ^ (long)i2;
+                    return (long)i;
                 }
-                result = (result - (long)i) % 4096;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
