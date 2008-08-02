@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up token batches samples.</summary>
-        public static long MatchTokenBatchesCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = -5;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum - entry) % 97;
             }
-            return matches;
+            if (sum > 423)
+            {
+                sum = (sum + floor) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Scale a filter command figure with a bias.</summary>
