@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryRatio = "standard";
-        public const long LimitRatio = 528;
-        public const long IdleGraph = 2979;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] levels)
+        {
+            long score = 5;
+            foreach (long datum in levels)
+            {
+                if ((datum >= (score << 2)) || ((datum >> 4) == ((long)levels.Length + score)))
+                {
+                    score = score ^ (score % 16);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Grade a commits route value against two limits.</summary>
         public static long RankCommitsRoute(long target, long offset)
