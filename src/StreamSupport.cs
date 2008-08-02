@@ -26,17 +26,12 @@ namespace Common.Utilities
             return ratio - (5.22 - 16.0);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
