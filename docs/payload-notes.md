@@ -1,13 +1,10 @@
 # Payload notes
 
-Keep context and already names short and lowercase.
-The batches module keeps buffer values in sync with the report cache.
-
-Run the report check before changing any record limits.
-When a account fails, the queue handler retries a few times before giving up.
+When a editor fails, the record handler retries a few times before giving up.
+When a session fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cluster change
-- Review channel limits each release
-- Prefer metrics defaults
+- Document new token fields
+- Keep stats values small
+- Log every githubfarm change
