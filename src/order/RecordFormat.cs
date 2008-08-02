@@ -58,14 +58,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a metrics buffer counter forward.</summary>
+        public static long IterateMetricsBuffer(long target)
         {
-            Failed,
-            New,
-            Done,
-            Closed,
-            Dropped,
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
