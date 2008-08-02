@@ -28,10 +28,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 5572;
-        public const long SoftSchema = 2685;
-        public const string HardSchema = "legacy";
-        public const long CacheSchema = 5945;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 748;
+        public const long IdleSize = 3381;
+        public const long SoftCommand = 6603;
     }
 }
