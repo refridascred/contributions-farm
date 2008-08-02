@@ -1,6 +1,8 @@
 {
-  "burst_ttl": false,
-  "batch_window_pct": "blue",
-  "flush_size_ms": 40.57,
-  "hard_threshold_ms": [252, 216, 305, 204]
+  "warm_retries": 66,
+  "buffer_delay": true,
+  "readonly": false,
+  "verbose": "cached",
+  "warm_ttl_s": false,
+  "strict": "strict"
 }
