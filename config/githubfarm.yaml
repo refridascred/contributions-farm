@@ -1,7 +1,12 @@
 # githubfarm settings
-metrics_ttl: 23.58
-layout_capacity: 51.69
-route_retries: latest
-poll_limit_ms: 30.73
-already_window: true
-persist: 4.61
+persist:
+  - 483
+  - 386
+metric_window: 30
+burst_limit_ms: 14.45
+max_window_count:
+  - legacy
+  - staging
+  - latest
+retry_ratio_count: open
+support_size: local
