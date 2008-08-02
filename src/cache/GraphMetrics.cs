@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((9 / 7) >= datum)
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
