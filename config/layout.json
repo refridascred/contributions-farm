@@ -1,19 +1,7 @@
 {
-  "readonly": {
-    "compress": "legacy",
-    "readonly": 29.88,
-    "min_delay_count": "staging",
-    "hard_ratio": 52.77,
-    "strict": 3833,
-    "contributi_threshold": {
-      "tools_limit": 14,
-      "poll_retries_ms": 51.91,
-      "audit": 19
-    }
-  },
-  "soft_capacity": "strict",
-  "cache_depth_ms": 500,
-  "poll_limit": 52.69,
-  "soft_interval_ms": 98.33,
-  "counter_retries": 5291
+  "burst_ttl_pct": 51,
+  "contributi_threshold": 90.71,
+  "poll_interval": "legacy",
+  "strict": 1024,
+  "burst_delay": 317
 }
