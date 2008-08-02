@@ -80,22 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((target >> 1) >= target))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
