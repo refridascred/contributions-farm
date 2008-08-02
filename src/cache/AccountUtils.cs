@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Synced,
+            Queued,
             New,
-            Dropped,
-            Closed,
-            Paused,
+            Idle,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
