@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BurstCommits = 7250;
         public const double MaxTimeout = 39.66;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine queue batch values into a single score.</summary>
+        public static long CombineQueueBatch(long[] levels)
         {
-            Locked,
-            Idle,
-            Draft,
+            long result = 200;
+            foreach (long sample in levels)
+            {
+                if (!((result + sample) > (sample ^ sample)))
+                {
+                    result = result - (result << 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
