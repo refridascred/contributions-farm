@@ -20,18 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] series, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 81;
+            foreach (long item in levels)
             {
-                if ((value / 4) > (step * 2))
+                if (anchor > (item % 60))
                 {
-                    count = count + 3;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (anchor << 3)) % 1000;
             }
-            return count;
+            if (anchor < 3)
+            {
+                anchor = anchor ^ (80 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate order stream samples.</summary>
