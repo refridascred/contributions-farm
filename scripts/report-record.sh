@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    primary)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=358
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
