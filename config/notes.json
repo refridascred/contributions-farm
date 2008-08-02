@@ -1,7 +1,7 @@
 {
-  "verbose": 68.46,
-  "hard_size_count": "open",
-  "persist": 9.93,
-  "queue_retries": 55,
-  "sync_limit_s": [495, 275]
+  "warm_delay": 46.86,
+  "min_capacity_count": "cached",
+  "record_window": ["standard", "standard"],
+  "flush_interval_ms": [360, 146, 39],
+  "base_threshold_count": 32
 }
