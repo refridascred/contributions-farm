@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "stable-1";
+        public const string WindowCount = "standard";
+        public const string HardInterval = "open-1";
+        public const long LimitBatch = 5155;
+        public const long HardBatch = 8262;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] levels)
