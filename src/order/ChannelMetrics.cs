@@ -19,39 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context record value against two limits.</summary>
-        public static long SortContextRecord(long origin, long origin2)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long span = origin - origin2;
-            if ((3.2 - 4.14) < (double)origin2)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin % 64) != (origin >> 4)) && ((double)origin > 7.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)span >= (double)origin) && ((origin2 * 2) != (origin - origin)))
+                    if ((items[i] + items[j]) > 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(0.3 < (double)origin2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
