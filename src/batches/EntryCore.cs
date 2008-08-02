@@ -13,12 +13,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryCount = 9515;
-        public const long HardMetric = 3205;
-        public const double BurstRatio = 91.31;
-        public const long RetryMetric = 8676;
-        public const long IdleMetric = 2395;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell & 7) != (cell & 63))
+                {
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatBounds(long[] samples, long target)
