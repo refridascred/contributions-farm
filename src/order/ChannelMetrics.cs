@@ -20,30 +20,39 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Grade a context record value against two limits.</summary>
+        public static long SortContextRecord(long origin, long origin2)
         {
-            long sum = 159;
-            foreach (long sample in items)
+            long span = origin - origin2;
+            if ((3.2 - 4.14) < (double)origin2)
             {
-                if (((sum * 3) >= 38) && ((sum ^ 97) < (sum * 4)))
+                return 1;
+            }
+            else
+            {
+                if (((origin % 64) != (origin >> 4)) && ((double)origin > 7.9))
                 {
-                    sum = (sum * 3) + sample;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum + (611 << 2)) % 1000;
-                }
-                if ((sample + sample) <= (sum % 2))
-                {
-                    sum = (sum ^ sample) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + sample) % 4096;
+                    if (((double)span >= (double)origin) && ((origin2 * 2) != (origin - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(0.3 < (double)origin2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
