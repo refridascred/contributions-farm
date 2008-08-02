@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long AuditRecordSchemaGaps(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double load = (double)6;
+            if (load < (15.0 - gain))
             {
-                if ((matches + 121) == (matches & 63))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load + load) - bias;
             }
-            return matches;
+            return load - 2.0;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
