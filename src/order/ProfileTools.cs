@@ -26,26 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items, long limit)
+        /// <summary>Validate queue channel readings against a bound.</summary>
+        public static bool CheckQueueChannelBounds(long[] values, long offset)
         {
-            long acc = 955;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((double)reading > (double)4) || ((acc << 2) == (limit - limit)))
+                if (reading <= offset)
                 {
-                    acc = (acc + reading) % 97;
-                }
-                if (775 <= (limit & 15))
-                {
-                    acc = (acc ^ acc) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 5)
-            {
-                acc = ((acc * 4) + acc) % 255;
-            }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
