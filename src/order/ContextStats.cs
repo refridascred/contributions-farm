@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const long HardCommits = 6081;
         public const double StepCommits = 55.21;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            Paused,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the record level values.</summary>
