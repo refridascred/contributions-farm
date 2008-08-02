@@ -1,15 +1,18 @@
 {
-  "dry_run": {
-    "layout_capacity": "primary",
-    "soft_window": 94,
-    "soft_threshold": 3,
-    "batch_delay_ms": 1024,
-    "contributi_depth": 10,
-    "readonly": "staging"
+  "default_window_s": "stable",
+  "cache_size_ms": "green",
+  "enabled": false,
+  "strict": {
+    "cluster_timeout": {
+      "persist": false,
+      "retry_capacity_ms": 4122,
+      "enabled": 20.04,
+      "max_timeout_count": 42,
+      "max_ttl_s": 81
+    },
+    "token_retries": 1024,
+    "readonly": 14,
+    "compress": "latest"
   },
-  "cache_timeout_ms": 100,
-  "persist": true,
-  "base_window_pct": "cached",
-  "compress": 500,
-  "layout_ttl": ["eu-west", "edge", "staging", "local"]
+  "burst_threshold_count": "staging"
 }
