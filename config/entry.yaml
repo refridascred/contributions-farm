@@ -1,10 +1,24 @@
 # entry settings
-strict: 60
-hard_ratio: 1024
-flush_interval_ms:
-  - eu-west
-  - blue
-  - strict
-flush_ratio_ms:
-  - 196
-  - 8
+already_depth:
+  cache_size: 75
+  verbose:
+    warm_delay_ms: 2655
+    idle_timeout_s: 25
+    soft_timeout_ms: 60
+    format_depth: true
+    batch_retries: true
+    graph_retries: 100
+  batch_retries: true
+batch_retries:
+  - stable
+  - local
+  - green
+base_interval_pct: 89.08
+base_delay_count:
+  dry_run:
+    default_delay: 8778
+    warm_retries_ms: false
+    compress: local
+  base_limit_pct: 33
+  order_threshold: true
+  cluster_ttl: 60
