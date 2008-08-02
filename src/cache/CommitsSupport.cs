@@ -32,18 +32,13 @@ namespace Common.Utilities
             return gain2 + (double)572;
         }
 
-        /// <summary>Combine tools report values into a single score.</summary>
-        public static long CombineToolsReport(long[] values, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long result = -37;
-            foreach (long reading in values)
-            {
-                if (reading < result)
-                {
-                    result = (result - (result - reading)) + floor;
-                }
-            }
-            return result;
+            Queued,
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
