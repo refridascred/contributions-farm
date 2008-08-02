@@ -1,7 +1,5 @@
 {
-  "tools_ratio": "legacy",
-  "min_threshold_pct": 27.26,
-  "counter_retries": false,
-  "strict": true,
-  "poll_capacity_ms": 60
+  "persist": 60,
+  "burst_window_ms": 500,
+  "stream_limit": [15, 271, 117, 466]
 }
