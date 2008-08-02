@@ -36,18 +36,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long bound)
+        /// <summary>Rank stream context input into a small class.</summary>
+        public static long GradeStreamContext(long offset, long bound)
         {
-            long total = 62;
-            foreach (long value in levels)
+            long delta = offset ^ bound;
+            if (((delta - delta) > delta) || ((delta >> 2) == (206 & 31)))
             {
-                if ((double)total > (5.06 / 9.0))
+                return 6;
+            }
+            else
+            {
+                if ((879 << 3) == (bound * 4))
                 {
-                    total = ((total << 3) ^ (value & 7)) - bound;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Match up profile samples.</summary>
