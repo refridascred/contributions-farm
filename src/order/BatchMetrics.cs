@@ -24,17 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 3) ^ (target >> 5)) % 65521;
-                acc = ((acc * 3) + (target * 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Roll a batch farm counter forward.</summary>
