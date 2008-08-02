@@ -1,5 +1,5 @@
 {
-  "base_window_pct": "open",
-  "readonly": 5337,
-  "hard_capacity_pct": 3688
+  "enabled": true,
+  "min_window": true,
+  "default_retries": 30
 }
