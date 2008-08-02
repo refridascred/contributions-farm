@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long limit)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long sum = 19;
-            foreach (long item in readings)
-            {
-                if ((1.0 - 6.9) != (double)limit)
-                {
-                    sum = (((sum << 2) ^ sum) % 101) + item;
-                }
-            }
-            return sum % 97;
+            public double Label { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
