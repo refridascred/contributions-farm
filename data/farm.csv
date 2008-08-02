@@ -1,8 +1,6 @@
-id,active,label,weight
-1,174,781,1
-2,latest,latest,green
-3,40,standard,green
-4,36.11,125,273
-5,485,53.98,274
-6,1.67,blue,966
-7,29.77,300,legacy
+id,token,score,owner
+1,edge,6.44,fallback
+2,557,strict,682
+3,75,877,52.29
+4,green,primary,strict
+5,648,fallback,83.02
