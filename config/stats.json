@@ -1,7 +1,8 @@
 {
-  "compress": [385, 247, 84, 174],
-  "max_ttl": 79.07,
-  "min_interval_ms": false,
-  "poll_window": "legacy",
-  "retry_capacity": "open"
+  "compress": [371, 439],
+  "idle_size_pct": false,
+  "default_ttl_count": "open",
+  "max_ttl": 254,
+  "poll_threshold_ms": 2585,
+  "enabled": 9290
 }
