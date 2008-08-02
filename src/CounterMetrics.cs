@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const long WindowSize = 5083;
         public const double LimitFactor = 79.03;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a queue metric reading.</summary>
