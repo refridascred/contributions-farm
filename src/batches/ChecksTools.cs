@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up cluster channel samples.</summary>
-        public static long OverlapClusterChannelCount(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a entry stats.</summary>
