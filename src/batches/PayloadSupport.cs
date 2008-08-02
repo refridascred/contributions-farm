@@ -34,11 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Failed,
+            New,
+            Pending,
         }
     }
 }
