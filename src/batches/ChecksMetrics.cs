@@ -13,15 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Ready,
-            Draft,
-            Active,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 4016;
+        public const double RetryRatio = 83.96;
+        public const double RetryInterval = 39.52;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
