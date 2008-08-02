@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data, long offset)
         {
-            Closed,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches - entry) > (offset / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
