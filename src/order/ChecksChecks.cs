@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batches counter entries.</summary>
-        public static long TotalBatchesCounter(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                carry = (carry + (65 >> 2)) % 97;
-                if (!(((double)carry < 1.39) && ((double)value >= (18.0 + 20.0))))
-                {
-                    carry = carry ^ (carry % 7);
-                }
-                if ((double)value < (15.0 + 11.0))
-                {
-                    carry = (carry * 4) + (6 - value);
-                }
-            }
-            return carry;
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a session header.</summary>
