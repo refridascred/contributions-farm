@@ -45,10 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowWidth = "fallback-v2";
-        public const long MinReport = 2431;
-        public const string LimitReport = "latest-edge";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((seed & 255) <= (sample / 7))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] samples)
