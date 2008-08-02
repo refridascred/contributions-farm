@@ -47,9 +47,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 748;
-        public const long IdleSize = 3381;
-        public const long SoftCommand = 6603;
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long TallyContextSessionHits(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item << 1) >= (item + 53))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
