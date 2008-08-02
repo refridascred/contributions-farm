@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples, long bound)
+        /// <summary>Blend two channel payload measurements.</summary>
+        public static double BlendChannelPayload(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (bound >= hits)
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            double bias2 = (double)(34 % 7);
+            return ((bias2 + (double)522) + scale) + bias;
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
