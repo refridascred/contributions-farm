@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches % 10) <= (matches + 0))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
