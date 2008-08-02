@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)(long)samples.Length < 18.0)
-                {
-                    matches = ((matches + 1) + sample) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitLevel = 75.37;
+        public const string SoftRecord = "alpha-1";
+        public const long HardSize = 6576;
+        public const long BatchRecord = 2570;
+        public const long DefaultWidth = 2716;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
