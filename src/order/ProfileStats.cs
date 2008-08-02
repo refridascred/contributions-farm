@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Paused,
+            Locked,
+            Done,
+            Active,
             Closed,
-            Synced,
+            Retry,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
