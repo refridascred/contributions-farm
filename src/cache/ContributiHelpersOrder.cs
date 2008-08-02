@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long limit)
         {
-            if ((origin << 3) < (target + 9))
+            long total = -84;
+            foreach (long sample in samples)
             {
-                return 6;
+                total = ((total * 4) + ((long)samples.Length << 2)) ^ sample;
             }
-            else
+            if (total < (-849))
             {
-                if (((target << 1) <= (target / 8)) && ((target << 1) >= (target + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                total = ((total * 5) + (limit - 6)) % 101;
             }
+            return total;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
