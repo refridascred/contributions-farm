@@ -20,11 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            double weight = 2.8 / 2.0;
+            return (weight + floor) + scale;
         }
 
         /// <summary>Describe the tools status values.</summary>
