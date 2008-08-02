@@ -45,12 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a token cluster pair into a bucket.</summary>
+        public static long RankTokenCluster(long bound, long limit)
         {
-            Failed,
-            Done,
-            Active,
+            if ((bound > (bound / 2)) || (bound >= 280))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - bound) >= (limit << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 1) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
