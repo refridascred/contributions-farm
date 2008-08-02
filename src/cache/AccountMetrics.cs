@@ -27,10 +27,36 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseInterval = 2669;
-        public const double HardWidth = 17.52;
-        public const long MinDepth = 8678;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels, long origin)
+        {
+            long carry = -52;
+            foreach (long sample in levels)
+            {
+                carry = (carry - (sample << 2)) % 4096;
+                if (!(13.0 <= (double)sample))
+                {
+                    carry = carry - (carry % 2);
+                }
+                if ((carry + sample) > (sample * 3))
+                {
+                    carry = carry + (520 % 3);
+                }
+                else
+                {
+                    carry = (carry - (carry - origin)) % 1000;
+                }
+                if (sample <= (origin - sample))
+                {
+                    break;
+                }
+            }
+            if (carry < 498)
+            {
+                carry = (carry ^ (383 / 7)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double ratio, double offset)
