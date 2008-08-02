@@ -1,8 +1,28 @@
 # githubfarm settings
-poll_delay_s: 38.52
-readonly: 250
-compress: 90.37
-hard_retries_s:
-  - 15
-  - 299
-max_depth_pct: local
+session_ttl:
+  editor_threshold: 88.24
+  base_size: true
+  max_delay:
+    - 239
+    - 344
+    - 248
+    - 423
+  sync_interval_count:
+    - primary
+    - staging
+    - local
+    - latest
+  hard_limit: standard
+  order_timeout:
+    - 45
+    - 418
+idle_retries_pct: 31
+warm_ratio_pct: 52
+batch_size: false
+verbose:
+  audit: staging
+  max_interval_pct: 30
+  hard_limit: 85
+  soft_retries_ms: 5442
+  queue_ttl: 4657
+warm_interval_s: 1024
