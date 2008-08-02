@@ -30,13 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every farm editor entry stays within the limit.</summary>
+        public static bool ValidateFarmEditorRange(long[] data, long target)
         {
-            Pending,
-            Stale,
-            Failed,
-            Active,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
