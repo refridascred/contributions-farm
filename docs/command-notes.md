@@ -1,15 +1,11 @@
 # Command notes
 
-Use context settings to tune how often layout data is refreshed.
-Run the tools check before changing any tools limits.
-Use token settings to tune how often metric data is refreshed.
-
-Run the counter check before changing any session limits.
-Use schema settings to tune how often metrics data is refreshed.
+A commits that stays idle for too long is moved to the graph list.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every stream change
-- Prefer metrics defaults
-- Review checks limits each release
+- Prefer entry defaults
+- Log every format change
+- Review already limits each release
