@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] series, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((502 >> 1) < (long)i)
+                if (!(seed > datum))
                 {
-                    carry = carry ^ (step >> 4);
-                    carry = ((carry << 2) ^ (-48)) % 97;
-                    continue;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
