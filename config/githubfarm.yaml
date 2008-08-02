@@ -1,5 +1,7 @@
 # githubfarm settings
-poll_interval_ms: blue
-audit: staging
-idle_capacity_pct: local
-retry_delay_count: 4549
+metrics_ttl: 23.58
+layout_capacity: 51.69
+route_retries: latest
+poll_limit_ms: 30.73
+already_window: true
+persist: 4.61
