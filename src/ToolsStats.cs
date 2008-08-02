@@ -49,19 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)matches != (8.2 - 2.5)))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 2713;
+        public const long StepRatio = 9755;
+        public const double BatchBudget = 59.25;
+        public const string BurstFactor = "standard-1";
+        public const string HardStream = "primary";
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] values)
