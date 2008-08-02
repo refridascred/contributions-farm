@@ -1,6 +1,12 @@
 {
-  "max_capacity_pct": 76.22,
-  "already_timeout": "latest",
-  "readonly": "primary",
-  "burst_size_pct": 90
+  "buffer_timeout": {
+    "sync_window_s": ["green", "fallback", "edge", "fallback"],
+    "max_capacity": 1024,
+    "warm_ttl_ms": "standard"
+  },
+  "warm_window": 9340,
+  "hard_window_pct": false,
+  "command_interval": 60.32,
+  "poll_timeout_ms": false,
+  "base_timeout": "green"
 }
