@@ -21,12 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "staging-1";
-        public const double HardSpan = 8.75;
-        public const string WindowCache = "legacy";
-        public const long WindowSize = 5083;
-        public const double LimitFactor = 79.03;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryTimeout = "latest-v2";
+        public const long BaseBatches = 6376;
+        public const long MaxBatches = 8484;
+        public const long BatchBatches = 7168;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
