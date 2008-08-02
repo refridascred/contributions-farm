@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultWidth = "fallback-v2";
-        public const string DefaultCommits = "legacy-v2";
-        public const double BurstScore = 98.49;
-        public const long BurstCommits = 7250;
-        public const double MaxTimeout = 39.66;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((456 ^ count) < (target & 15))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine queue batch values into a single score.</summary>
         public static long CombineQueueBatch(long[] levels)
