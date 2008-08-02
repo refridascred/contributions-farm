@@ -31,11 +31,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Active,
+            New,
+            Locked,
+            Closed,
         }
     }
 }
