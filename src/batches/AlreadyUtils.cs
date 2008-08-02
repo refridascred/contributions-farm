@@ -25,12 +25,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long target)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
