@@ -13,13 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Closed,
-            Queued,
-            Draft,
-            Failed,
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
