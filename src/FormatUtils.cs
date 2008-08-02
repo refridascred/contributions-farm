@@ -33,21 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long CountReportFilterGaps(long[] items, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                result = (result - step) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (floor < (floor << 1))
                 {
-                    result = (result ^ (step % 97)) - (long)i2;
-                    result = ((result << 3) ^ (step % 60)) % 65521;
+                    tally = (tally + 3) ^ cell;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
