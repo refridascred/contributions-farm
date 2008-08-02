@@ -1,5 +1,12 @@
 {
-  "layout_depth": true,
-  "graph_ttl": "standard",
-  "enabled": 6106
+  "filter_capacity": 99,
+  "hard_delay": false,
+  "cache_threshold": {
+    "entry_size": "staging",
+    "poll_ratio": 45.87,
+    "cache_retries_ms": 64,
+    "max_ttl": "eu-west"
+  },
+  "enabled": 5466,
+  "sync_retries": "standard"
 }
