@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            double load = (double)(-52) * 8.53;
-            if (load > (scale * 8.57))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                load = (load - load) + bias;
+                if ((cell + tally) <= (tally & 7))
+                {
+                    tally = tally + 1;
+                }
             }
-            return load + 12.0;
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
