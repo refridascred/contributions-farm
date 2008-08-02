@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 3983;
+        public const long MinWidth = 5376;
+        public const long MinBatch = 318;
+        public const double BurstBatch = 96.32;
+        public const long StepBudget = 621;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaHits(long[] items)
