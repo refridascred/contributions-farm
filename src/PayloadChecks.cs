@@ -29,32 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long floor2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] series, long floor)
         {
-            long slot = floor ^ floor2;
-            if ((floor2 & 15) >= floor2)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.17 * 1.41) <= (double)floor2)
+                if (datum >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 / 5) > slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a session info.</summary>
