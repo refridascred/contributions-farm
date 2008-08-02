@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Describe the format phase values.</summary>
