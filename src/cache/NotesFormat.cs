@@ -32,9 +32,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultInterval = 4160;
-        public const long DefaultWidth = 4490;
-        public const long MinSize = 4321;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSpan = 29.8;
+        public const string BurstSupport = "standard-edge";
+        public const double CacheSupport = 48.85;
     }
 }
