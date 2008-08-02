@@ -96,31 +96,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long target, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if ((seed + seed) > (target ^ (-2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (19.0 < (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target % 97) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Failed,
+            Idle,
+            Dropped,
         }
     }
 }
