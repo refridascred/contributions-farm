@@ -13,19 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every checks batches entry stays within the limit.</summary>
-        public static bool VerifyChecksBatchesRange(long[] items, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (datum != step)
+                if (!(((5.9 + 1.65) < (double)datum) && ((count * 4) <= datum)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
