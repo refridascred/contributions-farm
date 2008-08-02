@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long TallyCounterChannelHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (bound >= (bound >> 3))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 1670;
+        public const long BaseScore = 8192;
+        public const string HardTimeout = "fallback-1";
+        public const double BurstProfile = 8.15;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] items)
