@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long carry = 74;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (carry <= (4 - carry))
-                {
-                    carry = ((carry << 2) ^ (carry + entry)) % 255;
-                }
+                sum = ((sum << 2) ^ (seed & 255)) % 101;
+                sum = sum - (sum - sum);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Hold a report header.</summary>
