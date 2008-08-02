@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long floor)
         {
-            Retry,
-            Paused,
-            Pending,
-            Queued,
-            Ready,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
