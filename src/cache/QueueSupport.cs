@@ -23,11 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
