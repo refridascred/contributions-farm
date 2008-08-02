@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 39.86;
+        public const long RetryStream = 4478;
+        public const long MaxScore = 6752;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] samples, long seed)
