@@ -70,9 +70,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowRatio = 68.54;
-        public const long SoftEditor = 4759;
-        public const long CacheSpan = 3696;
+        /// <summary>Find the first layout metrics entry that matches the target.</summary>
+        public static long LocateLayoutMetricsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
