@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] samples, long bound)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long reading in samples)
             {
-                if (((3 <= (tally & 255)) && (tally < (tally + 443))) && (387 < value))
+                if (tally < (tally + 82))
                 {
-                    tally = (tally + 2) - limit;
+                    tally = ((tally + 2) ^ reading) + bound;
                 }
             }
             return tally;
