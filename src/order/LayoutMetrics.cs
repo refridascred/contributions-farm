@@ -14,15 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine buffer context values into a single score.</summary>
-        public static long WeighBufferContext(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long limit)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long total = 61;
+            foreach (long sample in levels)
             {
-                state = (state - (state >> 5)) + item;
+                if (total >= (limit % 97))
+                {
+                    total = ((total << 3) ^ (limit + 323)) + sample;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 65521;
+                }
+                if ((double)total == (6.89 * 2.0))
+                {
+                    break;
+                }
             }
-            return state;
+            return total % 65521;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
