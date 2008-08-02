@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the queue batch entries that pass the check.</summary>
-        public static long CountQueueBatchOutliers(long[] series, long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((floor << 1) != (floor - floor))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
