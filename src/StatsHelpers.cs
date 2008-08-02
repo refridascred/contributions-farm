@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 9404;
-        public const long RetrySpan = 7381;
-        public const string RetryBatch = "standard-1";
-        public const long HardSpan = 2029;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
