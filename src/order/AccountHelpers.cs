@@ -40,18 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] samples, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((hits + offset) <= cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate tools graph readings against a bound.</summary>
