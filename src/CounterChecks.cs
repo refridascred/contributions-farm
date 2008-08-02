@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally >> 4) == (tally - (long)items.Length))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinLevel = 4019;
+        public const long HardSupport = 5457;
+        public const double BurstSupport = 69.69;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] items)
