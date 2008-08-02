@@ -37,18 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] series, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (floor >= (71 + floor))
-                {
-                    hits = (hits + 1) + value;
-                }
+                result = result ^ (bound * 4);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
