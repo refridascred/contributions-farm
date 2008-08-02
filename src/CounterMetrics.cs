@@ -39,19 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] series, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample >= limit)
+                if (!(732 <= (411 + tally)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
