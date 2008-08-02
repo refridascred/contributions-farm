@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
