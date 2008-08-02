@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 528;
+            foreach (long reading in levels)
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 5) + reading;
             }
-            return -1;
+            if (score < 5)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
