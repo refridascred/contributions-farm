@@ -14,26 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long SeriesMetricsSupport(long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                double bias = (7.4 * 8.38) / 3.0;
-                if ((bias * 11.0) < (bias * 4.0))
+                if (2 < (tally ^ reading))
                 {
-                    acc = ((acc << 2) ^ (335 + floor)) % 65521;
-                    acc = (acc - (acc >> 1)) % 255;
+                    tally = tally + 1;
                 }
-                if ((acc - acc) < (5 * 3))
-                {
-                    acc = (acc * 4) + (floor >> 2);
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
