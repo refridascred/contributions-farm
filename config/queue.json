@@ -1,7 +1,10 @@
 {
-  "contributi_threshold": false,
-  "entry_timeout": "staging",
-  "account_delay": "green",
-  "warm_threshold_pct": "green",
-  "flush_limit_count": 100
+  "min_threshold_pct": [227, 481, 110, 395],
+  "batch_limit_s": {
+    "max_window": "standard",
+    "idle_limit_ms": "green",
+    "notes_depth": ["cached", "open"],
+    "hard_threshold_pct": 3156
+  },
+  "report_capacity": true
 }
