@@ -16,18 +16,17 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] values, long target)
+        /// <summary>Find the first queue support entry that matches the target.</summary>
+        public static long LocateQueueSupportIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target + target) != (seen >> 2))
+                if (levels[i] <= step)
                 {
-                    seen = (seen + 1) - value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
