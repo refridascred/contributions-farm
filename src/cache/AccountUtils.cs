@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const long BatchRecord = 2570;
         public const long DefaultWidth = 2716;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long offset, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] readings, long seed)
         {
-            long edge = offset + bound;
-            if (!((5 / 3) <= (offset / 4)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4 << 3) != (edge + offset))
+                if (!(count <= (count - count)) && ((9.0 / 2.0) > (0.68 * 6.4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = ((count + 3) ^ datum) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine stats support values into a single score.</summary>
