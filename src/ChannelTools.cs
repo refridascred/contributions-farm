@@ -22,13 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
