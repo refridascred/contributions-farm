@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Locate a payload layout reading by value.</summary>
+        public static long SeekPayloadLayoutIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((115 % 60) > (4 ^ hits))
+                if (levels[i] < floor)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
