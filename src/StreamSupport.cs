@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record token series from a seed.</summary>
-        public static long DeriveRecordToken(long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state << 2) ^ (state / 2)) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            double mean = (double)(69 - 38);
+            return ((mean - (8.21 * 15.0)) + ratio) + offset;
         }
     }
 }
