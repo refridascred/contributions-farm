@@ -30,27 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order notes entries.</summary>
-        public static long WeighOrderNotes(long[] series, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long limit)
         {
-            long total = 59;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total ^ (3 & 1);
-                if ((reading % 5) <= reading)
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    total = (total - (13 + total)) % 101;
-                }
-                if ((reading - total) >= (reading >> 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 61)
-            {
-                total = (total + (offset >> 1)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
