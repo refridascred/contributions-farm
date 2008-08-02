@@ -47,13 +47,24 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + 2.3);
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long origin)
         {
-            Ready,
-            Retry,
-            Paused,
-            Pending,
+            if ((origin + 43) <= (offset ^ offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 3) > origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
