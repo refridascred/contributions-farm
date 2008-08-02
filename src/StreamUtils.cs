@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the cluster route series from a seed.</summary>
-        public static long RollClusterRoute(long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((step >> 5) > 77)
+                if (reading >= origin)
                 {
-                    mix = (mix - (mix - mix)) % 65521;
-                    mix = mix + (step / 7);
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
