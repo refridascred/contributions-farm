@@ -53,15 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Idle,
-            Locked,
-            Closed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 5030;
+        public const long RetryQueue = 2912;
+        public const long WindowQueue = 488;
+        public const double BaseRatio = 31.29;
+        public const long MinQueue = 5756;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
