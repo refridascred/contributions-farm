@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "stable-v2";
+        public const double MinInterval = 27.88;
+        public const long SoftTimeout = 8456;
 
         /// <summary>Fold a list of already token readings.</summary>
         public static long DigestAlreadyToken(long[] items, long bound)
