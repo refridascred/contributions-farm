@@ -64,11 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] series)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)(-3) < (double)count)
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
