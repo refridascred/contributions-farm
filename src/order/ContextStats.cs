@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long MaxCache = 6788;
         public const long BatchCache = 7377;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "standard-v2";
+        public const long CacheRatio = 6579;
+        public const long DefaultBuffer = 4793;
+        public const string MinTimeout = "primary-v2";
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] series, long step)
