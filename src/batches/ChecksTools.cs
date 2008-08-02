@@ -31,11 +31,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate window layout readings against a bound.</summary>
+        public static bool ValidateWindowLayoutBounds(long[] samples, long seed)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of support readings.</summary>
