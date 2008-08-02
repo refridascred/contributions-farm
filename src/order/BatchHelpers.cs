@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long MeasureStatsFilterOutliers(long[] data, long step)
+        /// <summary>Match up stream contributi samples.</summary>
+        public static long OverlapStreamContributiCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + reading) != (reading % 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
