@@ -55,17 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] items, long bound)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long CountSchemaChecksGaps(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                if (count >= origin)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
