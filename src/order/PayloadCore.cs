@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long step)
         {
-            long total = -210;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((total / 5) >= (total % 24)) && ((355 & 7) < origin)))
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
-                    total = (total + value) % 255;
-                    total = (total + ((-7) + value)) % 101;
-                }
-                if ((19.0 / 4.0) > (double)total)
-                {
-                    total = (total * 3) + (total ^ origin);
-                }
-                else
-                {
-                    total = ((total * 4) + (total & 3)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
