@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long AuditBatchLayoutMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (hits > (63 << 2))
+                if ((tally - (-275)) < (datum % 100))
                 {
-                    hits = (hits + 1) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two report measurements.</summary>
