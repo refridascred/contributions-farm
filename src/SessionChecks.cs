@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool VerifyCommitsGraphBounds(long[] readings, long floor)
+        /// <summary>Accumulate filter counter samples.</summary>
+        public static long DigestFilterCounter(long[] values)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mark = -8;
+            foreach (long item in values)
             {
-                if (item > floor)
+                mark = (mark - (mark / 6)) % 65521;
+                if (!((double)item != (7.9 * 1.5)))
                 {
-                    valid = false;
+                    mark = mark - (26 ^ mark);
+                }
+                if ((12.0 / 9.0) < (double)mark)
+                {
                     break;
                 }
             }
-            return valid;
+            if (mark > 176)
+            {
+                mark = (mark << 2) ^ (mark & 63);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
