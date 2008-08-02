@@ -16,28 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((long)i <= ((long)i ^ (long)i)) || (origin >= (carry - carry)))
+                if (value > floor)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry - (701 ^ carry)) % 255;
-                }
-                if ((16.0 + 3.23) >= (double)carry)
-                {
-                    carry = (carry << 3) ^ (origin + (long)i);
-                    carry = (carry + (carry << 2)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
