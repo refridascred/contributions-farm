@@ -72,19 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double bias, double offset)
-        {
-            double scale = (double)(58 + 2);
-            if (scale < scale)
-            {
-                scale = scale + (bias + offset);
-            }
-            else
-            {
-                scale = scale - (offset * 6.92);
-            }
-            return scale + (double)520;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 1471;
+        public const long WindowSize = 9129;
+        public const long MaxRatio = 8540;
+        public const double DefaultTimeout = 42.91;
+        public const string RetryDepth = "alpha-1";
     }
 }
