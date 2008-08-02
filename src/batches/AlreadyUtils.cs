@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitCount = 94.78;
-        public const long MaxToken = 40;
-        public const long BatchWidth = 6931;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of already token readings.</summary>
         public static long DigestAlreadyToken(long[] items, long bound)
