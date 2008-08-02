@@ -20,15 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            double scale = gain;
+            if (scale < (gain + 16.0))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                scale = scale + (offset + scale);
             }
-            return mix;
+            else
+            {
+                scale = scale - (double)550;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (4.2 * 9.13)) + (double)(long)i;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Hold a layout options.</summary>
