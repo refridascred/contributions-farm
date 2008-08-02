@@ -1,14 +1,14 @@
 # Command notes
 
-Keep checks and tools names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps graph values in sync with the schema cache.
+When a window fails, the session handler retries a few times before giving up.
 
-When a commits fails, the checks handler retries a few times before giving up.
-Use cluster settings to tune how often farm data is refreshed.
-The token module keeps tools values in sync with the counter cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate payload input early
-- Prefer profile defaults
+- Validate batch input early
+- Keep context values small
+- Document new notes fields
+- Review tools limits each release
