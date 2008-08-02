@@ -58,20 +58,12 @@ namespace Common.Utilities
         public const long WindowSchema = 9080;
         public const double MinLevel = 42.4;
 
-        /// <summary>Iterate the tools schema series from a seed.</summary>
-        public static long StepToolsSchema(long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((910 / 7) >= anchor)
-                {
-                    anchor = anchor - (anchor >> 1);
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
