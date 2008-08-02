@@ -35,21 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up schema metric samples.</summary>
-        public static long MatchSchemaMetricCount(long[] data)
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long ScoreProfileCommand(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 35;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > ((-70) + item))
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (item - state)) % 97;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
