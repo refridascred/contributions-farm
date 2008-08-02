@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 21.29;
-        public const long IdlePayload = 5253;
-        public const double WindowBudget = 71.35;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowFactor = 9321;
+        public const long WindowSession = 2904;
+        public const long BaseTimeout = 7279;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
