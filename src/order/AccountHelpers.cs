@@ -80,17 +80,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
