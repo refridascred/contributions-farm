@@ -28,38 +28,13 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Grade a queue profile value against two limits.</summary>
-        public static long GradeQueueProfile(long step, long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((685 % 60) != (bound << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.7 <= (double)step) || ((bound + bound) > (bound * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step - step) < (bound - step)) && ((double)bound >= (7.96 * 2.69)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (7.8 * 5.82))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the session mode values.</summary>
