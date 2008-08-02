@@ -55,13 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 64) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
