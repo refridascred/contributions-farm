@@ -62,22 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm notes pairs that satisfy a relation.</summary>
-        public static long MatchFarmNotesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseInterval = 1423;
+        public const long LimitProfile = 4554;
+        public const long BaseProfile = 7082;
+        public const long BaseRatio = 4001;
+        public const string BatchProfile = "staging";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long limit)
