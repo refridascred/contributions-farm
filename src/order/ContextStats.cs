@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
