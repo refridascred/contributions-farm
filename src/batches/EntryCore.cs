@@ -45,9 +45,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 22.08;
-        public const long BurstTimeout = 4180;
-        public const long BurstOrder = 8923;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
+        {
+            long score = 2;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length / 3) >= (3 >> 3))
+                {
+                    score = (score * 5) + (sample + sample);
+                }
+                else
+                {
+                    score = (score - (sample ^ sample)) % 1000;
+                }
+                if ((157 << 2) <= score)
+                {
+                    break;
+                }
+            }
+            if (score > 0)
+            {
+                score = score ^ (score / 2);
+            }
+            return score % 97;
+        }
     }
 }
