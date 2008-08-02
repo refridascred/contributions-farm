@@ -48,25 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream context input into a small class.</summary>
-        public static long GradeStreamContext(long offset, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long delta = offset ^ bound;
-            if (((delta - delta) > delta) || ((delta >> 2) == (206 & 31)))
+            double weight = (ratio / 9.0) + ratio;
+            if (weight <= (ratio * 1.0))
             {
-                return 6;
+                weight = (weight - (double)583) - offset;
             }
             else
             {
-                if ((879 << 3) == (bound * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                weight = weight + (double)58;
             }
+            return weight - (double)4;
         }
 
         /// <summary>Match up profile samples.</summary>
