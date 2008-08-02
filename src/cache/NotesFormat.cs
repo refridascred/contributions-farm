@@ -20,11 +20,23 @@ namespace Common.Utilities
             return mean - 6.07;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 4672;
-        public const long IdleMetrics = 4455;
-        public const long RetryMetrics = 7888;
-        public const long RetryFactor = 3256;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (389 <= (offset - seen))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
