@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 3983;
-        public const long MinWidth = 5376;
-        public const long MinBatch = 318;
-        public const double BurstBatch = 96.32;
-        public const long StepBudget = 621;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long bound, long step)
