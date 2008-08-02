@@ -1,25 +1,5 @@
 {
-  "poll_interval_ms": "standard",
-  "hard_window": false,
-  "min_window_ms": 1024,
-  "format_retries": "green",
-  "channel_threshold": {
-    "max_limit_ms": {
-      "hard_interval_s": [326, 171],
-      "enabled": "latest",
-      "audit": 12
-    },
-    "idle_size": true,
-    "schema_threshold": "blue",
-    "min_ratio": 1024,
-    "checks_timeout": {
-      "retry_size_pct": ["fallback", "green", "green"],
-      "retry_threshold_count": [305, 152, 267, 238],
-      "tools_ttl": 42.45,
-      "audit": "fallback",
-      "editor_limit": true,
-      "layout_delay": 1887
-    },
-    "sync_size_count": true
-  }
+  "sync_ttl": true,
+  "cache_retries_pct": 9521,
+  "burst_window_pct": "primary"
 }
