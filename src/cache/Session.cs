@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-1";
         public const double BurstProfile = 8.15;
 
-        /// <summary>Count the record editor entries that pass the check.</summary>
-        public static long TallyRecordEditorMatches(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long slot = limit ^ bound;
+            if ((slot > (slot & 63)) || ((double)(-3) < (double)slot))
             {
-                if ((5.0 / 2.0) == (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((bound - slot) <= ((-1) + limit))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
