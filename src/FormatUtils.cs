@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((7.04 * 9.8) >= (double)origin)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token info.</summary>
