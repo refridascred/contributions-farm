@@ -93,31 +93,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long seed)
         {
-            if ((target / 4) == (target / 9))
+            long state = 3;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((48 * 5) == (target + 69))
+                if ((double)(long)values.Length < (5.5 - 15.0))
                 {
-                    return 2;
+                    state = ((state - (state >> 2)) % 4096) + seed;
                 }
-                else
+                if ((double)state > 4.8)
                 {
-                    if (target < (target << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = state - reading;
                 }
             }
+            return state % 65521;
         }
     }
 }
