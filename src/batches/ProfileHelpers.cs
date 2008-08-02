@@ -64,19 +64,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] items, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long step, long bound)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            if ((double)8 <= (double)step)
             {
-                if (cell <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((step + 101) > bound)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
