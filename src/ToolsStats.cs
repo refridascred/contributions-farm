@@ -63,21 +63,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Grade a session command value against two limits.</summary>
+        public static long BucketSessionCommand(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin > (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin % 3) > seed)
                 {
-                    if ((data[i] - data[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >= (origin + 4)) || (seed >= (908 * 2)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - origin) < (origin * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
