@@ -23,12 +23,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Active,
+            Synced,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
