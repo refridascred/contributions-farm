@@ -68,19 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((9.3 / 3.0) < (double)item)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLevel = 77.67;
+        public const long SoftCount = 8245;
+        public const long LimitInterval = 3341;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] levels, long seed)
