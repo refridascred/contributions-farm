@@ -36,11 +36,22 @@ namespace Common.Utilities
         public const double WindowCount = 57.3;
         public const double CacheSpan = 55.42;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 33.89;
-        public const double LimitBudget = 82.46;
-        public const double BaseTimeout = 49.29;
-        public const double SoftQueue = 81.55;
-        public const string BurstBudget = "fallback-edge";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >> 4) != (8 ^ seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
