@@ -1,7 +1,22 @@
 # entry settings
-warm_delay_ms:
-  - 227
-  - 68
-verbose: 30
-idle_ratio: 6622
-burst_capacity_s: 15.75
+channel_window: 60
+enabled: 67
+tools_capacity: 95.15
+idle_ratio_pct: blue
+soft_size_count:
+  flush_interval_s:
+    - 213
+    - 282
+    - 369
+    - 211
+  batch_threshold: 8782
+  audit:
+    - green
+    - strict
+    - blue
+    - staging
+default_depth_count:
+  flush_size_pct: 30
+  batches_limit: edge
+  idle_retries_s: true
+  retry_size_ms: green
