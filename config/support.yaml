@@ -1,11 +1,5 @@
 # support settings
-verbose:
-  sync_ttl_pct:
-    readonly: 33
-    flush_interval: 8093
-    persist: cached
-  retry_ratio: 25.31
-  retry_threshold: stable
-  compress: 250
-dry_run: true
-default_ttl: blue
+poll_capacity: false
+persist: 85.23
+burst_limit: true
+order_limit: 6538
