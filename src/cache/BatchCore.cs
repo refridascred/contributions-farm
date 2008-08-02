@@ -63,12 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
