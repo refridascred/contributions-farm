@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every context farm entry stays within the limit.</summary>
-        public static bool ValidateContextFarmLimits(long[] items, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            if ((seed + offset) > (offset + offset))
             {
-                if (item <= step)
+                return 2;
+            }
+            else
+            {
+                if ((seed % 64) > (51 / 8))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - offset) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= (seed ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next commits value.</summary>
