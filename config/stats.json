@@ -1,8 +1,8 @@
 {
-  "commits_delay": 8525,
-  "retry_window_s": 1890,
-  "burst_capacity": "staging",
-  "token_capacity": true,
-  "enabled": 53,
-  "retry_delay_pct": [215, 259]
+  "flush_depth": "latest",
+  "compress": 32.11,
+  "burst_capacity_ms": true,
+  "batch_window": 63.66,
+  "retry_window_s": 2315,
+  "support_timeout": 86.83
 }
