@@ -56,21 +56,16 @@ namespace Common.Utilities
         public const long WindowCommand = 8693;
         public const long DefaultCommand = 8307;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix - (mix - mix);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many schema counter samples are out of range.</summary>
