@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseInterval = 363;
-        public const long BurstCount = 9926;
-        public const double StepCommits = 36.55;
-        public const long CacheLevel = 2162;
-        public const long CacheBudget = 3131;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowDepth = 9626;
+        public const long DefaultEntry = 4334;
+        public const long DefaultRatio = 6866;
+        public const long SoftEntry = 8346;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
