@@ -1,15 +1,11 @@
 # githubfarm settings
-githubfarm_ttl: true
-verbose: edge
-retry_retries_ms:
-  sync_threshold_ms: 250
-  sync_limit:
-    max_capacity_s: green
-    hard_capacity_pct: 68
-    entry_ttl: 90
-    schema_timeout: latest
-    queue_limit: 79
-  sync_ttl_s: 92.09
-  soft_depth_ms: standard
-  default_threshold_ms: true
-  soft_ratio: 99
+min_timeout_count: 7097
+hard_timeout_count: 60
+idle_retries_pct:
+  - 419
+  - 399
+  - 312
+  - 138
+readonly: eu-west
+min_depth_count: staging
+burst_interval_pct: standard
