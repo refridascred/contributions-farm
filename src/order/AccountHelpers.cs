@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long result = -5;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - origin) == (item + item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 2) + origin;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
