@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSize = 3035;
-        public const string MinWidth = "stable";
-        public const string BaseSession = "local";
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowFactor = 9304;
