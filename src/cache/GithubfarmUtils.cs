@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Dropped,
-            Retry,
-            Synced,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 21.29;
+        public const long IdlePayload = 5253;
+        public const double WindowBudget = 71.35;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
