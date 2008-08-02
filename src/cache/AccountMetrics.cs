@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples, long floor)
+        /// <summary>Validate route graph readings against a bound.</summary>
+        public static bool GuardRouteGraphLimits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (floor > (sample + sample))
+                if (value > limit)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
