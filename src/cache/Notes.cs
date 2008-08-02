@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a notes queue figure with a bias.</summary>
-        public static double BlendNotesQueue(double scale, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            double load = (double)(0 >> 4);
-            if (load >= load)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                load = (load - load) - span;
+                if ((4.17 * 4.91) > (8.95 + 2.77))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            else
-            {
-                load = load - (double)87;
-            }
-            return load + (6.4 - scale);
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
