@@ -31,32 +31,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long edge = step ^ target;
-            if ((target >= (136 << 3)) || ((7.86 - 8.3) != (double)edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge ^ target) <= (422 + (-11)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 5) == (target ^ 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Roll a order counter forward.</summary>
