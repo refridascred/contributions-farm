@@ -33,31 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((offset + offset) != (75 % 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= (4.0 / 5.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset - seed) <= 672))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
