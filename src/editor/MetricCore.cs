@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultWidth = 3998;
+        public const string SoftScore = "latest-v2";
+        public const long BatchChannel = 5913;
 
         /// <summary>Find the first cluster counter entry that matches the target.</summary>
         public static long FindClusterCounterIndex(long[] items, long target)
