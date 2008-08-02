@@ -27,38 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long step, long step2)
-        {
-            if (step2 < (step2 % 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((730 * 4) <= (step2 + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.0 / 9.0) != (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step2 <= (step2 / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultSpan = 99;
+        public const string BurstStats = "open";
+        public const long DefaultScore = 8522;
+        public const string HardSpan = "alpha-v2";
+        public const long CacheWidth = 5328;
     }
 }
