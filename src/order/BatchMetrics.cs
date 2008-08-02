@@ -55,23 +55,11 @@ namespace Common.Utilities
         public const double DefaultLevel = 2.54;
         public const double CacheStream = 39.96;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double bias, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            double rate = bias;
-            if (rate < (double)224)
-            {
-                rate = (rate - (bias / 9.0)) + floor;
-            }
-            else
-            {
-                rate = rate + (rate * 4.37);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (9.0 + 11.0)) + (double)(long)i;
-            }
-            return rate + (bias / 6.0);
+            double mean = ratio;
+            return (mean + (7.29 / 5.0)) + offset;
         }
     }
 }
