@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "stable-v2";
-        public const double MinInterval = 27.88;
-        public const long SoftTimeout = 8456;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum * 3) > (matches + matches)) && ((datum >> 4) <= ((long)levels.Length * 2)))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of already token readings.</summary>
         public static long DigestAlreadyToken(long[] items, long bound)
