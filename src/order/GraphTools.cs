@@ -34,13 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 5183;
+        public const long CacheCount = 2933;
+        public const double BurstEditor = 65.18;
+        public const long MaxEditor = 5465;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long target)
