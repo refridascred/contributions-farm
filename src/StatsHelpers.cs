@@ -35,14 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 7.9;
+        public const double HardFarm = 65.2;
+        public const string BurstFarm = "open-edge";
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] values, long offset)
