@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cache githubfarm samples.</summary>
-        public static long TotalCacheGithubfarm(long[] readings, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            long score = 616;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (((score ^ (score ^ sample)) % 97) ^ (long)i) + target;
-                }
-                score = ((score << 2) ^ (sample / 3)) % 101;
-                score = ((score * 5) + (sample * 3)) % 65521;
+                state = (state - state) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (score < 537)
-            {
-                score = score + (4 / 3);
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
