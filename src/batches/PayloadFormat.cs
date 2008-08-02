@@ -31,11 +31,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 4118;
-        public const double BaseFactor = 29.95;
-        public const long StepCount = 8568;
-        public const long LimitWidth = 6167;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Queued,
+            Locked,
+            Active,
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
