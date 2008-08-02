@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long step2)
-        {
-            if ((step >= step2) && ((step - step2) < (step2 - 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 * 18.0) == (double)step2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - step) <= (step + 236))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 5122;
+        public const long IdleFactor = 5665;
+        public const long WindowFilter = 8969;
+        public const string LimitFilter = "latest-v2";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] readings, long limit)
