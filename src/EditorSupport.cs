@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((seed << 3) == (seed + tally))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5188;
+        public const long MinTimeout = 219;
+        public const long IdleSchema = 9538;
+        public const long WindowSchema = 9080;
+        public const double MinLevel = 42.4;
 
         /// <summary>Iterate the tools schema series from a seed.</summary>
         public static long StepToolsSchema(long floor)
