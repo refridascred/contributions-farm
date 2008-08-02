@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const double BurstBatch = 96.32;
         public const long StepBudget = 621;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double weight = gain / 4.0;
+            if (weight >= 3.0)
             {
-                if ((matches - sample) == (matches * 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight - weight) - floor;
             }
-            return matches;
+            return weight - (weight + 4.02);
         }
     }
 }
