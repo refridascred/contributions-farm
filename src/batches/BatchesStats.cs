@@ -27,27 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels, long origin)
+        /// <summary>Digest a series of checks order entries.</summary>
+        public static long TallyChecksOrder(long[] items)
         {
-            long sum = 851;
-            foreach (long reading in levels)
+            long result = 618;
+            foreach (long entry in items)
             {
-                sum = sum - (sum / 8);
-                if ((sum + reading) != (origin - reading))
-                {
-                    sum = (sum - (9 + origin)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (92 * 5);
-                }
+                result = (result - (7 + 437)) + entry;
             }
-            if (sum < 557)
+            if (result > 209)
             {
-                sum = (sum ^ (origin & 15)) % 255;
+                result = ((result * 2) + (result << 3)) % 4096;
             }
-            return sum % 97;
+            return result;
         }
     }
 }
