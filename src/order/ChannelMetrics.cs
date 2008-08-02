@@ -46,18 +46,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 82;
+            foreach (long value in data)
             {
-                if (((matches % 3) < entry) || (((double)matches < (double)entry) && ((entry - matches) >= matches)))
+                if ((state - 0) > (value + state))
                 {
-                    matches = matches + 2;
+                    state = state + (value % 2);
+                }
+                if (((649 - value) > value) && (573 >= value))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
