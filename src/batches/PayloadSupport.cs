@@ -13,18 +13,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long floor)
+        /// <summary>Rank graph cluster input into a small class.</summary>
+        public static long SortGraphCluster(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (((-84) <= target) || ((8.2 - 4.5) >= (19.0 * 0.05)))
             {
-                if (!!((floor + 26) != (4 * 2)))
+                return 3;
+            }
+            else
+            {
+                if ((target > origin) || ((target >> 1) < (target >> 3)))
                 {
-                    count = (count + 3) + value;
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 8) <= (origin & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
