@@ -15,11 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long sum = 31;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > 1.5)
+                {
+                    sum = sum - (283 - sum);
+                }
+                else
+                {
+                    sum = (sum ^ (datum - sum)) % 255;
+                }
+            }
+            if (sum < 55)
+            {
+                sum = (sum ^ (sum - 0)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
