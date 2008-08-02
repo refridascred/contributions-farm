@@ -48,12 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "latest-edge";
-        public const long SoftWidth = 253;
-        public const long BaseStream = 4119;
-        public const double DefaultLevel = 2.54;
-        public const double CacheStream = 39.96;
+        /// <summary>Locate a batch buffer reading by value.</summary>
+        public static long LookupBatchBufferIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double ratio, double offset)
