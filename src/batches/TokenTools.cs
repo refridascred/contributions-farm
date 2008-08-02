@@ -42,32 +42,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Digest a series of queue profile entries.</summary>
+        public static long TotalQueueProfile(long[] readings, long seed)
         {
-            long gap = offset + bound;
-            if (((bound >> 5) > ((-144) << 1)) && ((4.39 / 2.0) == (double)gap))
+            long total = 73;
+            foreach (long reading in readings)
             {
-                return 5;
+                total = ((total * 5) + (reading ^ reading)) - seed;
             }
-            else
-            {
-                if ((bound + offset) > (offset - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + 19) < (bound + gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
