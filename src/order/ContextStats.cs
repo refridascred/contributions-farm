@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long HardCommits = 6081;
         public const double StepCommits = 55.21;
 
-        /// <summary>Combine batch report values into a single score.</summary>
-        public static long TallyBatchReport(long[] series, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                if ((7.0 * 0.2) >= (double)acc)
-                {
-                    acc = ((acc - (limit + acc)) % 97) + cell;
-                }
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
