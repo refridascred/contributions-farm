@@ -54,12 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 5.18;
-        public const long HardWindow = 8805;
-        public const long MaxCount = 8772;
-        public const long IdleWindow = 9012;
-        public const double MinInterval = 30.29;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ sample) < (sample + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of metrics route readings.</summary>
         public static long FoldMetricsRoute(long[] items, long origin)
