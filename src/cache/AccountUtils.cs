@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = 9;
+            foreach (long reading in items)
+            {
+                sum = ((sum * 4) + sum) ^ reading;
+            }
+            if (sum < 738)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token header.</summary>
