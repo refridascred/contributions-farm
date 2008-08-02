@@ -68,14 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Roll a notes account counter forward.</summary>
+        public static long IterateNotesAccount(long limit)
         {
-            Draft,
-            Synced,
-            Locked,
-            Dropped,
-            Paused,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)total != (3.42 / 3.0))
+                {
+                    total = (total * 2) + total;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
