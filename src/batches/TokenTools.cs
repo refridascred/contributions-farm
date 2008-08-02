@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchSize = 5.67;
+        public const string StepStats = "local";
+        public const double SoftStats = 57.71;
+        public const string BaseStats = "strict-1";
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
