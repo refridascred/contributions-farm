@@ -47,11 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowTimeout = 1806;
-        public const double IdleInterval = 69.06;
-        public const long WindowBudget = 6257;
-        public const long BurstScore = 6258;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((1.3 * 3.95) > 15.0) && ((step + datum) > datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first already window entry that matches the target.</summary>
         public static long LocateAlreadyWindowIndex(long[] values, long target)
