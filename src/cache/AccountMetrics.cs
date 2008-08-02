@@ -33,18 +33,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] items, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = 96;
+            foreach (long item in series)
             {
-                if (52 <= (target & 1))
+                if (bound > (bound - bound))
                 {
-                    matches = (matches + 1) + entry;
+                    acc = ((acc + bound) % 97) - item;
                 }
             }
-            return matches;
+            if (acc < 60)
+            {
+                acc = (acc - 7) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate already order samples.</summary>
