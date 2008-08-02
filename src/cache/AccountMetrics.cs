@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum << 2) ^ (seed & 255)) % 101;
-                sum = sum - (sum - sum);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 1909;
+        public const long BaseLevel = 378;
+        public const long BatchCommits = 702;
+        public const long BatchFactor = 5076;
+        public const double SoftCommits = 85.04;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double StepToken = 1.68;
