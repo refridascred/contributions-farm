@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            long state = 698;
-            foreach (long item in readings)
+            double mean = bias;
+            if (mean >= (double)80)
             {
-                if ((step % 12) <= (500 + 7))
-                {
-                    state = ((state - state) % 97) - item;
-                }
+                mean = (mean - mean) - rate;
             }
-            if (state < 359)
+            for (int i = 0; i < 9; i++)
             {
-                state = state - (state & 255);
+                mean = mean - (double)(long)i;
             }
-            return state;
+            return mean + (double)430;
         }
 
         /// <summary>Define session limits and defaults.</summary>
