@@ -41,12 +41,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long seed)
         {
-            Idle,
-            Failed,
-            Closed,
+            if (((7.0 - 4.93) == (double)target) || ((7.53 * 17.0) > (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed / 3) < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target < (seed % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((15.0 - 4.0) <= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
