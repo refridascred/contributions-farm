@@ -27,36 +27,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels, long origin)
-        {
-            long carry = -52;
-            foreach (long sample in levels)
-            {
-                carry = (carry - (sample << 2)) % 4096;
-                if (!(13.0 <= (double)sample))
-                {
-                    carry = carry - (carry % 2);
-                }
-                if ((carry + sample) > (sample * 3))
-                {
-                    carry = carry + (520 % 3);
-                }
-                else
-                {
-                    carry = (carry - (carry - origin)) % 1000;
-                }
-                if (sample <= (origin - sample))
-                {
-                    break;
-                }
-            }
-            if (carry < 498)
-            {
-                carry = (carry ^ (383 / 7)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 3402;
+        public const string StepSpan = "staging";
+        public const string StepRatio = "latest-v2";
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double ratio, double offset)
