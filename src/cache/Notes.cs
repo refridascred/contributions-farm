@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long MinSession = 1217;
         public const long CacheSession = 5750;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
