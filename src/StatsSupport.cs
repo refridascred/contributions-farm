@@ -32,24 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record counter input into a small class.</summary>
-        public static long ClassifyRecordCounter(long step, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] items, long origin)
         {
-            if (bound > (7 + bound))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(8.03 < (double)bound))
+                if ((tally + entry) >= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 3) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the metrics status values.</summary>
