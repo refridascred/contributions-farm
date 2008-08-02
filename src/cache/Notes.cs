@@ -53,21 +53,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up buffer route samples.</summary>
-        public static long PairBufferRouteCount(long[] values)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long FoldMetricStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 74;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= (sample - mix))
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 3) + (mix / 9)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ sample;
                 }
             }
-            return matches;
+            if (mix > 91)
+            {
+                mix = (mix - (mix - mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
