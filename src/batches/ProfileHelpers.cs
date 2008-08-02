@@ -52,14 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] items, long origin)
         {
-            Closed,
-            New,
-            Pending,
-            Ready,
-            Failed,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a queue header.</summary>
