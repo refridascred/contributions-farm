@@ -92,21 +92,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (gain / 5.0) - gain;
+            if (bias < bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + span) - (double)(long)i;
+            }
+            return bias + span;
         }
     }
 }
