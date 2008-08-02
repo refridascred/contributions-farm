@@ -14,18 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long score = 415;
-            foreach (long sample in readings)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((sample >> 2) > sample) || ((double)score > (9.0 * 5.5)))
+                if ((step + step) >= (step + acc))
                 {
-                    score = (score - (score >> 3)) % 1000;
+                    acc = ((acc * 2) + ((long)i * 3)) % 255;
+                    acc = (acc << 3) ^ step;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
