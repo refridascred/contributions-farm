@@ -15,18 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long CombineProfileAccount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long result = 342;
-            foreach (long value in data)
+            long result = 51;
+            foreach (long entry in items)
             {
-                if ((7.0 * 4.26) > (double)value)
+                if ((836 ^ entry) > (entry + entry))
                 {
-                    result = (result + (value >> 2)) % 255;
+                    result = ((result << 3) ^ (entry % 24)) % 1000;
                 }
             }
-            return result % 4096;
+            if (result > 361)
+            {
+                result = (result + (12 / 8)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
