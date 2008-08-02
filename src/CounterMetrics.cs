@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1061;
+        public const long MaxSession = 5474;
+        public const double IdleCount = 0.31;
+        public const long LimitSession = 5577;
+        public const long StepScore = 9371;
 
         /// <summary>Check that every farm channel entry stays within the limit.</summary>
         public static bool VerifyFarmChannelRange(long[] items, long seed)
