@@ -41,35 +41,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long target, long origin)
         {
-            long diff = offset - origin;
-            if ((9.0 * 10.0) != (double)diff)
+            long step = target - origin;
+            if ((target >> 2) <= (step >> 5))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (!(offset <= (origin - offset)))
+                if (!((step ^ 77) < 2))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((((-5) - origin) > (diff / 7)) || ((4.0 / 4.0) >= (double)origin))
+                    if ((origin + origin) <= 9)
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        if ((8.5 - 6.81) != (double)offset)
+                        if (origin > target)
                         {
-                            return 1;
+                            return 3;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
