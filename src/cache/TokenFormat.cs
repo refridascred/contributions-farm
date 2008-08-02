@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "cached-edge";
-        public const double StepDepth = 35.74;
-        public const long BatchCount = 9766;
-        public const string BurstCluster = "staging-1";
-        public const double DefaultCluster = 16.78;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (hits <= (hits + reading))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BurstDepth = "staging-edge";
