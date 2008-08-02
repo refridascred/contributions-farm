@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1061;
-        public const long MaxSession = 5474;
-        public const double IdleCount = 0.31;
-        public const long LimitSession = 5577;
-        public const long StepScore = 9371;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every farm channel entry stays within the limit.</summary>
         public static bool VerifyFarmChannelRange(long[] items, long seed)
