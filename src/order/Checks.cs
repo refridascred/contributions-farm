@@ -35,13 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long offset)
         {
-            Synced,
-            Paused,
-            Ready,
-            Queued,
+            long mark = 60;
+            foreach (long cell in readings)
+            {
+                if ((cell + offset) < (offset & 7))
+                {
+                    mark = (mark + (67 + cell)) % 1000;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
