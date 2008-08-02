@@ -21,16 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm account counter forward.</summary>
-        public static long SeriesFarmAccount(long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor << 2) ^ (long)i) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((count / 6) <= (count / 4))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
