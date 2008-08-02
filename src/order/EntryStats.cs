@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = 21;
+            foreach (long entry in samples)
             {
-                if ((hits & 15) > hits)
+                total = ((total << 2) ^ (entry ^ seed)) % 4096;
+                if (!((20.0 - 9.0) != (double)entry))
                 {
-                    hits = (hits + 2) + value;
+                    total = (total - (entry - entry)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a window stats.</summary>
