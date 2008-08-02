@@ -29,30 +29,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long WeighMetricsSupport(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long offset)
         {
-            long sum = 5;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((sum + sum) >= (-7)) && (cell <= (sum - sum)))
+                if (datum <= offset)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ (sum - 6);
-                }
-                if (89 >= (cell ^ sum))
-                {
-                    sum = (sum << 3) ^ (sum + 521);
-                }
-                else
-                {
-                    sum = sum + (1 / 9);
-                }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
