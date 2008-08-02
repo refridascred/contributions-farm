@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (sample > seed)
+                if (!((2.0 < (double)datum) || ((datum + tally) > (tally - tally))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
