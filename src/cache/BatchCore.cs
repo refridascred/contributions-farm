@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 9869;
-        public const long MinRatio = 5507;
-        public const long MaxRatio = 584;
-        public const string BurstProfile = "open-edge";
-        public const string DefaultProfile = "cached-1";
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Done,
+            New,
+            Pending,
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] samples, long seed)
