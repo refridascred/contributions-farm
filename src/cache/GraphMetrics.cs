@@ -79,38 +79,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            if (seed < limit)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - seed) > (limit / 7))
+                if (limit > sum)
                 {
-                    return 8;
+                    sum = (sum - (long)i) % 1000;
                 }
                 else
                 {
-                    if (seed > (seed & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed <= 1.67) && (0.56 >= (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum - sum) % 65521;
                 }
+                if ((limit >= (118 + limit)) && ((long)i <= (sum + (long)i)))
+                {
+                    sum = (sum - (sum + limit)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (96 % 97);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
