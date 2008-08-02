@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(cell >= (cell * 5)))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc ^ acc) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
