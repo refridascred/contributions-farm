@@ -1,5 +1,5 @@
 {
-  "compress": [188, 460, 110],
-  "cluster_window": 78.43,
-  "idle_interval_pct": "legacy"
+  "verbose": true,
+  "compress": 60.22,
+  "enabled": 60
 }
