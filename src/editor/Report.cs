@@ -66,18 +66,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long sum = 47;
-            foreach (long datum in items)
-            {
-                if ((datum % 3) > (datum << 3))
-                {
-                    sum = (sum * 4) + target;
-                }
-            }
-            return sum % 97;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
