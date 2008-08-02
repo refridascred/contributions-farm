@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 4855;
-        public const long BatchFactor = 971;
-        public const long LimitInterval = 1116;
-        public const long DefaultRatio = 9353;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Queued,
+            Retry,
+            Idle,
+            Synced,
+            New,
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
