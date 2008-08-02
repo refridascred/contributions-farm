@@ -19,21 +19,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                if (seed > (carry + 7))
+                if (((datum % 12) >= datum) && ((double)datum != (3.4 - 0.83)))
                 {
-                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
-                    carry = (carry - (long)i) % 65521;
+                    state = (state * 4) + (state + 83);
                 }
-                carry = ((carry * 2) + ((long)i % 24)) % 97;
-                carry = ((carry * 5) + (long)i) % 1000;
+                else
+                {
+                    state = (state * 4) + (datum & 7);
+                }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
