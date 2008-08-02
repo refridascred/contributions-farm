@@ -29,18 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (5.89 > (double)limit)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Locked,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
