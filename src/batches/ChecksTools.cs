@@ -52,26 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long bound)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long anchor = 71;
-            foreach (long sample in series)
-            {
-                if (!((bound - anchor) >= anchor))
-                {
-                    anchor = ((anchor + (anchor * 4)) % 101) + sample;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-            }
-            if (anchor > (-2))
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 65521;
+            Failed,
+            Done,
+            Active,
         }
     }
 }
