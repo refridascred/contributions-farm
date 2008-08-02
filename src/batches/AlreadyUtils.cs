@@ -36,18 +36,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = 161;
+            foreach (long value in items)
             {
-                if ((entry % 8) < (hits / 9))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark << 2) ^ (mark - 255)) ^ value;
             }
-            return hits;
+            if (mark > 3)
+            {
+                mark = mark ^ (target + target);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of schema payload readings.</summary>
