@@ -49,13 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long target)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
