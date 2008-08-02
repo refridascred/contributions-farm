@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRatio = "standard-edge";
-        public const long SoftSpan = 656;
-        public const double HardRecord = 33.97;
-        public const long WindowRecord = 5978;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
