@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Match up report editor samples.</summary>
+        public static long PairReportEditorCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + tally) <= (tally & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
