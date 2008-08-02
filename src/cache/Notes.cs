@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const double RetryRatio = 76.5;
         public const long BaseCounter = 476;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long offset, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long prev = offset - floor;
-            if (((76 + floor) >= (offset + offset)) && ((18.0 + 4.5) > (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > (2.8 - 3.27))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 63) > (prev + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
