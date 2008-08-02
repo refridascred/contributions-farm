@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            double weight = bias;
+            if (weight >= weight)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                weight = (weight + (weight * 7.8)) - floor;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (weight / 2.0);
         }
 
         /// <summary>Fold a list of already readings.</summary>
