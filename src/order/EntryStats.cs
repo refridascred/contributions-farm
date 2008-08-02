@@ -50,19 +50,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool CheckRecordAlreadyBounds(long[] samples, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double bias = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (double)(long)i;
             }
-            return flag;
+            return bias - offset;
         }
     }
 }
