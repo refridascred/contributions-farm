@@ -43,13 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long TotalGraphMetric(long[] values, long limit)
         {
-            Closed,
-            Active,
-            Synced,
-            Retry,
+            long sum = 0;
+            foreach (long reading in values)
+            {
+                if ((limit % 60) > (limit * 3))
+                {
+                    sum = ((sum - (sum % 8)) % 97) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
