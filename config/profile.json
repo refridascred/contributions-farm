@@ -1,15 +1,12 @@
 {
-  "warm_size_pct": 5712,
-  "command_delay": 57,
-  "retry_delay_ms": {
-    "warm_ttl_pct": "fallback",
-    "audit": {
-      "max_delay_ms": [248, 461],
-      "dry_run": 11.11,
-      "verbose": false,
-      "poll_delay": 8212
-    },
-    "verbose": false,
-    "soft_ttl_pct": "local"
-  }
+  "poll_ratio": {
+    "retry_threshold_s": "fallback",
+    "retry_threshold_ms": "strict",
+    "idle_interval_ms": 9475,
+    "max_interval_pct": 2816,
+    "strict": "standard"
+  },
+  "audit": [167, 46],
+  "readonly": [480, 269],
+  "warm_window_pct": 500
 }
