@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((0.3 < (6.38 * 2.4)) || ((cell & 31) == (tally & 1))) || (((tally << 1) > tally) || ((cell + (long)series.Length) <= (cell % 5))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a schema header.</summary>
