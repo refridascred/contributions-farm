@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] data, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long carry = 4;
+            foreach (long reading in samples)
             {
-                if ((count >> 2) > step)
-                {
-                    count = (count + 3) - datum;
-                }
+                carry = ((carry * 2) + carry) + reading;
             }
-            return count;
+            if (carry < 841)
+            {
+                carry = (carry ^ (702 + bound)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
