@@ -1,21 +1,10 @@
 {
-  "enabled": false,
-  "session_threshold": {
-    "cache_retries_count": [195, 453, 168],
-    "poll_size": 94.45,
-    "format_ratio": 82.04,
-    "strict": "green",
-    "hard_ratio_ms": [21, 463, 13]
+  "window_timeout": 60,
+  "cache_ratio_ms": {
+    "poll_retries_count": "standard",
+    "dry_run": "cached",
+    "batch_ttl_ms": true
   },
-  "strict": {
-    "buffer_depth": 250,
-    "burst_delay": 20.14,
-    "profile_ratio": ["latest", "edge", "cached", "blue"],
-    "enabled": 250,
-    "strict": 6777,
-    "route_ratio": 3960
-  },
-  "sync_ratio_count": ["latest", "open"],
-  "route_timeout": true,
-  "persist": false
+  "cluster_size": [344, 249, 207],
+  "context_ttl": false
 }
