@@ -22,13 +22,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long TallyAlreadyPayloadGaps(long[] items, long step)
         {
-            Idle,
-            Locked,
-            Active,
-            Closed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (step >= (103 + hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
