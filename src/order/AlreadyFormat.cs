@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] readings, long seed)
+        /// <summary>Combine metric cluster values into a single score.</summary>
+        public static long WeighMetricCluster(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (sample + sample)) % 101) + bound;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
