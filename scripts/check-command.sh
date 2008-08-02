@@ -6,7 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=180
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -15,13 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard stable staging; do
-    log "checking ${item}"
-done
