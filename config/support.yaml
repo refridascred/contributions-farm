@@ -1,13 +1,5 @@
 # support settings
-min_delay_ms: true
-verbose: 250
-default_retries_pct: cached
-format_size: 84.59
-sync_ratio_ms:
-  batch_timeout_s: false
-  min_size_pct: false
-  base_ratio_ms:
-    - 280
-    - 239
-    - 345
-contributi_timeout: false
+batch_depth: 54.04
+persist: 60.14
+default_ttl_ms: false
+min_ttl_ms: 87.62
