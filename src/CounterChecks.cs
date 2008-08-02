@@ -34,21 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the entry level values.</summary>
