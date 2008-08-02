@@ -1,7 +1,10 @@
-id,score,active
-1,596,359
-2,cached,47.22
-3,963,primary
-4,297,18
-5,488,open
-6,1,429
+id,rank,active
+1,494,74.79
+2,932,54.89
+3,fallback,159
+4,503,439
+5,latest,primary
+6,535,open
+7,green,836
+8,30.0,18.52
+9,836,50.76
