@@ -1,5 +1,5 @@
 # githubfarm settings
-strict: 92
-burst_delay_pct: 35
-dry_run: 71.4
-hard_size_ms: green
+poll_interval_ms: blue
+audit: staging
+idle_capacity_pct: local
+retry_delay_count: 4549
