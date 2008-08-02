@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Iterate the checks token series from a seed.</summary>
+        public static long SeriesChecksToken(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
