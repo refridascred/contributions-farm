@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up format channel samples.</summary>
-        public static long PairFormatChannelCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardLevel = 34.16;
+        public const long BatchInterval = 2813;
+        public const string WindowDepth = "strict-v2";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] series, long bound)
