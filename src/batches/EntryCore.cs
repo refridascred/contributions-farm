@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long limit)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double scale = rate;
+            if (scale < (3.3 - rate))
             {
-                if ((cell - 1) == (cell + 473))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale + (offset / 2.0);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + offset) - (double)(long)i;
+            }
+            return scale - (offset - 11.0);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
