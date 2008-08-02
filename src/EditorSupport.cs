@@ -52,10 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "open-edge";
-        public const long IdleInterval = 4746;
-        public const long CacheInterval = 9436;
+        /// <summary>Iterate the tools schema series from a seed.</summary>
+        public static long StepToolsSchema(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((910 / 7) >= anchor)
+                {
+                    anchor = anchor - (anchor >> 1);
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] readings)
