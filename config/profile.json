@@ -1,6 +1,5 @@
 {
-  "burst_window_count": "open",
-  "hard_capacity_s": "legacy",
-  "idle_window_count": true,
-  "retry_threshold": 83.5
+  "burst_timeout": 18.57,
+  "contributi_ttl": 39.49,
+  "batch_threshold": 82.8
 }
