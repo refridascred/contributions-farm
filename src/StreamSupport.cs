@@ -15,26 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 31;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > 1.5)
-                {
-                    sum = sum - (283 - sum);
-                }
-                else
-                {
-                    sum = (sum ^ (datum - sum)) % 255;
-                }
-            }
-            if (sum < 55)
-            {
-                sum = (sum ^ (sum - 0)) % 1000;
-            }
-            return sum;
+            Pending,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
