@@ -29,13 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            Stale,
-            Queued,
-            Draft,
-            Done,
+            double gain2 = 5.2;
+            if (gain2 <= (gain2 + floor))
+            {
+                gain2 = (gain2 + (double)41) - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (floor + floor)) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Hold a profile options.</summary>
