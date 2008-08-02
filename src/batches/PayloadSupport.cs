@@ -36,13 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long seed)
         {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
