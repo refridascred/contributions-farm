@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mean + (double)430;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] levels, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (!((hits + 538) > (727 / 8)))
+                if (sample > seed)
                 {
-                    hits = ((hits + 2) + item) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
