@@ -40,19 +40,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples, long target)
         {
-            long carry = 118;
-            foreach (long datum in items)
+            long mix = 80;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 3) + (datum << 1)) % 101;
+                if ((mix & 127) < (target - target))
+                {
+                    mix = (mix + (2 * 2)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ datum;
+                }
             }
-            if (carry < 25)
+            if (mix < 67)
             {
-                carry = ((carry << 2) ^ (offset - offset)) % 65521;
+                mix = (mix + (0 - mix)) % 4096;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
