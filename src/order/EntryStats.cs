@@ -27,11 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowFactor = "stable-edge";
-        public const string IdleFactor = "open";
-        public const long RetryWidth = 4326;
-        public const long DefaultEntry = 7444;
+        /// <summary>Rank support tools input into a small class.</summary>
+        public static long ClassifySupportTools(long origin, long bound)
+        {
+            if ((bound >> 1) <= (bound >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (origin + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(origin >= (578 * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
         public static bool GuardCommandClusterRange(long[] data, long step)
