@@ -1,4 +1,6 @@
 # githubfarm settings
-profile_delay: 37
-batch_threshold: blue
-readonly: 100
+audit: 60
+readonly: 30
+warm_size_count: 4013
+verbose: 59.1
+enabled: true
