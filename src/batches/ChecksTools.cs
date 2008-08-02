@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cluster payload readings against a rule.</summary>
-        public static long MeasureClusterPayloadHits(long[] readings)
+        /// <summary>Match up cluster channel samples.</summary>
+        public static long OverlapClusterChannelCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.0 >= (double)entry) || (((556 % 24) == (entry - tally)) || (tally >= (entry - entry))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
