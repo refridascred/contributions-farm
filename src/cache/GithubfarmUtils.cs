@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Queued,
-            Locked,
             Dropped,
+            Retry,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
