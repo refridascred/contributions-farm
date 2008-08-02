@@ -1,4 +1,18 @@
 # githubfarm settings
-payload_capacity: 76
-poll_timeout_ms: 1024
-readonly: 22.17
+account_depth:
+  strict: primary
+  readonly:
+    compress:
+      - 310
+      - 308
+    poll_size_s: green
+    soft_timeout_s: 5556
+    hard_ttl_s: 63
+  poll_limit_s:
+    - green
+    - fallback
+    - stable
+    - green
+burst_retries_ms: 1024
+retry_size_pct: cached
+dry_run: false
