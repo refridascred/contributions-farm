@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the already farm entries that pass the check.</summary>
-        public static long CountAlreadyFarmOutliers(long[] values)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double mean = span / 2.0;
+            if (mean > span)
             {
-                if (((-857) - matches) >= matches)
-                {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (scale / 6.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (scale + 8.7)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define window limits and defaults.</summary>
