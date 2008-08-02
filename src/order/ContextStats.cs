@@ -32,14 +32,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Queued,
-            Ready,
-            Idle,
-            Stale,
-            Locked,
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
