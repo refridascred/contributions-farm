@@ -35,22 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] samples, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((seed & 255) <= (sample / 7))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
