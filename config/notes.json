@@ -1,10 +1,10 @@
 {
-  "idle_limit": "open",
-  "max_interval_s": 250,
-  "tools_interval": {
-    "sync_window_count": ["primary", "edge", "fallback"],
-    "min_timeout": 6466,
-    "buffer_depth": false
+  "warm_depth_count": [286, 364],
+  "report_threshold": false,
+  "max_interval_ms": {
+    "base_size": 395,
+    "batch_capacity": 4189,
+    "window_ratio": [401, 444, 121]
   },
-  "base_limit_pct": "edge"
+  "session_interval": "strict"
 }
