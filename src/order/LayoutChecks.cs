@@ -42,21 +42,19 @@ namespace Common.Utilities
         public const double WindowScore = 43.83;
         public const long WindowLevel = 3682;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 367;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state ^ reading) % 65521) + floor;
             }
-            return count;
+            if (state > (-80))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
