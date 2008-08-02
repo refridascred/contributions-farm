@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long MaxBudget = 8244;
         public const long CacheWindow = 3083;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long target)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long bound = origin - target;
+            if (((-1) % 5) != (target - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + origin) > target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound + target) <= (origin * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
