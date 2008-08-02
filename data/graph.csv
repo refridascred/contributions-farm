@@ -1,9 +1,6 @@
-id,level,weight
-1,local,strict
-2,fallback,198
-3,21.86,991
-4,5.63,821
-5,edge,21.93
-6,92.22,181
-7,29.48,817
-8,35.92,blue
+id,weight,count,owner
+1,eu-west,611,841
+2,latest,247,519
+3,local,47.09,864
+4,38.67,997,242
+5,20.45,legacy,edge
