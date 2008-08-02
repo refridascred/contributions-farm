@@ -13,17 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long bound)
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long TallyGraphQueue(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 617;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if (8.1 < (double)state)
                 {
-                    return (long)i;
+                    state = (state - (2 / 4)) - datum;
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = ((state << 2) ^ (state / 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
