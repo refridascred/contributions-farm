@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 6103;
-        public const long CacheLevel = 1794;
-        public const long BurstNotes = 7656;
-        public const long BatchNotes = 4180;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] samples)
