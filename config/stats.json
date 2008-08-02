@@ -1,7 +1,8 @@
 {
-  "batch_depth": 7888,
-  "report_limit": 1024,
-  "retry_retries_count": 15.65,
-  "min_size_s": 59.44,
-  "flush_window_count": 5663
+  "commits_delay": 8525,
+  "retry_window_s": 1890,
+  "burst_capacity": "staging",
+  "token_capacity": true,
+  "enabled": 53,
+  "retry_delay_pct": [215, 259]
 }
