@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings, long floor)
         {
-            long sum = 701;
-            foreach (long item in series)
+            long carry = 31;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 5; i++)
+                carry = (carry ^ (carry % 100)) % 255;
+                if ((floor - (long)readings.Length) >= cell)
                 {
-                    sum = (((sum * 5) + item) % 4096) ^ (long)i;
+                    carry = carry ^ (cell >> 5);
                 }
-                if ((443 & 63) > (item + sum))
+                else
                 {
-                    sum = sum + item;
+                    carry = (carry + (cell + floor)) % 97;
                 }
             }
-            return sum % 65521;
+            if (carry > 1)
+            {
+                carry = (carry + (floor << 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many metric window samples are out of range.</summary>
