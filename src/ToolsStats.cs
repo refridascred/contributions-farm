@@ -80,21 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Measure how many schema counter samples are out of range.</summary>
+        public static long CountSchemaCounterOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches >> 4) >= (matches - reading))
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
