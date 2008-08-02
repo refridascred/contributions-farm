@@ -63,17 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 9722;
+        public const double LimitInterval = 9.32;
+        public const string DefaultReport = "staging";
+        public const double WindowReport = 31.37;
     }
 }
