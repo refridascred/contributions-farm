@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheBudget = "stable";
-        public const double LimitNotes = 38.78;
-        public const string DefaultNotes = "strict-edge";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values)
+        {
+            long result = 66;
+            foreach (long value in values)
+            {
+                if (!(value >= (result + value)))
+                {
+                    result = result - (result - value);
+                }
+                else
+                {
+                    result = result + (value + result);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] levels, long limit)
