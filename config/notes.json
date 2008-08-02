@@ -1,7 +1,8 @@
 {
-  "burst_ratio": "staging",
-  "order_depth": true,
-  "poll_delay_pct": "green",
-  "dry_run": "green",
-  "soft_depth": 76.59
+  "batch_capacity_ms": "cached",
+  "idle_limit_ms": [140, 284, 469],
+  "buffer_size": 5437,
+  "enabled": false,
+  "flush_size": [493, 284],
+  "session_timeout": false
 }
