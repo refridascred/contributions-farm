@@ -48,19 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            double weight = (ratio / 9.0) + ratio;
-            if (weight <= (ratio * 1.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - (double)583) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)58;
-            }
-            return weight - (double)4;
+            return matches;
         }
 
         /// <summary>Match up profile samples.</summary>
