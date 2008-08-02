@@ -1,5 +1,7 @@
 {
-  "warm_limit_ms": true,
-  "layout_threshold": 11.34,
-  "min_ttl": false
+  "layout_limit": 31,
+  "poll_retries_s": "staging",
+  "readonly": "eu-west",
+  "base_limit_pct": "cached",
+  "route_threshold": false
 }
