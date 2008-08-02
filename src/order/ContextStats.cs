@@ -33,13 +33,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Paused,
-            Ready,
+            Synced,
+            New,
+            Failed,
+            Dropped,
             Retry,
-            Locked,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
