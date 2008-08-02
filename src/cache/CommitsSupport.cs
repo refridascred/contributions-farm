@@ -21,23 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (0.16 * 15.0))
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultSpan = 3263;
+        public const long MaxFactor = 6195;
+        public const string DefaultWidth = "local-v2";
+        public const long StepTimeout = 6779;
+        public const long CacheContributi = 5958;
 
         /// <summary>Combine tools report values into a single score.</summary>
         public static long CombineToolsReport(long[] values, long floor)
