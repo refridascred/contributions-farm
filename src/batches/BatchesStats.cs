@@ -21,19 +21,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long lane = step ^ origin;
+            if ((step ^ lane) <= step)
             {
-                if (sample <= step)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 4) < lane)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
