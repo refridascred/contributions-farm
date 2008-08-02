@@ -52,18 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format payload sample.</summary>
-        public static long SeekFormatPayloadIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1151;
+        public const long BatchSpan = 3712;
+        public const long BurstTimeout = 1022;
+        public const long CacheRatio = 2289;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long target)
