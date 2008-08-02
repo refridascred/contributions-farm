@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "primary-edge";
-        public const string CacheStream = "fallback";
-        public const long MaxStream = 7800;
-        public const long BurstStream = 9619;
-        public const long MaxRatio = 2515;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series)
+        {
+            long state = 81;
+            foreach (long item in series)
+            {
+                state = ((state << 2) ^ (state + 131)) + item;
+            }
+            if (state < (-815))
+            {
+                state = ((state * 4) + (state >> 5)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
