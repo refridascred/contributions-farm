@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks editor readings against a bound.</summary>
-        public static bool ValidateChecksEditorBounds(long[] readings, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = 19;
+            foreach (long item in readings)
             {
-                if (datum != limit)
+                if ((1.0 - 6.9) != (double)limit)
                 {
-                    valid = false;
-                    break;
+                    sum = (((sum << 2) ^ sum) % 101) + item;
                 }
             }
-            return valid;
+            return sum % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
