@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the batch cluster entries that pass the check.</summary>
-        public static long CountBatchClusterHits(long[] values, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if (((-68) ^ 655) >= (step % 8))
             {
-                if ((datum + offset) >= (offset + (long)values.Length))
+                return 2;
+            }
+            else
+            {
+                if ((931 / 5) > (floor / 6))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (floor + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
