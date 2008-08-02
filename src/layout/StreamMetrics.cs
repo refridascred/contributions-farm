@@ -26,21 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream buffer pairs that satisfy a relation.</summary>
-        public static long CompareStreamBufferCount(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] < floor)
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
