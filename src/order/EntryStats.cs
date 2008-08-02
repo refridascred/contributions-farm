@@ -25,14 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Find the first token metric entry that matches the target.</summary>
+        public static long SeekTokenMetricIndex(long[] items, long step)
         {
-            Closed,
-            Queued,
-            New,
-            Active,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
