@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((double)tally != (3.04 - 4.5)) && ((1 + cell) != (tally % 100))) || !(8.0 >= (double)tally))
+                if (!((acc << 1) >= (acc + seed)))
                 {
-                    tally = tally + 1;
+                    acc = acc ^ acc;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate entry samples.</summary>
