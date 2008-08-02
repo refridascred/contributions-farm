@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 5;
-            foreach (long datum in levels)
-            {
-                if ((datum >= (score << 2)) || ((datum >> 4) == ((long)levels.Length + score)))
-                {
-                    score = score ^ (score % 16);
-                }
-            }
-            return score;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a commits route value against two limits.</summary>
