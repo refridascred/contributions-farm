@@ -48,11 +48,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 7265;
-        public const double WindowDepth = 10.34;
-        public const long BurstProfile = 3760;
-        public const long BaseProfile = 2013;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample - sample) == (seen % 24)) || (seen < (sample ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double BlendCommits(double weight, double span)
