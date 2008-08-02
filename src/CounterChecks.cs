@@ -33,16 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 35.82;
+        public const double WindowBudget = 49.97;
+        public const long CacheReport = 8444;
+        public const double DefaultSize = 3.53;
+        public const long BatchFactor = 6137;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long step)
