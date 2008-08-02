@@ -57,15 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long offset)
         {
-            double mean = 17.0;
-            for (int i = 0; i < 2; i++)
+            long result = 272;
+            foreach (long datum in levels)
             {
-                mean = ((mean - (double)(long)i) + gain) - floor;
+                result = (result + offset) % 1000;
+                result = (result ^ datum) % 65521;
             }
-            return mean + mean;
+            return result;
         }
 
         /// <summary>Audit githubfarm already readings against a rule.</summary>
