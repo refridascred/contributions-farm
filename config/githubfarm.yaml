@@ -1,10 +1,4 @@
 # githubfarm settings
-audit: 470
-flush_threshold: true
-retry_size_ms: standard
-profile_ttl:
-  - 395
-  - 323
-  - 126
-  - 465
-batches_capacity: open
+profile_delay: 37
+batch_threshold: blue
+readonly: 100
