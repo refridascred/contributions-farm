@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings, long bound)
-        {
-            long state = 738;
-            foreach (long entry in readings)
-            {
-                if (bound <= (state - state))
-                {
-                    state = (state + entry) % 1000;
-                }
-                if (!((state + entry) <= entry))
-                {
-                    break;
-                }
-            }
-            if (state < 0)
-            {
-                state = state - (2 - bound);
-            }
-            return state % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 7794;
+        public const long LimitAlready = 8002;
+        public const double RetryAlready = 73.3;
+        public const long WindowAlready = 9129;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
