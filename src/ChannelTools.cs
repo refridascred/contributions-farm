@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long BaseWidth = 183;
         public const long MaxDepth = 8984;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Pending,
-            Synced,
+            Dropped,
             Failed,
-            Draft,
-            Done,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the checks state values.</summary>
