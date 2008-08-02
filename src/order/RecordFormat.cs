@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine record metric values into a single score.</summary>
-        public static long ScoreRecordMetric(long[] values)
+        /// <summary>Accumulate window filter samples.</summary>
+        public static long ScoreWindowFilter(long[] levels, long bound)
         {
-            long acc = 21;
-            foreach (long entry in values)
+            long score = 2;
+            foreach (long value in levels)
             {
-                if (acc <= (acc + entry))
-                {
-                    acc = acc + acc;
-                }
-                acc = (acc + (acc - acc)) % 4096;
+                score = (((score * 5) + value) % 65521) + bound;
             }
-            if (acc > 776)
-            {
-                acc = (acc * 3) + (57 * 4);
-            }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
