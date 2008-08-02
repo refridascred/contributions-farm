@@ -47,19 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor - (floor % 8)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxFactor = 7982;
+        public const long DefaultRecord = 1131;
+        public const long DefaultCount = 232;
     }
 }
