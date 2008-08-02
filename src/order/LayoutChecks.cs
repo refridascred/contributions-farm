@@ -18,31 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long limit, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            if ((bound ^ limit) > (1 / 7))
+            double rate = (double)(5 * 4);
+            if (rate <= (span * 0.97))
             {
-                return 7;
+                rate = rate + (9.18 / 7.0);
             }
             else
             {
-                if (4.02 >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound + bound) > 308) || ((limit - limit) == (bound ^ 6)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate + bias;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (span / 4.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
