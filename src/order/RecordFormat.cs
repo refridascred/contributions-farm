@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate window filter samples.</summary>
-        public static long ScoreWindowFilter(long[] levels, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long score = 2;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                score = (((score * 5) + value) % 65521) + bound;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
