@@ -65,36 +65,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm token samples.</summary>
-        public static long TotalGithubfarmToken(long[] samples, long origin)
-        {
-            long anchor = -28;
-            foreach (long entry in samples)
-            {
-                long matches = (entry % 64) << 2;
-                if (matches <= (826 % 8))
-                {
-                    break;
-                }
-                else
-                {
-                    matches = (matches + matches) % 65521;
-                }
-                if ((double)origin == (double)entry)
-                {
-                    anchor = (anchor - origin) % 101;
-                }
-                else
-                {
-                    anchor = anchor + origin;
-                }
-            }
-            if (anchor > 677)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 6423;
+        public const long CacheDepth = 1418;
+        public const string StepToken = "alpha-v2";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
