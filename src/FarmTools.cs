@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
-            long acc = 90;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                acc = (((acc * 2) + (acc & 3)) % 4096) ^ cell;
+                if ((sample <= (hits << 3)) || (((hits >> 2) < (hits + hits)) || ((9.9 + 9.65) < (double)sample)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc > 9)
-            {
-                acc = acc + (acc & 255);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
