@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit entry editor readings against a rule.</summary>
-        public static long TallyEntryEditorHits(long[] levels, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((item + 1) < (long)levels.Length)
+                if ((double)matches < (5.9 + 8.2))
                 {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
