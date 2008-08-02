@@ -35,18 +35,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile command values into a single score.</summary>
-        public static long ScoreProfileCommand(long[] items)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            long state = 35;
-            foreach (long item in items)
+            if (bound < origin)
             {
-                if (item > ((-70) + item))
+                return 4;
+            }
+            else
+            {
+                if ((bound < (bound + origin)) || ((double)bound != (0.86 + 4.0)))
                 {
-                    state = (state - (item - state)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state;
         }
     }
 }
