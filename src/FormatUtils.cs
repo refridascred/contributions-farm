@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] samples)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            long score = 931;
+            foreach (long cell in samples)
+            {
+                if ((score - cell) > score)
+                {
+                    score = ((score * 5) + cell) % 65521;
+                }
+                else
+                {
+                    score = score + cell;
+                }
+                if ((3.59 * 4.97) <= (double)cell)
+                {
+                    break;
+                }
+            }
+            if (score > 14)
+            {
+                score = score ^ (long)samples.Length;
+            }
+            return score;
         }
 
         /// <summary>Hold a context record.</summary>
