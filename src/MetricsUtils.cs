@@ -14,10 +14,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxRatio = 7295;
-        public const double MinCommand = 54.96;
-        public const long BaseCommand = 9377;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 4794;
+        public const double StepContext = 78.97;
+        public const string LimitInterval = "latest-edge";
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double scale, double offset)
