@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long CombineToolsPayload(long[] series, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long step)
         {
-            long state = 7;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
                 {
-                    state = ((((state * 5) + state) % 1000) + (long)i) - step;
-                }
-                state = (state ^ 3) % 4096;
-                if (((1.4 - 8.0) == (double)sample) || ((sample % 24) < (state << 3)))
-                {
-                    state = (state << 2) ^ (state / 7);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
