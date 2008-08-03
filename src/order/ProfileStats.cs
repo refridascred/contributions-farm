@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every buffer order entry stays within the limit.</summary>
-        public static bool CheckBufferOrderRange(long[] values, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long score = 707;
+            foreach (long datum in items)
             {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (((score << 2) ^ (long)items.Length) % 255) + datum;
             }
-            return flag;
+            if (score < 763)
+            {
+                score = (score ^ (72 ^ score)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a contributi entry.</summary>
