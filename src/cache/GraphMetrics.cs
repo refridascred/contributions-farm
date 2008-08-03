@@ -20,13 +20,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            Ready,
+            Done,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
