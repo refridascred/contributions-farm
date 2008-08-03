@@ -95,26 +95,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long anchor = 7;
-            foreach (long cell in levels)
+            long anchor = -984;
+            foreach (long value in samples)
             {
-                if ((double)anchor <= (4.0 / 5.0))
+                if (!((anchor - value) == (value - value)))
                 {
-                    anchor = (anchor << 2) ^ (8 + cell);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + anchor;
+                    anchor = ((anchor * 4) + (anchor >> 4)) % 97;
                 }
             }
-            if (anchor < 423)
-            {
-                anchor = anchor - floor;
-            }
-            return anchor % 97;
+            return anchor % 65521;
         }
     }
 }
