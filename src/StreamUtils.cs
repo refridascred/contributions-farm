@@ -25,18 +25,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data, long seed)
         {
-            long mark = 375;
-            foreach (long item in readings)
+            long state = -73;
+            foreach (long sample in data)
             {
-                if (((53 / 7) > seed) && ((item - (long)readings.Length) != (item << 1)))
+                state = (state ^ sample) - seed;
+                if (state < (state * 3))
                 {
-                    mark = ((mark * 4) + item) % 4096;
+                    state = state + (state / 9);
+                }
+                if ((4.4 * 8.5) != (double)sample)
+                {
+                    break;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Adjust a profile reading.</summary>
