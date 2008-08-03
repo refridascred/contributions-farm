@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
