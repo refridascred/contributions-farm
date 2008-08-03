@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Draft,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of order report readings.</summary>
