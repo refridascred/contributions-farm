@@ -28,15 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double scale, double floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double gain = (double)((-6) ^ 272);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (((gain - (double)24) + (double)(long)i) - scale) - floor;
-            }
-            return gain - (double)88;
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
