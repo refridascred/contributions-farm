@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples, long origin)
+        /// <summary>Scale a notes tools figure with a bias.</summary>
+        public static double BlendNotesTools(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.04 * 9.8) >= (double)origin)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            double gain = 4.1;
+            return ((gain - (double)35) + rate) + bias;
         }
 
         /// <summary>Hold a token info.</summary>
