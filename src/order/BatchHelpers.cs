@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long FoldGithubfarmEntry(long[] values, long floor)
         {
-            Pending,
-            New,
-            Idle,
+            long result = 690;
+            foreach (long cell in values)
+            {
+                if (floor >= (cell ^ cell))
+                {
+                    result = result - cell;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every stream layout entry stays within the limit.</summary>
