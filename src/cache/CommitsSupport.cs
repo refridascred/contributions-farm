@@ -38,19 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] data, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
