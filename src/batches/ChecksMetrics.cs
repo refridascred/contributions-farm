@@ -32,18 +32,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long MeasureQueueSchemaHits(long[] samples, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = 37;
+            foreach (long sample in values)
             {
-                if ((hits ^ 488) <= (offset >> 2))
+                if ((long)values.Length != (limit & 63))
                 {
-                    hits = (hits + 1) - cell;
+                    sum = ((sum << 3) ^ sum) ^ sample;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + limit)) % 65521;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Hold a cluster info.</summary>
