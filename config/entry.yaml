@@ -1,8 +1,8 @@
 # entry settings
-entry_ratio:
-  graph_ttl: 47.56
-  soft_retries_s: 19.79
-  min_delay_s: true
-  persist: 30
-sync_ttl: 1324
-buffer_window: true
+editor_window: 7815
+batch_capacity: staging
+stream_ratio: 86
+readonly:
+  - legacy
+  - cached
+min_interval_count: 1024
