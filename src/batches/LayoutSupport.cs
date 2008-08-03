@@ -70,15 +70,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                total = (total << 3) ^ ((long)i + total);
+                total = ((total << 2) ^ (step - step)) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
     }
 }
