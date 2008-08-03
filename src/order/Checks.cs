@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift - (6.0 + 5.64);
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] levels, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Digest a series of report entries.</summary>
