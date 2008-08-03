@@ -1,21 +1,12 @@
 # entry settings
-flush_threshold_ms:
-  - green
-  - eu-west
-format_interval: true
-strict: 97.4
-warm_delay_count:
-  contributi_ratio: false
-  retry_interval: true
-  format_ratio:
-    - 339
-    - 357
-    - 299
-  token_depth: 500
-  report_ratio: eu-west
-  sync_ratio_s: 250
-channel_ratio:
-  - 1
-  - 331
-  - 47
-  - 303
+enabled: 24.09
+metrics_ttl: fallback
+verbose: 56.96
+persist:
+  poll_depth_s: 5
+  retry_limit: 6653
+  hard_limit: green
+  graph_ratio: 500
+  hard_threshold_s: 78
+  support_limit: 65
+account_delay: stable
