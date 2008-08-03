@@ -43,9 +43,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 1108;
-        public const double CacheSession = 88.12;
-        public const double BurstFactor = 13.18;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Retry,
+            Locked,
+            Queued,
+        }
     }
 }
