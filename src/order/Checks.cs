@@ -45,12 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCount = 1120;
+        public const long SoftCommits = 222;
+        public const long WindowSize = 614;
+        public const double MaxCommits = 82.8;
+        public const string MinCommits = "staging-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const double IdleCount = 12.16;
