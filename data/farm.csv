@@ -1,8 +1,6 @@
-id,score,rank,ratio,label
-1,469,270,608,596
-2,eu-west,staging,444,legacy
-3,4.5,422,blue,stable
-4,3.65,82.49,647,eu-west
-5,685,standard,161,blue
-6,173,legacy,764,79.96
-7,75.18,edge,73.97,eu-west
+id,active,ratio,owner,score
+1,stable,green,edge,open
+2,29.14,open,453,546
+3,88,448,65.45,662
+4,66,edge,592,374
+5,edge,890,228,68.22
