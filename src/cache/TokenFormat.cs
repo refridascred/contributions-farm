@@ -37,13 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
