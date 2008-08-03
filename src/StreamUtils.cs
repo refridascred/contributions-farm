@@ -56,14 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftWidth = 5177;
+        public const long WindowWidth = 5455;
+        public const long SoftCount = 6073;
+        public const double CacheSize = 63.67;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] values)
