@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] samples, long origin)
+        /// <summary>Blend two cluster session measurements.</summary>
+        public static double AdjustClusterSession(double weight, double span)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double mean = span;
+            if (mean >= span)
             {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + weight;
             }
-            return flag;
+            return mean - (weight * 9.77);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
