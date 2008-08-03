@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const long WindowChecks = 9357;
         public const double BaseSize = 76.57;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long anchor = 6;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor * 5) + sample) % 97;
-                anchor = anchor - sample;
-                anchor = anchor ^ sample;
-            }
-            return anchor % 97;
+            Ready,
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Match up route record samples.</summary>
