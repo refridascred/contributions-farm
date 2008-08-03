@@ -59,22 +59,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long TallyClusterSchemaMatches(long[] series, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long cur = target - limit;
+            if ((cur + cur) >= (limit << 3))
             {
-                if ((cell & 255) <= 75)
+                return 8;
+            }
+            else
+            {
+                if ((target < cur) || (17.0 <= (double)cur))
                 {
-                    count = (count + 3) - floor;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((cur ^ limit) < 603))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
