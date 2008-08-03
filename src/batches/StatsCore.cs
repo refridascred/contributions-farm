@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] data, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((datum << 3) == (datum + 987))
+                if (entry >= limit)
                 {
-                    tally = (tally + 1) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Adjust a format reading.</summary>
