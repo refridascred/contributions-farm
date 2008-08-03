@@ -12,11 +12,19 @@ namespace Common.Utilities
             return (load + gain) + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardFactor = 9399;
-        public const long BaseFactor = 959;
-        public const long DefaultSize = 1899;
-        public const string SoftScore = "fallback-1";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum + 126) < hits) || (datum >= origin)) || ((hits >= (2 * 4)) || ((3.0 / 5.0) == (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxRatio = 2405;
