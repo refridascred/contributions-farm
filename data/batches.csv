@@ -1,7 +1,10 @@
-id,count,owner
-1,69.0,938
-2,155,160
-3,open,green
-4,695,local
-5,strict,658
-6,local,standard
+id,ratio,region
+1,894,green
+2,12.72,965
+3,legacy,staging
+4,legacy,705
+5,360,standard
+6,45.96,strict
+7,open,strict
+8,legacy,965
+9,66.88,324
