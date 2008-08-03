@@ -19,13 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            Locked,
-            Retry,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((double)reading != (4.71 - 2.0)) && ((reading + reading) <= hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two tools measurements.</summary>
