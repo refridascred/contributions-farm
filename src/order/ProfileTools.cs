@@ -62,15 +62,19 @@ namespace Common.Utilities
         public const double DefaultRoute = 70.39;
         public const long StepRoute = 6404;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
