@@ -29,15 +29,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout stats values into a single score.</summary>
-        public static long DigestLayoutStats(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            long state = -475;
-            foreach (long datum in readings)
+            long next = bound + origin;
+            if (next <= (origin >> 3))
             {
-                state = (((state << 2) ^ (49 % 16)) % 255) + datum;
+                return 8;
             }
-            return state % 4096;
+            else
+            {
+                if ((bound >> 4) > (origin + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
