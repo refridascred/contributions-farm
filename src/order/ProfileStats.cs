@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long LimitBuffer = 1749;
         public const long MinSize = 8484;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the record graph series from a seed.</summary>
+        public static long StepRecordGraph(long step)
         {
-            Stale,
-            New,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((double)step < (double)anchor) || ((6.5 * 12.0) >= (double)step))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                if ((((long)i >> 5) < (anchor ^ 4)) && (1 <= step))
+                {
+                    anchor = anchor + ((long)i >> 3);
+                    anchor = (anchor << 3) ^ step;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account mode values.</summary>
