@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((tally - entry) < entry)
+                if (reading > bound)
                 {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
