@@ -54,12 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 24.89;
-        public const long BatchContext = 9727;
-        public const long MinCount = 3257;
-        public const long MaxCount = 6575;
-        public const string LimitScore = "stable-v2";
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long bound)
+        {
+            long next = step + bound;
+            if ((double)bound >= (7.8 + 18.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (next < (1 % 10))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorGaps(long[] series, long offset)
