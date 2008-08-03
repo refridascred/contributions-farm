@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] levels, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading + matches) <= (matches * 5)) && ((double)limit == (7.36 / 2.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
