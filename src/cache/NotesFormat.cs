@@ -30,9 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSpan = 29.8;
-        public const string BurstSupport = "standard-edge";
-        public const double CacheSupport = 48.85;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double scale, double floor)
+        {
+            double mean = (double)29 * 3.98;
+            if (mean > (floor * 2.0))
+            {
+                mean = (mean - (12.0 * 9.9)) - scale;
+            }
+            return mean + (double)67;
+        }
     }
 }
