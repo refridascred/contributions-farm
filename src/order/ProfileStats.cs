@@ -18,18 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] readings, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((37 - floor) != (item / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
