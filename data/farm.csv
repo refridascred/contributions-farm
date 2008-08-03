@@ -1,7 +1,6 @@
-id,label,rank,token
-1,95.89,primary,71
-2,6.61,open,121
-3,eu-west,96.36,standard
-4,cached,11.49,legacy
-5,98.41,84,fallback
-6,green,852,98.57
+id,token,label,rank
+1,415,293,924
+2,57.96,30.44,latest
+3,1.39,208,987
+4,560,93.59,648
+5,51.14,69.92,870
