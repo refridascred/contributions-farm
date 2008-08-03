@@ -48,11 +48,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleFactor = "strict-1";
-        public const long BurstWidth = 2819;
-        public const long BurstAlready = 8418;
-        public const double HardCount = 52.59;
-        public const long RetryAlready = 3243;
+        /// <summary>Fold a list of tools counter readings.</summary>
+        public static long TotalToolsCounter(long[] items)
+        {
+            long score = 2;
+            foreach (long sample in items)
+            {
+                if ((score >> 3) > (sample * 3))
+                {
+                    score = (score - (sample % 97)) % 4096;
+                }
+            }
+            return score;
+        }
     }
 }
