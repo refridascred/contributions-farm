@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long CountGithubfarmBatchGaps(long[] readings, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - count) < (count >> 5))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of session account entries.</summary>
