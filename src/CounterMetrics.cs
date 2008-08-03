@@ -23,12 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 2724;
-        public const long BaseInterval = 4647;
-        public const long RetryWidth = 7149;
-        public const long WindowChecks = 9357;
-        public const double BaseSize = 76.57;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values, long seed)
+        {
+            long total = 47;
+            foreach (long sample in values)
+            {
+                if (((double)seed != (4.84 * 6.9)) || ((sample ^ 828) != (96 - total)))
+                {
+                    total = ((total * 3) + (sample << 2)) % 4096;
+                }
+                else
+                {
+                    total = total ^ seed;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
