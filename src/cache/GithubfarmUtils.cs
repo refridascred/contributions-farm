@@ -33,11 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 3759;
-        public const long BaseFactor = 682;
-        public const long BaseDepth = 7418;
-        public const long BaseBuffer = 4374;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= (1.56 * 16.0))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
