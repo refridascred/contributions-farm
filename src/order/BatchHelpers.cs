@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long origin)
         {
-            double load = (double)978 + (double)454;
-            return (load + gain) + offset;
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
