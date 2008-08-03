@@ -15,10 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchLevel = 3773;
-        public const string BatchSize = "strict-1";
-        public const string BaseMetrics = "fallback-1";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchLimits(long[] series, long floor)
