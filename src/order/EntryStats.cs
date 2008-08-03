@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long bound, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] levels)
         {
-            if ((double)920 < (double)origin)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + bound) < bound)
+                if ((95 / 6) >= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 12) >= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
