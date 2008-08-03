@@ -72,19 +72,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "local-edge";
+        public const long StepCounter = 7939;
+        public const long SoftScore = 6347;
     }
 }
