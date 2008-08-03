@@ -35,10 +35,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleFactor = 766;
-        public const long CacheSize = 3674;
-        public const long WindowLevel = 8625;
-        public const long BatchStream = 683;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
