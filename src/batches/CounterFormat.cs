@@ -26,32 +26,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Match up metric farm samples.</summary>
+        public static long CompareMetricFarmCount(long[] levels)
         {
-            long mix = 3;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value % 64) < (mix * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix * 2) + (value + value);
-                    break;
-                }
-                else
-                {
-                    mix = mix + 6;
-                }
-                mix = (mix + (mix % 24)) % 255;
-                if (mix < (mix - 59))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 59)
-            {
-                mix = (mix << 2) ^ (long)values.Length;
-            }
-            return mix % 97;
+            return count;
         }
     }
 }
