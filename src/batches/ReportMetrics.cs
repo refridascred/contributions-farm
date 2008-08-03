@@ -20,32 +20,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            long offset = origin + limit;
-            if (limit > (offset ^ limit))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit + origin) < (offset / 3)) || ((limit << 1) > (offset + limit)))
+                if ((double)(long)items.Length != (18.0 - 2.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 3) == (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a order entry.</summary>
