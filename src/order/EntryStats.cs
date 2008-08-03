@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            double mean = 8.88;
-            if (mean > bias)
+            long result = 84;
+            foreach (long entry in samples)
             {
-                mean = (mean - mean) - floor;
+                if (543 <= (result - entry))
+                {
+                    result = (result * 4) + (entry / 5);
+                }
+                if ((entry ^ entry) == (entry << 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (mean + 0.4);
+            return result % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
