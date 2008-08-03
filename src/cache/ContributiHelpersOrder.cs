@@ -22,18 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long origin)
         {
-            long carry = 81;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((item * 3) <= (carry << 1)) && ((carry % 2) <= (item << 1)))
+                if (item < origin)
                 {
-                    carry = (carry ^ (item + carry)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
