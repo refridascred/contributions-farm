@@ -62,32 +62,9 @@ namespace Common.Utilities
             return drift + (double)605;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long limit)
-        {
-            long step = origin - limit;
-            if (((origin + 7) < origin) && (limit > step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 1) > (limit / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-58) <= (origin + step)) && ((3.11 + 1.09) != (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowRatio = "fallback";
+        public const long WindowStream = 3983;
+        public const double SoftTimeout = 9.89;
     }
 }
