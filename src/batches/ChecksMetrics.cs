@@ -63,13 +63,27 @@ namespace Common.Utilities
         public const string BatchGraph = "stable-v2";
         public const long BatchSize = 6481;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 73;
+            foreach (long value in levels)
+            {
+                mark = mark - (mark >> 4);
+                if ((value < (value + 39)) || (value > (33 - value)))
+                {
+                    mark = ((mark * 2) + value) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value / 2)) % 101;
+                }
+            }
+            if (mark < (-435))
+            {
+                mark = mark ^ (mark % 12);
+            }
+            return mark;
         }
     }
 }
