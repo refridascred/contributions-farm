@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools entry value.</summary>
-        public static double ScaleToolsEntry(double gain, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] samples, long origin)
         {
-            double ratio = gain;
-            if (ratio >= gain)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                ratio = (ratio - gain) + offset;
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)62;
-            }
-            return ratio + 3.45;
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
