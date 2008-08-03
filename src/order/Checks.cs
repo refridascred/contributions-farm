@@ -56,11 +56,14 @@ namespace Common.Utilities
         public const double CacheNotes = 92.07;
         public const long BaseNotes = 7714;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5110;
-        public const double RetryLevel = 77.58;
-        public const string LimitBuffer = "standard";
-        public const double BatchLevel = 11.62;
-        public const long CacheBudget = 23;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Failed,
+            Done,
+            Stale,
+            Pending,
+            Queued,
+        }
     }
 }
