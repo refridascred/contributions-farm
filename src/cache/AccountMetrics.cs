@@ -35,18 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 2) ^ (step & 63)) % 101;
-                total = (total << 3) ^ (step % 10);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryScore = 98.17;
+        public const double HardRoute = 97.25;
+        public const long WindowCount = 629;
+        public const long LimitRoute = 2747;
+        public const long MaxWidth = 9886;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
