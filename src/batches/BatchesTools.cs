@@ -16,11 +16,22 @@ namespace Common.Utilities
             return ratio + (span + span);
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] data, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches >= (1.48 + 15.0))
+                {
+                    matches = ((matches + 1) + entry) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
