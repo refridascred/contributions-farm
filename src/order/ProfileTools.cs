@@ -29,31 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            if (((step + floor) != (step * 2)) || ((24 & 7) < step))
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((floor + floor) >= floor))
+                result = ((result * 2) + (seed * 3)) % 4096;
+                result = (result + (result - result)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 2;
+                    result = (((result << 2) ^ (result * 5)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    if ((double)step < (3.6 - 3.03))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Hold a stream info.</summary>
