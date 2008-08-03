@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < origin)
                 {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the already mode values.</summary>
