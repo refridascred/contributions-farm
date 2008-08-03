@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next report profile value from a seed.</summary>
-        public static long SeriesReportProfile(long target)
+        /// <summary>Validate filter batches readings against a bound.</summary>
+        public static bool CheckFilterBatchesRange(long[] items, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mark = ((mark << 3) ^ (target * 5)) % 255;
-                if (3.6 >= (double)target)
+                if (datum >= step)
                 {
-                    mark = ((mark * 2) + mark) % 101;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark * 2) + (mark * 3);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Accumulate session samples.</summary>
