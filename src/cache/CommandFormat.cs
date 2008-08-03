@@ -19,13 +19,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Stale,
-            Done,
+            Draft,
             Dropped,
-            Ready,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
