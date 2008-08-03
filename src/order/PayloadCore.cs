@@ -40,19 +40,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long total = 93;
+            foreach (long sample in series)
             {
-                if (reading <= floor)
+                if (origin < (sample - sample))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (sample & 15)) % 1000;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
