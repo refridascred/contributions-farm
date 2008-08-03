@@ -15,15 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            New,
-            Draft,
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 65.6;
+        public const double BatchEditor = 49.54;
+        public const long MinEditor = 3068;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BaseCounter = 98.48;
