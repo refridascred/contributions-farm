@@ -14,11 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultRatio = 33.18;
-        public const long BatchFactor = 1856;
-        public const double DefaultSchema = 74.85;
-        public const double BurstSchema = 6.09;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Failed,
+            Retry,
+            Paused,
+            Done,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] samples, long seed)
