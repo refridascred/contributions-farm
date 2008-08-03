@@ -32,21 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
