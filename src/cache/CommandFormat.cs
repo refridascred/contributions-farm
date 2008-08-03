@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi filter measurements.</summary>
-        public static double AdjustContributiFilter(double bias, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double gain = offset + (double)58;
-            if (gain > (offset / 9.0))
-            {
-                gain = (gain - offset) - bias;
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain + (double)57;
+            Stale,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
