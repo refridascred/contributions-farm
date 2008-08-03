@@ -1,10 +1,15 @@
 # Command notes
 
-When a contributi fails, the profile handler retries a few times before giving up.
-When a token fails, the support handler retries a few times before giving up.
+The support report groups every graph by entry.
+Use editor settings to tune how often already data is refreshed.
+
+Keep already and payload names short and lowercase.
+Keep session and context names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metrics values small
-- Review account limits each release
-- Validate token input early
+- Log every metric change
+- Keep stats values small
+- Validate farm input early
+- Document new token fields
