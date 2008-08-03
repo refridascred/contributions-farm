@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain - (rate * 1.4);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-1";
-        public const long StepLevel = 2755;
-        public const long BurstFactor = 10;
-        public const long SoftContext = 8923;
-        public const long MaxContext = 8213;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "alpha-edge";
+        public const long SoftCount = 6440;
+        public const double RetryDepth = 92.71;
+        public const long WindowFormat = 9820;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long limit, long floor)
