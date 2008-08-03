@@ -19,16 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            double bias = (double)(8 ^ 860);
+            if (bias <= (double)48)
             {
-                state = state + (long)i;
-                state = ((state * 5) + (long)i) % 97;
+                bias = (bias + floor) + scale;
             }
-            return state;
+            return bias + (bias / 3.0);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
