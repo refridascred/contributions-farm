@@ -23,19 +23,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] values, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (value <= floor)
+                if (((double)entry > (8.2 + 17.0)) || ((double)tally == (9.7 / 8.0)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
