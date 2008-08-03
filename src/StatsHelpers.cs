@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a buffer batch counter forward.</summary>
-        public static long StepBufferBatch(long target)
+        /// <summary>Measure how many cache metrics samples are out of range.</summary>
+        public static long TallyCacheMetricsGaps(long[] values, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (((floor - matches) == (sample + sample)) && !((55 + 814) >= (floor % 100)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
