@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const double HardScore = 76.75;
         public const double DefaultDepth = 93.45;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long origin)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double rate = span;
+            if (rate >= (bias - span))
             {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + 5.01;
             }
-            return valid;
+            return rate - rate;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
