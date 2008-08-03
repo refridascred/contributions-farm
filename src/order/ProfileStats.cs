@@ -34,17 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long origin)
+        /// <summary>Check that every farm editor entry stays within the limit.</summary>
+        public static bool ValidateFarmEditorLimits(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                if (reading != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a queue stats pair into a bucket.</summary>
