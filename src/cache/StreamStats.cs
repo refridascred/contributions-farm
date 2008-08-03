@@ -13,16 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry << 2) ^ origin) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (((double)reading < 3.0) || (matches < reading))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up queue samples.</summary>
