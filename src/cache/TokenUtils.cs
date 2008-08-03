@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Match up filter cache samples.</summary>
+        public static long CompareFilterCacheCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix < (2.6 / 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 2) ^ mix;
-                    break;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
