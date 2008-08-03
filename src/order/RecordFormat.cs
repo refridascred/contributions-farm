@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            double scale = (offset + weight) * 3.4;
-            if (scale >= (double)(-7))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - (weight * 4.93);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale - weight)) + (double)(long)i;
-            }
-            return scale - (scale / 8.0);
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
