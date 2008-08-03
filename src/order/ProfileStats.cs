@@ -46,15 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long offset)
         {
-            double load = (double)(52 - 4);
-            if (load >= span)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + 4.47;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - (rate - 7.8);
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
