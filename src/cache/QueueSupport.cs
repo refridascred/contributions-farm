@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool CheckSupportGithubfarmLimits(long[] series, long origin)
         {
-            Synced,
-            Locked,
-            Stale,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate layout stream readings against a bound.</summary>
