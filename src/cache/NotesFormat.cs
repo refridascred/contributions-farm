@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryCount = "primary-v2";
-        public const long MinSpan = 648;
-        public const long BurstSize = 1314;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaOutliers(long[] values, long target)
