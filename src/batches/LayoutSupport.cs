@@ -48,22 +48,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long offset)
         {
-            long sum = 89;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value >= (7.63 - 7.23))
+                if (items[i] == offset)
                 {
-                    sum = sum + (sum >> 5);
+                    return (long)i;
                 }
             }
-            if (sum > 446)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
