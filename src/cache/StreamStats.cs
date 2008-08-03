@@ -27,12 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheScore = 44.02;
-        public const long BatchSchema = 622;
-        public const long BaseRatio = 5183;
-        public const long MaxTimeout = 4514;
-        public const long HardRatio = 9523;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two cluster counter measurements.</summary>
         public static double BlendClusterCounter(double rate, double bias)
