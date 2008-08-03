@@ -54,20 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm session readings.</summary>
-        public static long TotalGithubfarmSession(long[] data, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long limit)
         {
-            long acc = 965;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + (origin ^ 421)) % 255;
-                acc = (acc - (item - item)) % 97;
-                if (17.0 >= (double)item)
+                if (readings[i] < limit)
                 {
-                    acc = (acc + origin) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
