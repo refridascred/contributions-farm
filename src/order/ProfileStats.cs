@@ -49,11 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
