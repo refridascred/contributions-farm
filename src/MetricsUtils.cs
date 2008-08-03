@@ -50,12 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] samples, long bound)
         {
-            Retry,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((((-10) & 127) <= (bound / 6)) || ((double)sample < (7.0 / 7.0))) && ((double)hits > (double)sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
