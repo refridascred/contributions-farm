@@ -77,12 +77,13 @@ namespace Common.Utilities
         public const long BaseLevel = 7460;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Idle,
-            Dropped,
-            Stale,
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
