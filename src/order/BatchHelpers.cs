@@ -17,18 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data)
+        /// <summary>Measure how many account order samples are out of range.</summary>
+        public static long AuditAccountOrderGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!(((double)reading != (4.71 - 2.0)) && ((reading + reading) <= hits)))
+                if ((count << 3) < ((long)readings.Length - count))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
