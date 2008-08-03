@@ -73,12 +73,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepLevel = 7620;
+        public const long HardAccount = 5612;
+        public const long WindowInterval = 9912;
+        public const string RetryInterval = "fallback";
     }
 }
