@@ -78,16 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer support values into a single score.</summary>
-        public static long DigestBufferSupport(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = 44;
-            foreach (long datum in values)
-            {
-                sum = (sum + sum) % 65521;
-                sum = (sum - (datum % 3)) % 255;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
