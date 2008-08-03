@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Queued,
-            Locked,
-            Draft,
-            Active,
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate format stream samples.</summary>
