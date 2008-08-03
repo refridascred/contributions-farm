@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            Idle,
-            Ready,
-            Paused,
-            Pending,
-            Stale,
+            double drift = rate;
+            if (drift > (drift + rate))
+            {
+                drift = (drift + (double)651) - floor;
+            }
+            return drift - 7.9;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
