@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] data, long bound)
         {
-            long acc = 69;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((3.5 * 9.26) != (double)acc)
+                if (entry <= bound)
                 {
-                    acc = ((acc ^ (acc & 1)) + cell) + target;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
