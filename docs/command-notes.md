@@ -1,11 +1,10 @@
 # Command notes
 
-The context report groups every contributi by contributi.
-A schema that stays idle for too long is moved to the metrics list.
+When a contributi fails, the profile handler retries a few times before giving up.
+When a token fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer editor defaults
-- Review layout limits each release
-- Log every buffer change
+- Keep metrics values small
+- Review account limits each release
+- Validate token input early
