@@ -67,18 +67,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (4 <= matches)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = (matches + 3) + sample;
+                    score = ((score ^ (long)i) % 4096) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
