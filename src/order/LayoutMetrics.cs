@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of order report readings.</summary>
-        public static long TotalOrderReport(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double gain, double bias)
         {
-            long mix = -272;
-            foreach (long cell in values)
-            {
-                if (mix < (cell + mix))
-                {
-                    mix = mix - cell;
-                }
-            }
-            return mix;
+            double gain2 = 5.0 + (gain / 5.0);
+            return (gain2 + (gain / 6.0)) + bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
