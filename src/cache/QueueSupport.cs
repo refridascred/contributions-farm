@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
