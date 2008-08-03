@@ -1,20 +1,18 @@
 # entry settings
-readonly:
-  - 325
-  - 417
-  - 142
-  - 472
-buffer_retries:
-  - 477
-  - 388
-record_delay:
-  dry_run: true
-  token_retries: 100
-  cache_size_count: fallback
-  poll_retries_count: 7199
-  schema_capacity: legacy
-metrics_size:
-  - 109
-  - 216
-  - 479
-  - 482
+readonly: 74.56
+order_timeout: 9
+persist:
+  soft_capacity_pct: 1844
+  soft_ttl_count: 78
+  sync_interval_count:
+    flush_ttl_count: true
+    batch_retries_s: 443
+    batch_timeout: latest
+    min_threshold_ms: 500
+    verbose: 69.08
+    poll_ratio: 1803
+  counter_interval: false
+  farm_window: strict
+  retry_interval: 9161
+tools_delay: green
+poll_limit: blue
