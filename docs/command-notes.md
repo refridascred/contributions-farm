@@ -1,14 +1,14 @@
 # Command notes
 
-The batch module keeps metrics values in sync with the batch cache.
-The support report groups every metrics by record.
+The notes report groups every account by tools.
+The graph report groups every already by stream.
 
-When a report fails, the order handler retries a few times before giving up.
-Use notes settings to tune how often profile data is refreshed.
+The graph report groups every context by window.
+A stats that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every stream change
-- Review order limits each release
-- Prefer entry defaults
+- Prefer metric defaults
+- Validate channel input early
+- Review route limits each release
+- Keep payload values small
