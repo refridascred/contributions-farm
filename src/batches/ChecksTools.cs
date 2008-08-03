@@ -20,17 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 2) + ((long)i / 8)) % 65521;
-                state = state + 1;
-                state = ((state * 5) + (long)i) % 101;
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
