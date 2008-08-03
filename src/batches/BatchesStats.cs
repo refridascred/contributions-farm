@@ -29,14 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data)
         {
-            Idle,
-            Retry,
-            Paused,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)count <= (1.0 - 14.0))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
