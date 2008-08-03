@@ -30,19 +30,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 11.29;
+        public const string IdleTimeout = "strict";
+        public const long IdleRoute = 5722;
+        public const double MinRoute = 49.43;
     }
 }
