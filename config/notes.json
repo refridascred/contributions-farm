@@ -1,11 +1,6 @@
 {
-  "hard_threshold": 250,
-  "compress": 250,
-  "batch_ttl_ms": "cached",
-  "default_ttl": {
-    "max_timeout_count": 1024,
-    "stats_interval": "staging",
-    "poll_capacity": 1
-  },
-  "default_timeout": true
+  "sync_delay": "strict",
+  "warm_timeout_ms": 46.79,
+  "cache_capacity": ["stable", "open", "fallback"],
+  "stats_timeout": 70
 }
