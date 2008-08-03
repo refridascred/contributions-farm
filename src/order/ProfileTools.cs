@@ -26,19 +26,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double gain = 14.0 - rate;
-            if (gain < (double)88)
-            {
-                gain = gain - (bias * 1.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (double)(-8);
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
