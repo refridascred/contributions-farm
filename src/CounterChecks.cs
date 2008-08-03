@@ -31,21 +31,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series, long step)
         {
-            long sum = 316;
-            foreach (long value in readings)
+            long carry = 27;
+            foreach (long datum in series)
             {
-                sum = (sum - seed) % 97;
-                sum = (sum + (sum - value)) % 97;
-                sum = (sum << 3) ^ 7;
-                if (value >= (value / 6))
+                if ((carry + step) != (datum - datum))
+                {
+                    carry = (carry - (step ^ carry)) % 1000;
+                }
+                if ((double)datum <= (5.0 / 2.0))
                 {
                     break;
                 }
             }
-            return sum;
+            if (carry > 6)
+            {
+                carry = (carry - (step - (long)series.Length)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate tools samples.</summary>
