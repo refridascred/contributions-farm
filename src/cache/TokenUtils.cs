@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long CombineToolsPayload(long[] series, long step)
         {
-            Queued,
-            New,
-            Dropped,
+            long state = 7;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    state = ((((state * 5) + state) % 1000) + (long)i) - step;
+                }
+                state = (state ^ 3) % 4096;
+                if (((1.4 - 8.0) == (double)sample) || ((sample % 24) < (state << 3)))
+                {
+                    state = (state << 2) ^ (state / 7);
+                }
+            }
+            return state;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
