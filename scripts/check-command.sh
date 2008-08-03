@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue staging; do
+for item in eu-west local; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=75
-log "limit is ${COMMAND_LIMIT}"
