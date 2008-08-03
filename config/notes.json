@@ -1,13 +1,8 @@
 {
-  "sync_capacity_ms": 73,
-  "sync_depth_count": {
-    "report_limit": true,
-    "burst_delay_ms": 46,
-    "flush_size_pct": 51,
-    "default_retries": 2095,
-    "burst_timeout_s": true
-  },
-  "dry_run": true,
-  "idle_ttl": true,
-  "poll_threshold_count": [318, 375, 184]
+  "warm_limit": "local",
+  "verbose": false,
+  "sync_timeout_ms": "green",
+  "route_size": 29.92,
+  "burst_limit": "blue",
+  "enabled": "open"
 }
