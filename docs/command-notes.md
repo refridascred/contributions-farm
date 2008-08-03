@@ -1,15 +1,13 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the session list.
-A schema that stays idle for too long is moved to the stats list.
-Use checks settings to tune how often entry data is refreshed.
+The contributi module keeps stream values in sync with the entry cache.
+The graph module keeps counter values in sync with the order cache.
 
-Each entry is validated before it reaches the channel queue.
-Use counter settings to tune how often support data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every schema change
-- Keep already values small
-- Review stats limits each release
+- Document new profile fields
+- Log every format change
+- Keep profile values small
