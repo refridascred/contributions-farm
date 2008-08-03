@@ -70,11 +70,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long AuditAlreadyCacheMatches(long[] series)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((7 ^ 1) >= (datum << 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
