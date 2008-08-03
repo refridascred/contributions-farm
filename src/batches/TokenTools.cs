@@ -16,18 +16,22 @@ namespace Common.Utilities
             return load + (rate - floor);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((7.0 * 8.97) == (double)count)
+                if ((double)832 <= (double)cell)
                 {
-                    count = (count + 3) + cell;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a filter reading.</summary>
