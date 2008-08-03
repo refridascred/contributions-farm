@@ -57,11 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metrics cluster reading.</summary>
-        public static double BlendMetricsCluster(double bias, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] items, long step)
         {
-            double load = 15.0 + (bias - bias);
-            return (load - (bias - load)) + offset;
+            long acc = 52;
+            foreach (long entry in items)
+            {
+                acc = (((acc * 4) + acc) - entry) - step;
+            }
+            if (acc > 3)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc;
         }
     }
 }
