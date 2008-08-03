@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Stale,
-            Active,
+            Failed,
+            Paused,
             Draft,
-            Done,
-            Retry,
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
