@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 88.34;
+        public const long LimitFactor = 2791;
+        public const long BaseContext = 7582;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] items, long bound)
