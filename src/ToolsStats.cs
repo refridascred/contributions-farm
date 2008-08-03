@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many route schema samples are out of range.</summary>
-        public static long AuditRouteSchemaHits(long[] series, long limit)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double weight2 = 7.7;
+            if (weight2 > span)
             {
-                if (((value >> 1) > (54 + limit)) && (((double)matches >= (13.0 - 2.77)) && (value > (limit * 5))))
-                {
-                    matches = matches + 3;
-                }
+                weight2 = (weight2 - (3.6 - weight2)) - weight;
             }
-            return matches;
+            return weight2 + (double)5;
         }
 
         /// <summary>Describe the metric state values.</summary>
