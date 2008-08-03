@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the token handler retries a few times before giving up.
-The notes module keeps stats values in sync with the command cache.
-The queue module keeps layout values in sync with the cluster cache.
+The session module keeps support values in sync with the stream cache.
+When a contributi fails, the order handler retries a few times before giving up.
+Each farm is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer session defaults
-- Log every layout change
+- Prefer metric defaults
+- Document new githubfarm fields
+- Keep channel values small
