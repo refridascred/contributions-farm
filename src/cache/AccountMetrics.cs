@@ -67,13 +67,14 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Active,
+            New,
+            Done,
+            Draft,
+            Failed,
         }
     }
 }
