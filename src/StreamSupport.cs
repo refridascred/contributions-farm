@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 736;
-        public const long BaseAlready = 2042;
-        public const long MaxAlready = 5582;
-        public const long MinAlready = 7515;
-        public const double IdleCount = 87.81;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitLevel = 2989;
+        public const long SoftDepth = 6715;
+        public const long DefaultSize = 7264;
+        public const double BatchFactor = 59.25;
+        public const double IdleInterval = 86.85;
 
         /// <summary>Rank command filter input into a small class.</summary>
         public static long RankCommandFilter(long seed, long origin)
