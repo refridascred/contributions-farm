@@ -30,31 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            long sum = 866;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((45 >> 5) > cell)
+                if (!(item < (79 - item)) && ((seen & 15) < (8 & 7)))
                 {
-                    sum = ((sum << 3) ^ (sum % 8)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + sum) % 4096;
-                    sum = (sum * 3) + (24 ^ cell);
-                }
-                if ((534 + sum) > (sum << 1))
-                {
-                    break;
-                }
-                if ((cell - cell) <= cell)
-                {
-                    sum = (sum - ((-34) >> 2)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
