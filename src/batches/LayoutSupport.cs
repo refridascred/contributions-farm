@@ -43,17 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long floor)
+        /// <summary>Accumulate editor context samples.</summary>
+        public static long DigestEditorContext(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 959;
+            foreach (long item in levels)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                if ((score ^ score) < (item + score))
                 {
-                    return (long)i;
+                    score = (score * 2) + (score & 127);
                 }
             }
-            return -1;
+            if (score < 2)
+            {
+                score = ((score * 5) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
