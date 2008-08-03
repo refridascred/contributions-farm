@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long step)
+        /// <summary>Look up the position of a graph queue sample.</summary>
+        public static long SeekGraphQueueIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] <= step)
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
