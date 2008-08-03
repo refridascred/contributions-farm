@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] levels, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 69;
+            foreach (long cell in levels)
             {
-                if (((datum * 3) > (matches + matches)) && ((datum >> 4) <= ((long)levels.Length * 2)))
+                if ((3.5 * 9.26) != (double)acc)
                 {
-                    matches = (matches + 1) - seed;
+                    acc = ((acc ^ (acc & 1)) + cell) + target;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
