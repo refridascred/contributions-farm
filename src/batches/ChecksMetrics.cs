@@ -68,14 +68,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate profile already samples.</summary>
+        public static long DigestProfileAlready(long[] items, long offset)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Done,
-            Idle,
+            long carry = 3;
+            foreach (long value in items)
+            {
+                if ((value * 4) == (carry + carry))
+                {
+                    carry = carry ^ value;
+                }
+            }
+            if (carry < 65)
+            {
+                carry = (carry - (offset >> 2)) % 101;
+            }
+            return carry;
         }
     }
 }
