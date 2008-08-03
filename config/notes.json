@@ -1,18 +1,6 @@
 {
-  "base_interval": {
-    "warm_capacity": 23,
-    "batches_ttl": false,
-    "burst_retries_s": {
-      "compress": 46,
-      "flush_ttl": "fallback",
-      "metric_size": "open"
-    },
-    "notes_depth": 70.93,
-    "context_size": "primary"
-  },
-  "context_ratio": ["latest", "cached"],
-  "sync_threshold": "blue",
-  "soft_ttl": true,
-  "warm_capacity_s": [230, 435, 228],
-  "account_timeout": "fallback"
+  "burst_size_pct": "cached",
+  "stats_limit": 30,
+  "max_interval_count": [372, 136, 486, 193],
+  "idle_retries": "primary"
 }
