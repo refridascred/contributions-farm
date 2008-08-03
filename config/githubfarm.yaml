@@ -1,5 +1,25 @@
 # githubfarm settings
-batch_limit: false
-route_capacity: true
-cache_window: strict
-cache_limit: 4.58
+readonly:
+  - 339
+  - 55
+  - 407
+command_ratio:
+  poll_retries: 250
+  flush_depth_ms: primary
+  queue_ratio: 8774
+  buffer_delay: false
+  compress: stable
+  warm_capacity_pct:
+    - latest
+    - blue
+    - legacy
+strict: 7579
+burst_delay_s:
+  - 320
+  - 422
+metric_delay: local
+hard_ttl:
+  - 266
+  - 298
+  - 410
+  - 191
