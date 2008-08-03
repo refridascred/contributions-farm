@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const string MinSchema = "alpha-1";
         public const long BurstSchema = 4544;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
