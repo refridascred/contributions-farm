@@ -27,19 +27,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((total << 2) <= (-26)))
-                {
-                    total = ((total * 2) + (limit << 1)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "latest";
+        public const string MinRoute = "open-1";
+        public const string StepRatio = "local-edge";
     }
 }
