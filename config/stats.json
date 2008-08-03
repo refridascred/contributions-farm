@@ -1,19 +1,6 @@
 {
-  "burst_threshold_ms": ["stable", "edge"],
-  "compress": {
-    "context_delay": {
-      "audit": ["strict", "local", "staging", "blue"],
-      "warm_ttl_pct": 65,
-      "burst_delay_s": "legacy",
-      "default_size_ms": true,
-      "strict": true,
-      "burst_depth_ms": 75
-    },
-    "max_threshold": ["green", "open", "blue"],
-    "soft_timeout": false,
-    "base_delay_pct": 95.12,
-    "soft_depth_count": 31,
-    "audit": false
-  },
-  "contributi_threshold": 14.15
+  "flush_window": 1476,
+  "batch_depth": 1024,
+  "flush_ratio": true,
+  "enabled": [411, 134]
 }
