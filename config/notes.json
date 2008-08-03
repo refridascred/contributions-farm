@@ -1,6 +1,12 @@
 {
-  "burst_size_pct": "cached",
-  "stats_limit": 30,
-  "max_interval_count": [372, 136, 486, 193],
-  "idle_retries": "primary"
+  "strict": {
+    "buffer_threshold": 7469,
+    "persist": "eu-west",
+    "base_window_s": ["open", "blue", "primary", "cached"],
+    "sync_limit_s": "green"
+  },
+  "session_capacity": 56,
+  "verbose": "fallback",
+  "poll_window_count": 60,
+  "sync_depth": "legacy"
 }
