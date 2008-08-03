@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Retry,
             Draft,
-            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the context state values.</summary>
