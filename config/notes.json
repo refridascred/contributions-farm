@@ -1,6 +1,5 @@
 {
-  "idle_timeout_count": [309, 481],
-  "compress": 80.87,
-  "cache_delay_ms": "edge",
-  "soft_timeout": ["eu-west", "legacy", "green"]
+  "compress": [275, 72, 46],
+  "idle_retries_count": "staging",
+  "idle_ttl": 4.37
 }
