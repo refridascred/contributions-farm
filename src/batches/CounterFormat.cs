@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string StepSpan = "standard-1";
         public const double RetryWidth = 78.7;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 299;
-        public const long WindowScore = 4963;
-        public const long BaseCache = 4888;
-        public const long BaseLevel = 4769;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state << 3) ^ (offset - offset)) % 101;
+                state = state ^ ((-452) + state);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] data, long floor)
