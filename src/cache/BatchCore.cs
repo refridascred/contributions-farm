@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (cell <= origin)
+                if (sample <= bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
