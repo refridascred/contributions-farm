@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] levels, long limit)
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((tally / 3) == (37 + reading)))
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter options.</summary>
