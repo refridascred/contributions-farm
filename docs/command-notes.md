@@ -1,11 +1,11 @@
 # Command notes
 
-The counter module keeps route values in sync with the order cache.
-The order helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any batches limits.
+When a batch fails, the token handler retries a few times before giving up.
+The notes module keeps stats values in sync with the command cache.
+The queue module keeps layout values in sync with the cluster cache.
 
 ## Guidelines
 
-- Keep checks values small
-- Document new stats fields
-- Prefer entry defaults
+- Keep commits values small
+- Prefer session defaults
+- Log every layout change
