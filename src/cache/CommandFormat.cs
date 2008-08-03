@@ -19,13 +19,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)2 >= (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
