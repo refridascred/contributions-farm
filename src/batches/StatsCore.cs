@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)count != (6.7 / 3.0))
+                if ((62 + cell) >= (hits >> 3))
                 {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
