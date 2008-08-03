@@ -1,12 +1,20 @@
 # githubfarm settings
-layout_limit:
-  - staging
-  - cached
-  - cached
-  - standard
-retry_depth_ms:
-  - 203
-  - 291
-  - 457
-persist: 7650
-batch_interval: false
+commits_capacity: cached
+entry_size: 31
+sync_capacity:
+  hard_ratio:
+    command_timeout: 19
+    strict: false
+    poll_limit: staging
+    soft_depth_pct:
+      - cached
+      - eu-west
+      - fallback
+  max_ttl_s: 1216
+  warm_retries_ms: legacy
+  soft_delay_pct: 1499
+  commits_window:
+    - 300
+    - 90
+warm_window_s: true
+hard_ratio: 92.44
