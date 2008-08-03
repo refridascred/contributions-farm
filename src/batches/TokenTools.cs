@@ -46,15 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            double weight2 = weight - (double)(-4);
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                weight2 = (weight2 - (double)(long)i) + offset;
+                carry = (carry + (floor & 31)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return weight2 - weight2;
+            return carry;
         }
     }
 }
