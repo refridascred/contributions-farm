@@ -55,12 +55,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen ^ entry) > (entry % 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
