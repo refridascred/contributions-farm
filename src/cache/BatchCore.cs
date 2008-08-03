@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings, long floor)
         {
-            Paused,
-            Ready,
-            Synced,
-            Locked,
-            Retry,
+            long mark = 38;
+            foreach (long item in readings)
+            {
+                mark = (mark + item) + floor;
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
