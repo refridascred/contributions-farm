@@ -81,15 +81,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Retry,
+            Queued,
         }
     }
 }
