@@ -1,12 +1,8 @@
 {
-  "soft_limit": {
-    "farm_limit": "staging",
-    "default_window_count": "fallback",
-    "dry_run": "eu-west",
-    "strict": 4505
-  },
-  "audit": 47.24,
-  "min_timeout": 9.04,
-  "flush_timeout_pct": "open",
-  "warm_limit": "latest"
+  "idle_window": 29.89,
+  "soft_threshold": "legacy",
+  "sync_threshold_count": 500,
+  "max_timeout_pct": "strict",
+  "poll_interval_ms": 71.85,
+  "cache_window": 500
 }
