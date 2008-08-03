@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate stats editor readings against a bound.</summary>
-        public static bool CheckStatsEditorBounds(long[] levels, long limit)
+        /// <summary>Match up graph filter samples.</summary>
+        public static long PairGraphFilterCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
