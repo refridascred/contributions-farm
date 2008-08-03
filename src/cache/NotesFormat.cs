@@ -30,31 +30,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long seed, long target)
+        /// <summary>Look up the position of a githubfarm format sample.</summary>
+        public static long LocateGithubfarmFormatIndex(long[] items, long floor)
         {
-            if ((seed + target) <= 1)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed + 326) < (target & 31)))
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed >= 4.35) && ((seed / 4) >= 147))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
