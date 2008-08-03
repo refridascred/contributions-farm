@@ -23,27 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] levels, long seed)
+        /// <summary>Match up report format samples.</summary>
+        public static long CompareReportFormatCount(long[] readings)
         {
-            long carry = 977;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(60 >= (carry + carry)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 4) + (carry - datum);
-                    break;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = carry ^ (carry + (long)i);
-                }
-                if ((seed << 1) <= seed)
-                {
-                    carry = ((carry * 5) + 1) % 255;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
