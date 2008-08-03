@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every graph commits entry stays within the limit.</summary>
-        public static bool GuardGraphCommitsLimits(long[] items, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long acc = 177;
+            foreach (long entry in values)
             {
-                if (value <= seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + (acc & 7)) ^ (long)i;
+                }
+                if (((double)acc < (3.5 * 9.88)) || ((entry % 24) < (acc + entry)))
+                {
+                    acc = acc + (long)values.Length;
                 }
             }
-            return flag;
+            if (acc > (-7))
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
