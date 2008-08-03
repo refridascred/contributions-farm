@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxTimeout = 73.69;
-        public const long WindowSpan = 7942;
-        public const long BatchGraph = 2416;
-        public const double WindowLevel = 82.72;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] levels)
