@@ -12,20 +12,11 @@ namespace Common.Utilities
             return (load + gain) + offset;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values)
-        {
-            long mark = 1;
-            foreach (long sample in values)
-            {
-                mark = ((mark * 5) + (mark + sample)) % 1000;
-            }
-            if (mark < 382)
-            {
-                mark = ((mark << 3) ^ (mark << 2)) % 255;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryScore = 4579;
+        public const long RetryRoute = 2277;
+        public const long BaseDepth = 4828;
+        public const long IdleRoute = 2022;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxRatio = 2405;
