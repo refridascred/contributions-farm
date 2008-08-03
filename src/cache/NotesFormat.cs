@@ -22,13 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long result = 467;
+            foreach (long sample in items)
+            {
+                result = result + result;
+                result = result + (sample ^ (-98));
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
