@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long MeasureEntryReportHits(long[] series)
+        /// <summary>Project the next counter command value.</summary>
+        public static double SmoothCounterCommand(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            double gain = (double)((-911) - 54);
+            if (gain >= (floor / 5.0))
             {
-                if ((double)value != (1.46 * 12.0))
-                {
-                    count = count + 1;
-                }
+                gain = (gain + gain) + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (floor / 6.0)) - (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
