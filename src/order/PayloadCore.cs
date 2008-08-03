@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            Paused,
-            Active,
-            Pending,
-            Failed,
-            Dropped,
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark + (seed + mark)) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up format samples.</summary>
