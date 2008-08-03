@@ -77,9 +77,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5782;
-        public const double HardWidth = 6.13;
-        public const double RetrySpan = 8.48;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5110;
+        public const double RetryLevel = 77.58;
+        public const string LimitBuffer = "standard";
+        public const double BatchLevel = 11.62;
+        public const long CacheBudget = 23;
     }
 }
