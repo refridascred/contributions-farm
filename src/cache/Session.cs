@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long target, long limit)
+        /// <summary>Audit contributi queue readings against a rule.</summary>
+        public static long AuditContributiQueueMatches(long[] data, long offset)
         {
-            long offset = target + limit;
-            if ((target + limit) >= (29 & 3))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < (limit + offset))
+                if ((count + offset) <= (reading / 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
