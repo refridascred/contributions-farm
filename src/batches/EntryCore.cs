@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long BatchToken = 208;
         public const long DefaultSize = 765;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Closed,
-            Ready,
-            Dropped,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinTimeout = 17.91;
+        public const double StepOrder = 11.75;
+        public const string BurstScore = "strict-v2";
+        public const long LimitOrder = 9048;
+        public const string HardOrder = "local-v2";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
