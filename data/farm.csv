@@ -1,6 +1,6 @@
-id,state
-1,eu-west
-2,open
-3,21.3
-4,81.32
-5,staging
+id,state,ratio,token
+1,primary,321,5.03
+2,35.3,strict,568
+3,550,994,38.73
+4,eu-west,95.48,stable
+5,339,83.84,local
