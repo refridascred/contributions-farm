@@ -22,19 +22,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Derive the next batch stats value from a seed.</summary>
+        public static long RollBatchStats(long seed)
         {
-            double drift = (scale + floor) / 8.0;
-            if (drift > (1.86 + 7.0))
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (drift / 8.0);
+                acc = (acc - (acc - (long)i)) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor * 0.09)) + (double)(long)i;
-            }
-            return drift + (floor + 10.0);
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
