@@ -34,12 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinDepth = "latest-1";
+        public const string RetrySupport = "local-1";
+        public const double BatchLevel = 11.29;
+        public const double WindowSize = 7.66;
+        public const long BurstSupport = 604;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long limit, long limit2)
