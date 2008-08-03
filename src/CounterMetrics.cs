@@ -40,32 +40,21 @@ namespace Common.Utilities
         public const double BurstDepth = 97.0;
         public const string CacheLevel = "legacy";
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long origin)
+        /// <summary>Compare every pair of batches schema readings.</summary>
+        public static long MatchBatchesSchemaCount(long[] levels)
         {
-            long edge = floor ^ origin;
-            if ((-77) > (origin - edge))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge * 2) <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (2 > edge)
+                    if ((levels[i] ^ levels[j]) == 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
