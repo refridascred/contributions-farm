@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many filter window samples are out of range.</summary>
-        public static long TallyFilterWindowGaps(long[] levels, long origin)
+        /// <summary>Iterate the filter metrics series from a seed.</summary>
+        public static long StepFilterMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches ^ origin) > (datum ^ matches))
+                if ((1.0 + 5.1) == (double)bound)
                 {
-                    matches = matches + 2;
+                    sum = sum + (sum & 31);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the format kind values.</summary>
