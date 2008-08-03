@@ -50,15 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double gain2 = 1.0 - (span / 2.0);
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + (gain / 3.0)) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
