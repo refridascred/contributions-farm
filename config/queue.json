@@ -1,10 +1,5 @@
 {
-  "editor_interval": 75,
-  "idle_depth": 35.42,
-  "soft_retries_pct": [415, 454, 425, 77],
-  "order_window": {
-    "readonly": true,
-    "batch_ttl": true,
-    "poll_depth": "legacy"
-  }
+  "idle_limit_ms": true,
+  "default_timeout_pct": ["open", "cached"],
+  "command_delay": "edge"
 }
