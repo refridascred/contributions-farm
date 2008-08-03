@@ -1,14 +1,30 @@
 # githubfarm settings
-token_timeout: 41.57
-graph_size: 61.31
-buffer_threshold:
-  retry_limit: 1536
-  batch_size:
-    - cached
-    - latest
-    - legacy
-  warm_ratio_s: 12
-  soft_size_count: 80
-idle_timeout_count: green
-default_ttl_ms: eu-west
-enabled: standard
+sync_delay_s: true
+retry_ratio_pct:
+  cache_timeout:
+    - standard
+    - stable
+    - stable
+    - stable
+  buffer_retries: cached
+  min_ratio: 49
+  stats_limit: 11.02
+poll_depth_pct:
+  poll_window:
+    hard_limit_s: 100
+    cache_ratio_pct: edge
+    enabled: true
+    max_limit_ms: blue
+    filter_capacity:
+      - 429
+      - 267
+      - 69
+      - 52
+  max_threshold_pct:
+    - green
+    - green
+  already_window:
+    - open
+    - eu-west
+  batches_size: fallback
+  flush_depth: false
