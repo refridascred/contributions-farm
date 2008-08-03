@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
