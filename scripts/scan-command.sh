@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging local edge; do
+COMMAND_LIMIT=120
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict edge local; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    blue)
         log "fast path"
         ;;
     *)
