@@ -23,21 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter cache values into a single score.</summary>
-        public static long DigestCounterCache(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] levels, long seed)
         {
-            long carry = 134;
-            foreach (long entry in levels)
+            long carry = 977;
+            foreach (long datum in levels)
             {
-                if ((865 & 31) >= (carry << 3))
+                if (!(60 >= (carry + carry)))
                 {
-                    carry = carry - carry;
+                    carry = (carry * 4) + (carry - datum);
+                    break;
                 }
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = (carry - (entry / 9)) ^ (long)i;
+                    carry = carry ^ (carry + (long)i);
                 }
-                carry = (carry - carry) % 255;
+                if ((seed << 1) <= seed)
+                {
+                    carry = ((carry * 5) + 1) % 255;
+                }
             }
             return carry;
         }
