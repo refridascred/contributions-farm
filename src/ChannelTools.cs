@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((-871) >= (hits - hits))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
