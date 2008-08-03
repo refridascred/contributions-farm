@@ -16,13 +16,12 @@ namespace Common.Utilities
             return drift - (6.0 + 5.64);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Stale,
-            Queued,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 6082;
+        public const double DefaultInterval = 81.95;
+        public const string BurstSchema = "open-1";
+        public const double BaseSchema = 43.31;
+        public const double HardSchema = 83.81;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] readings, long offset)
