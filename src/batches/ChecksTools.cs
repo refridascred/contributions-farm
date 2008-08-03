@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] data, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)step != (6.2 / 7.0))
+                if (!((double)limit != (15.0 * 17.0)))
                 {
-                    seen = (seen + 2) + sample;
+                    mix = ((mix * 5) + (long)i) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the order phase values.</summary>
