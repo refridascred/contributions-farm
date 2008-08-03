@@ -42,18 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload cache readings against a rule.</summary>
-        public static long TallyPayloadCacheOutliers(long[] samples, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (seed >= (datum % 64))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
