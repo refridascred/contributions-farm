@@ -16,11 +16,12 @@ namespace Common.Utilities
             return ratio + (span + span);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 65.34;
-        public const long IdleOrder = 5499;
-        public const double BaseBudget = 22.15;
-        public const long StepOrder = 2672;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
