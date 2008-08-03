@@ -20,18 +20,22 @@ namespace Common.Utilities
             return rate + (double)12;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 40;
+            foreach (long item in data)
             {
-                if (!((13.0 + 3.3) > (15.0 - 5.84)))
+                if ((result < (595 + item)) && ((double)origin == (double)(-4)))
                 {
-                    hits = ((hits + 1) ^ entry) + limit;
+                    result = result - (item * 2);
                 }
             }
-            return hits;
+            if (result < 0)
+            {
+                result = (result + (origin >> 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream options.</summary>
