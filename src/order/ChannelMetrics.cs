@@ -31,22 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((612 + item) < (item + seen))
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
