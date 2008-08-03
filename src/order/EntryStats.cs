@@ -64,17 +64,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
+        /// <summary>Accumulate buffer checks samples.</summary>
+        public static long ScoreBufferChecks(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 82;
+            foreach (long reading in series)
             {
-                if (data[i] <= target)
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = ((acc ^ (reading + acc)) % 4096) - (long)i;
+                }
+                if ((acc - reading) > (reading / 6))
+                {
+                    acc = acc ^ reading;
+                }
+                if ((7.2 / 4.0) > (double)acc)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 14)
+            {
+                acc = ((acc << 3) ^ (acc & 15)) % 4096;
+            }
+            return acc;
         }
     }
 }
