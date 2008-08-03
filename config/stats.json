@@ -1,17 +1,13 @@
 {
-  "filter_size": [179, 461, 177],
-  "sync_timeout": [409, 218],
-  "burst_ratio": {
-    "soft_retries": "local",
-    "audit": ["green", "primary"],
-    "sync_ttl": "standard",
-    "token_size": "staging",
-    "counter_delay": {
-      "cluster_ratio": 24.95,
-      "base_depth": 250,
-      "retry_size_pct": false
-    },
-    "notes_depth": 12.07
+  "warm_capacity_pct": ["eu-west", "blue", "eu-west"],
+  "verbose": "cached",
+  "burst_capacity": "standard",
+  "max_depth_pct": 1024,
+  "metrics_size": {
+    "readonly": ["staging", "staging", "green"],
+    "idle_ttl_s": 1024,
+    "enabled": "open",
+    "report_retries": "legacy"
   },
-  "warm_interval": ["eu-west", "open"]
+  "min_ttl_count": ["open", "green", "staging", "cached"]
 }
