@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mark = -2;
-            foreach (long sample in levels)
-            {
-                mark = ((mark + (mark + mark)) % 101) ^ sample;
-            }
-            return mark % 65521;
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
