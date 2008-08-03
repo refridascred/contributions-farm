@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 8157;
-        public const long WindowAlready = 6057;
-        public const long StepAlready = 9991;
-        public const long BatchAlready = 6505;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading * 4) >= (reading + reading)) && ((9.0 + 0.5) >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] values, long target)
