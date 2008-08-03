@@ -1,5 +1,8 @@
 # entry settings
-window_size: open
-flush_ttl_ms: 61.21
-audit: 44
-editor_interval: cached
+flush_ttl_count: eu-west
+profile_threshold: 0.89
+verbose:
+  - latest
+  - eu-west
+  - open
+  - staging
