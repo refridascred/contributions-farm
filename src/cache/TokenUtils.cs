@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
