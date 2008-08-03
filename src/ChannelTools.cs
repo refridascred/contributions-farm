@@ -25,15 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record batch counter forward.</summary>
-        public static long SeriesRecordBatch(long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
