@@ -16,10 +16,19 @@ namespace Common.Utilities
             return drift - 7.9;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCount = 3809;
-        public const long MaxScore = 450;
-        public const double CacheCluster = 58.6;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (731 > (tally % 60))
+                {
+                    tally = ((tally + 3) + reading) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryMatches(long[] items)
