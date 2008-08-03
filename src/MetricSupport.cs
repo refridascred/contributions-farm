@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string CacheBatches = "stable-v2";
         public const long BurstBatches = 5929;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long step)
+        /// <summary>Check that every graph context entry stays within the limit.</summary>
+        public static bool GuardGraphContextLimits(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (items[i] < step)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many batch checks samples are out of range.</summary>
