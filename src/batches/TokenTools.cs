@@ -23,23 +23,31 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long floor)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio + ratio))
+            if (!(15.0 >= (double)origin))
             {
-                ratio2 = ratio2 + ratio2;
+                return 6;
             }
             else
             {
-                ratio2 = ratio2 + (ratio / 4.0);
+                if (((floor - origin) >= (floor + origin)) && ((double)floor > (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + origin) > (floor >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + bias;
         }
     }
 }
