@@ -28,19 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits report readings against a bound.</summary>
-        public static bool CheckCommitsReportRange(long[] levels, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double gain = (double)((-6) ^ 272);
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (((gain - (double)24) + (double)(long)i) - scale) - floor;
             }
-            return stale;
+            return gain - (double)88;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
