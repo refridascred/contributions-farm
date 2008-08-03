@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Stale,
-            Paused,
-            Queued,
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
