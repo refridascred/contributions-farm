@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long FoldGithubfarmEntry(long[] values, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            long result = 690;
-            foreach (long cell in values)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (floor >= (cell ^ cell))
-                {
-                    result = result - cell;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
