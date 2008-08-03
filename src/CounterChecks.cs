@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            double mean = scale;
+            if (mean < 10.0)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                mean = mean + span;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (span - 0.5);
         }
 
         /// <summary>Blend two cluster session measurements.</summary>
