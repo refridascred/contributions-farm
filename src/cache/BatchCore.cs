@@ -46,19 +46,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
