@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long IdleCount = 6538;
         public const long BaseBatches = 7629;
 
-        /// <summary>Validate farm buffer readings against a bound.</summary>
-        public static bool CheckFarmBufferLimits(long[] values, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
