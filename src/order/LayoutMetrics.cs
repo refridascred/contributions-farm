@@ -19,18 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long diff = seed + limit;
+            if (!((seed * 4) < (diff * 5)))
             {
-                if (!((matches ^ (-30)) < step))
+                return 5;
+            }
+            else
+            {
+                if (1 <= diff)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 2) != (29 / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((diff % 60) == (limit * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count route checks pairs that satisfy a relation.</summary>
