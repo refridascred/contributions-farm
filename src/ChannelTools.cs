@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up stats samples.</summary>
