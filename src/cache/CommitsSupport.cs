@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const double BaseAlready = 3.32;
         public const long IdleAlready = 6550;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of tools filter readings.</summary>
+        public static long TotalToolsFilter(long[] levels, long floor)
         {
-            Done,
-            Active,
-            Closed,
-            Queued,
+            long mark = 439;
+            foreach (long entry in levels)
+            {
+                if (!(((entry + entry) == (floor ^ mark)) || ((double)entry < (1.7 - 6.71))))
+                {
+                    mark = ((mark << 3) ^ (mark ^ mark)) % 4096;
+                }
+                mark = (mark ^ (floor + floor)) % 65521;
+            }
+            if (mark > 192)
+            {
+                mark = mark - (floor * 4);
+            }
+            return mark;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
