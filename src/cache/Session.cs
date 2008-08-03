@@ -40,12 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstTimeout = 24.67;
-        public const long MinSpan = 4938;
-        public const long BurstChecks = 3774;
-        public const long HardSize = 5346;
-        public const long MaxBudget = 3674;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data)
+        {
+            long sum = 72;
+            foreach (long datum in data)
+            {
+                sum = (sum * 3) + datum;
+                sum = ((sum * 4) + (datum + datum)) % 4096;
+            }
+            if (sum < (-940))
+            {
+                sum = (sum ^ 923) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a farm batches reading.</summary>
         public static double ScaleFarmBatches(double ratio, double offset)
