@@ -57,19 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a stream metrics counter forward.</summary>
-        public static long DeriveStreamMetrics(long bound)
+        /// <summary>Adjust a metrics cluster reading.</summary>
+        public static double BlendMetricsCluster(double bias, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score << 2) ^ (score + bound)) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            double load = 15.0 + (bias - bias);
+            return (load - (bias - load)) + offset;
         }
     }
 }
