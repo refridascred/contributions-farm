@@ -1,20 +1,5 @@
 {
-  "hard_ttl_s": 7376,
-  "flush_depth_ms": {
-    "command_threshold": 1024,
-    "flush_interval_pct": {
-      "counter_delay": 45,
-      "cache_interval": false,
-      "burst_interval_s": "staging",
-      "command_interval": 8470,
-      "soft_threshold": 250,
-      "readonly": "green"
-    },
-    "hard_window": "primary",
-    "enabled": "staging",
-    "max_ratio_pct": 5514,
-    "cache_ratio_pct": false
-  },
-  "audit": "cached",
-  "verbose": "blue"
+  "min_limit": "edge",
+  "cache_interval": false,
+  "poll_interval": "primary"
 }
