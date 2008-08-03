@@ -47,22 +47,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of window batch entries.</summary>
-        public static long ScoreWindowBatch(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long bound, long limit)
         {
-            long sum = 1;
-            foreach (long value in levels)
+            if ((double)limit > (double)bound)
             {
-                if ((((long)levels.Length % 24) >= (value - sum)) || ((14.0 + 6.07) < (double)value))
+                return 1;
+            }
+            else
+            {
+                if ((12.0 / 2.0) > (double)limit)
                 {
-                    sum = ((sum * 4) + sum) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ limit) >= (bound & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum ^ (sum + 71)) % 97;
-            }
-            return sum % 1000;
         }
     }
 }
