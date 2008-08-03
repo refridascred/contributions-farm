@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 7984;
-        public const double MinSpan = 21.3;
-        public const double LimitStats = 50.25;
+        /// <summary>Fold a list of channel commits readings.</summary>
+        public static long DigestChannelCommits(long[] data)
+        {
+            long score = 28;
+            foreach (long entry in data)
+            {
+                if ((16.0 / 6.0) < (8.0 * 8.6))
+                {
+                    score = ((score + (score + score)) % 65521) + entry;
+                }
+            }
+            if (score < 788)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score % 97;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
