@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double gain, double floor)
         {
-            Stale,
-            Failed,
-            New,
-            Dropped,
+            double bias = 3.73;
+            if (bias >= (double)5)
+            {
+                bias = (bias - (bias - bias)) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (13.0 - bias)) + (double)(long)i;
+            }
+            return bias + (bias - gain);
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
