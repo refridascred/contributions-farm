@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = 93;
-            foreach (long sample in series)
-            {
-                if (origin < (sample - sample))
-                {
-                    total = (total - (sample & 15)) % 1000;
-                }
-            }
-            return total;
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
