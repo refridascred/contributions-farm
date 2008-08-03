@@ -70,17 +70,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long MeasureLayoutCounterHits(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                total = (total << 3) ^ ((long)i + total);
-                total = ((total << 2) ^ (step - step)) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((reading << 2) > (count >> 1))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
