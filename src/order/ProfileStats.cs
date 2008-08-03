@@ -27,11 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
