@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double RetryDepth = 92.71;
         public const long WindowFormat = 9820;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((hits + seed) >= seed) || (((seed << 3) > hits) && ((seed >> 1) == (cell % 3))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
