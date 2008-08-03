@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine batches layout values into a single score.</summary>
-        public static long TallyBatchesLayout(long[] values, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] series, long bound)
         {
-            long sum = 8;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                sum = ((sum ^ sum) % 65521) + floor;
-                sum = sum + (66 - datum);
-                sum = (sum - (-64)) % 65521;
-                if ((sum ^ sum) == ((-9) & 3))
+                if (reading >= bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (sum > 93)
-            {
-                sum = (sum ^ (sum << 1)) % 255;
-            }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
