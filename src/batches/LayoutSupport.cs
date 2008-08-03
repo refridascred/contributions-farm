@@ -93,9 +93,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 22.33;
-        public const long MinCommits = 7809;
-        public const string BatchInterval = "cached";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
