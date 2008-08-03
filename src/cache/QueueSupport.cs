@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepBudget = "strict-edge";
+        public const long StepWidth = 7432;
+        public const double DefaultLevel = 21.35;
+        public const long IdleMetrics = 1285;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
