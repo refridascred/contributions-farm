@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-BUFFER_LIMIT=412
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard edge eu-west; do
+for item in primary eu-west strict; do
     log "checking ${item}"
 done
