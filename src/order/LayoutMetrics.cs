@@ -30,18 +30,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long AuditCacheWindowHits(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long step = origin - origin2;
+            if (!((step << 2) <= (origin + origin)))
             {
-                if (!(((double)reading <= (8.0 * 5.28)) || (seen > (reading >> 3))))
+                return 1;
+            }
+            else
+            {
+                if ((350 ^ origin2) == (origin >> 4))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (step > 421)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= (origin2 & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
