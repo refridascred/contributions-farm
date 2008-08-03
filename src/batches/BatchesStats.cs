@@ -41,25 +41,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long lane = offset - floor;
-            if ((lane + floor) <= (34 / 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (4.16 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Paused,
+            Active,
+            Queued,
+            Synced,
         }
     }
 }
