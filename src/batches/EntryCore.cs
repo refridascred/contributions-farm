@@ -17,13 +17,17 @@ namespace Common.Utilities
         public const long LimitOrder = 9048;
         public const string HardOrder = "local-v2";
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long seed)
         {
-            Idle,
-            Draft,
-            Closed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
