@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] readings, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((mark - (long)i) >= ((long)i ^ target)))
+                if (readings[i] > offset)
                 {
-                    mark = mark + (mark * 4);
-                    mark = (mark - (663 - mark)) % 97;
+                    return (long)i;
                 }
-                mark = (mark ^ ((long)i & 15)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
