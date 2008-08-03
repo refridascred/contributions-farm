@@ -78,10 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7673;
-        public const long RetrySpan = 7614;
-        public const long BurstLevel = 457;
-        public const double WindowRatio = 93.12;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
