@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] readings, long floor)
         {
-            long mark = -365;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((5.12 / 8.0) == (double)mark)
+                if (((7.69 - 7.7) <= (double)seen) || (((double)floor <= (17.0 - 8.0)) && ((46 ^ (-30)) < (floor - reading))))
                 {
-                    mark = (((mark << 3) ^ (offset + offset)) % 101) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            if (mark > 18)
-            {
-                mark = mark + (offset + offset);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
