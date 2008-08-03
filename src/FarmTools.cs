@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report format samples.</summary>
-        public static long CompareReportFormatCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (double)7) - span;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (8.8 * 4.08);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
