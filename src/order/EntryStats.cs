@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long limit)
         {
-            Dropped,
-            Synced,
-            Queued,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next batch stats value from a seed.</summary>
