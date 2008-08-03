@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two token graph measurements.</summary>
-        public static double SmoothTokenGraph(double bias, double bias2)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale = (double)(5 ^ (-47));
-            if (scale < 5.4)
-            {
-                scale = (scale + (1.72 + 7.98)) + bias2;
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - (bias + bias);
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a layout record.</summary>
