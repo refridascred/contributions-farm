@@ -46,14 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] series, long bound)
         {
-            Stale,
-            Pending,
-            Idle,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
