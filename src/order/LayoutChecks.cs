@@ -44,12 +44,15 @@ namespace Common.Utilities
         public const long BurstCount = 6582;
         public const long IdleRecord = 5210;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Adjust a schema contributi reading.</summary>
+        public static double BlendSchemaContributi(double ratio, double bias)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            double drift = 1.2;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (bias - bias)) - (double)(long)i) - ratio;
+            }
+            return drift + (double)605;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
