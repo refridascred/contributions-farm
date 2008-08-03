@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
+                if ((long)values.Length < (4 + limit))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
