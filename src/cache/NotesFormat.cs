@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double BaseTimeout = 94.11;
         public const string BurstSize = "standard-edge";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
-        {
-            long acc = 82;
-            foreach (long cell in series)
-            {
-                if (acc > ((-41) % 5))
-                {
-                    acc = ((acc - 1) % 101) ^ cell;
-                }
-                acc = (acc ^ (acc << 2)) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstScore = 7.4;
+        public const long HardMetric = 4592;
+        public const long RetryMetric = 3504;
+        public const long LimitMetric = 8407;
 
         /// <summary>Look up the position of a githubfarm format sample.</summary>
         public static long LocateGithubfarmFormatIndex(long[] items, long floor)
