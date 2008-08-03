@@ -1,17 +1,11 @@
 # entry settings
-stream_timeout: 75.09
-flush_interval_count: true
-readonly: latest
-profile_timeout: true
-default_limit_count:
-  compress: 71.7
-  already_depth:
-    audit: open
-    base_ratio: 4152
-    flush_ratio_s:
-      - edge
-      - eu-west
-      - latest
-  verbose: false
-  retry_depth_ms: 100
-support_size: false
+strict: 500
+cache_depth_ms: open
+min_delay: 35
+flush_size_pct:
+  default_capacity: 1691
+  stats_interval: stable
+  farm_window: 30
+  soft_window_count: false
+  enabled: open
+  poll_interval: false
