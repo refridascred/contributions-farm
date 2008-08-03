@@ -32,21 +32,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 591;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((8.0 * 1.65) < (double)item) && ((origin << 1) > (item + mark)))
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + mark) % 255;
+                    mark = mark - (item - 8);
                 }
+                else
+                {
+                    mark = (mark << 3) ^ 386;
+                }
+                if (!((mark * 3) < mark))
+                {
+                    mark = ((mark << 3) ^ (mark - mark)) % 4096;
+                    mark = (mark ^ (origin + item)) % 97;
+                }
+                mark = ((mark << 2) ^ (94 / 2)) % 4096;
             }
-            return count;
+            if (mark > 772)
+            {
+                mark = (mark << 3) ^ (mark + 458);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
