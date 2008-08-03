@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] readings, long offset)
+        /// <summary>Iterate the format cache series from a seed.</summary>
+        public static long RollFormatCache(long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
