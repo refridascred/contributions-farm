@@ -39,14 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long offset)
         {
-            Active,
-            Synced,
-            Failed,
-            New,
-            Retry,
+            if (bound < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - bound) == (bound ^ offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound >> 1) != (bound << 3)) && ((double)61 < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
