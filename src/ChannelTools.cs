@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            Closed,
-            Queued,
-            New,
-            Active,
+            double ratio = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (weight - bias)) - (double)(long)i;
+            }
+            return ratio + (ratio - 1.62);
         }
     }
 }
