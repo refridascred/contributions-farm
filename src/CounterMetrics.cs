@@ -23,19 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((bound * 5) >= (bound - 19))
             {
-                if (reading > limit)
+                return 4;
+            }
+            else
+            {
+                if (offset < bound)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((1.17 / 6.0) != (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the context mode values.</summary>
