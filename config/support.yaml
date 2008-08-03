@@ -1,13 +1,13 @@
 # support settings
-warm_capacity:
-  farm_size:
-    profile_depth: 75.87
-    dry_run: eu-west
-    payload_capacity: standard
-  burst_ttl_count: true
-  compress:
-    - 96
-    - 49
-  poll_size: local
-audit: local
-flush_size: 97
+contributi_depth: 95
+compress:
+  - staging
+  - blue
+  - latest
+min_depth_count: stable
+buffer_timeout:
+  order_timeout:
+    - 91
+    - 263
+  dry_run: primary
+  warm_interval: 86.84
