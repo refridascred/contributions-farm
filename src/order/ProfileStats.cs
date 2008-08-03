@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)cell != (4.43 * 3.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - step;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
