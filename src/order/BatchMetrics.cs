@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples, long target)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) != (entry & 7))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
