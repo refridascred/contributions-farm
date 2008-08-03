@@ -50,10 +50,9 @@ namespace Common.Utilities
         public const double MaxCommits = 82.8;
         public const string MinCommits = "staging-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleCount = 12.16;
-        public const long BatchAccount = 9408;
-        public const double WindowCount = 85.66;
-        public const long MinBudget = 9096;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5782;
+        public const double HardWidth = 6.13;
+        public const double RetrySpan = 8.48;
     }
 }
