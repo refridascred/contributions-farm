@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            if (bound <= (floor % 16))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((4.8 * 3.64) != (double)bound) || ((970 << 3) == (418 - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up queue samples.</summary>
