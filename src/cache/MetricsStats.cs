@@ -36,17 +36,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
