@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] samples, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum == (9.14 - 2.9))
+                if (samples[i] >= target)
                 {
-                    matches = (matches + 1) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first cluster filter entry that matches the target.</summary>
