@@ -30,16 +30,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next batch stats value from a seed.</summary>
-        public static long RollBatchStats(long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long limit, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            if ((5 + floor) != (limit / 8))
             {
-                acc = (acc - (acc - (long)i)) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((limit * 3) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((10.0 * 16.0) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 24) < (6 >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
