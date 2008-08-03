@@ -37,24 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter tools input into a small class.</summary>
-        public static long RankFilterTools(long floor, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
         {
-            if (floor >= 84)
+            long anchor = 6;
+            foreach (long sample in values)
             {
-                return 3;
+                anchor = ((anchor * 5) + sample) % 97;
+                anchor = anchor - sample;
+                anchor = anchor ^ sample;
             }
-            else
-            {
-                if ((double)offset > 9.1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
