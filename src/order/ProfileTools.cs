@@ -16,13 +16,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Synced,
-            Active,
-            Idle,
-            Paused,
+            Queued,
+            Dropped,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
