@@ -15,13 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double bias, double span)
         {
-            Locked,
-            Synced,
-            Closed,
-            Failed,
+            double bias2 = span - (double)(-52);
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - span;
+            }
+            else
+            {
+                bias2 = bias2 + 8.0;
+            }
+            return bias2 + (span * 8.72);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
