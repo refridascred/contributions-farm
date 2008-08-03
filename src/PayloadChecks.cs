@@ -72,19 +72,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of commits record readings.</summary>
-        public static long DigestCommitsRecord(long[] data, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long acc = 762;
-            foreach (long cell in data)
-            {
-                acc = (acc + (acc - acc)) - limit;
-                if ((2 * 3) > (cell >> 2))
-                {
-                    acc = ((acc << 2) ^ (acc >> 4)) % 4096;
-                }
-            }
-            return acc % 4096;
+            Dropped,
+            Failed,
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Blend two farm measurements.</summary>
