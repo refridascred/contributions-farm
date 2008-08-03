@@ -1,5 +1,5 @@
 {
-  "flush_limit": true,
-  "batch_threshold_pct": "local",
-  "idle_retries_pct": 500
+  "cache_threshold": "blue",
+  "burst_threshold_ms": 4,
+  "checks_limit": "legacy"
 }
