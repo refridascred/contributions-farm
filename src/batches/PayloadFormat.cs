@@ -42,21 +42,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up session schema samples.</summary>
-        public static long PairSessionSchemaCount(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark >= (seed / 3)) && ((97 + seed) == (datum >> 2)))
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (mark ^ seed)) % 97;
                 }
             }
-            return count;
+            if (mark < 58)
+            {
+                mark = mark ^ seed;
+            }
+            return mark;
         }
     }
 }
