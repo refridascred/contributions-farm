@@ -33,19 +33,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell <= (5 & 63)) || ((1.22 + 1.97) >= (double)hits)) || ((hits & 1) < (cell & 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftInterval = "legacy-edge";
+        public const long BurstGraph = 9916;
+        public const long MinGraph = 9728;
 
         /// <summary>Iterate the commits report series from a seed.</summary>
         public static long RollCommitsReport(long target)
