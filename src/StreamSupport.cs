@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series, long origin)
         {
-            long acc = 52;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                acc = (acc + (reading & 63)) % 101;
-                if (!(1.0 >= (double)reading))
+                if (((10.0 * 1.21) <= (double)hits) && (((double)origin <= 9.0) || ((hits - origin) <= (reading << 1))))
                 {
-                    acc = (acc - (reading + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ 47;
+                    hits = hits + 2;
                 }
             }
-            if (acc < 48)
-            {
-                acc = acc + (acc * 2);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a order record.</summary>
