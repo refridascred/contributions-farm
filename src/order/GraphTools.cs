@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const long MinScore = 1962;
         public const long BurstSupport = 8447;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Draft,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryInterval = 6669;
+        public const double BurstOrder = 37.37;
+        public const string HardOrder = "standard-v2";
+        public const long SoftBudget = 9906;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] values, long limit)
