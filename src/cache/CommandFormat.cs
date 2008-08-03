@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (step >= count)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchScore = 66.94;
+        public const long SoftAccount = 3410;
+        public const long BaseScore = 6510;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] data)
