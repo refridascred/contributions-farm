@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool GuardPayloadLayoutLimits(long[] items, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a format support counter forward.</summary>
