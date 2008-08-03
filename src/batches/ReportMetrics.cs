@@ -14,13 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] series)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long mix = 270;
+            foreach (long reading in series)
+            {
+                mix = mix + (reading << 2);
+                if ((mix / 2) < (mix - reading))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the stream mode values.</summary>
