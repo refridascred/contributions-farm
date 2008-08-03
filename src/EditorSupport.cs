@@ -69,15 +69,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long bound)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)readings.Length < (value % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + bound;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
