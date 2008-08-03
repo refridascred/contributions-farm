@@ -16,16 +16,18 @@ namespace Common.Utilities
             return ratio + (span + span);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] items, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mix = (mix - ((long)i + (long)i)) % 1000;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((double)matches <= (double)step)
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
