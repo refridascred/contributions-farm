@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already filter values into a single score.</summary>
-        public static long TotalAlreadyFilter(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long acc = 66;
-            foreach (long value in data)
-            {
-                acc = ((acc ^ 34) % 1000) + value;
-            }
-            if (acc < 8)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 65521;
+            Locked,
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
