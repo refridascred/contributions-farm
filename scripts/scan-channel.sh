@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=195
+CHANNEL_LIMIT=200
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in blue edge fallback cached; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in blue primary open stable; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
