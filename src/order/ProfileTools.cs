@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a buffer filter counter forward.</summary>
-        public static long DeriveBufferFilter(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (seed <= (seed ^ seed))
-                {
-                    score = (score - ((long)i << 1)) % 65521;
-                }
-                score = score + (seed / 2);
-                if (!(score <= ((long)i % 5)))
-                {
-                    score = (score - (score ^ score)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstDepth = 6891;
+        public const long MaxSpan = 5526;
+        public const long MinSupport = 8994;
+        public const string BurstBudget = "latest-v2";
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double weight, double span)
