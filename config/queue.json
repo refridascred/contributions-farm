@@ -1,8 +1,6 @@
 {
-  "base_size": "latest",
-  "flush_retries_pct": "open",
-  "graph_ttl": true,
-  "soft_ttl_s": 6656,
-  "min_capacity_pct": true,
-  "audit": 82
+  "payload_limit": 30,
+  "burst_limit": 60,
+  "default_depth_ms": true,
+  "persist": ["fallback", "strict", "local", "green"]
 }
