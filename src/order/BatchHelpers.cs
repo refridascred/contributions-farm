@@ -28,19 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = (double)978 + (double)454;
+            return (load + gain) + offset;
         }
     }
 }
