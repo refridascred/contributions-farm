@@ -18,18 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 96;
+            foreach (long reading in series)
             {
-                if ((double)count > (3.0 * 8.05))
+                if ((double)reading != (18.0 / 9.0))
                 {
-                    count = (count + 2) + value;
+                    mark = mark + ((-44) * 4);
                 }
+                else
+                {
+                    mark = ((mark * 2) + (reading + reading)) % 97;
+                }
+                mark = ((mark * 3) + (reading ^ mark)) % 4096;
+                mark = (mark * 3) + (mark % 100);
             }
-            return count;
+            if (mark < 71)
+            {
+                mark = (mark + (mark << 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
