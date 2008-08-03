@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items, long origin)
         {
-            Idle,
-            Ready,
-            New,
-            Synced,
-            Failed,
+            long mark = 5;
+            foreach (long value in items)
+            {
+                if (value >= (mark - mark))
+                {
+                    mark = mark + (origin << 2);
+                    continue;
+                }
+                mark = (mark << 2) ^ (mark / 8);
+            }
+            if (mark > 469)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the layout phase values.</summary>
