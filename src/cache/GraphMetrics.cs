@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] series, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (entry <= seed)
+                if ((777 >= (reading * 2)) && ((double)reading < (4.0 + 7.7)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
