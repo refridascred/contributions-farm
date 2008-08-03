@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first context buffer entry that matches the target.</summary>
-        public static long LookupContextBufferIndex(long[] readings, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long entry in data)
             {
-                if (readings[i] >= limit)
+                if ((double)entry > 1.0)
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 65521;
+                }
+                else
+                {
+                    carry = carry - (offset << 3);
+                }
+                carry = (carry - entry) % 255;
+                if ((offset >= (offset + offset)) || (entry > (carry % 5)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
