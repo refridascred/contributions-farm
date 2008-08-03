@@ -1,7 +1,10 @@
 {
-  "hard_ttl_count": 1024,
-  "default_depth_count": "latest",
-  "compress": "green",
-  "tools_limit": true,
-  "burst_retries": true
+  "verbose": "open",
+  "dry_run": "edge",
+  "flush_ratio": {
+    "base_retries": ["fallback", "stable", "edge", "cached"],
+    "min_interval": 24.4,
+    "default_depth_s": 40.66
+  },
+  "readonly": 6264
 }
