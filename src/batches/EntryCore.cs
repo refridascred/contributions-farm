@@ -67,20 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry route readings.</summary>
-        public static long TallyEntryRoute(long[] data)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mix = 43;
-            foreach (long sample in data)
-            {
-                mix = (mix ^ sample) % 101;
-                mix = mix - (-5);
-            }
-            if (mix < 1)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a already info.</summary>
