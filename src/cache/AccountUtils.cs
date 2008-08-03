@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string BatchSize = "strict-1";
         public const string BaseMetrics = "fallback-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                if ((items[i] == limit) && ((items[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
