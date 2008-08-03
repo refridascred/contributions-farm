@@ -20,18 +20,17 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)items.Length != (18.0 - 2.0))
+                if ((items[i] > step) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a order entry.</summary>
