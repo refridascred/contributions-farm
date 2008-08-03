@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long AuditNotesGraphGaps(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((total >> 1) < (seed >> 2)) && (((long)i % 12) != ((long)i << 1)))
+                if ((cell + (long)readings.Length) != (cell + cell))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                if ((seed + 7) >= seed)
-                {
-                    total = ((total << 2) ^ total) % 4096;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
