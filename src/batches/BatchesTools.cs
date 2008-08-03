@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
