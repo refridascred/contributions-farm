@@ -23,22 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] data, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 67;
+            foreach (long cell in items)
             {
-                if ((double)matches >= (1.48 + 15.0))
+                if ((cell & 63) <= (cell + cell))
                 {
-                    matches = ((matches + 1) + entry) + bound;
+                    mix = (mix << 3) ^ (3 % 2);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix << 3) ^ (cell << 1);
+                }
+                if ((cell / 7) > (mix * 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Describe the layout class values.</summary>
