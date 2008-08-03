@@ -53,12 +53,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitScore = 8880;
-        public const long SoftSpan = 7393;
-        public const long CacheRatio = 3072;
-        public const long BatchReport = 1914;
-        public const long WindowReport = 8851;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series)
+        {
+            long result = 969;
+            foreach (long datum in series)
+            {
+                result = (result - (result + datum)) % 1000;
+                if ((7.11 - 3.0) == (double)datum)
+                {
+                    result = result + datum;
+                }
+            }
+            if (result < 66)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate metric stats samples.</summary>
         public static long FoldMetricStats(long[] data)
