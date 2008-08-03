@@ -48,31 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] values, long seed)
         {
-            if ((977 >> 1) > (offset + offset))
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (5.1 * 2.9))
+                if (item != seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (step ^ 312))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count format commits pairs that satisfy a relation.</summary>
