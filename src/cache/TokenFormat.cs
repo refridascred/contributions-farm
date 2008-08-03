@@ -27,10 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 7687;
-        public const long MinFilter = 891;
-        public const double IdleFilter = 78.08;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Pending,
+            Closed,
+            Retry,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
