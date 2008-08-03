@@ -23,15 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Blend two checks notes measurements.</summary>
+        public static double ProjectChecksNotes(double scale, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            double load = (scale - scale) + 9.5;
+            if (load >= (scale + 9.52))
             {
-                total = ((total * 4) + (long)i) % 101;
+                load = (load + (10.0 / 9.0)) + bias;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (load + scale);
         }
 
         /// <summary>Blend two metric order measurements.</summary>
