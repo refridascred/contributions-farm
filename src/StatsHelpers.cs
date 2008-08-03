@@ -33,10 +33,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftInterval = "legacy-edge";
-        public const long BurstGraph = 9916;
-        public const long MinGraph = 9728;
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
         public static long RollCommitsReport(long target)
