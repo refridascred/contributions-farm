@@ -31,22 +31,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetrySize = "open-edge";
+        public const long RetryTools = 4045;
+        public const long MaxBudget = 474;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
