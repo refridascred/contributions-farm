@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
