@@ -20,18 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = -2;
+            foreach (long value in readings)
             {
-                if ((double)tally != (double)floor)
+                score = (score + score) % 65521;
+                score = (score ^ score) % 4096;
+                if ((score - value) >= value)
                 {
-                    tally = (tally + 1) + sample;
+                    score = (score + (score >> 1)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the githubfarm cache series from a seed.</summary>
