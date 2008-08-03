@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Measure how many entry checks samples are out of range.</summary>
-        public static long MeasureEntryChecksGaps(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count & 1) > (4 - (-7)))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
