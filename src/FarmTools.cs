@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double load = (double)688 / 7.0;
-            return (load + floor) + gain;
+            Synced,
+            Done,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the format kind values.</summary>
