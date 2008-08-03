@@ -41,17 +41,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
+        /// <summary>Grade a farm batch value against two limits.</summary>
+        public static long SortFarmBatch(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin ^ origin) > (step + step))
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((origin % 64) > 6))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 1) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
