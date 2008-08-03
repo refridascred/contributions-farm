@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of channel commits readings.</summary>
-        public static long DigestChannelCommits(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = 28;
-            foreach (long entry in data)
-            {
-                if ((16.0 / 6.0) < (8.0 * 8.6))
-                {
-                    score = ((score + (score + score)) % 65521) + entry;
-                }
-            }
-            if (score < 788)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score % 97;
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
