@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score - (bound * 5)) % 4096;
-                if (bound >= ((long)i / 8))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of queue schema entries.</summary>
