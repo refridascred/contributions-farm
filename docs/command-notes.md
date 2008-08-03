@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Use token settings to tune how often token data is refreshed.
+The counter module keeps route values in sync with the order cache.
+The order helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any batches limits.
 
 ## Guidelines
 
-- Log every graph change
-- Document new window fields
-- Prefer farm defaults
+- Keep checks values small
+- Document new stats fields
+- Prefer entry defaults
