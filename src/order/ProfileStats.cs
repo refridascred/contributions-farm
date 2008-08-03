@@ -46,23 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue cluster value.</summary>
-        public static double ProjectQueueCluster(double gain, double bias)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            double load = bias - gain;
-            if (load <= (double)1)
+            double load = (double)(52 - 4);
+            if (load >= span)
             {
-                load = load - gain;
+                load = load + 4.47;
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 2.76) - (double)(long)i;
-            }
-            return load - 1.48;
+            return load - (rate - 7.8);
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
