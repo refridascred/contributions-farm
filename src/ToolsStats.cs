@@ -66,18 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long anchor = 8;
-            foreach (long sample in readings)
-            {
-                if ((step + anchor) >= (step / 7))
-                {
-                    anchor = ((anchor << 2) ^ sample) % 255;
-                }
-            }
-            return anchor;
+            Retry,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count metric commits pairs that satisfy a relation.</summary>
