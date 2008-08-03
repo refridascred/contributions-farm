@@ -1,12 +1,5 @@
 {
-  "max_window": 9974,
-  "strict": {
-    "counter_ratio": 83,
-    "idle_window": false,
-    "min_interval": 2966,
-    "command_timeout": false
-  },
-  "max_size_count": false,
-  "retry_interval": true,
-  "burst_window_pct": 332
+  "burst_capacity": 19.33,
+  "strict": ["standard", "green", "open", "staging"],
+  "audit": "eu-west"
 }
