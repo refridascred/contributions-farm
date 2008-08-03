@@ -64,19 +64,14 @@ namespace Common.Utilities
             return weight2 + 11.0;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Synced,
+            Retry,
+            Failed,
+            New,
         }
     }
 }
