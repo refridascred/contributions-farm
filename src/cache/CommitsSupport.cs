@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long limit)
-        {
-            if (!((double)limit <= 5.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 - 18.0) != (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit % 3) >= (offset & 15)) || ((offset / 7) > (offset + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 3204;
+        public const string RetryAlready = "stable-v2";
+        public const double BaseAlready = 3.32;
+        public const long IdleAlready = 6550;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
