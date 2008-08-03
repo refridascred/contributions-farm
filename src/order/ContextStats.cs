@@ -36,21 +36,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "local-v2";
         public const long WindowChecks = 3170;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count >= 2) || ((0 > (count - sample)) && ((double)count < (double)floor)))
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
