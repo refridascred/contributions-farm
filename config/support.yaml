@@ -1,11 +1,18 @@
 # support settings
-base_capacity_ms: false
-flush_window_s:
-  - 441
-  - 339
-retry_interval_count: 100
-poll_capacity_count:
-  - 392
-  - 43
-default_size_count: standard
-poll_timeout: 1024
+batch_limit_s:
+  - 404
+  - 158
+  - 70
+dry_run: green
+default_ttl_s: 48
+burst_ttl_pct: edge
+metric_ratio:
+  burst_ttl_s: true
+  notes_capacity: true
+  enabled: cached
+  token_interval: 81.72
+  burst_retries_count:
+    - legacy
+    - local
+    - stable
+    - blue
