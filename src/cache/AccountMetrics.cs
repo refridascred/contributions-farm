@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double bias, double span)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double gain = 4.25;
+            if (gain > bias)
             {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + (span * 5.2);
             }
-            return stale;
+            return gain - (double)81;
         }
 
         /// <summary>Derive the next tools token value from a seed.</summary>
