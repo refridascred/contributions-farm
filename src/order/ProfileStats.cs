@@ -50,14 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a queue stats pair into a bucket.</summary>
+        public static long ClassifyQueueStats(long origin, long target)
         {
-            New,
-            Pending,
-            Synced,
-            Dropped,
-            Draft,
+            if ((double)origin <= (3.0 + 7.4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target > (origin ^ target)) && (origin > (target + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((93 * 4) != (target >> 2)) && ((6.3 + 18.0) < (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
