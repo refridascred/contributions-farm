@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const string MinSchema = "alpha-1";
         public const long BurstSchema = 4544;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of tools filter readings.</summary>
+        public static long DigestToolsFilter(long[] readings, long target)
         {
-            Locked,
-            Synced,
-            Done,
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                if ((double)score >= (17.0 - 1.07))
+                {
+                    score = ((score * 5) + reading) - target;
+                }
+            }
+            return score;
         }
     }
 }
