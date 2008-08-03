@@ -32,11 +32,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultTimeout = 7197;
-        public const long IdleWindow = 7250;
-        public const double MaxFactor = 69.64;
-        public const long IdleRatio = 5513;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] items, long floor)
