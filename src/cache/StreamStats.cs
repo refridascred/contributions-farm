@@ -27,15 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Blend two cluster counter measurements.</summary>
