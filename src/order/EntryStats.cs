@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every stats farm entry stays within the limit.</summary>
+        public static bool GuardStatsFarmBounds(long[] samples, long offset)
         {
-            Stale,
-            Closed,
-            Locked,
-            Synced,
-            Paused,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
