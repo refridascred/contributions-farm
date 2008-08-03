@@ -53,22 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels, long seed)
         {
-            long anchor = 52;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (((anchor / 4) >= datum) && ((double)bound >= (double)7))
+                if ((long)levels.Length != (seed - datum))
                 {
-                    anchor = (anchor * 5) + 928;
-                }
-                else
-                {
-                    anchor = (anchor + (datum + anchor)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
