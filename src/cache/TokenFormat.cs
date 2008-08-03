@@ -43,12 +43,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long target2)
         {
-            Draft,
-            Paused,
-            Dropped,
+            long span = target - target2;
+            if ((span >> 3) <= target2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (3.66 > (double)target2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target2 * 5) >= (target2 + 834))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
