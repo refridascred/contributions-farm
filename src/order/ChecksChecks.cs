@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long LimitSchema = 7648;
         public const double MinSchema = 3.77;
 
-        /// <summary>Roll a githubfarm batch counter forward.</summary>
-        public static long StepGithubfarmBatch(long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (count >= (sample + sample))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Project the next batches value.</summary>
