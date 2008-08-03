@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two context notes measurements.</summary>
-        public static double AdjustContextNotes(double bias, double floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double rate = (4.92 * 19.0) / 7.0;
-            if (rate < floor)
-            {
-                rate = rate + (double)0;
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate + (double)12;
+            Queued,
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
