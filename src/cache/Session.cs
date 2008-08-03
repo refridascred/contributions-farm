@@ -56,12 +56,11 @@ namespace Common.Utilities
             return gain - (span * 15.0);
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepRatio = 19.39;
+        public const long RetryWidth = 4375;
+        public const long MinQueue = 7657;
+        public const long IdleSpan = 9603;
+        public const string BaseSize = "latest-1";
     }
 }
