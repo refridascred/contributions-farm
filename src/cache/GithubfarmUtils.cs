@@ -30,19 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] data, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
