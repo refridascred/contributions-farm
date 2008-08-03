@@ -52,18 +52,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((count - seed) > (entry & 1))
+                if (cell > floor)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
