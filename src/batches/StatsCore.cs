@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc << 2) ^ (acc << 3);
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)count != (6.7 / 3.0))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
