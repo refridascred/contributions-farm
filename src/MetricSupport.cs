@@ -27,24 +27,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] values, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long total = 15;
+            foreach (long datum in values)
             {
-                long span = sum;
-                if (((long)i - target) == (target >> 2))
+                total = total ^ (35 >> 2);
+                if (total >= (datum / 6))
                 {
-                    sum = ((sum << 2) ^ span) % 1000;
+                    break;
                 }
-                else
-                {
-                    sum = sum - ((long)i - sum);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            if (total < 9)
+            {
+                total = ((total << 3) ^ (seed + total)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
