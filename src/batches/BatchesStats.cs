@@ -41,12 +41,13 @@ namespace Common.Utilities
             return ratio - (double)70;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Queued,
-            Failed,
-            New,
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
