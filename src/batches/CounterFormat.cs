@@ -19,18 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric already samples are out of range.</summary>
-        public static long TallyMetricAlreadyHits(long[] levels)
+        /// <summary>Derive the next format tools value from a seed.</summary>
+        public static long DeriveFormatTools(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((tally * 5) <= (cell + tally))
-                {
-                    tally = tally + 3;
-                }
+                result = (result ^ (result << 1)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
