@@ -76,11 +76,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long seed)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
