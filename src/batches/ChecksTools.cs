@@ -32,11 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 2772;
-        public const long CacheChannel = 7467;
-        public const string RetryChannel = "cached-edge";
-        public const long IdleRatio = 1320;
-        public const long SoftSize = 7969;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "alpha-v2";
+        public const double CacheMetric = 87.28;
+        public const string CacheWidth = "strict-v2";
+        public const long BaseBudget = 4356;
     }
 }
