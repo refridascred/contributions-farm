@@ -27,22 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheScore = 44.02;
+        public const long BatchSchema = 622;
+        public const long BaseRatio = 5183;
+        public const long MaxTimeout = 4514;
+        public const long HardRatio = 9523;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmOutliers(long[] items)
