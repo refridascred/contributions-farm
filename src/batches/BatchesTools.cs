@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (step % 97)) % 1000;
-                if ((step + anchor) == (step + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - anchor;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a schema header.</summary>
