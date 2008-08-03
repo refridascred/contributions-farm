@@ -45,26 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long target)
         {
-            long anchor = 867;
-            foreach (long cell in series)
+            if ((9.0 - 8.0) != (double)step)
             {
-                if (!((double)anchor > (double)cell))
+                return 4;
+            }
+            else
+            {
+                if (step >= (step + 85))
                 {
-                    anchor = (anchor * 3) + anchor;
+                    return 1;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ cell) % 1000;
-                }
-                if (anchor > (cell >> 4))
-                {
-                    break;
+                    if ((target + target) > (step & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target < (target ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
