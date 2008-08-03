@@ -31,10 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxTimeout = 13.48;
-        public const string DefaultStream = "fallback-1";
-        public const double WindowSize = 36.2;
-        public const long BurstBudget = 7115;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Region { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
