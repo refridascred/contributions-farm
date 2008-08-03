@@ -47,20 +47,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate tools graph readings against a bound.</summary>
-        public static bool CheckToolsGraphRange(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 9135;
+        public const long BatchToken = 4022;
+        public const double StepToken = 31.78;
+        public const long BatchScore = 600;
+        public const double HardTimeout = 56.43;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] values, long seed)
