@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first batch report entry that matches the target.</summary>
-        public static long FindBatchReportIndex(long[] data, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -9;
+            foreach (long item in values)
             {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                anchor = ((anchor + 511) % 65521) ^ item;
+                if ((2.27 + 8.0) >= (double)anchor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a batch stats.</summary>
