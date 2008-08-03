@@ -24,21 +24,15 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Compare every pair of buffer queue readings.</summary>
-        public static long OverlapBufferQueueCount(long[] series)
+        /// <summary>Roll a githubfarm batch counter forward.</summary>
+        public static long StepGithubfarmBatch(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the channel status values.</summary>
