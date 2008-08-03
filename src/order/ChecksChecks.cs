@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double floor)
-        {
-            double load = (double)((-625) + 3);
-            if (load >= (double)60)
-            {
-                load = (load - load) - rate;
-            }
-            else
-            {
-                load = load + 1.85;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (floor * 13.0)) + (double)(long)i;
-            }
-            return load - 7.1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseBudget = 2095;
+        public const string BurstSchema = "local-v2";
+        public const long SoftDepth = 4074;
+        public const long LimitSchema = 7648;
+        public const double MinSchema = 3.77;
 
         /// <summary>Roll a githubfarm batch counter forward.</summary>
         public static long StepGithubfarmBatch(long limit)
