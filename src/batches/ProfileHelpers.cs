@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items, long seed)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((2 - 64) > seen) || (seed > ((long)items.Length - cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a context layout reading by value.</summary>
