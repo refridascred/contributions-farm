@@ -22,13 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Synced,
-            Closed,
-            Paused,
-            Dropped,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the layout kind values.</summary>
