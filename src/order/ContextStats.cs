@@ -36,15 +36,21 @@ namespace Common.Utilities
         public const string DefaultWidth = "local-v2";
         public const long WindowChecks = 3170;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            double bias = (span / 9.0) - (double)68;
-            if (bias >= span)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - span) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - bias;
+            return seen;
         }
     }
 }
