@@ -58,23 +58,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings, long offset)
-        {
-            long mark = 5;
-            foreach (long datum in readings)
-            {
-                if ((offset < (mark - 535)) && (datum <= (offset + datum)))
-                {
-                    mark = (mark << 3) ^ (datum ^ offset);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTimeout = "latest-edge";
+        public const string MinTools = "stable-edge";
+        public const double WindowTools = 24.09;
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double ratio, double offset)
