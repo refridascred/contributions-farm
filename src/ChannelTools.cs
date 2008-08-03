@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Roll a record batch counter forward.</summary>
+        public static long SeriesRecordBatch(long bound)
         {
-            Locked,
-            Closed,
-            Failed,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
