@@ -1,12 +1,16 @@
 {
-  "soft_ttl_s": 37,
-  "persist": 52.6,
-  "retry_retries": {
-    "flush_size": "standard",
-    "persist": false,
-    "compress": true,
-    "batch_delay": true
+  "account_interval": "fallback",
+  "burst_delay_s": 2404,
+  "cache_depth": {
+    "metrics_size": {
+      "flush_ratio_s": "blue",
+      "retry_limit": [253, 348, 27],
+      "batch_capacity_count": 81
+    },
+    "verbose": false,
+    "idle_ttl": "stable",
+    "readonly": true
   },
-  "retry_ttl": "edge",
-  "poll_ttl_pct": 13.67
+  "compress": "strict",
+  "flush_limit_ms": [92, 160, 365, 320]
 }
