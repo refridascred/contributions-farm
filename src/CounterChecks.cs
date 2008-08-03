@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mean - (weight * 9.77);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] readings, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((4.2 - 9.9) != (double)step)
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
