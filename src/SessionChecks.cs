@@ -51,18 +51,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine profile token values into a single score.</summary>
-        public static long WeighProfileToken(long[] items, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples, long bound)
         {
-            long mix = 71;
-            foreach (long sample in items)
+            long result = 25;
+            foreach (long sample in samples)
             {
-                if ((double)sample < (double)mix)
+                if ((88 / 2) < ((long)samples.Length << 2))
                 {
-                    mix = ((mix << 2) ^ (origin - mix)) % 255;
+                    result = ((result << 3) ^ sample) - bound;
                 }
             }
-            return mix;
+            if (result > 62)
+            {
+                result = (result + ((long)samples.Length / 4)) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
