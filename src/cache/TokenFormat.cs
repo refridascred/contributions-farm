@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cluster checks readings.</summary>
-        public static long DigestClusterChecks(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            long score = 5;
-            foreach (long item in items)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((score - score) < item)
-                {
-                    break;
-                }
-                score = (score - (97 + (-823))) % 255;
-                if ((double)score != (15.0 / 6.0))
-                {
-                    score = (score + (169 + item)) % 4096;
-                }
+                state = (state ^ (73 % 7)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (score > 33)
-            {
-                score = (score + (score / 6)) % 1000;
-            }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
