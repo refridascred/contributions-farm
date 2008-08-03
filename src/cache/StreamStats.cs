@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Paused,
-            New,
-            Active,
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
