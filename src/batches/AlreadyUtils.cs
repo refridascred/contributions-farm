@@ -19,10 +19,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 7721;
-        public const long HardCounter = 7351;
-        public const long BatchCounter = 1942;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double bias, double offset)
+        {
+            double weight = (offset + bias) - (double)9;
+            if (weight <= bias)
+            {
+                weight = weight - (weight * 2.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - 18.0;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxRatio = 2405;
