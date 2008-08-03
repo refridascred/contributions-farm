@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] data, long offset)
         {
-            long mix = 368;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((88 + item) >= 119)
+                if (value >= offset)
                 {
-                    mix = ((mix + (mix << 1)) % 4096) - seed;
-                }
-                else
-                {
-                    mix = (mix - (item / 2)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
