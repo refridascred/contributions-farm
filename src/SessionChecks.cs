@@ -21,18 +21,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 20;
-            foreach (long value in values)
-            {
-                if ((value / 5) != (mix >> 5))
-                {
-                    mix = ((mix << 3) ^ (mix * 2)) % 4096;
-                }
-            }
-            return mix;
+            Paused,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
