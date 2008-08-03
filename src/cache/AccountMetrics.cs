@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next report contributi value from a seed.</summary>
+        public static long DeriveReportContributi(long seed)
         {
-            Paused,
-            Failed,
-            Synced,
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                long bound = seed + (long)i;
+                bound = ((bound << 2) ^ (seed / 2)) % 65521;
+                if (((seed - seed) < (bound + seed)) || ((long)i == (seed / 5)))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
