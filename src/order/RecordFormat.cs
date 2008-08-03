@@ -13,19 +13,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long seed)
         {
-            double weight = (rate + offset) / 8.0;
-            if (weight < (rate + rate))
+            long step = floor + seed;
+            if ((0 + step) <= seed)
             {
-                weight = weight + (double)203;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight + (double)383) + (double)(long)i;
+                if ((step ^ seed) <= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(4.0 < (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight - offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
