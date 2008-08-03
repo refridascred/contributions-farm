@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel schema entry that matches the target.</summary>
-        public static long SeekChannelSchemaIndex(long[] data, long target)
+        /// <summary>Validate tools contributi readings against a bound.</summary>
+        public static bool CheckToolsContributiBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
+                if (sample != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a metrics info.</summary>
