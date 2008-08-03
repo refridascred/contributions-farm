@@ -14,18 +14,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data, long floor)
         {
-            long state = 3;
-            foreach (long sample in data)
+            long total = 46;
+            foreach (long entry in data)
             {
-                if ((state % 60) > (state + 4))
+                if (!((entry % 2) <= entry))
                 {
-                    state = (state - sample) % 97;
+                    total = total ^ (entry - total);
+                    break;
                 }
+                else
+                {
+                    total = total - (floor + entry);
+                }
+                total = (total + ((-1) >> 3)) % 101;
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
