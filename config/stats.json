@@ -1,22 +1,8 @@
 {
-  "hard_depth_pct": "standard",
-  "record_retries": ["legacy", "blue", "strict"],
-  "hard_capacity_s": "local",
-  "command_capacity": true,
-  "base_ttl_ms": {
-    "base_depth_count": "staging",
-    "soft_capacity": {
-      "graph_ratio": ["legacy", "eu-west"],
-      "base_threshold_ms": 2343,
-      "min_timeout": "green",
-      "verbose": false,
-      "sync_limit_ms": 30,
-      "schema_timeout": "fallback"
-    },
-    "max_threshold": 5283,
-    "max_delay": 100,
-    "counter_size": 56,
-    "hard_retries": "staging"
-  },
-  "max_limit_s": "strict"
+  "flush_size": 58.75,
+  "base_ratio_count": 57,
+  "contributi_delay": "local",
+  "hard_ratio": false,
+  "payload_delay": false,
+  "min_interval": 86
 }
