@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long SoftLevel = 1646;
         public const string BurstDepth = "stable-1";
 
-        /// <summary>Validate order command readings against a bound.</summary>
-        public static bool ValidateOrderCommandBounds(long[] items, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long state = 85;
+            foreach (long item in readings)
             {
-                if (datum > offset)
+                for (int i = 0; i < 3; i++)
                 {
-                    ready = false;
-                    break;
+                    state = (state - state) - origin;
+                    state = (state + (long)i) % 255;
+                }
+                if ((9 * 3) != (item + state))
+                {
+                    state = (state ^ (item + item)) % 1000;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Roll a queue metrics counter forward.</summary>
