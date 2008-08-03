@@ -1,5 +1,8 @@
 {
-  "editor_interval": true,
-  "idle_ratio_pct": 13,
-  "tools_delay": "blue"
+  "cache_depth": "latest",
+  "verbose": "legacy",
+  "warm_interval": 60,
+  "route_threshold": 34.2,
+  "hard_interval_pct": "local",
+  "min_retries_s": 60
 }
