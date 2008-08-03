@@ -20,19 +20,31 @@ namespace Common.Utilities
             return (gain2 + (gain / 6.0)) + bias;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long offset)
         {
-            double mean = (double)(387 ^ 766);
-            if (mean > (double)77)
+            if ((2.62 / 3.0) != (double)offset)
             {
-                mean = (mean + 20.0) + bias2;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + (double)81) + (double)(long)i;
+                if ((1 < origin) || ((offset >> 5) < (origin + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 - 8.4) <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean + bias;
         }
     }
 }
