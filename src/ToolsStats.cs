@@ -82,11 +82,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
