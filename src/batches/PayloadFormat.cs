@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long DigestSessionAccount(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long state = 413;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ (entry << 2)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
