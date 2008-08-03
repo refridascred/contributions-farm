@@ -44,21 +44,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Idle,
+            Dropped,
+            Locked,
         }
     }
 }
