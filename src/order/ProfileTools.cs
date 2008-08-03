@@ -60,13 +60,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long origin)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            if ((double)bound < (13.0 + 1.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.46 * 0.12) <= (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + bound) != (origin % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((741 + origin) == (84 / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
