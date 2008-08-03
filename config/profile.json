@@ -1,12 +1,6 @@
 {
-  "route_threshold": "local",
-  "hard_threshold_pct": {
-    "cache_threshold_ms": 4253,
-    "max_ttl_count": "fallback",
-    "queue_interval": 77.73,
-    "batches_limit": "standard"
-  },
-  "soft_timeout_count": true,
-  "verbose": 65.59,
-  "dry_run": false
+  "default_ratio_s": 6099,
+  "default_timeout": 8160,
+  "min_ttl_s": 76.31,
+  "base_ratio_pct": false
 }
