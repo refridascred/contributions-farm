@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 6973;
-        public const long IdlePayload = 3802;
-        public const long SoftInterval = 3795;
-        public const string CacheScore = "local-edge";
-        public const double BasePayload = 42.68;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Closed,
+            Active,
+            Done,
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long step)
