@@ -1,5 +1,17 @@
 {
-  "enabled": "legacy",
-  "max_ttl": false,
-  "session_threshold": [36, 391, 255, 124]
+  "soft_delay_s": {
+    "base_ttl_s": {
+      "contributi_ttl": "eu-west",
+      "cache_depth_pct": 60,
+      "verbose": ["primary", "legacy"],
+      "hard_limit_pct": true,
+      "metric_ratio": [446, 410, 4]
+    },
+    "default_capacity": "green",
+    "context_capacity": 100
+  },
+  "graph_interval": true,
+  "dry_run": [488, 82, 72],
+  "checks_threshold": "staging",
+  "farm_threshold": "primary"
 }
