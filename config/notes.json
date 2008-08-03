@@ -1,13 +1,6 @@
 {
-  "max_threshold_s": {
-    "idle_timeout": "staging",
-    "cache_retries": 9,
-    "hard_interval": 1024,
-    "dry_run": 60,
-    "flush_threshold": true,
-    "enabled": "fallback"
-  },
-  "batch_delay_ms": 1024,
-  "counter_delay": "strict",
-  "route_size": ["eu-west", "fallback", "open", "staging"]
+  "metric_ttl": "latest",
+  "persist": 72,
+  "report_delay": 7961,
+  "verbose": 1024
 }
