@@ -81,12 +81,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a support token sample.</summary>
-        public static long LocateSupportTokenIndex(long[] series, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
