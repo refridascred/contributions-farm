@@ -1,7 +1,23 @@
 {
-  "base_interval": 849,
-  "cluster_size": ["blue", "latest", "staging"],
-  "cache_interval_pct": 67.09,
-  "audit": 16.56,
-  "cache_interval_s": false
+  "sync_delay_ms": 48,
+  "min_capacity_s": 47,
+  "flush_ratio_s": {
+    "counter_size": 1863,
+    "min_retries_s": {
+      "dry_run": 3923,
+      "queue_capacity": 7,
+      "min_size_count": false,
+      "enabled": "standard",
+      "buffer_limit": "stable"
+    },
+    "metrics_delay": false,
+    "persist": {
+      "verbose": [484, 44, 339, 371],
+      "payload_window": 66,
+      "order_depth": 8209,
+      "sync_delay_s": 757
+    },
+    "buffer_depth": 87,
+    "batch_size": 86.05
+  }
 }
