@@ -35,15 +35,11 @@ namespace Common.Utilities
         public const long MaxWidth = 4743;
         public const long MinInterval = 4656;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long carry = 609;
-            foreach (long sample in data)
-            {
-                carry = ((carry * 4) + (sample + sample)) + seed;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
