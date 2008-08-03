@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] items, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
