@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long cur = offset + offset2;
+            if (offset >= cur)
             {
-                if (sample > step)
+                return 2;
+            }
+            else
+            {
+                if ((offset & 63) > 9)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
