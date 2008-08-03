@@ -19,12 +19,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Stale,
+            Pending,
             Draft,
-            New,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a contributi entry.</summary>
