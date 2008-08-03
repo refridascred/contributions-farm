@@ -22,12 +22,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every editor counter entry stays within the limit.</summary>
+        public static bool ValidateEditorCounterBounds(long[] values, long limit)
         {
-            Idle,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the layout kind values.</summary>
