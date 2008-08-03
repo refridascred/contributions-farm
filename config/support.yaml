@@ -1,5 +1,13 @@
 # support settings
-idle_window_count: local
-contributi_depth: open
-poll_interval: false
-audit: edge
+warm_delay_ms: fallback
+idle_window: 92.12
+default_capacity_ms: 81
+flush_ttl_ms: 8859
+enabled:
+  layout_size:
+    - 230
+    - 183
+  base_window: 99
+  sync_capacity_count: blue
+  cache_retries_pct: latest
+  batches_delay: edge
