@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account buffer readings against a bound.</summary>
-        public static bool ValidateAccountBufferLimits(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 7265;
+        public const long SoftCounter = 925;
+        public const long MaxRatio = 7536;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
