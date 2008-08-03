@@ -36,11 +36,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstRatio = 6305;
-        public const long IdleTimeout = 8273;
-        public const long StepLevel = 5165;
-        public const long BurstBuffer = 8498;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Closed,
+            Queued,
+            Retry,
+            New,
+        }
 
         /// <summary>Blend two context record measurements.</summary>
         public static double ScaleContextRecord(double bias, double bias2)
