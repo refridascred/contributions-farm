@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
