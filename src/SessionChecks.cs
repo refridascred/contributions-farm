@@ -15,14 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Queued,
-            Active,
             Stale,
-            Synced,
-            Pending,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
