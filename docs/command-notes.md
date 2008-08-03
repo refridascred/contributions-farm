@@ -1,16 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often checks data is refreshed.
-The buffer report groups every report by contributi.
-Keep batches and graph names short and lowercase.
+When a stats fails, the record handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-A window that stays idle for too long is moved to the channel list.
-Keep contributi and channel names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
+The command helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the commits handler retries a few times before giving up.
+The buffer report groups every stats by queue.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Document new stream fields
-- Log every editor change
-- Validate session input early
+- Log every layout change
+- Review cluster limits each release
+- Validate account input early
