@@ -1,8 +1,26 @@
 # githubfarm settings
-max_capacity_pct: staging
-sync_capacity_ms:
-  - eu-west
-  - local
-  - strict
-readonly: true
-verbose: true
+strict: true
+readonly:
+  - 423
+  - 59
+  - 483
+record_capacity: 85
+cluster_capacity:
+  format_capacity:
+    - latest
+    - primary
+    - blue
+    - edge
+  stats_retries: 31.31
+  min_timeout_s: local
+  payload_size: 41
+  sync_retries:
+    burst_ttl_pct: 74
+    readonly: 1024
+    audit: edge
+    batches_ttl: 25.59
+    enabled: 6091
+  cache_ttl: blue
+token_capacity:
+  - primary
+  - green
