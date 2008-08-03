@@ -27,12 +27,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 3759;
+        public const long BaseFactor = 682;
+        public const long BaseDepth = 7418;
+        public const long BaseBuffer = 4374;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
