@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine already window values into a single score.</summary>
-        public static long TotalAlreadyWindow(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            long acc = 74;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)acc == (6.46 * 3.0))
+                if ((datum + datum) < 53)
                 {
-                    acc = ((acc << 3) ^ (acc >> 2)) + cell;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc > 86)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
