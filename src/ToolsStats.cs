@@ -32,13 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Ready,
-            Pending,
-            Paused,
-            Queued,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
