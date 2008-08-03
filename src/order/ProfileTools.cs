@@ -60,38 +60,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
         {
-            if ((double)bound < (13.0 + 1.0))
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                state = state ^ 613;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((7.46 * 0.12) <= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + bound) != (origin % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((741 + origin) == (84 / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
