@@ -40,20 +40,11 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBudget = 45.41;
+        public const double SoftSize = 65.85;
+        public const string CacheBatches = "cached-edge";
+        public const string StepBatches = "stable-1";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] values, long limit)
