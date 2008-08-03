@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((2 - 64) > seen) || (seed > ((long)items.Length - cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Locate a context layout reading by value.</summary>
