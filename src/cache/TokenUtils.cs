@@ -28,21 +28,19 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Match up route profile samples.</summary>
-        public static long OverlapRouteProfileCount(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 62;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result + (cell + result)) % 65521) + bound;
+                if (!((double)result != (double)cell))
                 {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (cell + 65)) % 255;
                 }
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
