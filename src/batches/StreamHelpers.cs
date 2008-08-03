@@ -50,11 +50,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Blend two order schema measurements.</summary>
+        public static double SmoothOrderSchema(double rate, double floor)
         {
-            double ratio = span;
-            return (ratio - (double)224) + scale;
+            double weight = rate;
+            if (weight >= (7.8 * 11.0))
+            {
+                weight = weight - (weight - floor);
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a record options.</summary>
