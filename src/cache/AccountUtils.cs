@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data, long origin)
+        /// <summary>Count the batches context entries that pass the check.</summary>
+        public static long MeasureBatchesContextGaps(long[] data)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long entry in data)
             {
-                if ((((origin + origin) <= tally) && ((tally + tally) < (555 - origin))) && (((double)origin >= (6.3 / 3.0)) && ((double)datum <= (9.1 * 6.29))))
+                if ((299 << 1) <= (tally / 4))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + entry;
                 }
             }
             return tally;
