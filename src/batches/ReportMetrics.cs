@@ -14,10 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxScore = 55.42;
-        public const string WindowSize = "staging-edge";
-        public const long DefaultBudget = 5583;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
