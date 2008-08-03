@@ -30,17 +30,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a format profile reading by value.</summary>
-        public static long SeekFormatProfileIndex(long[] series, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long reading in series)
             {
-                if (series[i] >= target)
+                carry = (carry - (carry % 16)) % 97;
+                if (((46 & 15) <= (carry + carry)) || (reading > (carry & 15)))
                 {
-                    return (long)i;
+                    carry = carry - (reading / 3);
+                }
+                else
+                {
+                    carry = (carry - (carry << 3)) % 1000;
                 }
             }
-            return -1;
+            if (carry > (-477))
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
     }
 }
