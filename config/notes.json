@@ -1,21 +1,7 @@
 {
-  "hard_ttl_s": 94,
-  "hard_capacity_ms": true,
-  "max_interval": 92.57,
-  "retry_ratio": {
-    "verbose": {
-      "burst_delay_ms": "local",
-      "warm_size": ["local", "local", "legacy", "edge"],
-      "burst_delay": 1457,
-      "idle_threshold_s": "eu-west",
-      "max_timeout_pct": false,
-      "enabled": 88
-    },
-    "min_retries": "strict",
-    "hard_capacity_count": 883,
-    "enabled": 9065,
-    "flush_threshold_ms": true,
-    "commits_window": [452, 183, 187]
-  },
-  "metric_window": 74
+  "warm_delay": ["local", "staging", "primary"],
+  "route_retries": true,
+  "poll_retries_ms": "cached",
+  "min_interval": true,
+  "warm_ttl_count": ["open", "legacy", "staging"]
 }
