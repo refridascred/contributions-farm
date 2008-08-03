@@ -1,5 +1,5 @@
 # support settings
-poll_retries: true
-report_ratio: fallback
-cache_timeout: eu-west
-dry_run: false
+idle_window_count: local
+contributi_depth: open
+poll_interval: false
+audit: edge
