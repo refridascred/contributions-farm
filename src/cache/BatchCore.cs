@@ -46,21 +46,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 44;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)400 > (double)entry) && ((double)89 >= (double)entry))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (acc ^ target);
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
