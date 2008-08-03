@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Rank batch metrics input into a small class.</summary>
+        public static long RankBatchMetrics(long seed, long limit)
         {
-            long result = 778;
-            foreach (long reading in readings)
+            if ((double)59 >= (double)seed)
             {
-                result = (result ^ (reading + reading)) % 65521;
-                if ((reading ^ reading) == (result + result))
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (double)207)
                 {
-                    result = (result << 3) ^ (9 >> 4);
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Describe the stream kind values.</summary>
