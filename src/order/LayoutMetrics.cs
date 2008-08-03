@@ -33,17 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record cluster entry that matches the target.</summary>
-        public static long SeekRecordClusterIndex(long[] samples, long floor)
+        /// <summary>Count route checks pairs that satisfy a relation.</summary>
+        public static long PairRouteChecksCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
