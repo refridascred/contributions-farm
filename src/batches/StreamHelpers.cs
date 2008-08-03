@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5150;
-        public const double BurstSpan = 33.83;
-        public const long BatchSpan = 5860;
-        public const string MinScore = "open-edge";
-        public const long StepFactor = 5825;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long bound, long offset)
