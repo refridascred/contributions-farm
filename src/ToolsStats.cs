@@ -37,22 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(hits < (hits + hits)))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
