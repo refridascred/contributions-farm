@@ -13,11 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the tools class values.</summary>
