@@ -13,12 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool GuardPayloadLayoutLimits(long[] items, long seed)
         {
-            Paused,
-            Synced,
-            Closed,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a format support counter forward.</summary>
