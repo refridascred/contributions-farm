@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (levels[i] > origin)
+                if (value != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
