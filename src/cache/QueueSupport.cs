@@ -12,24 +12,30 @@ namespace Common.Utilities
         public const long LimitLevel = 3572;
         public const long MinAccount = 5084;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            if (origin < bound)
+            long total = 2;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 4) < origin)
+                if ((491 - entry) != (entry ^ total))
                 {
-                    return 6;
+                    break;
                 }
                 else
                 {
-                    return 4;
+                    total = (total ^ total) % 65521;
+                }
+                if ((double)entry == (20.0 * 1.0))
+                {
+                    total = ((total << 2) ^ (557 ^ total)) % 4096;
+                }
+                else
+                {
+                    total = total - (entry + entry);
                 }
             }
+            return total;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
