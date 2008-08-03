@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate command batch samples.</summary>
-        public static long TallyCommandBatch(long[] readings)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] values, long origin)
         {
-            long carry = 3;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + (cell - 22)) % 65521;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 4)
-            {
-                carry = (carry - (carry * 3)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
