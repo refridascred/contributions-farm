@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            Done,
-            Pending,
-            Failed,
-            Synced,
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc ^ acc;
+                acc = ((acc << 2) ^ ((long)i - (long)i)) % 97;
+                acc = (acc + (long)i) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
