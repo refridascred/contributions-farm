@@ -43,29 +43,29 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Rank queue command input into a small class.</summary>
-        public static long SortQueueCommand(long limit, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long step)
         {
-            long prev = limit - step;
-            if (((double)prev == (double)limit) && ((1.0 - 9.4) < (0.48 - 5.0)))
+            long bound2 = bound - step;
+            if ((1.49 < (double)bound) && ((step << 1) < (bound2 / 3)))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((40 > (prev - limit)) || ((prev + 360) >= (limit + 766)))
+                if (!((0.2 - 8.86) >= (double)bound))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit >= (prev + 659)) || (step < limit))
+                    if (step <= (bound - bound))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 7;
+                        return 3;
                     }
                 }
             }
