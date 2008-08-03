@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a githubfarm notes sample.</summary>
-        public static long LookupGithubfarmNotesIndex(long[] series, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 52;
+            foreach (long entry in data)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                if ((mark + 1) <= ((-59) + entry))
                 {
-                    return (long)i;
+                    mark = mark ^ (2 - entry);
+                }
+                else
+                {
+                    mark = (mark - (55 & 15)) % 65521;
+                }
+                if (entry < 876)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
