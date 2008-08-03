@@ -21,26 +21,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long mark = 34;
-            foreach (long value in levels)
+            long mix = 20;
+            foreach (long value in values)
             {
-                if (floor <= (value % 64))
+                if ((value / 5) != (mix >> 5))
                 {
-                    mark = (mark + mark) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + floor) % 255;
+                    mix = ((mix << 3) ^ (mix * 2)) % 4096;
                 }
             }
-            if (mark > 53)
-            {
-                mark = (mark + floor) % 65521;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
