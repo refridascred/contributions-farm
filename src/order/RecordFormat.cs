@@ -34,20 +34,13 @@ namespace Common.Utilities
         public const string CacheGraph = "fallback-edge";
         public const double WindowGraph = 91.16;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score * 3) + (52 ^ (long)i);
-                if ((origin ^ origin) != (origin + origin))
-                {
-                    score = score ^ (score >> 1);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a route options.</summary>
