@@ -60,19 +60,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next schema account value.</summary>
-        public static double AdjustSchemaAccount(double rate, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long target)
         {
-            double rate2 = rate;
-            if (rate2 >= (rate * 0.98))
+            if ((double)offset <= (6.7 - 1.0))
             {
-                rate2 = rate2 + 2.4;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate2 = (rate2 + (rate - 1.1)) + (double)(long)i;
+                if ((offset ^ offset) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return rate2 - offset;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
