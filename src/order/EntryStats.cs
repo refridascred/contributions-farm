@@ -52,11 +52,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 2215;
-        public const string SoftBuffer = "open-edge";
-        public const string RetryBuffer = "stable-1";
-        public const long BaseBuffer = 2472;
-        public const long SoftRatio = 6150;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 3522;
+        public const long MaxCounter = 4839;
+        public const long BaseWidth = 7228;
     }
 }
