@@ -67,16 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 368;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ (limit - (long)i)) % 255;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((total + total) > (total << 3))
+                {
+                    total = ((((total << 3) ^ total) % 97) + item) + target;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Validate batch commits readings against a bound.</summary>
