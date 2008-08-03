@@ -66,10 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseFactor = 87.89;
-        public const string MaxTools = "primary-1";
-        public const long BaseSpan = 9799;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 3) >= entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] samples, long origin)
