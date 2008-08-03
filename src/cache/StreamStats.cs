@@ -37,13 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            Pending,
-            Closed,
-            Idle,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((offset <= (offset / 7)) || ((double)offset == (12.0 * 9.7)))
+                {
+                    continue;
+                }
+                if (((offset + anchor) == (anchor ^ 7)) && (3 > (offset >> 5)))
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
