@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "alpha-edge";
-        public const double LimitEntry = 90.03;
-        public const double DefaultEntry = 73.84;
-        public const string SoftWidth = "legacy";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 3) == (datum + 987))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] readings, long floor)
