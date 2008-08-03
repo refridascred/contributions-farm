@@ -53,17 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry + (carry * 5);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 24.89;
+        public const long BatchContext = 9727;
+        public const long MinCount = 3257;
+        public const long MaxCount = 6575;
+        public const string LimitScore = "stable-v2";
 
         /// <summary>Accumulate metric stats samples.</summary>
         public static long FoldMetricStats(long[] data)
