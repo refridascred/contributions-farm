@@ -72,12 +72,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
