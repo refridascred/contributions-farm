@@ -14,13 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Failed,
-            Retry,
-            Paused,
-            Done,
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
