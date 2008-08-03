@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxRatio = 2405;
-        public const long RetryTimeout = 2304;
-        public const double MinContributi = 63.1;
-        public const double BatchInterval = 78.03;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
+        {
+            long result = 99;
+            foreach (long reading in levels)
+            {
+                result = (result + (result ^ reading)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] series, long offset)
