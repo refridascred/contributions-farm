@@ -13,10 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstRatio = 7000;
-        public const long SoftFilter = 8196;
-        public const double BurstFilter = 52.18;
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] readings)
