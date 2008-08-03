@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Queued,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
