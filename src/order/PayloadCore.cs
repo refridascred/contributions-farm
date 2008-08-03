@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long origin)
         {
-            double rate = (double)(6 + 2);
-            if (rate <= (gain - rate))
+            long prev = bound ^ origin;
+            if ((origin - 1) > (origin << 2))
             {
-                rate = (rate + (double)2) - offset;
+                return 6;
             }
-            return rate + rate;
+            else
+            {
+                if (origin <= 682)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((prev % 3) != (origin + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9 - origin) > (79 * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order metrics series from a seed.</summary>
