@@ -46,10 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 9320;
-        public const string SoftDepth = "alpha";
-        public const long DefaultTools = 7147;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings, long bound)
+        {
+            long mix = 78;
+            foreach (long sample in readings)
+            {
+                mix = (((mix - (mix + mix)) % 97) ^ sample) - bound;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long step)
