@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Draft,
-            New,
-            Failed,
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a farm info.</summary>
