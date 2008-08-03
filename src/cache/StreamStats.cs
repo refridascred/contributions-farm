@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] items, long seed)
         {
-            Ready,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (seed < (value + seed))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
