@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] levels, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count << 3) >= (3 / 7))
-                {
-                    count = ((count + 3) ^ cell) + step;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
