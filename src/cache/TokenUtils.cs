@@ -13,13 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchTimeout = 30.16;
+        public const long RetryFormat = 5025;
+        public const long RetryLevel = 6387;
+        public const string BatchCount = "primary-1";
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
