@@ -20,22 +20,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((69 >> 5) != (seen - (long)levels.Length))
+                if ((matches & 7) < matches)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
