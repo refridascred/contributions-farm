@@ -22,12 +22,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data, long floor)
         {
-            Pending,
-            Queued,
-            Closed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((value ^ value) < (count + value)) || ((count / 4) > (63 - count)))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
