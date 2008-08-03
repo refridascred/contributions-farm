@@ -20,21 +20,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Accumulate batches samples.</summary>
