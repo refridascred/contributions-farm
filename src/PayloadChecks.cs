@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryScore = 1430;
-        public const long MinInterval = 6068;
-        public const double WindowCache = 20.64;
-        public const string HardSpan = "primary-edge";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] series, long step)
