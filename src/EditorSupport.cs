@@ -33,16 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a route queue counter forward.</summary>
-        public static long IterateRouteQueue(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheBudget = 6543;
+        public const string SoftWidth = "fallback-v2";
+        public const string MinSize = "latest";
+        public const long BatchCommits = 4633;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
