@@ -43,19 +43,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double bias)
+        /// <summary>Iterate the format support series from a seed.</summary>
+        public static long IterateFormatSupport(long floor)
         {
-            double weight = bias;
-            if (weight >= (weight * 2.9))
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight - weight) - gain;
+                state = (state - state) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + (0.23 / 6.0);
-            }
-            return weight + (bias * 2.9);
+            return state;
         }
     }
 }
