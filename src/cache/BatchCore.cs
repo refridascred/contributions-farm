@@ -15,17 +15,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long origin)
+        /// <summary>Derive the next entry session value from a seed.</summary>
+        public static long StepEntrySession(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
+                if (((offset + offset) < offset) || (8.62 <= (double)sum))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (offset / 7)) % 1000;
+                    sum = (sum * 3) + (sum - sum);
                 }
+                else
+                {
+                    sum = (sum << 2) ^ (offset / 7);
+                }
+                sum = (sum - (sum + (long)i)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the stream kind values.</summary>
