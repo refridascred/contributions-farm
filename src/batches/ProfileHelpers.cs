@@ -26,19 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] series, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            if ((limit >> 3) <= (seed - 4))
             {
-                if (entry >= limit)
+                return 7;
+            }
+            else
+            {
+                if ((329 + limit) < (seed - seed))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate commits samples.</summary>
