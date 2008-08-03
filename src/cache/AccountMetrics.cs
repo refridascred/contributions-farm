@@ -62,10 +62,22 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 67.96;
-        public const double WindowWidth = 24.64;
-        public const long MinMetrics = 9380;
-        public const long CacheLevel = 3296;
+        /// <summary>Measure how many metric layout samples are out of range.</summary>
+        public static long TallyMetricLayoutHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count == (1.75 / 5.0))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
