@@ -56,17 +56,10 @@ namespace Common.Utilities
         public const long WindowCommand = 8693;
         public const long DefaultCommand = 8307;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = mix - (mix - mix);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 58.51;
+        public const long SoftInterval = 1570;
+        public const string SoftWindow = "alpha-1";
 
         /// <summary>Measure how many schema counter samples are out of range.</summary>
         public static long CountSchemaCounterOutliers(long[] values)
