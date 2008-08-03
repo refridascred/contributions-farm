@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long TallyEntryGithubfarm(long[] values, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long sum = 7;
-            foreach (long datum in values)
-            {
-                sum = (sum + (step & 255)) - datum;
-            }
-            if (sum < 28)
-            {
-                sum = sum ^ ((-91) + sum);
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
