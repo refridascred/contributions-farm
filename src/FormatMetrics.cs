@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8119;
-        public const long HardWindow = 5541;
-        public const double StepWindow = 43.95;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long bound)
