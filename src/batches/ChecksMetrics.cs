@@ -68,27 +68,17 @@ namespace Common.Utilities
         public const string BatchGraph = "stable-v2";
         public const long BatchSize = 6481;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
         {
-            long mark = 73;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark - (mark >> 4);
-                if ((value < (value + 39)) || (value > (33 - value)))
+                if (values[i] <= step)
                 {
-                    mark = ((mark * 2) + value) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value / 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < (-435))
-            {
-                mark = mark ^ (mark % 12);
-            }
-            return mark;
+            return -1;
         }
     }
 }
