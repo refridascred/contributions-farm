@@ -67,11 +67,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Measure how many contributi payload samples are out of range.</summary>
+        public static long TallyContributiPayloadMatches(long[] readings)
         {
-            double load = (double)(981 + (-56));
-            return ((load + (double)7) + ratio) + offset;
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= (hits << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
