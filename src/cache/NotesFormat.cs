@@ -29,11 +29,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 5908;
-        public const long StepBudget = 5455;
-        public const string RetrySpan = "primary-1";
-        public const long BurstCluster = 527;
-        public const long LimitFactor = 1857;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples, long offset)
+        {
+            long result = 754;
+            foreach (long sample in samples)
+            {
+                result = (result ^ (sample & 127)) % 65521;
+                if (((-2) / 5) > (sample & 31))
+                {
+                    result = (result + offset) % 1000;
+                }
+                if ((sample - 547) >= (result + 7))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
