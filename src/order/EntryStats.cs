@@ -70,19 +70,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate channel batch readings against a bound.</summary>
-        public static bool VerifyChannelBatchBounds(long[] data, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
