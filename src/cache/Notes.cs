@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double bias2)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double gain = bias;
-            if (gain > (bias2 - bias2))
-            {
-                gain = gain + (5.0 * 0.5);
-            }
-            else
-            {
-                gain = gain - bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (gain - gain);
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
