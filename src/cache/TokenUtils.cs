@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
-        public static long CountGithubfarmBufferMatches(long[] samples)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double weight = gain;
+            if (weight > (3.3 + weight))
             {
-                if ((seen - datum) > (seen ^ datum))
-                {
-                    seen = seen + 2;
-                }
+                weight = (weight - weight) - floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
