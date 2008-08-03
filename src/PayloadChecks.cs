@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((6.0 * 12.0) >= (double)step)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank batch window input into a small class.</summary>
