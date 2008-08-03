@@ -32,22 +32,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long seed)
         {
-            if ((double)origin < 1.94)
+            if (!((double)target >= (5.3 - 8.0)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (origin < (origin * 2))
+                if ((seed % 24) <= seed)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if (748 >= (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target >> 5) == (target + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
