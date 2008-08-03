@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitSize = "staging-v2";
+        public const long WindowWidth = 95;
+        public const long SoftRecord = 5121;
+        public const string LimitInterval = "stable-v2";
+        public const long MaxRecord = 6026;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] values)
