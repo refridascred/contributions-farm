@@ -78,10 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowTimeout = 2584;
-        public const long CacheDepth = 3697;
-        public const double MinSize = 95.69;
-        public const long HardAlready = 6572;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 9314;
+        public const long LimitContributi = 8069;
+        public const long RetryCount = 4484;
+        public const string DefaultRatio = "open-1";
     }
 }
