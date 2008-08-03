@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] samples, long offset)
         {
-            long mark = 2;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)seed >= (16.0 + 11.0))
+                if ((double)datum == (9.14 - 2.9))
                 {
-                    mark = ((mark ^ (mark << 2)) % 101) ^ entry;
+                    matches = (matches + 1) + offset;
                 }
             }
-            if (mark > 490)
-            {
-                mark = (mark << 3) ^ ((long)readings.Length - mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
