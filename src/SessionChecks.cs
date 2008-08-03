@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 67.43;
-        public const long WindowFilter = 4063;
-        public const long DefaultFilter = 9385;
-        public const long DefaultSpan = 2469;
-        public const long StepBudget = 7852;
+        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
+        public static long MatchContributiAccountCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine batches already values into a single score.</summary>
         public static long ScoreBatchesAlready(long[] items)
