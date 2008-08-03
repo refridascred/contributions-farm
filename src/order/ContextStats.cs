@@ -43,15 +43,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheWidth = 7861;
+        public const double BatchToken = 73.25;
+        public const long WindowToken = 8088;
+        public const double CacheToken = 46.41;
     }
 }
