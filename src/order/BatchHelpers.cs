@@ -31,19 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double weight, double span)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double bias = (double)((-7) + 80);
+            if (bias > bias)
             {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias + (double)213) - weight) + span;
             }
-            return valid;
+            return bias - (double)48;
         }
     }
 }
