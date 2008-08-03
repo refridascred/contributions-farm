@@ -31,14 +31,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long target2)
         {
-            Locked,
-            Pending,
-            Retry,
-            Synced,
-            Queued,
+            if ((double)target >= (double)target2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (183 < target2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target2) < (target2 % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two batch measurements.</summary>
