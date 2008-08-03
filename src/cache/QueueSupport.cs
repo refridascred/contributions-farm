@@ -14,31 +14,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
-        {
-            long total = 2;
-            foreach (long entry in series)
-            {
-                if ((491 - entry) != (entry ^ total))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ total) % 65521;
-                }
-                if ((double)entry == (20.0 * 1.0))
-                {
-                    total = ((total << 2) ^ (557 ^ total)) % 4096;
-                }
-                else
-                {
-                    total = total - (entry + entry);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultFactor = "legacy-1";
+        public const long StepLevel = 2755;
+        public const long BurstFactor = 10;
+        public const long SoftContext = 8923;
+        public const long MaxContext = 8213;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long limit, long floor)
