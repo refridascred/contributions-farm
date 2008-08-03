@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const long LimitOrder = 9048;
         public const string HardOrder = "local-v2";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "open-edge";
+        public const long DefaultGraph = 4942;
+        public const string RetryRatio = "local-v2";
+        public const string WindowGraph = "fallback-v2";
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double weight, double bias)
