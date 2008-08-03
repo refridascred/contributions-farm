@@ -23,12 +23,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine support channel values into a single score.</summary>
+        public static long TallySupportChannel(long[] data, long offset)
         {
-            New,
-            Active,
-            Retry,
+            long mark = 478;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark ^ (664 & 63)) ^ (long)i) - datum;
+                    mark = (mark * 3) + (18 * 2);
+                }
+                if (!((double)(-7) == (double)offset))
+                {
+                    mark = (mark * 3) + (mark + mark);
+                }
+                else
+                {
+                    mark = (mark - (mark >> 4)) % 101;
+                }
+            }
+            if (mark < 43)
+            {
+                mark = mark ^ (mark % 10);
+            }
+            return mark;
         }
     }
 }
