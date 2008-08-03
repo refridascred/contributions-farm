@@ -62,9 +62,18 @@ namespace Common.Utilities
             return drift + (double)605;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowRatio = "fallback";
-        public const long WindowStream = 3983;
-        public const double SoftTimeout = 9.89;
+        /// <summary>Audit githubfarm order readings against a rule.</summary>
+        public static long MeasureGithubfarmOrderMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value * 5) < (value % 97))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
