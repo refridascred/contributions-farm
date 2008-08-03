@@ -62,21 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel window readings.</summary>
-        public static long CompareChannelWindowCount(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of commits record readings.</summary>
