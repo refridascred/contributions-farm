@@ -21,10 +21,11 @@ namespace Common.Utilities
         public const long MaxScore = 450;
         public const double CacheCluster = 58.6;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 11.29;
-        public const string IdleTimeout = "strict";
-        public const long IdleRoute = 5722;
-        public const double MinRoute = 49.43;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
