@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels, long step)
+        /// <summary>Measure how many channel editor samples are out of range.</summary>
+        public static long MeasureChannelEditorGaps(long[] samples)
         {
-            long mix = 9;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((item % 97) < (mix + item)) && (8.0 > (double)step))
+                if (tally <= (cell + cell))
                 {
-                    mix = ((mix * 5) + step) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
