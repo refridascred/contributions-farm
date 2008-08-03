@@ -38,24 +38,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double bias, double offset)
-        {
-            double mean = bias;
-            if (mean >= (bias * 9.34))
-            {
-                mean = (mean + (5.0 / 3.0)) - offset;
-            }
-            else
-            {
-                mean = mean - (double)(-9);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 5.9) + (double)(long)i;
-            }
-            return mean - (double)397;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "stable-1";
+        public const long BatchRecord = 4223;
+        public const long BurstCount = 6582;
+        public const long IdleRecord = 5210;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
