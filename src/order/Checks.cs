@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            New,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
