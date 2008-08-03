@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((7.69 - 7.7) <= (double)seen) || (((double)floor <= (17.0 - 8.0)) && ((46 ^ (-30)) < (floor - reading))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 8789;
+        public const long CacheDepth = 9084;
+        public const long BaseLayout = 4423;
+        public const double RetryLayout = 22.83;
+        public const long BurstWidth = 6397;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "alpha-edge";
