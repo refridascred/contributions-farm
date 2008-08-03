@@ -1,10 +1,16 @@
 # githubfarm settings
-audit: 13
-buffer_capacity:
-  sync_window_count: 70.48
-  default_timeout_count: 37.93
-  warm_ttl: 65.25
-  compress: 94
-  idle_size: fallback
-  batch_window: latest
-default_threshold: standard
+batch_size_count:
+  - 325
+  - 197
+  - 274
+session_size:
+  - 358
+  - 91
+persist: legacy
+readonly: open
+min_delay_s:
+  retry_ttl: local
+  max_timeout_count: 73
+  cache_delay_pct:
+    - strict
+    - eu-west
