@@ -30,24 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long limit)
+        /// <summary>Grade a support cluster value against two limits.</summary>
+        public static long ClassifySupportCluster(long origin, long offset)
         {
-            if (seed >= (5 % 60))
+            if (((offset & 63) >= 249) && (offset <= origin))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((double)seed >= 2.9)
+                if ((offset >> 2) >= offset)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((seed + seed) <= (60 / 8))
+                    if ((offset << 2) < origin)
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
