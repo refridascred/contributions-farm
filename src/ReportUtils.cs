@@ -30,10 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxSpan = 8778;
-        public const long MaxWidth = 4743;
-        public const long MinInterval = 4656;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (((state * 2) + limit) % 4096) ^ (long)i2;
+                    state = state ^ (724 * 3);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
