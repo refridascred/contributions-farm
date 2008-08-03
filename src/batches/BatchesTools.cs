@@ -21,9 +21,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRatio = 34.34;
-        public const long StepDepth = 2722;
-        public const long BatchCount = 6816;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
