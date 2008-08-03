@@ -29,40 +29,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long offset)
-        {
-            long offset2 = bound - offset;
-            if ((double)offset2 != (1.0 - 7.6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < 17.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset < (offset - offset2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5541;
+        public const long BaseBudget = 9026;
+        public const double LimitInterval = 88.77;
+        public const long DefaultSize = 6991;
+        public const long DefaultEditor = 8122;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
