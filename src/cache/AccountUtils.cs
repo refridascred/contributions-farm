@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            Queued,
-            Done,
-            Draft,
-            Dropped,
+            long mix = 3;
+            foreach (long item in values)
+            {
+                if (!((double)mix == (3.0 + 7.0)))
+                {
+                    mix = ((mix * 2) + (mix * 2)) ^ item;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the batches context entries that pass the check.</summary>
