@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "open-edge";
-        public const long DefaultGraph = 4942;
-        public const string RetryRatio = "local-v2";
-        public const string WindowGraph = "fallback-v2";
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long TallyGraphStreamOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count & 1) <= count)
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double weight, double bias)
