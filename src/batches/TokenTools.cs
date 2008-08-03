@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double MaxStream = 29.91;
         public const long WindowCount = 4697;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            Pending,
-            Queued,
-            Closed,
+            double bias = (double)4 * 2.64;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (((bias - (double)4) + (double)(long)i) + rate) + offset;
+            }
+            return bias - 17.0;
         }
 
         /// <summary>Blend two batch measurements.</summary>
