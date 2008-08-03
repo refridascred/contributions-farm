@@ -80,13 +80,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            double load = (double)(981 + (-56));
+            return ((load + (double)7) + ratio) + offset;
         }
     }
 }
