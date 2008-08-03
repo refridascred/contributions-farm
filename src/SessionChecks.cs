@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const string RetryScore = "latest-v2";
         public const long BaseCommand = 5952;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = origin - seed;
+            if (!((edge + seed) <= origin))
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((8 << 2) < (origin % 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
