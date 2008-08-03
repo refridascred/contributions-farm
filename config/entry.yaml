@@ -1,12 +1,10 @@
 # entry settings
-enabled: 24.09
-metrics_ttl: fallback
-verbose: 56.96
-persist:
-  poll_depth_s: 5
-  retry_limit: 6653
-  hard_limit: green
-  graph_ratio: 500
-  hard_threshold_s: 78
-  support_limit: 65
-account_delay: stable
+retry_depth: false
+command_ttl:
+  - strict
+  - local
+  - stable
+readonly: 34
+idle_timeout_ms: open
+batch_threshold_s: 1024
+base_ratio_ms: 48
