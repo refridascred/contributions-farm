@@ -57,17 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Roll a stream metrics counter forward.</summary>
+        public static long DeriveStreamMetrics(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (score + bound)) + (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
