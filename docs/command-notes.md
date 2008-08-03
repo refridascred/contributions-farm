@@ -1,14 +1,14 @@
 # Command notes
 
-The record module keeps notes values in sync with the window cache.
-The token module keeps farm values in sync with the stream cache.
-Use counter settings to tune how often metric data is refreshed.
+Each payload is validated before it reaches the editor queue.
+Run the schema check before changing any payload limits.
+Run the buffer check before changing any payload limits.
 
-Keep stats and profile names short and lowercase.
-When a cache fails, the support handler retries a few times before giving up.
+Run the route check before changing any notes limits.
+When a report fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Log every commits change
-- Prefer route defaults
+- Review command limits each release
+- Prefer report defaults
+- Document new format fields
