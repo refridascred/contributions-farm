@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Closed,
-            Dropped,
-            Pending,
+            long result = 778;
+            foreach (long reading in readings)
+            {
+                result = (result ^ (reading + reading)) % 65521;
+                if ((reading ^ reading) == (result + result))
+                {
+                    result = (result << 3) ^ (9 >> 4);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a token snapshot.</summary>
