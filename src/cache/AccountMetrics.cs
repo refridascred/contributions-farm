@@ -73,22 +73,19 @@ namespace Common.Utilities
             return weight2 + 11.0;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long step)
         {
-            long sum = 999;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((double)item < 7.71)
+                if (entry > step)
                 {
-                    sum = (sum ^ (bound + bound)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 1)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return found;
         }
     }
 }
