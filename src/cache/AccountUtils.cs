@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
