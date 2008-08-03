@@ -38,11 +38,11 @@ namespace Common.Utilities
         public const string MinSchema = "alpha-1";
         public const long BurstSchema = 4544;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 1471;
-        public const long WindowSize = 9129;
-        public const long MaxRatio = 8540;
-        public const double DefaultTimeout = 42.91;
-        public const string RetryDepth = "alpha-1";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
