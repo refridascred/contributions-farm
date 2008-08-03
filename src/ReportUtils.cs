@@ -58,16 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long result = -948;
+            foreach (long sample in levels)
             {
-                sum = (sum << 3) ^ (88 % 2);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (result > (sample + sample))
+                {
+                    result = (result + sample) % 255;
+                }
+                else
+                {
+                    result = ((result * 3) + (sample - result)) % 255;
+                }
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
