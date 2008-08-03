@@ -36,32 +36,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long offset = limit - floor;
-            if ((limit ^ floor) <= 518)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((70 + offset) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (14.0 <= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Synced,
+            Stale,
+            Locked,
         }
     }
 }
