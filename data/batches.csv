@@ -1,7 +1,6 @@
-id,label,weight,ratio
-1,432,standard,12.12
-2,81.24,cached,12.73
-3,strict,legacy,930
-4,863,78.22,876
-5,1,open,20.42
-6,local,534,964
+id,count,owner
+1,25,697
+2,legacy,471
+3,284,182
+4,cached,297
+5,489,774
