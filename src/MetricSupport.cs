@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Done,
-            Draft,
-            Active,
+            Failed,
+            Dropped,
+            Ready,
             Stale,
         }
 
