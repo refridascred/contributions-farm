@@ -17,18 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "alpha-edge";
+        public const double LimitEntry = 90.03;
+        public const double DefaultEntry = 73.84;
+        public const string SoftWidth = "legacy";
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] readings, long offset)
