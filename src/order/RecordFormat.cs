@@ -63,15 +63,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Compare every pair of channel command readings.</summary>
+        public static long OverlapChannelCommandCount(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
