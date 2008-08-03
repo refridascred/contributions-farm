@@ -32,21 +32,17 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Match up cache order samples.</summary>
-        public static long OverlapCacheOrderCount(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the format support series from a seed.</summary>
