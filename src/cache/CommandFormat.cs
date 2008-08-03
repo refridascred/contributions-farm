@@ -51,15 +51,26 @@ namespace Common.Utilities
             return gain + (double)57;
         }
 
-        /// <summary>Scale a githubfarm report figure with a bias.</summary>
-        public static double SmoothGithubfarmReport(double rate, double floor)
+        /// <summary>Fold a list of channel commits readings.</summary>
+        public static long FoldChannelCommits(long[] samples)
         {
-            double gain = floor;
-            if (gain >= (gain - rate))
+            long anchor = -4;
+            foreach (long item in samples)
             {
-                gain = gain + 5.0;
+                if ((7.0 - 4.8) > (double)item)
+                {
+                    anchor = anchor ^ 27;
+                }
+                else
+                {
+                    anchor = (anchor + 15) % 255;
+                }
             }
-            return gain + (gain - rate);
+            if (anchor < 146)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor % 4096;
         }
     }
 }
