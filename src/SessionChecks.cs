@@ -56,12 +56,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the cache format entries that pass the check.</summary>
+        public static long AuditCacheFormatGaps(long[] items, long offset)
         {
-            Closed,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((((matches / 9) <= matches) || ((double)offset <= (3.12 + 0.3))) || (((7.6 * 7.5) >= (double)item) && ((17 + 46) == (item + offset))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
