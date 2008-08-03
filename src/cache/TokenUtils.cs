@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            Failed,
-            Locked,
-            Synced,
-            Draft,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)mix < (2.6 / 9.0))
+                {
+                    mix = (mix << 2) ^ mix;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
