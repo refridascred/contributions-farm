@@ -1,7 +1,22 @@
 {
-  "warm_interval_count": 13.47,
-  "base_ttl": 60,
-  "route_depth": false,
-  "support_threshold": true,
-  "cache_capacity_ms": 66.42
+  "hard_depth_pct": "standard",
+  "record_retries": ["legacy", "blue", "strict"],
+  "hard_capacity_s": "local",
+  "command_capacity": true,
+  "base_ttl_ms": {
+    "base_depth_count": "staging",
+    "soft_capacity": {
+      "graph_ratio": ["legacy", "eu-west"],
+      "base_threshold_ms": 2343,
+      "min_timeout": "green",
+      "verbose": false,
+      "sync_limit_ms": 30,
+      "schema_timeout": "fallback"
+    },
+    "max_threshold": 5283,
+    "max_delay": 100,
+    "counter_size": 56,
+    "hard_retries": "staging"
+  },
+  "max_limit_s": "strict"
 }
