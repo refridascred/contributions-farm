@@ -48,13 +48,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long step)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            if ((977 >> 1) > (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (5.1 * 2.9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (step ^ 312))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count format commits pairs that satisfy a relation.</summary>
