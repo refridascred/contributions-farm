@@ -53,14 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a tools token sample.</summary>
+        public static long LocateToolsTokenIndex(long[] series, long target)
         {
-            Ready,
-            Failed,
-            Active,
-            Pending,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
