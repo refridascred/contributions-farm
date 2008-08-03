@@ -26,11 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 2700;
-        public const double LimitSpan = 52.42;
-        public const double StepSpan = 3.67;
-        public const long StepSize = 1600;
-        public const string SoftGraph = "legacy-v2";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
