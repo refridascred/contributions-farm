@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Ready,
-            Synced,
-            Dropped,
-            Pending,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every editor counter entry stays within the limit.</summary>
