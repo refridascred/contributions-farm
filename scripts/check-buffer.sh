@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=452
-log "limit is ${BUFFER_LIMIT}"
+for item in cached latest; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 7 ]; do
