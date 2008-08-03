@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 2503;
-        public const long MaxSize = 2665;
-        public const long HardStream = 1347;
-        public const double MaxStream = 29.91;
-        public const long WindowCount = 4697;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor << 2) ^ (50 / 2);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double rate, double offset)
