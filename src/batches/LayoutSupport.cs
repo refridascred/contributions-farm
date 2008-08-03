@@ -52,17 +52,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Combine record values into a single score.</summary>
