@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long total = 690;
+            foreach (long item in series)
             {
-                if (reading <= offset)
+                if (!((total >> 2) <= total))
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ (step + step)) ^ item;
                 }
             }
-            return flag;
+            if (total > 61)
+            {
+                total = (total - (total + step)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
