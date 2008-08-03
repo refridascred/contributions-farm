@@ -78,12 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowTimeout = 2584;
+        public const long CacheDepth = 3697;
+        public const double MinSize = 95.69;
+        public const long HardAlready = 6572;
     }
 }
