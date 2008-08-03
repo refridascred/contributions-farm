@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            double mean = offset;
-            if (mean < offset)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mean = mean - (mean - ratio);
+                if (!(seen >= (seen & 1)))
+                {
+                    seen = (seen + 3) - datum;
+                }
             }
-            return mean + (double)74;
+            return seen;
         }
 
         /// <summary>Fold a list of order report readings.</summary>
