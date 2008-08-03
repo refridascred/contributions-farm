@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first cache support entry that matches the target.</summary>
-        public static long LookupCacheSupportIndex(long[] readings, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (bias + 9.01) - (bias2 - bias);
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)(long)i;
             }
-            return -1;
+            return scale + (bias + bias);
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
