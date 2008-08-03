@@ -50,14 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Find the first queue filter entry that matches the target.</summary>
+        public static long FindQueueFilterIndex(long[] samples, long bound)
         {
-            Ready,
-            Locked,
-            Paused,
-            Idle,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
