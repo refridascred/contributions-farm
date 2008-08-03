@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Stale,
+            Closed,
+            Draft,
+            New,
             Locked,
-            Retry,
-            Queued,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
