@@ -53,17 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias;
+            if (weight >= (weight * 2.9))
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) - gain;
             }
-            return -1;
+            else
+            {
+                weight = weight + (0.23 / 6.0);
+            }
+            return weight + (bias * 2.9);
         }
     }
 }
