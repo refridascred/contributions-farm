@@ -1,27 +1,7 @@
 {
-  "channel_capacity": "green",
-  "dry_run": {
-    "min_threshold_pct": "staging",
-    "compress": 50.72,
-    "sync_interval_ms": 30,
-    "batch_timeout": 1021,
-    "support_ratio": 13.02,
-    "sync_depth": 500
-  },
-  "default_retries": {
-    "stream_ttl": 7179,
-    "hard_ratio_pct": ["edge", "stable", "edge", "latest"],
-    "persist": {
-      "idle_timeout": "staging",
-      "enabled": "edge",
-      "compress": 36,
-      "poll_depth_count": 5751,
-      "hard_timeout": 60
-    },
-    "batch_interval_count": false,
-    "soft_capacity_pct": false,
-    "layout_limit": ["open", "green", "staging"]
-  },
-  "commits_timeout": [112, 317, 148],
-  "readonly": 3226
+  "farm_limit": 60.93,
+  "hard_retries": 50.95,
+  "warm_threshold_s": 100,
+  "batch_timeout": "cached",
+  "notes_ttl": 1024
 }
