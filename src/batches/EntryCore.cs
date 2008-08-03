@@ -82,10 +82,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepLevel = 7620;
-        public const long HardAccount = 5612;
-        public const long WindowInterval = 9912;
-        public const string RetryInterval = "fallback";
+        /// <summary>Count the format cache entries that pass the check.</summary>
+        public static long TallyFormatCacheGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((1.0 / 8.0) != (double)seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
     }
 }
