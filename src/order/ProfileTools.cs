@@ -34,23 +34,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            long acc = 977;
-            foreach (long item in series)
+            double drift = (double)(598 << 3);
+            if (drift >= (double)0)
             {
-                acc = acc - (long)series.Length;
-                if (((item + (long)series.Length) >= acc) || (acc >= (item % 8)))
-                {
-                    acc = (acc ^ item) % 255;
-                }
+                drift = ((drift - (1.4 / 7.0)) - ratio) - span;
             }
-            if (acc > 68)
+            else
             {
-                acc = acc - (acc >> 3);
+                drift = drift - (double)0;
             }
-            return acc % 1000;
+            return drift - (double)(-2);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
