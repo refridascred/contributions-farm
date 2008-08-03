@@ -30,17 +30,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long anchor = 9;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                anchor = anchor + reading;
+                if (((anchor / 3) <= (reading & 3)) && ((double)anchor < 6.73))
                 {
-                    anchor = (anchor - (383 + 90)) - (long)i2;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
             return anchor;
         }
