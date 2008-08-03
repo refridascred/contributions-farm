@@ -88,23 +88,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] series, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double span)
         {
-            long score = 37;
-            foreach (long item in series)
+            double load = weight;
+            if (load < (load - weight))
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score - (item % 60)) - (long)i) - seed;
-                }
-                score = (score - score) % 101;
+                load = (load - (double)(-3)) - span;
             }
-            if (score < 4)
+            for (int i = 0; i < 4; i++)
             {
-                score = (score ^ (score + 234)) % 255;
+                load = (load + (load * 7.3)) + (double)(long)i;
             }
-            return score % 97;
+            return load - 0.96;
         }
     }
 }
