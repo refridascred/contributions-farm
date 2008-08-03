@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long seed)
         {
-            if (bound < (bound & 127))
+            long mix = 368;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (8.0 - 2.69))
+                if ((88 + item) >= 119)
                 {
-                    return 3;
+                    mix = ((mix + (mix << 1)) % 4096) - seed;
                 }
                 else
                 {
-                    if ((offset * 5) < (bound * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix - (item / 2)) % 1000;
                 }
             }
+            return mix;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
