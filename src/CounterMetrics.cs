@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((2 - mark) == (229 + mark))
-                {
-                    mark = (mark ^ origin) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
