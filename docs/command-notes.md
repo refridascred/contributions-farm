@@ -1,11 +1,16 @@
 # Command notes
 
-The session module keeps support values in sync with the stream cache.
-When a contributi fails, the order handler retries a few times before giving up.
-Each farm is validated before it reaches the counter queue.
+Use schema settings to tune how often checks data is refreshed.
+The buffer report groups every report by contributi.
+Keep batches and graph names short and lowercase.
+
+A window that stays idle for too long is moved to the channel list.
+Keep contributi and channel names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new githubfarm fields
-- Keep channel values small
+- Prefer checks defaults
+- Document new stream fields
+- Log every editor change
+- Validate session input early
