@@ -14,12 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Failed,
-            Active,
-            Queued,
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
