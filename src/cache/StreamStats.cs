@@ -34,18 +34,23 @@ namespace Common.Utilities
         public const long MaxTimeout = 4514;
         public const long HardRatio = 9523;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Blend two cluster counter measurements.</summary>
+        public static double BlendClusterCounter(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double scale = (rate * 9.83) - 6.5;
+            if (scale < (scale - rate))
             {
-                if (((double)seen == (0.9 - 7.81)) || ((double)value < 8.9))
-                {
-                    seen = seen + 2;
-                }
+                scale = scale - (bias - 2.07);
             }
-            return seen;
+            else
+            {
+                scale = scale + 7.77;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (rate / 7.0)) - (double)(long)i;
+            }
+            return scale + (scale + scale);
         }
     }
 }
