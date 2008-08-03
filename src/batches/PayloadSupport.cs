@@ -26,39 +26,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long slot = floor + floor2;
-            if (((floor / 6) >= floor2) && ((floor * 2) >= (slot / 5)))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((90 - floor) > floor2)
+                if ((count / 8) <= (datum << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot < (floor - floor)) && ((slot << 2) != (floor2 + 993)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (8.0 > (double)slot)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
