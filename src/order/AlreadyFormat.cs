@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate support batch readings against a bound.</summary>
-        public static bool VerifySupportBatchRange(long[] items, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
