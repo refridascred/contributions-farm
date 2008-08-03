@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleWidth = 12.84;
-        public const long CacheRatio = 1357;
-        public const string RetryInterval = "staging-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 53.45;
+        public const long HardInterval = 5737;
+        public const long SoftRecord = 4836;
+        public const long BatchRatio = 922;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
