@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitRatio = 65.68;
-        public const long SoftScore = 5029;
-        public const double LimitBudget = 18.57;
-        public const long SoftSession = 234;
-        public const long StepSession = 7349;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
