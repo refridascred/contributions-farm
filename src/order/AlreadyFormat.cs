@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] levels)
+        /// <summary>Validate support batch readings against a bound.</summary>
+        public static bool VerifySupportBatchRange(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((value & 3) >= (-45))
+                if (item >= offset)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
