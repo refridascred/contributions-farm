@@ -34,13 +34,17 @@ namespace Common.Utilities
             return gain + (gain - 6.4);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] levels, long target)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
