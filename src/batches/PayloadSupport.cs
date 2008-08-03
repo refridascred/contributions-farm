@@ -41,18 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 553;
+            foreach (long reading in items)
             {
-                if ((count >= (count << 1)) || (((offset - count) < entry) || ((offset << 3) > (13 + entry))))
-                {
-                    count = count + 1;
-                }
+                state = state + (reading * 3);
             }
-            return count;
+            return state % 1000;
         }
     }
 }
