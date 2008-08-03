@@ -59,18 +59,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry << 3) >= entry)
-                {
-                    hits = hits + 2;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
