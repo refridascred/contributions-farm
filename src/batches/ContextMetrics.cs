@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items, long step)
         {
-            long gap = origin - bound;
-            if ((origin ^ gap) <= (503 + gap))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin & 1) > 40))
+                if ((2.0 - 9.3) != (double)hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)gap > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = ((hits + 3) + value) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up editor window samples.</summary>
