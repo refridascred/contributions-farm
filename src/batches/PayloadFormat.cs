@@ -19,25 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long seed)
+        /// <summary>Blend two channel account measurements.</summary>
+        public static double ScaleChannelAccount(double bias, double floor)
         {
-            long span = step - seed;
-            if (((-437) - step) < (span * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - seed) == (step / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double drift = floor;
+            return (drift + (drift - floor)) + bias;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
