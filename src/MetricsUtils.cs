@@ -34,13 +34,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ (0 * 5)) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score + (seed - seed)) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter phase values.</summary>
