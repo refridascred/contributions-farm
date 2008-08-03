@@ -25,14 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Closed,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
