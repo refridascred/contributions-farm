@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            long mix = 587;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix ^ value) ^ (long)i;
-                }
-                mix = (mix + (value * 3)) % 97;
-                if ((double)mix == (18.0 - 2.17))
-                {
-                    mix = (mix - (value / 2)) % 255;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            double load = bias + (8.6 - bias);
+            return (load - load) + floor;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
