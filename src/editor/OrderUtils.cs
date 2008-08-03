@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinBudget = 2726;
-        public const long LimitSize = 8491;
-        public const string WindowSchema = "open-1";
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsGaps(long[] values, long seed)
