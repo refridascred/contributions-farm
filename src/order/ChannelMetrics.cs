@@ -33,23 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long sum = 69;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum + ((long)series.Length ^ sum)) + datum;
-                if ((8.0 / 2.0) <= (double)sum)
+                if (!((step - 0) > step))
                 {
-                    sum = (sum ^ (sum / 9)) % 101;
+                    acc = ((acc * 3) + (462 + (long)i)) % 255;
                 }
-                else
+                if ((895 + (long)i) >= (step + (long)i))
                 {
-                    sum = (sum + sum) % 101;
+                    acc = (acc * 5) + (acc - acc);
                 }
+                acc = (acc << 3) ^ (74 % 97);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
     }
 }
