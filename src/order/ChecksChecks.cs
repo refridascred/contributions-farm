@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double floor)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            double load = (double)((-625) + 3);
+            if (load >= (double)60)
+            {
+                load = (load - load) - rate;
+            }
+            else
+            {
+                load = load + 1.85;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (floor * 13.0)) + (double)(long)i;
+            }
+            return load - 7.1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
