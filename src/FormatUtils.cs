@@ -38,19 +38,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double bias = floor - (gain / 7.0);
-            if (bias <= gain)
-            {
-                bias = bias - (6.31 - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 3.0) - (double)(long)i;
-            }
-            return bias + (bias - gain);
+            Retry,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of queue stats entries.</summary>
