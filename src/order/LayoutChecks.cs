@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleTimeout = 28.14;
-        public const long LimitLevel = 8052;
-        public const string WindowFilter = "stable-v2";
-        public const string MaxSize = "primary-v2";
-        public const long IdleScore = 1757;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((3 << 3) >= (cell << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long origin, long limit)
