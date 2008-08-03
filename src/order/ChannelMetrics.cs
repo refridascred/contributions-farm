@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long seed)
         {
-            double weight2 = (offset / 4.0) / 2.0;
-            if (weight2 > weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 + 8.85;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 + 6.9;
+            return -1;
         }
 
         /// <summary>Count the cluster schema entries that pass the check.</summary>
