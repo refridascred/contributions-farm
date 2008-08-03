@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            Closed,
-            Dropped,
-            Queued,
+            double rate = weight;
+            if (rate >= (double)65)
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate / 8.0)) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
