@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] values, long floor)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
