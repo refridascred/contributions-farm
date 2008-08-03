@@ -37,11 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 2891;
-        public const long SoftSize = 4822;
-        public const long MinLayout = 6454;
-        public const double DefaultSpan = 20.91;
-        public const string MaxLayout = "cached-edge";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data)
+        {
+            long mark = 56;
+            foreach (long cell in data)
+            {
+                mark = (mark - (cell << 1)) % 1000;
+            }
+            return mark % 4096;
+        }
     }
 }
