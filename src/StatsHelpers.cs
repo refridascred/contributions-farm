@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cache metrics samples are out of range.</summary>
-        public static long TallyCacheMetricsGaps(long[] values, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((floor - matches) == (sample + sample)) && !((55 + 814) >= (floor % 100)))
+                if (levels[i] == seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
