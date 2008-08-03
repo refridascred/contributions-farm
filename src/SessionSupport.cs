@@ -15,10 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 65.6;
-        public const double BatchEditor = 49.54;
-        public const long MinEditor = 3068;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BaseCounter = 98.48;
