@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinInterval = 3600;
-        public const double HardRatio = 90.38;
-        public const long BaseLayout = 3445;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
