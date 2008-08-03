@@ -1,6 +1,7 @@
-id,count,state,region,weight
-1,194,standard,58.19,491
-2,456,local,178,76.4
-3,21.03,blue,77.99,858
-4,514,38.95,383,272
-5,stable,115,9.22,35.99
+id,active,token,rank
+1,86.88,22.19,350
+2,54.18,latest,blue
+3,89.72,622,76.42
+4,19.72,272,standard
+5,79.17,91.28,staging
+6,39.39,primary,51.12
