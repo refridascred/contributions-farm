@@ -19,24 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record graph series from a seed.</summary>
-        public static long StepRecordGraph(long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)step < (double)anchor) || ((6.5 * 12.0) >= (double)step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor ^ (long)i;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((((long)i >> 5) < (anchor ^ 4)) && (1 <= step))
-                {
-                    anchor = anchor + ((long)i >> 3);
-                    anchor = (anchor << 3) ^ step;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Project the next queue cluster value.</summary>
