@@ -1,8 +1,25 @@
 # entry settings
-editor_window: 7815
-batch_capacity: staging
-stream_ratio: 86
-readonly:
-  - legacy
-  - cached
-min_interval_count: 1024
+flush_capacity: legacy
+compress: blue
+batches_ratio:
+  checks_timeout:
+    queue_limit: 4667
+    token_window: true
+    verbose:
+      - 32
+      - 2
+    flush_timeout_count: cached
+  audit: 95
+  burst_capacity: 63.86
+  idle_ratio_pct: 9157
+  verbose: 19.82
+  readonly:
+    checks_timeout: 85
+    warm_threshold_pct: 70.72
+    compress:
+      - blue
+      - local
+      - strict
+    entry_interval: strict
+    cache_limit: 7.54
+retry_limit_s: 60
