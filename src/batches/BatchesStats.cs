@@ -29,17 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
