@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long HardTimeout = 8201;
         public const string MinCache = "standard-v2";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 94;
+            foreach (long reading in samples)
             {
-                if (((sample + sample) <= (sample ^ sample)) || ((double)hits < (double)sample))
+                if ((reading - step) <= (step ^ step))
                 {
-                    hits = hits + 1;
+                    mark = (mark << 2) ^ reading;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Describe the support state values.</summary>
