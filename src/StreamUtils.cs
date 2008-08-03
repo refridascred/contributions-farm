@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue filter entry that matches the target.</summary>
-        public static long FindQueueFilterIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a entry queue sample.</summary>
+        public static long SeekEntryQueueIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
