@@ -31,15 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            double bias = (double)((-7) + 80);
-            if (bias > bias)
+            long score = 898;
+            foreach (long item in samples)
             {
-                bias = ((bias + (double)213) - weight) + span;
+                if ((item / 3) != (item - score))
+                {
+                    score = (score + (item + item)) % 101;
+                }
             }
-            return bias - (double)48;
+            return score % 1000;
         }
     }
 }
