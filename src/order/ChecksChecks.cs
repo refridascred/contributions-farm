@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            New,
-            Locked,
-            Stale,
-            Idle,
-            Done,
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
