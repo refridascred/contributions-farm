@@ -28,21 +28,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry ^ (carry >> 1)) % 97;
+                if ((double)carry > (0.18 + 1.6))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry + (reading >> 1);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
