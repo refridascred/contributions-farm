@@ -14,12 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long TallyFormatStream(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long acc = 9;
+            foreach (long datum in values)
+            {
+                acc = (acc * 2) + (852 + datum);
+                acc = (acc + (bound << 2)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
