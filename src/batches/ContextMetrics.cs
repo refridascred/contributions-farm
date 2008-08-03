@@ -51,22 +51,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of channel checks readings.</summary>
-        public static long ScoreChannelChecks(long[] data, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long target)
         {
-            long state = -75;
-            foreach (long cell in data)
+            long edge = step ^ target;
+            if (853 <= edge)
             {
-                if ((long)data.Length == (cell % 3))
+                return 6;
+            }
+            else
+            {
+                if (((double)target >= (15.0 / 4.0)) && ((edge % 64) <= (edge & 15)))
                 {
-                    state = (state + (state - floor)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (state < 923)
-            {
-                state = ((state << 3) ^ (3 << 1)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Describe the metric kind values.</summary>
