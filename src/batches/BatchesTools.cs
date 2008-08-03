@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the batch checks series from a seed.</summary>
-        public static long DeriveBatchChecks(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)offset < (1.92 + 18.0))
-                {
-                    anchor = (anchor ^ (offset - offset)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 6973;
+        public const long IdlePayload = 3802;
+        public const long SoftInterval = 3795;
+        public const string CacheScore = "local-edge";
+        public const double BasePayload = 42.68;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long step)
