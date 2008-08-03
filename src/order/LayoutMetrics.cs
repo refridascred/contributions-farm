@@ -33,26 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                if ((total & 127) <= total)
-                {
-                    total = ((total - (total ^ total)) % 255) ^ sample;
-                }
-                else
-                {
-                    total = total ^ (-1);
-                }
-            }
-            if (total < (-777))
-            {
-                total = ((total * 5) + (713 / 4)) % 101;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
