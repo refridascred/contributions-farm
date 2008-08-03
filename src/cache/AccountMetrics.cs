@@ -31,12 +31,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryScore = 98.17;
-        public const double HardRoute = 97.25;
-        public const long WindowCount = 629;
-        public const long LimitRoute = 2747;
-        public const long MaxWidth = 9886;
+        /// <summary>Fold a list of buffer farm readings.</summary>
+        public static long ScoreBufferFarm(long[] series)
+        {
+            long sum = -7;
+            foreach (long datum in series)
+            {
+                sum = ((sum * 5) + datum) % 255;
+                if ((datum - sum) >= (datum - 987))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
