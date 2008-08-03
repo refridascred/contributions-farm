@@ -1,15 +1,11 @@
 # githubfarm settings
-cache_ttl_s:
-  hard_delay: 5500
-  record_ttl: false
-  cache_ttl_ms:
-    hard_ttl_pct: standard
-    verbose: fallback
-    profile_limit: 32.38
-    command_ratio:
-      - standard
-      - strict
-    soft_window: eu-west
-hard_ratio_ms: 3427
-soft_window_s: primary
-strict: 32
+default_size: local
+cache_retries:
+  poll_window: strict
+  soft_depth_count: strict
+  default_capacity: 11.72
+retry_limit:
+  batch_ttl_ms: 30
+  verbose: 2839
+  max_size_pct: 63
+  burst_ratio: strict
