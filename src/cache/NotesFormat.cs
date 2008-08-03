@@ -14,11 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstScore = 7.4;
-        public const long HardMetric = 4592;
-        public const long RetryMetric = 3504;
-        public const long LimitMetric = 8407;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (state >= (61 << 3))
+                {
+                    state = state + (state % 100);
+                }
+                else
+                {
+                    state = (state ^ state) % 101;
+                }
+                state = (state << 3) ^ (origin ^ (long)i);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaOutliers(long[] values, long target)
