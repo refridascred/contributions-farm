@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long AuditMetricAccountHits(long[] readings, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= (cell - 9))
+                if (items[i] == bound)
                 {
-                    count = (count + 3) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
