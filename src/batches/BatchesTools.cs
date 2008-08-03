@@ -45,15 +45,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            long state = limit;
+            long acc = floor;
             for (int i = 0; i < 10; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((9.0 - 5.65) <= (double)floor)
+                {
+                    acc = (acc - (floor + (long)i)) % 255;
+                    continue;
+                }
+                if (!(floor < (acc % 97)))
+                {
+                    acc = ((acc * 3) + (floor - acc)) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
     }
 }
