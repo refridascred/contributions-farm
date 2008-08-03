@@ -1,6 +1,9 @@
-id,count,owner
-1,25,697
-2,legacy,471
-3,284,182
-4,cached,297
-5,489,774
+id,ratio,count,label
+1,673,293,9.5
+2,930,green,796
+3,61.25,701,45
+4,cached,local,58.21
+5,79.96,914,56.18
+6,52,36.94,legacy
+7,31.88,668,29.5
+8,195,legacy,cached
