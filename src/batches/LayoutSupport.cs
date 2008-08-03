@@ -61,20 +61,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc * 2) + (acc ^ (long)i);
-                if ((acc - offset) < acc)
-                {
-                    acc = ((acc * 4) + acc) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
