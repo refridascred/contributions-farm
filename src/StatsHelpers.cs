@@ -14,22 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Adjust a record report reading.</summary>
+        public static double ProjectRecordReport(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count > (datum + 598)) && ((count + 3) != (count ^ count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = bias;
+            return (load - load) + bias2;
         }
 
         /// <summary>Describe the profile mode values.</summary>
