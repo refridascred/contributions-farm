@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up graph filter samples.</summary>
-        public static long PairGraphFilterCount(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset != (double)1)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) <= seed)
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed >= (double)offset)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
