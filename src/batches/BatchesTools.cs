@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double span)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)302 - (gain * 9.46);
+            if (ratio >= (double)208)
             {
-                total = (total ^ ((long)i * 5)) % 255;
-                total = total ^ (736 % 24);
-                total = ((total * 3) + (long)i) % 101;
+                ratio = ratio - (gain + 4.86);
             }
-            return total;
+            return ratio + (span + span);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
