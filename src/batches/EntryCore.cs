@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long offset, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            if ((step > (step ^ step)) || ((40 + offset) >= step))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((195 <= (offset / 5)) && ((double)step == (4.0 - 4.7)))
+                if ((double)datum > (double)6)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
