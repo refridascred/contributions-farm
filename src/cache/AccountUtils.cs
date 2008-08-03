@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long next = step ^ limit;
+            if (!(((-897) & 1) >= (limit - next)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)step <= (12.0 / 4.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the batches context entries that pass the check.</summary>
