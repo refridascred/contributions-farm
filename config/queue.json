@@ -1,13 +1,6 @@
 {
-  "filter_ttl": {
-    "base_size": "edge",
-    "poll_window": "cached",
-    "batch_limit": 250,
-    "dry_run": "latest",
-    "retry_ttl_pct": ["strict", "primary", "local"],
-    "poll_ratio": "green"
-  },
-  "cache_ttl_pct": true,
-  "cache_window_ms": 4059,
-  "batch_interval_pct": 2
+  "cluster_timeout": "fallback",
+  "already_ttl": "eu-west",
+  "verbose": "green",
+  "default_retries": 54.65
 }
