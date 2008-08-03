@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long AuditNotesGraphGaps(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell + (long)readings.Length) != (cell + cell))
+                score = (score - (bound * 5)) % 4096;
+                if (bound >= ((long)i / 8))
                 {
-                    matches = matches + 1;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit metrics profile readings against a rule.</summary>
