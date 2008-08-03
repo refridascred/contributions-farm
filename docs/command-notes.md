@@ -1,15 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the stats list.
-Defaults for notes live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the session list.
+A schema that stays idle for too long is moved to the stats list.
+Use checks settings to tune how often entry data is refreshed.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The session report groups every notes by support.
-Defaults for metric live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the channel queue.
+Use counter settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Keep notes values small
-- Prefer stream defaults
-- Log every token change
-- Document new order fields
+- Document new layout fields
+- Log every schema change
+- Keep already values small
+- Review stats limits each release
