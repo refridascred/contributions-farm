@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long TallyLayoutRouteHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((3 >= (seen & 63)) && ((94 % 2) <= (reading * 5)))
+                if ((reading + count) >= 8)
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
