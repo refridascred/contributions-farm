@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 2083;
         public const long BatchSpan = 5962;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double offset)
-        {
-            double bias = (double)4 * 2.64;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (((bias - (double)4) + (double)(long)i) + rate) + offset;
-            }
-            return bias - 17.0;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchWidth = 4486;
+        public const double DefaultContext = 85.03;
+        public const double WindowContext = 72.27;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values, long bound)
