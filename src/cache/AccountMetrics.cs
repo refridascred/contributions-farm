@@ -28,17 +28,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Derive the next tools token value from a seed.</summary>
+        public static long DeriveToolsToken(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (origin + (long)i)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two batch measurements.</summary>
