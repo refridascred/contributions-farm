@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long HardScore = 1281;
         public const double WindowTimeout = 19.73;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (items[i] > bound)
+                if (cell < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a format stats.</summary>
