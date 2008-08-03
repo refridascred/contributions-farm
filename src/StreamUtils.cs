@@ -39,18 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long CountRecordCommitsGaps(long[] readings)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double ratio = floor;
+            if (ratio > weight)
             {
-                if (((cell <= (cell << 2)) && ((long)readings.Length >= cell)) || (seen < (1 - cell)))
-                {
-                    seen = seen + 1;
-                }
+                ratio = ratio + (weight * 8.0);
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (weight - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio / 4.0)) - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
