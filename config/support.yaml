@@ -1,14 +1,19 @@
 # support settings
-soft_ttl:
-  - 10
-  - 28
-  - 136
-sync_threshold_pct: false
-default_delay_count: 7.8
-min_ttl_pct: true
-session_capacity:
-  - edge
-  - eu-west
-  - green
-  - cached
-hard_size_ms: 1024
+soft_depth:
+  max_window_count: open
+  max_timeout_count: 57.08
+  verbose:
+    - edge
+    - legacy
+  report_size: 6166
+  persist:
+    - strict
+    - legacy
+    - blue
+    - standard
+persist:
+  retry_size: false
+  idle_ttl_s: cached
+  stream_interval: 250
+warm_limit_count: 16
+max_depth_ms: edge
