@@ -43,19 +43,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > target)
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
