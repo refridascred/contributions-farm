@@ -40,15 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long bound2)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            if ((double)bound2 <= (6.9 - 4.61))
             {
-                carry = ((carry - cell) % 97) + bound;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((bound - bound) <= (bound2 & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (926 >= (bound2 ^ (-125)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
