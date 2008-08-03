@@ -30,20 +30,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            if (seed >= (5 % 60))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 2) + limit) % 4096) ^ (long)i2;
-                    state = state ^ (724 * 3);
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((double)seed >= 2.9)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) <= (60 / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already snapshot.</summary>
