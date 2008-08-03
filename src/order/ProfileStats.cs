@@ -39,17 +39,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long limit)
+        /// <summary>Project the next queue cluster value.</summary>
+        public static double ProjectQueueCluster(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias - gain;
+            if (load <= (double)1)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - gain;
             }
-            return -1;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 2.76) - (double)(long)i;
+            }
+            return load - 1.48;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
