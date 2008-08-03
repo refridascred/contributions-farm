@@ -82,18 +82,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((seen ^ reading) >= reading) && (((reading << 1) != (offset ^ reading)) || ((reading << 1) > seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
