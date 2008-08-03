@@ -1,16 +1,10 @@
 # githubfarm settings
-batch_size_count:
-  - 325
-  - 197
-  - 274
-session_size:
-  - 358
-  - 91
-persist: legacy
-readonly: open
-min_delay_s:
-  retry_ttl: local
-  max_timeout_count: 73
-  cache_delay_pct:
-    - strict
-    - eu-west
+default_window_s:
+  - 472
+  - 404
+strict:
+  flush_threshold: 100
+  retry_window: 90.62
+  metrics_ttl: 43.01
+dry_run: false
+flush_capacity_ms: 16.46
