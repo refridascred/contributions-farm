@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long floor, long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            if ((double)step <= (11.0 - 8.0))
             {
-                if (sample < floor)
+                return 5;
+            }
+            else
+            {
+                if (21 < step)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Scale a contributi report figure with a bias.</summary>
