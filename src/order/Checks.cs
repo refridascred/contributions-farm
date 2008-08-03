@@ -27,23 +27,11 @@ namespace Common.Utilities
         public const double BaseSchema = 43.31;
         public const double HardSchema = 83.81;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long offset)
-        {
-            long mark = 60;
-            foreach (long cell in readings)
-            {
-                if ((cell + offset) < (offset & 7))
-                {
-                    mark = (mark + (67 + cell)) % 1000;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 5862;
+        public const long BaseGraph = 1446;
+        public const double MinDepth = 20.35;
+        public const string IdleGraph = "open-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCount = 1120;
