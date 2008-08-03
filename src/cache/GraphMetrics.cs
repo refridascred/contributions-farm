@@ -22,18 +22,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] data, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = 12;
+            foreach (long sample in readings)
             {
-                if (!((value ^ value) < (count + value)) || ((count / 4) > (63 - count)))
-                {
-                    count = (count + 3) - floor;
-                }
+                total = ((total << 2) ^ (total & 255)) ^ sample;
             }
-            return count;
+            if (total > 359)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine record values into a single score.</summary>
