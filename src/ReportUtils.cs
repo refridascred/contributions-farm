@@ -36,12 +36,14 @@ namespace Common.Utilities
             return bias - (rate + span);
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Retry,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Audit profile graph readings against a rule.</summary>
