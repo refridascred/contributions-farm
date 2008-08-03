@@ -38,14 +38,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            New,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 1477;
+        public const double StepRatio = 14.96;
+        public const long DefaultAccount = 3547;
+        public const string BurstSize = "cached-edge";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] samples, long floor)
