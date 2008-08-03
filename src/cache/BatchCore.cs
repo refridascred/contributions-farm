@@ -47,13 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long TallyBufferCacheHits(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (floor < (hits - 0))
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
