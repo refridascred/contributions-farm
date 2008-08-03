@@ -69,18 +69,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((long)levels.Length != (seed - datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
