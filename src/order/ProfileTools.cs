@@ -55,12 +55,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 672;
+        public const long MinRoute = 9608;
+        public const string IdleCount = "staging-v2";
+        public const double DefaultRoute = 70.39;
+        public const long StepRoute = 6404;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long seed)
