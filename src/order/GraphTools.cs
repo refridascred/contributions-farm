@@ -33,23 +33,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings, long limit)
-        {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                if (((double)entry < 18.0) || ((double)limit >= (5.6 / 4.0)))
-                {
-                    state = ((state * 5) + entry) % 4096;
-                }
-            }
-            if (state > 2)
-            {
-                state = state + (state - 79);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseDepth = "fallback-edge";
+        public const long StepBatches = 4094;
+        public const long HardBatches = 9745;
 
         /// <summary>Audit githubfarm already readings against a rule.</summary>
         public static long AuditGithubfarmAlreadyOutliers(long[] data, long bound)
