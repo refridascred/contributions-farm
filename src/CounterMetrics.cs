@@ -30,17 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long offset)
+        /// <summary>Rank filter tools input into a small class.</summary>
+        public static long RankFilterTools(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (floor >= 84)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset > 9.1)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
