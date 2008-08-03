@@ -26,12 +26,31 @@ namespace Common.Utilities
         public const long BatchPayload = 4648;
         public const long RetryRatio = 2923;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long floor)
         {
-            Idle,
-            Draft,
-            Closed,
+            if (((target + target) > (target + floor)) || (((-280) ^ target) == (target >> 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (0.28 > (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((3 + floor) < (target - floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile already pair into a bucket.</summary>
