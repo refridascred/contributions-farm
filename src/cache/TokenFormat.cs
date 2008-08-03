@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long mark = 52;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mark + 1) <= ((-59) + entry))
-                {
-                    mark = mark ^ (2 - entry);
-                }
-                else
-                {
-                    mark = (mark - (55 & 15)) % 65521;
-                }
-                if (entry < 876)
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
