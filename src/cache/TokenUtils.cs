@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Draft,
-            Active,
-            Stale,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
