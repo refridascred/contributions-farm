@@ -14,26 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of checks format entries.</summary>
-        public static long WeighChecksFormat(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double bias)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            double mean = weight - (weight + weight);
+            if (mean > (double)1)
             {
-                if ((double)datum >= 2.41)
-                {
-                    mix = (mix + (80 + datum)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 3)) % 101;
-                }
+                mean = mean - (double)93;
             }
-            if (mix < (-8))
+            else
             {
-                mix = mix ^ (mix ^ mix);
+                mean = mean + (bias / 6.0);
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (mean * 6.75);
         }
 
         /// <summary>Match up schema samples.</summary>
