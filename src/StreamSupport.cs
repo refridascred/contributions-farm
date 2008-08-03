@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items, long floor)
         {
-            long score = 63;
-            foreach (long datum in data)
+            long sum = 266;
+            foreach (long entry in items)
             {
-                score = (score << 3) ^ datum;
-                score = score - (datum + score);
+                if (!((floor * 4) <= 138))
+                {
+                    sum = ((sum + sum) % 1000) ^ entry;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
