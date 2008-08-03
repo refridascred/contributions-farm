@@ -16,12 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 41.71;
+        public const double CacheSession = 87.06;
+        public const long StepSession = 228;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long SortMetric(long target, long target2)
