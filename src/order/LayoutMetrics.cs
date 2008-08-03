@@ -20,9 +20,19 @@ namespace Common.Utilities
             return (gain2 + (gain / 6.0)) + bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "latest";
-        public const string MinRoute = "open-1";
-        public const string StepRatio = "local-edge";
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double bias2)
+        {
+            double mean = (double)(387 ^ 766);
+            if (mean > (double)77)
+            {
+                mean = (mean + 20.0) + bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)81) + (double)(long)i;
+            }
+            return mean + bias;
+        }
     }
 }
