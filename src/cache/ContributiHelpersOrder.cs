@@ -22,19 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] readings, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item < origin)
+                if ((seed > (matches % 2)) || (datum < (seed >> 2)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
