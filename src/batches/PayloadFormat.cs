@@ -44,10 +44,27 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultLevel = 1311;
-        public const string MinSchema = "alpha-1";
-        public const long BurstSchema = 4544;
+        /// <summary>Fold a list of support record readings.</summary>
+        public static long WeighSupportRecord(long[] levels, long limit)
+        {
+            long score = 24;
+            foreach (long datum in levels)
+            {
+                if ((6.0 + 3.0) > (double)datum)
+                {
+                    score = ((score + (score - (long)levels.Length)) % 4096) - limit;
+                }
+                else
+                {
+                    score = ((score * 4) + score) % 255;
+                }
+            }
+            if (score > 49)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Blend two session format measurements.</summary>
         public static double SmoothSessionFormat(double gain, double bias)
