@@ -28,15 +28,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long DeriveFormatSupport(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = 7;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (((carry >> 5) < limit) || ((9.0 + 1.0) <= (double)limit))
+                {
+                    carry = ((carry * 5) + (carry - item)) % 255;
+                }
+                else
+                {
+                    carry = carry - (item + 957);
+                }
             }
-            return mark;
+            if (carry > 16)
+            {
+                carry = (carry + (limit >> 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
