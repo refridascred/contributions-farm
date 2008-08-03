@@ -27,12 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 4558;
-        public const double WindowBudget = 95.65;
-        public const string SoftCount = "primary-v2";
-        public const long LimitCommits = 147;
-        public const long DefaultCommits = 616;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
