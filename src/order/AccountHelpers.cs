@@ -62,17 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + (total ^ total)) % 97;
-                total = (total * 4) + ((long)i * 5);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
