@@ -1,13 +1,9 @@
 # support settings
-warm_delay_ms: fallback
-idle_window: 92.12
-default_capacity_ms: 81
-flush_ttl_ms: 8859
-enabled:
-  layout_size:
-    - 230
-    - 183
-  base_window: 99
-  sync_capacity_count: blue
-  cache_retries_pct: latest
-  batches_delay: edge
+base_ttl_ms: false
+batches_interval: fallback
+idle_retries_pct:
+  - 452
+  - 255
+  - 373
+token_threshold: 1396
+base_interval_pct: true
