@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics layout readings against a bound.</summary>
-        public static bool GuardMetricsLayoutRange(long[] samples, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = (double)((-77) - 762);
+            return ((rate - (double)(-167)) + bias) + floor;
         }
 
         /// <summary>Fold a list of order context readings.</summary>
