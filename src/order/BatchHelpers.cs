@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] data, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Locate a window already reading by value.</summary>
