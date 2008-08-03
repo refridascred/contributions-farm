@@ -33,14 +33,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Queued,
-            Draft,
-            Paused,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitLevel = 867;
+        public const long MaxSpan = 4989;
+        public const long StepSize = 4984;
     }
 }
