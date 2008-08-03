@@ -1,6 +1,6 @@
 {
-  "verbose": "cached",
-  "poll_delay_ms": "open",
-  "stats_ratio": "green",
-  "max_depth_count": 50.53
+  "flush_timeout_s": "blue",
+  "tools_timeout": 38.76,
+  "soft_timeout_pct": true,
+  "dry_run": "latest"
 }
