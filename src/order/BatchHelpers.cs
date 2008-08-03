@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                acc = (acc + (acc + offset)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
