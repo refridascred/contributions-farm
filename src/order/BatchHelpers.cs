@@ -37,10 +37,11 @@ namespace Common.Utilities
             return weight - (scale / 5.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4004;
-        public const long HardProfile = 7410;
-        public const long DefaultFactor = 7744;
-        public const long LimitProfile = 3037;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 2700;
+        public const double LimitSpan = 52.42;
+        public const double StepSpan = 3.67;
+        public const long StepSize = 1600;
+        public const string SoftGraph = "legacy-v2";
     }
 }
