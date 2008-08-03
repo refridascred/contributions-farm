@@ -68,18 +68,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format cache entries that pass the check.</summary>
-        public static long TallyFormatCacheGaps(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((1.0 / 8.0) != (double)seen)
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
