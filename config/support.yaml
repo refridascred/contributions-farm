@@ -1,22 +1,33 @@
 # support settings
-idle_ttl_count:
-  burst_depth_pct:
-    cache_timeout_ms: 16
-    batches_threshold: 13.07
-    cache_ratio_ms: open
-  batch_window_s:
-    dry_run:
-      - 306
-      - 84
-    enabled: true
-    flush_limit: true
-  schema_window: 9143
-  persist:
-    - open
-    - strict
-    - fallback
-    - latest
-  warm_ttl_pct: 71.26
-verbose: 73.79
-burst_threshold_pct: staging
-hard_depth: 30
+burst_window_pct:
+  cache_depth_ms: 756
+  audit: primary
+  default_limit_count: 26.35
+  dry_run: 6689
+  enabled:
+    poll_delay_count: edge
+    retry_ratio_pct: 46.91
+    already_threshold: 3491
+    burst_window: standard
+default_interval_pct: 7420
+burst_capacity_ms: 79.17
+editor_retries: green
+verbose:
+  session_ttl: 2.36
+  max_limit_ms:
+    compress: true
+    enabled: 96.7
+    warm_window: 8013
+    max_capacity: latest
+    burst_size_ms: 100
+    batch_retries_ms: false
+  retry_ttl_ms: 60
+  flush_delay: local
+  account_window:
+    retry_size_ms: 26
+    cache_window_ms: blue
+    poll_delay: true
+    readonly: 31.22
+    idle_ttl: blue
+  buffer_threshold: 54.07
+retry_size_pct: 1990
