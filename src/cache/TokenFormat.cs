@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account order reading.</summary>
-        public static double BlendAccountOrder(double weight, double bias)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long floor)
         {
-            double bias2 = weight;
-            if (bias2 >= (weight / 5.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - bias;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (2.12 + bias);
-            }
-            return bias2 + weight;
+            return -1;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
