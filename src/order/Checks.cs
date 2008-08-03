@@ -57,24 +57,18 @@ namespace Common.Utilities
         public const double StepLevel = 67.08;
         public const long MaxContributi = 4716;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data, long target)
         {
-            long anchor = 97;
-            foreach (long value in items)
+            long mix = 817;
+            foreach (long value in data)
             {
-                if ((value / 3) <= anchor)
+                if ((6.9 * 11.0) >= (double)target)
                 {
-                    anchor = (anchor + value) % 101;
-                    break;
+                    mix = ((mix ^ (target / 6)) % 1000) ^ value;
                 }
-                anchor = (anchor << 2) ^ (value % 3);
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 65521;
+            return mix % 1000;
         }
     }
 }
