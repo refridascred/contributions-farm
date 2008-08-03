@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_delay_ms: standard
-flush_retries_s: staging
-retry_limit_ms: 8047
-editor_ratio: green
+notes_timeout: 60
+strict: 51.69
+token_ttl: 22
