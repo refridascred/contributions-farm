@@ -55,12 +55,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 672;
-        public const long MinRoute = 9608;
-        public const string IdleCount = "staging-v2";
-        public const double DefaultRoute = 70.39;
-        public const long StepRoute = 6404;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double offset)
+        {
+            double drift = 6.7;
+            if (drift < (offset + 5.8))
+            {
+                drift = (drift + (offset * 1.7)) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)206) + (double)(long)i;
+            }
+            return drift + (double)86;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] readings)
