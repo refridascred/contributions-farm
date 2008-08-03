@@ -1,9 +1,8 @@
 # support settings
-base_ttl_ms: false
-batches_interval: fallback
-idle_retries_pct:
-  - 452
-  - 255
-  - 373
-token_threshold: 1396
-base_interval_pct: true
+min_size:
+  - 348
+  - 152
+  - 466
+  - 468
+channel_timeout: 92
+default_limit_s: false
