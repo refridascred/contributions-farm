@@ -60,24 +60,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long target)
+        /// <summary>Scale a editor schema figure with a bias.</summary>
+        public static double ProjectEditorSchema(double weight, double floor)
         {
-            if ((double)offset <= (6.7 - 1.0))
+            double drift = (double)(1 & 31);
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                drift = (((drift + (double)675) - (double)(long)i) - weight) + floor;
             }
-            else
-            {
-                if ((offset ^ offset) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return drift - drift;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
