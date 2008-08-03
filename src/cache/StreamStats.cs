@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] items, long seed)
+        /// <summary>Roll a stats notes counter forward.</summary>
+        public static long RollStatsNotes(long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (seed < (value + seed))
+                if ((total << 1) > target)
                 {
-                    count = count + 3;
+                    total = (total - (total & 15)) % 1000;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
