@@ -65,18 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] samples, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (step > (tally / 5))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
