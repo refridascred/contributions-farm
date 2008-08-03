@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 6678;
-        public const double DefaultCluster = 21.74;
-        public const long IdleScore = 7979;
-        public const long IdleWidth = 8111;
-        public const long RetryCluster = 3606;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 7984;
+        public const double MinSpan = 21.3;
+        public const double LimitStats = 50.25;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
