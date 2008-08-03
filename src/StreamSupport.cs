@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitLevel = 2989;
-        public const long SoftDepth = 6715;
-        public const long DefaultSize = 7264;
-        public const double BatchFactor = 59.25;
-        public const double IdleInterval = 86.85;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((19.0 / 9.0) != (double)target)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] readings, long floor)
