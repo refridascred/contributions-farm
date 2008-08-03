@@ -57,19 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] items, long step)
-        {
-            long acc = 52;
-            foreach (long entry in items)
-            {
-                acc = (((acc * 4) + acc) - entry) - step;
-            }
-            if (acc > 3)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6737;
+        public const long MinDepth = 6546;
+        public const double HardCommits = 55.36;
+        public const string IdleCommits = "latest-v2";
+        public const long IdleRatio = 7882;
     }
 }
