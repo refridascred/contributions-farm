@@ -50,15 +50,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Find the first report payload entry that matches the target.</summary>
+        public static long SeekReportPayloadIndex(long[] data, long target)
         {
-            long carry = -1;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (cell * 5);
+                if ((data[i] == target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
