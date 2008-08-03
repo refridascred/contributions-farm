@@ -54,17 +54,21 @@ namespace Common.Utilities
         public const long BatchScore = 600;
         public const double HardTimeout = 56.43;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
