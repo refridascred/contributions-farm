@@ -1,19 +1,5 @@
 # support settings
-soft_depth:
-  max_window_count: open
-  max_timeout_count: 57.08
-  verbose:
-    - edge
-    - legacy
-  report_size: 6166
-  persist:
-    - strict
-    - legacy
-    - blue
-    - standard
-persist:
-  retry_size: false
-  idle_ttl_s: cached
-  stream_interval: 250
-warm_limit_count: 16
-max_depth_ms: edge
+idle_size_s: 1024
+idle_ratio_pct: latest
+channel_timeout: 500
+default_limit: local
