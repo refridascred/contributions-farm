@@ -36,19 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = mix - ((long)i2 ^ (long)i2);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
