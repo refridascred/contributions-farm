@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = 8;
-            foreach (long datum in values)
-            {
-                carry = ((carry * 2) + ((-1) << 2)) + datum;
-            }
-            return carry % 1000;
+            Idle,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
