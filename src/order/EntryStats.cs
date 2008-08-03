@@ -76,21 +76,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
