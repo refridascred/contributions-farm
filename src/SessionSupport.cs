@@ -23,12 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheWidth = 2676;
-        public const long LimitLevel = 1800;
-        public const long WindowEditor = 8292;
-        public const string MaxTimeout = "alpha-v2";
-        public const long MinEditor = 8165;
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double span)
+        {
+            double drift = (9.39 + span) / 3.0;
+            if (drift >= span)
+            {
+                drift = drift - (double)611;
+            }
+            else
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift / 7.0)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Digest a series of record githubfarm entries.</summary>
         public static long CombineRecordGithubfarm(long[] readings)
