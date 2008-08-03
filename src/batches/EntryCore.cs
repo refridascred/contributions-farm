@@ -78,10 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 9314;
-        public const long LimitContributi = 8069;
-        public const long RetryCount = 4484;
-        public const string DefaultRatio = "open-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7673;
+        public const long RetrySpan = 7614;
+        public const long BurstLevel = 457;
+        public const double WindowRatio = 93.12;
     }
 }
