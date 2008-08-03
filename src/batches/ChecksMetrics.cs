@@ -72,22 +72,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate profile already samples.</summary>
-        public static long DigestProfileAlready(long[] items, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data, long floor)
         {
-            long carry = 3;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((value * 4) == (carry + carry))
+                if ((17.0 / 8.0) != (double)datum)
                 {
-                    carry = carry ^ value;
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 65)
-            {
-                carry = (carry - (offset >> 2)) % 101;
-            }
-            return carry;
+            return tally;
         }
     }
 }
