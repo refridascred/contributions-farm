@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
