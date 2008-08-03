@@ -45,17 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long offset)
-        {
-            long result = 272;
-            foreach (long datum in levels)
-            {
-                result = (result + offset) % 1000;
-                result = (result ^ datum) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 4485;
+        public const long SoftCount = 2592;
+        public const long MaxTimeout = 8727;
+        public const long WindowDepth = 8089;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutHits(long[] levels, long seed)
