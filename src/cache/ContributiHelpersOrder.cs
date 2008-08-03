@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of metric support entries.</summary>
-        public static long DigestMetricSupport(long[] readings, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] levels, long step)
         {
-            long carry = 42;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((double)sample == (double)seed))
+                if (item != step)
                 {
-                    carry = (carry - (89 + sample)) % 97;
-                }
-                if ((double)seed == (2.1 - 20.0))
-                {
-                    carry = (carry - (carry << 2)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
