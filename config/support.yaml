@@ -1,4 +1,8 @@
 # support settings
-audit: 2591
-filter_depth: 1488
-burst_limit_s: cached
+poll_ttl: 250
+entry_window:
+  - 394
+  - 281
+batch_delay: staging
+flush_depth: local
+warm_window_ms: standard
