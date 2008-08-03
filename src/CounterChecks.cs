@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mean - (weight * 9.77);
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the stream state values.</summary>
