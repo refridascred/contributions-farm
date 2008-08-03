@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session buffer values into a single score.</summary>
-        public static long DigestSessionBuffer(long[] levels, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long carry = -21;
-            foreach (long datum in levels)
-            {
-                if (!(6.0 <= (double)carry))
-                {
-                    carry = (carry ^ datum) % 97;
-                }
-                else
-                {
-                    carry = (carry * 4) + 278;
-                }
-            }
-            if (carry < (-433))
-            {
-                carry = carry - origin;
-            }
-            return carry % 97;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
