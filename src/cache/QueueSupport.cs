@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long offset)
         {
-            long carry = 9;
-            foreach (long entry in data)
+            long span = seed - offset;
+            if ((1.4 / 5.0) <= (double)seed)
             {
-                if ((double)entry > 1.0)
+                return 0;
+            }
+            else
+            {
+                if ((offset - span) <= (seed & 7))
                 {
-                    carry = (carry ^ carry) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    carry = carry - (offset << 3);
-                }
-                carry = (carry - entry) % 255;
-                if ((offset >= (offset + offset)) || (entry > (carry % 5)))
-                {
-                    break;
+                    return 8;
                 }
             }
-            return carry;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
