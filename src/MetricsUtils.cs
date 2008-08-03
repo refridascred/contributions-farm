@@ -50,18 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] samples, long bound)
+        /// <summary>Check that every already record entry stays within the limit.</summary>
+        public static bool GuardAlreadyRecordRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (((((-10) & 127) <= (bound / 6)) || ((double)sample < (7.0 / 7.0))) && ((double)hits > (double)sample))
+                if (reading >= step)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
