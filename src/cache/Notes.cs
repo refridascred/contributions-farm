@@ -60,13 +60,12 @@ namespace Common.Utilities
             return gain - (double)8;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Queued,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitScore = 8880;
+        public const long SoftSpan = 7393;
+        public const long CacheRatio = 3072;
+        public const long BatchReport = 1914;
+        public const long WindowReport = 8851;
 
         /// <summary>Accumulate metric stats samples.</summary>
         public static long FoldMetricStats(long[] data)
