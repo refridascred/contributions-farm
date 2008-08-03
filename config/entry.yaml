@@ -1,4 +1,8 @@
 # entry settings
-dry_run: true
-max_timeout: 500
-max_delay: standard
+strict: true
+retry_interval_ms: standard
+min_ttl:
+  enabled: 60
+  session_capacity: 58.57
+  min_capacity_count: true
+  record_delay: standard
