@@ -27,18 +27,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long AuditBatchChecksMatches(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches > (reading ^ reading))
+                long span = sum;
+                if (((long)i - target) == (target >> 2))
                 {
-                    matches = matches + 2;
+                    sum = ((sum << 2) ^ span) % 1000;
                 }
+                else
+                {
+                    sum = sum - ((long)i - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
