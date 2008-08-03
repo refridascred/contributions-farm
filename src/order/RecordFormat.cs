@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Rank order batch input into a small class.</summary>
+        public static long ClassifyOrderBatch(long floor, long offset)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            if ((double)floor != (5.0 * 1.6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - 317) <= (floor >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a entry batches pair into a bucket.</summary>
