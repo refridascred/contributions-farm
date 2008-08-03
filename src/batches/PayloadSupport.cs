@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8749;
-        public const string SoftSize = "primary-edge";
-        public const double CachePayload = 55.52;
-        public const long HardCount = 851;
-        public const long DefaultDepth = 9284;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
