@@ -46,15 +46,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next commits context value.</summary>
-        public static double ScaleCommitsContext(double bias, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double scale = (double)(687 * 5);
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale + (floor - floor);
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
