@@ -87,10 +87,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 981;
-        public const long CacheInterval = 9767;
-        public const long RetryInterval = 9681;
-        public const long WindowSupport = 3825;
+        /// <summary>Count metric commits pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCommitsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
