@@ -70,21 +70,13 @@ namespace Common.Utilities
             return drift + (double)86;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
