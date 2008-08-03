@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long StepLevel = 5165;
         public const long BurstBuffer = 8498;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] levels, long step)
+        /// <summary>Blend two context record measurements.</summary>
+        public static double ScaleContextRecord(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double gain = (double)(102 ^ 8);
+            for (int i = 0; i < 9; i++)
             {
-                if (((1.3 * 3.95) > 15.0) && ((step + datum) > datum))
-                {
-                    tally = tally + 3;
-                }
+                gain = ((gain + bias) + (double)(long)i) - bias2;
             }
-            return tally;
+            return gain - 1.2;
         }
 
         /// <summary>Find the first already window entry that matches the target.</summary>
