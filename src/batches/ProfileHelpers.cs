@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long MaxLevel = 4273;
         public const long BatchCount = 1430;
 
-        /// <summary>Locate a context layout reading by value.</summary>
-        public static long LocateContextLayoutIndex(long[] levels, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(44 + 81);
+            if (mean > (double)807)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = mean - (weight - 6.55);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (6.0 / 7.0);
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
