@@ -16,18 +16,21 @@ namespace Common.Utilities
             return drift - 7.9;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items, long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (731 > (tally % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 3) + reading) + target;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
