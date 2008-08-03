@@ -29,12 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data)
         {
-            Idle,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!(count <= reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
