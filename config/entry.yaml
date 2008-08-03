@@ -1,11 +1,9 @@
 # entry settings
-warm_retries_count: 9991
-burst_limit_pct:
-  - staging
-  - edge
-flush_limit_pct:
-  max_interval_pct: 500
-  cache_limit: 26.7
-  buffer_capacity: 1024
-  batch_timeout_pct: latest
-queue_ratio: 95.73
+enabled: 1265
+counter_retries: latest
+editor_window:
+  - 66
+  - 325
+  - 97
+  - 285
+entry_delay: 48.55
