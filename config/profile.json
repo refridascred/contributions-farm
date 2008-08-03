@@ -1,6 +1,12 @@
 {
-  "poll_size": "primary",
-  "session_delay": 34,
-  "filter_capacity": 6,
-  "editor_interval": "latest"
+  "soft_limit": {
+    "farm_limit": "staging",
+    "default_window_count": "fallback",
+    "dry_run": "eu-west",
+    "strict": 4505
+  },
+  "audit": 47.24,
+  "min_timeout": 9.04,
+  "flush_timeout_pct": "open",
+  "warm_limit": "latest"
 }
