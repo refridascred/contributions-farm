@@ -20,19 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double bias, double offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long origin, long limit)
         {
-            double weight = (offset + bias) - (double)9;
-            if (weight <= bias)
+            if ((798 % 100) > (origin % 100))
             {
-                weight = weight - (weight * 2.5);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + weight) + (double)(long)i;
+                if ((2.23 - 9.0) == (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return weight - 18.0;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
