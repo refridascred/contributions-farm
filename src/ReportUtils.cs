@@ -58,16 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema entry series from a seed.</summary>
-        public static long SeriesSchemaEntry(long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            double weight = gain;
+            if (weight <= (double)445)
             {
-                acc = ((acc * 4) + acc) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                weight = weight + (8.22 / 7.0);
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight + (span - gain);
         }
     }
 }
