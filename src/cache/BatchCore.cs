@@ -41,19 +41,31 @@ namespace Common.Utilities
         public const long LimitNotes = 8749;
         public const double CacheNotes = 33.17;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long floor, long bound)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            if (!((bound + 0) == (0 << 2)))
             {
-                if (cell <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 1) > (floor * 5))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound << 2) <= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
     }
 }
