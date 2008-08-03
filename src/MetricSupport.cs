@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (entry <= bound)
+                if (reading < bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
