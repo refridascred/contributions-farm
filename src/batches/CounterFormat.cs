@@ -36,19 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Audit report command readings against a rule.</summary>
+        public static long MeasureReportCommandOutliers(long[] readings)
         {
-            double scale2 = offset;
-            if (scale2 > scale2)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                scale2 = (scale2 - 9.0) + scale;
+                if ((entry << 3) < entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 9.3;
-            }
-            return scale2 + 7.3;
+            return hits;
         }
     }
 }
