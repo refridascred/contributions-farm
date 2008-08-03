@@ -30,17 +30,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first report payload entry that matches the target.</summary>
-        public static long SeekReportPayloadIndex(long[] data, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mix = mix + ((long)i2 >> 4);
                 }
+                mix = (mix - (offset - offset)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
