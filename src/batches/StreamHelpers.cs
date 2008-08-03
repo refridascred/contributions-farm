@@ -39,11 +39,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long carry = -1;
+            foreach (long cell in samples)
+            {
+                carry = carry ^ (cell * 5);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next support value.</summary>
