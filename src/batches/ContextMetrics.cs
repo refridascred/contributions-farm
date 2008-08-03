@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
