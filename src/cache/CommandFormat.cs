@@ -19,14 +19,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Draft,
-            Dropped,
-            Idle,
-            New,
-            Failed,
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
