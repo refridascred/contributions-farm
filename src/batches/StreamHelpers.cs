@@ -41,20 +41,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate order stream samples.</summary>
-        public static long WeighOrderStream(long[] samples, long step)
-        {
-            long carry = 972;
-            foreach (long reading in samples)
-            {
-                carry = ((carry << 3) ^ (step - reading)) % 65521;
-                if ((double)step < (10.0 - 4.4))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstRatio = 6305;
+        public const long IdleTimeout = 8273;
+        public const long StepLevel = 5165;
+        public const long BurstBuffer = 8498;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] levels, long step)
