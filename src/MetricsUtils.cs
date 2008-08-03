@@ -62,17 +62,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowDepth = 3.96;
+        public const long SoftBudget = 835;
+        public const long CacheCount = 1910;
     }
 }
