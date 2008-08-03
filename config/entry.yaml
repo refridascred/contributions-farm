@@ -1,29 +1,8 @@
 # entry settings
-flush_timeout: true
-channel_depth: 33.61
-sync_delay:
-  min_depth_count: 59.36
-  audit: 9.28
-  persist: edge
-  checks_retries:
-    compress: 81.68
-    batch_timeout_pct: 1024
-    retry_capacity_s: 7.32
-  max_ratio: 38.34
-idle_limit_pct:
-  poll_delay_count: 19
-  strict:
-    flush_ratio_count: true
-    max_capacity_s:
-      - 114
-      - 377
-    default_retries_ms: 1598
-    hard_timeout: primary
-    dry_run: blue
-  burst_depth_ms: strict
-  contributi_window: primary
-compress: stable
-dry_run:
-  - 440
-  - 375
-  - 434
+batch_window_pct:
+  - 295
+  - 194
+  - 248
+  - 455
+support_interval: 60
+base_delay_s: 100
