@@ -46,25 +46,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long next = origin - target;
-            if (((double)origin >= (double)target) && ((next << 1) >= (origin + next)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target > 14.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of record entries.</summary>
