@@ -37,18 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] samples, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((step + (long)samples.Length) == (value % 12))
+                if ((matches - reading) != (matches >> 1))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) + step;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
