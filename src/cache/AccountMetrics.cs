@@ -43,24 +43,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double weight, double offset)
-        {
-            double weight2 = (double)(589 << 3);
-            if (weight2 >= offset)
-            {
-                weight2 = weight2 + offset;
-            }
-            else
-            {
-                weight2 = weight2 - (weight * 1.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (offset - weight)) + (double)(long)i;
-            }
-            return weight2 + 11.0;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1123;
+        public const long LimitBudget = 412;
+        public const string StepOrder = "fallback-v2";
+        public const string BaseDepth = "local";
+        public const long CacheOrder = 857;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
