@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Find the first counter contributi entry that matches the target.</summary>
+        public static long FindCounterContributiIndex(long[] items, long target)
         {
-            Closed,
-            Synced,
-            Active,
-            Dropped,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
