@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            Pending,
-            Failed,
-            Draft,
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total ^ ((long)i * 5)) % 255;
+                total = total ^ (736 % 24);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
