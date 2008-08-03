@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long LimitFormat = 7412;
         public const long CacheFormat = 8605;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] samples, long bound)
         {
-            long sum = 266;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!((floor * 4) <= 138))
+                if ((reading * 4) <= 7)
                 {
-                    sum = ((sum + sum) % 1000) ^ entry;
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
