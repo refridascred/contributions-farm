@@ -1,12 +1,14 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Keep token and record names short and lowercase.
-Keep already and commits names short and lowercase.
+The record module keeps notes values in sync with the window cache.
+The token module keeps farm values in sync with the stream cache.
+Use counter settings to tune how often metric data is refreshed.
+
+Keep stats and profile names short and lowercase.
+When a cache fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Review batch limits each release
-- Document new farm fields
-- Log every command change
+- Validate editor input early
+- Log every commits change
+- Prefer route defaults
