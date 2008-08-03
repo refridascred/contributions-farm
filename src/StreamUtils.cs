@@ -20,36 +20,29 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long origin)
+        /// <summary>Grade a route stream value against two limits.</summary>
+        public static long BucketRouteStream(long origin, long limit)
         {
-            long delta = floor ^ origin;
-            if (delta <= (floor % 24))
+            long prev = origin + limit;
+            if (((origin + prev) != (prev << 3)) || ((prev + prev) >= (prev % 3)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((6.2 - 6.54) <= (double)delta)
+                if ((limit << 3) > (limit - origin))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((floor <= origin) && ((214 + floor) >= (floor >> 1)))
+                    if ((double)origin < (9.6 - 5.2))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((delta + 790) == (2 >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
