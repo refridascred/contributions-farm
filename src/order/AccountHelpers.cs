@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate stream buffer samples.</summary>
-        public static long FoldStreamBuffer(long[] series, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long sum = 53;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sum & 7)) + bound;
-                if ((double)entry <= (double)(long)series.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum << 3) ^ (entry / 6);
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
