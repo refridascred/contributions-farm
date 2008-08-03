@@ -62,19 +62,21 @@ namespace Common.Utilities
         public const double DefaultRoute = 70.39;
         public const long StepRoute = 6404;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
