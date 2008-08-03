@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate route graph readings against a bound.</summary>
-        public static bool GuardRouteGraphLimits(long[] items, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mark = -2;
+            foreach (long sample in levels)
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark + (mark + mark)) % 101) ^ sample;
             }
-            return stale;
+            return mark % 65521;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
