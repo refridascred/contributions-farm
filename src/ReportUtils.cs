@@ -38,31 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support cluster value against two limits.</summary>
-        public static long ClassifySupportCluster(long origin, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            if (((offset & 63) >= 249) && (offset <= origin))
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                mix = ((mix << 2) ^ (long)i) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset >> 2) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 2) < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a already snapshot.</summary>
