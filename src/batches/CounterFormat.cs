@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Locked,
-            Ready,
-            Active,
+            New,
+            Paused,
+            Failed,
             Retry,
         }
 
