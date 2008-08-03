@@ -53,22 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            long score = 50;
-            foreach (long value in data)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((value - score) > value) || ((double)value <= (6.05 * 8.8)))
-                {
-                    score = ((score << 2) ^ (score ^ value)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ (value & 31);
-                }
+                carry = carry + (carry * 5);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
