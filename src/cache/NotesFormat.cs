@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = weight;
+            return (gain + weight) + bias;
         }
 
         /// <summary>Validate order command readings against a bound.</summary>
