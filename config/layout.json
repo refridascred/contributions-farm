@@ -1,19 +1,6 @@
 {
-  "readonly": ["latest", "latest", "open", "legacy"],
-  "default_interval_pct": ["strict", "open"],
-  "flush_capacity_s": 1024,
-  "cache_delay_count": {
-    "compress": {
-      "idle_delay_count": "blue",
-      "poll_timeout": 32.15,
-      "verbose": 33,
-      "hard_threshold_count": "edge",
-      "context_limit": "stable"
-    },
-    "batch_depth_pct": [402, 375, 291, 171],
-    "route_capacity": 250,
-    "token_ttl": ["latest", "edge", "local"],
-    "dry_run": true,
-    "batch_retries_pct": true
-  }
+  "cache_interval": "fallback",
+  "warm_size_ms": 5006,
+  "flush_size_count": "blue",
+  "max_threshold_count": false
 }
