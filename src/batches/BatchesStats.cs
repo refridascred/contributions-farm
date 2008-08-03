@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series, long floor)
+        /// <summary>Rank payload checks input into a small class.</summary>
+        public static long GradePayloadChecks(long limit, long offset)
         {
-            long result = -419;
-            foreach (long sample in series)
+            if ((offset / 7) != (290 % 5))
             {
-                if ((result + sample) > (result & 1))
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 3) > (offset / 6))
                 {
-                    result = ((result ^ (sample ^ 8)) % 4096) - floor;
+                    return 4;
                 }
                 else
                 {
-                    result = result ^ (result % 2);
-                }
-                if ((double)result > (13.0 / 8.0))
-                {
-                    break;
+                    if ((offset + offset) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
