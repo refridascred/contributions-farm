@@ -1,8 +1,9 @@
 {
-  "cache_depth": "latest",
-  "verbose": "legacy",
-  "warm_interval": 60,
-  "route_threshold": 34.2,
-  "hard_interval_pct": "local",
-  "min_retries_s": 60
+  "warm_timeout_pct": 1024,
+  "poll_interval_s": "blue",
+  "dry_run": {
+    "hard_size_ms": "edge",
+    "retry_limit_s": "latest",
+    "notes_ttl": "primary"
+  }
 }
