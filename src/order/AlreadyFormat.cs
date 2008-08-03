@@ -32,22 +32,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long gap = seed ^ floor;
+            if ((gap <= (floor * 4)) || (gap > (seed % 12)))
             {
-                if (!(((27 + reading) > target) && (8.3 >= (double)reading)))
+                return 0;
+            }
+            else
+            {
+                if ((388 + seed) < (floor ^ gap))
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload class values.</summary>
