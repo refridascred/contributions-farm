@@ -38,19 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches format entry stays within the limit.</summary>
-        public static bool VerifyBatchesFormatLimits(long[] items, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Pending,
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
