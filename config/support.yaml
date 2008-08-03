@@ -1,8 +1,9 @@
 # support settings
-min_size:
-  - 348
-  - 152
-  - 466
-  - 468
-channel_timeout: 92
-default_limit_s: false
+retry_interval_count: 58.33
+cluster_window:
+  - 240
+  - 327
+  - 379
+readonly:
+  - 443
+  - 141
