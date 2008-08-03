@@ -43,13 +43,15 @@ namespace Common.Utilities
         public const long BaseDepth = 7418;
         public const long BaseBuffer = 4374;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double bias)
         {
-            Pending,
-            New,
-            Locked,
-            Synced,
+            double scale = rate;
+            if (scale > (8.2 + bias))
+            {
+                scale = scale - (scale - scale);
+            }
+            return scale - (double)703;
         }
     }
 }
