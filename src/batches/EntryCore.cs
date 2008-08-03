@@ -30,11 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            double weight2 = (weight / 8.0) - 8.61;
+            if (weight2 <= bias)
+            {
+                weight2 = weight2 - (double)19;
+            }
+            else
+            {
+                weight2 = weight2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight * 9.7)) + (double)(long)i;
+            }
+            return weight2 - (double)(-550);
         }
 
         /// <summary>Hold a profile options.</summary>
