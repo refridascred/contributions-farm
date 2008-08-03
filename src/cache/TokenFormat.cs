@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 41.71;
-        public const double CacheSession = 87.06;
-        public const long StepSession = 228;
+        /// <summary>Adjust a account order reading.</summary>
+        public static double BlendAccountOrder(double weight, double bias)
+        {
+            double bias2 = weight;
+            if (bias2 >= (weight / 5.0))
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (2.12 + bias);
+            }
+            return bias2 + weight;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long SortMetric(long target, long target2)
