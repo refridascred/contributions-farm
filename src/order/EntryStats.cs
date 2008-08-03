@@ -46,15 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long origin)
         {
-            long mix = 78;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix - (mix + mix)) % 97) ^ sample) - bound;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
