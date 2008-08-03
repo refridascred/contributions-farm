@@ -36,23 +36,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two cluster counter measurements.</summary>
-        public static double BlendClusterCounter(double rate, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            double scale = (rate * 9.83) - 6.5;
-            if (scale < (scale - rate))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (bias - 2.07);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 7.77;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (rate / 7.0)) - (double)(long)i;
-            }
-            return scale + (scale + scale);
+            return hits;
         }
     }
 }
