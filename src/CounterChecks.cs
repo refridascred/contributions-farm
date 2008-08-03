@@ -44,19 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch layout samples.</summary>
-        public static long DigestBatchLayout(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long state = 40;
-            foreach (long sample in readings)
-            {
-                state = (state ^ state) ^ sample;
-            }
-            if (state < 674)
-            {
-                state = state - (state >> 4);
-            }
-            return state % 4096;
+            Active,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Accumulate tools samples.</summary>
