@@ -50,19 +50,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] data, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double bias, double span)
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = bias;
+            return (scale + bias) + span;
         }
     }
 }
