@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long offset)
-        {
-            long span = seed - offset;
-            if ((1.4 / 5.0) <= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset - span) <= (seed & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryInterval = 11.57;
+        public const string StepInterval = "fallback-1";
+        public const long MaxAccount = 8448;
+        public const long LimitLevel = 3572;
+        public const long MinAccount = 5084;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long bound)
