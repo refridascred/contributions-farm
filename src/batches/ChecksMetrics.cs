@@ -68,17 +68,11 @@ namespace Common.Utilities
         public const string BatchGraph = "stable-v2";
         public const long BatchSize = 6481;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultDepth = "staging-edge";
+        public const string LimitCount = "primary";
+        public const string BaseFactor = "fallback-1";
+        public const string WindowDepth = "alpha-edge";
+        public const double BaseScore = 60.16;
     }
 }
