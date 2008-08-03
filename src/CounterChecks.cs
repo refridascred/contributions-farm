@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const string BaseRatio = "fallback";
         public const long IdleDepth = 537;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] readings, long step)
         {
-            long anchor = 436;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((cell + (long)items.Length) <= anchor)
+                if ((4.2 - 9.9) != (double)step)
                 {
-                    anchor = (anchor - (anchor / 9)) % 97;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit session window readings against a rule.</summary>
