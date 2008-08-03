@@ -36,32 +36,22 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long step)
+        /// <summary>Digest a series of queue stats entries.</summary>
+        public static long TallyQueueStats(long[] readings)
         {
-            long bound2 = bound - step;
-            if ((1.49 < (double)bound) && ((step << 1) < (bound2 / 3)))
+            long anchor = 49;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((0.2 - 8.86) >= (double)bound))
+                if ((anchor - anchor) > (224 & 127))
                 {
-                    return 8;
+                    anchor = (anchor - (anchor >> 4)) - value;
                 }
                 else
                 {
-                    if (step <= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = ((anchor << 3) ^ 30) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Accumulate editor samples.</summary>
