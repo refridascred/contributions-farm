@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state << 3) ^ (4 + seed);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate schema samples.</summary>
