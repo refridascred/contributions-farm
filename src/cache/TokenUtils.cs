@@ -30,18 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = 59;
+            foreach (long entry in samples)
             {
-                if (!(count <= reading))
+                if ((entry * 3) <= (68 << 3))
                 {
-                    count = count + 2;
+                    acc = (acc + entry) % 255;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
