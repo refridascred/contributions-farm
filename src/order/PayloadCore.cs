@@ -49,22 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data, long limit)
+        /// <summary>Validate queue metrics readings against a bound.</summary>
+        public static bool CheckQueueMetricsBounds(long[] data, long step)
         {
-            long mix = 65;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (!(4.82 > (double)limit))
+                if (sample < step)
                 {
-                    mix = (mix ^ (775 ^ (-9))) % 1000;
-                }
-                if ((cell <= limit) || ((double)mix != (7.2 + 7.09)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return found;
         }
     }
 }
