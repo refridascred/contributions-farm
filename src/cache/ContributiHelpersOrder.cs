@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = 884;
-            foreach (long datum in items)
-            {
-                if ((mix + (long)items.Length) > mix)
-                {
-                    mix = ((mix - (mix ^ mix)) % 1000) - datum;
-                }
-                else
-                {
-                    mix = mix ^ (mix >> 3);
-                }
-            }
-            if (mix > 66)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
