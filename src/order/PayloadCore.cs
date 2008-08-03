@@ -31,25 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long edge = step ^ seed;
-            if (((-46) + edge) > 6)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge >= (step << 1)) || ((seed - 145) >= (seed % 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
