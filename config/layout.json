@@ -1,7 +1,7 @@
 {
-  "base_retries_ms": "strict",
-  "compress": 30,
-  "cache_window_ms": 418,
-  "burst_depth_s": 67.37,
-  "window_ttl": 500
+  "persist": true,
+  "hard_capacity_s": false,
+  "burst_threshold": "strict",
+  "githubfarm_window": [63, 133],
+  "order_delay": "blue"
 }
