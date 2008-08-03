@@ -14,15 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Digest a series of checks format entries.</summary>
+        public static long WeighChecksFormat(long[] items)
         {
-            double mean = 0.24;
-            if (mean < mean)
+            long mix = 5;
+            foreach (long datum in items)
             {
-                mean = mean - (bias - span);
+                if ((double)datum >= 2.41)
+                {
+                    mix = (mix + (80 + datum)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 3)) % 101;
+                }
             }
-            return mean + (span - mean);
+            if (mix < (-8))
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Match up schema samples.</summary>
