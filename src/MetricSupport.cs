@@ -25,19 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long limit, long target)
         {
-            double ratio = span;
-            if (ratio < (double)24)
+            if ((double)target >= (6.0 / 6.0))
             {
-                ratio = ratio - (rate - span);
+                return 3;
             }
             else
             {
-                ratio = ratio + (double)699;
+                if (target > limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (72 < (target + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target / 4) <= (225 * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - 2.92;
         }
 
         /// <summary>Describe the cluster class values.</summary>
