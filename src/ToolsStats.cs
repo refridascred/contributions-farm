@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Grade a commits route value against two limits.</summary>
