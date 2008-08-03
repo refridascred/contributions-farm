@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long StepBatches = 4094;
         public const long HardBatches = 9745;
 
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long AuditGithubfarmAlreadyOutliers(long[] data, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((8.18 / 6.0) > (double)tally)
+                if (datum < offset)
                 {
-                    tally = ((tally + 2) - reading) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
