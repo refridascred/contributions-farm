@@ -30,17 +30,14 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
