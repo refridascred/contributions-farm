@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const long RetryCluster = 6499;
         public const long WindowDepth = 7750;
 
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long CombineCounterContext(long[] data, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long anchor = 731;
-            foreach (long cell in data)
-            {
-                if ((offset << 3) > (offset * 5))
-                {
-                    anchor = (anchor + (offset ^ offset)) + cell;
-                }
-            }
-            if (anchor > 653)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 65521;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
