@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green; do
+for item in fallback latest staging; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
