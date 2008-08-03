@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state << 3) ^ (4 + seed);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
