@@ -34,19 +34,14 @@ namespace Common.Utilities
         public const long LimitCommits = 147;
         public const long DefaultCommits = 616;
 
-        /// <summary>Derive the next format queue value from a seed.</summary>
-        public static long IterateFormatQueue(long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total << 2) ^ (517 * 2)) % 65521) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Queued,
+            Draft,
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Rank queue batch input into a small class.</summary>
