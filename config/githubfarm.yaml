@@ -1,5 +1,7 @@
 # githubfarm settings
-editor_ratio: local
-idle_ratio_ms: fallback
-verbose: 553
-warm_ttl_s: 2753
+idle_retries: 4886
+compress: primary
+graph_retries:
+  - local
+  - cached
+  - eu-west
