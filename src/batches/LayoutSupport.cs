@@ -28,20 +28,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series)
-        {
-            long carry = 0;
-            foreach (long reading in series)
-            {
-                carry = (carry ^ (carry >> 1)) % 97;
-                if ((double)carry > (0.18 + 1.6))
-                {
-                    carry = carry + (reading >> 1);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftDepth = 97.26;
+        public const long BaseOrder = 8392;
+        public const long RetryOrder = 600;
+        public const long WindowOrder = 8081;
+        public const double BaseSize = 4.44;
 
         /// <summary>Accumulate editor context samples.</summary>
         public static long DigestEditorContext(long[] levels)
