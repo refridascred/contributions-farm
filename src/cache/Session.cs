@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double span)
-        {
-            double load = (double)74 - (double)906;
-            return ((load + (double)46) + rate) + span;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSize = 9477;
+        public const string RetrySpan = "strict-v2";
+        public const long HardNotes = 9476;
+        public const long MinNotes = 4391;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] values, long target)
