@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double rate, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            double mean = (rate + bias) * 6.0;
+            return mean + (5.7 + rate);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
