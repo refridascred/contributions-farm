@@ -1,10 +1,21 @@
 {
-  "verbose": "open",
-  "dry_run": "edge",
-  "flush_ratio": {
-    "base_retries": ["fallback", "stable", "edge", "cached"],
-    "min_interval": 24.4,
-    "default_depth_s": 40.66
+  "hard_limit_pct": 68.04,
+  "audit": false,
+  "sync_interval_count": {
+    "verbose": 40,
+    "compress": {
+      "metrics_limit": 26.64,
+      "default_delay_count": 7201,
+      "sync_ttl": ["blue", "stable", "green"],
+      "default_retries_s": 12,
+      "context_timeout": false
+    },
+    "hard_limit": 26,
+    "idle_ratio": [202, 446]
   },
-  "readonly": 6264
+  "base_size": {
+    "default_interval_pct": 91.34,
+    "persist": "strict",
+    "idle_threshold_count": ["fallback", "open", "open", "cached"]
+  }
 }
