@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double span)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            double ratio = (double)302 - (gain * 9.46);
-            if (ratio >= (double)208)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (gain + 4.86);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (span + span);
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
