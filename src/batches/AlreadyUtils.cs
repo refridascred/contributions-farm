@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
