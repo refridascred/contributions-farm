@@ -1,13 +1,12 @@
 {
-  "compress": 1782,
-  "hard_limit_pct": "legacy",
-  "cache_size": {
-    "retry_threshold_ms": {
-      "retry_timeout_count": ["edge", "legacy", "open", "fallback"],
-      "warm_interval_ms": ["edge", "standard", "eu-west", "primary"],
-      "persist": [190, 5]
-    },
-    "warm_ttl_pct": false,
-    "min_size_pct": [474, 387, 56, 350]
-  }
+  "metric_depth": "legacy",
+  "cache_capacity": 48.19,
+  "warm_ratio_count": {
+    "metrics_interval": 30,
+    "compress": 12,
+    "retry_timeout": 95.15
+  },
+  "cache_threshold": "primary",
+  "warm_window_s": "strict",
+  "poll_delay_ms": "strict"
 }
