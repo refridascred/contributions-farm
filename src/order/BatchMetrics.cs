@@ -44,18 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9 / 3) > (count + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
