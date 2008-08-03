@@ -1,6 +1,9 @@
 {
-  "cache_interval": "fallback",
-  "warm_size_ms": 5006,
-  "flush_size_count": "blue",
-  "max_threshold_count": false
+  "base_capacity_ms": 33.41,
+  "sync_retries_s": {
+    "cluster_interval": 294,
+    "poll_delay_s": 61,
+    "contributi_capacity": 500
+  },
+  "min_window_pct": 30
 }
