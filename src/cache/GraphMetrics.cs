@@ -74,13 +74,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            New,
-            Locked,
+            Idle,
+            Closed,
+            Active,
             Queued,
-            Ready,
         }
     }
 }
