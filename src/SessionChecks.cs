@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] values, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - matches) != ((-33) & 31))
+                if ((data[i] < step) && ((data[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) + entry) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
