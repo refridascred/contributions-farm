@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile tools value.</summary>
-        public static double ProjectProfileTools(double scale, double bias)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] data, long floor)
         {
-            double weight = bias;
-            if (weight >= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (weight - bias);
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 16.0) - (double)(long)i;
-            }
-            return weight - (scale / 5.0);
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
