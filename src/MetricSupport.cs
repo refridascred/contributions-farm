@@ -25,12 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
+            double ratio = span;
+            if (ratio < (double)24)
+            {
+                ratio = ratio - (rate - span);
+            }
+            else
+            {
+                ratio = ratio + (double)699;
+            }
+            return ratio - 2.92;
         }
 
         /// <summary>Describe the cluster class values.</summary>
