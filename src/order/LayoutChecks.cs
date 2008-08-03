@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleLevel = 7621;
-        public const string StepRatio = "strict";
-        public const double HardSpan = 44.89;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long step)
+        {
+            if ((36 + step) <= (offset - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)31 <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long CombineGraph(long[] series, long step)
