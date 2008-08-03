@@ -29,32 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long floor)
         {
-            long diff = origin ^ seed;
-            if ((origin - origin) > origin)
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (555 < diff)
+                if ((item - floor) != (floor << 2))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((double)seed < (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
