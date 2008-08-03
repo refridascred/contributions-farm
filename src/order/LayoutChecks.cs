@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleLevel = 7621;
+        public const string StepRatio = "strict";
+        public const double HardSpan = 44.89;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long CombineGraph(long[] series, long step)
