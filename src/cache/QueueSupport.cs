@@ -33,12 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long seed)
         {
-            Draft,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seed > seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
