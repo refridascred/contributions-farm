@@ -1,16 +1,5 @@
 # githubfarm settings
-hard_capacity_s:
-  enabled: false
-  sync_window_ms: 86.34
-  hard_delay_count: 45.66
-  sync_size_pct:
-    - open
-    - stable
-    - latest
-  channel_interval: open
-  soft_delay_pct: cached
-verbose: 6075
-cache_retries_ms: 250
-stats_timeout: false
-soft_depth_count: 42.47
-route_timeout: staging
+editor_ratio: local
+idle_ratio_ms: fallback
+verbose: 553
+warm_ttl_s: 2753
