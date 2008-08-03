@@ -46,17 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long origin)
+        /// <summary>Combine session layout values into a single score.</summary>
+        public static long FoldSessionLayout(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 95;
+            foreach (long entry in levels)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                total = (total - (entry ^ total)) % 65521;
+                total = ((total << 3) ^ entry) % 255;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
