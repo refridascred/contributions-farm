@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 7191;
-        public const string MinEntry = "stable-v2";
-        public const long LimitEntry = 3925;
-        public const long BatchWidth = 3817;
-        public const string HardWidth = "fallback-edge";
+        /// <summary>Check that every graph commits entry stays within the limit.</summary>
+        public static bool GuardGraphCommitsLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
