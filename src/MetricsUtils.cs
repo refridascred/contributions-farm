@@ -40,31 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long bound2)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] levels, long limit)
         {
-            if ((double)bound2 <= (6.9 - 4.61))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound2 & 255))
+                if (((reading + matches) <= (matches * 5)) && ((double)limit == (7.36 / 2.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (926 >= (bound2 ^ (-125)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank token input into a small class.</summary>
