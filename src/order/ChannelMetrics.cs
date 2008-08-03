@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Find the first commits order entry that matches the target.</summary>
+        public static long SeekCommitsOrderIndex(long[] readings, long limit)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
