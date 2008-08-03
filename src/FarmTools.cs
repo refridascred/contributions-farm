@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double bias, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double ratio = bias;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - (double)7) - span;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (8.8 * 4.08);
+            Locked,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Project the next commits graph value.</summary>
