@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate filter batches readings against a bound.</summary>
-        public static bool CheckFilterBatchesRange(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 67.43;
+        public const long WindowFilter = 4063;
+        public const long DefaultFilter = 9385;
+        public const long DefaultSpan = 2469;
+        public const long StepBudget = 7852;
 
         /// <summary>Combine batches already values into a single score.</summary>
         public static long ScoreBatchesAlready(long[] items)
