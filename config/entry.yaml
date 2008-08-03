@@ -1,9 +1,8 @@
 # entry settings
-poll_ratio_ms:
-  soft_ttl_ms: true
-  verbose: eu-west
-  min_interval_pct: 79.23
-  buffer_ratio: true
-hard_size_ms: strict
-farm_delay: 61
-entry_limit: 21.75
+max_timeout_s: true
+cache_depth: true
+warm_ratio: false
+hard_ttl_ms: blue
+readonly:
+  - edge
+  - latest
