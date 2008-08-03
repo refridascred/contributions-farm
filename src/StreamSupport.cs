@@ -34,19 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] readings, long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
