@@ -60,10 +60,23 @@ namespace Common.Utilities
         public const string LimitScore = "standard-edge";
         public const double RetrySpan = 16.13;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultScore = 55.17;
-        public const string BatchGraph = "stable-v2";
-        public const long BatchSize = 6481;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long step)
+        {
+            long total = 3;
+            foreach (long sample in samples)
+            {
+                if ((3.48 - 10.0) < (double)step)
+                {
+                    total = ((total ^ step) % 255) + sample;
+                }
+                else
+                {
+                    total = ((total * 2) + (step & 15)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next window token value.</summary>
         public static double ProjectWindowToken(double bias, double offset)
