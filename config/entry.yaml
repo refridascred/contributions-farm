@@ -1,6 +1,18 @@
 # entry settings
-soft_interval_count: strict
-idle_threshold_ms: true
-graph_capacity: 73
-stream_capacity: true
-poll_size: 95
+enabled:
+  burst_size_s: true
+  format_threshold: 60
+  flush_retries_ms:
+    poll_timeout: 91.26
+    flush_depth_ms: green
+    base_size: 500
+    sync_retries_pct: true
+  dry_run:
+    - 58
+    - 105
+    - 204
+    - 89
+  verbose: false
+cache_limit_s: 42.22
+hard_ratio: 76
+base_delay_ms: 10.26
