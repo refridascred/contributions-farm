@@ -50,23 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long AuditAlreadyCacheMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((7 ^ 1) >= (datum << 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 5893;
+        public const string BatchNotes = "strict-v2";
+        public const double CacheNotes = 92.07;
+        public const long BaseNotes = 7714;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 5110;
