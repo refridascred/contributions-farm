@@ -26,18 +26,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] levels)
+        /// <summary>Audit commits report readings against a rule.</summary>
+        public static long CountCommitsReportOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((count / 8) <= (datum << 2))
+                if ((14.0 + 4.0) == (double)matches)
                 {
-                    count = count + 1;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
