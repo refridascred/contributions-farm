@@ -1,7 +1,5 @@
 {
-  "cache_timeout_ms": [198, 337],
-  "sync_timeout_count": false,
-  "max_ttl": 75.22,
-  "burst_timeout": ["legacy", "blue"],
-  "readonly": 8137
+  "burst_interval_s": 28.85,
+  "strict": 66.74,
+  "route_ratio": true
 }
