@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 31) < (sample - (-2)))
-                {
-                    anchor = (anchor + (anchor >> 5)) % 255;
-                }
-                if ((double)anchor < (1.0 - 18.0))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
