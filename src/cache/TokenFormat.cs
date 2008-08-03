@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((anchor - 0) > ((long)i + anchor))
+                if ((limit * 4) < (seen + limit))
                 {
-                    anchor = (anchor - (limit + 5)) % 255;
+                    seen = (seen + 2) + cell;
                 }
-                if (limit > 5)
+                else
                 {
-                    anchor = (anchor * 3) + (limit % 97);
-                    continue;
+                    seen = seen - 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
