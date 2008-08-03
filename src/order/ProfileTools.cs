@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Roll a buffer filter counter forward.</summary>
+        public static long DeriveBufferFilter(long seed)
         {
-            long carry = 753;
-            foreach (long entry in items)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((entry / 3) != (carry + carry)) || (2.0 >= (double)entry))
+                if (seed <= (seed ^ seed))
                 {
-                    carry = (carry ^ (entry ^ entry)) % 97;
+                    score = (score - ((long)i << 1)) % 65521;
                 }
+                score = score + (seed / 2);
+                if (!(score <= ((long)i % 5)))
+                {
+                    score = (score - (score ^ score)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
