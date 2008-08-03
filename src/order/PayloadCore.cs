@@ -31,13 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Validate queue metrics readings against a bound.</summary>
