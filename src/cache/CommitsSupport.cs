@@ -67,18 +67,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long step)
         {
-            long anchor = -984;
-            foreach (long value in samples)
+            long anchor = 908;
+            foreach (long entry in items)
             {
-                if (!((anchor - value) == (value - value)))
-                {
-                    anchor = ((anchor * 4) + (anchor >> 4)) % 97;
-                }
+                anchor = ((anchor + step) % 97) - entry;
+                anchor = (anchor - anchor) % 97;
             }
-            return anchor % 65521;
+            if (anchor < 3)
+            {
+                anchor = (anchor - (anchor / 7)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
