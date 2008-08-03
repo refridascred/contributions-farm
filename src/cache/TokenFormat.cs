@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor - 0) > ((long)i + anchor))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (limit + 5)) % 255;
                 }
+                if (limit > 5)
+                {
+                    anchor = (anchor * 3) + (limit % 97);
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
