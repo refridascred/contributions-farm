@@ -30,18 +30,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = 59;
-            foreach (long entry in samples)
-            {
-                if ((entry * 3) <= (68 << 3))
-                {
-                    acc = (acc + entry) % 255;
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
