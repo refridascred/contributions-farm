@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (7.3 + 2.06))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 4269;
+        public const long SoftCount = 9649;
+        public const double MinDepth = 56.55;
+        public const long MinStats = 477;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionMatches(long[] values, long origin)
