@@ -54,22 +54,23 @@ namespace Common.Utilities
         public const long LimitCounter = 3667;
         public const double CacheFactor = 90.48;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] data, long offset)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long CombineFarmGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = 0;
+            foreach (long datum in items)
             {
-                if ((hits + offset) > (offset - datum))
+                if (score <= (long)items.Length)
                 {
-                    hits = hits + 1;
+                    score = (score << 3) ^ score;
+                    score = (score + score) % 4096;
                 }
-                else
+                if ((double)datum > (9.3 + 7.1))
                 {
-                    hits = hits - 1;
+                    score = (score ^ (datum - score)) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
