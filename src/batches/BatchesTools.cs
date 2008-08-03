@@ -30,18 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long MeasureBatchesProfileGaps(long[] data)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)matches >= (20.0 + 8.8))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Synced,
+            Stale,
+            Idle,
         }
     }
 }
