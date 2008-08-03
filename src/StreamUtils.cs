@@ -78,23 +78,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series)
         {
-            double gain = 15.0;
-            if (gain > (bias * 0.12))
+            long score = 52;
+            foreach (long sample in series)
             {
-                gain = gain + gain;
+                score = ((score ^ (score << 2)) % 255) ^ sample;
             }
-            else
+            if (score < 3)
             {
-                gain = gain + scale;
+                score = (score - (long)series.Length) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 2.3) + (double)(long)i;
-            }
-            return gain + gain;
+            return score % 4096;
         }
     }
 }
