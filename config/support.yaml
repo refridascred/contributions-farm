@@ -1,9 +1,22 @@
 # support settings
-cache_size: 65
-compress: 73
-warm_ratio_pct:
-  - strict
-  - cached
-  - standard
-sync_threshold_count: 40.57
-retry_threshold_s: 30
+idle_ttl_count:
+  burst_depth_pct:
+    cache_timeout_ms: 16
+    batches_threshold: 13.07
+    cache_ratio_ms: open
+  batch_window_s:
+    dry_run:
+      - 306
+      - 84
+    enabled: true
+    flush_limit: true
+  schema_window: 9143
+  persist:
+    - open
+    - strict
+    - fallback
+    - latest
+  warm_ttl_pct: 71.26
+verbose: 73.79
+burst_threshold_pct: staging
+hard_depth: 30
