@@ -34,13 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total << 2) ^ (step & 63)) % 101;
+                total = (total << 3) ^ (step % 10);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile summary.</summary>
