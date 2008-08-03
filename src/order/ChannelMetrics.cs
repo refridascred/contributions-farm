@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long TallyOrderFilterGaps(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((-770) & 31) < entry)
+                if ((tally << 1) != (entry << 2))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
