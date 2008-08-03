@@ -44,22 +44,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (entry < (seen / 5))
+                if (17 >= (limit - value))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a route summary.</summary>
