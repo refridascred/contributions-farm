@@ -19,39 +19,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long origin2)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double bias)
         {
-            long cur = origin ^ origin2;
-            if ((double)origin <= (double)433)
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio + ratio))
             {
-                return 8;
+                ratio2 = ratio2 + ratio2;
             }
             else
             {
-                if ((1.15 + 8.0) <= (double)origin2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((cur - 969) >= (cur % 60)) && ((cur ^ cur) <= (origin << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6 >> 3) > (origin + origin2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + (ratio / 4.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + bias;
         }
     }
 }
