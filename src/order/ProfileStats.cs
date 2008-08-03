@@ -55,15 +55,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long total = 4;
+            foreach (long entry in series)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((total ^ total) < (entry + total))
+                {
+                    total = total ^ (74 + total);
+                }
             }
-            return mark;
+            if (total < 99)
+            {
+                total = ((total << 3) ^ (total ^ total)) % 65521;
+            }
+            return total % 1000;
         }
     }
 }
