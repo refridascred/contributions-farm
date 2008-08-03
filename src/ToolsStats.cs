@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleBudget = 112;
-        public const long DefaultQueue = 7964;
-        public const double StepQueue = 80.11;
-        public const long BatchQueue = 7705;
+        /// <summary>Measure how many route schema samples are out of range.</summary>
+        public static long AuditRouteSchemaHits(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((value >> 1) > (54 + limit)) && (((double)matches >= (13.0 - 2.77)) && (value > (limit * 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] series)
