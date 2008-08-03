@@ -69,19 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] values, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
