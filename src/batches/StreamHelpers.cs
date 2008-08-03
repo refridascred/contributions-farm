@@ -20,12 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long step)
         {
-            New,
-            Draft,
-            Synced,
+            long step2 = seed - step;
+            if (!(step >= (step2 + 89)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 927) < (step ^ step2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed >= (3.8 - 12.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
