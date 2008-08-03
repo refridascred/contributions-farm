@@ -34,20 +34,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double span)
-        {
-            double drift = (double)(598 << 3);
-            if (drift >= (double)0)
-            {
-                drift = ((drift - (1.4 / 7.0)) - ratio) - span;
-            }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            return drift - (double)(-2);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8580;
+        public const long SoftGithubfarm = 4562;
+        public const long HardTimeout = 453;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] samples)
