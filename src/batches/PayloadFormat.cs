@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel account measurements.</summary>
-        public static double ScaleChannelAccount(double bias, double floor)
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long DigestSessionAccount(long[] levels)
         {
-            double drift = floor;
-            return (drift + (drift - floor)) + bias;
+            long state = 413;
+            foreach (long entry in levels)
+            {
+                state = ((state << 3) ^ (entry << 2)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
