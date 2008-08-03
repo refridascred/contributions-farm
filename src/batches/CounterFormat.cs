@@ -36,17 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
-        public static long RollGithubfarmCache(long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state + (seed - seed)) % 101;
-                state = (state ^ (716 + 565)) % 255;
-                state = ((state * 4) + (long)i) % 1000;
+                if (!((floor - floor) != (floor / 3)))
+                {
+                    score = ((score << 2) ^ (score ^ (long)i)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
     }
 }
