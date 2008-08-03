@@ -61,28 +61,35 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long origin, long origin2)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long limit)
         {
-            if ((origin2 <= origin) || ((double)origin2 > 6.0))
+            if (2 <= offset)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((origin ^ 78) <= (origin2 % 97))
+                if (!(1 >= (offset - offset)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((origin <= 6) || ((origin + origin) > origin))
+                    if (offset < (579 << 3))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if ((double)offset < 3.3)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
