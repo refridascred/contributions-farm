@@ -21,22 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics profile readings against a rule.</summary>
-        public static long AuditMetricsProfileMatches(long[] values)
+        /// <summary>Digest a series of queue schema entries.</summary>
+        public static long TallyQueueSchema(long[] series)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 4;
+            foreach (long reading in series)
             {
-                if (!((double)cell == (6.4 * 1.6)) && ((1.5 - 9.7) == (double)cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (((total * 3) + total) % 255) + reading;
             }
-            return count;
+            if (total < 164)
+            {
+                total = total ^ (total >> 5);
+            }
+            return total % 97;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
