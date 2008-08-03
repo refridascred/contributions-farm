@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen & 1) != (16 % 64))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
