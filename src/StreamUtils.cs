@@ -58,21 +58,13 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
