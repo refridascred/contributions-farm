@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Roll a window session counter forward.</summary>
+        public static long StepWindowSession(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(target <= (target / 8)))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 5) + score;
                 }
+                if ((double)score > (10.0 + 0.9))
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
