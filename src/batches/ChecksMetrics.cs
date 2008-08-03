@@ -23,25 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long target, long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long bound = target - offset;
-            if (8.0 >= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target ^ bound) <= 97) && ((target - bound) != ((-4) ^ bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the queue class values.</summary>
