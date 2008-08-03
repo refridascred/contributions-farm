@@ -43,11 +43,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowSpan = 75.65;
-        public const long DefaultLevel = 1171;
-        public const long StepMetrics = 7706;
-        public const string HardMetrics = "standard-edge";
-        public const long IdleSpan = 5249;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
