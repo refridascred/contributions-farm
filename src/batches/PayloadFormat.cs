@@ -53,18 +53,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((hits / 3) >= sample) && ((3 + sample) <= (hits & 15)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
