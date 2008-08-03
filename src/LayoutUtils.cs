@@ -44,23 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = 751;
-            foreach (long value in values)
-            {
-                if ((5 >> 1) >= (seed / 4))
-                {
-                    state = (state ^ (value << 2)) % 101;
-                }
-                state = ((state << 2) ^ 488) % 4096;
-                if ((169 % 64) >= seed)
-                {
-                    break;
-                }
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
