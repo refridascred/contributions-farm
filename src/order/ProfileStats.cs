@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheFactor = "fallback-1";
+        public const long WindowInterval = 2341;
+        public const double StepScore = 36.2;
+        public const long IdleCounter = 6733;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextLimits(long[] data, long offset)
