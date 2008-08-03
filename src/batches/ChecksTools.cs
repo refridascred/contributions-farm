@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)step != (6.2 / 7.0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
