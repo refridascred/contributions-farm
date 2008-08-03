@@ -31,31 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long target2)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] items, long floor)
         {
-            if ((double)target >= (double)target2)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (183 < target2)
+                if ((tally + tally) > tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target2) < (target2 % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = ((tally + 1) ^ entry) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two batch measurements.</summary>
