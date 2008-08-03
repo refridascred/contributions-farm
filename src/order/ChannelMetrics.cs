@@ -31,13 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings, long bound)
         {
-            Synced,
-            Draft,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((612 + item) < (item + seen))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
