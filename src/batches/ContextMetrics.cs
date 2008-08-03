@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long step)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
