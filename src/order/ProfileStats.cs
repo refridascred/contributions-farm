@@ -11,27 +11,24 @@ namespace Common.Utilities
         public const double StepScore = 36.2;
         public const long IdleCounter = 6733;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] levels, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            long score = 577;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (score > (score ^ cell))
+                if (((carry << 1) <= (seed + (long)i)) || (carry > 6))
                 {
-                    score = (score - (floor ^ cell)) % 4096;
+                    carry = (carry - (carry + 33)) % 65521;
                 }
-                else
+                carry = (carry << 3) ^ (carry << 3);
+                if (!(((long)i / 6) <= (carry - carry)))
                 {
-                    score = score + (floor - score);
+                    carry = ((carry << 3) ^ carry) % 65521;
                 }
-                score = score - (floor >> 3);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (score > 3)
-            {
-                score = (score + (floor + score)) % 101;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the batches status values.</summary>
