@@ -20,21 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long OverlapBatchSupportCount(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
