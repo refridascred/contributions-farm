@@ -19,10 +19,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 6700;
-        public const long HardSpan = 9578;
-        public const long BatchWidth = 3577;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long limit)
+        {
+            long offset = origin + limit;
+            if (limit > (offset ^ limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit + origin) < (offset / 3)) || ((limit << 1) > (offset + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 3) == (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
