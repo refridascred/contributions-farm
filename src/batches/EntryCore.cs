@@ -50,21 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Find the first channel schema entry that matches the target.</summary>
+        public static long SeekChannelSchemaIndex(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] < target) && ((data[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
