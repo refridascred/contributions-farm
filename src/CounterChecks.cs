@@ -74,17 +74,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a commits tools reading by value.</summary>
-        public static long SeekCommitsToolsIndex(long[] data, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
