@@ -1,12 +1,8 @@
 # githubfarm settings
-burst_ratio_count:
-  - eu-west
+flush_interval:
+  - latest
+  - standard
+  - fallback
   - legacy
-  - stable
-route_depth: 97.79
-cluster_size:
-  poll_depth: false
-  burst_threshold_s: 85.53
-  batch_delay_pct: false
-  session_timeout: false
-warm_ratio: cached
+stats_depth: 59
+hard_depth: 86
