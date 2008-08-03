@@ -36,11 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            Synced,
+            Paused,
+            Stale,
         }
     }
 }
