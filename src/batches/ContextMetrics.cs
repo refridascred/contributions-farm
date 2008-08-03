@@ -27,20 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 88.49;
+        public const string IdleSpan = "legacy-edge";
+        public const long WindowReport = 3856;
+        public const long BatchSize = 1770;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelOutliers(long[] readings)
