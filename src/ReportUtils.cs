@@ -50,11 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (step > (tally / 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
