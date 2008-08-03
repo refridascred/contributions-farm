@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double ratio = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (weight - bias)) - (double)(long)i;
-            }
-            return ratio + (ratio - 1.62);
+            Locked,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
