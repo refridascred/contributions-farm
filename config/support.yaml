@@ -1,5 +1,5 @@
 # support settings
-idle_size_s: 1024
-idle_ratio_pct: latest
-channel_timeout: 500
-default_limit: local
+poll_retries: true
+report_ratio: fallback
+cache_timeout: eu-west
+dry_run: false
