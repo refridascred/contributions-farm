@@ -33,13 +33,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1918;
+        public const long LimitFactor = 7507;
+        public const long DefaultAlready = 6965;
+        public const long MaxAlready = 5748;
     }
 }
