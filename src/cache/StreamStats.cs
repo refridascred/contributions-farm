@@ -38,18 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)hits >= (13.0 * 2.63))
+                if (!((13.0 + 1.55) >= (double)count) && ((floor & 7) < (value ^ 733)))
                 {
-                    hits = ((hits + 1) - entry) - offset;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
