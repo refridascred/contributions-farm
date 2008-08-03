@@ -24,23 +24,17 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long seed)
         {
-            long anchor = 11;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + sample) % 65521;
-                if ((sample - (-7)) >= (anchor >> 1))
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 687)
-            {
-                anchor = (anchor - (origin % 100)) % 4096;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Iterate the format support series from a seed.</summary>
