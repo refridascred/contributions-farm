@@ -35,13 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally - tally) > (17 - tally))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
