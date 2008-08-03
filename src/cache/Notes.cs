@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Locked,
-            Pending,
-            Synced,
-            Queued,
+            Done,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a farm summary.</summary>
