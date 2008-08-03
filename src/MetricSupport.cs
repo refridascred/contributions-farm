@@ -12,38 +12,17 @@ namespace Common.Utilities
         public const string CacheBatches = "stable-v2";
         public const long BurstBatches = 5929;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long limit, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] data, long offset)
         {
-            if ((double)target >= (6.0 / 6.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > limit)
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (72 < (target + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target / 4) <= (225 * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
