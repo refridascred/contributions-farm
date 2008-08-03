@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
