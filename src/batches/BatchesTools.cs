@@ -30,14 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
+            Retry,
             Closed,
-            Draft,
-            Synced,
-            Stale,
-            Idle,
+            Queued,
         }
     }
 }
