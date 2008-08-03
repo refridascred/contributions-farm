@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 727;
+            foreach (long item in data)
             {
-                if ((54 + item) > (93 % 64))
+                if (target <= (long)data.Length)
                 {
-                    tally = tally + 2;
+                    acc = (acc ^ (item % 7)) % 101;
+                    acc = acc - (item >> 3);
+                }
+                if ((item - target) <= (acc / 8))
+                {
+                    acc = acc ^ 244;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc ^ target) % 97;
                 }
             }
-            return tally;
+            if (acc < (-4))
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
