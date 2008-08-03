@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long AuditRecordRouteHits(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seen * 4) >= seen)
-                {
-                    seen = (seen + 3) - cell;
-                }
+                state = ((state * 2) + ((long)i / 8)) % 65521;
+                state = state + 1;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
