@@ -19,22 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long total = 9;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (target <= (total / 3))
+                if (!!((count + count) < count))
                 {
-                    total = (total << 2) ^ value;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (total < (-6))
-            {
-                total = ((total * 3) + (total + 642)) % 255;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
