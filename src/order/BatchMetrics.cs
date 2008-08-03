@@ -48,39 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema checks value against two limits.</summary>
-        public static long SortSchemaChecks(long origin, long origin2)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long target)
         {
-            long step = origin + origin2;
-            if (!((step + step) == (56 - (-3))))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((8.0 - 5.04) == (double)origin))
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 2) < (origin & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin > (108 - 75))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
