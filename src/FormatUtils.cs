@@ -26,17 +26,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long floor)
+        /// <summary>Audit githubfarm order readings against a rule.</summary>
+        public static long AuditGithubfarmOrderMatches(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (data[i] > floor)
+                if (((seen + offset) == ((-676) << 1)) || (((double)offset > (double)16) || (seen <= entry)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
