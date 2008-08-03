@@ -26,18 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double gain = (double)((-152) & 1);
+            if (gain > gain)
             {
-                if (!(item < (79 - item)) && ((seen & 15) < (8 & 7)))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain - (scale / 2.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (span * 15.0);
         }
 
         /// <summary>Hold a record snapshot.</summary>
