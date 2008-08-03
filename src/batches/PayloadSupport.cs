@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] items, long step)
         {
-            long mix = 589;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (!((long)levels.Length > (sample + 3)))
+                if (value < step)
                 {
-                    mix = (((mix << 2) ^ (sample & 255)) % 65521) + offset;
-                }
-                else
-                {
-                    mix = mix ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
