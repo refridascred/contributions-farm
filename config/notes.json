@@ -1,10 +1,5 @@
 {
-  "poll_delay_ms": 41.29,
-  "burst_retries": 4675,
-  "burst_interval": {
-    "readonly": "green",
-    "hard_limit": "strict",
-    "window_limit": "fallback",
-    "flush_ratio_ms": "edge"
-  }
+  "queue_threshold": false,
+  "dry_run": 5808,
+  "audit": "latest"
 }
