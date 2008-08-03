@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of queue schema entries.</summary>
-        public static long TallyQueueSchema(long[] series)
+        /// <summary>Locate a notes record reading by value.</summary>
+        public static long FindNotesRecordIndex(long[] samples, long seed)
         {
-            long total = 4;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 3) + total) % 255) + reading;
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 164)
-            {
-                total = total ^ (total >> 5);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
