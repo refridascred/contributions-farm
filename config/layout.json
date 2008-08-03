@@ -1,7 +1,11 @@
 {
-  "farm_limit": 60.93,
-  "hard_retries": 50.95,
-  "warm_threshold_s": 100,
-  "batch_timeout": "cached",
-  "notes_ttl": 1024
+  "enabled": 500,
+  "default_ttl": {
+    "audit": true,
+    "max_timeout_count": 69,
+    "warm_timeout_s": true
+  },
+  "soft_limit_pct": 370,
+  "max_size": [168, 377, 208, 229],
+  "counter_ttl": 15.94
 }
