@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long TallySupportBufferHits(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((entry % 7) > count)
+                if (((cell <= (5 & 63)) || ((1.22 + 1.97) >= (double)hits)) || ((hits & 1) < (cell & 1)))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a farm batch value against two limits.</summary>
