@@ -1,8 +1,11 @@
 # entry settings
-strict: true
-retry_interval_ms: standard
-min_ttl:
-  enabled: 60
-  session_capacity: 58.57
-  min_capacity_count: true
-  record_delay: standard
+base_retries: green
+readonly:
+  - 436
+  - 17
+notes_size: eu-west
+idle_depth_ms:
+  - legacy
+  - stable
+  - local
+  - eu-west
