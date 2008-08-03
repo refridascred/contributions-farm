@@ -15,14 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
             Stale,
-            New,
-            Retry,
-            Locked,
-            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
