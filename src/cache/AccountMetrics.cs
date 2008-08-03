@@ -63,18 +63,13 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long MeasureBatchesLayoutHits(long[] data, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((limit >> 4) >= item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
