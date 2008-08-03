@@ -29,16 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a queue metrics counter forward.</summary>
-        public static long DeriveQueueMetrics(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum << 3) ^ ((-6) / 2)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 5908;
+        public const long StepBudget = 5455;
+        public const string RetrySpan = "primary-1";
+        public const long BurstCluster = 527;
+        public const long LimitFactor = 1857;
     }
 }
