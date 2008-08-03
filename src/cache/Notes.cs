@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double gain = 8.2;
-            if (gain > weight)
-            {
-                gain = (gain + (double)(-44)) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 2.0) + (double)(long)i;
-            }
-            return gain - (double)8;
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
