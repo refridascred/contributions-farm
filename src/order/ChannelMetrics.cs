@@ -35,15 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            double scale2 = 5.9 * 12.0;
+            if (scale2 >= floor)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                scale2 = scale2 + (floor * 7.4);
             }
-            return mix;
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 - 3.0;
         }
     }
 }
