@@ -25,39 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry batches pair into a bucket.</summary>
-        public static long RankEntryBatches(long limit, long limit2)
+        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
+        public static bool VerifyFilterBufferLimits(long[] values, long bound)
         {
-            long span = limit ^ limit2;
-            if ((double)span == (double)limit2)
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 4) >= (span / 6))
+                if (item < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(span > (limit - limit2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((span & 63) < (span % 97)) || (limit > (limit2 % 8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
