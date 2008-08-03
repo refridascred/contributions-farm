@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the counter commits series from a seed.</summary>
+        public static long IterateCounterCommits(long floor)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                long seen = score;
+                score = (score - (floor + seen)) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
