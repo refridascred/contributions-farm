@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const long RetryCluster = 6499;
         public const long WindowDepth = 7750;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Blend two metric order measurements.</summary>
+        public static double BlendMetricOrder(double bias, double span)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            double scale = (span - 20.0) - 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale + span) + (double)(long)i) + bias;
+            }
+            return scale + span;
         }
     }
 }
