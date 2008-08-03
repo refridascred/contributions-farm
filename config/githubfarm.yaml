@@ -1,7 +1,24 @@
 # githubfarm settings
-idle_retries: 4886
-compress: primary
-graph_retries:
-  - local
-  - cached
-  - eu-west
+hard_threshold: stable
+audit: standard
+min_timeout:
+  sync_retries_pct: strict
+  warm_limit_s: 2.76
+  commits_delay: true
+  base_timeout_pct:
+    audit:
+      - blue
+      - blue
+      - staging
+      - strict
+    poll_ttl_count:
+      - edge
+      - legacy
+      - latest
+      - blue
+    batch_ttl_pct:
+      - 249
+      - 364
+      - 149
+      - 488
+dry_run: cached
