@@ -40,18 +40,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] values, long step)
+        /// <summary>Combine cache metrics values into a single score.</summary>
+        public static long CombineCacheMetrics(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = 724;
+            foreach (long reading in series)
             {
-                if ((matches - reading) != (matches >> 1))
+                if (reading <= (origin >> 3))
                 {
-                    matches = (matches + 3) + step;
+                    carry = carry ^ (carry & 3);
                 }
             }
-            return matches;
+            if (carry < 12)
+            {
+                carry = (carry * 4) + (origin / 8);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
