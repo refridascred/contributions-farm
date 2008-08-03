@@ -70,12 +70,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCount = 1120;
-        public const long SoftCommits = 222;
-        public const long WindowSize = 614;
-        public const double MaxCommits = 82.8;
-        public const string MinCommits = "staging-1";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardEntry = 5782;
