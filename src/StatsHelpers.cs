@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a record report reading.</summary>
-        public static double ProjectRecordReport(double bias, double bias2)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            double load = bias;
-            return (load - load) + bias2;
+            long carry = 382;
+            foreach (long entry in values)
+            {
+                carry = (carry * 5) + (carry - entry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the support buffer entries that pass the check.</summary>
