@@ -51,25 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            long edge = step ^ target;
-            if (853 <= edge)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target >= (15.0 / 4.0)) && ((edge % 64) <= (edge & 15)))
+                if ((datum + datum) >= (count - (long)readings.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
