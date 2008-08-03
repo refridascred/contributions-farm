@@ -1,28 +1,6 @@
 # entry settings
-report_ratio:
-  - local
-  - cached
-  - cached
-  - standard
-warm_ttl: 30
-warm_window_count:
-  readonly: 38.6
-  verbose:
-    - 170
-    - 461
-    - 10
-    - 142
-  batch_size_count:
-    min_ttl_pct: false
-    warm_ratio_pct: 7273
-    default_retries: 8104
-    hard_window: stable
-    warm_limit_pct:
-      - legacy
-      - blue
-    warm_window_pct:
-      - 10
-      - 204
-  audit: 30
-cache_timeout_ms: 4558
-idle_retries_count: 13.88
+warm_retries: true
+min_ttl_s: edge
+max_capacity_count: edge
+sync_ratio_ms: 8136
+channel_limit: standard
