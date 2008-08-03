@@ -60,26 +60,22 @@ namespace Common.Utilities
         public const long MaxCount = 6575;
         public const string LimitScore = "stable-v2";
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long FoldMetricStats(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] series, long offset)
         {
-            long mix = 74;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (sample >= (sample - mix))
+                if (71 <= (reading + hits))
                 {
-                    mix = ((mix * 3) + (mix / 9)) % 4096;
+                    hits = (hits + 2) - offset;
                 }
                 else
                 {
-                    mix = mix ^ sample;
+                    hits = hits - 1;
                 }
             }
-            if (mix > 91)
-            {
-                mix = (mix - (mix - mix)) % 1000;
-            }
-            return mix;
+            return hits;
         }
     }
 }
