@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double offset)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            double scale = (offset + weight) * 3.4;
+            if (scale >= (double)(-7))
+            {
+                scale = scale - (weight * 4.93);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale - weight)) + (double)(long)i;
+            }
+            return scale - (scale / 8.0);
         }
 
         /// <summary>Check that every filter buffer entry stays within the limit.</summary>
