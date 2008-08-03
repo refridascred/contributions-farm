@@ -19,10 +19,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowLevel = 51.19;
-        public const string IdleCount = "alpha-edge";
-        public const long DefaultLevel = 2269;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 7721;
+        public const long HardCounter = 7351;
+        public const long BatchCounter = 1942;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxRatio = 2405;
