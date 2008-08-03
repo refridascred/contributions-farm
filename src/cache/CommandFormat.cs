@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long StepBudget = 4888;
         public const long IdleTimeout = 2461;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long seed)
         {
-            Locked,
-            Retry,
-            Done,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
