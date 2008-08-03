@@ -50,12 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
