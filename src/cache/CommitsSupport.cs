@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] levels, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long next = offset - offset2;
+            if (!((offset + offset) < (offset2 << 1)))
             {
-                if (((entry + floor) > (floor * 4)) || (((double)floor < (20.0 + 5.6)) && ((510 % 12) < (entry - 989))))
+                return 1;
+            }
+            else
+            {
+                if ((0 + next) >= 905)
                 {
-                    count = count + 1;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (next <= 665)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (next > (next - next))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of tools filter readings.</summary>
