@@ -66,19 +66,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two session format measurements.</summary>
-        public static double SmoothSessionFormat(double gain, double bias)
+        /// <summary>Combine batches layout values into a single score.</summary>
+        public static long FoldBatchesLayout(long[] samples, long limit)
         {
-            double rate = bias;
-            if (rate >= gain)
+            long state = 92;
+            foreach (long cell in samples)
             {
-                rate = rate + (double)3;
+                state = (state - (limit % 60)) + cell;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - gain;
+            return state % 1000;
         }
     }
 }
