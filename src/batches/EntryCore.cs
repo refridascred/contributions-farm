@@ -65,12 +65,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long limit)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
