@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-v2";
         public const long MinPayload = 8653;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)item > (8.0 / 6.0)) && (((seen * 4) != (seen ^ step)) && ((item * 4) >= (item & 7))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout level values.</summary>
