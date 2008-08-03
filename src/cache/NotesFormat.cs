@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            double weight = (11.0 * 4.3) * 3.94;
+            if (weight >= (weight + weight))
+            {
+                weight = (weight + weight) - bias;
+            }
+            else
+            {
+                weight = weight + 9.74;
+            }
+            return weight - rate;
         }
 
         /// <summary>Combine batch stream values into a single score.</summary>
