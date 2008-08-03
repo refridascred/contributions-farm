@@ -48,25 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long bound)
+        /// <summary>Find the first format order entry that matches the target.</summary>
+        public static long SeekFormatOrderIndex(long[] samples, long floor)
         {
-            long next = step + bound;
-            if ((double)bound >= (7.8 + 18.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (next < (1 % 10))
+                if (samples[i] < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit metrics support readings against a rule.</summary>
