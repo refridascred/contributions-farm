@@ -57,12 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Closed,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 5097;
+        public const double MinInterval = 80.26;
+        public const string WindowInterval = "local-1";
+        public const long CacheLevel = 2672;
     }
 }
