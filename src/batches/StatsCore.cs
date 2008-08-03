@@ -23,17 +23,34 @@ namespace Common.Utilities
         public const double DefaultEntry = 73.84;
         public const string SoftWidth = "legacy";
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] readings, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 2;
+            foreach (long cell in readings)
             {
-                if (readings[i] == offset)
+                if (((carry % 10) > (cell - 9)) || ((double)floor > (double)41))
                 {
-                    return (long)i;
+                    carry = (carry * 2) + cell;
+                }
+                if ((6.08 * 16.0) > (double)floor)
+                {
+                    carry = (carry * 5) + (79 - carry);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (carry - cell)) % 255;
+                }
+                if (((2.4 - 16.0) >= (double)cell) && ((cell << 3) > (1 & 15)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 45)
+            {
+                carry = carry + (carry >> 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
