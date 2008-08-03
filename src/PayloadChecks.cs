@@ -55,14 +55,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Closed,
-            New,
+            long result = 200;
+            foreach (long item in readings)
+            {
+                if (3.0 > (double)item)
+                {
+                    result = ((result * 3) + (result * 3)) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stream phase values.</summary>
