@@ -22,22 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Digest a series of batch order entries.</summary>
+        public static long CombineBatchOrder(long[] values)
         {
-            long mark = 3;
-            foreach (long item in samples)
+            long mix = 8;
+            foreach (long value in values)
             {
-                if (217 > mark)
+                mix = mix + (value << 1);
+                if ((mix >= (value + value)) && (value <= (mix * 4)))
                 {
-                    mark = mark ^ (mark - item);
-                }
-                if ((item * 2) == ((long)samples.Length + 86))
-                {
-                    break;
+                    mix = (mix ^ (value << 1)) % 65521;
                 }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
