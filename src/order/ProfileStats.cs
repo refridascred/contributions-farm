@@ -18,21 +18,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((4 / 4) > (long)i))
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ result) % 101;
                 }
+                result = ((result * 4) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
