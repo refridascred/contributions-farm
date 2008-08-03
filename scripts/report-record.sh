@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=164
+RECORD_LIMIT=186
 log "limit is ${RECORD_LIMIT}"
+
+for item in staging open green; do
+    log "checking ${item}"
+done
