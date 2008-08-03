@@ -39,13 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Active,
-            Queued,
-            Pending,
-            Retry,
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
