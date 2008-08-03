@@ -32,13 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long MeasureQueueSchemaHits(long[] samples, long offset)
         {
-            Queued,
-            Synced,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits ^ 488) <= (offset >> 2))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
