@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long HardTimeout = 8201;
         public const string MinCache = "standard-v2";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                if ((double)tally > 17.0)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
