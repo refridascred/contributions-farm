@@ -41,38 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long limit, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((limit * 4) >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 97) != (target / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((441 * 2) >= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.7 + 8.6) == (double)limit) || ((limit & 63) <= (target / 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Retry,
+            Paused,
         }
     }
 }
