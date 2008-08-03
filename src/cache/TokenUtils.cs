@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up filter cache samples.</summary>
-        public static long CompareFilterCacheCount(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
