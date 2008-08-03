@@ -13,13 +13,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter tools readings.</summary>
