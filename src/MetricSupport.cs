@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string CacheBatches = "stable-v2";
         public const long BurstBatches = 5929;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] data, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
