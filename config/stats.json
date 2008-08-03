@@ -1,5 +1,12 @@
 {
-  "retry_depth_pct": 61,
-  "sync_threshold": "edge",
-  "persist": 4131
+  "retry_interval_pct": "local",
+  "poll_ttl_s": "stable",
+  "idle_size_count": 98.74,
+  "editor_capacity": {
+    "max_timeout_s": 32.51,
+    "cache_ttl_count": "stable",
+    "base_size_count": "cached",
+    "checks_threshold": 27.12,
+    "audit": false
+  }
 }
