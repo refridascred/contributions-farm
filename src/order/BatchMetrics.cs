@@ -32,16 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a batch farm counter forward.</summary>
-        public static long IterateBatchFarm(long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                score = (score + score) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the batch phase values.</summary>
