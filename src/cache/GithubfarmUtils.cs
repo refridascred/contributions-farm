@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many route checks samples are out of range.</summary>
+        public static long AuditRouteChecksGaps(long[] levels, long step)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.5 - 5.7) > (double)reading)
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
