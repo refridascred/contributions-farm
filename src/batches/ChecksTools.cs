@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long AuditRecordRouteHits(long[] data)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen * 4) >= seen)
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
