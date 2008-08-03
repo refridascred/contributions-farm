@@ -39,13 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool GuardLayoutStreamBounds(long[] readings, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
