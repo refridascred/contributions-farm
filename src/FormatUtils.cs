@@ -55,22 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue stats entries.</summary>
-        public static long TallyQueueStats(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long bound)
         {
-            long anchor = 49;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((anchor - anchor) > (224 & 127))
+                if (sample <= bound)
                 {
-                    anchor = (anchor - (anchor >> 4)) - value;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 30) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
