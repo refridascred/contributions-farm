@@ -47,38 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long limit2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] items, long floor)
         {
-            if (!((limit % 3) == (limit + 76)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit2 < (double)(-6)) || ((limit2 / 3) <= limit))
+                if (307 < hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 1) >= (limit2 - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit < (limit2 % 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = ((hits + 2) ^ entry) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
