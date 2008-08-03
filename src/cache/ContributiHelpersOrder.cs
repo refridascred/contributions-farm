@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 24.97;
-        public const long BatchInterval = 3005;
-        public const long MaxRoute = 172;
-        public const long StepRoute = 3404;
+        /// <summary>Count the report farm entries that pass the check.</summary>
+        public static long AuditReportFarmGaps(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (701 >= (matches >> 5))
+                {
+                    matches = ((matches + 3) ^ item) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] items)
