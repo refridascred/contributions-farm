@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long limit)
+        /// <summary>Measure how many context queue samples are out of range.</summary>
+        public static long TallyContextQueueOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (data[i] < limit)
+                if ((hits & 127) > 8)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + item) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
