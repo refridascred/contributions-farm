@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mark = 755;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell << 3) > (seed * 4)) && ((double)cell != (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark << 3) ^ cell;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 6)
-            {
-                mark = ((mark * 5) + (seed + mark)) % 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
