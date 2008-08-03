@@ -77,14 +77,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long floor)
         {
-            Draft,
-            Idle,
-            Done,
-            Synced,
-            Active,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
