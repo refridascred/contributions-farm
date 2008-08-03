@@ -39,15 +39,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double floor)
+        /// <summary>Rank queue command input into a small class.</summary>
+        public static long SortQueueCommand(long limit, long step)
         {
-            double drift = (double)(-31);
-            for (int i = 0; i < 2; i++)
+            long prev = limit - step;
+            if (((double)prev == (double)limit) && ((1.0 - 9.4) < (0.48 - 5.0)))
             {
-                drift = ((drift + (double)(long)i) + gain) - floor;
+                return 4;
             }
-            return drift - (8.1 * 7.91);
+            else
+            {
+                if ((40 > (prev - limit)) || ((prev + 360) >= (limit + 766)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >= (prev + 659)) || (step < limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
