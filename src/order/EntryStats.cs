@@ -77,15 +77,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 2215;
+        public const string SoftBuffer = "open-edge";
+        public const string RetryBuffer = "stable-1";
+        public const long BaseBuffer = 2472;
+        public const long SoftRatio = 6150;
     }
 }
