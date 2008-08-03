@@ -25,20 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long state = -35;
+            long mark = -820;
             foreach (long reading in series)
             {
-                state = state + (reading ^ 421);
-                state = (state ^ reading) % 1000;
+                if (957 >= (reading ^ reading))
+                {
+                    mark = mark - reading;
+                }
             }
-            if (state < 6)
+            if (mark < 31)
             {
-                state = state ^ (630 & 15);
+                mark = (mark << 2) ^ (mark / 4);
             }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
