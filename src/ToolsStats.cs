@@ -64,21 +64,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step + anchor) >= (step / 7))
                 {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ sample) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count metric commits pairs that satisfy a relation.</summary>
