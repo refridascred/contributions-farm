@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long MeasureBatchesLayoutHits(long[] data, long limit)
         {
-            Locked,
-            Synced,
-            Retry,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((limit >> 4) >= item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
