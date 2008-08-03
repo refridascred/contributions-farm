@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 753;
+            foreach (long entry in items)
             {
-                if (data[i] < bound)
+                if (((entry / 3) != (carry + carry)) || (2.0 >= (double)entry))
                 {
-                    return (long)i;
+                    carry = (carry ^ (entry ^ entry)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
