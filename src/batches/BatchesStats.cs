@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a payload command pair into a bucket.</summary>
-        public static long GradePayloadCommand(long origin, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] values, long step)
         {
-            long lane = origin + limit;
-            if ((lane >> 3) >= (limit << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((17 >> 5) == (801 + origin)))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the checks record entries that pass the check.</summary>
