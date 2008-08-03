@@ -28,19 +28,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] values, long seed)
+        /// <summary>Grade a farm already value against two limits.</summary>
+        public static long RankFarmAlready(long limit, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            if ((978 % 5) >= offset)
             {
-                if (reading >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((offset + 85) <= (1 ^ limit))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 2) <= (limit ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit / 4) != (limit & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
