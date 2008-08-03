@@ -1,5 +1,7 @@
 {
-  "burst_interval_s": 28.85,
-  "strict": 66.74,
-  "route_ratio": true
+  "verbose": "standard",
+  "farm_window": 14.59,
+  "burst_window_ms": 37,
+  "min_timeout": 1311,
+  "base_ttl": [415, 368, 267, 125]
 }
