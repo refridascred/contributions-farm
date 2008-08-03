@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((-6) >= (hits * 3))
-                {
-                    hits = ((hits + 1) ^ reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a record report reading.</summary>
