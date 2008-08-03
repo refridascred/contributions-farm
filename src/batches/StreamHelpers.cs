@@ -61,15 +61,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two order schema measurements.</summary>
-        public static double SmoothOrderSchema(double rate, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double weight = rate;
-            if (weight >= (7.8 * 11.0))
-            {
-                weight = weight - (weight - floor);
-            }
-            return weight - weight;
+            Stale,
+            New,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a metrics header.</summary>
