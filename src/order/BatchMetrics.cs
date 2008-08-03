@@ -88,27 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = 7;
-            foreach (long item in samples)
-            {
-                score = (score + (item + step)) % 4096;
-                if ((item % 60) >= item)
-                {
-                    score = (score + (score % 24)) % 255;
-                }
-                else
-                {
-                    score = (score + (step << 3)) % 101;
-                }
-            }
-            if (score > 923)
-            {
-                score = (score + (step << 1)) % 4096;
-            }
-            return score % 1000;
+            Active,
+            Paused,
+            Draft,
+            Failed,
+            Pending,
         }
     }
 }
