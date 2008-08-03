@@ -81,19 +81,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Look up the position of a support token sample.</summary>
+        public static long LocateSupportTokenIndex(long[] series, long floor)
         {
-            long score = 52;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score ^ (score << 2)) % 255) ^ sample;
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 3)
-            {
-                score = (score - (long)series.Length) % 255;
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
