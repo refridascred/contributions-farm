@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + (-5)) == (tally % 97)) && !((1.5 / 5.0) < (double)9))
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
