@@ -46,19 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data, long floor)
+        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
+        public static long MatchCounterToolsCount(long[] series)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((13.0 + 1.55) >= (double)count) && ((floor & 7) < (value ^ 733)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
