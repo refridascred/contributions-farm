@@ -35,13 +35,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series)
         {
-            Ready,
-            Closed,
-            Queued,
-            Locked,
+            long mix = 4;
+            foreach (long value in series)
+            {
+                mix = (((mix << 2) ^ (mix & 7)) % 4096) ^ value;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
