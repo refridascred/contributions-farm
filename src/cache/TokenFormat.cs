@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSpan = 3987;
+        public const string HardBudget = "primary-edge";
+        public const long IdleWidth = 7843;
+        public const string BurstScore = "fallback-1";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountOutliers(long[] readings, long limit)
