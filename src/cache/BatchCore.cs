@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long seed, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
         {
-            if ((double)offset != (double)1)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) <= seed)
+                total = (total ^ (origin - total)) % 1000;
+                if (42 >= (origin + origin))
                 {
-                    return 6;
+                    total = (total * 5) + ((long)i % 10);
                 }
-                else
-                {
-                    if ((double)seed >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
