@@ -21,10 +21,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 85.29;
-        public const long IdleCount = 6538;
-        public const long BaseBatches = 7629;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((27 + reading) > target) && (8.3 >= (double)reading)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
