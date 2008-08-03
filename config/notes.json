@@ -1,7 +1,19 @@
 {
-  "warm_delay": ["local", "staging", "primary"],
-  "route_retries": true,
-  "poll_retries_ms": "cached",
-  "min_interval": true,
-  "warm_ttl_count": ["open", "legacy", "staging"]
+  "stream_capacity": true,
+  "cache_threshold": 52,
+  "max_depth_pct": true,
+  "window_size": 53.96,
+  "hard_retries_count": {
+    "flush_window_s": 2004,
+    "sync_interval_pct": {
+      "command_ratio": "standard",
+      "checks_capacity": 2438,
+      "batch_threshold_ms": "blue",
+      "verbose": 26.54,
+      "route_size": ["fallback", "latest", "latest"],
+      "default_delay_ms": "primary"
+    },
+    "min_window": "local",
+    "cache_ratio_ms": "legacy"
+  }
 }
