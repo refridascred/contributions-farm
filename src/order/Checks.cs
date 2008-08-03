@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double span)
+        /// <summary>Validate stats editor readings against a bound.</summary>
+        public static bool CheckStatsEditorBounds(long[] levels, long limit)
         {
-            double drift = span;
-            if (drift > weight)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                drift = drift + (span / 4.0);
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (6.0 + 5.64);
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
