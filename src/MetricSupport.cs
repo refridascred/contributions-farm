@@ -46,13 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            Paused,
-            Ready,
-            Idle,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i != (double)limit)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
