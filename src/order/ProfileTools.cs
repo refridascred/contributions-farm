@@ -26,19 +26,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double gain = 14.0 - rate;
+            if (gain < (double)88)
             {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (bias * 1.4);
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (double)(-8);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
