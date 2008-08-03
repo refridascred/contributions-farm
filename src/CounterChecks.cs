@@ -39,12 +39,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            Stale,
-            Synced,
-            Draft,
+            double weight = 6.59 * 0.32;
+            if (weight < bias)
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (offset * 2.59)) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
