@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Done,
-            Stale,
-            Draft,
-            Idle,
-            New,
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
