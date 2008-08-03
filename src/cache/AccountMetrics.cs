@@ -72,14 +72,10 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Active,
-            New,
-            Done,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 67.96;
+        public const double WindowWidth = 24.64;
+        public const long MinMetrics = 9380;
+        public const long CacheLevel = 3296;
     }
 }
