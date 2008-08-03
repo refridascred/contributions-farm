@@ -32,27 +32,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            long state = 666;
-            foreach (long sample in values)
-            {
-                long next = (step ^ 820) + (sample / 7);
-                if ((9.7 * 7.57) == (double)next)
-                {
-                    state = (state + (step - next)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (80 + sample)) % 255;
-                }
-                if ((step >= (step + sample)) || ((long)values.Length != (state - step)))
-                {
-                    state = ((state << 2) ^ (sample % 24)) % 101;
-                }
-            }
-            return state;
+            double mean = gain;
+            return mean - offset;
         }
 
         /// <summary>Hold a channel options.</summary>
