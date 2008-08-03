@@ -33,11 +33,15 @@ namespace Common.Utilities
         public const long HardSize = 5346;
         public const long MaxBudget = 3674;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepRatio = 19.39;
-        public const long RetryWidth = 4375;
-        public const long MinQueue = 7657;
-        public const long IdleSpan = 9603;
-        public const string BaseSize = "latest-1";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings)
+        {
+            long mark = 2;
+            foreach (long cell in readings)
+            {
+                mark = ((mark << 2) ^ (mark & 3)) ^ cell;
+            }
+            return mark;
+        }
     }
 }
