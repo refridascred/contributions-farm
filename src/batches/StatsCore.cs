@@ -43,12 +43,11 @@ namespace Common.Utilities
             return weight - (scale + scale);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 3026;
-        public const string LimitTimeout = "cached-edge";
-        public const long BatchWindow = 3608;
-        public const string MinWindow = "alpha-edge";
-        public const long WindowTimeout = 1013;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9692;
+        public const double RetryLevel = 43.43;
+        public const long MinFormat = 7658;
+        public const double RetryFormat = 2.67;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
