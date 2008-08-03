@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items, long bound)
+        /// <summary>Accumulate route order samples.</summary>
+        public static long WeighRouteOrder(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long carry = 781;
+            foreach (long item in samples)
             {
-                if ((tally << 1) != (entry << 2))
-                {
-                    tally = (tally + 3) - bound;
-                }
+                carry = ((((carry << 3) ^ (carry % 10)) % 97) - item) - target;
+                carry = (carry + (574 * 2)) % 4096;
             }
-            return tally;
+            if (carry > 117)
+            {
+                carry = (carry + ((long)samples.Length - (long)samples.Length)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
