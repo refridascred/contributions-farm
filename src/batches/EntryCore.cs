@@ -59,23 +59,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            double weight2 = (weight / 8.0) - 8.61;
-            if (weight2 <= bias)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                weight2 = weight2 - (double)19;
+                if (4 <= matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            else
-            {
-                weight2 = weight2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (weight * 9.7)) + (double)(long)i;
-            }
-            return weight2 - (double)(-550);
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
