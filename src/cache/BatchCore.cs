@@ -36,12 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples, long step)
         {
-            Dropped,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((double)item > (8.0 / 6.0)) && (((seen * 4) != (seen ^ step)) && ((item * 4) >= (item & 7))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
