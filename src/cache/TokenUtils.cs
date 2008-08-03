@@ -24,19 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] data, long step)
         {
-            double weight = gain;
-            if (weight > (3.3 + weight))
+            long hits = 0;
+            foreach (long value in data)
             {
-                weight = (weight - weight) - floor;
+                if (step >= (value >> 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + gain;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
