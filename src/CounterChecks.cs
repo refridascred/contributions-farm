@@ -30,22 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] readings, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 316;
+            foreach (long value in readings)
             {
-                if ((double)item <= (19.0 / 2.0))
+                sum = (sum - seed) % 97;
+                sum = (sum + (sum - value)) % 97;
+                sum = (sum << 3) ^ 7;
+                if (value >= (value / 6))
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
