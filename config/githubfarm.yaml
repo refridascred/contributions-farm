@@ -1,31 +1,12 @@
 # githubfarm settings
-verbose:
-  soft_window_pct:
-    - 216
-    - 140
-    - 343
-    - 191
-  burst_window: open
-  strict: true
-  support_retries: 51
-idle_capacity: green
-strict:
-  - 54
-  - 170
-  - 302
-idle_retries:
-  - green
-  - primary
-min_capacity_ms:
-  flush_delay_s:
-    entry_depth: standard
-    queue_limit: 48
-    sync_interval_s:
-      - strict
-      - fallback
-    idle_ratio: cached
-    metric_limit: eu-west
-  batch_timeout: 5353
-  batches_ttl: eu-west
-  hard_delay_s: eu-west
-min_ttl: standard
+idle_timeout: staging
+flush_threshold_s: 60
+idle_retries_s:
+  cache_window: latest
+  contributi_capacity: local
+  audit:
+    - 264
+    - 483
+  flush_capacity: eu-west
+  profile_window: 71
+base_timeout_s: 82.12
