@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long IdleCount = 6538;
         public const long BaseBatches = 7629;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
+            Ready,
+            Failed,
+            Active,
             Pending,
-            Synced,
-            Draft,
+            Paused,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
