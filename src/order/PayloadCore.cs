@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long target)
         {
-            long prev = bound ^ origin;
-            if ((origin - 1) > (origin << 2))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= 682)
+                if ((sample << 3) > matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((prev % 3) != (origin + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9 - origin) > (79 * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the order metrics series from a seed.</summary>
