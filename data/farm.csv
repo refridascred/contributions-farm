@@ -1,6 +1,11 @@
-id,state,ratio,token
-1,primary,321,5.03
-2,35.3,strict,568
-3,550,994,38.73
-4,eu-west,95.48,stable
-5,339,83.84,local
+id,owner,weight
+1,831,909
+2,48.49,blue
+3,975,edge
+4,cached,primary
+5,open,771
+6,standard,9.14
+7,34.6,964
+8,192,700
+9,20.46,edge
+10,670,strict
