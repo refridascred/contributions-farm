@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count order filter pairs that satisfy a relation.</summary>
-        public static long OverlapOrderFilterCount(long[] levels)
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long SortReportCommits(long bound, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound - offset;
+            if ((cur - cur) == (bound ^ (-21)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((cur << 3) > (bound + offset)) || ((cur / 4) < (10 - cur)))
                 {
-                    if ((levels[i] + levels[j]) == 3)
+                    return 6;
+                }
+                else
+                {
+                    if (((offset % 5) < cur) || (bound >= (bound * 3)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
