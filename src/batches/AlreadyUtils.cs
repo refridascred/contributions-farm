@@ -38,18 +38,23 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 11;
+            foreach (long sample in levels)
             {
-                if (value > (65 + seen))
+                anchor = ((anchor * 3) + sample) % 65521;
+                if ((sample - (-7)) >= (anchor >> 1))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 687)
+            {
+                anchor = (anchor - (origin % 100)) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
