@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] levels, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a farm summary.</summary>
