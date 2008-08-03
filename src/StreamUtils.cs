@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long step)
+        /// <summary>Find the first cache support entry that matches the target.</summary>
+        public static long LookupCacheSupportIndex(long[] readings, long target)
         {
-            long slot = seed ^ step;
-            if ((seed + seed) >= 562)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 - 2.54) < (double)slot)
+                if (readings[i] <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(seed > slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a route stream value against two limits.</summary>
