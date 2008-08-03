@@ -63,28 +63,35 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank queue batch input into a small class.</summary>
-        public static long ClassifyQueueBatch(long target, long target2)
+        /// <summary>Grade a cluster context value against two limits.</summary>
+        public static long BucketClusterContext(long bound, long target)
         {
-            if ((target & 127) == (target + target2))
+            if ((bound / 7) != (target + 6))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (!((target2 << 2) >= (target2 >> 5)))
+                if (((bound / 4) != (bound & 7)) || ((1.97 - 1.53) > (double)bound))
                 {
                     return 3;
                 }
                 else
                 {
-                    if (!((5 + 24) == (target + target2)))
+                    if (((8.0 - 2.0) > (double)bound) || ((-677) <= target))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if ((target + bound) <= 891)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
