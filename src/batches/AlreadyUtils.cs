@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Done,
-            Closed,
-            Active,
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
