@@ -47,13 +47,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "legacy-v2";
+        public const long IdleCount = 7436;
+        public const long BaseBatch = 392;
+        public const long BatchDepth = 9709;
     }
 }
