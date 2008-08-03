@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BaseBuffer = 5711;
         public const long StepBuffer = 5562;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            Done,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
