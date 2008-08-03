@@ -30,23 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] series, long seed)
         {
-            long total = 252;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((189 ^ offset) == (value << 2))
+                if (entry <= seed)
                 {
-                    total = (total * 4) + (total * 3);
+                    stale = false;
                     break;
                 }
-                if (((total % 64) >= (total << 1)) || ((total * 4) != (total + offset)))
-                {
-                    total = total ^ (total & 127);
-                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a already header.</summary>
