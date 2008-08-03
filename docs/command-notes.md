@@ -1,13 +1,15 @@
 # Command notes
 
-The contributi module keeps stream values in sync with the entry cache.
-The graph module keeps counter values in sync with the order cache.
+Keep order and layout names short and lowercase.
+Run the channel check before changing any filter limits.
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Each cluster is validated before it reaches the editor queue.
+Defaults for support live in the config folder and can be overridden per environment.
+Run the buffer check before changing any order limits.
+When a channel fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every format change
-- Keep profile values small
+- Validate layout input early
+- Review window limits each release
+- Log every checks change
+- Prefer report defaults
