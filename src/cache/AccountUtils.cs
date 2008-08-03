@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8533;
-        public const double RetryToken = 33.69;
-        public const long HardScore = 1281;
-        public const double WindowTimeout = 19.73;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long limit)
+        {
+            long sum = -164;
+            foreach (long item in series)
+            {
+                sum = sum - (sum & 15);
+                sum = ((sum * 2) + (item & 127)) % 97;
+                if (limit < (sum & 255))
+                {
+                    sum = sum - (limit << 2);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] data, long bound)
