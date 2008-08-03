@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = 0.24;
+            if (mean < mean)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (bias - span);
             }
-            return -1;
+            return mean + (span - mean);
         }
 
         /// <summary>Describe the stats state values.</summary>
