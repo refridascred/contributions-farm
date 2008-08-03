@@ -38,13 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8565;
+        public const long BatchFactor = 3211;
+        public const double CacheSession = 54.04;
     }
 }
