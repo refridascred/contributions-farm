@@ -20,10 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 88.34;
-        public const long LimitFactor = 2791;
-        public const long BaseContext = 7582;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            New,
+            Locked,
+            Stale,
+            Idle,
+            Done,
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] items, long bound)
