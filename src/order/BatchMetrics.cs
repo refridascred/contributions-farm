@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
