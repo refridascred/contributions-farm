@@ -48,9 +48,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowSpan = 5563;
-        public const long BatchStats = 4025;
-        public const long SoftCount = 589;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((1.46 * 13.0) != (double)limit)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
