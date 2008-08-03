@@ -22,13 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix - ((long)i + (long)i)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
