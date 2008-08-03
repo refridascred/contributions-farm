@@ -23,11 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitWidth = "staging";
-        public const long RetryCounter = 6730;
-        public const string BatchBudget = "standard-edge";
-        public const long LimitCounter = 4057;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Blend two metric order measurements.</summary>
         public static double BlendMetricOrder(double bias, double span)
