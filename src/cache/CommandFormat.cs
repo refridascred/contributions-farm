@@ -27,26 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel commits readings.</summary>
-        public static long FoldChannelCommits(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long anchor = -4;
-            foreach (long item in samples)
-            {
-                if ((7.0 - 4.8) > (double)item)
-                {
-                    anchor = anchor ^ 27;
-                }
-                else
-                {
-                    anchor = (anchor + 15) % 255;
-                }
-            }
-            if (anchor < 146)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor % 4096;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
