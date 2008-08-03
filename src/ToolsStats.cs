@@ -50,18 +50,24 @@ namespace Common.Utilities
         public const long SoftInterval = 1570;
         public const string SoftWindow = "alpha-1";
 
-        /// <summary>Measure how many schema counter samples are out of range.</summary>
-        public static long CountSchemaCounterOutliers(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = -6;
+            foreach (long entry in items)
             {
-                if ((matches >> 4) >= (matches - reading))
+                state = ((state * 5) + (state << 2)) % 4096;
+                state = ((state << 3) ^ (state + entry)) % 1000;
+                if (state > (state - state))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            if (state < 679)
+            {
+                state = (state + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
