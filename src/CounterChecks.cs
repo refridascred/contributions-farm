@@ -74,21 +74,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Locate a commits tools reading by value.</summary>
+        public static long SeekCommitsToolsIndex(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] <= offset)
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
