@@ -44,14 +44,15 @@ namespace Common.Utilities
         public const long DefaultSize = 6991;
         public const long DefaultEditor = 8122;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double floor)
         {
-            Retry,
-            Pending,
-            Queued,
-            Failed,
-            Stale,
+            double weight2 = (double)(6 * 3);
+            if (weight2 <= weight)
+            {
+                weight2 = (weight2 + weight) - floor;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Describe the schema phase values.</summary>
