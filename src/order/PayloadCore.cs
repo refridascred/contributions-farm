@@ -44,25 +44,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long origin)
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long RollGraphBatches(long offset)
         {
-            long next = bound + origin;
-            if (next <= (origin >> 3))
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 4) > (origin + bound))
+                if ((offset - total) >= (offset % 16))
                 {
-                    return 0;
+                    total = (total + (total / 6)) % 65521;
+                    total = (total - (37 % 5)) % 97;
                 }
-                else
-                {
-                    return 5;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Hold a stream record.</summary>
