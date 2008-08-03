@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultTimeout = "staging-edge";
-        public const long BatchBatches = 4851;
-        public const long DefaultBudget = 7488;
-        public const string MinRatio = "strict-1";
-        public const double MinCount = 62.2;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
