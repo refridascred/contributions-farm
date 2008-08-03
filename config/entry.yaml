@@ -1,11 +1,5 @@
 # entry settings
-channel_timeout:
-  - green
-  - primary
-  - strict
-  - standard
-max_window_s: primary
-audit: true
-default_window: cached
-poll_ttl_ms: 100
-enabled: 40
+window_size: open
+flush_ttl_ms: 61.21
+audit: 44
+editor_interval: cached
