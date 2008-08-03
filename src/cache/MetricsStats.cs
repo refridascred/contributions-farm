@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                state = (state + state) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                if (!(datum > ((-793) + 4)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine session buffer values into a single score.</summary>
