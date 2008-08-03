@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long limit)
+        /// <summary>Find the first cluster filter entry that matches the target.</summary>
+        public static long LookupClusterFilterIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
