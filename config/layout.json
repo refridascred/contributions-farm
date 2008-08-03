@@ -1,6 +1,13 @@
 {
-  "flush_timeout_ms": 6898,
-  "default_retries": 56,
-  "min_threshold_count": false,
-  "command_retries": "stable"
+  "flush_threshold_s": ["local", "green"],
+  "default_retries": true,
+  "warm_retries_ms": 250,
+  "idle_window_ms": "latest",
+  "enabled": 64.72,
+  "persist": {
+    "readonly": 9726,
+    "notes_capacity": "legacy",
+    "stream_size": "stable",
+    "retry_threshold_pct": 4456
+  }
 }
