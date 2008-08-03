@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the record level values.</summary>
