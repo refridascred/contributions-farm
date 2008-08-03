@@ -22,16 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine session layout values into a single score.</summary>
-        public static long FoldSessionLayout(long[] levels)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            long total = 95;
-            foreach (long entry in levels)
+            double drift = (scale + floor) / 8.0;
+            if (drift > (1.86 + 7.0))
             {
-                total = (total - (entry ^ total)) % 65521;
-                total = ((total << 3) ^ entry) % 255;
+                drift = drift + (drift / 8.0);
             }
-            return total % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor * 0.09)) + (double)(long)i;
+            }
+            return drift + (floor + 10.0);
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
