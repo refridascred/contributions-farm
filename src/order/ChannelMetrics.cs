@@ -35,19 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double scale2 = 5.9 * 12.0;
-            if (scale2 >= floor)
-            {
-                scale2 = scale2 + (floor * 7.4);
-            }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 - 3.0;
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
