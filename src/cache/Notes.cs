@@ -34,23 +34,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Classify a profile already pair into a bucket.</summary>
+        public static long GradeProfileAlready(long limit, long offset)
         {
-            long result = 969;
-            foreach (long datum in series)
+            long span = limit ^ offset;
+            if ((span - offset) == (offset >> 5))
             {
-                result = (result - (result + datum)) % 1000;
-                if ((7.11 - 3.0) == (double)datum)
+                return 1;
+            }
+            else
+            {
+                if ((limit + offset) >= (limit / 3))
                 {
-                    result = result + datum;
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= (span >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((73 & 63) >= (offset + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result < 66)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
