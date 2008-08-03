@@ -1,15 +1,14 @@
 # Command notes
 
-Run the channel check before changing any schema limits.
-Use cache settings to tune how often stream data is refreshed.
-A queue that stays idle for too long is moved to the stats list.
+A token that stays idle for too long is moved to the contributi list.
+The farm report groups every schema by command.
+The profile module keeps filter values in sync with the context cache.
 
-A route that stays idle for too long is moved to the schema list.
-Keep batches and queue names short and lowercase.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every schema by layout.
 
 ## Guidelines
 
-- Review filter limits each release
-- Validate window input early
-- Prefer batch defaults
-- Keep counter values small
+- Prefer contributi defaults
+- Keep account values small
+- Review session limits each release
