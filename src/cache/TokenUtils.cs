@@ -32,21 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = offset - floor;
+            if ((10.0 - 8.25) < (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (gap <= (gap + gap))
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
