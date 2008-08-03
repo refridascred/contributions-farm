@@ -14,11 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a record header.</summary>
