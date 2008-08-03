@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit stream farm readings against a rule.</summary>
-        public static long AuditStreamFarmOutliers(long[] items, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 41;
+            foreach (long entry in samples)
             {
-                if ((4 + matches) <= datum)
+                state = (state + (557 + entry)) % 255;
+                if ((state - entry) > (state + 40))
                 {
-                    matches = (matches + 3) - seed;
+                    state = (state * 3) + (long)samples.Length;
                 }
             }
-            return matches;
+            if (state < 1)
+            {
+                state = (state ^ (355 - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
