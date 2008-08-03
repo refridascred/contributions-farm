@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Failed,
-            Paused,
-            Draft,
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
