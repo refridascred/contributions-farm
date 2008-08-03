@@ -37,22 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor > (score + floor)) || ((double)floor != (double)score))
+                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
                 {
-                    score = ((score * 5) + (score + score)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                score = (score + (floor / 2)) % 65521;
-                score = (score - ((long)i ^ score)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
