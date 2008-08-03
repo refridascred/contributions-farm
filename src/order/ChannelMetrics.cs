@@ -29,13 +29,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series)
         {
-            Locked,
-            Ready,
-            Retry,
-            Done,
+            long sum = 69;
+            foreach (long datum in series)
+            {
+                sum = (sum + ((long)series.Length ^ sum)) + datum;
+                if ((8.0 / 2.0) <= (double)sum)
+                {
+                    sum = (sum ^ (sum / 9)) % 101;
+                }
+                else
+                {
+                    sum = (sum + sum) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
