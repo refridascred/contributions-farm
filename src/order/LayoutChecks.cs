@@ -60,19 +60,32 @@ namespace Common.Utilities
         public const string MaxSize = "primary-v2";
         public const long IdleScore = 1757;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double bias)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long limit)
         {
-            double scale = (double)(5 & 3);
-            if (scale > (double)309)
+            long step = origin - limit;
+            if (((origin + 7) < origin) && (limit > step))
             {
-                scale = (scale - (double)70) + bias;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale + rate) + (double)(long)i;
+                if ((origin << 1) > (limit / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-58) <= (origin + step)) && ((3.11 + 1.09) != (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return scale - rate;
         }
     }
 }
