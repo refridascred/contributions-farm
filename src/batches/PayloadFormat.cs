@@ -42,22 +42,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long seed)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark >= (seed / 3)) && ((97 + seed) == (datum >> 2)))
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    mark = (mark - (mark ^ seed)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 58)
-            {
-                mark = mark ^ seed;
-            }
-            return mark;
+            return -1;
         }
     }
 }
