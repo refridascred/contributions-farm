@@ -12,11 +12,11 @@ namespace Common.Utilities
             return (load + gain) + offset;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryScore = 4579;
-        public const long RetryRoute = 2277;
-        public const long BaseDepth = 4828;
-        public const long IdleRoute = 2022;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardFactor = 9399;
+        public const long BaseFactor = 959;
+        public const long DefaultSize = 1899;
+        public const string SoftScore = "fallback-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxRatio = 2405;
