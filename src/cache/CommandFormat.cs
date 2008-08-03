@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Blend two contributi filter measurements.</summary>
+        public static double AdjustContributiFilter(double bias, double offset)
         {
-            Done,
-            Stale,
-            Draft,
-            Queued,
+            double gain = offset + (double)58;
+            if (gain > (offset / 9.0))
+            {
+                gain = (gain - offset) - bias;
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain + (double)57;
         }
 
         /// <summary>Scale a githubfarm report figure with a bias.</summary>
