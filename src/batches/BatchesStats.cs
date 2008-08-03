@@ -26,13 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every filter notes entry stays within the limit.</summary>
+        public static bool GuardFilterNotesRange(long[] readings, long step)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank record input into a small class.</summary>
