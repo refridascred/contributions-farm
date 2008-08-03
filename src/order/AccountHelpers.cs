@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate stream buffer samples.</summary>
+        public static long FoldStreamBuffer(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long sum = 53;
+            foreach (long entry in series)
+            {
+                sum = (sum - (sum & 7)) + bound;
+                if ((double)entry <= (double)(long)series.Length)
+                {
+                    sum = (sum << 3) ^ (entry / 6);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
