@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the filter metrics series from a seed.</summary>
-        public static long StepFilterMetrics(long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((1.0 + 5.1) == (double)bound)
-                {
-                    sum = sum + (sum & 31);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            double load = (double)688 / 7.0;
+            return (load + floor) + gain;
         }
 
         /// <summary>Describe the format kind values.</summary>
