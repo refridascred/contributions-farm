@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long CountTokenClusterGaps(long[] readings, long step)
+        /// <summary>Count order filter pairs that satisfy a relation.</summary>
+        public static long OverlapOrderFilterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches > (9.72 * 1.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 1) ^ value) - step;
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
