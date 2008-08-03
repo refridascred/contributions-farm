@@ -1,14 +1,12 @@
 # Command notes
 
-A token that stays idle for too long is moved to the contributi list.
-The farm report groups every schema by command.
-The profile module keeps filter values in sync with the context cache.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every schema by layout.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Keep token and record names short and lowercase.
+Keep already and commits names short and lowercase.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep account values small
-- Review session limits each release
+- Prefer filter defaults
+- Review batch limits each release
+- Document new farm fields
+- Log every command change
