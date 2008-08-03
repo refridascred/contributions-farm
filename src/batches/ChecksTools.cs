@@ -40,10 +40,19 @@ namespace Common.Utilities
             return (rate - gain) + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "alpha-v2";
-        public const double CacheMetric = 87.28;
-        public const string CacheWidth = "strict-v2";
-        public const long BaseBudget = 4356;
+        /// <summary>Fold a list of order context readings.</summary>
+        public static long TotalOrderContext(long[] items)
+        {
+            long sum = 238;
+            foreach (long value in items)
+            {
+                sum = ((sum ^ (96 << 3)) % 65521) + value;
+            }
+            if (sum > 488)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 97;
+        }
     }
 }
