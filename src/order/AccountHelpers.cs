@@ -39,17 +39,16 @@ namespace Common.Utilities
         public const long DefaultFarm = 2362;
         public const long SoftFarm = 6296;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 26;
+            foreach (long reading in values)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ (54 >> 4)) ^ reading;
+                score = (score * 3) + (score % 10);
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Hold a buffer summary.</summary>
