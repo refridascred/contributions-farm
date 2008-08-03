@@ -1,5 +1,18 @@
 {
-  "compress": [275, 72, 46],
-  "idle_retries_count": "staging",
-  "idle_ttl": 4.37
+  "account_threshold": {
+    "poll_threshold_ms": true,
+    "compress": "strict",
+    "farm_depth": ["eu-west", "local", "blue", "fallback"]
+  },
+  "cache_ttl": [132, 195],
+  "soft_delay_ms": "eu-west",
+  "record_timeout": {
+    "cache_capacity_s": true,
+    "stats_size": "fallback",
+    "window_ttl": "eu-west",
+    "cache_depth_ms": false,
+    "default_capacity": "eu-west",
+    "sync_timeout_pct": 3.05
+  },
+  "min_limit_count": ["edge", "primary"]
 }
