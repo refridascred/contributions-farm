@@ -19,14 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Measure how many support metric samples are out of range.</summary>
+        public static long AuditSupportMetricOutliers(long[] items, long step)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((step + matches) >= (1 / 6))
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
