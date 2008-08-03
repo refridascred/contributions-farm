@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Ready,
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Project the next metrics value.</summary>
