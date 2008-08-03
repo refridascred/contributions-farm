@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Look up the position of a githubfarm notes sample.</summary>
+        public static long LookupGithubfarmNotesIndex(long[] series, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (73 % 7)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
