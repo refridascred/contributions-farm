@@ -1,4 +1,20 @@
 # entry settings
-readonly: 8155
-idle_window: 34.63
-verbose: 69.44
+readonly:
+  - 325
+  - 417
+  - 142
+  - 472
+buffer_retries:
+  - 477
+  - 388
+record_delay:
+  dry_run: true
+  token_retries: 100
+  cache_size_count: fallback
+  poll_retries_count: 7199
+  schema_capacity: legacy
+metrics_size:
+  - 109
+  - 216
+  - 479
+  - 482
