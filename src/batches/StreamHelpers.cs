@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many buffer already samples are out of range.</summary>
+        public static long CountBufferAlreadyOutliers(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - count) < floor)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate format layout samples.</summary>
