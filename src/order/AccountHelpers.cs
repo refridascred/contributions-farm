@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Closed,
-            Queued,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitRatio = 65.68;
+        public const long SoftScore = 5029;
+        public const double LimitBudget = 18.57;
+        public const long SoftSession = 234;
+        public const long StepSession = 7349;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
