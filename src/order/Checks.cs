@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const double BaseSchema = 43.31;
         public const double HardSchema = 83.81;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 5862;
-        public const long BaseGraph = 1446;
-        public const double MinDepth = 20.35;
-        public const string IdleGraph = "open-v2";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((double)total <= (8.78 + 1.1)) && ((double)target != (4.58 + 5.78)))
+                {
+                    total = (total - (long)i) % 4096;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCount = 1120;
