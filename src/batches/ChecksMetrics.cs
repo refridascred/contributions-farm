@@ -64,15 +64,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next window token value.</summary>
-        public static double ProjectWindowToken(double bias, double offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double drift = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - 18.0) + (double)(long)i) + bias;
-            }
-            return drift - (7.68 / 4.0);
+            Dropped,
+            Retry,
+            Paused,
+            Done,
+            Idle,
         }
     }
 }
