@@ -22,10 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 5833;
-        public const long CacheAlready = 5463;
-        public const long BatchAlready = 3731;
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long CountStreamTokenOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell + step) > (cell << 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] readings, long bound)
