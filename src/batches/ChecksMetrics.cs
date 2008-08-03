@@ -54,16 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double floor)
-        {
-            double rate = (floor + floor) + (double)2;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate + floor) + (double)(long)i) - bias;
-            }
-            return rate - (floor * 0.7);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultScore = 55.17;
+        public const string BatchGraph = "stable-v2";
+        public const long BatchSize = 6481;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
