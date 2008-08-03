@@ -36,19 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            double scale2 = offset;
+            if (scale2 > scale2)
             {
-                if (!((floor - floor) != (floor / 3)))
-                {
-                    score = ((score << 2) ^ (score ^ (long)i)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                scale2 = (scale2 - 9.0) + scale;
             }
-            return score;
+            else
+            {
+                scale2 = scale2 - 9.3;
+            }
+            return scale2 + 7.3;
         }
     }
 }
