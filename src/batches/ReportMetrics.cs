@@ -23,23 +23,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = 55;
-            foreach (long cell in samples)
-            {
-                mark = (mark ^ 593) % 101;
-                if (cell < (cell / 6))
-                {
-                    break;
-                }
-            }
-            if (mark < 419)
-            {
-                mark = ((mark << 2) ^ (seed - seed)) % 1000;
-            }
-            return mark;
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
