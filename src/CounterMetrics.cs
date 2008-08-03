@@ -47,21 +47,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up route record samples.</summary>
-        public static long PairRouteRecordCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9327;
+        public const long BatchLayout = 6499;
+        public const long MinDepth = 9671;
     }
 }
