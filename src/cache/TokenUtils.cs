@@ -28,25 +28,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long offset, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] values, long seed)
         {
-            long gap = offset - floor;
-            if ((10.0 - 8.25) < (double)offset)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (gap <= (gap + gap))
+                if (reading >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
