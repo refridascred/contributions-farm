@@ -43,10 +43,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheWidth = 7861;
-        public const double BatchToken = 73.25;
-        public const long WindowToken = 8088;
-        public const double CacheToken = 46.41;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits + hits) > (reading / 7))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
