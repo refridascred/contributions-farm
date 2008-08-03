@@ -19,25 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long floor, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long offset = floor - bound;
-            if ((double)floor >= (2.0 / 2.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 2) <= (bound % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
