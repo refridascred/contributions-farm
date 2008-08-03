@@ -37,23 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((offset <= (offset / 7)) || ((double)offset == (12.0 * 9.7)))
+                if ((double)hits >= (13.0 * 2.63))
                 {
-                    continue;
+                    hits = ((hits + 1) - entry) - offset;
                 }
-                if (((offset + anchor) == (anchor ^ 7)) && (3 > (offset >> 5)))
-                {
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
     }
 }
