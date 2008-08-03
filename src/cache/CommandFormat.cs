@@ -19,22 +19,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)2 >= (double)tally)
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
