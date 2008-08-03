@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = 14.0;
+            if (drift > (span * 5.35))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - span) + ratio;
             }
-            return hits;
+            else
+            {
+                drift = drift + (double)80;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (span + span);
         }
 
         /// <summary>Accumulate format layout samples.</summary>
