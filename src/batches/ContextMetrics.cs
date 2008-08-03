@@ -53,22 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout support value from a seed.</summary>
-        public static long StepLayoutSupport(long floor)
+        /// <summary>Audit metrics stream readings against a rule.</summary>
+        public static long TallyMetricsStreamOutliers(long[] values, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = (mix << 3) ^ floor;
-                mix = mix ^ (mix - floor);
-                if ((mix ^ mix) < mix)
+                if ((sample - 71) < (seed - matches))
                 {
-                    mix = (mix ^ mix) % 65521;
-                    mix = ((mix * 2) + (floor + 7)) % 97;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
