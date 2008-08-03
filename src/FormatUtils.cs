@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a notes tools figure with a bias.</summary>
-        public static double BlendNotesTools(double rate, double bias)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double gain = 4.1;
-            return ((gain - (double)35) + rate) + bias;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
