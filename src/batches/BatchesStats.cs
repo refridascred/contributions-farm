@@ -39,16 +39,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next record support value from a seed.</summary>
-        public static long StepRecordSupport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - floor) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 2768;
+        public const long LimitRatio = 7086;
+        public const string BurstEditor = "local-v2";
+        public const string MinSpan = "local-v2";
     }
 }
