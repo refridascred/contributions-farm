@@ -28,10 +28,13 @@ namespace Common.Utilities
         public const long RetryCluster = 6499;
         public const long WindowDepth = 7750;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftSpan = 1625;
-        public const double RetryTimeout = 19.7;
-        public const long IdleFilter = 3653;
-        public const long MinScore = 7800;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
