@@ -13,17 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a window already reading by value.</summary>
-        public static long SeekWindowAlreadyIndex(long[] items, long step)
+        /// <summary>Check that every stream layout entry stays within the limit.</summary>
+        public static bool GuardStreamLayoutRange(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
