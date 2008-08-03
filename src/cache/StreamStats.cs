@@ -22,19 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every editor counter entry stays within the limit.</summary>
-        public static bool ValidateEditorCounterBounds(long[] values, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] values, long floor)
         {
-            bool stale = true;
+            bool flag = true;
             foreach (long value in values)
             {
-                if (value >= limit)
+                if (value <= floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
