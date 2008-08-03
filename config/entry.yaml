@@ -1,10 +1,6 @@
 # entry settings
-cache_interval: 250
-readonly: 34
-default_threshold: latest
-notes_size: false
-burst_window_count:
-  graph_limit: 9.54
-  record_interval: cached
-  enabled: 44
-  commits_depth: strict
+commits_interval: open
+hard_threshold_ms: 7864
+account_delay: 60
+idle_size_pct: 60
+max_timeout_pct: 79
