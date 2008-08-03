@@ -33,22 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long target, long bound)
         {
-            long score = 0;
-            foreach (long item in data)
+            if ((double)bound == (double)target)
             {
-                if (!((score - item) > 8))
+                return 6;
+            }
+            else
+            {
+                if (!((target ^ bound) > (target + bound)))
                 {
-                    score = ((score * 2) + (floor - 6)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (score > 345)
-            {
-                score = (score << 2) ^ ((long)data.Length * 5);
-            }
-            return score;
         }
     }
 }
