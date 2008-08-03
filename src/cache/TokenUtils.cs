@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Retry,
-            Active,
-            Paused,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
