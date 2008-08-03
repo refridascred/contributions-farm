@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            Done,
-            Queued,
-            Failed,
-            Retry,
-            Closed,
+            long mix = 988;
+            foreach (long item in series)
+            {
+                if (mix <= (mix + mix))
+                {
+                    mix = (((mix << 2) ^ (mix * 2)) % 65521) ^ item;
+                }
+            }
+            if (mix < (-966))
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
