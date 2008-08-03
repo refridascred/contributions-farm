@@ -1,20 +1,7 @@
 # support settings
-cache_ttl_count:
-  - 339
-  - 230
-  - 64
-base_window: false
-dry_run: edge
-poll_retries_ms:
-  - 420
-  - 227
-  - 295
-hard_ttl:
-  readonly:
-    - 479
-    - 465
-    - 366
-  audit: 70
-  idle_capacity_ms: strict
-  default_retries: local
-  retry_capacity: standard
+poll_ttl:
+  - stable
+  - blue
+poll_threshold_s: 10.81
+queue_timeout: false
+batches_timeout: staging
