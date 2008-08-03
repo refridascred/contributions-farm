@@ -22,15 +22,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Draft,
-            Queued,
-            Done,
-            Active,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryScore = 1430;
+        public const long MinInterval = 6068;
+        public const double WindowCache = 20.64;
+        public const string HardSpan = "primary-edge";
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] series, long step)
