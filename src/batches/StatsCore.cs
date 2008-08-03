@@ -88,17 +88,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed + seed) <= floor)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((double)floor == (7.0 + 7.0)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 5) == (floor % 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6.57 < (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
