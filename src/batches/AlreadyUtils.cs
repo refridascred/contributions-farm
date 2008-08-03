@@ -34,17 +34,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 9334;
         public const double BatchStats = 3.4;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 4;
+            foreach (long value in readings)
             {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - (result ^ 2)) % 97) + value;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Iterate the format support series from a seed.</summary>
