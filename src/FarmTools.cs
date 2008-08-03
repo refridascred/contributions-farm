@@ -19,20 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((floor > (result - floor)) || ((result + 8) > (result * 5))))
-                {
-                    result = (result * 4) + (floor / 9);
-                    result = (result * 5) + (long)i;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
