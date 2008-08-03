@@ -34,17 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 4) + seed;
+                mark = mark + (seed + mark);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
