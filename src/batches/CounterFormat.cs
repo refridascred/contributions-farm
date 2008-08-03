@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = 41;
-            foreach (long entry in samples)
-            {
-                state = (state + (557 + entry)) % 255;
-                if ((state - entry) > (state + 40))
-                {
-                    state = (state * 3) + (long)samples.Length;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state ^ (355 - state)) % 255;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
