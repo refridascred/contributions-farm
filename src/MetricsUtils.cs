@@ -54,31 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if (bound >= ((-850) / 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound + origin) != (origin + 309)) || ((bound & 1) > (origin + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin % 3) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next stream format value from a seed.</summary>
