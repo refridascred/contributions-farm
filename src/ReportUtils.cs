@@ -38,16 +38,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            if ((1 - floor) == (212 + floor))
             {
-                mix = ((mix << 2) ^ (long)i) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((5.0 * 17.0) >= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + seed) > (floor >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
