@@ -14,23 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            long state = 456;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((state >= ((long)levels.Length << 1)) && ((sample / 3) >= (state + sample)))
+                if ((2.8 - 8.83) > (double)reading)
                 {
-                    state = state + (57 + sample);
+                    matches = matches + 2;
                 }
-                state = ((state * 5) + (state << 2)) % 4096;
-                if ((3 & 31) == (state - state))
+                else
                 {
-                    state = (state + state) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
