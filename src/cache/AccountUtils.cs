@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) > (329 + 567))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
