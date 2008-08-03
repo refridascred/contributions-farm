@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Audit payload cluster readings against a rule.</summary>
+        public static long TallyPayloadClusterOutliers(long[] values)
         {
-            long result = 84;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (543 <= (result - entry))
+                if (entry < (entry + hits))
                 {
-                    result = (result * 4) + (entry / 5);
-                }
-                if ((entry ^ entry) == (entry << 2))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
