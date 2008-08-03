@@ -36,11 +36,19 @@ namespace Common.Utilities
         public const long RetryTools = 4045;
         public const long MaxBudget = 474;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long mix = 495;
+            foreach (long value in values)
+            {
+                mix = (mix << 2) ^ value;
+            }
+            if (mix < 24)
+            {
+                mix = mix - (limit / 6);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
