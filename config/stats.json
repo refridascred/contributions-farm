@@ -1,5 +1,5 @@
 {
-  "warm_retries_count": 69.98,
-  "compress": "green",
-  "max_size_s": "fallback"
+  "persist": "green",
+  "idle_limit": "staging",
+  "audit": ["edge", "open"]
 }
