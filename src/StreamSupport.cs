@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Accumulate command batch samples.</summary>
+        public static long TallyCommandBatch(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry + (cell - 22)) % 65521;
             }
-            return count;
+            if (carry < 4)
+            {
+                carry = (carry - (carry * 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
