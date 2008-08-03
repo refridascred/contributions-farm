@@ -13,15 +13,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
