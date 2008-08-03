@@ -26,21 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 72;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((state + state) > (state ^ reading)) || ((reading + state) > (reading << 1)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + (reading + reading);
+                }
+                if ((118 > (5 + reading)) || (reading >= 900))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 245)
+            {
+                state = state + (state + state);
+            }
+            return state % 1000;
         }
     }
 }
