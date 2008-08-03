@@ -50,11 +50,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 5893;
-        public const string BatchNotes = "strict-v2";
-        public const double CacheNotes = 92.07;
-        public const long BaseNotes = 7714;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 7018;
+        public const double StepLevel = 67.08;
+        public const long MaxContributi = 4716;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
