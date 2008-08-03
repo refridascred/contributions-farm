@@ -1,16 +1,10 @@
 {
-  "account_interval": "fallback",
-  "burst_delay_s": 2404,
-  "cache_depth": {
-    "metrics_size": {
-      "flush_ratio_s": "blue",
-      "retry_limit": [253, 348, 27],
-      "batch_capacity_count": 81
-    },
-    "verbose": false,
-    "idle_ttl": "stable",
-    "readonly": true
-  },
-  "compress": "strict",
-  "flush_limit_ms": [92, 160, 365, 320]
+  "verbose": "fallback",
+  "dry_run": [175, 340, 158],
+  "retry_depth": {
+    "stats_size": 7.29,
+    "min_ttl_ms": 17.79,
+    "verbose": 60,
+    "default_ratio_pct": false
+  }
 }
