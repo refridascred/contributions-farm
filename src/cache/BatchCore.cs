@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings, long floor)
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long AuditContextStatsGaps(long[] items)
         {
-            long mark = 38;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = (mark + item) + floor;
+                if ((double)value < (5.2 * 5.17))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
