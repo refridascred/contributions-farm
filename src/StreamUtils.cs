@@ -69,11 +69,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Project the next route value.</summary>
