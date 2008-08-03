@@ -47,22 +47,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the cluster layout entries that pass the check.</summary>
-        public static long MeasureClusterLayoutOutliers(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (((entry % 97) <= seen) && ((261 << 1) != (22 ^ seen)))
+                if (value > bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next window token value.</summary>
