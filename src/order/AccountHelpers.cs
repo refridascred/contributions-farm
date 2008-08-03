@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long total = 84;
-            foreach (long item in series)
-            {
-                total = (((total * 2) + 57) % 1000) ^ item;
-            }
-            return total % 97;
+            Closed,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the farm phase values.</summary>
