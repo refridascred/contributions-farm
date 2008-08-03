@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] items, long offset)
         {
-            long next = step ^ limit;
-            if (!(((-897) & 1) >= (limit - next)))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step <= (12.0 / 4.0)))
+                if (sample > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the batches context entries that pass the check.</summary>
