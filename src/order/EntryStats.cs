@@ -30,38 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long limit, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long bound)
         {
-            if ((5 + floor) != (limit / 8))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 3) >= limit)
+                if (value != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((10.0 * 16.0) != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 24) < (6 >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
