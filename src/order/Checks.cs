@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 6082;
-        public const double DefaultInterval = 81.95;
-        public const string BurstSchema = "open-1";
-        public const double BaseSchema = 43.31;
-        public const double HardSchema = 83.81;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long target)
