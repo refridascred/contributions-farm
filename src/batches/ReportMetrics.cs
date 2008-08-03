@@ -22,12 +22,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Pending,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryInterval = 6025;
+        public const long SoftStats = 3502;
+        public const long WindowBudget = 6245;
+        public const string StepSpan = "open-v2";
+        public const double StepStats = 10.69;
     }
 }
