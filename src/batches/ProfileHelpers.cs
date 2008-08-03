@@ -60,18 +60,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] items, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (307 < hits)
-                {
-                    hits = ((hits + 2) ^ entry) - floor;
-                }
+                result = (result * 2) + (result * 4);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the window mode values.</summary>
