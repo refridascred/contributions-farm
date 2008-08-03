@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string StepSpan = "standard-1";
         public const double RetryWidth = 78.7;
 
-        /// <summary>Roll a notes session counter forward.</summary>
-        public static long IterateNotesSession(long floor)
+        /// <summary>Measure how many metric already samples are out of range.</summary>
+        public static long TallyMetricAlreadyHits(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                score = (score - (floor ^ floor)) % 101;
-                score = ((score * 4) + ((-57) + score)) % 1000;
-                score = ((score * 5) + (long)i) % 101;
+                if ((tally * 5) <= (cell + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
