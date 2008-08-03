@@ -58,18 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long MeasureClusterRecordMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((((-95) - 94) >= (reading + hits)) && ((reading << 1) > 78))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "cached";
+        public const double MinTimeout = 26.8;
+        public const long DefaultWidth = 5022;
     }
 }
