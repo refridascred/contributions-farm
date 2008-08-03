@@ -28,19 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc ^ bound) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return valid;
+            return acc;
         }
     }
 }
