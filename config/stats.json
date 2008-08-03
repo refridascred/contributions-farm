@@ -1,15 +1,7 @@
 {
-  "readonly": "fallback",
-  "batch_interval_s": {
-    "order_capacity": 94,
-    "session_ratio": 48.84,
-    "idle_capacity_ms": 30,
-    "sync_timeout_s": "open",
-    "enabled": false,
-    "base_window_s": 60
-  },
-  "warm_delay_count": "blue",
-  "order_capacity": 16.9,
-  "hard_capacity": "standard",
-  "max_window": [1, 279, 214]
+  "entry_window": 100,
+  "min_delay": 98,
+  "batches_retries": "stable",
+  "retry_interval_ms": "eu-west",
+  "min_depth_s": ["eu-west", "strict", "blue", "local"]
 }
