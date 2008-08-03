@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long span = offset ^ origin;
-            if ((offset >= span) || ((double)offset >= 2.62))
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                state = (state + state) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)origin <= (14.0 / 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Combine session buffer values into a single score.</summary>
