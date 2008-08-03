@@ -33,18 +33,14 @@ namespace Common.Utilities
         public const long WindowReport = 3856;
         public const long BatchSize = 1770;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) >= (count - (long)readings.Length))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the metric kind values.</summary>
