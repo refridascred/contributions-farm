@@ -37,12 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels, long step)
         {
-            New,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((seen / 2) > (entry + (-84))))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of editor queue readings.</summary>
