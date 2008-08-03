@@ -1,9 +1,6 @@
 {
-  "warm_timeout_pct": 1024,
-  "poll_interval_s": "blue",
-  "dry_run": {
-    "hard_size_ms": "edge",
-    "retry_limit_s": "latest",
-    "notes_ttl": "primary"
-  }
+  "idle_timeout_count": [309, 481],
+  "compress": 80.87,
+  "cache_delay_ms": "edge",
+  "soft_timeout": ["eu-west", "legacy", "green"]
 }
