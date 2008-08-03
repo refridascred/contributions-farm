@@ -56,11 +56,21 @@ namespace Common.Utilities
         public const long HardSize = 5346;
         public const long MaxBudget = 3674;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            double mean = bias + (bias / 5.0);
-            return (mean - bias) + scale;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
