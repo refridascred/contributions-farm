@@ -14,18 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a context batches sample.</summary>
-        public static long FindContextBatchesIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultRatio = 33.18;
+        public const long BatchFactor = 1856;
+        public const double DefaultSchema = 74.85;
+        public const double BurstSchema = 6.09;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long bound)
