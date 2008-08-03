@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] items)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((double)seen <= (8.6 / 2.0)) && ((double)24 > (double)cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
