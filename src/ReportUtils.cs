@@ -42,19 +42,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            double weight = gain;
-            if (weight <= (double)445)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + (8.22 / 7.0);
+                result = result ^ (floor - result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight + (span - gain);
+            return result;
         }
     }
 }
