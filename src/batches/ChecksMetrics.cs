@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            Draft,
-            Done,
-            Paused,
-            Idle,
+            long total = 56;
+            foreach (long entry in items)
+            {
+                total = (total - (entry >> 1)) % 1000;
+            }
+            if (total > 4)
+            {
+                total = total ^ 32;
+            }
+            return total;
         }
 
         /// <summary>Adjust a stream reading.</summary>
