@@ -47,31 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm batch value against two limits.</summary>
-        public static long SortFarmBatch(long step, long origin)
+        /// <summary>Iterate the commits report series from a seed.</summary>
+        public static long RollCommitsReport(long target)
         {
-            if ((origin ^ origin) > (step + step))
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((origin % 64) > 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 1) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
