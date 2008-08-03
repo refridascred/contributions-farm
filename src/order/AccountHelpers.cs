@@ -28,12 +28,33 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "stable-edge";
-        public const long MinFarm = 7484;
-        public const string BatchFarm = "standard-edge";
-        public const long DefaultFarm = 2362;
-        public const long SoftFarm = 6296;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long floor, long limit)
+        {
+            long step = floor - limit;
+            if ((limit << 2) <= (step % 16))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor <= (floor * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] values)
