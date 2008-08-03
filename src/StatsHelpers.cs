@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a buffer batch counter forward.</summary>
+        public static long StepBufferBatch(long target)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
