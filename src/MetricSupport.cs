@@ -53,19 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (sample <= floor)
+                if (entry <= bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
