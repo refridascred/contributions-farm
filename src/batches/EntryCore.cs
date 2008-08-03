@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            if (((-828) + seed) > (seed * 4))
             {
-                if ((sample - target) > 888)
+                return 5;
+            }
+            else
+            {
+                if ((130 - seed) > seed)
                 {
-                    sum = sum ^ (sample >> 1);
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ sample) % 65521;
+                    return 6;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
