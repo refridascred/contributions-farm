@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftSize = 34.04;
-        public const string DefaultNotes = "stable-v2";
-        public const long BatchNotes = 3386;
-        public const long HardNotes = 9937;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double bias2)
+        {
+            double rate = bias + bias;
+            if (rate <= (bias2 - 0.43))
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate - (bias - 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardCounter = "open-edge";
