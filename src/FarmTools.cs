@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long floor)
         {
-            double gain = span;
-            if (gain < (span * 17.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (scale - span);
+                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (scale * 7.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + (gain - 6.4);
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
