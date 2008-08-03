@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long step)
+        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
+        public static long MatchMetricsGithubfarmCount(long[] values)
         {
-            if ((36 + step) <= (offset - step))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)31 <= (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
