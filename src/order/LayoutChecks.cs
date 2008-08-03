@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-1";
         public const long CacheWidth = 1259;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] samples, long step)
         {
-            long state = 367;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                state = ((state ^ reading) % 65521) + floor;
+                if ((step + (long)samples.Length) == (value % 12))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state > (-80))
-            {
-                state = state + state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
