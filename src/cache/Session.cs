@@ -44,19 +44,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLayoutLimits(long[] series, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc - (long)i;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
     }
 }
