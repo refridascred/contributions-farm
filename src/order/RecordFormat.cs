@@ -51,10 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 40.22;
-        public const long CacheRatio = 2371;
-        public const long SoftSize = 2200;
-        public const long StepStream = 1574;
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long CountWindowContextHits(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value >= (5.85 + 3.05)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
