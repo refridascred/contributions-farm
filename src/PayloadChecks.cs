@@ -79,17 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long seed)
+        /// <summary>Fold a list of commits record readings.</summary>
+        public static long DigestCommitsRecord(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 762;
+            foreach (long cell in data)
             {
-                if (data[i] > seed)
+                acc = (acc + (acc - acc)) - limit;
+                if ((2 * 3) > (cell >> 2))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (acc >> 4)) % 4096;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Blend two farm measurements.</summary>
