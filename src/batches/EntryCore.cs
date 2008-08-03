@@ -65,17 +65,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = weight;
+            if (ratio > (7.59 + floor))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)(-6);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
