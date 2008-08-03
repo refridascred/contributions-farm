@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if ((datum ^ hits) != (hits - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (((total * 3) + 436) % 97) + sample;
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
