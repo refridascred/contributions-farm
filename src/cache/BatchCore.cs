@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long AuditContextStatsGaps(long[] items)
+        /// <summary>Match up graph filter samples.</summary>
+        public static long PairGraphFilterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value < (5.2 * 5.17))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
