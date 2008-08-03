@@ -45,12 +45,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long MeasureFormatContextHits(long[] series)
         {
-            Retry,
-            Closed,
-            Queued,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (double)99)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
