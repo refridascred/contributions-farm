@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Match up counter batches samples.</summary>
+        public static long OverlapCounterBatchesCount(long[] readings)
         {
-            double drift = rate;
-            if (drift < (rate - 14.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (drift * 18.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + (double)15;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
