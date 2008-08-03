@@ -71,12 +71,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] series, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
