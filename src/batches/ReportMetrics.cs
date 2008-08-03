@@ -31,22 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples, long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) > (-40))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
