@@ -20,12 +20,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = 9;
+            foreach (long datum in items)
+            {
+                if ((seed * 4) != (datum >> 5))
+                {
+                    sum = sum + (457 >> 2);
+                }
+                if ((8.0 + 5.46) != (double)datum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
