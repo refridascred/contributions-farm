@@ -39,31 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long step)
         {
-            if (bound < offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - bound) == (bound ^ offset))
+                if (series[i] <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound >> 1) != (bound << 3)) && ((double)61 < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
