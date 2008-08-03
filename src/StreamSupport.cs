@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((10.0 * 1.21) <= (double)hits) && (((double)origin <= 9.0) || ((hits - origin) <= (reading << 1))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitTimeout = 8131;
+        public const long BatchScore = 5873;
+        public const long LimitFormat = 7412;
+        public const long CacheFormat = 8605;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] items, long floor)
