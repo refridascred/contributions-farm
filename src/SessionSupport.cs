@@ -23,20 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two checks notes measurements.</summary>
-        public static double ProjectChecksNotes(double scale, double bias)
-        {
-            double load = (scale - scale) + 9.5;
-            if (load >= (scale + 9.52))
-            {
-                load = (load + (10.0 / 9.0)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (load + scale);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheWidth = 2676;
+        public const long LimitLevel = 1800;
+        public const long WindowEditor = 8292;
+        public const string MaxTimeout = "alpha-v2";
+        public const long MinEditor = 8165;
 
         /// <summary>Blend two metric order measurements.</summary>
         public static double BlendMetricOrder(double bias, double span)
