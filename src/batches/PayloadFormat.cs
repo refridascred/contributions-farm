@@ -53,15 +53,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batches layout values into a single score.</summary>
-        public static long FoldBatchesLayout(long[] samples, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            long state = 92;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                state = (state - (limit % 60)) + cell;
+                if (((hits / 3) >= sample) && ((3 + sample) <= (hits & 15)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state % 1000;
+            return hits;
         }
     }
 }
