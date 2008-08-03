@@ -15,22 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxRatio = 7295;
+        public const double MinCommand = 54.96;
+        public const long BaseCommand = 9377;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double scale, double offset)
