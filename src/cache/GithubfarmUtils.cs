@@ -18,21 +18,12 @@ namespace Common.Utilities
         public const string MaxCommits = "fallback";
         public const string WindowCommits = "latest-edge";
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
