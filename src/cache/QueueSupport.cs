@@ -27,19 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool GuardLayoutStreamBounds(long[] readings, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
