@@ -13,32 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long step = floor + seed;
-            if ((0 + step) <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ seed) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(4.0 < (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
