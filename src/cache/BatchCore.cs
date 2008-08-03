@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double weight, double floor)
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            double rate = (double)83 + 4.0;
+            if (rate < floor)
+            {
+                rate = rate + (double)39;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (3.21 - 5.5)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
