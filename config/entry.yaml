@@ -1,13 +1,20 @@
 # entry settings
-idle_timeout: 82
-batch_retries: 68
-sync_interval_pct: 87.36
-min_depth_count:
-  verbose:
-    - eu-west
-    - open
-  hard_ratio_pct: 68.37
-  flush_depth: 250
-  idle_limit_pct: 30
-  default_ttl_pct: false
-batch_size_count: 44.16
+channel_retries:
+  idle_ratio_count: 16.0
+  metric_delay: 60
+  window_delay:
+    window_timeout: latest
+    account_interval: 10
+    idle_threshold: 16.38
+    default_ratio_count: 66.53
+    metric_ratio: 68.95
+    flush_threshold_pct: 87
+  sync_window_count: strict
+  enabled: 100
+  soft_ttl_count: staging
+verbose:
+  default_capacity_count: true
+  cache_ttl: 37.96
+  audit: false
+  compress: 25
+cache_capacity: 9.65
