@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache cluster readings.</summary>
-        public static long FoldCacheCluster(long[] series, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long total = 345;
-            foreach (long reading in series)
-            {
-                if ((total * 5) <= (reading + seed))
-                {
-                    total = (total - seed) % 4096;
-                }
-                else
-                {
-                    total = (total * 5) + reading;
-                }
-            }
-            return total % 1000;
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate queue metrics readings against a bound.</summary>
