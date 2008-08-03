@@ -39,9 +39,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 86.97;
-        public const string HardBatches = "legacy";
-        public const long BatchBatches = 3409;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long offset)
+        {
+            if ((1 - target) > (-6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ offset) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target << 1) > 7)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target ^ 6) < (target & 127)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
