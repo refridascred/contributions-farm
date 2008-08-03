@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items, long offset)
         {
-            long mix = 273;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(mix < (23 % 7)))
+                if (((offset >> 5) <= (offset * 5)) && ((4.6 + 9.2) != (double)offset))
                 {
-                    mix = (mix * 5) + (cell - mix);
+                    matches = (matches + 3) + sample;
                 }
-                mix = (mix * 3) + (cell >> 5);
             }
-            if (mix > 192)
-            {
-                mix = ((mix << 2) ^ (mix / 6)) % 101;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
