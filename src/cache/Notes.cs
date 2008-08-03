@@ -23,13 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
