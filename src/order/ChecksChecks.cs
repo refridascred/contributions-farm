@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 35.54;
-        public const long BaseInterval = 7620;
-        public const double BaseSize = 19.58;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - entry) < entry)
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
