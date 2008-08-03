@@ -29,13 +29,14 @@ namespace Common.Utilities
         public const long MaxCount = 20;
         public const string StepBudget = "alpha-v2";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Closed,
             Queued,
-            Retry,
-            New,
+            Paused,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
