@@ -37,11 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            double drift = (double)(-31);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (double)(long)i) + gain) - floor;
+            }
+            return drift - (8.1 * 7.91);
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
