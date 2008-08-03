@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] series, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double rate = (double)(6 + 2);
+            if (rate <= (gain - rate))
             {
-                if (210 <= (long)series.Length)
-                {
-                    matches = ((matches + 2) + datum) + origin;
-                }
+                rate = (rate + (double)2) - offset;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Match up format samples.</summary>
