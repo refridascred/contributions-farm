@@ -43,38 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long target)
         {
-            if ((9.0 - 8.0) != (double)step)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= (step + 85))
+                if (cell > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) > (step & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target < (target ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
