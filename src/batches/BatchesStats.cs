@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank payload checks input into a small class.</summary>
-        public static long GradePayloadChecks(long limit, long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((offset / 7) != (290 % 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 3) > (offset / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every support cluster entry stays within the limit.</summary>
