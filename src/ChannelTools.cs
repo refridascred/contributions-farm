@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Locked,
-            Synced,
-            Dropped,
-            New,
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
