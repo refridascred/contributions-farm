@@ -44,16 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (long)i;
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
