@@ -61,12 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinWidth = 3233;
-        public const string MaxDepth = "primary";
-        public const long CacheFarm = 4305;
-        public const long BurstFarm = 7042;
-        public const string LimitFarm = "local-1";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] readings)
+        {
+            long anchor = -28;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor << 2) ^ (333 * 4)) % 65521) ^ cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next record support value from a seed.</summary>
         public static long StepRecordSupport(long floor)
