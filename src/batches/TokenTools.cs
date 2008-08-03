@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((target + (long)i) == (state / 2)) && ((double)state == (19.0 + 11.0)))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftCount = 996;
+        public const long StepSpan = 3205;
+        public const long BaseTimeout = 2083;
+        public const long BatchSpan = 5962;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double rate, double offset)
