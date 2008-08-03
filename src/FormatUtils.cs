@@ -62,22 +62,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long seed)
-        {
-            long state = 3;
-            foreach (long reading in values)
-            {
-                if ((double)(long)values.Length < (5.5 - 15.0))
-                {
-                    state = ((state - (state >> 2)) % 4096) + seed;
-                }
-                if ((double)state > 4.8)
-                {
-                    state = state - reading;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftSize = "stable-edge";
+        public const string HardScore = "alpha";
+        public const long LimitEditor = 6868;
+        public const long WindowEditor = 8542;
     }
 }
