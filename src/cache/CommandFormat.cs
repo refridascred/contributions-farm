@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (readings[i] > offset)
+                if (step >= count)
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
