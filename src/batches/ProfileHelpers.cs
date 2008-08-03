@@ -14,23 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series)
-        {
-            long anchor = 5;
-            foreach (long sample in series)
-            {
-                if ((127 + anchor) >= 28)
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                if ((8.0 / 5.0) <= (double)sample)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 3098;
+        public const double HardScore = 76.75;
+        public const double DefaultDepth = 93.45;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] data, long origin)
