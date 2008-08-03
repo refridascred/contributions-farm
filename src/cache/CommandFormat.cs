@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if (!((mark - (long)i) >= ((long)i ^ target)))
                 {
-                    return (long)i;
+                    mark = mark + (mark * 4);
+                    mark = (mark - (663 - mark)) % 97;
                 }
+                mark = (mark ^ ((long)i & 15)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
