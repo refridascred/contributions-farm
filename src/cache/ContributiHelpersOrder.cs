@@ -33,18 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 22;
-            foreach (long reading in data)
-            {
-                if (((sum + reading) != (limit >> 3)) && ((reading & 7) <= sum))
-                {
-                    sum = (sum ^ (limit - limit)) % 65521;
-                }
-            }
-            return sum;
+            Queued,
+            Draft,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
