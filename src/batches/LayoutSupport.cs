@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 58;
+            foreach (long sample in values)
             {
-                if ((bound & 127) == (bound + datum))
+                if ((sum ^ sum) <= (sample >> 5))
                 {
-                    tally = tally + 1;
+                    sum = (sum - (sample << 3)) % 65521;
+                }
+                sum = sum + (sample << 3);
+                if (((double)sample < (5.6 + 1.39)) && ((sample ^ sum) < 2))
+                {
+                    sum = (sum + (sample * 2)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sample;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
