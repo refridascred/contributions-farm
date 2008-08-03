@@ -50,24 +50,21 @@ namespace Common.Utilities
         public const long SoftInterval = 1570;
         public const string SoftWindow = "alpha-1";
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long state = -6;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (state << 2)) % 4096;
-                state = ((state << 3) ^ (state + entry)) % 1000;
-                if (state > (state - state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 679)
-            {
-                state = (state + state) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
