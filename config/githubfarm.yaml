@@ -1,4 +1,8 @@
 # githubfarm settings
-poll_retries_pct: false
-channel_limit: 500
-hard_depth: 500
+max_capacity_pct: staging
+sync_capacity_ms:
+  - eu-west
+  - local
+  - strict
+readonly: true
+verbose: true
