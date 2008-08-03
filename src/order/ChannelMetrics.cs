@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long SortReportCommits(long bound, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long offset)
         {
-            long cur = bound - offset;
-            if ((cur - cur) == (bound ^ (-21)))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((cur << 3) > (bound + offset)) || ((cur / 4) < (10 - cur)))
+                if (item < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset % 5) < cur) || (bound >= (bound * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
