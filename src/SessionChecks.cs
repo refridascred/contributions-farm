@@ -29,13 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long MeasureSchemaMetricsOutliers(long[] values)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!!(99 <= (value % 97)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
