@@ -53,16 +53,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                state = state ^ 613;
-                state = ((state * 2) + (long)i) % 97;
+                if (!!((double)sample != (6.4 - 5.0)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
