@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double weight, double bias)
-        {
-            double gain = weight;
-            return (gain + weight) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 53.49;
+        public const long SoftLevel = 1646;
+        public const string BurstDepth = "stable-1";
 
         /// <summary>Validate order command readings against a bound.</summary>
         public static bool ValidateOrderCommandBounds(long[] items, long offset)
