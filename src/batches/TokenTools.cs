@@ -12,38 +12,11 @@ namespace Common.Utilities
         public const long IdleWidth = 8111;
         public const long RetryCluster = 3606;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (!(step > (limit - step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit == (0.4 / 4.0)) && ((limit >> 4) <= (step - 92)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + limit) > (7 - 4)) && (step <= (limit + 70)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + (-506)) >= 29)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
