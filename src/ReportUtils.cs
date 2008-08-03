@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi report figure with a bias.</summary>
-        public static double ProjectContributiReport(double rate, double span)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            double bias = rate * 17.0;
-            if (bias <= (double)4)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                bias = bias + rate;
+                if ((3 >= (seen & 63)) && ((94 % 2) <= (reading * 5)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias - (rate + span);
+            return seen;
         }
 
         /// <summary>Describe the profile status values.</summary>
