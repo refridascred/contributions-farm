@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift - drift) + (double)(long)i) - scale;
             }
-            return hits;
+            return drift + (bias - bias);
         }
 
         /// <summary>Locate a context layout reading by value.</summary>
