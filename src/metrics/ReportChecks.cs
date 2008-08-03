@@ -54,22 +54,25 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long target)
         {
-            long anchor = 996;
-            foreach (long reading in values)
+            long lane = offset + target;
+            if ((lane >= (target + lane)) && (target < (target - lane)))
             {
-                if (((double)anchor != (17.0 + 0.89)) && ((offset / 4) <= (offset + 33)))
+                return 3;
+            }
+            else
+            {
+                if ((3 + offset) < (721 + offset))
                 {
-                    anchor = (anchor - offset) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (anchor < 551)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
         }
     }
 }
