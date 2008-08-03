@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor << 2) ^ (50 / 2);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (((target + (long)i) == (state / 2)) && ((double)state == (19.0 + 11.0)))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Project the next order value.</summary>
