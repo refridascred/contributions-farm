@@ -1,8 +1,5 @@
 {
-  "burst_interval_pct": 35.77,
-  "max_timeout_count": [271, 150, 272, 235],
-  "poll_interval_pct": ["local", "legacy", "eu-west", "standard"],
-  "sync_ttl_s": "latest",
-  "max_size_s": 5435,
-  "retry_threshold_count": 1024
+  "retry_limit": "blue",
+  "sync_retries": [374, 11],
+  "base_window_pct": ["standard", "staging"]
 }
