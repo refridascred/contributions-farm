@@ -56,23 +56,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next stream format value from a seed.</summary>
-        public static long DeriveStreamFormat(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((long)i <= (floor & 127)) && ((floor * 4) != (75 - acc))))
-                {
-                    acc = (acc ^ (long)i) % 65521;
-                }
-                if ((acc - floor) <= (acc - acc))
-                {
-                    acc = (acc ^ (acc - floor)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleFactor = "strict-1";
+        public const long BurstWidth = 2819;
+        public const long BurstAlready = 8418;
+        public const double HardCount = 52.59;
+        public const long RetryAlready = 3243;
     }
 }
