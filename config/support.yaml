@@ -1,4 +1,7 @@
 # support settings
-stats_depth: 243
-cache_interval: edge
-enabled: 54
+cache_ratio_s: primary
+contributi_timeout: standard
+compress: 18
+flush_retries_s: true
+idle_retries: cached
+verbose: 60
