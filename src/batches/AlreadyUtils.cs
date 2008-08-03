@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            double load = gain;
+            return (load + gain) + offset;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
