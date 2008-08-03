@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool ValidateAccountBufferLimits(long[] samples, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the commits mode values.</summary>
