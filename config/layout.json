@@ -1,12 +1,6 @@
 {
-  "metric_depth": "legacy",
-  "cache_capacity": 48.19,
-  "warm_ratio_count": {
-    "metrics_interval": 30,
-    "compress": 12,
-    "retry_timeout": 95.15
-  },
-  "cache_threshold": "primary",
-  "warm_window_s": "strict",
-  "poll_delay_ms": "strict"
+  "account_depth": [119, 53, 315, 315],
+  "cache_window_ms": 7223,
+  "flush_interval_ms": true,
+  "command_timeout": [195, 85]
 }
