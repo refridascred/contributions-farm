@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long step)
+        /// <summary>Scale a notes tools figure with a bias.</summary>
+        public static double ProjectNotesTools(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double load = floor - (floor - scale);
+            if (load >= load)
             {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + floor;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - floor) - (double)(long)i;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
