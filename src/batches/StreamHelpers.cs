@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the report mode values.</summary>
