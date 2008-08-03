@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] series, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mix = 589;
+            foreach (long sample in levels)
             {
-                if (((double)cell == (2.36 + 3.0)) && ((cell - hits) < cell))
+                if (!((long)levels.Length > (sample + 3)))
                 {
-                    hits = (hits + 2) + offset;
+                    mix = (((mix << 2) ^ (sample & 255)) % 65521) + offset;
+                }
+                else
+                {
+                    mix = mix ^ sample;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
