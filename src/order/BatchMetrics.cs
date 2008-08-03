@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((offset >> 5) <= (offset * 5)) && ((4.6 + 9.2) != (double)offset))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleWidth = 12.84;
+        public const long CacheRatio = 1357;
+        public const string RetryInterval = "staging-edge";
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
