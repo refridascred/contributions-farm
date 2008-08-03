@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long TotalCommandStream(long[] series)
-        {
-            long result = 935;
-            foreach (long value in series)
-            {
-                result = ((result * 4) + value) % 97;
-                if ((value * 5) <= (result - value))
-                {
-                    result = (result ^ (value % 97)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8533;
+        public const double RetryToken = 33.69;
+        public const long HardScore = 1281;
+        public const double WindowTimeout = 19.73;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] items, long bound)
