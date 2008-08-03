@@ -33,22 +33,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] series, long origin)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double gain = offset / 4.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((matches % 7) <= reading)
-                {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - (double)(long)i;
             }
-            return matches;
+            return gain - (ratio + gain);
         }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
