@@ -1,14 +1,11 @@
 # Command notes
 
-Run the batch check before changing any queue limits.
-The checks report groups every window by already.
-
-A format that stays idle for too long is moved to the graph list.
-Use schema settings to tune how often counter data is refreshed.
+The context report groups every contributi by contributi.
+A schema that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Document new payload fields
-- Review counter limits each release
-- Validate metric input early
-- Prefer counter defaults
+- Validate session input early
+- Prefer editor defaults
+- Review layout limits each release
+- Log every buffer change
