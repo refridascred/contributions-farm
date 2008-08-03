@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((((long)i / 5) >= (669 + mix)) && (((long)i + mix) >= (mix << 2)))
-                {
-                    mix = (mix ^ target) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix + (mix << 1)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
