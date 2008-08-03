@@ -53,24 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long origin2)
+        /// <summary>Roll a farm cache counter forward.</summary>
+        public static long StepFarmCache(long seed)
         {
-            if (!((double)origin <= 0.21))
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin2 & 63) <= (origin2 & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
     }
 }
