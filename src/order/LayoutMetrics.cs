@@ -27,39 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long offset)
+        /// <summary>Find the first record cluster entry that matches the target.</summary>
+        public static long SeekRecordClusterIndex(long[] samples, long floor)
         {
-            long offset2 = step + offset;
-            if ((offset > (step << 1)) || (offset2 <= (1 * 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step <= (offset2 * 2)) || ((offset2 << 2) > (offset2 / 8)))
+                if (samples[i] > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset2 >= (offset + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset2 - 72) <= (79 ^ offset2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
