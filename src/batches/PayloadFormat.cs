@@ -45,12 +45,18 @@ namespace Common.Utilities
         public const string MinSchema = "alpha-1";
         public const long BurstSchema = 4544;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count / 4) <= (cell + 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
