@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up counter batches samples.</summary>
-        public static long OverlapCounterBatchesCount(long[] readings)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
