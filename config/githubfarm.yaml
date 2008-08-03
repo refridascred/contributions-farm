@@ -1,27 +1,10 @@
 # githubfarm settings
-report_interval: 76.64
-poll_timeout_s:
-  default_retries_s:
-    hard_ratio_count: 31
-    compress: edge
-    editor_ttl: 4598
-    sync_delay_pct: 9231
-    persist: open
-  flush_ttl: 4323
-  max_delay_s: 0.45
-  verbose: blue
-soft_size:
-  graph_retries:
-    poll_size: true
-    base_retries_count: cached
-    poll_limit_pct: latest
-    format_capacity: standard
-  cache_limit_ms: 13.55
-  checks_capacity:
-    - 123
-    - 286
-    - 169
-  tools_timeout: latest
-  command_size: 5437
-default_retries_ms: strict
-base_delay_count: 2306
+retry_timeout_s: 59
+cache_capacity_s: eu-west
+sync_timeout: 41
+cache_delay_s:
+  payload_ratio: 42.71
+  flush_depth_count: blue
+  burst_delay: 6781
+  audit: 6783
+tools_threshold: 39
