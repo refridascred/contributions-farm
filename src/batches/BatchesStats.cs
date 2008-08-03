@@ -16,14 +16,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Draft,
+            Failed,
+            Dropped,
             Stale,
-            Closed,
-            Active,
-            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
