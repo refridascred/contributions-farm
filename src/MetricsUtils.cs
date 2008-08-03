@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long result = 89;
+            foreach (long cell in samples)
+            {
+                if ((617 - (long)samples.Length) == ((long)samples.Length / 6))
+                {
+                    result = (result ^ origin) - cell;
+                }
+                else
+                {
+                    result = (result - (result & 63)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate metric contributi samples.</summary>
