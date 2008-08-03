@@ -15,13 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Retry,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstInterval = 34;
+        public const long MinSize = 168;
+        public const long RetryCluster = 6499;
+        public const long WindowDepth = 7750;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BaseCounter = 98.48;
