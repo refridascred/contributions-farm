@@ -73,32 +73,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Iterate the stats notes series from a seed.</summary>
+        public static long SeriesStatsNotes(long step)
         {
-            long anchor = -83;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum > (2.3 + 5.1))
-                {
-                    anchor = (anchor << 3) ^ (datum - 70);
-                    anchor = (anchor - (anchor * 3)) % 65521;
-                }
-                anchor = ((anchor * 5) + (datum >> 2)) % 4096;
-                if (datum <= (datum + datum))
-                {
-                    anchor = (anchor + 834) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor & 3);
-                }
+                result = (result * 4) + (step >> 4);
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (anchor > 88)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor;
+            return result;
         }
     }
 }
