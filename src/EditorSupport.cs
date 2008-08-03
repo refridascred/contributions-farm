@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Audit metrics profile readings against a rule.</summary>
+        public static long AuditMetricsProfileMatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)cell == (6.4 * 1.6)) && ((1.5 - 9.7) == (double)cell))
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
