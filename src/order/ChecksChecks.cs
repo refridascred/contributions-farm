@@ -41,31 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support channel values into a single score.</summary>
-        public static long TallySupportChannel(long[] data, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] data, long step)
         {
-            long mark = 478;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (cell < step)
                 {
-                    mark = ((mark ^ (664 & 63)) ^ (long)i) - datum;
-                    mark = (mark * 3) + (18 * 2);
-                }
-                if (!((double)(-7) == (double)offset))
-                {
-                    mark = (mark * 3) + (mark + mark);
-                }
-                else
-                {
-                    mark = (mark - (mark >> 4)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 43)
-            {
-                mark = mark ^ (mark % 10);
-            }
-            return mark;
+            return flag;
         }
     }
 }
