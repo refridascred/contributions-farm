@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            New,
-            Dropped,
-            Locked,
-            Stale,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a context layout reading by value.</summary>
