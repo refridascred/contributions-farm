@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 8463;
-        public const long BatchBuffer = 7612;
-        public const long LimitBuffer = 1749;
-        public const long MinSize = 8484;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long target)
+        {
+            long carry = 6;
+            foreach (long entry in data)
+            {
+                carry = carry + (entry - target);
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the record graph series from a seed.</summary>
         public static long StepRecordGraph(long step)
