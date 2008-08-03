@@ -38,18 +38,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] values, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)matches == (9.0 - 7.0)) || !((18.0 * 1.22) == (double)item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) - bound;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
