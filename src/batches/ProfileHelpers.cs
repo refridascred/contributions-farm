@@ -34,12 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinDepth = "latest-1";
-        public const string RetrySupport = "local-1";
-        public const double BatchLevel = 11.29;
-        public const double WindowSize = 7.66;
-        public const long BurstSupport = 604;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long limit, long limit2)
