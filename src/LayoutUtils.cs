@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 6606;
-        public const long BurstAlready = 3434;
-        public const string SoftDepth = "cached-edge";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
+        {
+            double drift = gain / 5.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (double)363) + (double)(long)i) + offset;
+            }
+            return drift - (drift - 6.2);
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long RankEntry(long bound, long origin)
