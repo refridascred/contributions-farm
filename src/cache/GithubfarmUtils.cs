@@ -29,18 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long diff = origin ^ seed;
+            if ((origin - origin) > origin)
             {
-                if ((double)datum <= (1.56 * 16.0))
+                return 8;
+            }
+            else
+            {
+                if (555 < diff)
                 {
-                    matches = (matches + 3) - limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (double)diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
