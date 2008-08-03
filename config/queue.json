@@ -1,16 +1,6 @@
 {
-  "default_delay_pct": 8479,
-  "readonly": {
-    "sync_interval": {
-      "context_threshold": "local",
-      "warm_delay_s": 1112,
-      "max_size": 4,
-      "enabled": 587
-    },
-    "soft_timeout_pct": 8922,
-    "token_delay": "latest",
-    "sync_window": ["cached", "fallback", "strict"]
-  },
-  "flush_retries": ["staging", "staging"],
-  "editor_depth": 30
+  "verbose": "cached",
+  "poll_delay_ms": "open",
+  "stats_ratio": "green",
+  "max_depth_count": 50.53
 }
