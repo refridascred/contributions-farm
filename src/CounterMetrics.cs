@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel editor samples are out of range.</summary>
-        public static long MeasureChannelEditorGaps(long[] samples)
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long CountAlreadyTokenGaps(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (tally <= (cell + cell))
+                if ((cell + cell) > limit)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
