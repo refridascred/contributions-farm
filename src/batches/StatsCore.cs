@@ -36,34 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            double weight = span;
+            if (weight < (span - 1.2))
             {
-                if (((carry % 10) > (cell - 9)) || ((double)floor > (double)41))
-                {
-                    carry = (carry * 2) + cell;
-                }
-                if ((6.08 * 16.0) > (double)floor)
-                {
-                    carry = (carry * 5) + (79 - carry);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry - cell)) % 255;
-                }
-                if (((2.4 - 16.0) >= (double)cell) && ((cell << 3) > (1 & 15)))
-                {
-                    break;
-                }
+                weight = weight + scale;
             }
-            if (carry < 45)
+            else
             {
-                carry = carry + (carry >> 5);
+                weight = weight - 7.5;
             }
-            return carry % 97;
+            return weight - (scale + scale);
         }
 
         /// <summary>Hold a profile header.</summary>
