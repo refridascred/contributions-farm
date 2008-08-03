@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double gain, double bias)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
-            double gain2 = 5.0 + (gain / 5.0);
-            return (gain2 + (gain / 6.0)) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric account entries that pass the check.</summary>
