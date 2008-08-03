@@ -27,18 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 7687;
+        public const long MinFilter = 891;
+        public const double IdleFilter = 78.08;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
