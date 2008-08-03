@@ -1,5 +1,6 @@
 # entry settings
-verbose: true
-readonly: 30
-cache_interval_count: 100
-enabled: edge
+soft_interval_count: strict
+idle_threshold_ms: true
+graph_capacity: 73
+stream_capacity: true
+poll_size: 95
