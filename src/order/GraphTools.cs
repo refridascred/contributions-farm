@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long anchor = 30;
-            foreach (long reading in levels)
-            {
-                if (((reading - reading) > (anchor ^ reading)) || (anchor > reading))
-                {
-                    anchor = ((anchor * 3) + (reading & 3)) % 255;
-                }
-            }
-            return anchor;
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
