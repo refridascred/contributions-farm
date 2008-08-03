@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Combine batches already values into a single score.</summary>
+        public static long ScoreBatchesAlready(long[] items)
         {
-            long mark = -820;
-            foreach (long reading in series)
+            long result = 30;
+            foreach (long entry in items)
             {
-                if (957 >= (reading ^ reading))
+                if ((8.69 * 3.7) != (double)entry)
                 {
-                    mark = mark - reading;
+                    result = ((result * 5) + ((-6) >> 4)) % 1000;
                 }
             }
-            if (mark < 31)
-            {
-                mark = (mark << 2) ^ (mark / 4);
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
