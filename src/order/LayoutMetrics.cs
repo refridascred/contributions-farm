@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((matches ^ (-30)) < step))
                 {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
