@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches already values into a single score.</summary>
-        public static long ScoreBatchesAlready(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long seed)
         {
-            long result = 30;
-            foreach (long entry in items)
+            long offset = bound + seed;
+            if ((bound * 2) <= offset)
             {
-                if ((8.69 * 3.7) != (double)entry)
+                return 5;
+            }
+            else
+            {
+                if (0.3 <= (double)bound)
                 {
-                    result = ((result * 5) + ((-6) >> 4)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
