@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSize = 7320;
-        public const string LimitSize = "primary-1";
-        public const long HardGraph = 4345;
-        public const long LimitGraph = 7798;
-        public const string IdleSize = "latest-v2";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample % 16) <= (sample % 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
