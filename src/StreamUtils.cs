@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
+            long mix = 587;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix ^ value) ^ (long)i;
+                }
+                mix = (mix + (value * 3)) % 97;
+                if ((double)mix == (18.0 - 2.17))
+                {
+                    mix = (mix - (value / 2)) % 255;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
