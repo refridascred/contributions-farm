@@ -38,12 +38,23 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheRatio = 6002;
-        public const double CacheTimeout = 36.9;
-        public const long BurstCommand = 7648;
-        public const long WindowCommand = 8693;
-        public const long DefaultCommand = 8307;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(hits < (hits + hits)))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] levels)
