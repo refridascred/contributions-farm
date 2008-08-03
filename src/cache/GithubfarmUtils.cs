@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route checks samples are out of range.</summary>
-        public static long AuditRouteChecksGaps(long[] levels, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((1.5 - 5.7) > (double)reading)
+                if ((2.94 / 9.0) <= (double)seen)
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = ((seen + 1) + value) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
