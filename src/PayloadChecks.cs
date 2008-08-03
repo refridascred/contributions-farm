@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank batch window input into a small class.</summary>
