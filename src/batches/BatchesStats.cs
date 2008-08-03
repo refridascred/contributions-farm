@@ -38,19 +38,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Rank queue batch input into a small class.</summary>
+        public static long ClassifyQueueBatch(long target, long target2)
         {
-            double weight = rate;
-            if (weight <= (3.0 * 10.0))
+            if ((target & 127) == (target + target2))
             {
-                weight = weight + (bias / 8.0);
+                return 8;
             }
             else
             {
-                weight = weight - (double)12;
+                if (!((target2 << 2) >= (target2 >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((5 + 24) == (target + target2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return weight + (5.2 * 5.6);
         }
     }
 }
