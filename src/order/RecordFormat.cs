@@ -35,22 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally - tally) > (17 - tally))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
