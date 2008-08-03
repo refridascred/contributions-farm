@@ -1,19 +1,18 @@
 {
-  "stream_capacity": true,
-  "cache_threshold": 52,
-  "max_depth_pct": true,
-  "window_size": 53.96,
-  "hard_retries_count": {
-    "flush_window_s": 2004,
-    "sync_interval_pct": {
-      "command_ratio": "standard",
-      "checks_capacity": 2438,
-      "batch_threshold_ms": "blue",
-      "verbose": 26.54,
-      "route_size": ["fallback", "latest", "latest"],
-      "default_delay_ms": "primary"
-    },
-    "min_window": "local",
-    "cache_ratio_ms": "legacy"
-  }
+  "graph_ttl": {
+    "flush_timeout_pct": ["green", "standard", "fallback", "local"],
+    "warm_ratio_pct": true,
+    "enabled": false
+  },
+  "max_delay": {
+    "poll_interval_s": true,
+    "hard_ttl_ms": "legacy",
+    "support_threshold": 27,
+    "warm_ttl": 41.11,
+    "burst_limit": true
+  },
+  "hard_window": 8.15,
+  "channel_capacity": "blue",
+  "min_timeout_count": "fallback",
+  "soft_capacity": false
 }
