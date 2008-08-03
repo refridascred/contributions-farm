@@ -79,19 +79,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool ValidateStreamCacheLimits(long[] data, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
