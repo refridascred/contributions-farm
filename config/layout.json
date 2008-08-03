@@ -1,28 +1,6 @@
 {
-  "filter_interval": {
-    "channel_retries": false,
-    "dry_run": ["fallback", "green", "green", "stable"],
-    "batch_threshold": {
-      "context_delay": "edge",
-      "schema_interval": 87.85,
-      "verbose": false,
-      "cache_size": 85,
-      "warm_limit_count": 75.6,
-      "order_window": "local"
-    },
-    "cache_window": true,
-    "idle_limit": 7119,
-    "warm_interval_pct": ["cached", "green"]
-  },
-  "burst_window": [497, 79],
-  "poll_threshold_s": {
-    "burst_timeout_count": "edge",
-    "entry_ttl": "stable",
-    "idle_window_s": 52.24,
-    "format_size": false,
-    "warm_delay": true
-  },
-  "cluster_size": "primary",
-  "readonly": 58.68,
-  "poll_window_ms": 5297
+  "default_ttl_ms": "strict",
+  "dry_run": 30,
+  "record_depth": 8626,
+  "filter_retries": 25
 }
