@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long floor)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long acc = 8;
+            foreach (long value in samples)
+            {
+                if (!((double)acc > 6.55))
+                {
+                    acc = ((acc + 463) + value) + floor;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
