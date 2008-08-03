@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "primary-edge";
-        public const double BaseTimeout = 94.11;
-        public const string BurstSize = "standard-edge";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Stale,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BurstScore = 7.4;
