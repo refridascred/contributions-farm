@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine counter cache values into a single score.</summary>
+        public static long DigestCounterCache(long[] levels)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long carry = 134;
+            foreach (long entry in levels)
+            {
+                if ((865 & 31) >= (carry << 3))
+                {
+                    carry = carry - carry;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (carry - (entry / 9)) ^ (long)i;
+                }
+                carry = (carry - carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
