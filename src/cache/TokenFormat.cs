@@ -37,11 +37,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            Paused,
+            Dropped,
         }
     }
 }
