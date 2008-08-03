@@ -44,18 +44,32 @@ namespace Common.Utilities
         public const double BurstDepth = 97.0;
         public const string CacheLevel = "legacy";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long edge = floor ^ origin;
+            if ((-77) > (origin - edge))
             {
-                if (((entry < ((-421) & 63)) && ((matches + matches) >= entry)) && ((entry + matches) == (matches / 3)))
+                return 2;
+            }
+            else
+            {
+                if ((edge * 2) <= floor)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (2 > edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
