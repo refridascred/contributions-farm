@@ -19,25 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order context input into a small class.</summary>
-        public static long BucketOrderContext(long limit, long limit2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long edge = limit + limit2;
-            if (((2.26 / 3.0) == (double)limit2) || ((limit2 << 3) >= edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit & 3) != (limit - edge)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
