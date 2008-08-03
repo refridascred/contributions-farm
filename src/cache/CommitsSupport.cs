@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 3204;
-        public const string RetryAlready = "stable-v2";
-        public const double BaseAlready = 3.32;
-        public const long IdleAlready = 6550;
+        /// <summary>Derive the next queue cluster value from a seed.</summary>
+        public static long SeriesQueueCluster(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state + (state >> 3)) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of tools filter readings.</summary>
         public static long TotalToolsFilter(long[] levels, long floor)
