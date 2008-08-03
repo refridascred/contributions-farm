@@ -19,22 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally & 3) <= (item + tally))
+                if ((long)i < state)
                 {
-                    tally = tally + 2;
+                    state = (state ^ (state - seed)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state * 4) + ((long)i - seed);
+                    state = state ^ seed;
                 }
+                if ((926 - state) != ((long)i / 7))
+                {
+                    state = (state - (state >> 5)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
