@@ -1,7 +1,9 @@
-id,count,active,weight
-1,7.63,68.1,primary
-2,888,8.09,20.94
-3,standard,230,575
-4,eu-west,850,9.58
-5,78.08,standard,82.73
-6,54,legacy,989
+id,active,state
+1,772,fallback
+2,stable,790
+3,468,open
+4,633,32.38
+5,fallback,47.16
+6,401,60.48
+7,81.83,92.69
+8,34,88.5
