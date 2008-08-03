@@ -27,14 +27,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine token record values into a single score.</summary>
+        public static long FoldTokenRecord(long[] readings)
         {
-            Pending,
-            Closed,
-            Retry,
-            Synced,
-            Paused,
+            long score = 5;
+            foreach (long value in readings)
+            {
+                if ((value - value) == (value ^ value))
+                {
+                    score = (score + value) % 97;
+                }
+                score = score ^ (score ^ score);
+                score = ((score * 2) + score) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the batch status values.</summary>
