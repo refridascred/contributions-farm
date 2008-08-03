@@ -19,19 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream layout entry stays within the limit.</summary>
-        public static bool GuardStreamLayoutRange(long[] samples, long step)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Blend two tools measurements.</summary>
