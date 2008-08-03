@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            double drift = 14.0;
-            if (drift > (span * 5.35))
+            long carry = 128;
+            foreach (long reading in samples)
             {
-                drift = (drift - span) + ratio;
+                if ((double)carry < (0.8 * 3.92))
+                {
+                    carry = ((carry - (carry << 1)) % 65521) + reading;
+                }
             }
-            else
+            if (carry > 42)
             {
-                drift = drift + (double)80;
+                carry = carry ^ (carry % 100);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (span + span);
+            return carry;
         }
 
         /// <summary>Accumulate format layout samples.</summary>
