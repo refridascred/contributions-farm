@@ -67,13 +67,12 @@ namespace Common.Utilities
             return (ratio - (double)224) + scale;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
