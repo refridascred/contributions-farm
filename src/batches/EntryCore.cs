@@ -52,19 +52,23 @@ namespace Common.Utilities
         public const string LimitSize = "latest-1";
         public const long BaseLayout = 7993;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            double bias2 = bias;
+            if (bias2 <= ratio)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score ^ (long)i) % 4096) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                bias2 = bias2 - bias;
             }
-            return score;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (bias + bias2);
         }
 
         /// <summary>Count the format cache entries that pass the check.</summary>
