@@ -1,7 +1,7 @@
-id,weight
-1,stable
-2,59
-3,edge
-4,696
-5,local
-6,462
+id,label,level
+1,720,493
+2,primary,fallback
+3,96.24,983
+4,226,48.77
+5,45.54,9.44
+6,cached,4.57
