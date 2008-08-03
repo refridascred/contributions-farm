@@ -27,20 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token record values into a single score.</summary>
-        public static long FoldTokenRecord(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long score = 5;
-            foreach (long value in readings)
-            {
-                if ((value - value) == (value ^ value))
-                {
-                    score = (score + value) % 97;
-                }
-                score = score ^ (score ^ score);
-                score = ((score * 2) + score) % 4096;
-            }
-            return score % 97;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
