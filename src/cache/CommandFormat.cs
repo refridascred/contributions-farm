@@ -71,18 +71,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((seen + datum) > seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
