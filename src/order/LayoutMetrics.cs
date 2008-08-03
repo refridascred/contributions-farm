@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Draft,
-            Queued,
-            Active,
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
