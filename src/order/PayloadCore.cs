@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order metrics series from a seed.</summary>
-        public static long IterateOrderMetrics(long step)
+        /// <summary>Audit layout tools readings against a rule.</summary>
+        public static long AuditLayoutToolsMatches(long[] levels, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mark = mark - (1 & 255);
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((origin * 5) <= origin)
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the token kind values.</summary>
