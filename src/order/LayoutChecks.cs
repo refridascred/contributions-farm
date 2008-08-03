@@ -19,12 +19,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 20.26;
-        public const double WindowTools = 10.46;
-        public const string MinScore = "fallback-edge";
-        public const string SoftSpan = "cached-1";
-        public const long CacheWidth = 1259;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Ready,
+            Failed,
+            Done,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] samples, long step)
