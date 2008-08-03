@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit contributi queue readings against a rule.</summary>
-        public static long AuditContributiQueueMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count + offset) <= (reading / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 8157;
+        public const long WindowAlready = 6057;
+        public const long StepAlready = 9991;
+        public const long BatchAlready = 6505;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] values, long target)
