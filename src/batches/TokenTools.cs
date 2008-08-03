@@ -37,11 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            double weight2 = weight - (double)(-4);
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (double)(long)i) + offset;
+            }
+            return weight2 - weight2;
         }
     }
 }
