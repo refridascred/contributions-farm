@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first commits order entry that matches the target.</summary>
-        public static long SeekCommitsOrderIndex(long[] readings, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 762;
+            foreach (long item in readings)
             {
-                if (readings[i] > limit)
+                if ((6 * 2) > (score / 9))
                 {
-                    return (long)i;
+                    score = (score - (97 ^ item)) % 4096;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
