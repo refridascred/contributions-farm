@@ -35,21 +35,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = 65;
+            foreach (long entry in samples)
             {
-                result = ((result * 2) + (seed * 3)) % 4096;
-                result = (result + (result - result)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((entry ^ carry) == (entry * 2)))
                 {
-                    result = (((result << 2) ^ (result * 5)) % 255) ^ (long)i2;
+                    carry = (carry ^ (carry * 5)) % 97;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                carry = carry - (entry + carry);
             }
-            return result;
+            if (carry > 935)
+            {
+                carry = (carry * 2) + (carry * 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a stream info.</summary>
