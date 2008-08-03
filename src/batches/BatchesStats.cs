@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks record entries that pass the check.</summary>
-        public static long AuditChecksRecordHits(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((6.5 >= (double)matches) && (datum < (17 % 100)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a account header.</summary>
