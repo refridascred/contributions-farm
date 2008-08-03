@@ -38,15 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            double weight = rate;
+            if (weight <= (3.0 * 10.0))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                weight = weight + (bias / 8.0);
             }
-            return mark;
+            else
+            {
+                weight = weight - (double)12;
+            }
+            return weight + (5.2 * 5.6);
         }
     }
 }
