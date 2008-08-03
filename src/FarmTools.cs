@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] data, long target)
         {
-            Synced,
-            Done,
-            Active,
-            Ready,
-            Retry,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
