@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a schema entry value against two limits.</summary>
+        public static long GradeSchemaEntry(long bound, long origin)
         {
-            Done,
-            Paused,
-            Closed,
-            Retry,
+            long span = bound - origin;
+            if (bound >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.1 - 15.0) >= (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound >> 1) <= ((-12) + origin)) && ((double)bound == (11.0 * 0.45)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of session account entries.</summary>
