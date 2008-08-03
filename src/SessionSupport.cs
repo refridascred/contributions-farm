@@ -42,23 +42,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of record githubfarm entries.</summary>
-        public static long CombineRecordGithubfarm(long[] readings)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] samples, long target)
         {
-            long score = 389;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (score >> 3)) % 4096) ^ entry;
-                if (score >= (84 + (long)readings.Length))
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > (-937))
-            {
-                score = (score - (0 + score)) % 97;
-            }
-            return score;
+            return -1;
         }
     }
 }
