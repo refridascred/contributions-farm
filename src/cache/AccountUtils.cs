@@ -16,21 +16,17 @@ namespace Common.Utilities
             return drift - 7.9;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] > bound)
                 {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
