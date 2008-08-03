@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool GuardEditorChecksRange(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
