@@ -24,10 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxTimeout = 7681;
-        public const long StepCommand = 8695;
-        public const double LimitCommand = 80.36;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((limit << 1) >= (value ^ value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long origin)
