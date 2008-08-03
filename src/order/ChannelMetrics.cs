@@ -20,18 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long score = 762;
-            foreach (long item in readings)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6 * 2) > (score / 9))
-                {
-                    score = (score - (97 ^ item)) % 4096;
-                }
+                state = state + (long)i;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Locate a schema editor reading by value.</summary>
