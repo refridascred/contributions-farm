@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long mark = 2;
+            foreach (long entry in readings)
             {
-                if (!((double)limit != (15.0 * 17.0)))
+                if ((double)seed >= (16.0 + 11.0))
                 {
-                    mix = ((mix * 5) + (long)i) % 97;
+                    mark = ((mark ^ (mark << 2)) % 101) ^ entry;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            if (mark > 490)
+            {
+                mark = (mark << 3) ^ ((long)readings.Length - mark);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
