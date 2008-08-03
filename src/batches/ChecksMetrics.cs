@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Synced,
-            Locked,
-            New,
             Pending,
             Paused,
+            Dropped,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
