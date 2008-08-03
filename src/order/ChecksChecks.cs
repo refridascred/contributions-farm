@@ -24,12 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] items, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= bound)
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
