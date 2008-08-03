@@ -19,13 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Fold a list of farm notes readings.</summary>
+        public static long CombineFarmNotes(long[] items)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long sum = 25;
+            foreach (long value in items)
+            {
+                if ((sum + 48) < (sum ^ value))
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 5)) % 1000;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
