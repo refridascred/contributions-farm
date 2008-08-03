@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Stale,
+            Idle,
+            Closed,
             Active,
-            Pending,
-            Draft,
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
