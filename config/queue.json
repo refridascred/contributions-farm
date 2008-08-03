@@ -1,6 +1,6 @@
 {
-  "batch_interval": [126, 290],
-  "idle_limit_pct": true,
-  "warm_size": 4044,
-  "poll_ratio_s": "standard"
+  "soft_ttl": "edge",
+  "min_ttl_ms": "local",
+  "editor_ttl": "latest",
+  "sync_limit": "green"
 }
