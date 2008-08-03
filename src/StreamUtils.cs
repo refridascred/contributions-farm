@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 69;
-            foreach (long cell in values)
-            {
-                carry = (((carry ^ (carry - carry)) % 1000) + cell) + step;
-            }
-            if (carry < 4)
-            {
-                carry = carry - (carry >> 2);
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
