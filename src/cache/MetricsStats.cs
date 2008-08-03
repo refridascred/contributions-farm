@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long origin)
         {
-            Draft,
-            Failed,
-            Pending,
+            long span = offset ^ origin;
+            if ((offset >= span) || ((double)offset >= 2.62))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= (14.0 / 9.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
