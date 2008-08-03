@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long slot = target - floor;
+            if ((target + target) != (6 + target))
             {
-                if ((95 / 6) >= tally)
+                return 5;
+            }
+            else
+            {
+                if (slot <= (target >> 4))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
