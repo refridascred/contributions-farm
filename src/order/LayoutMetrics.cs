@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + (-5)) == (tally % 97)) && !((1.5 / 5.0) < (double)9))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of order report readings.</summary>
