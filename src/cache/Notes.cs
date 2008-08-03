@@ -21,31 +21,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long bound)
         {
-            if (((target + target) > (target + floor)) || (((-280) ^ target) == (target >> 5)))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (0.28 > (double)floor)
+                if (datum > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((3 + floor) < (target - floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
