@@ -45,17 +45,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor & 63) > (floor >> 3))
             {
-                if (readings[i] <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((3.0 / 8.0) == (double)floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + floor) > (98 % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
