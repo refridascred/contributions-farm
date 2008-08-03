@@ -38,14 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Closed,
-            Pending,
-            Draft,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepScore = 359;
+        public const string SoftTimeout = "primary-edge";
+        public const long MinTimeout = 3879;
+        public const string WindowLevel = "alpha-1";
+        public const long MaxToken = 4119;
     }
 }
