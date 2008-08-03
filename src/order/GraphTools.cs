@@ -15,18 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.9 - 8.8) != (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
