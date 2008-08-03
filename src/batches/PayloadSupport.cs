@@ -26,16 +26,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a batches entry counter forward.</summary>
-        public static long RollBatchesEntry(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxInterval = 10.26;
+        public const long SoftBudget = 9325;
+        public const long MinTimeout = 4861;
+        public const double DefaultCache = 56.39;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] data)
