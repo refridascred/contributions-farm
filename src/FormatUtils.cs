@@ -62,10 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftSize = "stable-edge";
-        public const string HardScore = "alpha";
-        public const long LimitEditor = 6868;
-        public const long WindowEditor = 8542;
+        /// <summary>Validate batch commits readings against a bound.</summary>
+        public static bool ValidateBatchCommitsLimits(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
