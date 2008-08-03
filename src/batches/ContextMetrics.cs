@@ -36,21 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= offset)
                 {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit metrics stream readings against a rule.</summary>
