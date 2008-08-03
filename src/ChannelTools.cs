@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long step)
         {
-            long mix = -929;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step % 2) != (step - 640))
+                if ((data[i] > step) && ((data[i] % 5) != 0))
                 {
-                    mix = (((mix << 2) ^ (289 & 1)) % 4096) + datum;
-                }
-                else
-                {
-                    mix = (mix + 638) % 4096;
-                }
-                if ((mix + mix) <= mix)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
