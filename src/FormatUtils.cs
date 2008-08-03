@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark ^ (mark ^ 536);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit githubfarm order readings against a rule.</summary>
