@@ -47,15 +47,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long floor)
         {
-            long result = 2;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                result = ((result ^ (target + target)) % 4096) ^ item;
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
