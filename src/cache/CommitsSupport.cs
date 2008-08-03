@@ -62,21 +62,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count format commits pairs that satisfy a relation.</summary>
-        public static long PairFormatCommitsCount(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
