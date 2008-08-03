@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const long BatchGraph = 2416;
         public const double WindowLevel = 82.72;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            Pending,
-            Draft,
-            Closed,
-            Done,
+            long state = 456;
+            foreach (long sample in levels)
+            {
+                if ((state >= ((long)levels.Length << 1)) && ((sample / 3) >= (state + sample)))
+                {
+                    state = state + (57 + sample);
+                }
+                state = ((state * 5) + (state << 2)) % 4096;
+                if ((3 & 31) == (state - state))
+                {
+                    state = (state + state) % 4096;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
