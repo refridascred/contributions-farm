@@ -58,13 +58,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine profile token values into a single score.</summary>
+        public static long WeighProfileToken(long[] items, long origin)
         {
-            Retry,
-            Queued,
-            Closed,
-            Stale,
+            long mix = 71;
+            foreach (long sample in items)
+            {
+                if ((double)sample < (double)mix)
+                {
+                    mix = ((mix << 2) ^ (origin - mix)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
