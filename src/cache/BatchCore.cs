@@ -47,23 +47,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long TallyBufferCacheHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (floor < (hits - 0))
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinDepth = "alpha-edge";
+        public const long LimitNotes = 8749;
+        public const double CacheNotes = 33.17;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] readings, long origin)
