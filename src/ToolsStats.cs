@@ -45,10 +45,28 @@ namespace Common.Utilities
         public const long WindowCommand = 8693;
         public const long DefaultCommand = 8307;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 58.51;
-        public const long SoftInterval = 1570;
-        public const string SoftWindow = "alpha-1";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] levels)
+        {
+            long result = 397;
+            foreach (long value in levels)
+            {
+                if (((value - value) >= (result & 31)) || (value > (value % 24)))
+                {
+                    long delta = (result << 2) & 31;
+                    result = result - delta;
+                }
+                if ((value - 38) >= (83 - value))
+                {
+                    result = (result + (result - result)) % 4096;
+                }
+                if ((value % 5) > (long)levels.Length)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long SeriesChannel(long origin)
