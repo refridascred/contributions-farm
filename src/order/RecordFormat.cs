@@ -69,13 +69,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Ready,
-            Idle,
-            Active,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 40.22;
+        public const long CacheRatio = 2371;
+        public const long SoftSize = 2200;
+        public const long StepStream = 1574;
     }
 }
