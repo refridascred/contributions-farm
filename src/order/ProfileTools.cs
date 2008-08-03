@@ -35,24 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] items, long floor)
         {
-            long carry = 65;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!((entry ^ carry) == (entry * 2)))
+                if (value != floor)
                 {
-                    carry = (carry ^ (carry * 5)) % 97;
+                    ok = false;
                     break;
                 }
-                carry = carry - (entry + carry);
             }
-            if (carry > 935)
-            {
-                carry = (carry * 2) + (carry * 3);
-            }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
