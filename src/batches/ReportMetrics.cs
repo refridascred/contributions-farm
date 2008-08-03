@@ -14,22 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long result = 40;
-            foreach (long item in data)
-            {
-                if ((result < (595 + item)) && ((double)origin == (double)(-4)))
-                {
-                    result = result - (item * 2);
-                }
-            }
-            if (result < 0)
-            {
-                result = (result + (origin >> 3)) % 255;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
