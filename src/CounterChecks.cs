@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mean + (span - 0.5);
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long limit)
         {
-            Paused,
-            Failed,
-            Draft,
-            Closed,
-            Stale,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the contributi class values.</summary>
