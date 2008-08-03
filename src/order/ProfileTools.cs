@@ -41,19 +41,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            double drift = 6.7;
-            if (drift < (offset + 5.8))
+            long acc = 977;
+            foreach (long item in series)
             {
-                drift = (drift + (offset * 1.7)) + bias;
+                acc = acc - (long)series.Length;
+                if (((item + (long)series.Length) >= acc) || (acc >= (item % 8)))
+                {
+                    acc = (acc ^ item) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (acc > 68)
             {
-                drift = (drift - (double)206) + (double)(long)i;
+                acc = acc - (acc >> 3);
             }
-            return drift + (double)86;
+            return acc % 1000;
         }
 
         /// <summary>Hold a filter summary.</summary>
