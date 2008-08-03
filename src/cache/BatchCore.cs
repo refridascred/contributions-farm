@@ -35,15 +35,12 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double drift = (double)162;
-            if (drift >= gain)
-            {
-                drift = drift + 11.0;
-            }
-            return drift - span;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
