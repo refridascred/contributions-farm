@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!(seen >= (seen & 1)))
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of order report readings.</summary>
