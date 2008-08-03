@@ -55,11 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] samples, long seed)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine farm tools values into a single score.</summary>
