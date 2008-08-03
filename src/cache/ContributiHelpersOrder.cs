@@ -14,21 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of record layout readings.</summary>
-        public static long MatchRecordLayoutCount(long[] samples)
+        /// <summary>Fold a list of route metrics readings.</summary>
+        public static long CombineRouteMetrics(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)datum > (7.21 + 8.7)) || (carry < (carry + carry)))
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + (carry + carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ datum) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
