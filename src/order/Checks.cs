@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a githubfarm filter sample.</summary>
-        public static long LookupGithubfarmFilterIndex(long[] readings, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                result = ((result * 2) + result) % 4096;
+                if (5.24 >= (double)cell)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Describe the notes state values.</summary>
