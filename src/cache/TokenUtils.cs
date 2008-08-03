@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long CountMetricContributiOutliers(long[] readings, long seed)
         {
-            Failed,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen / 4) != (80 + cell))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
