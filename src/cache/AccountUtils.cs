@@ -19,25 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long origin)
         {
-            long next = floor - bound;
-            if (((bound + next) >= (652 % 3)) || ((next - next) < (next + floor)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (712 > (bound + floor))
+                if ((((origin + origin) <= tally) && ((tally + tally) < (555 - origin))) && (((double)origin >= (6.3 / 3.0)) && ((double)datum <= (9.1 * 6.29))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit command editor readings against a rule.</summary>
