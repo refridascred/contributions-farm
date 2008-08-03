@@ -1,5 +1,5 @@
 {
-  "base_threshold_s": 49.45,
-  "hard_retries_count": true,
-  "entry_limit": 3594
+  "enabled": "legacy",
+  "max_ttl": false,
+  "session_threshold": [36, 391, 255, 124]
 }
