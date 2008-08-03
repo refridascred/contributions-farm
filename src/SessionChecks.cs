@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen & 1) != (16 % 64))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the format phase values.</summary>
