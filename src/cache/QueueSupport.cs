@@ -28,19 +28,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool CheckSupportGithubfarmLimits(long[] series, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if (origin < bound)
             {
-                if (item >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((origin * 4) < origin)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
