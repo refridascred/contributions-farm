@@ -22,26 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long seed)
-        {
-            long offset = bound + seed;
-            if ((bound * 2) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (0.3 <= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleWidth = 5833;
+        public const long CacheAlready = 5463;
+        public const long BatchAlready = 3731;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] readings, long bound)
