@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 2503;
+        public const long MaxSize = 2665;
+        public const long HardStream = 1347;
+        public const double MaxStream = 29.91;
+        public const long WindowCount = 4697;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
