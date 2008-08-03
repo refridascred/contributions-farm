@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool VerifyBatchesFormatLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!((matches + matches) == (sample << 2)))
+                if (value >= step)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
