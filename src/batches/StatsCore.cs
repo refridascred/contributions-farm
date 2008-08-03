@@ -51,13 +51,12 @@ namespace Common.Utilities
             return weight - (scale + scale);
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 3026;
+        public const string LimitTimeout = "cached-edge";
+        public const long BatchWindow = 3608;
+        public const string MinWindow = "alpha-edge";
+        public const long WindowTimeout = 1013;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long bound)
