@@ -1,11 +1,21 @@
 # entry settings
-base_retries: green
-readonly:
-  - 436
-  - 17
-notes_size: eu-west
-idle_depth_ms:
-  - legacy
-  - stable
-  - local
+flush_threshold_ms:
+  - green
   - eu-west
+format_interval: true
+strict: 97.4
+warm_delay_count:
+  contributi_ratio: false
+  retry_interval: true
+  format_ratio:
+    - 339
+    - 357
+    - 299
+  token_depth: 500
+  report_ratio: eu-west
+  sync_ratio_s: 250
+channel_ratio:
+  - 1
+  - 331
+  - 47
+  - 303
