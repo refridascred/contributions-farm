@@ -13,12 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Idle,
-            Failed,
-            Stale,
+            Ready,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the tools class values.</summary>
