@@ -39,12 +39,14 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
