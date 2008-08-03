@@ -14,16 +14,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long TallyFormatStream(long[] values, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long acc = 9;
-            foreach (long datum in values)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                acc = (acc * 2) + (852 + datum);
-                acc = (acc + (bound << 2)) % 255;
+                result = (result + target) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
