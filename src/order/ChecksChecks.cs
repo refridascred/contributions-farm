@@ -41,19 +41,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] data, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long limit, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((limit * 4) >= limit)
             {
-                if (cell < step)
+                return 6;
+            }
+            else
+            {
+                if ((limit % 97) != (target / 6))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((441 * 2) >= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.7 + 8.6) == (double)limit) || ((limit & 63) <= (target / 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
