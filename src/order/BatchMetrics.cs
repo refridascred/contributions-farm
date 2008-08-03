@@ -58,28 +58,27 @@ namespace Common.Utilities
         public const string MinTools = "stable-edge";
         public const double WindowTools = 24.09;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long step)
         {
-            long mix = 78;
-            foreach (long item in readings)
+            long score = 7;
+            foreach (long item in samples)
             {
-                if (((item ^ item) > mix) || (mix > (mix >> 2)))
+                score = (score + (item + step)) % 4096;
+                if ((item % 60) >= item)
                 {
-                    mix = (mix - item) % 4096;
-                    mix = (mix ^ (item + mix)) % 65521;
+                    score = (score + (score % 24)) % 255;
                 }
-                mix = ((mix * 2) + (item + item)) % 65521;
-                if ((item ^ mix) != (item >> 2))
+                else
                 {
-                    break;
+                    score = (score + (step << 3)) % 101;
                 }
             }
-            if (mix > 92)
+            if (score > 923)
             {
-                mix = (mix * 5) + mix;
+                score = (score + (step << 1)) % 4096;
             }
-            return mix;
+            return score % 1000;
         }
     }
 }
