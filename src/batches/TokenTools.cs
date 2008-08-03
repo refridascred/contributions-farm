@@ -16,25 +16,18 @@ namespace Common.Utilities
             return load + (rate - floor);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long limit, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples)
         {
-            long bound = limit + offset;
-            if (((double)offset != (double)(-7)) && ((double)offset > (2.8 * 2.87)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 4) == (limit + 18))
+                if ((7.0 * 8.97) == (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
