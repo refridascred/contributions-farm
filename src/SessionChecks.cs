@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] items, long floor)
         {
-            Failed,
-            Retry,
-            Done,
-            Stale,
-            Closed,
+            long carry = 649;
+            foreach (long entry in items)
+            {
+                if (floor > (entry / 7))
+                {
+                    carry = carry ^ (carry ^ floor);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate account samples.</summary>
