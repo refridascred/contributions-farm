@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long RetryTools = 4045;
         public const long MaxBudget = 474;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            long mix = 495;
-            foreach (long value in values)
+            double drift = bias + bias;
+            if (drift > (drift + floor))
             {
-                mix = (mix << 2) ^ value;
+                drift = drift - (double)268;
             }
-            if (mix < 24)
+            else
             {
-                mix = mix - (limit / 6);
+                drift = drift - bias;
             }
-            return mix % 97;
+            return drift + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
