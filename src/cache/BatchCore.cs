@@ -15,19 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double weight, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long origin)
         {
-            double rate = (double)83 + 4.0;
-            if (rate < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (double)39;
+                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (3.21 - 5.5)) + (double)(long)i;
-            }
-            return rate - weight;
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
