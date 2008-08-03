@@ -50,11 +50,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool CheckBatchMetricsRange(long[] data, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
