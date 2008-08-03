@@ -14,16 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next format tools value from a seed.</summary>
-        public static long DeriveFormatTools(long offset)
+        /// <summary>Match up token batch samples.</summary>
+        public static long CompareTokenBatchCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (result << 1)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Match up metric farm samples.</summary>
