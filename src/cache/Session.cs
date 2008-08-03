@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 9477;
-        public const string RetrySpan = "strict-v2";
-        public const long HardNotes = 9476;
-        public const long MinNotes = 4391;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] values, long target)
