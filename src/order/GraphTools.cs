@@ -29,11 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long anchor = 30;
+            foreach (long reading in levels)
+            {
+                if (((reading - reading) > (anchor ^ reading)) || (anchor > reading))
+                {
+                    anchor = ((anchor * 3) + (reading & 3)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
