@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] series, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mark = (mark + (seed + mark)) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (210 <= (long)series.Length)
+                {
+                    matches = ((matches + 2) + datum) + origin;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
