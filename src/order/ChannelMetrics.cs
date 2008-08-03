@@ -34,24 +34,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Locate a schema editor reading by value.</summary>
+        public static long SeekSchemaEditorIndex(long[] readings, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((step - 0) > step))
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
                 {
-                    acc = ((acc * 3) + (462 + (long)i)) % 255;
+                    return (long)i;
                 }
-                if ((895 + (long)i) >= (step + (long)i))
-                {
-                    acc = (acc * 5) + (acc - acc);
-                }
-                acc = (acc << 3) ^ (74 % 97);
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
     }
 }
