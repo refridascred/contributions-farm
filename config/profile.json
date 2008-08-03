@@ -1,12 +1,7 @@
 {
-  "enabled": {
-    "soft_threshold_s": 43,
-    "base_ratio_count": "open",
-    "dry_run": 5753
-  },
-  "persist": true,
-  "profile_threshold": false,
-  "strict": true,
-  "default_threshold_count": "stable",
-  "cluster_threshold": 3568
+  "min_ttl_pct": 3673,
+  "githubfarm_timeout": [245, 383, 374, 185],
+  "window_window": 1728,
+  "sync_window_s": ["local", "latest"],
+  "soft_retries_s": 44.78
 }
