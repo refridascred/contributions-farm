@@ -32,19 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a notes tools figure with a bias.</summary>
-        public static double ProjectNotesTools(double scale, double floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double load = floor - (floor - scale);
-            if (load >= load)
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - floor) - (double)(long)i;
-            }
-            return load - (double)9;
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
