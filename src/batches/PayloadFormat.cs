@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a schema entry value against two limits.</summary>
-        public static long GradeSchemaEntry(long bound, long origin)
+        /// <summary>Measure how many stats window samples are out of range.</summary>
+        public static long CountStatsWindowOutliers(long[] series)
         {
-            long span = bound - origin;
-            if (bound >= origin)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.1 - 15.0) >= (double)span)
+                if ((reading + matches) != (reading + 833))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound >> 1) <= ((-12) + origin)) && ((double)bound == (11.0 * 0.45)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of session account entries.</summary>
