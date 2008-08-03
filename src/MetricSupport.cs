@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
