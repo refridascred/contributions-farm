@@ -41,25 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long seed)
-        {
-            if (((seed << 3) <= seed) && (seed < (bound / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-426) + seed) > (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 94.06;
+        public const long LimitCommand = 4488;
+        public const string StepSize = "cached-edge";
+        public const string IdleCommand = "local-1";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] values, long limit)
