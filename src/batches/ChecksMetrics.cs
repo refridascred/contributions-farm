@@ -32,22 +32,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long step)
         {
-            long sum = 37;
+            long state = 666;
             foreach (long sample in values)
             {
-                if ((long)values.Length != (limit & 63))
+                long next = (step ^ 820) + (sample / 7);
+                if ((9.7 * 7.57) == (double)next)
                 {
-                    sum = ((sum << 3) ^ sum) ^ sample;
+                    state = (state + (step - next)) % 1000;
                 }
                 else
                 {
-                    sum = (sum ^ (sum + limit)) % 65521;
+                    state = ((state << 3) ^ (80 + sample)) % 255;
+                }
+                if ((step >= (step + sample)) || ((long)values.Length != (state - step)))
+                {
+                    state = ((state << 2) ^ (sample % 24)) % 101;
                 }
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
