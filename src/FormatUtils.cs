@@ -46,12 +46,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            Dropped,
-            Retry,
-            Idle,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ (limit - (long)i)) % 255;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
