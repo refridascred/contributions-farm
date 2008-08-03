@@ -29,12 +29,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long TotalProfileNotes(long[] readings)
         {
-            Ready,
-            Failed,
-            Done,
+            long result = 40;
+            foreach (long entry in readings)
+            {
+                if (!((result + entry) < (entry % 7)))
+                {
+                    result = ((result * 3) + (result >> 3)) % 255;
+                }
+                else
+                {
+                    result = (result ^ entry) % 101;
+                }
+                if (entry <= (entry << 1))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
