@@ -29,22 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((item - floor) != (floor << 2))
+                if (entry <= limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
