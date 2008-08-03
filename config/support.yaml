@@ -1,7 +1,5 @@
 # support settings
-poll_ttl:
-  - stable
-  - blue
-poll_threshold_s: 10.81
-queue_timeout: false
-batches_timeout: staging
+hard_timeout: 8682
+max_size_count: false
+idle_ratio_pct: legacy
+idle_depth_count: edge
