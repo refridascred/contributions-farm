@@ -47,18 +47,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of tools counter readings.</summary>
-        public static long TotalToolsCounter(long[] items)
-        {
-            long score = 2;
-            foreach (long sample in items)
-            {
-                if ((score >> 3) > (sample * 3))
-                {
-                    score = (score - (sample % 97)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 1108;
+        public const double CacheSession = 88.12;
+        public const double BurstFactor = 13.18;
     }
 }
