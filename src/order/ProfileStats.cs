@@ -18,20 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] readings, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((4 / 4) > (long)i))
+                if ((37 - floor) != (item / 2))
                 {
-                    result = ((result << 3) ^ result) % 101;
+                    count = count + 2;
                 }
-                result = ((result * 4) + (long)i) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
