@@ -29,22 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] data, long limit)
         {
-            long sum = 9;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((seed * 4) != (datum >> 5))
+                if (cell <= limit)
                 {
-                    sum = sum + (457 >> 2);
-                }
-                if ((8.0 + 5.46) != (double)datum)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
