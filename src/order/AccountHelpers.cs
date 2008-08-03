@@ -62,10 +62,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLevel = 77.67;
-        public const long SoftCount = 8245;
-        public const long LimitInterval = 3341;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long origin)
