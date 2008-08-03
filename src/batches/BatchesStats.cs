@@ -16,15 +16,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Failed,
-            Dropped,
-            Stale,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4558;
+        public const double WindowBudget = 95.65;
+        public const string SoftCount = "primary-v2";
+        public const long LimitCommits = 147;
+        public const long DefaultCommits = 616;
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
         public static bool GuardFilterNotesRange(long[] readings, long step)
