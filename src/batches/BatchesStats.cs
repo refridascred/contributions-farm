@@ -61,23 +61,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples, long floor)
         {
-            long acc = 27;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                acc = (acc + (acc + datum)) + seed;
-                if ((361 - datum) != (47 >> 5))
+                if (((floor + floor) == ((long)samples.Length >> 4)) && ((long)samples.Length >= ((long)samples.Length ^ floor)))
                 {
-                    break;
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 5)
-            {
-                acc = acc ^ (acc >> 4);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
