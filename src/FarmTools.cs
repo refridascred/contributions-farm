@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!(datum <= (hits + datum)))
+                if (entry >= offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a context info.</summary>
