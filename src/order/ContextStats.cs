@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool ValidateLayoutWindowRange(long[] items, long floor)
         {
-            long score = 416;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                score = (score - cell) % 255;
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 497)
-            {
-                score = (score - ((long)series.Length >> 2)) % 101;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the filter level values.</summary>
