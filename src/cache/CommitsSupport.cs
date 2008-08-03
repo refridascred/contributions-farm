@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next queue cluster value from a seed.</summary>
-        public static long SeriesQueueCluster(long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] levels, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                state = (state + (state >> 3)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
+                if (((entry + floor) > (floor * 4)) || (((double)floor < (20.0 + 5.6)) && ((510 % 12) < (entry - 989))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of tools filter readings.</summary>
