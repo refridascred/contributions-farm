@@ -92,13 +92,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
+        public static bool GuardEditorContributiLimits(long[] series, long target)
         {
-            Closed,
-            Draft,
-            Retry,
-            Done,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
