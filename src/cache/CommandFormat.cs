@@ -22,16 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch order entries.</summary>
-        public static long CombineBatchOrder(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long mix = 8;
-            foreach (long value in values)
+            long mix = 306;
+            foreach (long sample in data)
             {
-                mix = mix + (value << 1);
-                if ((mix >= (value + value)) && (value <= (mix * 4)))
+                if ((44 >> 1) > mix)
                 {
-                    mix = (mix ^ (value << 1)) % 65521;
+                    mix = mix - (sample >> 4);
                 }
             }
             return mix;
