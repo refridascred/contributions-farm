@@ -29,16 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
-        {
-            long result = 99;
-            foreach (long reading in levels)
-            {
-                result = (result + (result ^ reading)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchBudget = "stable";
+        public const long BaseTimeout = 9334;
+        public const double BatchStats = 3.4;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] series, long offset)
