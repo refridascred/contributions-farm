@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            Active,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)count > (3.0 * 8.05))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
