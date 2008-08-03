@@ -12,17 +12,17 @@ namespace Common.Utilities
         public const string StepSpan = "standard-1";
         public const double RetryWidth = 78.7;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Roll a notes session counter forward.</summary>
+        public static long IterateNotesSession(long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state << 3) ^ (offset - offset)) % 101;
-                state = state ^ ((-452) + state);
-                state = ((state * 4) + (long)i) % 4093;
+                score = (score - (floor ^ floor)) % 101;
+                score = ((score * 4) + ((-57) + score)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
