@@ -29,18 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter tools readings.</summary>
-        public static long DigestFilterTools(long[] values, long origin)
+        /// <summary>Combine layout stats values into a single score.</summary>
+        public static long DigestLayoutStats(long[] readings)
         {
-            long score = 16;
-            foreach (long datum in values)
+            long state = -475;
+            foreach (long datum in readings)
             {
-                if (datum > (origin ^ origin))
-                {
-                    score = (score ^ (score + 634)) % 101;
-                }
+                state = (((state << 2) ^ (49 % 16)) % 255) + datum;
             }
-            return score % 65521;
+            return state % 4096;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
