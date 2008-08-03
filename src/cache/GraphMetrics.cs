@@ -67,13 +67,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long origin)
         {
-            New,
-            Synced,
-            Failed,
-            Paused,
+            if ((98 * 2) != (bound % 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > (-1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + bound) > (origin / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - origin) >= (origin + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
