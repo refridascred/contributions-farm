@@ -54,20 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Fold a list of githubfarm session readings.</summary>
+        public static long TotalGithubfarmSession(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 965;
+            foreach (long item in data)
             {
-                if (((double)total <= (8.78 + 1.1)) && ((double)target != (4.58 + 5.78)))
+                acc = (acc + (origin ^ 421)) % 255;
+                acc = (acc - (item - item)) % 97;
+                if (17.0 >= (double)item)
                 {
-                    total = (total - (long)i) % 4096;
-                    break;
+                    acc = (acc + origin) % 101;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
