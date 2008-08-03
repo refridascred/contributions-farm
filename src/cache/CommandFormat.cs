@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (7.1 < (double)target)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) < (target & 31))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + floor) == (target ^ 255)) && ((floor & 1) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((96 / 3) > floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
