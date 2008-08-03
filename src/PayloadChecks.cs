@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long MeasureReportSchemaOutliers(long[] values)
         {
-            Paused,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((-6) / 8) == (reading * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
