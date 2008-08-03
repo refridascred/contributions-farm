@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context queue samples are out of range.</summary>
-        public static long TallyContextQueueOutliers(long[] levels, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double weight = (span + bias) * 9.8;
+            if (weight < bias)
             {
-                if ((hits & 127) > 8)
-                {
-                    hits = ((hits + 3) + item) + bound;
-                }
+                weight = weight - weight;
             }
-            return hits;
+            return weight - span;
         }
 
         /// <summary>Digest a series of window entries.</summary>
