@@ -12,24 +12,19 @@ namespace Common.Utilities
             return (load + gain) + offset;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long origin, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values)
         {
-            if ((798 % 100) > (origin % 100))
+            long mark = 1;
+            foreach (long sample in values)
             {
-                return 3;
+                mark = ((mark * 5) + (mark + sample)) % 1000;
             }
-            else
+            if (mark < 382)
             {
-                if ((2.23 - 9.0) == (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                mark = ((mark << 3) ^ (mark << 2)) % 255;
             }
+            return mark % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
