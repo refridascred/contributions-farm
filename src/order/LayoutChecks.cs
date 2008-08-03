@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 3697;
+        public const long BaseBuffer = 5711;
+        public const long StepBuffer = 5562;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
