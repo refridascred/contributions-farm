@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the report farm entries that pass the check.</summary>
-        public static long AuditReportFarmGaps(long[] values, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long entry in levels)
             {
-                if (701 >= (matches >> 5))
+                if (!((15.0 / 3.0) < (double)matches) && ((double)entry == (0.57 * 3.57)))
                 {
-                    matches = ((matches + 3) ^ item) + bound;
+                    matches = matches + 2;
                 }
             }
             return matches;
