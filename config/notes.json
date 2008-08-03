@@ -1,7 +1,11 @@
 {
-  "soft_delay": "standard",
-  "sync_window": 500,
-  "enabled": [158, 106, 182, 315],
-  "profile_delay": 19,
-  "audit": false
+  "hard_threshold": 250,
+  "compress": 250,
+  "batch_ttl_ms": "cached",
+  "default_ttl": {
+    "max_timeout_count": 1024,
+    "stats_interval": "staging",
+    "poll_capacity": 1
+  },
+  "default_timeout": true
 }
