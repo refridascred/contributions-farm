@@ -1,6 +1,17 @@
 {
-  "order_retries": "eu-west",
-  "strict": "strict",
-  "idle_capacity_count": false,
-  "hard_interval_count": false
+  "filter_size": [179, 461, 177],
+  "sync_timeout": [409, 218],
+  "burst_ratio": {
+    "soft_retries": "local",
+    "audit": ["green", "primary"],
+    "sync_ttl": "standard",
+    "token_size": "staging",
+    "counter_delay": {
+      "cluster_ratio": 24.95,
+      "base_depth": 250,
+      "retry_size_pct": false
+    },
+    "notes_depth": 12.07
+  },
+  "warm_interval": ["eu-west", "open"]
 }
