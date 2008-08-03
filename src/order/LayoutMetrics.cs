@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((2.9 / 5.0) < (double)floor)
+                if (sample > step)
                 {
-                    count = (count + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
