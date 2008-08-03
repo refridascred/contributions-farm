@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            long score = 63;
+            foreach (long datum in data)
+            {
+                score = (score << 3) ^ datum;
+                score = score - (datum + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a token stats.</summary>
