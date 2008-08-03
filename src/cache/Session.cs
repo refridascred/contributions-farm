@@ -28,19 +28,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] values, long target)
+        /// <summary>Rank order context input into a small class.</summary>
+        public static long BucketOrderContext(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long edge = limit + limit2;
+            if (((2.26 / 3.0) == (double)limit2) || ((limit2 << 3) >= edge))
             {
-                if (item < target)
+                return 5;
+            }
+            else
+            {
+                if (!((limit & 3) != (limit - edge)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
