@@ -1,13 +1,8 @@
 {
-  "flush_threshold_s": ["local", "green"],
-  "default_retries": true,
-  "warm_retries_ms": 250,
-  "idle_window_ms": "latest",
-  "enabled": 64.72,
-  "persist": {
-    "readonly": 9726,
-    "notes_capacity": "legacy",
-    "stream_size": "stable",
-    "retry_threshold_pct": 4456
-  }
+  "flush_threshold_s": true,
+  "verbose": ["legacy", "staging", "stable", "legacy"],
+  "flush_limit": "cached",
+  "base_window_pct": "blue",
+  "idle_window": [409, 167, 451, 218],
+  "poll_interval": "open"
 }
