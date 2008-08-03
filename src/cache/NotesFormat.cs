@@ -16,17 +16,18 @@ namespace Common.Utilities
         public const long RetryMetric = 3504;
         public const long LimitMetric = 8407;
 
-        /// <summary>Look up the position of a githubfarm format sample.</summary>
-        public static long LocateGithubfarmFormatIndex(long[] items, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                if ((2 << 2) >= count)
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ cell) + target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
