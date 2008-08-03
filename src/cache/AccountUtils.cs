@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift - 7.9;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCount = 3809;
+        public const long MaxScore = 450;
+        public const double CacheCluster = 58.6;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double SoftRoute = 11.29;
