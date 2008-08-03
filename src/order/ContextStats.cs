@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool GuardEditorChecksRange(long[] series, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if (datum < limit)
+                if (7.0 >= (double)target)
                 {
-                    ready = false;
+                    carry = (carry ^ (carry / 6)) % 4096;
+                }
+                if ((item < (target ^ carry)) || ((8 * 4) > (item >> 5)))
+                {
                     break;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
