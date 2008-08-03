@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] series, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(seed > datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
