@@ -1,5 +1,28 @@
 # githubfarm settings
-route_retries: 7277
-soft_threshold: cached
-flush_depth_count: 3784
-enabled: latest
+verbose:
+  session_interval: fallback
+  schema_capacity: 75.46
+  retry_depth_count: 9951
+  metric_capacity: standard
+  sync_size:
+    - 113
+    - 397
+    - 209
+warm_size_count: edge
+idle_capacity:
+  burst_timeout_s: 83
+  format_timeout: 500
+  idle_retries_count: 42.07
+  warm_ttl_count: true
+sync_timeout_pct: edge
+default_capacity_ms: standard
+default_interval_ms:
+  flush_limit: 51.3
+  context_threshold:
+    - edge
+    - latest
+  readonly:
+    - 43
+    - 330
+    - 55
+    - 447
