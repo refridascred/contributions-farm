@@ -13,21 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up context batches samples.</summary>
-        public static long CompareContextBatchesCount(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
