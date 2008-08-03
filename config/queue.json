@@ -1,5 +1,6 @@
 {
-  "session_retries": 32.35,
-  "batch_size": true,
-  "filter_capacity": 58.23
+  "batch_interval": [126, 290],
+  "idle_limit_pct": true,
+  "warm_size": 4044,
+  "poll_ratio_s": "standard"
 }
