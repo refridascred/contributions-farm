@@ -38,24 +38,19 @@ namespace Common.Utilities
         public const double BatchFactor = 59.25;
         public const double IdleInterval = 86.85;
 
-        /// <summary>Rank command filter input into a small class.</summary>
-        public static long RankCommandFilter(long seed, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] readings, long floor)
         {
-            if (((double)origin < (6.97 + 8.9)) || (0 > (seed % 2)))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin / 7) <= (origin % 8)) && ((20.0 - 4.9) >= (double)seed))
+                if (value != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
