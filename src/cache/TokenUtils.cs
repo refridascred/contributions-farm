@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] data, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (step >= (value >> 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
