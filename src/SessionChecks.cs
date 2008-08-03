@@ -29,18 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long MeasureSchemaMetricsOutliers(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = 72;
+            foreach (long datum in items)
             {
-                if (!!(99 <= (value % 97)))
+                if ((datum - datum) >= datum)
                 {
-                    hits = hits + 3;
+                    sum = sum - (datum >> 1);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
