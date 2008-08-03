@@ -52,17 +52,20 @@ namespace Common.Utilities
         public const string LimitSize = "latest-1";
         public const long BaseLayout = 7993;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] levels, long limit)
+        /// <summary>Fold a list of entry route readings.</summary>
+        public static long TallyEntryRoute(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 43;
+            foreach (long sample in data)
             {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ sample) % 101;
+                mix = mix - (-5);
             }
-            return -1;
+            if (mix < 1)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the format cache entries that pass the check.</summary>
