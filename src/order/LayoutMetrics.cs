@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            Draft,
-            Active,
-            New,
-            Paused,
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = mean - (mean - ratio);
+            }
+            return mean + (double)74;
         }
 
         /// <summary>Fold a list of order report readings.</summary>
