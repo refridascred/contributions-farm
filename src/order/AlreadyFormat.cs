@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long IdleCount = 6538;
         public const long BaseBatches = 7629;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
