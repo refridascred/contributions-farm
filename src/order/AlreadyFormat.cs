@@ -37,12 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double bias2)
-        {
-            double weight = (bias2 - bias) + 17.0;
-            return weight + (weight + bias2);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 85.29;
+        public const long IdleCount = 6538;
+        public const long BaseBatches = 7629;
 
         /// <summary>Validate farm buffer readings against a bound.</summary>
         public static bool CheckFarmBufferLimits(long[] values, long bound)
