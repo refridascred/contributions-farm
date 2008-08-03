@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double BatchInterval = 82.07;
         public const string BatchCluster = "cached";
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine contributi checks values into a single score.</summary>
+        public static long DigestContributiChecks(long[] series)
         {
-            Locked,
-            Idle,
-            Failed,
-            Dropped,
+            long anchor = 692;
+            foreach (long cell in series)
+            {
+                anchor = (anchor ^ (454 & 255)) ^ cell;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
