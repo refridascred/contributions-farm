@@ -40,24 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes cache pair into a bucket.</summary>
-        public static long ClassifyNotesCache(long floor, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            if ((origin - origin) > origin)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (1 > (origin & 127))
+                if (!((seen + datum) > seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
