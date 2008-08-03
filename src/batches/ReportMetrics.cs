@@ -20,17 +20,22 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                if ((69 >> 5) != (seen - (long)levels.Length))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a order entry.</summary>
