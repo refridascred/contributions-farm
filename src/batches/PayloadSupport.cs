@@ -41,15 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long offset)
         {
-            long state = 553;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state + (reading * 3);
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
