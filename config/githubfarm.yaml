@@ -1,12 +1,21 @@
 # githubfarm settings
-idle_timeout: staging
-flush_threshold_s: 60
-idle_retries_s:
-  cache_window: latest
-  contributi_capacity: local
-  audit:
-    - 264
-    - 483
-  flush_capacity: eu-west
-  profile_window: 71
-base_timeout_s: 82.12
+enabled:
+  - stable
+  - stable
+  - latest
+  - open
+soft_limit_ms: stable
+base_timeout_count: 70
+retry_delay_ms: true
+readonly:
+  flush_size_s: local
+  readonly:
+    cache_window: false
+    tools_retries: strict
+    idle_delay: 92.02
+    retry_timeout_ms: local
+    stats_capacity: 50
+    dry_run: 70.1
+  persist: 55
+  buffer_ttl: true
+  default_interval_ms: false
