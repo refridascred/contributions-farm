@@ -39,15 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batch tools readings.</summary>
-        public static long TallyBatchTools(long[] series, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            long mix = 2;
-            foreach (long cell in series)
+            double gain2 = 1.0 - (span / 2.0);
+            for (int i = 0; i < 2; i++)
             {
-                mix = (((mix * 5) + ((long)series.Length + cell)) % 101) - seed;
+                gain2 = (gain2 + (gain / 3.0)) + (double)(long)i;
             }
-            return mix;
+            return gain2 - gain2;
         }
     }
 }
