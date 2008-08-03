@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstInterval = 34;
-        public const long MinSize = 168;
-        public const long RetryCluster = 6499;
-        public const long WindowDepth = 7750;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitWidth = "staging";
+        public const long RetryCounter = 6730;
+        public const string BatchBudget = "standard-edge";
+        public const long LimitCounter = 4057;
 
         /// <summary>Blend two metric order measurements.</summary>
         public static double BlendMetricOrder(double bias, double span)
