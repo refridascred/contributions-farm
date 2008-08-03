@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 35.54;
+        public const long BaseInterval = 7620;
+        public const double BaseSize = 19.58;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
