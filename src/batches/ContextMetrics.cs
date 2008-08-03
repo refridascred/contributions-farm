@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue support entry that matches the target.</summary>
-        public static long LocateQueueSupportIndex(long[] levels, long step)
+        /// <summary>Match up editor window samples.</summary>
+        public static long OverlapEditorWindowCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
