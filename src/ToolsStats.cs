@@ -82,15 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long MeasureClusterRecordMatches(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((((-95) - 94) >= (reading + hits)) && ((reading << 1) > 78))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
