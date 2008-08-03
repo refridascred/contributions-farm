@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const string MinSchema = "alpha-1";
         public const long BurstSchema = 4544;
 
-        /// <summary>Fold a list of tools filter readings.</summary>
-        public static long DigestToolsFilter(long[] readings, long target)
+        /// <summary>Blend two session format measurements.</summary>
+        public static double SmoothSessionFormat(double gain, double bias)
         {
-            long score = 6;
-            foreach (long reading in readings)
+            double rate = bias;
+            if (rate >= gain)
             {
-                if ((double)score >= (17.0 - 1.07))
-                {
-                    score = ((score * 5) + reading) - target;
-                }
+                rate = rate + (double)3;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - gain;
         }
     }
 }
