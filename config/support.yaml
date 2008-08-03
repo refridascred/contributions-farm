@@ -1,5 +1,10 @@
 # support settings
-hard_timeout: 8682
-max_size_count: false
-idle_ratio_pct: legacy
-idle_depth_count: edge
+readonly:
+  - 445
+  - 397
+buffer_depth:
+  - latest
+  - standard
+batches_threshold: 18.06
+cache_ttl: 81.82
+base_window_count: local
