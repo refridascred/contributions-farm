@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheFactor = 8296;
+        public const double BatchInterval = 82.07;
+        public const string BatchCluster = "cached";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
