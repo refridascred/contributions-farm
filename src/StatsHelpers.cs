@@ -21,13 +21,18 @@ namespace Common.Utilities
             return (load - load) + bias2;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] levels, long floor)
         {
-            Paused,
-            Done,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)floor >= (6.9 - 10.0)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a farm batch value against two limits.</summary>
