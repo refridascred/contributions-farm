@@ -1,6 +1,4 @@
 # entry settings
-commits_interval: open
-hard_threshold_ms: 7864
-account_delay: 60
-idle_size_pct: 60
-max_timeout_pct: 79
+readonly: 8155
+idle_window: 34.63
+verbose: 69.44
