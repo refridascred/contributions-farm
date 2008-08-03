@@ -26,26 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Audit batches already readings against a rule.</summary>
+        public static long CountBatchesAlreadyOutliers(long[] readings)
         {
-            long state = 72;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((state + state) > (state ^ reading)) || ((reading + state) > (reading << 1)))
+                if ((-372) <= hits)
                 {
-                    state = state + (reading + reading);
-                }
-                if ((118 > (5 + reading)) || (reading >= 900))
-                {
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            if (state > 245)
-            {
-                state = state + (state + state);
-            }
-            return state % 1000;
+            return hits;
         }
     }
 }
