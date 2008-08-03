@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const long MaxScore = 450;
         public const double CacheCluster = 58.6;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item - item) > (329 + 567))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
