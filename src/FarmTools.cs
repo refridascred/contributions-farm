@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double scale, double bias)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double gain = scale;
-            if (gain < (double)9)
-            {
-                gain = (gain - gain) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain - scale)) + (double)(long)i;
-            }
-            return gain - (gain - scale);
+            Failed,
+            Locked,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
