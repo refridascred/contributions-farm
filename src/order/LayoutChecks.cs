@@ -38,10 +38,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "latest-1";
-        public const double SoftTimeout = 65.94;
-        public const long RetryCommand = 1358;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean >= (bias * 9.34))
+            {
+                mean = (mean + (5.0 / 3.0)) - offset;
+            }
+            else
+            {
+                mean = mean - (double)(-9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 5.9) + (double)(long)i;
+            }
+            return mean - (double)397;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
