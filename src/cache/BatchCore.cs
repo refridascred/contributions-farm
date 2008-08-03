@@ -64,18 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long origin)
         {
-            long acc = 44;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((double)400 > (double)entry) && ((double)89 >= (double)entry))
+                if (cell <= origin)
                 {
-                    acc = acc - (acc ^ target);
+                    found = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return found;
         }
     }
 }
