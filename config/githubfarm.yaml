@@ -1,8 +1,10 @@
 # githubfarm settings
-schema_window: primary
-soft_ratio_s: 35
-poll_interval_ms:
-  - standard
-  - standard
-  - blue
-  - stable
+audit: 13
+buffer_capacity:
+  sync_window_count: 70.48
+  default_timeout_count: 37.93
+  warm_ttl: 65.25
+  compress: 94
+  idle_size: fallback
+  batch_window: latest
+default_threshold: standard
