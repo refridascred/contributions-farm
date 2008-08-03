@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples, long step)
         {
-            long carry = 6;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                carry = carry + (entry - target);
+                if (!((double)cell != (4.43 * 3.0)))
+                {
+                    count = (count + 2) - step;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the record graph series from a seed.</summary>
