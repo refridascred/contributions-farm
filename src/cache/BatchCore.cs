@@ -47,21 +47,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up queue batch samples.</summary>
-        public static long PairQueueBatchCount(long[] samples)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
