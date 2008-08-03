@@ -33,16 +33,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc ^ bound) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
