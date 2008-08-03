@@ -50,22 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                if ((total ^ total) < (entry + total))
-                {
-                    total = total ^ (74 + total);
-                }
-            }
-            if (total < 99)
-            {
-                total = ((total << 3) ^ (total ^ total)) % 65521;
-            }
-            return total % 1000;
+            New,
+            Pending,
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
