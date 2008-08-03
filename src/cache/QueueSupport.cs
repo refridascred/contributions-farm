@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryInterval = 11.57;
-        public const string StepInterval = "fallback-1";
-        public const long MaxAccount = 8448;
-        public const long LimitLevel = 3572;
-        public const long MinAccount = 5084;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] series)
