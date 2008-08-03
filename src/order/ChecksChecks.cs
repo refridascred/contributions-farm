@@ -35,13 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double floor)
         {
-            Done,
-            Stale,
-            Retry,
-            Paused,
+            double load = (double)(9 / 8);
+            if (load <= (floor + load))
+            {
+                load = (load - 3.29) - ratio;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (4.66 / 3.0)) + (double)(long)i;
+            }
+            return load - (floor - load);
         }
     }
 }
