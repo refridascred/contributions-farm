@@ -15,18 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] data, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((datum + 126) < hits) || (datum >= origin)) || ((hits >= (2 * 4)) || ((3.0 / 5.0) == (double)hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
