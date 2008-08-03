@@ -1,10 +1,19 @@
 # support settings
-readonly:
-  - 445
-  - 397
-buffer_depth:
-  - latest
-  - standard
-batches_threshold: 18.06
-cache_ttl: 81.82
-base_window_count: local
+schema_ratio: 100
+strict: 100
+audit:
+  - 127
+  - 306
+  - 195
+persist:
+  editor_delay: 1024
+  payload_timeout: standard
+  contributi_capacity: true
+  hard_ttl_pct: cached
+  soft_delay:
+    - blue
+    - green
+    - green
+  cluster_delay: 100
+dry_run: 66.99
+min_threshold: stable
