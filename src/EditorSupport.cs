@@ -45,19 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a notes account counter forward.</summary>
-        public static long IterateNotesAccount(long limit)
+        /// <summary>Roll a route queue counter forward.</summary>
+        public static long IterateRouteQueue(long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)total != (3.42 / 3.0))
-                {
-                    total = (total * 2) + total;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Accumulate batches samples.</summary>
