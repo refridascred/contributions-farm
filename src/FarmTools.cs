@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            Failed,
-            Synced,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(datum <= (hits + datum)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
