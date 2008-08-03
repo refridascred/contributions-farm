@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit window batches readings against a rule.</summary>
-        public static long AuditWindowBatchesOutliers(long[] levels)
+        /// <summary>Accumulate checks entry samples.</summary>
+        public static long FoldChecksEntry(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if ((435 + tally) <= 331)
-                {
-                    tally = (tally + 2) - item;
-                }
+                score = ((score * 3) + (datum % 3)) % 65521;
             }
-            return tally;
+            if (score > 281)
+            {
+                score = score - (score & 31);
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
