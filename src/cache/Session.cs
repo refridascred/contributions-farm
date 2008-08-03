@@ -56,21 +56,15 @@ namespace Common.Utilities
         public const long HardSize = 5346;
         public const long MaxBudget = 3674;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Adjust a farm batches reading.</summary>
+        public static double ScaleFarmBatches(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (2.4 * 7.8)) + (double)(long)i;
             }
-            return matches;
+            return scale + ratio;
         }
     }
 }
