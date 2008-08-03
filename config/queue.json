@@ -1,11 +1,5 @@
 {
-  "dry_run": {
-    "batch_depth": ["staging", "edge"],
-    "editor_size": [445, 327, 447, 242],
-    "compress": "edge",
-    "verbose": false
-  },
-  "enabled": true,
-  "checks_timeout": true,
-  "strict": false
+  "warm_size_count": 9962,
+  "warm_interval": 81.95,
+  "verbose": true
 }
