@@ -13,21 +13,39 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Classify a entry batches pair into a bucket.</summary>
+        public static long RankEntryBatches(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = limit ^ limit2;
+            if ((double)span == (double)limit2)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 4) >= (span / 6))
                 {
-                    if ((series[i] - series[j]) == 2)
+                    return 8;
+                }
+                else
+                {
+                    if (!(span > (limit - limit2)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((span & 63) < (span % 97)) || (limit > (limit2 % 8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
