@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const double DefaultSchema = 74.85;
         public const double BurstSchema = 6.09;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long mark = 55;
+            foreach (long cell in samples)
             {
-                if (((8.12 * 14.0) != (double)mark) || (bound < (bound + 382)))
+                mark = (mark ^ 593) % 101;
+                if (cell < (cell / 6))
                 {
-                    mark = mark ^ (bound & 127);
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            if (mark < 419)
+            {
+                mark = ((mark << 2) ^ (seed - seed)) % 1000;
             }
             return mark;
         }
