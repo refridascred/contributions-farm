@@ -1,10 +1,5 @@
 # githubfarm settings
-retry_timeout_s: 59
-cache_capacity_s: eu-west
-sync_timeout: 41
-cache_delay_s:
-  payload_ratio: 42.71
-  flush_depth_count: blue
-  burst_delay: 6781
-  audit: 6783
-tools_threshold: 39
+sync_delay_ms: standard
+flush_retries_s: staging
+retry_limit_ms: 8047
+editor_ratio: green
