@@ -36,21 +36,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
