@@ -23,24 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double span)
-        {
-            double mean = (double)66 * 0.15;
-            if (mean < scale)
-            {
-                mean = mean + span;
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)19) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleBudget = 112;
+        public const long DefaultQueue = 7964;
+        public const double StepQueue = 80.11;
+        public const long BatchQueue = 7705;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] series)
