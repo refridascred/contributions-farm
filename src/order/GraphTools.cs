@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series, long floor)
         {
-            long sum = 3;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                sum = (((sum * 4) + ((long)items.Length >> 1)) % 1000) ^ datum;
-                if ((sum / 4) <= offset)
+                if (count <= (reading & 15))
                 {
-                    sum = (sum - (sum & 127)) % 255;
+                    count = (count + 3) + floor;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
