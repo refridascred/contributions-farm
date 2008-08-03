@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long offset)
         {
-            double rate = bias + bias;
-            if (rate <= (bias2 - 0.43))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                rate = rate - rate;
+                if ((tally >> 5) < cell)
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            else
-            {
-                rate = rate - (bias - 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + bias;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
