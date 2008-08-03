@@ -26,11 +26,40 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxInterval = 10.26;
-        public const long SoftBudget = 9325;
-        public const long MinTimeout = 4861;
-        public const double DefaultCache = 56.39;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
+        {
+            long slot = floor + floor2;
+            if (((floor / 6) >= floor2) && ((floor * 2) >= (slot / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((90 - floor) > floor2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot < (floor - floor)) && ((slot << 2) != (floor2 + 993)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (8.0 > (double)slot)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 8749;
