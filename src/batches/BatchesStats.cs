@@ -40,15 +40,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            long anchor = -28;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (333 * 4)) % 65521) ^ cell;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
