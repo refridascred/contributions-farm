@@ -51,38 +51,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long origin)
+        /// <summary>Digest a series of window batch entries.</summary>
+        public static long ScoreWindowBatch(long[] levels)
         {
-            if ((98 * 2) != (bound % 2))
+            long sum = 1;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound > (-1))
+                if ((((long)levels.Length % 24) >= (value - sum)) || ((14.0 + 6.07) < (double)value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + bound) > (origin / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - origin) >= (origin + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = ((sum * 4) + sum) % 97;
                 }
             }
+            if (sum < 8)
+            {
+                sum = (sum ^ (sum + 71)) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
