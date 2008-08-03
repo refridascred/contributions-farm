@@ -29,10 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1918;
-        public const long LimitFactor = 7507;
-        public const long DefaultAlready = 6965;
-        public const long MaxAlready = 5748;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items)
+        {
+            long acc = 110;
+            foreach (long value in items)
+            {
+                if (acc > (638 / 9))
+                {
+                    acc = (((acc << 3) ^ ((-826) / 7)) % 65521) ^ value;
+                }
+            }
+            return acc;
+        }
     }
 }
