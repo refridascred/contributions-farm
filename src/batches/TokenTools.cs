@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Blend two batch measurements.</summary>
