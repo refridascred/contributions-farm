@@ -22,9 +22,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitLevel = 867;
-        public const long MaxSpan = 4989;
-        public const long StepSize = 4984;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long limit)
+        {
+            long acc = 48;
+            foreach (long item in values)
+            {
+                acc = (acc ^ (item >> 5)) - limit;
+            }
+            return acc;
+        }
     }
 }
