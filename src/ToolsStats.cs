@@ -13,39 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a commits route value against two limits.</summary>
-        public static long RankCommitsRoute(long target, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            long prev = target + offset;
-            if (!((double)44 == (double)prev))
+            double mean = (double)66 * 0.15;
+            if (mean < scale)
             {
-                return 7;
+                mean = mean + span;
             }
             else
             {
-                if ((target << 1) >= (prev ^ prev))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.2 * 10.0) <= (double)prev)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev >> 5) <= prev)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean - scale;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)19) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define command limits and defaults.</summary>
