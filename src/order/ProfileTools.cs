@@ -26,12 +26,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
