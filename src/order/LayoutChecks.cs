@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const double SoftTimeout = 65.94;
         public const long RetryCommand = 1358;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitCount = 9765;
-        public const long CacheFactor = 3008;
-        public const long StepReport = 6135;
-        public const long HardScore = 3468;
-        public const long RetryReport = 8093;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long origin, long limit)
