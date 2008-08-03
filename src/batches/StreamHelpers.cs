@@ -23,23 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long DigestFormatLayout(long[] samples)
-        {
-            long mix = -310;
-            foreach (long datum in samples)
-            {
-                if ((datum - (-363)) > (datum & 255))
-                {
-                    mix = (mix ^ ((-186) * 2)) % 97;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix * 3) + (681 ^ mix)) % 4096;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7417;
+        public const double MaxCache = 90.03;
+        public const long MaxCount = 20;
+        public const string StepBudget = "alpha-v2";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
