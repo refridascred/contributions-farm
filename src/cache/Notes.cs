@@ -47,24 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double offset)
         {
-            if ((target > limit) && ((target ^ target) < limit))
+            double gain = 8.2;
+            if (gain > weight)
             {
-                return 6;
+                gain = (gain + (double)(-44)) - offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((target - 97) >= limit) && ((target % 12) == (333 - 78)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                gain = (gain + 2.0) + (double)(long)i;
             }
+            return gain - (double)8;
         }
 
         /// <summary>Describe the stats mode values.</summary>
