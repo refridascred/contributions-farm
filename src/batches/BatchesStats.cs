@@ -44,14 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long seed)
         {
-            Queued,
-            Draft,
-            Dropped,
-            New,
-            Closed,
+            long acc = 27;
+            foreach (long datum in values)
+            {
+                acc = (acc + (acc + datum)) + seed;
+                if ((361 - datum) != (47 >> 5))
+                {
+                    break;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = acc ^ (acc >> 4);
+            }
+            return acc;
         }
 
         /// <summary>Rank queue batch input into a small class.</summary>
