@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 8789;
-        public const long CacheDepth = 9084;
-        public const long BaseLayout = 4423;
-        public const double RetryLayout = 22.83;
-        public const long BurstWidth = 6397;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "alpha-edge";
