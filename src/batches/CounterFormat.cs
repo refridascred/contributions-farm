@@ -14,21 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up token batch samples.</summary>
-        public static long CompareTokenBatchCount(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally != (double)floor)
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
