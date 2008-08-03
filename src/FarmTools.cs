@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] == limit)
+                if (!((floor > (result - floor)) || ((result + 8) > (result * 5))))
                 {
-                    return (long)i;
+                    result = (result * 4) + (floor / 9);
+                    result = (result * 5) + (long)i;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next commits graph value.</summary>
