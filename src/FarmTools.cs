@@ -15,13 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            Closed,
-            Idle,
-            Stale,
-            Retry,
+            double gain = span;
+            if (gain < (span * 17.0))
+            {
+                gain = gain + (scale - span);
+            }
+            else
+            {
+                gain = gain + (scale * 7.9);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + (gain - 6.4);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
