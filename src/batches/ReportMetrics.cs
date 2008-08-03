@@ -34,9 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8565;
-        public const long BatchFactor = 3211;
-        public const double CacheSession = 54.04;
+        /// <summary>Validate metric githubfarm readings against a bound.</summary>
+        public static bool ValidateMetricGithubfarmBounds(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
