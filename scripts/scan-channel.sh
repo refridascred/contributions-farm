@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local primary cached; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=440
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=491
 log "limit is ${CHANNEL_LIMIT}"
