@@ -22,16 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Validate order command readings against a bound.</summary>
+        public static bool ValidateOrderCommandBounds(long[] items, long offset)
         {
-            long result = 467;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                result = result + result;
-                result = result + (sample ^ (-98));
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
