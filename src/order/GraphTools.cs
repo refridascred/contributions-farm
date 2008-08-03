@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items, long offset)
         {
-            Draft,
-            Closed,
-            Pending,
-            Failed,
-            Idle,
+            long sum = 3;
+            foreach (long datum in items)
+            {
+                sum = (((sum * 4) + ((long)items.Length >> 1)) % 1000) ^ datum;
+                if ((sum / 4) <= offset)
+                {
+                    sum = (sum - (sum & 127)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
