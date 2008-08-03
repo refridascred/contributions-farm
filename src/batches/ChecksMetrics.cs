@@ -50,20 +50,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool CheckBatchMetricsRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultSpan = "primary-1";
+        public const string LimitScore = "standard-edge";
+        public const double RetrySpan = 16.13;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double DefaultScore = 55.17;
