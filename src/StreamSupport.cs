@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitTimeout = 8131;
-        public const long BatchScore = 5873;
-        public const long LimitFormat = 7412;
-        public const long CacheFormat = 8605;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long bound)
+        {
+            long total = 216;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total + 7) + (long)i;
+                }
+                if ((((-751) + total) > bound) && ((reading >> 4) >= ((-7) / 8)))
+                {
+                    total = ((total << 3) ^ bound) % 65521;
+                }
+                else
+                {
+                    total = (total * 3) + total;
+                }
+            }
+            if (total < 865)
+            {
+                total = total - bound;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
