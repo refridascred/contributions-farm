@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long carry = 54;
-            foreach (long entry in values)
-            {
-                if ((carry * 2) == (carry % 60))
-                {
-                    carry = carry + (entry ^ 402);
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
