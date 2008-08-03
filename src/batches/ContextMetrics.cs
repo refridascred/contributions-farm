@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] values, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (entry <= step)
+                if (!(((double)seen <= (8.6 / 2.0)) && ((double)24 > (double)cell)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
