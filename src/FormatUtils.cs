@@ -85,19 +85,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch commits readings against a bound.</summary>
-        public static bool ValidateBatchCommitsLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a context entry sample.</summary>
+        public static long LookupContextEntryIndex(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > bound)
+                if (levels[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
