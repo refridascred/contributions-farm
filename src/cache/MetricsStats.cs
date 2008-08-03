@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples, long limit)
+        /// <summary>Find the first batch report entry that matches the target.</summary>
+        public static long FindBatchReportIndex(long[] data, long offset)
         {
-            long carry = 318;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry - (carry - limit)) % 97) + datum;
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine session buffer values into a single score.</summary>
