@@ -87,9 +87,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "cached";
-        public const double MinTimeout = 26.8;
-        public const long DefaultWidth = 5022;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 981;
+        public const long CacheInterval = 9767;
+        public const long RetryInterval = 9681;
+        public const long WindowSupport = 3825;
     }
 }
