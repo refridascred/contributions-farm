@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long origin)
         {
-            long delta = floor - origin;
-            if (((origin & 15) > floor) && ((delta - floor) != (floor - floor)))
+            long score = 531;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta + delta) >= (floor - floor))
+                if (score >= (origin ^ origin))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    score = (score ^ (801 >> 2)) - item;
                 }
             }
+            return score;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
