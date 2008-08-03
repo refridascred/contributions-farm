@@ -1,17 +1,7 @@
 {
-  "entry_interval": {
-    "session_depth": "staging",
-    "base_limit_count": 42,
-    "compress": {
-      "account_ttl": 86,
-      "cluster_limit": 168,
-      "context_capacity": "edge",
-      "soft_retries_ms": 36
-    },
-    "max_retries": "eu-west"
-  },
-  "poll_depth": 62,
-  "layout_window": 30,
-  "max_ratio_ms": 21.42,
-  "burst_limit_count": ["legacy", "staging", "green", "fallback"]
+  "base_ratio": true,
+  "burst_depth_ms": 3903,
+  "audit": 60,
+  "min_threshold": false,
+  "idle_capacity": "cached"
 }
