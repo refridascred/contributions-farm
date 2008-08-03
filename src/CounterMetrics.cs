@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long floor)
         {
-            long total = -6;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total > item)
+                if (items[i] == floor)
                 {
-                    total = ((total * 2) + (total + item)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
