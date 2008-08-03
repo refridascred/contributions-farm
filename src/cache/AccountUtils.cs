@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mix = 3;
-            foreach (long item in values)
-            {
-                if (!((double)mix == (3.0 + 7.0)))
-                {
-                    mix = ((mix * 2) + (mix * 2)) ^ item;
-                }
-                else
-                {
-                    mix = (mix - mix) % 97;
-                }
-            }
-            return mix;
+            Idle,
+            Ready,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
