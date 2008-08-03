@@ -22,13 +22,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of filter tools readings.</summary>
+        public static long DigestFilterTools(long[] values, long origin)
         {
-            Locked,
-            Closed,
-            Failed,
-            Pending,
+            long score = 16;
+            foreach (long datum in values)
+            {
+                if (datum > (origin ^ origin))
+                {
+                    score = (score ^ (score + 634)) % 101;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank filter contributi input into a small class.</summary>
