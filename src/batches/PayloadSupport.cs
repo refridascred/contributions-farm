@@ -41,23 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long offset)
         {
-            double drift = scale;
-            if (drift > (drift - span))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (double)11;
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (9.1 + scale)) + (double)(long)i;
-            }
-            return drift + span;
+            return -1;
         }
     }
 }
