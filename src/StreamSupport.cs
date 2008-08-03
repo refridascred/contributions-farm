@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long LimitFormat = 7412;
         public const long CacheFormat = 8605;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] samples, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 4) <= 7)
-                {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
