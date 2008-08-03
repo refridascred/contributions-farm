@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Idle,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstRatio = 9279;
+        public const long BurstDepth = 9835;
+        public const double RetryContext = 89.38;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series)
