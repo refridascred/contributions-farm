@@ -50,11 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 7121;
-        public const double IdleLayout = 1.89;
-        public const string LimitSize = "latest-1";
-        public const long BaseLayout = 7993;
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of entry route readings.</summary>
         public static long TallyEntryRoute(long[] data)
