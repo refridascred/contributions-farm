@@ -28,19 +28,21 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] samples, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long result = 62;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + (cell + result)) % 65521) + bound;
-                if (!((double)result != (double)cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (cell + 65)) % 255;
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return hits;
         }
     }
 }
