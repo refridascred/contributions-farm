@@ -31,26 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series, long step)
+        /// <summary>Audit session window readings against a rule.</summary>
+        public static long MeasureSessionWindowMatches(long[] data)
         {
-            long carry = 27;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((carry + step) != (datum - datum))
+                if (!!((-835) <= count))
                 {
-                    carry = (carry - (step ^ carry)) % 1000;
-                }
-                if ((double)datum <= (5.0 / 2.0))
-                {
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry - (step - (long)series.Length)) % 101;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
