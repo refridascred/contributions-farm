@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + (span + span);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches <= (double)step)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 65.34;
+        public const long IdleOrder = 5499;
+        public const double BaseBudget = 22.15;
+        public const long StepOrder = 2672;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
