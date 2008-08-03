@@ -1,20 +1,29 @@
 # entry settings
-channel_retries:
-  idle_ratio_count: 16.0
-  metric_delay: 60
-  window_delay:
-    window_timeout: latest
-    account_interval: 10
-    idle_threshold: 16.38
-    default_ratio_count: 66.53
-    metric_ratio: 68.95
-    flush_threshold_pct: 87
-  sync_window_count: strict
-  enabled: 100
-  soft_ttl_count: staging
-verbose:
-  default_capacity_count: true
-  cache_ttl: 37.96
-  audit: false
-  compress: 25
-cache_capacity: 9.65
+retry_depth: 52.4
+base_timeout_pct:
+  sync_timeout_pct: true
+  already_size: false
+  editor_threshold: 76
+  dry_run: 30
+poll_depth_ms: 100
+burst_timeout_pct:
+  retry_ratio: cached
+  soft_capacity_pct: true
+  entry_retries:
+    flush_interval: false
+    max_delay_count: 91
+    default_retries_s: 30
+    poll_ttl_count: cached
+  metric_depth: 59.05
+  min_retries_s:
+    batch_window: 8.91
+    already_capacity: 96.55
+    cache_capacity: 86
+    queue_size: 48.22
+    cache_depth_s: false
+  farm_delay:
+    - 361
+    - 348
+    - 422
+report_window: 18
+hard_ttl_s: 240
