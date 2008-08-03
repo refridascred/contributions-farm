@@ -35,32 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long target2)
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long StepBatchesOrder(long bound)
         {
-            long span = target - target2;
-            if ((span >> 3) <= target2)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                mark = (mark + ((long)i + 75)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (3.66 > (double)target2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target2 * 5) >= (target2 + 834))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
