@@ -15,12 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
