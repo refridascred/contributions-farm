@@ -1,24 +1,5 @@
 # githubfarm settings
-hard_threshold: stable
-audit: standard
-min_timeout:
-  sync_retries_pct: strict
-  warm_limit_s: 2.76
-  commits_delay: true
-  base_timeout_pct:
-    audit:
-      - blue
-      - blue
-      - staging
-      - strict
-    poll_ttl_count:
-      - edge
-      - legacy
-      - latest
-      - blue
-    batch_ttl_pct:
-      - 249
-      - 364
-      - 149
-      - 488
-dry_run: cached
+batch_limit: false
+route_capacity: true
+cache_window: strict
+cache_limit: 4.58
