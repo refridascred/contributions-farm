@@ -36,25 +36,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank filter contributi input into a small class.</summary>
-        public static long ClassifyFilterContributi(long offset, long offset2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data, long step)
         {
-            long offset3 = offset - offset2;
-            if (24 > (offset2 * 3))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset3 < (offset2 * 3))
+                if ((item + step) >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
