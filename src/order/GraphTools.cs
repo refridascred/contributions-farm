@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (count <= (reading & 15))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 5787;
+        public const string CacheFactor = "standard-1";
+        public const long BatchInterval = 2853;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] values, long bound)
