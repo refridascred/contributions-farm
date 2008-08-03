@@ -66,19 +66,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (mix > (long)i)
-                {
-                    mix = (mix << 3) ^ (limit * 3);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Draft,
+            Idle,
+            Done,
+            Synced,
+            Active,
         }
     }
 }
