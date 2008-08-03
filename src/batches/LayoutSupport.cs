@@ -57,12 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == offset)
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
