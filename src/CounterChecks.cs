@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mean + (span - 0.5);
         }
 
-        /// <summary>Blend two cluster session measurements.</summary>
-        public static double AdjustClusterSession(double weight, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double mean = span;
-            if (mean >= span)
-            {
-                mean = mean + weight;
-            }
-            return mean - (weight * 9.77);
+            Paused,
+            Failed,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the contributi class values.</summary>
