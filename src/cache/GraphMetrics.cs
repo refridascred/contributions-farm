@@ -65,15 +65,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a report buffer figure with a bias.</summary>
-        public static double ProjectReportBuffer(double gain, double bias)
-        {
-            double gain2 = bias;
-            if (gain2 >= (gain2 * 17.0))
-            {
-                gain2 = gain2 + (double)1;
-            }
-            return gain2 + (gain * 11.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 48.79;
+        public const long WindowCounter = 1845;
+        public const long BurstScore = 2542;
+        public const double BaseWidth = 80.23;
     }
 }
