@@ -40,19 +40,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (cell > floor)
+                if (cell >= seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
