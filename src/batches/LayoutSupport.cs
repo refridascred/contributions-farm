@@ -28,12 +28,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 8.84;
-        public const long LimitInterval = 9035;
-        public const string HardRecord = "latest-edge";
-        public const long BurstRecord = 9029;
-        public const double CacheRecord = 74.43;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] series)
