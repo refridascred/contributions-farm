@@ -39,11 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] samples)
         {
-            double mean = (double)(69 - 38);
-            return ((mean - (8.21 * 15.0)) + ratio) + offset;
+            long carry = 3;
+            foreach (long datum in samples)
+            {
+                if (4.52 <= (double)carry)
+                {
+                    carry = ((carry * 5) + (datum << 3)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 2) + carry) % 255;
+                }
+                if ((carry & 31) < datum)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
