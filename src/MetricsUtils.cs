@@ -23,20 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metric contributi samples.</summary>
-        public static long TallyMetricContributi(long[] series)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long acc = 218;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + acc) % 101) - datum;
-                acc = ((acc * 4) + (acc + 4)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 98)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
