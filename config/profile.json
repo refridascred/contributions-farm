@@ -1,20 +1,6 @@
 {
-  "payload_retries": 30.86,
-  "base_depth_count": true,
-  "soft_ttl_count": {
-    "enabled": 100,
-    "checks_window": 4568,
-    "warm_window_s": 26.12,
-    "base_size": 54.23,
-    "record_depth": {
-      "hard_retries_pct": ["legacy", "primary", "primary", "strict"],
-      "sync_limit": "staging",
-      "warm_threshold": 5,
-      "hard_ttl_ms": false,
-      "stream_capacity": "blue"
-    }
-  },
-  "cache_ttl": false,
-  "retry_size": false,
-  "persist": ["strict", "cached", "open", "green"]
+  "base_threshold_ms": ["open", "fallback", "staging", "cached"],
+  "soft_delay_count": "cached",
+  "dry_run": [449, 339],
+  "persist": true
 }
