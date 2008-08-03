@@ -23,31 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            if ((bound * 5) >= (bound - 19))
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < bound)
+                if ((2 - mark) == (229 + mark))
                 {
-                    return 6;
+                    mark = (mark ^ origin) % 255;
                 }
-                else
-                {
-                    if (!((1.17 / 6.0) != (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Describe the context mode values.</summary>
