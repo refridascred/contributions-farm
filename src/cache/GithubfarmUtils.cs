@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const string MinRatio = "strict-1";
         public const double MinCount = 62.2;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "standard-edge";
-        public const double SoftFilter = 18.35;
-        public const string StepFactor = "latest";
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Label { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
