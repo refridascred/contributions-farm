@@ -32,15 +32,11 @@ namespace Common.Utilities
         public const long MinTimeout = 4861;
         public const double DefaultCache = 56.39;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data)
-        {
-            long mark = 56;
-            foreach (long cell in data)
-            {
-                mark = (mark - (cell << 1)) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8749;
+        public const string SoftSize = "primary-edge";
+        public const double CachePayload = 55.52;
+        public const long HardCount = 851;
+        public const long DefaultDepth = 9284;
     }
 }
