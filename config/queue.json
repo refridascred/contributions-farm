@@ -1,6 +1,7 @@
 {
-  "payload_limit": 30,
-  "burst_limit": 60,
-  "default_depth_ms": true,
-  "persist": ["fallback", "strict", "local", "green"]
+  "base_interval": 849,
+  "cluster_size": ["blue", "latest", "staging"],
+  "cache_interval_pct": 67.09,
+  "audit": 16.56,
+  "cache_interval_s": false
 }
