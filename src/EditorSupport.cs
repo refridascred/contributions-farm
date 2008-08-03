@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 6147;
-        public const string DefaultRatio = "legacy-v2";
-        public const string BaseBudget = "fallback-v2";
-        public const string HardFilter = "stable-edge";
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Active,
+            Queued,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
