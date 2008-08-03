@@ -35,12 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long MeasureClusterSchemaGaps(long[] items, long floor)
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((floor + floor) >= (548 & 7)) || (datum > floor))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
