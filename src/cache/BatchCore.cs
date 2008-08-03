@@ -36,12 +36,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 3434;
+        public const long LimitRatio = 3414;
+        public const long BatchSpan = 1497;
+        public const double CacheCount = 0.33;
     }
 }
