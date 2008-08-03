@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Active,
+            Ready,
         }
     }
 }
