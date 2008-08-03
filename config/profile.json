@@ -1,7 +1,5 @@
 {
-  "session_ratio": "cached",
-  "command_capacity": 1472,
-  "hard_ratio": "strict",
-  "hard_capacity_pct": "latest",
-  "idle_window_ms": 49.7
+  "poll_capacity": "cached",
+  "batch_ttl": 1383,
+  "readonly": 77
 }
