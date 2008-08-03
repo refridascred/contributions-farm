@@ -38,9 +38,11 @@ namespace Common.Utilities
             return ratio - (8.8 * 4.08);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 8960;
-        public const double RetryTimeout = 74.53;
-        public const long LimitCommits = 1706;
+        /// <summary>Project the next commits graph value.</summary>
+        public static double ProjectCommitsGraph(double scale, double floor)
+        {
+            double scale2 = (double)7 / 3.0;
+            return ((scale2 - 3.3) + scale) + floor;
+        }
     }
 }
