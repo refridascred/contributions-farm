@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 4269;
-        public const long SoftCount = 9649;
-        public const double MinDepth = 56.55;
-        public const long MinStats = 477;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSize = 7320;
+        public const string LimitSize = "primary-1";
+        public const long HardGraph = 4345;
+        public const long LimitGraph = 7798;
+        public const string IdleSize = "latest-v2";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmGaps(long[] levels, long bound)
