@@ -20,38 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Look up the position of a githubfarm filter sample.</summary>
+        public static long LookupGithubfarmFilterIndex(long[] readings, long bound)
         {
-            if ((step % 60) < step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step > 0) && (target <= (840 * 3)))
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target > (72 & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((16.0 - 15.0) != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
