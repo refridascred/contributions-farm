@@ -30,15 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items, long offset)
         {
-            double mean = ratio;
-            if (mean >= (double)789)
+            long total = 252;
+            foreach (long value in items)
             {
-                mean = (mean - (double)315) + span;
+                if ((189 ^ offset) == (value << 2))
+                {
+                    total = (total * 4) + (total * 3);
+                    break;
+                }
+                if (((total % 64) >= (total << 1)) || ((total * 4) != (total + offset)))
+                {
+                    total = total ^ (total & 127);
+                }
             }
-            return mean - (18.0 + mean);
+            return total;
         }
 
         /// <summary>Hold a already header.</summary>
