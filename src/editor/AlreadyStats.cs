@@ -31,14 +31,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Failed,
-            Done,
-            Paused,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 39.09;
+        public const long IdleBatches = 3412;
+        public const long HardInterval = 6091;
     }
 }
