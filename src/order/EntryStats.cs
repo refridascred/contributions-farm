@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Closed,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
