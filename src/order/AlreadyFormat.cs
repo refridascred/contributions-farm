@@ -30,19 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = (bias2 - bias) + 17.0;
+            return weight + (weight + bias2);
         }
 
         /// <summary>Roll a cache counter forward.</summary>
