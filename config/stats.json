@@ -1,5 +1,7 @@
 {
-  "persist": 9980,
-  "burst_limit_s": 9523,
-  "farm_threshold": [183, 489]
+  "retry_timeout_ms": 1024,
+  "audit": [33, 497, 298, 26],
+  "base_window": false,
+  "filter_threshold": "stable",
+  "base_ttl_count": "eu-west"
 }
