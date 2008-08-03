@@ -33,16 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Fold a list of cache cluster readings.</summary>
+        public static long FoldCacheCluster(long[] series, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long total = 345;
+            foreach (long reading in series)
             {
-                state = (state + step) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                if ((total * 5) <= (reading + seed))
+                {
+                    total = (total - seed) % 4096;
+                }
+                else
+                {
+                    total = (total * 5) + reading;
+                }
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Validate queue metrics readings against a bound.</summary>
