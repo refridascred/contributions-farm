@@ -38,14 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            Dropped,
-            Paused,
-            Active,
-            Queued,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
