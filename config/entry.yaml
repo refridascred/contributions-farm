@@ -1,11 +1,13 @@
 # entry settings
-strict: 500
-cache_depth_ms: open
-min_delay: 35
-flush_size_pct:
-  default_capacity: 1691
-  stats_interval: stable
-  farm_window: 30
-  soft_window_count: false
-  enabled: open
-  poll_interval: false
+idle_timeout: 82
+batch_retries: 68
+sync_interval_pct: 87.36
+min_depth_count:
+  verbose:
+    - eu-west
+    - open
+  hard_ratio_pct: 68.37
+  flush_depth: 250
+  idle_limit_pct: 30
+  default_ttl_pct: false
+batch_size_count: 44.16
