@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            long state = 839;
-            foreach (long reading in samples)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 5) + (reading << 3)) % 4096;
+                anchor = ((anchor * 5) + (step % 97)) % 1000;
+                if ((step + anchor) == (step + step))
+                {
+                    anchor = anchor - anchor;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (state < 10)
-            {
-                state = (state - (state * 2)) % 4096;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a schema header.</summary>
