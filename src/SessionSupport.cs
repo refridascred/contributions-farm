@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const long RetryCluster = 6499;
         public const long WindowDepth = 7750;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
