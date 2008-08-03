@@ -1,6 +1,20 @@
 {
-  "base_threshold_ms": ["open", "fallback", "staging", "cached"],
-  "soft_delay_count": "cached",
-  "dry_run": [449, 339],
-  "persist": true
+  "default_delay_pct": {
+    "schema_interval": 100,
+    "batch_delay": "legacy",
+    "flush_timeout_ms": ["green", "legacy", "strict"],
+    "soft_ratio": "open",
+    "audit": 88.6,
+    "filter_delay": 3535
+  },
+  "dry_run": 250,
+  "strict": {
+    "idle_size_ms": 2,
+    "strict": 60,
+    "persist": "stable",
+    "sync_ratio": 1024,
+    "dry_run": [84, 481, 417, 152],
+    "githubfarm_size": 2334
+  },
+  "hard_delay_s": true
 }
