@@ -51,18 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics stream readings against a rule.</summary>
-        public static long TallyMetricsStreamOutliers(long[] values, long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - 71) < (seed - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
