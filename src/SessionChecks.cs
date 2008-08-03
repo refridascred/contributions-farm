@@ -15,13 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            Stale,
-            Idle,
-            Failed,
-            Draft,
+            long state = -35;
+            foreach (long reading in series)
+            {
+                state = state + (reading ^ 421);
+                state = (state ^ reading) % 1000;
+            }
+            if (state < 6)
+            {
+                state = state ^ (630 & 15);
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
