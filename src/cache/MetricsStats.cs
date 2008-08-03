@@ -44,16 +44,31 @@ namespace Common.Utilities
         public const long DefaultAccount = 3547;
         public const string BurstSize = "cached-edge";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] samples, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long target)
         {
-            long mix = 9;
-            foreach (long sample in samples)
+            if (((target * 2) <= (target - target)) || (17.0 < (double)origin))
             {
-                mix = (mix - (floor % 10)) + sample;
-                mix = (mix - (mix + 39)) % 255;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (target >= (origin & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target >= (target % 16)) && ((origin ^ target) != (origin + origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
