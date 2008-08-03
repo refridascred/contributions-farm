@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate format layout samples.</summary>
