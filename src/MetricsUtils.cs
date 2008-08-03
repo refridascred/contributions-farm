@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const double StepContext = 78.97;
         public const string LimitInterval = "latest-edge";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] series, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
