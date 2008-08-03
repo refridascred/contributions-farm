@@ -79,13 +79,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long seed)
         {
-            Paused,
-            Idle,
-            Failed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
