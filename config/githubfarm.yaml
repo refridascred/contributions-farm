@@ -1,26 +1,11 @@
 # githubfarm settings
-strict: true
-readonly:
-  - 423
-  - 59
-  - 483
-record_capacity: 85
-cluster_capacity:
-  format_capacity:
-    - latest
-    - primary
-    - blue
-    - edge
-  stats_retries: 31.31
-  min_timeout_s: local
-  payload_size: 41
-  sync_retries:
-    burst_ttl_pct: 74
-    readonly: 1024
-    audit: edge
-    batches_ttl: 25.59
-    enabled: 6091
-  cache_ttl: blue
-token_capacity:
+window_ratio: 18.23
+session_retries:
+  - 46
+  - 377
+dry_run: 3179
+verbose: 56
+soft_delay_s:
+  - open
+  - strict
   - primary
-  - green
