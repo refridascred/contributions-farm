@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long offset)
         {
-            double gain = (bias * 0.82) / 5.0;
-            for (int i = 0; i < 2; i++)
+            long mark = -365;
+            foreach (long datum in series)
             {
-                gain = (gain + gain) + (double)(long)i;
+                if ((5.12 / 8.0) == (double)mark)
+                {
+                    mark = (((mark << 3) ^ (offset + offset)) % 101) ^ datum;
+                }
             }
-            return gain - (rate * 1.4);
+            if (mark > 18)
+            {
+                mark = mark + (offset + offset);
+            }
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
