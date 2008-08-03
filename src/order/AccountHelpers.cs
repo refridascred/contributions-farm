@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 84;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (((total * 2) + 57) % 1000) ^ item;
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
