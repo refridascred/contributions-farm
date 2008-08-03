@@ -38,11 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((8.12 * 14.0) != (double)mark) || (bound < (bound + 382)))
+                {
+                    mark = mark ^ (bound & 127);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
