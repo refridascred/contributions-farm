@@ -1,12 +1,14 @@
 # githubfarm settings
-max_ratio:
-  warm_ttl_pct:
-    - open
-    - stable
-    - strict
-  persist: 56
-  retry_limit_ms: 60
-  report_ttl: 5152
-channel_window: staging
-schema_limit: 65.91
-order_window: strict
+token_timeout: 41.57
+graph_size: 61.31
+buffer_threshold:
+  retry_limit: 1536
+  batch_size:
+    - cached
+    - latest
+    - legacy
+  warm_ratio_s: 12
+  soft_size_count: 80
+idle_timeout_count: green
+default_ttl_ms: eu-west
+enabled: standard
