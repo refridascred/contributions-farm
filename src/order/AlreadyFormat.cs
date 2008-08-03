@@ -32,25 +32,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long floor)
+        /// <summary>Project the next cluster githubfarm value.</summary>
+        public static double SmoothClusterGithubfarm(double rate, double bias)
         {
-            long gap = seed ^ floor;
-            if ((gap <= (floor * 4)) || (gap > (seed % 12)))
+            double rate2 = (double)(489 + 4);
+            if (rate2 >= bias)
             {
-                return 0;
+                rate2 = rate2 + rate;
             }
-            else
-            {
-                if ((388 + seed) < (floor ^ gap))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return rate2 - (2.3 * 2.7);
         }
 
         /// <summary>Look up the position of a tools token sample.</summary>
