@@ -54,11 +54,20 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 4485;
-        public const long SoftCount = 2592;
-        public const long MaxTimeout = 8727;
-        public const long WindowDepth = 8089;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items)
+        {
+            long mix = 65;
+            foreach (long value in items)
+            {
+                mix = ((mix - (556 - 5)) % 65521) ^ value;
+            }
+            if (mix > 7)
+            {
+                mix = mix - 51;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutHits(long[] levels, long seed)
