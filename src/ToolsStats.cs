@@ -57,23 +57,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)origin != (double)69) || ((origin ^ (long)i) >= 49))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - (origin & 7)) % 65521;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = total - total;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count metric commits pairs that satisfy a relation.</summary>
