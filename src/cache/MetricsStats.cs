@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 318;
+            foreach (long datum in samples)
             {
-                if (!(datum > ((-793) + 4)))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry - (carry - limit)) % 97) + datum;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine session buffer values into a single score.</summary>
