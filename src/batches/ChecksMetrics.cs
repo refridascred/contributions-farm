@@ -23,18 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] series, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long target, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound = target - offset;
+            if (8.0 >= (double)bound)
             {
-                if ((double)cell >= 8.5)
+                return 1;
+            }
+            else
+            {
+                if (((target ^ bound) <= 97) && ((target - bound) != ((-4) ^ bound)))
                 {
-                    tally = (tally + 3) + seed;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
