@@ -32,12 +32,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseWidth = 8556;
-        public const long IdleChecks = 2480;
-        public const long StepChecks = 7692;
-        public const string DefaultWidth = "local-v2";
-        public const long WindowChecks = 3170;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
