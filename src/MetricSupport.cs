@@ -25,20 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long AuditBatchChecksMatches(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)(long)i != (double)limit)
+                if (matches > (reading ^ reading))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                mark = ((mark * 3) + mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
     }
 }
