@@ -14,23 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            double mean = weight - (weight + weight);
-            if (mean > (double)1)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mean = mean - (double)93;
+                if ((count > (datum + 598)) && ((count + 3) != (count ^ count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean + (bias / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (mean * 6.75);
+            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
