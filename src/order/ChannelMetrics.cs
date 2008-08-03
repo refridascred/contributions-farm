@@ -27,19 +27,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] samples, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
