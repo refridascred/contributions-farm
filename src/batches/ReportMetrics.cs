@@ -22,11 +22,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryInterval = 6025;
-        public const long SoftStats = 3502;
-        public const long WindowBudget = 6245;
-        public const string StepSpan = "open-v2";
-        public const double StepStats = 10.69;
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long MeasureProfileStreamMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (55 < (matches - matches))
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
