@@ -34,17 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 952;
+            foreach (long cell in values)
             {
-                mark = (mark * 4) + seed;
-                mark = mark + (seed + mark);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!((7.0 - 16.0) <= (double)state))
+                {
+                    state = state ^ cell;
+                }
+                else
+                {
+                    state = (state + cell) % 97;
+                }
             }
-            return mark;
+            return state % 65521;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
