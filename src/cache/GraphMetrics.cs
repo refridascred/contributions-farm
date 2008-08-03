@@ -42,10 +42,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8354;
-        public const long DefaultMetrics = 8009;
-        public const long CacheFactor = 6707;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long bound, long origin)
