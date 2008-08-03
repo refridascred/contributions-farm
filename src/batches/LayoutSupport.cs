@@ -48,13 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] items)
         {
-            Stale,
-            Draft,
-            New,
-            Retry,
+            long sum = 89;
+            foreach (long value in items)
+            {
+                if ((double)value >= (7.63 - 7.23))
+                {
+                    sum = sum + (sum >> 5);
+                }
+            }
+            if (sum > 446)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Combine record values into a single score.</summary>
