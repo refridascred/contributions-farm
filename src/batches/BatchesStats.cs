@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double scale, double offset)
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long AuditChecksRecordHits(long[] readings)
         {
-            double ratio = (double)(42 + 39);
-            if (ratio > (scale - scale))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + scale;
+                if ((6.5 >= (double)matches) && (datum < (17 % 100)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - (double)70;
+            return matches;
         }
 
         /// <summary>Hold a account header.</summary>
