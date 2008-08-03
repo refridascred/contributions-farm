@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + (acc + offset)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many account order samples are out of range.</summary>
