@@ -1,8 +1,5 @@
 {
-  "flush_size": 58.75,
-  "base_ratio_count": 57,
-  "contributi_delay": "local",
-  "hard_ratio": false,
-  "payload_delay": false,
-  "min_interval": 86
+  "persist": 9980,
+  "burst_limit_s": 9523,
+  "farm_threshold": [183, 489]
 }
