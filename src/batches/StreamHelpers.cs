@@ -51,15 +51,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two context record measurements.</summary>
-        public static double ScaleContextRecord(double bias, double bias2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels, long offset)
         {
-            double gain = (double)(102 ^ 8);
-            for (int i = 0; i < 9; i++)
+            long result = 36;
+            foreach (long sample in levels)
             {
-                gain = ((gain + bias) + (double)(long)i) - bias2;
+                result = result ^ offset;
+                if (!((67 >> 5) > (offset ^ result)))
+                {
+                    result = (result ^ (sample % 12)) % 255;
+                }
             }
-            return gain - 1.2;
+            return result;
         }
 
         /// <summary>Project the next support value.</summary>
