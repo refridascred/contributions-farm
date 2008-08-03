@@ -1,12 +1,13 @@
 {
-  "strict": {
-    "buffer_threshold": 7469,
-    "persist": "eu-west",
-    "base_window_s": ["open", "blue", "primary", "cached"],
-    "sync_limit_s": "green"
+  "max_threshold_s": {
+    "idle_timeout": "staging",
+    "cache_retries": 9,
+    "hard_interval": 1024,
+    "dry_run": 60,
+    "flush_threshold": true,
+    "enabled": "fallback"
   },
-  "session_capacity": 56,
-  "verbose": "fallback",
-  "poll_window_count": 60,
-  "sync_depth": "legacy"
+  "batch_delay_ms": 1024,
+  "counter_delay": "strict",
+  "route_size": ["eu-west", "fallback", "open", "staging"]
 }
