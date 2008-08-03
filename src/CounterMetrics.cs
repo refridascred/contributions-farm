@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels, long step)
         {
-            long acc = 807;
-            foreach (long reading in items)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                acc = (acc * 4) + reading;
-                acc = acc ^ (acc + 339);
+                if (((item % 97) < (mix + item)) && (8.0 > (double)step))
+                {
+                    mix = ((mix * 5) + step) % 4096;
+                }
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
