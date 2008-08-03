@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepTimeout = 286;
-        public const double HardWidth = 38.92;
-        public const double SoftFormat = 28.09;
-        public const string StepSpan = "standard-1";
-        public const double RetryWidth = 78.7;
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long AuditStreamFarmOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((4 + matches) <= datum)
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metric already samples are out of range.</summary>
         public static long TallyMetricAlreadyHits(long[] levels)
