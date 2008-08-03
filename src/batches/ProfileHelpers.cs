@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double bias)
-        {
-            double drift = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - scale;
-            }
-            return drift + (bias - bias);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 3853;
+        public const long MaxLevel = 4273;
+        public const long BatchCount = 1430;
 
         /// <summary>Locate a context layout reading by value.</summary>
         public static long LocateContextLayoutIndex(long[] levels, long step)
