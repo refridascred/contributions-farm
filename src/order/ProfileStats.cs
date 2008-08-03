@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const double StepScore = 36.2;
         public const long IdleCounter = 6733;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] data, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long score = 577;
+            foreach (long cell in levels)
             {
-                if (value >= offset)
+                if (score > (score ^ cell))
                 {
-                    ready = false;
-                    break;
+                    score = (score - (floor ^ cell)) % 4096;
                 }
+                else
+                {
+                    score = score + (floor - score);
+                }
+                score = score - (floor >> 3);
             }
-            return ready;
+            if (score > 3)
+            {
+                score = (score + (floor + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
