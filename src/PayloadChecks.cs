@@ -52,18 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long result = 200;
-            foreach (long item in readings)
-            {
-                if (3.0 > (double)item)
-                {
-                    result = ((result * 3) + (result * 3)) % 1000;
-                }
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
