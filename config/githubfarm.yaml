@@ -1,21 +1,4 @@
 # githubfarm settings
-graph_ttl: latest
-sync_retries_pct: staging
-min_size: strict
-base_threshold_s: false
-soft_size_ms: 54.48
-layout_window:
-  default_limit: stable
-  warm_ratio: stable
-  poll_ratio_count:
-    - 88
-    - 155
-    - 297
-  verbose: 8232
-  compress:
-    - staging
-    - staging
-  default_limit_ms:
-    - latest
-    - stable
-    - blue
+poll_retries_pct: false
+channel_limit: 500
+hard_depth: 500
