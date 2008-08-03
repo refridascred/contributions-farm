@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheBudget = 6543;
-        public const string SoftWidth = "fallback-v2";
-        public const string MinSize = "latest";
-        public const long BatchCommits = 4633;
+        /// <summary>Measure how many contributi queue samples are out of range.</summary>
+        public static long CountContributiQueueGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits ^ hits) <= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
