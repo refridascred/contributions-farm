@@ -28,11 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 28.03;
+        public const double DefaultDepth = 20.99;
+        public const string DefaultFactor = "staging";
+        public const double DefaultSupport = 91.77;
     }
 }
