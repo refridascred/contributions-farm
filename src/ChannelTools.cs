@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultWidth = 95.89;
+        public const long WindowLevel = 8701;
+        public const long BaseCounter = 4482;
+        public const long DefaultCounter = 9821;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
