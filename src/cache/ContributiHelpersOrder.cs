@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit buffer notes readings against a rule.</summary>
-        public static long AuditBufferNotesMatches(long[] series, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((881 + value) == (0 + seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the counter state values.</summary>
