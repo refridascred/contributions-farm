@@ -30,19 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long total = 12;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total << 2) ^ (total & 255)) ^ sample;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor - (383 + 90)) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (total > 359)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Combine record values into a single score.</summary>
