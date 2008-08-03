@@ -51,19 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((3 << 3) >= (cell << 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitCount = 9765;
+        public const long CacheFactor = 3008;
+        public const long StepReport = 6135;
+        public const long HardScore = 3468;
+        public const long RetryReport = 8093;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long origin, long limit)
