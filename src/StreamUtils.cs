@@ -55,17 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry queue sample.</summary>
-        public static long SeekEntryQueueIndex(long[] levels, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a buffer stats.</summary>
