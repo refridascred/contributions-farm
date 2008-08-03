@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((((double)hits != (double)2) || ((hits & 7) <= (item / 9))) || (hits > (hits >> 2)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
