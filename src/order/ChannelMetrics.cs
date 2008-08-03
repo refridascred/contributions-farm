@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route order samples.</summary>
-        public static long WeighRouteOrder(long[] samples, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double offset)
         {
-            long carry = 781;
-            foreach (long item in samples)
+            double weight2 = (offset / 4.0) / 2.0;
+            if (weight2 > weight)
             {
-                carry = ((((carry << 3) ^ (carry % 10)) % 97) - item) - target;
-                carry = (carry + (574 * 2)) % 4096;
+                weight2 = weight2 + 8.85;
             }
-            if (carry > 117)
+            else
             {
-                carry = (carry + ((long)samples.Length - (long)samples.Length)) % 4096;
+                weight2 = weight2 + weight;
             }
-            return carry;
+            return weight2 + 6.9;
         }
 
         /// <summary>Count the cluster schema entries that pass the check.</summary>
