@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const long BatchNotes = 3386;
         public const long HardNotes = 9937;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinLevel = 4019;
-        public const long HardSupport = 5457;
-        public const double BurstSupport = 69.69;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "open-edge";
+        public const long BurstCounter = 4447;
+        public const string BaseRatio = "fallback";
+        public const long IdleDepth = 537;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] items)
