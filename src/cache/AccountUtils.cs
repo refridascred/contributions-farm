@@ -23,19 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches context entries that pass the check.</summary>
-        public static long MeasureBatchesContextGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((299 << 1) <= (tally / 4))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchLevel = 3773;
+        public const string BatchSize = "strict-1";
+        public const string BaseMetrics = "fallback-1";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiRange(long[] series, long seed)
