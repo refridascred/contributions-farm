@@ -25,11 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
