@@ -31,11 +31,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank filter contributi input into a small class.</summary>
+        public static long ClassifyFilterContributi(long offset, long offset2)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long offset3 = offset - offset2;
+            if (24 > (offset2 * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset3 < (offset2 * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
