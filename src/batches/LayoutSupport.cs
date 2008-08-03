@@ -77,17 +77,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                acc = (acc * 2) + (acc ^ (long)i);
+                if ((acc - offset) < acc)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + acc) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
