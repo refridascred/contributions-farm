@@ -38,15 +38,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Classify a notes cache pair into a bucket.</summary>
+        public static long ClassifyNotesCache(long floor, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            if ((origin - origin) > origin)
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (1 > (origin & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
