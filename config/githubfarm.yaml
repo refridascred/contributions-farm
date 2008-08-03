@@ -1,6 +1,12 @@
 # githubfarm settings
-retry_timeout: 76.67
-burst_timeout_ms: 33.44
-already_capacity: legacy
-sync_ttl_s: 1024
-default_window_ms: 52.81
+max_ratio:
+  warm_ttl_pct:
+    - open
+    - stable
+    - strict
+  persist: 56
+  retry_limit_ms: 60
+  report_ttl: 5152
+channel_window: staging
+schema_limit: 65.91
+order_window: strict
