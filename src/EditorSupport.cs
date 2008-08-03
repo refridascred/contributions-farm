@@ -69,15 +69,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long score = 7;
-            foreach (long entry in items)
+            long mark = 448;
+            foreach (long sample in items)
             {
-                score = (score << 3) ^ entry;
+                if (mark < sample)
+                {
+                    mark = (mark - (mark - sample)) % 255;
+                }
             }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Blend two token measurements.</summary>
