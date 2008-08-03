@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] levels, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (!((tally / 3) == (37 + reading)))
+                if (cell > target)
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the layout class values.</summary>
