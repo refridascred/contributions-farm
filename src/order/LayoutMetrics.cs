@@ -27,39 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long origin2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long seed)
         {
-            long step = origin - origin2;
-            if (!((step << 2) <= (origin + origin)))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((350 ^ origin2) == (origin >> 4))
+                if (item < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step > 421)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= (origin2 & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
