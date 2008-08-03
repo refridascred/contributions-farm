@@ -31,22 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long MeasureProfileStreamMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (55 < (matches - matches))
+                if ((datum - datum) > (-40))
                 {
-                    matches = (matches + 1) - cell;
+                    count = (count + 1) + floor;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
