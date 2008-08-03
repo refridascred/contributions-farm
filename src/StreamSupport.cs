@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long bound)
+        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
+        public static bool GuardQueueMetricsRange(long[] readings, long limit)
         {
-            long total = 216;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (entry != limit)
                 {
-                    total = (total + 7) + (long)i;
-                }
-                if ((((-751) + total) > bound) && ((reading >> 4) >= ((-7) / 8)))
-                {
-                    total = ((total << 3) ^ bound) % 65521;
-                }
-                else
-                {
-                    total = (total * 3) + total;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 865)
-            {
-                total = total - bound;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
