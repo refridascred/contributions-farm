@@ -57,10 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 5097;
-        public const double MinInterval = 80.26;
-        public const string WindowInterval = "local-1";
-        public const long CacheLevel = 2672;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 27.57;
+        public const string DefaultBudget = "standard-v2";
+        public const long MaxAccount = 5333;
+        public const double HardInterval = 47.22;
+        public const long MaxSize = 8106;
     }
 }
