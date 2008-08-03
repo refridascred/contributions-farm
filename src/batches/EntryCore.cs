@@ -52,23 +52,17 @@ namespace Common.Utilities
         public const string LimitSize = "latest-1";
         public const long BaseLayout = 7993;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] levels, long limit)
         {
-            double bias2 = bias;
-            if (bias2 <= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - bias;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (bias + bias2);
+            return -1;
         }
 
         /// <summary>Count the format cache entries that pass the check.</summary>
