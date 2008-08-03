@@ -19,25 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            long slot = origin - offset;
-            if ((slot << 1) != (1 - 20))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 3) >= 62)
+                if ((tally & 3) <= (item + tally))
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
