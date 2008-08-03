@@ -1,7 +1,5 @@
 {
-  "filter_limit": 37,
-  "githubfarm_retries": "staging",
-  "hard_window": 5519,
-  "record_interval": 51,
-  "audit": 100
+  "warm_retries_count": 69.98,
+  "compress": "green",
+  "max_size_s": "fallback"
 }
