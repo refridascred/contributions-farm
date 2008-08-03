@@ -1,21 +1,15 @@
 # githubfarm settings
-enabled:
-  - stable
-  - stable
-  - latest
-  - open
-soft_limit_ms: stable
-base_timeout_count: 70
-retry_delay_ms: true
-readonly:
-  flush_size_s: local
-  readonly:
-    cache_window: false
-    tools_retries: strict
-    idle_delay: 92.02
-    retry_timeout_ms: local
-    stats_capacity: 50
-    dry_run: 70.1
-  persist: 55
-  buffer_ttl: true
-  default_interval_ms: false
+cache_ttl_s:
+  hard_delay: 5500
+  record_ttl: false
+  cache_ttl_ms:
+    hard_ttl_pct: standard
+    verbose: fallback
+    profile_limit: 32.38
+    command_ratio:
+      - standard
+      - strict
+    soft_window: eu-west
+hard_ratio_ms: 3427
+soft_window_s: primary
+strict: 32
