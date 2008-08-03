@@ -28,26 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] items, long target)
         {
-            long mix = 67;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((cell & 63) <= (cell + cell))
+                if (((count % 97) != (count + sample)) || ((target - target) <= ((-328) % 2)))
                 {
-                    mix = (mix << 3) ^ (3 % 2);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (cell << 1);
-                }
-                if ((cell / 7) > (mix * 4))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
