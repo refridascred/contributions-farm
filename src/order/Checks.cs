@@ -52,18 +52,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry ^ matches) != (259 - entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleCount = 12.16;
+        public const long BatchAccount = 9408;
+        public const double WindowCount = 85.66;
+        public const long MinBudget = 9096;
     }
 }
