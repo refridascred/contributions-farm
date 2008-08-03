@@ -28,18 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((seed > (matches % 2)) || (datum < (seed >> 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
