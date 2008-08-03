@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Match up context batches samples.</summary>
