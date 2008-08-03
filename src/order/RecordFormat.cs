@@ -28,11 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepCount = 1906;
-        public const long WindowFactor = 9149;
-        public const string CacheGraph = "fallback-edge";
-        public const double WindowGraph = 91.16;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
