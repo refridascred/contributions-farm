@@ -62,15 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context tools readings.</summary>
-        public static long MatchContextToolsCount(long[] readings)
+        /// <summary>Compare every pair of channel window readings.</summary>
+        public static long CompareChannelWindowCount(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 1)
+                    if ((values[i] - values[j]) > 12)
                     {
                         count = count + 1;
                     }
