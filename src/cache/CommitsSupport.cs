@@ -95,11 +95,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long floor)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long anchor = 7;
+            foreach (long cell in levels)
+            {
+                if ((double)anchor <= (4.0 / 5.0))
+                {
+                    anchor = (anchor << 2) ^ (8 + cell);
+                }
+                else
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+            }
+            if (anchor < 423)
+            {
+                anchor = anchor - floor;
+            }
+            return anchor % 97;
         }
     }
 }
