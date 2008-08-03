@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            Retry,
-            Active,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen <= (datum << 2)) && ((double)seen < 7.75))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a schema checks value against two limits.</summary>
