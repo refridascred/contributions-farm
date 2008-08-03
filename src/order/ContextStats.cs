@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] values, long offset)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
