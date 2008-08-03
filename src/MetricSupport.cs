@@ -18,28 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 96;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (18.0 / 9.0))
-                {
-                    mark = mark + ((-44) * 4);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (reading + reading)) % 97;
-                }
-                mark = ((mark * 3) + (reading ^ mark)) % 4096;
-                mark = (mark * 3) + (mark % 100);
-            }
-            if (mark < 71)
-            {
-                mark = (mark + (mark << 1)) % 4096;
-            }
-            return mark;
+            Stale,
+            New,
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
