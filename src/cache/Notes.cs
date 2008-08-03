@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool ValidateFarmPayloadBounds(long[] items, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (entry <= floor)
+                if ((reading + reading) == (hits + reading))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
