@@ -33,24 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long target, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if ((double)bound == (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target ^ bound) > (target + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
