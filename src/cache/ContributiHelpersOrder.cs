@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long limit)
         {
-            Failed,
-            Closed,
-            Done,
-            Locked,
+            long anchor = 30;
+            foreach (long reading in readings)
+            {
+                if (5.78 < (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 3)) % 1000;
+                }
+                if ((anchor + 52) != (anchor - limit))
+                {
+                    anchor = anchor ^ reading;
+                    anchor = (anchor - ((-4) << 2)) % 97;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (limit >> 1);
+                }
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate checks entry samples.</summary>
