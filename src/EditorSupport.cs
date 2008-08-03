@@ -28,21 +28,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 122;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum > (double)mix)
                 {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ mix;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Roll a route queue counter forward.</summary>
