@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Stale,
-            Paused,
-            Locked,
+            Done,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the cluster level values.</summary>
