@@ -40,23 +40,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache metrics values into a single score.</summary>
-        public static long CombineCacheMetrics(long[] series, long origin)
-        {
-            long carry = 724;
-            foreach (long reading in series)
-            {
-                if (reading <= (origin >> 3))
-                {
-                    carry = carry ^ (carry & 3);
-                }
-            }
-            if (carry < 12)
-            {
-                carry = (carry * 4) + (origin / 8);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "latest-1";
+        public const double SoftTimeout = 65.94;
+        public const long RetryCommand = 1358;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitCount = 9765;
