@@ -43,11 +43,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double bias, double span)
+        /// <summary>Match up route record samples.</summary>
+        public static long PairRouteRecordCount(long[] series)
         {
-            double scale = bias;
-            return (scale + bias) + span;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
