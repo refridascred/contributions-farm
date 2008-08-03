@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long target)
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long TallyEntryGithubfarm(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 7;
+            foreach (long datum in values)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (step & 255)) - datum;
             }
-            return -1;
+            if (sum < 28)
+            {
+                sum = sum ^ ((-91) + sum);
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
