@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 27.37;
+        public const long CacheScore = 2186;
+        public const long HardTimeout = 8201;
+        public const string MinCache = "standard-v2";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] readings)
