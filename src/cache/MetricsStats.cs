@@ -43,12 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardScore = 66.47;
+        public const string BatchInterval = "cached-1";
+        public const long CacheCount = 3248;
+        public const long LimitCounter = 3667;
+        public const double CacheFactor = 90.48;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] data, long offset)
