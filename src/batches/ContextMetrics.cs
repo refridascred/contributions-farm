@@ -29,18 +29,39 @@ namespace Common.Utilities
         public const long HardTimeout = 8201;
         public const string MinCache = "standard-v2";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long offset2 = bound - offset;
+            if ((double)offset2 != (1.0 - 7.6))
             {
-                if ((double)tally > 17.0)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < 17.0)
                 {
-                    tally = (tally + 3) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (bound < offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset < (offset - offset2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
