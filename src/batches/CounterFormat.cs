@@ -26,18 +26,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = 3;
+            foreach (long value in values)
             {
-                if ((((cell + 7) != (cell % 7)) && ((double)step <= (0.6 / 2.0))) && ((277 & 1) > (step % 12)))
+                if (!((value % 64) < (mix * 5)))
                 {
-                    hits = hits + 1;
+                    mix = (mix * 2) + (value + value);
+                    break;
+                }
+                else
+                {
+                    mix = mix + 6;
+                }
+                mix = (mix + (mix % 24)) % 255;
+                if (mix < (mix - 59))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 59)
+            {
+                mix = (mix << 2) ^ (long)values.Length;
+            }
+            return mix % 97;
         }
     }
 }
