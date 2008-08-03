@@ -47,10 +47,11 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "legacy-v2";
-        public const long IdleCount = 7436;
-        public const long BaseBatch = 392;
-        public const long BatchDepth = 9709;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowSpan = 75.65;
+        public const long DefaultLevel = 1171;
+        public const long StepMetrics = 7706;
+        public const string HardMetrics = "standard-edge";
+        public const long IdleSpan = 5249;
     }
 }
