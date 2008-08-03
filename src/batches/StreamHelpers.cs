@@ -38,19 +38,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long result = 36;
-            foreach (long sample in levels)
-            {
-                result = result ^ offset;
-                if (!((67 >> 5) > (offset ^ result)))
-                {
-                    result = (result ^ (sample % 12)) % 255;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Project the next support value.</summary>
