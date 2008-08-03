@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster filter entry that matches the target.</summary>
-        public static long LookupClusterFilterIndex(long[] levels, long seed)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long CombineContextQueue(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -12;
+            foreach (long cell in values)
             {
-                if (levels[i] == seed)
+                if ((cell >> 4) != (23 - origin))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (origin ^ 0);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (origin * 2)) % 4096;
                 }
             }
-            return -1;
+            if (score < 799)
+            {
+                score = score + origin;
+            }
+            return score;
         }
 
         /// <summary>Project the next channel value.</summary>
