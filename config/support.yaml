@@ -1,13 +1,4 @@
 # support settings
-contributi_depth: 95
-compress:
-  - staging
-  - blue
-  - latest
-min_depth_count: stable
-buffer_timeout:
-  order_timeout:
-    - 91
-    - 263
-  dry_run: primary
-  warm_interval: 86.84
+stats_depth: 243
+cache_interval: edge
+enabled: 54
