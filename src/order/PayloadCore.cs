@@ -16,21 +16,16 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Iterate the order metrics series from a seed.</summary>
+        public static long IterateOrderMetrics(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = mark - (1 & 255);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
