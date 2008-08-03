@@ -31,19 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long limit)
         {
-            long score = 707;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score << 2) ^ (long)items.Length) % 255) + datum;
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 763)
-            {
-                score = (score ^ (72 ^ score)) % 4096;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
