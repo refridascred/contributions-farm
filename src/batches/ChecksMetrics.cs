@@ -32,19 +32,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 56;
-            foreach (long entry in items)
-            {
-                total = (total - (entry >> 1)) % 1000;
-            }
-            if (total > 4)
-            {
-                total = total ^ 32;
-            }
-            return total;
+            Locked,
+            Failed,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Adjust a stream reading.</summary>
