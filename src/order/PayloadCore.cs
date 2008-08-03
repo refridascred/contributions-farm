@@ -36,10 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 9454;
-        public const long WindowChecks = 569;
-        public const string LimitRatio = "cached";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + step) % 255;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Validate queue metrics readings against a bound.</summary>
         public static bool CheckQueueMetricsBounds(long[] data, long step)
