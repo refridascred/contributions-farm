@@ -13,14 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            Ready,
-            Queued,
-            Idle,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell % 12) <= (53 / 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a account editor counter forward.</summary>
