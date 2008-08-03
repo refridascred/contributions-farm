@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the counter commits series from a seed.</summary>
-        public static long IterateCounterCommits(long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            double gain = (bias * 0.82) / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                long seen = score;
-                score = (score - (floor + seen)) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                gain = (gain + gain) + (double)(long)i;
             }
-            return score;
+            return gain - (rate * 1.4);
         }
 
         /// <summary>Define context limits and defaults.</summary>
