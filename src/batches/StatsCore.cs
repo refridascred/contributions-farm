@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double scale, double floor)
+        /// <summary>Compare every pair of context editor readings.</summary>
+        public static long PairContextEditorCount(long[] values)
         {
-            double weight = (double)6;
-            if (weight >= (double)187)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
