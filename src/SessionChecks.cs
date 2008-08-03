@@ -30,22 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples, long bound)
+        /// <summary>Locate a format profile reading by value.</summary>
+        public static long SeekFormatProfileIndex(long[] series, long target)
         {
-            long result = 25;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((88 / 2) < ((long)samples.Length << 2))
+                if (series[i] >= target)
                 {
-                    result = ((result << 3) ^ sample) - bound;
+                    return (long)i;
                 }
             }
-            if (result > 62)
-            {
-                result = (result + ((long)samples.Length / 4)) % 4096;
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
