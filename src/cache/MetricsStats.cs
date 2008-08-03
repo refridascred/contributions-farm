@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value - value) <= (tally - 757))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
