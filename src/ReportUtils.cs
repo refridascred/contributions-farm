@@ -39,15 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Stale,
-            Retry,
-            Paused,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 8956;
+        public const long BatchRecord = 8168;
+        public const long BaseRecord = 4344;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] data, long seed)
