@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long StepBudget = 4888;
         public const long IdleTimeout = 2461;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 785;
+            foreach (long item in readings)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ 97) % 1000) ^ item;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate tools samples.</summary>
