@@ -24,19 +24,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((limit << 1) >= (value ^ value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinFactor = 20.3;
+        public const long MaxLevel = 1974;
+        public const string SoftMetrics = "staging";
+        public const long HardMetrics = 3574;
+        public const long MaxBudget = 3333;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long seed, long floor)
