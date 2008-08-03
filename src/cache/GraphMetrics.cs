@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account editor counter forward.</summary>
-        public static long SeriesAccountEditor(long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            double mean = ratio;
+            if (mean >= (double)789)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor - ((long)i2 & 3)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                mean = (mean - (double)315) + span;
             }
-            return anchor;
+            return mean - (18.0 + mean);
         }
 
         /// <summary>Hold a already header.</summary>
