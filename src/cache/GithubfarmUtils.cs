@@ -40,16 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route notes counter forward.</summary>
-        public static long IterateRouteNotes(long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + ((long)i & 127)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
