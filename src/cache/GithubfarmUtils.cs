@@ -43,15 +43,11 @@ namespace Common.Utilities
         public const long BaseDepth = 7418;
         public const long BaseBuffer = 4374;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double scale = rate;
-            if (scale > (8.2 + bias))
-            {
-                scale = scale - (scale - scale);
-            }
-            return scale - (double)703;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
