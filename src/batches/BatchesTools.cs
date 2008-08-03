@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                total = (((total * 3) + 436) % 97) + sample;
+                if ((limit & 1) == (long)i)
+                {
+                    total = total + (limit - limit);
+                }
+                if ((total & 7) < (total - 44))
+                {
+                    total = ((total * 5) + ((long)i - (long)i)) % 255;
+                }
+                if (6.2 >= (double)(long)i)
+                {
+                    total = (total - ((long)i + total)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
