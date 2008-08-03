@@ -41,11 +41,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryInterval = 6669;
-        public const double BurstOrder = 37.37;
-        public const string HardOrder = "standard-v2";
-        public const long SoftBudget = 9906;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long seed)
+        {
+            if (((seed << 3) <= seed) && (seed < (bound / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-426) + seed) > (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] values, long limit)
