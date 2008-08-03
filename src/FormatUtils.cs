@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 42;
-            foreach (long reading in series)
-            {
-                if (reading >= (reading * 3))
-                {
-                    mix = mix + (reading / 8);
-                }
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
