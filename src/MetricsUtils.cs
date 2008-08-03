@@ -32,19 +32,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long target)
+        /// <summary>Compare every pair of editor queue readings.</summary>
+        public static long CompareEditorQueueCount(long[] values)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
