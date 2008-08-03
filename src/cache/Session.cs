@@ -44,18 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] series)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long TallyFilterBufferHits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((seen <= 39) || (((seen % 8) < seen) || ((8 / 8) > reading)))
+                if ((double)limit != (9.0 + 9.0))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
