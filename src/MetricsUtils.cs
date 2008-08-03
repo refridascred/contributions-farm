@@ -19,23 +19,19 @@ namespace Common.Utilities
         public const double StepContext = 78.97;
         public const string LimitInterval = "latest-edge";
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long limit)
         {
-            double load = scale;
-            if (load > (double)84)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                load = load - (double)27;
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (offset / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)723) + (double)(long)i;
-            }
-            return load - (scale * 13.0);
+            return valid;
         }
 
         /// <summary>Hold a window summary.</summary>
