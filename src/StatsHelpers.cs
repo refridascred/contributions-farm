@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6402;
+        public const double BurstAccount = 12.07;
+        public const long LimitScore = 3359;
+        public const long DefaultSpan = 6745;
+        public const long BatchAccount = 5422;
 
         /// <summary>Adjust a record report reading.</summary>
         public static double ProjectRecordReport(double bias, double bias2)
