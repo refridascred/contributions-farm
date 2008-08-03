@@ -73,18 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((-715) < (matches + matches))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
