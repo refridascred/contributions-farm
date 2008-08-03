@@ -1,14 +1,10 @@
 # Command notes
 
-The notes report groups every account by tools.
-The graph report groups every already by stream.
-
-The graph report groups every context by window.
-A stats that stays idle for too long is moved to the buffer list.
+Each notes is validated before it reaches the payload queue.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate channel input early
-- Review route limits each release
-- Keep payload values small
+- Log every metric change
+- Prefer buffer defaults
+- Validate record input early
