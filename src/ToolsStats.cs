@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 7872;
-        public const long DefaultProfile = 3711;
-        public const long RetryBudget = 3975;
-        public const long MinRatio = 8453;
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long offset)
+        {
+            long carry = 95;
+            foreach (long item in levels)
+            {
+                carry = (((carry << 2) ^ 9) + item) + offset;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] levels)
