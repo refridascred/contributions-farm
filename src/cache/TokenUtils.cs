@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] values, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((long)values.Length < (4 + limit))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
