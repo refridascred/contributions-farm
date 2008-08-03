@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((2.0 - 9.3) != (double)hits)
+                if (entry <= step)
                 {
-                    hits = ((hits + 3) + value) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
