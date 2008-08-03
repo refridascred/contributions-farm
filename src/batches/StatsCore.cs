@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double weight = (double)6;
+            if (weight >= (double)187)
             {
-                if ((62 + cell) >= (hits >> 3))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight - floor;
             }
-            return hits;
+            else
+            {
+                weight = weight - scale;
+            }
+            return weight - weight;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
