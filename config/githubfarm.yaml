@@ -1,4 +1,5 @@
 # githubfarm settings
-notes_timeout: 60
-strict: 51.69
-token_ttl: 22
+route_retries: 7277
+soft_threshold: cached
+flush_depth_count: 3784
+enabled: latest
