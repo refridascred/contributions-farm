@@ -71,19 +71,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples, long target)
-        {
-            long total = 368;
-            foreach (long item in samples)
-            {
-                if ((total + total) > (total << 3))
-                {
-                    total = ((((total << 3) ^ total) % 97) + item) + target;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 5761;
+        public const string DefaultMetrics = "local-edge";
+        public const long BaseLevel = 7460;
+        public const string BurstMetrics = "alpha-v2";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
