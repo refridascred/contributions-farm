@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long MeasureReportSchemaOutliers(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double drift = bias;
+            if (drift > drift)
             {
-                if (((-6) / 8) == (reading * 5))
-                {
-                    matches = matches + 1;
-                }
+                drift = (drift + drift) + rate;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (2.22 * 0.1)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a layout record.</summary>
