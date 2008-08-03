@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowDepth = 9626;
-        public const long DefaultEntry = 4334;
-        public const long DefaultRatio = 6866;
-        public const long SoftEntry = 8346;
+        /// <summary>Roll a route notes counter forward.</summary>
+        public static long IterateRouteNotes(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry + ((long)i & 127)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
