@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] <= bound)
+                if ((count << 3) >= (3 / 7))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ cell) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
