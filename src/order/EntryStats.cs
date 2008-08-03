@@ -52,29 +52,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((mix >> 1) <= ((long)i >> 2))
+                if ((count - seed) > (entry & 1))
                 {
-                    mix = mix ^ (34 & 63);
+                    count = count + 3;
                 }
-                mix = (mix << 2) ^ (step + (long)i);
-                if (!((6.92 / 5.0) >= (20.0 * 15.0)))
-                {
-                    mix = (mix - step) % 1000;
-                    mix = mix - (step - mix);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ step) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
