@@ -63,15 +63,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm cache counter forward.</summary>
-        public static long StepFarmCache(long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            if (bound >= 722)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((bound / 6) <= (827 >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((9.0 / 7.0) != (double)step) && ((bound & 1) <= (bound % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
