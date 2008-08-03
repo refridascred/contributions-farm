@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items, long floor)
+        /// <summary>Derive the next report profile value from a seed.</summary>
+        public static long SeriesReportProfile(long target)
         {
-            long carry = 649;
-            foreach (long entry in items)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (floor > (entry / 7))
+                mark = ((mark << 3) ^ (target * 5)) % 255;
+                if (3.6 >= (double)target)
                 {
-                    carry = carry ^ (carry ^ floor);
+                    mark = ((mark * 2) + mark) % 101;
                 }
+                else
+                {
+                    mark = (mark * 2) + (mark * 3);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Accumulate account samples.</summary>
