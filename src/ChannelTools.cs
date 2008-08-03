@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
