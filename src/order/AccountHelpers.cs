@@ -47,12 +47,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 9135;
-        public const long BatchToken = 4022;
-        public const double StepToken = 31.78;
-        public const long BatchScore = 600;
-        public const double HardTimeout = 56.43;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "stable-edge";
+        public const long MinFarm = 7484;
+        public const string BatchFarm = "standard-edge";
+        public const long DefaultFarm = 2362;
+        public const long SoftFarm = 6296;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] data, long seed)
