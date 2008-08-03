@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long TotalEditorMetrics(long[] readings, long limit)
         {
-            Paused,
-            Draft,
-            Synced,
-            Failed,
+            long sum = 41;
+            foreach (long sample in readings)
+            {
+                sum = sum + (sample - limit);
+                if ((double)sample == (5.6 + 0.98))
+                {
+                    sum = (sum << 2) ^ (limit % 5);
+                }
+                else
+                {
+                    sum = (sum * 2) + (limit - sample);
+                }
+            }
+            if (sum > 547)
+            {
+                sum = sum + ((-710) / 6);
+            }
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
