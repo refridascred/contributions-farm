@@ -20,19 +20,17 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
-        public static bool VerifyFilterBufferLimits(long[] values, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < bound)
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a format options.</summary>
