@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
