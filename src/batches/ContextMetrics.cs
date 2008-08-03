@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const long HardTimeout = 8201;
         public const string MinCache = "standard-v2";
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long target)
         {
-            long mark = 94;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading - step) <= (step ^ step))
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    mark = (mark << 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
