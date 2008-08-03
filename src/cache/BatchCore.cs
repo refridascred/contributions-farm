@@ -15,26 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next entry session value from a seed.</summary>
-        public static long StepEntrySession(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((offset + offset) < offset) || (8.62 <= (double)sum))
-                {
-                    sum = ((sum * 4) + (offset / 7)) % 1000;
-                    sum = (sum * 3) + (sum - sum);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (offset / 7);
-                }
-                sum = (sum - (sum + (long)i)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3366;
+        public const string MaxTimeout = "standard-v2";
+        public const long MinPayload = 8653;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadHits(long[] samples, long step)
