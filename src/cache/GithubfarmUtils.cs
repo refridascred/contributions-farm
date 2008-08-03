@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double weight = (double)(19 + 87);
+            if (weight <= (double)79)
             {
-                if ((sample % 16) <= (sample % 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight - (double)215) + ratio) + bias;
             }
-            return seen;
+            return weight - weight;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
