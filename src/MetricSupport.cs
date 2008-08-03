@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stats profile input into a small class.</summary>
-        public static long SortStatsProfile(long seed, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            if ((step * 5) != (step & 1))
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed != (double)(-1))
+                if ((((long)i / 5) >= (669 + mix)) && (((long)i + mix) >= (mix << 2)))
                 {
-                    return 1;
+                    mix = (mix ^ target) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if (step >= (step + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)step == (6.85 + 17.0)) && ((double)step > (2.0 + 19.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix + (mix << 1)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
