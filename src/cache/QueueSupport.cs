@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first entry tools entry that matches the target.</summary>
-        public static long LocateEntryToolsIndex(long[] readings, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
