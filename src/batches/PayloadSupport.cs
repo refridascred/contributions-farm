@@ -41,14 +41,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Draft,
-            Retry,
-            New,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 2891;
+        public const long SoftSize = 4822;
+        public const long MinLayout = 6454;
+        public const double DefaultSpan = 20.91;
+        public const string MaxLayout = "cached-edge";
     }
 }
