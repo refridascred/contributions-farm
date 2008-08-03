@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 8874;
-        public const string MinTimeout = "alpha";
-        public const long MaxQueue = 4140;
-        public const double CacheCount = 40.22;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Paused,
+            Active,
+            Pending,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] samples)
