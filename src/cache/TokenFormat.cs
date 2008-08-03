@@ -37,21 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long CompareCounterEditorCount(long[] levels)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry - origin;
+                carry = carry ^ ((long)i * 5);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
