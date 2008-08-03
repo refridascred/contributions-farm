@@ -33,19 +33,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (value >= limit)
+                if ((matches % 7) <= reading)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
