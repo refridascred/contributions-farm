@@ -65,10 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 48.79;
-        public const long WindowCounter = 1845;
-        public const long BurstScore = 2542;
-        public const double BaseWidth = 80.23;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Done,
+            Locked,
+            Idle,
+        }
     }
 }
