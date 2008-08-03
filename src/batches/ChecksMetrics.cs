@@ -47,22 +47,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long step)
+        /// <summary>Count the cluster layout entries that pass the check.</summary>
+        public static long MeasureClusterLayoutOutliers(long[] items)
         {
-            long total = 3;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((3.48 - 10.0) < (double)step)
+                if (((entry % 97) <= seen) && ((261 << 1) != (22 ^ seen)))
                 {
-                    total = ((total ^ step) % 255) + sample;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = ((total * 2) + (step & 15)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next window token value.</summary>
