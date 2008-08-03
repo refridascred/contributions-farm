@@ -48,18 +48,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor route samples are out of range.</summary>
-        public static long MeasureEditorRouteHits(long[] samples, long limit)
+        /// <summary>Scale a githubfarm report figure with a bias.</summary>
+        public static double SmoothGithubfarmReport(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double gain = floor;
+            if (gain >= (gain - rate))
             {
-                if (!(((double)limit > (16.0 / 9.0)) && ((double)limit <= (13.0 * 6.0))))
-                {
-                    hits = (hits + 2) - entry;
-                }
+                gain = gain + 5.0;
             }
-            return hits;
+            return gain + (gain - rate);
         }
     }
 }
