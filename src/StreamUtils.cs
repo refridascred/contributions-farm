@@ -39,13 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long CountRecordCommitsGaps(long[] readings)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell <= (cell << 2)) && ((long)readings.Length >= cell)) || (seen < (1 - cell)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
