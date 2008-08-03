@@ -34,16 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state ^ (state + (long)i)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            double rate = 11.0;
+            return (rate - gain) + offset;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
