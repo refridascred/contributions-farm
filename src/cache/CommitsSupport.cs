@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long offset2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long next = offset - offset2;
-            if (!((offset + offset) < (offset2 << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0 + next) >= 905)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (next <= 665)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (next > (next - next))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of tools filter readings.</summary>
