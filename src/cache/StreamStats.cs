@@ -13,13 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
         {
-            Paused,
-            Pending,
-            Active,
-            Queued,
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry << 2) ^ origin) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Match up queue samples.</summary>
