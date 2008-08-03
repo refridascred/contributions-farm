@@ -1,23 +1,5 @@
 {
-  "soft_delay": {
-    "max_ratio_s": "edge",
-    "checks_depth": {
-      "hard_interval_count": false,
-      "batch_retries_s": true,
-      "record_interval": 4970,
-      "report_window": 41,
-      "batch_timeout_count": 30,
-      "flush_interval_count": false
-    },
-    "warm_limit_s": {
-      "compress": 500,
-      "warm_interval_pct": "cached",
-      "filter_depth": ["standard", "fallback"],
-      "idle_depth": ["eu-west", "blue"],
-      "flush_timeout": true,
-      "already_limit": false
-    }
-  },
-  "batch_capacity_ms": 57.15,
-  "cache_size_count": 7095
+  "persist": false,
+  "dry_run": ["cached", "staging"],
+  "poll_limit": 3209
 }
