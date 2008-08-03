@@ -85,17 +85,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a context entry sample.</summary>
-        public static long LookupContextEntryIndex(long[] levels, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
