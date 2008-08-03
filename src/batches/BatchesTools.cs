@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long MeasureFormatContextHits(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading < (double)99)
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
     }
 }
