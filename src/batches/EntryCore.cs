@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph stream readings against a rule.</summary>
-        public static long TallyGraphStreamOutliers(long[] data)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count & 1) <= count)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
