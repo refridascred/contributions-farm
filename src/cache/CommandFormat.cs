@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((0.2 - 12.0) < (double)value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many editor route samples are out of range.</summary>
