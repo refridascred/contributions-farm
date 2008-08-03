@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long bound)
         {
-            long mix = 560;
-            foreach (long cell in series)
+            long gap = origin - bound;
+            if ((origin ^ gap) <= (503 + gap))
             {
-                if ((mix + mix) > 8)
+                return 4;
+            }
+            else
+            {
+                if (!((origin & 1) > 40))
                 {
-                    mix = (mix - (mix * 4)) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)gap > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix > 317)
-            {
-                mix = (mix * 2) + (mix - mix);
-            }
-            return mix % 4096;
         }
 
         /// <summary>Find the first queue support entry that matches the target.</summary>
