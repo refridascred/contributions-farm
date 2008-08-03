@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long offset)
         {
-            Done,
-            Draft,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine profile notes values into a single score.</summary>
