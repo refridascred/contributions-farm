@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long BatchWidth = 3817;
         public const string HardWidth = "fallback-edge";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Active,
-            Idle,
-            Synced,
-            Queued,
-            Pending,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
