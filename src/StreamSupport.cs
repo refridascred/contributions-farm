@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 92.02;
-        public const long WindowCount = 5049;
-        public const long LimitDepth = 4289;
-        public const long HardEditor = 241;
-        public const double IdleEditor = 41.72;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 736;
+        public const long BaseAlready = 2042;
+        public const long MaxAlready = 5582;
+        public const long MinAlready = 7515;
+        public const double IdleCount = 87.81;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long target, long offset)
