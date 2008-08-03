@@ -72,18 +72,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi payload samples are out of range.</summary>
-        public static long TallyContributiPayloadMatches(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum >= (hits << 3))
+                if ((long)readings.Length < (value % 5))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
