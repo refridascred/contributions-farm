@@ -16,21 +16,25 @@ namespace Common.Utilities
             return load + (rate - floor);
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = limit + offset;
+            if (((double)offset != (double)(-7)) && ((double)offset > (2.8 * 2.87)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound * 4) == (limit + 18))
                 {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a counter record.</summary>
