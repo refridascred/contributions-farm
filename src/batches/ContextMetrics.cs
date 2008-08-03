@@ -53,12 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Locked,
             Pending,
-            Retry,
-            Queued,
+            New,
         }
     }
 }
