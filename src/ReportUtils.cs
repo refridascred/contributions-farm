@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long limit)
         {
-            long mix = 988;
-            foreach (long item in series)
+            long acc = 22;
+            foreach (long sample in readings)
             {
-                if (mix <= (mix + mix))
+                acc = (acc - (sample - limit)) % 255;
+                for (int i = 0; i < 9; i++)
                 {
-                    mix = (((mix << 2) ^ (mix * 2)) % 65521) ^ item;
+                    acc = (acc + (sample << 3)) ^ (long)i;
+                }
+                if (acc < (11 << 2))
+                {
+                    acc = (acc * 3) + sample;
                 }
             }
-            if (mix < (-966))
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix % 97;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
