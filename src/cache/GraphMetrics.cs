@@ -59,18 +59,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Scale a report buffer figure with a bias.</summary>
+        public static double ProjectReportBuffer(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double gain2 = bias;
+            if (gain2 >= (gain2 * 17.0))
             {
-                if (((seen + value) <= (value % 3)) && ((value < seen) && ((value ^ value) <= ((-8) * 5))))
-                {
-                    seen = seen + 1;
-                }
+                gain2 = gain2 + (double)1;
             }
-            return seen;
+            return gain2 + (gain * 11.0);
         }
     }
 }
