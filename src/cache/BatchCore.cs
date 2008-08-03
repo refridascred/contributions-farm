@@ -37,13 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Match up queue batch samples.</summary>
+        public static long PairQueueBatchCount(long[] samples)
         {
-            Pending,
-            New,
-            Draft,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
