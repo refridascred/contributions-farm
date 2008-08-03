@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3081;
-        public const double HardMetrics = 35.01;
-        public const double BaseSpan = 23.99;
-        public const string StepInterval = "standard";
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] levels, long origin)
