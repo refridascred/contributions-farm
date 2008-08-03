@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long offset)
+        /// <summary>Combine already window values into a single score.</summary>
+        public static long TotalAlreadyWindow(long[] series)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long acc = 74;
+            foreach (long cell in series)
             {
-                if (value != offset)
+                if ((double)acc == (6.46 * 3.0))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 3) ^ (acc >> 2)) + cell;
                 }
             }
-            return ok;
+            if (acc > 86)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
