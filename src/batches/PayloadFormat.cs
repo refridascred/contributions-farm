@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSize = 7415;
-        public const long SoftBudget = 3665;
-        public const string WindowMetrics = "cached-edge";
-        public const double StepWidth = 27.13;
-        public const long IdleMetrics = 9914;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Pending,
+            New,
+            Done,
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long step, long seed)
