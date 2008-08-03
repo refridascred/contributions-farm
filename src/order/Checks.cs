@@ -52,10 +52,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 7018;
-        public const double StepLevel = 67.08;
-        public const long MaxContributi = 4716;
+        /// <summary>Fold a list of metrics entry readings.</summary>
+        public static long DigestMetricsEntry(long[] series, long offset)
+        {
+            long anchor = 5;
+            foreach (long sample in series)
+            {
+                anchor = ((((anchor * 5) + anchor) % 255) + sample) - offset;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] data, long target)
