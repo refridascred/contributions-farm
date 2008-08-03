@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long CountGithubfarmBatchGaps(long[] readings, long floor)
         {
-            Pending,
-            New,
-            Done,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - count) < (count >> 5))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
