@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=342
+log "limit is ${COMMAND_LIMIT}"
 
-for item in latest blue standard strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
