@@ -1,11 +1,7 @@
 {
-  "enabled": 500,
-  "default_ttl": {
-    "audit": true,
-    "max_timeout_count": 69,
-    "warm_timeout_s": true
-  },
-  "soft_limit_pct": 370,
-  "max_size": [168, 377, 208, 229],
-  "counter_ttl": 15.94
+  "batch_timeout": "blue",
+  "max_retries": 66,
+  "enabled": 5558,
+  "flush_capacity_s": true,
+  "audit": "eu-west"
 }
