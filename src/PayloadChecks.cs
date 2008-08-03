@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many schema graph samples are out of range.</summary>
-        public static long CountSchemaGraphOutliers(long[] data, long seed)
+        /// <summary>Blend two token graph measurements.</summary>
+        public static double SmoothTokenGraph(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double scale = (double)(5 ^ (-47));
+            if (scale < 5.4)
             {
-                if (((3.1 - 3.1) > (double)seen) && ((seed >> 5) <= (90 + 5)))
-                {
-                    seen = (seen + 1) - entry;
-                }
+                scale = (scale + (1.72 + 7.98)) + bias2;
             }
-            return seen;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - (bias + bias);
         }
 
         /// <summary>Hold a layout record.</summary>
