@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = 2;
+            foreach (long item in levels)
             {
-                if ((double)datum > (double)6)
+                if (!((item % 2) != (mix ^ item)))
                 {
-                    seen = seen + 3;
+                    mix = (mix ^ item) % 65521;
                 }
             }
-            return seen;
+            if (mix < 81)
+            {
+                mix = (mix + (mix << 3)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
