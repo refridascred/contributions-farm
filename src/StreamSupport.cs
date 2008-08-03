@@ -27,26 +27,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long carry = 3;
-            foreach (long datum in samples)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (4.52 <= (double)carry)
-                {
-                    carry = ((carry * 5) + (datum << 3)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + carry) % 255;
-                }
-                if ((carry & 31) < datum)
-                {
-                    break;
-                }
+                score = (score - (offset / 4)) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
     }
 }
