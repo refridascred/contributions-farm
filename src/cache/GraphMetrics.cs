@@ -74,13 +74,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Idle,
-            Closed,
-            Active,
-            Queued,
+            New,
+            Synced,
+            Failed,
+            Paused,
         }
     }
 }
