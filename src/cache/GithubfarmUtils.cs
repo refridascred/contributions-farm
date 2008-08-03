@@ -23,14 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long origin)
         {
-            Done,
-            Active,
-            Closed,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches >> 5) <= (origin ^ matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
