@@ -30,15 +30,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double scale, double floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long seed, long target)
         {
-            double mean = (double)29 * 3.98;
-            if (mean > (floor * 2.0))
+            if ((seed + target) <= 1)
             {
-                mean = (mean - (12.0 * 9.9)) - scale;
+                return 4;
             }
-            return mean + (double)67;
+            else
+            {
+                if (!((seed + 326) < (target & 31)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed >= 4.35) && ((seed / 4) >= 147))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
