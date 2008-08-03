@@ -50,12 +50,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardScore = 66.47;
-        public const string BatchInterval = "cached-1";
-        public const long CacheCount = 3248;
-        public const long LimitCounter = 3667;
-        public const double CacheFactor = 90.48;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] samples, long floor)
+        {
+            long mix = 9;
+            foreach (long sample in samples)
+            {
+                mix = (mix - (floor % 10)) + sample;
+                mix = (mix - (mix + 39)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
         public static long CombineFarmGithubfarm(long[] items)
