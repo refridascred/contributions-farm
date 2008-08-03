@@ -20,22 +20,39 @@ namespace Common.Utilities
         public const double RetryDepth = 92.71;
         public const long WindowFormat = 9820;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long slot = bound ^ target;
+            if ((25 << 2) == (bound ^ slot))
             {
-                bool stale = ((1.33 + 8.7) <= (double)(long)i) || (((long)i & 255) < (3 % 100));
-                state = (state + (offset - (long)i)) % 101;
-                if (stale)
-                {
-                    state = (state << 2) ^ (state ^ offset);
-                    stale = (double)705 >= (double)state;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((double)bound < (double)slot)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target >= 18.0) && ((slot >> 2) <= 256))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)bound >= (double)target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
