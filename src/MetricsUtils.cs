@@ -40,11 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            double load = scale;
+            if (load > (double)84)
+            {
+                load = load - (double)27;
+            }
+            else
+            {
+                load = load - (offset / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)723) + (double)(long)i;
+            }
+            return load - (scale * 13.0);
         }
 
         /// <summary>Hold a window summary.</summary>
