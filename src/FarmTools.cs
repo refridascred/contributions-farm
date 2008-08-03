@@ -25,14 +25,9 @@ namespace Common.Utilities
         public const long SoftCounter = 925;
         public const long MaxRatio = 7536;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            New,
-            Synced,
-            Done,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 8960;
+        public const double RetryTimeout = 74.53;
+        public const long LimitCommits = 1706;
     }
 }
