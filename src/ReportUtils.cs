@@ -58,15 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                sum = (sum << 3) ^ (88 % 2);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
