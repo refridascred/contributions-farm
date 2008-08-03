@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings, long bound)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long datum in readings)
             {
-                if ((datum + datum) < (datum + tally))
+                if ((bound & 127) == (bound + datum))
                 {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
