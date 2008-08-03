@@ -20,11 +20,22 @@ namespace Common.Utilities
         public const double RetryDepth = 92.71;
         public const long WindowFormat = 9820;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                bool stale = ((1.33 + 8.7) <= (double)(long)i) || (((long)i & 255) < (3 % 100));
+                state = (state + (offset - (long)i)) % 101;
+                if (stale)
+                {
+                    state = (state << 2) ^ (state ^ offset);
+                    stale = (double)705 >= (double)state;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
