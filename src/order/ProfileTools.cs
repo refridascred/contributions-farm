@@ -55,18 +55,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = 78;
+            foreach (long item in readings)
             {
-                if ((seen ^ entry) > (entry % 2))
+                mix = mix + ((-58) - 171);
+                if (((double)item >= (7.1 * 2.0)) || ((mix % 16) <= (mix + item)))
                 {
-                    seen = seen + 2;
+                    mix = ((mix * 3) + ((-49) % 10)) % 101;
+                }
+                else
+                {
+                    mix = mix + (item + item);
+                }
+                if ((940 + mix) < (657 * 4))
+                {
+                    mix = (mix - mix) % 255;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
