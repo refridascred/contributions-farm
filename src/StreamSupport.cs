@@ -31,12 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
