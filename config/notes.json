@@ -1,8 +1,23 @@
 {
-  "warm_limit": "local",
-  "verbose": false,
-  "sync_timeout_ms": "green",
-  "route_size": 29.92,
-  "burst_limit": "blue",
-  "enabled": "open"
+  "idle_delay_count": {
+    "batches_timeout": "green",
+    "hard_ttl_ms": ["standard", "eu-west", "local", "standard"],
+    "cluster_retries": 9212,
+    "support_retries": "staging",
+    "sync_ratio_ms": "latest"
+  },
+  "audit": false,
+  "poll_depth_ms": ["primary", "legacy", "local"],
+  "hard_size_count": {
+    "counter_capacity": "local",
+    "batch_delay_pct": false,
+    "idle_retries": {
+      "payload_size": ["legacy", "eu-west"],
+      "enabled": "stable",
+      "default_capacity_s": 81.27
+    },
+    "retry_timeout_ms": [312, 219, 399, 479]
+  },
+  "min_limit": false,
+  "batch_ratio_pct": ["open", "standard"]
 }
