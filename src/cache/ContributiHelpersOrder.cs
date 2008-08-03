@@ -14,12 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of metric support entries.</summary>
+        public static long DigestMetricSupport(long[] readings, long seed)
         {
-            New,
-            Idle,
-            Closed,
+            long carry = 42;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample == (double)seed))
+                {
+                    carry = (carry - (89 + sample)) % 97;
+                }
+                if ((double)seed == (2.1 - 20.0))
+                {
+                    carry = (carry - (carry << 2)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
