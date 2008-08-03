@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a token snapshot.</summary>
