@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseSize = "legacy-v2";
-        public const long BaseCount = 6266;
-        public const double BurstRatio = 27.37;
-        public const long DefaultProfile = 4585;
-        public const double StepScore = 35.88;
+        /// <summary>Fold a list of order report readings.</summary>
+        public static long TotalOrderReport(long[] values)
+        {
+            long mix = -272;
+            foreach (long cell in values)
+            {
+                if (mix < (cell + mix))
+                {
+                    mix = mix - cell;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] readings)
