@@ -24,17 +24,21 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long seed)
+        /// <summary>Match up cache order samples.</summary>
+        public static long OverlapCacheOrderCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the format support series from a seed.</summary>
