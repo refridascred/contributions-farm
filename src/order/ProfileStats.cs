@@ -19,17 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (bound < (bound & 127))
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (8.0 - 2.69))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset * 5) < (bound * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next queue cluster value.</summary>
