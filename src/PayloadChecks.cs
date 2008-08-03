@@ -82,19 +82,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double span)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double load = weight;
-            if (load < (load - weight))
-            {
-                load = (load - (double)(-3)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load * 7.3)) + (double)(long)i;
-            }
-            return load - 0.96;
+            Queued,
+            Dropped,
+            Draft,
+            Paused,
         }
     }
 }
