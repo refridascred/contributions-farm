@@ -1,25 +1,13 @@
 # githubfarm settings
-readonly:
-  - 339
-  - 55
-  - 407
-command_ratio:
-  poll_retries: 250
-  flush_depth_ms: primary
-  queue_ratio: 8774
-  buffer_delay: false
-  compress: stable
-  warm_capacity_pct:
-    - latest
-    - blue
-    - legacy
-strict: 7579
-burst_delay_s:
-  - 320
-  - 422
-metric_delay: local
-hard_ttl:
-  - 266
-  - 298
-  - 410
-  - 191
+report_limit: 9168
+filter_capacity:
+  batch_timeout: 5128
+  burst_ratio: 250
+  verbose: eu-west
+  idle_timeout_count: eu-west
+  cache_ratio:
+    - primary
+    - fallback
+    - stable
+    - edge
+poll_delay_count: false
