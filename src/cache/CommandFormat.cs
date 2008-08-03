@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchScore = 66.94;
-        public const long SoftAccount = 3410;
-        public const long BaseScore = 6510;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryCount = 7634;
+        public const long BatchSchema = 395;
+        public const long StepBudget = 4888;
+        public const long IdleTimeout = 2461;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
