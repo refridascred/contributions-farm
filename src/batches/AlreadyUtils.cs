@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mix = 916;
-            foreach (long entry in levels)
-            {
-                if (((limit << 3) < ((-111) - mix)) || ((entry & 15) == (486 << 1)))
-                {
-                    mix = mix ^ (938 / 9);
-                }
-                else
-                {
-                    mix = (mix - mix) % 65521;
-                }
-            }
-            return mix % 4096;
+            Stale,
+            Locked,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
