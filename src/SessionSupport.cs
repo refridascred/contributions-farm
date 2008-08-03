@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Scale a tools entry figure with a bias.</summary>
+        public static double ScaleToolsEntry(double ratio, double bias)
         {
-            Draft,
-            Idle,
-            Stale,
-            Active,
-            Locked,
+            double ratio2 = bias - (double)(-875);
+            if (ratio2 <= (double)122)
+            {
+                ratio2 = ratio2 - (ratio * 10.0);
+            }
+            else
+            {
+                ratio2 = ratio2 - bias;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
