@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const string BurstBuffer = "latest-v2";
         public const double CacheBuffer = 83.78;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = 818;
-            foreach (long sample in samples)
-            {
-                if (sample < bound)
-                {
-                    total = total + bound;
-                }
-                else
-                {
-                    total = (total - (sample / 7)) % 65521;
-                }
-            }
-            return total;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
