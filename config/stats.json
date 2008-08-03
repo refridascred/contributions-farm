@@ -1,6 +1,7 @@
 {
-  "warm_retries_ms": 73.49,
-  "hard_ttl_count": 66.06,
-  "min_window_pct": "primary",
-  "poll_capacity_count": [97, 304, 355, 107]
+  "hard_ttl_count": 1024,
+  "default_depth_count": "latest",
+  "compress": "green",
+  "tools_limit": true,
+  "burst_retries": true
 }
