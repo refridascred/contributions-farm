@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double bias = (double)(8 ^ 860);
-            if (bias <= (double)48)
-            {
-                bias = (bias + floor) + scale;
-            }
-            return bias + (bias / 3.0);
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the token mode values.</summary>
