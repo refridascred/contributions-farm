@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((value / 5) <= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
