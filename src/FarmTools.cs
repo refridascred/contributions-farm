@@ -35,11 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next commits graph value.</summary>
-        public static double ProjectCommitsGraph(double scale, double floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale2 = (double)7 / 3.0;
-            return ((scale2 - 3.3) + scale) + floor;
+            Closed,
+            Stale,
+            Dropped,
+            Idle,
         }
     }
 }
