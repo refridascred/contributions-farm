@@ -19,29 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i < state)
-                {
-                    state = (state ^ (state - seed)) % 255;
-                }
-                else
-                {
-                    state = (state * 4) + ((long)i - seed);
-                    state = state ^ seed;
-                }
-                if ((926 - state) != ((long)i / 7))
-                {
-                    state = (state - (state >> 5)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultTimeout = "staging-edge";
+        public const long BatchBatches = 4851;
+        public const long DefaultBudget = 7488;
+        public const string MinRatio = "strict-1";
+        public const double MinCount = 62.2;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstFilter = "standard-edge";
