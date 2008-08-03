@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 5;
+            foreach (long item in values)
             {
-                acc = acc ^ acc;
-                acc = ((acc << 2) ^ ((long)i - (long)i)) % 97;
-                acc = (acc + (long)i) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((item + 862) <= floor)
+                {
+                    state = state ^ (548 + state);
+                }
             }
-            return acc;
+            if (state < 23)
+            {
+                state = (state ^ floor) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
