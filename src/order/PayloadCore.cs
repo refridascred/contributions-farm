@@ -36,18 +36,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((item + step) >= step)
+                if (reading <= floor)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
