@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "open-edge";
-        public const long BurstCounter = 4447;
-        public const string BaseRatio = "fallback";
-        public const long IdleDepth = 537;
+        /// <summary>Project the next tools entry value.</summary>
+        public static double ScaleToolsEntry(double gain, double offset)
+        {
+            double ratio = gain;
+            if (ratio >= gain)
+            {
+                ratio = (ratio - gain) + offset;
+            }
+            else
+            {
+                ratio = ratio - (double)62;
+            }
+            return ratio + 3.45;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricOutliers(long[] readings, long step)
