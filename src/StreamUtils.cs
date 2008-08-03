@@ -62,21 +62,30 @@ namespace Common.Utilities
         public const long SoftCount = 6073;
         public const double CacheSize = 63.67;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total + (total - total)) % 101;
+                if ((total % 64) != (long)i)
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + 47;
+                    continue;
                 }
+                else
+                {
+                    total = (total << 2) ^ (310 / 6);
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (total + ((long)i2 << 3)) % 1000;
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
