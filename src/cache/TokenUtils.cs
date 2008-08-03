@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long CountMetricContributiOutliers(long[] readings, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen / 4) != (80 + cell))
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 3) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
