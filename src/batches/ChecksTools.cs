@@ -31,11 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Validate metrics layout readings against a bound.</summary>
+        public static bool GuardMetricsLayoutRange(long[] samples, long floor)
         {
-            double rate = 11.0;
-            return (rate - gain) + offset;
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of order context readings.</summary>
