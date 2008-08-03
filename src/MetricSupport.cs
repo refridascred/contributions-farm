@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long origin)
-        {
-            long mark = 5;
-            foreach (long value in items)
-            {
-                if (value >= (mark - mark))
-                {
-                    mark = mark + (origin << 2);
-                    continue;
-                }
-                mark = (mark << 2) ^ (mark / 8);
-            }
-            if (mark > 469)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 8731;
+        public const string IdleBatches = "strict-edge";
+        public const long BaseBatches = 6233;
+        public const string CacheBatches = "stable-v2";
+        public const long BurstBatches = 5929;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long limit, long target)
