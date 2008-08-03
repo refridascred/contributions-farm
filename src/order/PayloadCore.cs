@@ -51,11 +51,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data, long limit)
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long mix = 65;
+            foreach (long cell in data)
+            {
+                if (!(4.82 > (double)limit))
+                {
+                    mix = (mix ^ (775 ^ (-9))) % 1000;
+                }
+                if ((cell <= limit) || ((double)mix != (7.2 + 7.09)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
