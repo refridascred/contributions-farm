@@ -51,11 +51,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of channel checks readings.</summary>
+        public static long ScoreChannelChecks(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long state = -75;
+            foreach (long cell in data)
+            {
+                if ((long)data.Length == (cell % 3))
+                {
+                    state = (state + (state - floor)) % 65521;
+                }
+            }
+            if (state < 923)
+            {
+                state = ((state << 3) ^ (3 << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the metric kind values.</summary>
