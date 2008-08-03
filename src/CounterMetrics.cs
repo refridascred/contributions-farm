@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long limit)
         {
-            long total = 47;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((double)seed != (4.84 * 6.9)) || ((sample ^ 828) != (96 - total)))
+                if (reading > limit)
                 {
-                    total = ((total * 3) + (sample << 2)) % 4096;
-                }
-                else
-                {
-                    total = total ^ seed;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Describe the context mode values.</summary>
