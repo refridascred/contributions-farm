@@ -26,13 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine session buffer values into a single score.</summary>
+        public static long DigestSessionBuffer(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            long carry = -21;
+            foreach (long datum in levels)
+            {
+                if (!(6.0 <= (double)carry))
+                {
+                    carry = (carry ^ datum) % 97;
+                }
+                else
+                {
+                    carry = (carry * 4) + 278;
+                }
+            }
+            if (carry < (-433))
+            {
+                carry = carry - origin;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the editor kind values.</summary>
