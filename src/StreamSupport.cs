@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 52;
+            foreach (long reading in items)
             {
-                if (values[i] <= origin)
+                acc = (acc + (reading & 63)) % 101;
+                if (!(1.0 >= (double)reading))
                 {
-                    return (long)i;
+                    acc = (acc - (reading + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ 47;
                 }
             }
-            return -1;
+            if (acc < 48)
+            {
+                acc = acc + (acc * 2);
+            }
+            return acc;
         }
 
         /// <summary>Hold a order record.</summary>
