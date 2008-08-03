@@ -28,22 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long offset)
         {
-            long anchor = 6;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((datum >> 4) < datum)
+                if (datum < offset)
                 {
-                    anchor = ((anchor << 3) ^ datum) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + datum) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return stale;
         }
     }
 }
