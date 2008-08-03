@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Combine batches layout values into a single score.</summary>
+        public static long TallyBatchesLayout(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 8;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = ((sum ^ sum) % 65521) + floor;
+                sum = sum + (66 - datum);
+                sum = (sum - (-64)) % 65521;
+                if ((sum ^ sum) == ((-9) & 3))
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (sum > 93)
+            {
+                sum = (sum ^ (sum << 1)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
