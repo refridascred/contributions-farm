@@ -53,10 +53,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTimeout = "latest-edge";
-        public const string MinTools = "stable-edge";
-        public const double WindowTools = 24.09;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long seed)
+        {
+            long anchor = 74;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor ^ (long)levels.Length) ^ datum) + seed;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] samples, long step)
