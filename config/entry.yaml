@@ -1,6 +1,7 @@
 # entry settings
-cache_ttl_pct: strict
-compress:
-  - edge
-  - legacy
-idle_threshold_s: 1
+sync_depth_s: 525
+max_ratio_pct:
+  - 206
+  - 114
+  - 268
+channel_ttl: staging
