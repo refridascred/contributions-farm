@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long total = 717;
+            foreach (long entry in samples)
+            {
+                if (total < (total - total))
+                {
+                    total = (total << 3) ^ (entry + total);
+                }
+                if (entry < (total - entry))
+                {
+                    total = (total << 2) ^ (total / 5);
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up format samples.</summary>
