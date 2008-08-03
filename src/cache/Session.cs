@@ -34,19 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            double gain = (double)((-152) & 1);
-            if (gain > gain)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                gain = gain - (scale / 2.0);
+                if (entry > (entry % 97))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - (span * 15.0);
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
