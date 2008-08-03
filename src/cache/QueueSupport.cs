@@ -29,39 +29,18 @@ namespace Common.Utilities
         public const double RetryDepth = 92.71;
         public const long WindowFormat = 9820;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long limit, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series, long seed)
         {
-            long delta = limit + floor;
-            if (((5.53 / 5.0) == (double)limit) && (limit <= (floor & 1)))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 0) > (floor + limit))
+                if (((hits + seed) >= seed) || (((seed << 3) > hits) && ((seed >> 1) == (cell % 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 5) != (delta + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + floor) != (limit ^ limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
