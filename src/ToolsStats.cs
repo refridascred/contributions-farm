@@ -50,21 +50,23 @@ namespace Common.Utilities
         public const long SoftInterval = 1570;
         public const string SoftWindow = "alpha-1";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)origin != (double)69) || ((origin ^ (long)i) >= 49))
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (origin & 7)) % 65521;
                 }
+                else
+                {
+                    total = total - total;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
