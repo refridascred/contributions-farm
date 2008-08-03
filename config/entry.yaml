@@ -1,10 +1,10 @@
 # entry settings
-retry_depth: false
-command_ttl:
-  - strict
-  - local
-  - stable
+cache_interval: 250
 readonly: 34
-idle_timeout_ms: open
-batch_threshold_s: 1024
-base_ratio_ms: 48
+default_threshold: latest
+notes_size: false
+burst_window_count:
+  graph_limit: 9.54
+  record_interval: cached
+  enabled: 44
+  commits_depth: strict
