@@ -12,11 +12,33 @@ namespace Common.Utilities
         public const string MinScore = "open-edge";
         public const long StepFactor = 5825;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7417;
-        public const double MaxCache = 90.03;
-        public const long MaxCount = 20;
-        public const string StepBudget = "alpha-v2";
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long offset)
+        {
+            long edge = bound + offset;
+            if (((-649) ^ edge) <= (bound + edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((67 + bound) < (offset / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge - bound) > (bound * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
