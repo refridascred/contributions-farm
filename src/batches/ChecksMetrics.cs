@@ -55,10 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultSpan = "primary-1";
-        public const string LimitScore = "standard-edge";
-        public const double RetrySpan = 16.13;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] samples, long step)
