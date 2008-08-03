@@ -31,10 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetrySize = "open-edge";
-        public const long RetryTools = 4045;
-        public const long MaxBudget = 474;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Locked,
+            Pending,
+            Retry,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double bias, double floor)
