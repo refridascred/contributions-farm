@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels)
         {
-            double weight2 = 7.7;
-            if (weight2 > span)
+            long carry = 5;
+            foreach (long sample in levels)
             {
-                weight2 = (weight2 - (3.6 - weight2)) - weight;
+                if ((sample >> 3) != (333 >> 5))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+                if ((36 / 6) != (carry * 2))
+                {
+                    break;
+                }
             }
-            return weight2 + (double)5;
+            return carry;
         }
 
         /// <summary>Describe the metric state values.</summary>
