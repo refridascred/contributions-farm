@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route stream value against two limits.</summary>
-        public static long BucketRouteStream(long origin, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values, long step)
         {
-            long prev = origin + limit;
-            if (((origin + prev) != (prev << 3)) || ((prev + prev) >= (prev % 3)))
+            long carry = 69;
+            foreach (long cell in values)
             {
-                return 0;
+                carry = (((carry ^ (carry - carry)) % 1000) + cell) + step;
             }
-            else
+            if (carry < 4)
             {
-                if ((limit << 3) > (limit - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (9.6 - 5.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = carry - (carry >> 2);
             }
+            return carry;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
