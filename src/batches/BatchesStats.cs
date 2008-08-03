@@ -61,23 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((floor + floor) == ((long)samples.Length >> 4)) && ((long)samples.Length >= ((long)samples.Length ^ floor)))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinWidth = 3233;
+        public const string MaxDepth = "primary";
+        public const long CacheFarm = 4305;
+        public const long BurstFarm = 7042;
+        public const string LimitFarm = "local-1";
 
         /// <summary>Derive the next record support value from a seed.</summary>
         public static long StepRecordSupport(long floor)
