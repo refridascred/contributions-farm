@@ -1,6 +1,8 @@
 {
-  "min_ratio_s": false,
-  "sync_retries_pct": "standard",
-  "default_capacity_pct": 9.89,
-  "max_retries_count": "open"
+  "metric_capacity": "blue",
+  "hard_ratio": 6409,
+  "persist": "latest",
+  "flush_ratio": 93.73,
+  "sync_depth": 88.81,
+  "poll_retries_count": true
 }
