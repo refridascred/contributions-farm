@@ -58,17 +58,11 @@ namespace Common.Utilities
             return gain - 1.2;
         }
 
-        /// <summary>Find the first already window entry that matches the target.</summary>
-        public static long LocateAlreadyWindowIndex(long[] values, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = span;
+            return (ratio - (double)224) + scale;
         }
 
         /// <summary>Hold a account record.</summary>
