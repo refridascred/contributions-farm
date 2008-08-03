@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 7872;
+        public const long DefaultProfile = 3711;
+        public const long RetryBudget = 3975;
+        public const long MinRatio = 8453;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] levels)
