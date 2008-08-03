@@ -38,12 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            Locked,
-            Active,
-            Ready,
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
