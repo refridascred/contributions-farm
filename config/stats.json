@@ -1,17 +1,7 @@
 {
-  "dry_run": "primary",
-  "warm_threshold_s": {
-    "cache_window_pct": 500,
-    "poll_size": "strict",
-    "flush_interval_pct": 37,
-    "sync_capacity_s": "fallback"
-  },
-  "warm_interval": false,
-  "min_delay": {
-    "strict": ["primary", "stable"],
-    "max_depth": 42,
-    "compress": 64.7
-  },
-  "idle_size_pct": true,
-  "token_delay": "standard"
+  "filter_limit": 37,
+  "githubfarm_retries": "staging",
+  "hard_window": 5519,
+  "record_interval": 51,
+  "audit": 100
 }
