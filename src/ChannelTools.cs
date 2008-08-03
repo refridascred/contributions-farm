@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultWidth = 95.89;
-        public const long WindowLevel = 8701;
-        public const long BaseCounter = 4482;
-        public const long DefaultCounter = 9821;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinInterval = 3600;
+        public const double HardRatio = 90.38;
+        public const long BaseLayout = 3445;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
