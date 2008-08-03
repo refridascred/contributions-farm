@@ -1,14 +1,6 @@
 {
-  "warm_interval_count": 74.48,
-  "default_depth_ms": 13.97,
-  "default_ttl_count": {
-    "cache_delay_ms": {
-      "min_ratio": true,
-      "batch_limit": 5625,
-      "enabled": "eu-west",
-      "audit": 250
-    },
-    "poll_capacity_s": 500,
-    "sync_limit_count": 74
-  }
+  "warm_retries_ms": 73.49,
+  "hard_ttl_count": 66.06,
+  "min_window_pct": "primary",
+  "poll_capacity_count": [97, 304, 355, 107]
 }
