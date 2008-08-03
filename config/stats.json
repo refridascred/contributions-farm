@@ -1,7 +1,17 @@
 {
-  "retry_timeout_ms": 1024,
-  "audit": [33, 497, 298, 26],
-  "base_window": false,
-  "filter_threshold": "stable",
-  "base_ttl_count": "eu-west"
+  "dry_run": "primary",
+  "warm_threshold_s": {
+    "cache_window_pct": 500,
+    "poll_size": "strict",
+    "flush_interval_pct": 37,
+    "sync_capacity_s": "fallback"
+  },
+  "warm_interval": false,
+  "min_delay": {
+    "strict": ["primary", "stable"],
+    "max_depth": 42,
+    "compress": 64.7
+  },
+  "idle_size_pct": true,
+  "token_delay": "standard"
 }
