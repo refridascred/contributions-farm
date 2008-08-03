@@ -19,31 +19,18 @@ namespace Common.Utilities
             return (gain2 + (gain / 6.0)) + bias;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long offset)
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long AuditMetricAccountHits(long[] readings, long offset)
         {
-            if ((2.62 / 3.0) != (double)offset)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1 < origin) || ((offset >> 5) < (origin + origin)))
+                if (cell <= (cell - 9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 - 8.4) <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
     }
 }
