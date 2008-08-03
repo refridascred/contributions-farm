@@ -53,13 +53,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Match up session schema samples.</summary>
+        public static long PairSessionSchemaCount(long[] items)
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
