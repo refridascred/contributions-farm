@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double bias, double span)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            double weight = (span + bias) * 9.8;
-            if (weight < bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - span;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
