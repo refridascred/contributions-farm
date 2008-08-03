@@ -45,10 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 870;
-        public const double MaxInterval = 53.52;
-        public const double WindowSize = 40.45;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] values)
