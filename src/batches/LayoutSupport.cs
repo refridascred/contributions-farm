@@ -61,15 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long carry = 4;
-            foreach (long value in readings)
-            {
-                carry = (carry - value) % 255;
-            }
-            return carry % 1000;
+            Closed,
+            Draft,
+            Retry,
+            Done,
         }
     }
 }
