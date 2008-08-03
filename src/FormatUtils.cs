@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long AuditFarmCacheOutliers(long[] levels, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = 42;
+            foreach (long reading in series)
             {
-                if ((0.76 * 2.0) >= (double)count)
+                if (reading >= (reading * 3))
                 {
-                    count = ((count + 1) + datum) - floor;
+                    mix = mix + (reading / 8);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Adjust a queue reading.</summary>
