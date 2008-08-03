@@ -25,21 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span;
+            if (gain <= (double)96)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + (gain + 3.72);
             }
-            return count;
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain - gain;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
