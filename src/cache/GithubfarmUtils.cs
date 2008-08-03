@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MinDepth = 56.55;
         public const long MinStats = 477;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] values, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long entry in levels)
             {
-                if ((2.94 / 9.0) <= (double)seen)
+                if ((double)seen < 1.4)
                 {
-                    seen = ((seen + 1) + value) + origin;
+                    seen = ((seen + 3) - entry) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
