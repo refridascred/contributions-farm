@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Closed,
-            Active,
-            Done,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
