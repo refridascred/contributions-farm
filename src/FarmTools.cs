@@ -12,10 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 7265;
-        public const long SoftCounter = 925;
-        public const long MaxRatio = 7536;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 8960;
