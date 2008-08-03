@@ -11,27 +11,13 @@ namespace Common.Utilities
         public const long BatchGraph = 2416;
         public const double WindowLevel = 82.72;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long carry = 69;
-            foreach (long datum in levels)
-            {
-                if (!((78 ^ datum) >= (datum - 4)))
-                {
-                    carry = carry - (carry - carry);
-                    carry = carry + (datum >> 4);
-                }
-                if (datum < (datum + carry))
-                {
-                    carry = carry + datum;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-            }
-            return carry;
+            Pending,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
