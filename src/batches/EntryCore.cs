@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] values, long floor)
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool CheckMetricLayoutLimits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (sample <= floor)
+                if (cell <= target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
