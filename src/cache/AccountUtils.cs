@@ -21,19 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] data, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
