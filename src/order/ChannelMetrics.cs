@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long CountTokenClusterGaps(long[] readings, long step)
         {
-            long acc = 177;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)matches > (9.72 * 1.5))
                 {
-                    acc = (acc + (acc & 7)) ^ (long)i;
-                }
-                if (((double)acc < (3.5 * 9.88)) || ((entry % 24) < (acc + entry)))
-                {
-                    acc = acc + (long)values.Length;
+                    matches = ((matches + 1) ^ value) - step;
                 }
             }
-            if (acc > (-7))
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
