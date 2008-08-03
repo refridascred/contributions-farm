@@ -78,23 +78,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long origin)
+        /// <summary>Count format commits pairs that satisfy a relation.</summary>
+        public static long PairFormatCommitsCount(long[] readings)
         {
-            long mark = 534;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)origin <= (4.5 - 3.81)) || ((origin % 10) >= (mark + origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                mark = (((mark * 4) + (origin + origin)) % 101) ^ reading;
-                if ((0 * 2) >= origin)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
