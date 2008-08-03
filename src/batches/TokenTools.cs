@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftCount = 996;
-        public const long StepSpan = 3205;
-        public const long BaseTimeout = 2083;
-        public const long BatchSpan = 5962;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] series)
+        {
+            long acc = 136;
+            foreach (long value in series)
+            {
+                if (!(acc > (value << 1)))
+                {
+                    acc = acc - value;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ value;
+                }
+                if ((value / 8) != (5 - acc))
+                {
+                    acc = (acc * 3) + (value - value);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchWidth = 4486;
