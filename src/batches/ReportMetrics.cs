@@ -19,17 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result + target) % 97;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 6700;
+        public const long HardSpan = 9578;
+        public const long BatchWidth = 3577;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
