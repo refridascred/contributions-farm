@@ -41,27 +41,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            long result = 397;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value - value) >= (result & 31)) || (value > (value % 24)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long delta = (result << 2) & 31;
-                    result = result - delta;
-                }
-                if ((value - 38) >= (83 - value))
-                {
-                    result = (result + (result - result)) % 4096;
-                }
-                if ((value % 5) > (long)levels.Length)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
