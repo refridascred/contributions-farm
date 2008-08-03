@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a tools entry figure with a bias.</summary>
-        public static double ScaleToolsEntry(double ratio, double bias)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            double ratio2 = bias - (double)(-875);
-            if (ratio2 <= (double)122)
+            double drift = rate;
+            if (drift < (rate - 14.0))
             {
-                ratio2 = ratio2 - (ratio * 10.0);
+                drift = drift - (drift * 18.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = ratio2 - bias;
+                drift = (drift + floor) + (double)(long)i;
             }
-            return ratio2 + ratio2;
+            return drift + (double)15;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
