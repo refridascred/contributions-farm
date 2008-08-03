@@ -41,11 +41,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Idle,
             New,
+            Retry,
+            Dropped,
             Draft,
         }
 
