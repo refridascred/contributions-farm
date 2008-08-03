@@ -1,28 +1,16 @@
 # githubfarm settings
-verbose:
-  session_interval: fallback
-  schema_capacity: 75.46
-  retry_depth_count: 9951
-  metric_capacity: standard
-  sync_size:
-    - 113
-    - 397
-    - 209
-warm_size_count: edge
-idle_capacity:
-  burst_timeout_s: 83
-  format_timeout: 500
-  idle_retries_count: 42.07
-  warm_ttl_count: true
-sync_timeout_pct: edge
-default_capacity_ms: standard
-default_interval_ms:
-  flush_limit: 51.3
-  context_threshold:
-    - edge
+hard_capacity_s:
+  enabled: false
+  sync_window_ms: 86.34
+  hard_delay_count: 45.66
+  sync_size_pct:
+    - open
+    - stable
     - latest
-  readonly:
-    - 43
-    - 330
-    - 55
-    - 447
+  channel_interval: open
+  soft_delay_pct: cached
+verbose: 6075
+cache_retries_ms: 250
+stats_timeout: false
+soft_depth_count: 42.47
+route_timeout: staging
