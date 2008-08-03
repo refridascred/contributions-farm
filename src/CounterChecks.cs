@@ -70,14 +70,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series, long bound)
         {
-            Closed,
-            Synced,
-            Queued,
-            Failed,
-            Ready,
+            long anchor = 52;
+            foreach (long datum in series)
+            {
+                if (((anchor / 4) >= datum) && ((double)bound >= (double)7))
+                {
+                    anchor = (anchor * 5) + 928;
+                }
+                else
+                {
+                    anchor = (anchor + (datum + anchor)) % 1000;
+                }
+            }
+            return anchor;
         }
     }
 }
