@@ -41,22 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long TallyFilterBufferHits(long[] data, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)limit != (9.0 + 9.0))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
