@@ -35,18 +35,15 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in values)
+            double drift = (double)162;
+            if (drift >= gain)
             {
-                if ((value + count) >= 803)
-                {
-                    count = count + 1;
-                }
+                drift = drift + 11.0;
             }
-            return count;
+            return drift - span;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
