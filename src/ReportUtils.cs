@@ -76,10 +76,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "fallback-v2";
-        public const long WindowCluster = 9774;
-        public const double MaxCluster = 20.7;
-        public const string RetryCluster = "staging-edge";
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long floor)
+        {
+            long prev = bound - floor;
+            if ((floor - floor) == (floor - prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > 6.2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)prev >= (8.6 * 7.18)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
