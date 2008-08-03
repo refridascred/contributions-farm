@@ -57,16 +57,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result ^ (floor - result);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowSpan = 5563;
+        public const long BatchStats = 4025;
+        public const long SoftCount = 589;
     }
 }
