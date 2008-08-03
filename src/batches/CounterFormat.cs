@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell + 7) != (cell % 7)) && ((double)step <= (0.6 / 2.0))) && ((277 & 1) > (step % 12)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
