@@ -51,10 +51,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseDepth = "fallback-edge";
-        public const long StepBatches = 4094;
-        public const long HardBatches = 9745;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (373 < (hits + reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterLimits(long[] values, long offset)
