@@ -60,23 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Project the next schema account value.</summary>
+        public static double AdjustSchemaAccount(double rate, double offset)
         {
-            double ratio = floor;
-            if (ratio > weight)
+            double rate2 = rate;
+            if (rate2 >= (rate * 0.98))
             {
-                ratio = ratio + (weight * 8.0);
+                rate2 = rate2 + 2.4;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                ratio = ratio + (weight - ratio);
+                rate2 = (rate2 + (rate - 1.1)) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio / 4.0)) - (double)(long)i;
-            }
-            return ratio + weight;
+            return rate2 - offset;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
