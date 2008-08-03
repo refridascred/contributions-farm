@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool GuardSupportClusterRange(long[] readings, long origin)
         {
-            Locked,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
