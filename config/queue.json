@@ -1,6 +1,5 @@
 {
-  "cluster_timeout": "fallback",
-  "already_ttl": "eu-west",
-  "verbose": "green",
-  "default_retries": 54.65
+  "session_retries": 32.35,
+  "batch_size": true,
+  "filter_capacity": 58.23
 }
