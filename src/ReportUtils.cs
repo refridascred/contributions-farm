@@ -39,10 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 8956;
-        public const long BatchRecord = 8168;
-        public const long BaseRecord = 4344;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxSpan = 8778;
+        public const long MaxWidth = 4743;
+        public const long MinInterval = 4656;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] data, long seed)
