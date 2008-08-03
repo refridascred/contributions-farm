@@ -43,13 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
         {
             bool found = true;
-            foreach (long cell in levels)
+            foreach (long value in samples)
             {
-                if (cell > target)
+                if (value > target)
                 {
                     found = false;
                     break;
