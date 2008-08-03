@@ -19,10 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 4794;
-        public const double StepContext = 78.97;
-        public const string LimitInterval = "latest-edge";
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings, long target)
+        {
+            long total = 9;
+            foreach (long value in readings)
+            {
+                if (target <= (total / 3))
+                {
+                    total = (total << 2) ^ value;
+                }
+            }
+            if (total < (-6))
+            {
+                total = ((total * 3) + (total + 642)) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
