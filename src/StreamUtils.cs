@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Draft,
-            Locked,
-            Stale,
-            Active,
-            Pending,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
