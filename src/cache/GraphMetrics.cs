@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank batch metrics input into a small class.</summary>
-        public static long RankBatchMetrics(long seed, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((double)59 >= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (double)207)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
