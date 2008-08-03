@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long TotalEditorMetrics(long[] readings, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            long sum = 41;
-            foreach (long sample in readings)
+            long result = 649;
+            foreach (long value in readings)
             {
-                sum = sum + (sample - limit);
-                if ((double)sample == (5.6 + 0.98))
+                if ((value ^ result) > (66 + value))
                 {
-                    sum = (sum << 2) ^ (limit % 5);
-                }
-                else
-                {
-                    sum = (sum * 2) + (limit - sample);
+                    result = (result * 2) + value;
                 }
             }
-            if (sum > 547)
-            {
-                sum = sum + ((-710) / 6);
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Rank order context input into a small class.</summary>
