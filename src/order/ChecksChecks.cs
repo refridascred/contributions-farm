@@ -12,26 +12,10 @@ namespace Common.Utilities
         public const long LimitSchema = 7648;
         public const double MinSchema = 3.77;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long seed2)
-        {
-            long lane = seed + seed2;
-            if ((13.0 > (double)seed2) && ((seed2 + seed) <= (lane / 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 5) == (seed2 << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "latest";
+        public const string BurstBuffer = "latest-v2";
+        public const double CacheBuffer = 83.78;
 
         /// <summary>Project the next batches value.</summary>
         public static double ProjectBatches(double ratio, double floor)
