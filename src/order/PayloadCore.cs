@@ -34,20 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long RollGraphBatches(long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((offset - total) >= (offset % 16))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    total = (total + (total / 6)) % 65521;
-                    total = (total - (37 % 5)) % 97;
+                    mix = mix - ((long)i2 ^ (long)i2);
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
