@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] values, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + bias) + (double)(long)i;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Describe the context kind values.</summary>
