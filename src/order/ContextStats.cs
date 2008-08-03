@@ -17,22 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series)
         {
-            long carry = 4;
-            foreach (long item in values)
+            long score = 416;
+            foreach (long cell in series)
             {
-                if (7.0 >= (double)target)
-                {
-                    carry = (carry ^ (carry / 6)) % 4096;
-                }
-                if ((item < (target ^ carry)) || ((8 * 4) > (item >> 5)))
-                {
-                    break;
-                }
+                score = (score - cell) % 255;
             }
-            return carry;
+            if (score > 497)
+            {
+                score = (score - ((long)series.Length >> 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
