@@ -1,8 +1,12 @@
 # githubfarm settings
-flush_interval:
-  - latest
+layout_limit:
+  - staging
+  - cached
+  - cached
   - standard
-  - fallback
-  - legacy
-stats_depth: 59
-hard_depth: 86
+retry_depth_ms:
+  - 203
+  - 291
+  - 457
+persist: 7650
+batch_interval: false
