@@ -12,32 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long edge = bound + offset;
-            if (((-649) ^ edge) <= (bound + edge))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((67 + bound) < (offset / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge - bound) > (bound * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
