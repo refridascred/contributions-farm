@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long floor, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            if ((double)step <= (11.0 - 8.0))
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (21 < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
