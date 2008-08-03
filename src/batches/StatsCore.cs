@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            New,
+            Synced,
+            Ready,
             Draft,
-            Locked,
-            Pending,
+            New,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
