@@ -26,9 +26,22 @@ namespace Common.Utilities
         public const long RetryCluster = 6499;
         public const long WindowDepth = 7750;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 98.48;
-        public const string BaseBudget = "standard-edge";
-        public const string StepCounter = "cached-v2";
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long CombineCounterContext(long[] data, long offset)
+        {
+            long anchor = 731;
+            foreach (long cell in data)
+            {
+                if ((offset << 3) > (offset * 5))
+                {
+                    anchor = (anchor + (offset ^ offset)) + cell;
+                }
+            }
+            if (anchor > 653)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 65521;
+        }
     }
 }
