@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long MeasureClusterProfileMatches(long[] data, long offset)
         {
-            Synced,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(7.4 <= (double)offset))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a farm reading.</summary>
