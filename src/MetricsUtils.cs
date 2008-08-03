@@ -34,21 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 3) ^ (0 * 5)) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (score + (seed - seed)) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultTimeout = 7197;
+        public const long IdleWindow = 7250;
+        public const double MaxFactor = 69.64;
+        public const long IdleRatio = 5513;
 
         /// <summary>Check that every already record entry stays within the limit.</summary>
         public static bool GuardAlreadyRecordRange(long[] samples, long step)
