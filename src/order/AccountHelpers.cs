@@ -29,11 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
