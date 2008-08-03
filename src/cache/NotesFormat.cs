@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double bias)
-        {
-            double weight = (11.0 * 4.3) * 3.94;
-            if (weight >= (weight + weight))
-            {
-                weight = (weight + weight) - bias;
-            }
-            else
-            {
-                weight = weight + 9.74;
-            }
-            return weight - rate;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "primary-edge";
+        public const double BaseTimeout = 94.11;
+        public const string BurstSize = "standard-edge";
 
         /// <summary>Combine batch stream values into a single score.</summary>
         public static long TotalBatchStream(long[] items, long origin)
