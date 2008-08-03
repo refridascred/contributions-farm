@@ -29,18 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
         {
-            long sum = 72;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((datum - datum) >= datum)
+                if (reading <= bound)
                 {
-                    sum = sum - (datum >> 1);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
