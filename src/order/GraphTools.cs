@@ -19,10 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySpan = 6761;
-        public const long MinScore = 1962;
-        public const long BurstSupport = 8447;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series, long seed)
+        {
+            long score = 50;
+            foreach (long reading in series)
+            {
+                if ((reading & 7) <= (score + score))
+                {
+                    score = score + (score - seed);
+                }
+                else
+                {
+                    score = score - (long)series.Length;
+                }
+                if ((double)score <= 11.0)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryInterval = 6669;
