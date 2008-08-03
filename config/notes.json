@@ -1,12 +1,5 @@
 {
-  "retry_size": 9255,
-  "min_delay_pct": "legacy",
-  "default_timeout_s": {
-    "flush_interval_ms": 3232,
-    "batch_delay": [31, 176, 224],
-    "idle_delay": 30.36,
-    "flush_depth_s": ["legacy", "green", "latest", "stable"],
-    "base_retries": [367, 428, 233],
-    "cache_ttl": "blue"
-  }
+  "editor_interval": true,
+  "idle_ratio_pct": 13,
+  "tools_delay": "blue"
 }
