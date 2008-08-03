@@ -34,11 +34,22 @@ namespace Common.Utilities
             return gain + (gain - 6.4);
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long anchor = 6;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 4) < datum)
+                {
+                    anchor = ((anchor << 3) ^ datum) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + datum) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
