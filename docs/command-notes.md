@@ -1,15 +1,12 @@
 # Command notes
 
-The cache report groups every order by githubfarm.
-When a checks fails, the farm handler retries a few times before giving up.
-The metrics module keeps window values in sync with the profile cache.
-
-A entry that stays idle for too long is moved to the queue list.
-The editor report groups every contributi by context.
-The layout report groups every tools by queue.
+Defaults for batch live in the config folder and can be overridden per environment.
+When a entry fails, the notes handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new contributi fields
-- Prefer editor defaults
+- Prefer batch defaults
+- Log every account change
+- Review editor limits each release
+- Document new window fields
