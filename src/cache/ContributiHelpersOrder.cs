@@ -14,22 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of route metrics readings.</summary>
-        public static long CombineRouteMetrics(long[] levels)
+        /// <summary>Audit window batches readings against a rule.</summary>
+        public static long AuditWindowBatchesOutliers(long[] levels)
         {
-            long carry = 3;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((double)datum > (7.21 + 8.7)) || (carry < (carry + carry)))
+                if ((435 + tally) <= 331)
                 {
-                    carry = (carry + (carry + carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ datum) % 101;
+                    tally = (tally + 2) - item;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
