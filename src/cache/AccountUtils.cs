@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const string BatchSize = "strict-1";
         public const string BaseMetrics = "fallback-1";
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
+                if (value <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
