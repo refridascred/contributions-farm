@@ -20,24 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings, long step)
         {
-            if (bound <= (floor % 16))
+            long mix = -929;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((4.8 * 3.64) != (double)bound) || ((970 << 3) == (418 - bound)))
+                if ((step % 2) != (step - 640))
                 {
-                    return 6;
+                    mix = (((mix << 2) ^ (289 & 1)) % 4096) + datum;
                 }
                 else
                 {
-                    return 3;
+                    mix = (mix + 638) % 4096;
+                }
+                if ((mix + mix) <= mix)
+                {
+                    break;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Match up queue samples.</summary>
