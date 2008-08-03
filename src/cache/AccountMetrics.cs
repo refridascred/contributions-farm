@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((0.61 + 6.26) <= (double)sample) || ((double)sample < (12.0 - 8.6)))
+                if (reading > step)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
