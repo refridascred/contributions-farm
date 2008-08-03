@@ -34,13 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
