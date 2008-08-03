@@ -14,13 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Look up the position of a context batches sample.</summary>
+        public static long FindContextBatchesIndex(long[] levels, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
