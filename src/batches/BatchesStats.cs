@@ -63,38 +63,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a cluster context value against two limits.</summary>
-        public static long BucketClusterContext(long bound, long target)
+        /// <summary>Derive the next record support value from a seed.</summary>
+        public static long StepRecordSupport(long floor)
         {
-            if ((bound / 7) != (target + 6))
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                anchor = (anchor - floor) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((bound / 4) != (bound & 7)) || ((1.97 - 1.53) > (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((8.0 - 2.0) > (double)bound) || ((-677) <= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + bound) <= 891)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
