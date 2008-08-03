@@ -26,19 +26,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (entry % 97))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstTimeout = 24.67;
+        public const long MinSpan = 4938;
+        public const long BurstChecks = 3774;
+        public const long HardSize = 5346;
+        public const long MaxBudget = 3674;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepRatio = 19.39;
