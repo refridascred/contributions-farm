@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 94.11;
         public const string BurstSize = "standard-edge";
 
-        /// <summary>Combine batch stream values into a single score.</summary>
-        public static long TotalBatchStream(long[] items, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
         {
-            long acc = 3;
-            foreach (long item in items)
+            long acc = 82;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (acc + acc)) + item;
-                acc = ((acc << 3) ^ (-788)) % 97;
-                if ((acc % 100) == (64 * 4))
+                if (acc > ((-41) % 5))
                 {
-                    acc = acc ^ acc;
+                    acc = ((acc - 1) % 101) ^ cell;
                 }
+                acc = (acc ^ (acc << 2)) % 97;
             }
-            if (acc < 85)
-            {
-                acc = acc - (origin ^ 70);
-            }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a githubfarm format sample.</summary>
