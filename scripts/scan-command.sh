@@ -12,12 +12,12 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in fallback local; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
