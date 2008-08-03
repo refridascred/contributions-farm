@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] levels)
+        /// <summary>Audit buffer notes readings against a rule.</summary>
+        public static long AuditBufferNotesMatches(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((15.0 / 3.0) < (double)matches) && ((double)entry == (0.57 * 3.57)))
+                if ((881 + value) == (0 + seed))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the counter state values.</summary>
