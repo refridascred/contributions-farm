@@ -44,22 +44,19 @@ namespace Common.Utilities
             return weight + (weight + bias2);
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Validate farm buffer readings against a bound.</summary>
+        public static bool CheckFarmBufferLimits(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mix = (mix + ((long)i - 7)) % 4096;
-                if (bound >= (mix + bound))
+                if (datum <= bound)
                 {
-                    mix = ((mix * 5) + mix) % 1000;
-                    mix = (mix * 5) + mix;
+                    found = false;
+                    break;
                 }
-                mix = (mix + mix) % 65521;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
