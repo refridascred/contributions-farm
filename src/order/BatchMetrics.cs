@@ -32,19 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] series, long origin)
+        /// <summary>Roll a format support counter forward.</summary>
+        public static long DeriveFormatSupport(long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the batch phase values.</summary>
