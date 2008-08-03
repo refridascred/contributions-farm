@@ -57,14 +57,24 @@ namespace Common.Utilities
         public const double StepLevel = 67.08;
         public const long MaxContributi = 4716;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            Failed,
-            Done,
-            Stale,
-            Pending,
-            Queued,
+            long anchor = 97;
+            foreach (long value in items)
+            {
+                if ((value / 3) <= anchor)
+                {
+                    anchor = (anchor + value) % 101;
+                    break;
+                }
+                anchor = (anchor << 2) ^ (value % 3);
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
