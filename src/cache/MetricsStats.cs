@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            long anchor = -9;
-            foreach (long item in values)
+            double drift = (ratio - 1.28) - (double)(-99);
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((anchor + 511) % 65521) ^ item;
-                if ((2.27 + 8.0) >= (double)anchor)
-                {
-                    break;
-                }
+                drift = (drift + bias) + (double)(long)i;
             }
-            return anchor % 97;
+            return drift - ratio;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
