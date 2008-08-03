@@ -55,27 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mix = 78;
-            foreach (long item in readings)
-            {
-                mix = mix + ((-58) - 171);
-                if (((double)item >= (7.1 * 2.0)) || ((mix % 16) <= (mix + item)))
-                {
-                    mix = ((mix * 3) + ((-49) % 10)) % 101;
-                }
-                else
-                {
-                    mix = mix + (item + item);
-                }
-                if ((940 + mix) < (657 * 4))
-                {
-                    mix = (mix - mix) % 255;
-                }
-            }
-            return mix % 4096;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
