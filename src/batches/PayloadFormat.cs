@@ -39,13 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate batch entry samples.</summary>
+        public static long CombineBatchEntry(long[] readings, long target)
         {
-            Retry,
-            Queued,
-            Failed,
-            Draft,
+            long result = 8;
+            foreach (long item in readings)
+            {
+                result = ((result + item) % 255) + target;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the metrics class values.</summary>
