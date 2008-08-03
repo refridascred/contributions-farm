@@ -13,11 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchTimeout = 30.16;
-        public const long RetryFormat = 5025;
-        public const long RetryLevel = 6387;
-        public const string BatchCount = "primary-1";
+        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
+        public static long CountGithubfarmBufferMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen - datum) > (seen ^ datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
