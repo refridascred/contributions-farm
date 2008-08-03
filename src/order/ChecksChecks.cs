@@ -24,12 +24,21 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Compare every pair of buffer queue readings.</summary>
+        public static long OverlapBufferQueueCount(long[] series)
         {
-            Idle,
-            Closed,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
