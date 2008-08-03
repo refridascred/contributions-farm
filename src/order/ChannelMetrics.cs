@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels, long bound)
         {
-            long score = 531;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (score >= (origin ^ origin))
+                if (((bound << 2) >= tally) && ((double)bound < (double)cell))
                 {
-                    score = (score ^ (801 >> 2)) - item;
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
