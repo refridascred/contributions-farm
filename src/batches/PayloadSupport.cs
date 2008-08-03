@@ -26,19 +26,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long step)
+        /// <summary>Roll a batches entry counter forward.</summary>
+        public static long RollBatchesEntry(long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
