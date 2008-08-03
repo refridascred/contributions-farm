@@ -19,17 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a layout options.</summary>
