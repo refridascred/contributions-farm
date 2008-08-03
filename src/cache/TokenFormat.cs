@@ -40,12 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Stale,
-            Done,
-            Pending,
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
