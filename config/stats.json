@@ -1,6 +1,19 @@
 {
-  "flush_window": 1476,
-  "batch_depth": 1024,
-  "flush_ratio": true,
-  "enabled": [411, 134]
+  "flush_window_ms": 70.89,
+  "enabled": "green",
+  "strict": "stable",
+  "channel_depth": 70,
+  "retry_interval": 30,
+  "min_threshold": {
+    "poll_size_count": {
+      "retry_timeout": 43.26,
+      "sync_capacity_count": 1637,
+      "soft_depth": true,
+      "soft_ttl": [318, 164, 238],
+      "queue_delay": false,
+      "batch_limit": 250
+    },
+    "batches_interval": true,
+    "min_delay_ms": ["green", "stable", "staging", "eu-west"]
+  }
 }
