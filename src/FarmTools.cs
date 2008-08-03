@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Measure how many filter window samples are out of range.</summary>
+        public static long TallyFilterWindowGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((value + value) <= (hits & 255)))
+                if ((matches ^ origin) > (datum ^ matches))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
