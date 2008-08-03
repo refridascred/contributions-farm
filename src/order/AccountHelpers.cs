@@ -52,21 +52,17 @@ namespace Common.Utilities
         public const long BatchScore = 600;
         public const double HardTimeout = 56.43;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] >= seed)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
