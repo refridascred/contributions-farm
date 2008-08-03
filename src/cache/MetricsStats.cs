@@ -62,23 +62,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long CombineFarmGithubfarm(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long score = 0;
-            foreach (long datum in items)
-            {
-                if (score <= (long)items.Length)
-                {
-                    score = (score << 3) ^ score;
-                    score = (score + score) % 4096;
-                }
-                if ((double)datum > (9.3 + 7.1))
-                {
-                    score = (score ^ (datum - score)) % 65521;
-                }
-            }
-            return score;
+            Ready,
+            New,
+            Locked,
+            Active,
         }
     }
 }
