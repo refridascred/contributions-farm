@@ -50,22 +50,11 @@ namespace Common.Utilities
             return scale - (double)40;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
-        {
-            long sum = 72;
-            foreach (long datum in items)
-            {
-                if (sum >= (datum / 3))
-                {
-                    sum = ((sum * 4) + (37 ^ (long)items.Length)) % 255;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum << 3) ^ (833 * 5);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRatio = 979;
+        public const long BatchRecord = 2981;
+        public const string SoftFactor = "fallback-v2";
+        public const long IdleRatio = 6502;
+        public const long IdleDepth = 2504;
     }
 }
