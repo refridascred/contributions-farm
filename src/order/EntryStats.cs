@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long slot = target - floor;
-            if ((target + target) != (6 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (slot <= (target >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
