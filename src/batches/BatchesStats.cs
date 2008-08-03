@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long LimitCommits = 147;
         public const long DefaultCommits = 616;
 
-        /// <summary>Check that every filter notes entry stays within the limit.</summary>
-        public static bool GuardFilterNotesRange(long[] readings, long step)
+        /// <summary>Derive the next format queue value from a seed.</summary>
+        public static long IterateFormatQueue(long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= step)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = (((total << 2) ^ (517 * 2)) % 65521) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
