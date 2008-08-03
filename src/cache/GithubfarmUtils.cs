@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long LimitGraph = 7798;
         public const string IdleSize = "latest-v2";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] levels, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen < 1.4)
-                {
-                    seen = ((seen + 3) - entry) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
