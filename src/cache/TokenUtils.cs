@@ -28,13 +28,21 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Match up route profile samples.</summary>
+        public static long OverlapRouteProfileCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
