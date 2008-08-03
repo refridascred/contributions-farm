@@ -29,18 +29,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] readings, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long step, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (((step + floor) != (step * 2)) || ((24 & 7) < step))
             {
-                if ((1.0 + 8.01) < (4.68 + 1.19))
+                return 5;
+            }
+            else
+            {
+                if (!((floor + floor) >= floor))
                 {
-                    count = ((count + 3) + cell) - target;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step < (3.6 - 3.03))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream info.</summary>
