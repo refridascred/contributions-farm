@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long TallyOrderFilterGaps(long[] readings)
         {
-            Ready,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((-770) & 31) < entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
