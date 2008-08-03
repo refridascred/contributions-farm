@@ -31,14 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every buffer order entry stays within the limit.</summary>
+        public static bool CheckBufferOrderRange(long[] values, long offset)
         {
-            Pending,
-            Draft,
-            Dropped,
-            Idle,
-            Paused,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a contributi entry.</summary>
