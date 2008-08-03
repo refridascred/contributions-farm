@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long seed2)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if ((double)339 < (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 & 63) >= (5 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
