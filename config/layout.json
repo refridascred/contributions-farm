@@ -1,17 +1,15 @@
 {
-  "readonly": 56.13,
-  "filter_threshold": {
-    "base_size": true,
-    "cluster_size": 31,
-    "buffer_threshold": {
-      "stats_delay": [458, 133],
-      "flush_ratio_count": 30,
-      "strict": 19.04,
-      "base_delay_s": 31.97,
-      "metrics_size": 250
+  "readonly": "open",
+  "batches_depth": 1,
+  "notes_ratio": {
+    "max_interval_s": {
+      "default_delay_ms": ["open", "green"],
+      "poll_timeout_s": "green",
+      "dry_run": "latest",
+      "min_interval": false,
+      "notes_retries": [272, 265]
     },
-    "already_size": "staging"
-  },
-  "soft_window_s": 87.8,
-  "sync_interval_pct": 30
+    "hard_ttl_count": 1024,
+    "soft_interval_s": 2002
+  }
 }
