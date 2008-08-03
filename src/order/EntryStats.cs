@@ -55,19 +55,29 @@ namespace Common.Utilities
         public const string SoftDepth = "alpha";
         public const long DefaultTools = 7147;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] series, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            long score = 831;
-            foreach (long reading in series)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((mix >> 1) <= ((long)i >> 2))
                 {
-                    score = score - ((long)i * 3);
+                    mix = mix ^ (34 & 63);
                 }
-                score = ((score << 3) ^ (offset + reading)) % 97;
+                mix = (mix << 2) ^ (step + (long)i);
+                if (!((6.92 / 5.0) >= (20.0 * 15.0)))
+                {
+                    mix = (mix - step) % 1000;
+                    mix = mix - (step - mix);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ step) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
