@@ -19,40 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long limit)
-        {
-            long diff = seed + limit;
-            if (!((seed * 4) < (diff * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (1 <= diff)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 2) != (29 / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((diff % 60) == (limit * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseSize = "legacy-v2";
+        public const long BaseCount = 6266;
+        public const double BurstRatio = 27.37;
+        public const long DefaultProfile = 4585;
+        public const double StepScore = 35.88;
 
         /// <summary>Count route checks pairs that satisfy a relation.</summary>
         public static long PairRouteChecksCount(long[] data)
