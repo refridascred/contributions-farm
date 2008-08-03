@@ -37,17 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry - origin;
-                carry = carry ^ ((long)i * 5);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
