@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSize = 8639;
-        public const long StepScore = 1302;
-        public const long BatchPayload = 4648;
-        public const long RetryRatio = 2923;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long target, long floor)
