@@ -24,19 +24,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long TallyLayoutRouteHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + count) >= 8)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxTimeout = 7681;
+        public const long StepCommand = 8695;
+        public const double LimitCommand = 80.36;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long origin)
