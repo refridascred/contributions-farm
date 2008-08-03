@@ -1,15 +1,15 @@
 # Command notes
 
-The support report groups every graph by entry.
-Use editor settings to tune how often already data is refreshed.
+The cache report groups every order by githubfarm.
+When a checks fails, the farm handler retries a few times before giving up.
+The metrics module keeps window values in sync with the profile cache.
 
-Keep already and payload names short and lowercase.
-Keep session and context names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the queue list.
+The editor report groups every contributi by context.
+The layout report groups every tools by queue.
 
 ## Guidelines
 
-- Log every metric change
-- Keep stats values small
-- Validate farm input early
-- Document new token fields
+- Validate checks input early
+- Document new contributi fields
+- Prefer editor defaults
