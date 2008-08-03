@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long AuditFarmCacheOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.76 * 2.0) >= (double)count)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 1) + datum) - floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a queue reading.</summary>
