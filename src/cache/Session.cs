@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long target, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target + limit;
+            if ((target + limit) >= (29 & 3))
             {
-                if (levels[i] == step)
+                return 1;
+            }
+            else
+            {
+                if (offset < (limit + offset))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
