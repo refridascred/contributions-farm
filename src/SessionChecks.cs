@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const string RetryScore = "latest-v2";
         public const long BaseCommand = 5952;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long edge = origin - seed;
-            if (!((edge + seed) <= origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 << 2) < (origin % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
