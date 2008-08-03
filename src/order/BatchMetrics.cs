@@ -52,15 +52,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long seed)
+        /// <summary>Grade a schema checks value against two limits.</summary>
+        public static long SortSchemaChecks(long origin, long origin2)
         {
-            long anchor = 74;
-            foreach (long datum in levels)
+            long step = origin + origin2;
+            if (!((step + step) == (56 - (-3))))
             {
-                anchor = ((anchor ^ (long)levels.Length) ^ datum) + seed;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (!((8.0 - 5.04) == (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 2) < (origin & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin > (108 - 75))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
