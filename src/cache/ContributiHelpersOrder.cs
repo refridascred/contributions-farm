@@ -22,15 +22,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long limit)
+        /// <summary>Combine filter queue values into a single score.</summary>
+        public static long WeighFilterQueue(long[] readings, long floor)
         {
-            long acc = 48;
-            foreach (long item in values)
+            long sum = 38;
+            foreach (long entry in readings)
             {
-                acc = (acc ^ (item >> 5)) - limit;
+                if (((entry % 8) == (entry + floor)) && ((sum ^ floor) > (sum + sum)))
+                {
+                    sum = (sum * 4) + (floor ^ floor);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum - floor)) % 4096;
+                }
+                if (((double)entry == (14.0 / 9.0)) || (entry <= (sum >> 3)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return sum % 97;
         }
     }
 }
