@@ -34,10 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowBudget = 6589;
-        public const long LimitRecord = 5870;
-        public const long RetryRecord = 3599;
-        public const long DefaultRecord = 5286;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
