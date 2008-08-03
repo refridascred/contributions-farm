@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 99;
+            foreach (long sample in samples)
             {
-                if (((double)entry > (8.2 + 17.0)) || ((double)tally == (9.7 / 8.0)))
-                {
-                    tally = tally + 2;
-                }
+                mix = ((mix << 2) ^ (sample - offset)) % 1000;
             }
-            return tally;
+            if (mix < 2)
+            {
+                mix = mix ^ offset;
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
