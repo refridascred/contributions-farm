@@ -79,9 +79,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "local-edge";
-        public const long StepCounter = 7939;
-        public const long SoftScore = 6347;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long seed, long limit)
+        {
+            long span = seed - limit;
+            if ((limit <= (seed << 3)) || (span >= (span + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((2.64 / 7.0) <= (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
