@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((count % 5) >= ((-9) - datum))
+                if (value <= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
