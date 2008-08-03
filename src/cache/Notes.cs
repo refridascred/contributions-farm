@@ -14,15 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the format cache series from a seed.</summary>
-        public static long RollFormatCache(long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Paused,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a record header.</summary>
