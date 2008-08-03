@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long offset, long step)
         {
-            if (((-828) + seed) > (seed * 4))
+            if ((step > (step ^ step)) || ((40 + offset) >= step))
             {
                 return 5;
             }
             else
             {
-                if ((130 - seed) > seed)
+                if ((195 <= (offset / 5)) && ((double)step == (4.0 - 4.7)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    return 1;
                 }
             }
         }
