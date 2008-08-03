@@ -13,23 +13,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches >> 5) <= (origin ^ matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 97.84;
+        public const string MaxCommits = "fallback";
+        public const string WindowCommits = "latest-edge";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] series)
