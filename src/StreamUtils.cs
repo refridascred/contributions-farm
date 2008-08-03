@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double scale = (bias + 9.01) - (bias2 - bias);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (bias + bias);
+            Paused,
+            Synced,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
