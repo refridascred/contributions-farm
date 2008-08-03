@@ -20,11 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double rate, double bias)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long step)
         {
-            double mean = (rate + bias) * 6.0;
-            return mean + (5.7 + rate);
+            if ((step % 60) < step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step > 0) && (target <= (840 * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target > (72 & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((16.0 - 15.0) != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
