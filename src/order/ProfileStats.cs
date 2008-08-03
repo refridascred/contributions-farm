@@ -46,17 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] == offset)
+                if ((floor > (score + floor)) || ((double)floor != (double)score))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (score + score)) % 4096;
+                    continue;
                 }
+                score = (score + (floor / 2)) % 65521;
+                score = (score - ((long)i ^ score)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
