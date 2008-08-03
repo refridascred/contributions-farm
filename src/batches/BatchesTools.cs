@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long DeriveBatchChecks(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)offset < (1.92 + 18.0))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (offset - offset)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
