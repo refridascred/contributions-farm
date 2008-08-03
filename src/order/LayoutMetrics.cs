@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] < bound)
+                if ((2.9 / 5.0) < (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
