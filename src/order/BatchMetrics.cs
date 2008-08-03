@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 53.45;
-        public const long HardInterval = 5737;
-        public const long SoftRecord = 4836;
-        public const long BatchRatio = 922;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Draft,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
