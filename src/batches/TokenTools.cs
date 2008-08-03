@@ -46,16 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long origin2)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long cur = origin ^ origin2;
+            if ((double)origin <= (double)433)
             {
-                carry = (carry + (floor & 31)) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((1.15 + 8.0) <= (double)origin2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((cur - 969) >= (cur % 60)) && ((cur ^ cur) <= (origin << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6 >> 3) > (origin + origin2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
