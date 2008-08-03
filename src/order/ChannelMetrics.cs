@@ -27,14 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] samples, long offset)
         {
-            Stale,
-            Failed,
-            Locked,
-            Pending,
-            Paused,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
