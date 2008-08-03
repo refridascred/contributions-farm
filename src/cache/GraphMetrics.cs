@@ -38,34 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long target)
-        {
-            long result = 38;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result + (target << 3)) - (long)i;
-                }
-                if ((double)671 <= (double)result)
-                {
-                    result = result ^ (cell + target);
-                    result = (result + (result % 5)) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (77 * 2);
-                    result = ((result << 3) ^ (long)items.Length) % 101;
-                }
-                result = (result ^ (cell / 7)) % 101;
-                if ((cell - target) != (target + target))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8354;
+        public const long DefaultMetrics = 8009;
+        public const long CacheFactor = 6707;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long bound, long origin)
