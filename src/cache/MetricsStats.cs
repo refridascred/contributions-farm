@@ -20,11 +20,32 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data, long target)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = -3;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (((mark * 3) + (long)data.Length) % 4096) + (long)i;
+                    mark = mark - (item >> 5);
+                }
+                if ((double)target == (11.0 * 5.1))
+                {
+                    mark = ((mark * 3) + (item ^ target)) % 97;
+                    mark = (mark << 2) ^ (target * 3);
+                }
+                if ((double)(long)data.Length != (1.6 + 20.0))
+                {
+                    mark = mark ^ (mark + item);
+                }
+            }
+            if (mark < 333)
+            {
+                mark = (mark * 3) + (mark & 63);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
