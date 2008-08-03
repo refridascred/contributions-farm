@@ -22,26 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine filter queue values into a single score.</summary>
-        public static long WeighFilterQueue(long[] readings, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] data)
         {
-            long sum = 38;
-            foreach (long entry in readings)
+            long carry = 81;
+            foreach (long item in data)
             {
-                if (((entry % 8) == (entry + floor)) && ((sum ^ floor) > (sum + sum)))
+                if (((item * 3) <= (carry << 1)) && ((carry % 2) <= (item << 1)))
                 {
-                    sum = (sum * 4) + (floor ^ floor);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum - floor)) % 4096;
-                }
-                if (((double)entry == (14.0 / 9.0)) || (entry <= (sum >> 3)))
-                {
-                    break;
+                    carry = (carry ^ (item + carry)) % 101;
                 }
             }
-            return sum % 97;
+            return carry;
         }
     }
 }
