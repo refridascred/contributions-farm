@@ -34,19 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm editor entry stays within the limit.</summary>
-        public static bool ValidateFarmEditorLimits(long[] data, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Pending,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Classify a queue stats pair into a bucket.</summary>
