@@ -1,6 +1,9 @@
 # entry settings
-warm_retries: true
-min_ttl_s: edge
-max_capacity_count: edge
-sync_ratio_ms: 8136
-channel_limit: standard
+poll_ratio_ms:
+  soft_ttl_ms: true
+  verbose: eu-west
+  min_interval_pct: 79.23
+  buffer_ratio: true
+hard_size_ms: strict
+farm_delay: 61
+entry_limit: 21.75
