@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long prev = (166 ^ total) + ((long)i & 7);
-                total = (total + (prev & 3)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Draft,
+            New,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the batches level values.</summary>
