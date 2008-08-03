@@ -1,5 +1,14 @@
 # support settings
-cache_capacity_count: latest
-poll_ttl: 55.12
-default_delay_ms: 73.03
-min_retries_count: cached
+soft_ttl:
+  - 10
+  - 28
+  - 136
+sync_threshold_pct: false
+default_delay_count: 7.8
+min_ttl_pct: true
+session_capacity:
+  - edge
+  - eu-west
+  - green
+  - cached
+hard_size_ms: 1024
