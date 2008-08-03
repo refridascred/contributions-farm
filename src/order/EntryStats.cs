@@ -34,26 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long target)
         {
-            long acc = -8;
-            foreach (long datum in data)
+            long result = 5;
+            foreach (long entry in samples)
             {
-                if (datum > (acc + limit))
+                result = (result ^ entry) % 65521;
+                if (((-86) / 2) >= (3 - entry))
                 {
-                    continue;
-                }
-                if (datum > (limit ^ 731))
-                {
-                    acc = (acc + (limit - acc)) % 97;
-                }
-                if ((double)acc != (7.0 / 7.0))
-                {
-                    break;
+                    result = ((result << 2) ^ result) % 255;
                 }
             }
-            return acc;
+            if (result > 24)
+            {
+                result = ((result << 3) ^ (target - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
