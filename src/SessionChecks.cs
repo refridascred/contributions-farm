@@ -36,19 +36,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mark = 34;
+            foreach (long value in levels)
             {
-                if (reading <= bound)
+                if (floor <= (value % 64))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + mark) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + floor) % 255;
                 }
             }
-            return stale;
+            if (mark > 53)
+            {
+                mark = (mark + floor) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
