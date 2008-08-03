@@ -49,13 +49,12 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Pending,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitBudget = 8785;
+        public const long MinCommand = 140;
+        public const long CacheBudget = 6843;
+        public const string CacheSpan = "cached-edge";
+        public const double StepCommand = 39.93;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] values, long bound)
