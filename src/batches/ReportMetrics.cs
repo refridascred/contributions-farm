@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long MeasureEntryReportHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (1.46 * 12.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
