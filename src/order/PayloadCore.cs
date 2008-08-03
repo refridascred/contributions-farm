@@ -36,18 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheRatio = 9454;
+        public const long WindowChecks = 569;
+        public const string LimitRatio = "cached";
 
         /// <summary>Validate queue metrics readings against a bound.</summary>
         public static bool CheckQueueMetricsBounds(long[] data, long step)
