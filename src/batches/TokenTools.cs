@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double rate, double floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load - rate)) + (double)(long)i;
-            }
-            return load + (rate - floor);
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
