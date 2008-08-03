@@ -13,17 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a notes record reading by value.</summary>
-        public static long FindNotesRecordIndex(long[] samples, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
