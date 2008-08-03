@@ -41,17 +41,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = scale;
+            if (drift > (drift - span))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)11;
             }
-            return -1;
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (9.1 + scale)) + (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
