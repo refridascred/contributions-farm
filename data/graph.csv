@@ -1,10 +1,6 @@
-id,count,score,level,weight
-1,strict,primary,779,91.91
-2,fallback,78.71,843,54
-3,992,538,open,stable
-4,31.52,41.19,45.35,staging
-5,24.08,75.99,865,green
-6,primary,12.27,594,386
-7,eu-west,45.5,186,55.46
-8,strict,51.02,standard,60.52
-9,189,49.37,95.45,blue
+id,label,owner
+1,42,standard
+2,15.09,654
+3,1.54,edge
+4,81,legacy
+5,edge,63.95
