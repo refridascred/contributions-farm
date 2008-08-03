@@ -59,13 +59,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine farm tools values into a single score.</summary>
+        public static long FoldFarmTools(long[] samples, long origin)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Paused,
+            long carry = 5;
+            foreach (long entry in samples)
+            {
+                if ((3.05 / 8.0) <= (double)entry)
+                {
+                    break;
+                }
+                if ((double)carry > (double)entry)
+                {
+                    carry = (carry + (carry - carry)) + origin;
+                }
+            }
+            return carry;
         }
     }
 }
