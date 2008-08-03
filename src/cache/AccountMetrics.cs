@@ -31,18 +31,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] items, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + tally) > tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) ^ entry) - floor;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two batch measurements.</summary>
