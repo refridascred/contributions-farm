@@ -39,17 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a schema editor reading by value.</summary>
-        public static long SeekSchemaEditorIndex(long[] readings, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Stale,
+            Locked,
         }
     }
 }
