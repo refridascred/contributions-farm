@@ -1,9 +1,5 @@
 # support settings
-notes_timeout: edge
-idle_size_pct: false
-cache_ratio:
-  default_threshold_pct: stable
-  entry_window: staging
-  sync_limit_pct: 1024
-soft_interval_pct: 23.8
-audit: blue
+cache_capacity_count: latest
+poll_ttl: 55.12
+default_delay_ms: 73.03
+min_retries_count: cached
