@@ -1,8 +1,4 @@
 # entry settings
-max_timeout_s: true
-cache_depth: true
-warm_ratio: false
-hard_ttl_ms: blue
-readonly:
-  - edge
-  - latest
+dry_run: true
+max_timeout: 500
+max_delay: standard
