@@ -23,12 +23,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinTimeout = 17.91;
-        public const double StepOrder = 11.75;
-        public const string BurstScore = "strict-v2";
-        public const long LimitOrder = 9048;
-        public const string HardOrder = "local-v2";
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long bound2)
+        {
+            if ((44 - bound2) > bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 + bound2) != (bound2 % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - bound) != (bound & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BaseGraph = "open-edge";
