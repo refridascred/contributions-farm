@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            New,
-            Paused,
-            Failed,
-            Retry,
+            long state = 388;
+            foreach (long cell in values)
+            {
+                state = state ^ (state + state);
+                if (((double)state >= (double)cell) || ((state * 3) > 677))
+                {
+                    state = (state + state) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
