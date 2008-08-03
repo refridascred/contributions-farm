@@ -62,11 +62,15 @@ namespace Common.Utilities
         public const string BatchGraph = "stable-v2";
         public const long BatchSize = 6481;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultDepth = "staging-edge";
-        public const string LimitCount = "primary";
-        public const string BaseFactor = "fallback-1";
-        public const string WindowDepth = "alpha-edge";
-        public const double BaseScore = 60.16;
+        /// <summary>Project the next window token value.</summary>
+        public static double ProjectWindowToken(double bias, double offset)
+        {
+            double drift = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - 18.0) + (double)(long)i) + bias;
+            }
+            return drift - (7.68 / 4.0);
+        }
     }
 }
