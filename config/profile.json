@@ -1,5 +1,7 @@
 {
-  "retry_limit": "blue",
-  "sync_retries": [374, 11],
-  "base_window_pct": ["standard", "staging"]
+  "max_interval": true,
+  "cluster_ttl": 5.47,
+  "strict": false,
+  "enabled": 4017,
+  "hard_ttl_s": 1024
 }
