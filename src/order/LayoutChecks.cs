@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] series, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long total = 690;
-            foreach (long item in series)
-            {
-                if (!((total >> 2) <= total))
-                {
-                    total = (total ^ (step + step)) ^ item;
-                }
-            }
-            if (total > 61)
-            {
-                total = (total - (total + step)) % 65521;
-            }
-            return total % 1000;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
