@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] samples)
-        {
-            long carry = 128;
-            foreach (long reading in samples)
-            {
-                if ((double)carry < (0.8 * 3.92))
-                {
-                    carry = ((carry - (carry << 1)) % 65521) + reading;
-                }
-            }
-            if (carry > 42)
-            {
-                carry = carry ^ (carry % 100);
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 5150;
+        public const double BurstSpan = 33.83;
+        public const long BatchSpan = 5860;
+        public const string MinScore = "open-edge";
+        public const long StepFactor = 5825;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 7417;
