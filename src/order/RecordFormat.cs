@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (limit > (limit ^ matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every filter buffer entry stays within the limit.</summary>
