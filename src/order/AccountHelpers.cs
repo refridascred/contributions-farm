@@ -29,20 +29,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 8361;
+        public const long IdleScore = 3533;
+        public const long DefaultChecks = 9949;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long floor, long limit)
