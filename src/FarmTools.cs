@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
