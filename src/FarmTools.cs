@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] data, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double gain = scale;
+            if (gain < (double)9)
             {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - gain) + bias;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain - scale)) + (double)(long)i;
+            }
+            return gain - (gain - scale);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
