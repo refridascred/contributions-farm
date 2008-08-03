@@ -13,11 +13,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
