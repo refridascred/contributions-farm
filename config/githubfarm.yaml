@@ -1,11 +1,21 @@
 # githubfarm settings
-default_size: local
-cache_retries:
-  poll_window: strict
-  soft_depth_count: strict
-  default_capacity: 11.72
-retry_limit:
-  batch_ttl_ms: 30
-  verbose: 2839
-  max_size_pct: 63
-  burst_ratio: strict
+graph_ttl: latest
+sync_retries_pct: staging
+min_size: strict
+base_threshold_s: false
+soft_size_ms: 54.48
+layout_window:
+  default_limit: stable
+  warm_ratio: stable
+  poll_ratio_count:
+    - 88
+    - 155
+    - 297
+  verbose: 8232
+  compress:
+    - staging
+    - staging
+  default_limit_ms:
+    - latest
+    - stable
+    - blue
