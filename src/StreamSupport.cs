@@ -27,16 +27,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score - (offset / 4)) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleBudget = 7794;
+        public const long HardQueue = 6117;
+        public const long LimitQueue = 4415;
     }
 }
