@@ -90,19 +90,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
-        public static bool GuardEditorContributiLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 22.33;
+        public const long MinCommits = 7809;
+        public const string BatchInterval = "cached";
     }
 }
