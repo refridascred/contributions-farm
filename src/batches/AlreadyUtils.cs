@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels, long limit)
         {
-            double load = gain;
-            return (load + gain) + offset;
+            long mix = 916;
+            foreach (long entry in levels)
+            {
+                if (((limit << 3) < ((-111) - mix)) || ((entry & 15) == (486 << 1)))
+                {
+                    mix = mix ^ (938 / 9);
+                }
+                else
+                {
+                    mix = (mix - mix) % 65521;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
