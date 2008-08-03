@@ -40,14 +40,10 @@ namespace Common.Utilities
         public const string CacheGraph = "fallback-edge";
         public const double WindowGraph = 91.16;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySize = 2943;
+        public const string StepStream = "fallback-edge";
+        public const long LimitScore = 4582;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
