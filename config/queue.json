@@ -1,5 +1,8 @@
 {
-  "warm_size_count": 9962,
-  "warm_interval": 81.95,
-  "verbose": true
+  "base_size": "latest",
+  "flush_retries_pct": "open",
+  "graph_ttl": true,
+  "soft_ttl_s": 6656,
+  "min_capacity_pct": true,
+  "audit": 82
 }
