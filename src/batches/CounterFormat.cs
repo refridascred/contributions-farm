@@ -34,17 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long step)
+        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
+        public static long RollGithubfarmCache(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (state + (seed - seed)) % 101;
+                state = (state ^ (716 + 565)) % 255;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
