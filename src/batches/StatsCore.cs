@@ -64,17 +64,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
