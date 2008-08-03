@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a queue entry pair into a bucket.</summary>
-        public static long RankQueueEntry(long step, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long limit)
         {
-            if ((limit + limit) == (step << 1))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((10 - limit) <= limit))
+                if (datum >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit + step) == (step * 2)) || ((step + step) != (54 + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
