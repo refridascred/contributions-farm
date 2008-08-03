@@ -14,10 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 3098;
-        public const double HardScore = 76.75;
-        public const double DefaultDepth = 93.45;
+        /// <summary>Locate a context layout reading by value.</summary>
+        public static long LocateContextLayoutIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsRange(long[] series, long limit)
