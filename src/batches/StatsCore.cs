@@ -58,15 +58,22 @@ namespace Common.Utilities
         public const string MinWindow = "alpha-edge";
         public const long WindowTimeout = 1013;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (((tally + tally) > datum) || !((2 + tally) > (datum + datum)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
