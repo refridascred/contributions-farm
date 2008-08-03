@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long step)
         {
-            double rate = weight;
-            if (rate >= (double)65)
+            long slot = seed ^ step;
+            if ((seed + seed) >= 562)
             {
-                rate = rate - bias;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate + (rate / 8.0)) - (double)(long)i;
+                if ((13.0 - 2.54) < (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(seed > slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return rate + bias;
         }
 
         /// <summary>Grade a route stream value against two limits.</summary>
