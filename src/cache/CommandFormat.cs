@@ -36,12 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Paused,
-            Retry,
-            Pending,
+            Done,
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Scale a githubfarm report figure with a bias.</summary>
