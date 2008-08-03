@@ -61,14 +61,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long origin, long origin2)
         {
-            Stale,
-            New,
-            Done,
-            Synced,
-            Dropped,
+            if ((origin2 <= origin) || ((double)origin2 > 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin ^ 78) <= (origin2 % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= 6) || ((origin + origin) > origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics header.</summary>
