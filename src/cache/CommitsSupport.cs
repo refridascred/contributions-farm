@@ -71,20 +71,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long anchor = 908;
-            foreach (long entry in items)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor + step) % 97) - entry;
-                anchor = (anchor - anchor) % 97;
+                sum = (sum << 3) ^ sum;
+                sum = sum + sum;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor - (anchor / 7)) % 255;
-            }
-            return anchor % 4096;
+            return sum;
         }
     }
 }
