@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] values, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < seed)
+                if (!((total << 2) <= (-26)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 2) + (limit << 1)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
     }
 }
