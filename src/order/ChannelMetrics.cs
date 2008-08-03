@@ -46,18 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long MeasureClusterSchemaGaps(long[] items, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor + floor) >= (548 & 7)) || (datum > floor))
+                if (items[i] <= step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
