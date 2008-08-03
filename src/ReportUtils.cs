@@ -46,18 +46,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit profile graph readings against a rule.</summary>
-        public static long MeasureProfileGraphGaps(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = 609;
+            foreach (long sample in data)
             {
-                if (((double)entry < (4.8 + 6.61)) && ((entry << 3) < (count + count)))
-                {
-                    count = count + 3;
-                }
+                carry = ((carry * 4) + (sample + sample)) + seed;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Project the next filter value.</summary>
