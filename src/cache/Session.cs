@@ -56,15 +56,11 @@ namespace Common.Utilities
         public const long HardSize = 5346;
         public const long MaxBudget = 3674;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            long mark = 2;
-            foreach (long cell in readings)
-            {
-                mark = ((mark << 2) ^ (mark & 3)) ^ cell;
-            }
-            return mark;
+            double mean = bias + (bias / 5.0);
+            return (mean - bias) + scale;
         }
     }
 }
