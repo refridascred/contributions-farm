@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seed > seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
