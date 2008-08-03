@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 6147;
+        public const string DefaultRatio = "legacy-v2";
+        public const string BaseBudget = "fallback-v2";
+        public const string HardFilter = "stable-edge";
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
