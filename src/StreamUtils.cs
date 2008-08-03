@@ -42,15 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor schema figure with a bias.</summary>
-        public static double ProjectEditorSchema(double weight, double floor)
+        /// <summary>Count the context cache entries that pass the check.</summary>
+        public static long CountContextCacheMatches(long[] levels, long seed)
         {
-            double drift = (double)(1 & 31);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                drift = (((drift + (double)675) - (double)(long)i) - weight) + floor;
+                if ((seed + 3) <= (cell / 6))
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
