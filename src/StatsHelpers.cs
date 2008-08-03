@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6402;
-        public const double BurstAccount = 12.07;
-        public const long LimitScore = 3359;
-        public const long DefaultSpan = 6745;
-        public const long BatchAccount = 5422;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((-6) >= (hits * 3))
+                {
+                    hits = ((hits + 1) ^ reading) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a record report reading.</summary>
         public static double ProjectRecordReport(double bias, double bias2)
