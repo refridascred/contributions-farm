@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 2955;
-        public const long BatchToken = 208;
-        public const long DefaultSize = 765;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels, long target)
+        {
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                if ((sample - target) > 888)
+                {
+                    sum = sum ^ (sample >> 1);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sample) % 65521;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinTimeout = 17.91;
