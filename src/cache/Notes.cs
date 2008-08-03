@@ -53,39 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile already pair into a bucket.</summary>
-        public static long GradeProfileAlready(long limit, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long span = limit ^ offset;
-            if ((span - offset) == (offset >> 5))
+            long score = 50;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + offset) >= (limit / 3))
+                if (((value - score) > value) || ((double)value <= (6.05 * 8.8)))
                 {
-                    return 6;
+                    score = ((score << 2) ^ (score ^ value)) % 97;
                 }
                 else
                 {
-                    if (limit >= (span >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((73 & 63) >= (offset + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score << 3) ^ (value & 31);
                 }
             }
+            return score;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
