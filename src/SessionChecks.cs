@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const string RetryScore = "latest-v2";
         public const long BaseCommand = 5952;
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long CountStreamTokenOutliers(long[] data, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell + step) > (cell << 3)))
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
