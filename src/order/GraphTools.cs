@@ -19,26 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long bound)
         {
-            long score = 50;
-            foreach (long reading in series)
+            long score = 3;
+            foreach (long sample in values)
             {
-                if ((reading & 7) <= (score + score))
+                score = (score - sample) % 101;
+                if (((19.0 * 6.4) >= (2.0 - 4.4)) || ((sample >> 2) > score))
                 {
-                    score = score + (score - seed);
-                }
-                else
-                {
-                    score = score - (long)series.Length;
-                }
-                if ((double)score <= 11.0)
-                {
-                    break;
+                    score = score ^ score;
                 }
             }
-            return score;
+            if (score > 263)
+            {
+                score = score + bound;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
