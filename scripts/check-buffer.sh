@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=395
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-mode="${1:-latest}"
+for item in cached legacy eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
