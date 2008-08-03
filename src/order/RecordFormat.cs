@@ -69,21 +69,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of channel command readings.</summary>
-        public static long OverlapChannelCommandCount(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Active,
+            Draft,
         }
     }
 }
