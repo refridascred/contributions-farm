@@ -51,18 +51,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Audit githubfarm already readings against a rule.</summary>
+        public static long AuditGithubfarmAlreadyOutliers(long[] data, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.18 / 6.0) > (double)tally)
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) - reading) + bound;
                 }
             }
             return tally;
