@@ -1,6 +1,12 @@
 {
-  "soft_ttl": "edge",
-  "min_ttl_ms": "local",
-  "editor_ttl": "latest",
-  "sync_limit": "green"
+  "soft_ttl_s": 37,
+  "persist": 52.6,
+  "retry_retries": {
+    "flush_size": "standard",
+    "persist": false,
+    "compress": true,
+    "batch_delay": true
+  },
+  "retry_ttl": "edge",
+  "poll_ttl_pct": 13.67
 }
