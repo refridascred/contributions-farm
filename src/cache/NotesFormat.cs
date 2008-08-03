@@ -25,18 +25,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] values, long target)
+        /// <summary>Roll a queue metrics counter forward.</summary>
+        public static long DeriveQueueMetrics(long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2 << 2) >= count)
-                {
-                    count = ((count + 2) ^ cell) + target;
-                }
+                sum = ((sum << 3) ^ ((-6) / 2)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
