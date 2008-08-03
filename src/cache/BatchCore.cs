@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate commits report readings against a bound.</summary>
+        public static bool CheckCommitsReportRange(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
