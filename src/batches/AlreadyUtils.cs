@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const double MinContributi = 63.1;
         public const double BatchInterval = 78.03;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBudget = 45.41;
-        public const double SoftSize = 65.85;
-        public const string CacheBatches = "cached-edge";
-        public const string StepBatches = "stable-1";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value > (65 + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] values, long limit)
