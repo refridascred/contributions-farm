@@ -49,22 +49,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            long mark = -768;
-            foreach (long item in readings)
+            double rate = (floor + floor) + (double)2;
+            for (int i = 0; i < 3; i++)
             {
-                if (((0.45 - 4.0) >= (double)mark) || ((double)mark >= (double)item))
-                {
-                    mark = ((mark << 3) ^ (mark ^ 338)) % 101;
-                }
-                if ((0 * 5) == (mark ^ mark))
-                {
-                    break;
-                }
+                rate = ((rate + floor) + (double)(long)i) - bias;
             }
-            return mark % 65521;
+            return rate - (floor * 0.7);
         }
 
         /// <summary>Hold a stream summary.</summary>
