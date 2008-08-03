@@ -57,31 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (bound >= 722)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 6) <= (827 >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.0 / 7.0) != (double)step) && ((bound & 1) <= (bound % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Retry,
         }
     }
 }
