@@ -33,31 +33,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings, long limit)
         {
-            if ((double)target > (7.45 / 7.0))
+            long state = 4;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 3) >= (target + seed))
+                if (((double)entry < 18.0) || ((double)limit >= (5.6 / 4.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = ((state * 5) + entry) % 4096;
                 }
             }
+            if (state > 2)
+            {
+                state = state + (state - 79);
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
