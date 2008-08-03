@@ -55,11 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
