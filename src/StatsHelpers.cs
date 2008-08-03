@@ -19,18 +19,18 @@ namespace Common.Utilities
             return (load - load) + bias2;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] levels, long floor)
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long TallySupportBufferHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((double)floor >= (6.9 - 10.0)))
+                if ((entry % 7) > count)
                 {
-                    tally = (tally + 2) + cell;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a farm batch value against two limits.</summary>
