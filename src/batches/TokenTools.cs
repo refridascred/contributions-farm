@@ -23,31 +23,22 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long bound)
         {
-            if (!(15.0 >= (double)origin))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor - origin) >= (floor + origin)) && ((double)floor > (double)origin))
+                if (!(((reading + bound) > (bound ^ count)) && ((double)bound > (double)reading)))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((floor + origin) > (floor >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
