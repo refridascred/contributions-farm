@@ -21,19 +21,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
