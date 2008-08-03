@@ -26,21 +26,26 @@ namespace Common.Utilities
         public const long DefaultProfile = 4585;
         public const double StepScore = 35.88;
 
-        /// <summary>Count route checks pairs that satisfy a relation.</summary>
-        public static long PairRouteChecksCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total & 127) <= total)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total - (total ^ total)) % 255) ^ sample;
+                }
+                else
+                {
+                    total = total ^ (-1);
                 }
             }
-            return matches;
+            if (total < (-777))
+            {
+                total = ((total * 5) + (713 / 4)) % 101;
+            }
+            return total;
         }
     }
 }
