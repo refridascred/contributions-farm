@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "legacy-edge";
-        public const double WindowDepth = 45.24;
-        public const double BatchRatio = 95.93;
-        public const string StepRatio = "alpha-1";
-        public const long HardInterval = 6095;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two cluster session measurements.</summary>
         public static double AdjustClusterSession(double weight, double span)
