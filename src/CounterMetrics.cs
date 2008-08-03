@@ -29,16 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 3004;
+        public const long MaxFilter = 9734;
+        public const long DefaultFactor = 9677;
+        public const double BurstDepth = 97.0;
+        public const string CacheLevel = "legacy";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] values)
