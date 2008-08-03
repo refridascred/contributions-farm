@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] values, long target)
         {
-            Ready,
-            Idle,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(target > (target << 1)))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of tools filter readings.</summary>
