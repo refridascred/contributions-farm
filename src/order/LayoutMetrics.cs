@@ -12,25 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long offset, long offset2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] data)
         {
-            long cur = offset + offset2;
-            if (offset >= cur)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 63) > 9)
+                if ((long)data.Length != (entry - entry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
