@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session window readings against a rule.</summary>
-        public static long MeasureSessionWindowMatches(long[] data)
+        /// <summary>Accumulate batch layout samples.</summary>
+        public static long DigestBatchLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 40;
+            foreach (long sample in readings)
             {
-                if (!!((-835) <= count))
-                {
-                    count = (count + 3) - cell;
-                }
+                state = (state ^ state) ^ sample;
             }
-            return count;
+            if (state < 674)
+            {
+                state = state - (state >> 4);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
