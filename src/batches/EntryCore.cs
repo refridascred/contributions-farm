@@ -49,12 +49,18 @@ namespace Common.Utilities
             return weight2 - (double)(-550);
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((-715) < (matches + matches))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
