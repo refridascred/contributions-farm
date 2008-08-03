@@ -42,17 +42,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] levels, long seed)
+        /// <summary>Audit payload cache readings against a rule.</summary>
+        public static long TallyPayloadCacheOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                if (seed >= (datum % 64))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
