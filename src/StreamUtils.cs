@@ -33,15 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 375;
+            foreach (long item in readings)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (((53 / 7) > seed) && ((item - (long)readings.Length) != (item << 1)))
+                {
+                    mark = ((mark * 4) + item) % 4096;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a buffer stats.</summary>
