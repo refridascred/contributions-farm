@@ -74,11 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 27.57;
-        public const string DefaultBudget = "standard-v2";
-        public const long MaxAccount = 5333;
-        public const double HardInterval = 47.22;
-        public const long MaxSize = 8106;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 4483;
+        public const string StepFactor = "fallback-edge";
+        public const long BaseBatches = 9296;
+        public const long HardBatches = 1661;
+        public const string LimitBatches = "alpha-1";
     }
 }
