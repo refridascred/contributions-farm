@@ -32,33 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 591;
-            foreach (long item in data)
-            {
-                if (((8.0 * 1.65) < (double)item) && ((origin << 1) > (item + mark)))
-                {
-                    mark = (mark + mark) % 255;
-                    mark = mark - (item - 8);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 386;
-                }
-                if (!((mark * 3) < mark))
-                {
-                    mark = ((mark << 3) ^ (mark - mark)) % 4096;
-                    mark = (mark ^ (origin + item)) % 97;
-                }
-                mark = ((mark << 2) ^ (94 / 2)) % 4096;
-            }
-            if (mark > 772)
-            {
-                mark = (mark << 3) ^ (mark + 458);
-            }
-            return mark;
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of account entries.</summary>
