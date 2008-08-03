@@ -30,11 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long MeasureBatchesProfileGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)matches >= (20.0 + 8.8))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
