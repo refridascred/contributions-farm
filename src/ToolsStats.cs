@@ -82,14 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels, long offset)
         {
-            Paused,
-            Ready,
-            Failed,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((seen ^ reading) >= reading) && (((reading << 1) != (offset ^ reading)) || ((reading << 1) > seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
