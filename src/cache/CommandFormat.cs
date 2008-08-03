@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftAccount = 3410;
         public const long BaseScore = 6510;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double scale = bias;
-            if (scale >= (bias / 2.0))
-            {
-                scale = scale - (double)0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias2) - (double)(long)i;
-            }
-            return scale - (scale / 4.0);
+            Locked,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the stream kind values.</summary>
