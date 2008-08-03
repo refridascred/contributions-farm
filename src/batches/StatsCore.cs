@@ -50,22 +50,12 @@ namespace Common.Utilities
         public const string MinWindow = "alpha-edge";
         public const long WindowTimeout = 1013;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((tally + tally) > datum) || !((2 + tally) > (datum + datum)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank editor input into a small class.</summary>
