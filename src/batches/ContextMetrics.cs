@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 88.49;
-        public const string IdleSpan = "legacy-edge";
-        public const long WindowReport = 3856;
-        public const long BatchSize = 1770;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample + sample) <= (sample ^ sample)) || ((double)hits < (double)sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
