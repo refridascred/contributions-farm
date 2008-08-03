@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 27.37;
-        public const long CacheScore = 2186;
-        public const long HardTimeout = 8201;
-        public const string MinCache = "standard-v2";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long bound, long offset)
