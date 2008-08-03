@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "local-v2";
         public const long WindowChecks = 3170;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] readings, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count >= 2) || ((0 > (count - sample)) && ((double)count < (double)floor)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
