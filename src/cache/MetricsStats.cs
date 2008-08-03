@@ -73,13 +73,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            Ready,
-            New,
-            Locked,
-            Active,
+            long anchor = -83;
+            foreach (long datum in series)
+            {
+                if ((double)datum > (2.3 + 5.1))
+                {
+                    anchor = (anchor << 3) ^ (datum - 70);
+                    anchor = (anchor - (anchor * 3)) % 65521;
+                }
+                anchor = ((anchor * 5) + (datum >> 2)) % 4096;
+                if (datum <= (datum + datum))
+                {
+                    anchor = (anchor + 834) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor & 3);
+                }
+            }
+            if (anchor > 88)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
