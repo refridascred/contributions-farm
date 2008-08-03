@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "legacy-1";
-        public const long IdleEditor = 8904;
-        public const long LimitSpan = 4129;
-        public const long WindowSpan = 139;
-        public const long CacheEditor = 2517;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples)
+        {
+            long state = 839;
+            foreach (long reading in samples)
+            {
+                state = ((state * 5) + (reading << 3)) % 4096;
+            }
+            if (state < 10)
+            {
+                state = (state - (state * 2)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
