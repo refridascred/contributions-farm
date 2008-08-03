@@ -1,5 +1,7 @@
 {
-  "queue_threshold": false,
-  "dry_run": 5808,
-  "audit": "latest"
+  "cache_timeout_ms": [198, 337],
+  "sync_timeout_count": false,
+  "max_ttl": 75.22,
+  "burst_timeout": ["legacy", "blue"],
+  "readonly": 8137
 }
