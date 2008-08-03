@@ -37,19 +37,26 @@ namespace Common.Utilities
             return drift + (floor + 10.0);
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] series, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long acc = -8;
+            foreach (long datum in data)
             {
-                if (cell >= seed)
+                if (datum > (acc + limit))
                 {
-                    ok = false;
+                    continue;
+                }
+                if (datum > (limit ^ 731))
+                {
+                    acc = (acc + (limit - acc)) % 97;
+                }
+                if ((double)acc != (7.0 / 7.0))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
