@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a queue entry pair into a bucket.</summary>
+        public static long RankQueueEntry(long step, long limit)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            if ((limit + limit) == (step << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((10 - limit) <= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit + step) == (step * 2)) || ((step + step) != (54 + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
