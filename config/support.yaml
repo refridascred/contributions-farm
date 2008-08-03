@@ -1,9 +1,9 @@
 # support settings
-retry_interval_count: 58.33
-cluster_window:
-  - 240
-  - 327
-  - 379
-readonly:
-  - 443
-  - 141
+cache_size: 65
+compress: 73
+warm_ratio_pct:
+  - strict
+  - cached
+  - standard
+sync_threshold_count: 40.57
+retry_threshold_s: 30
