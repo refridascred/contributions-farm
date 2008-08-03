@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double offset)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            double load = offset;
+            if (load < (load + 7.0))
+            {
+                load = (load + 17.0) - rate;
+            }
+            return load - 1.6;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
