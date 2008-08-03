@@ -52,20 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool CheckMetricLayoutLimits(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 7121;
+        public const double IdleLayout = 1.89;
+        public const string LimitSize = "latest-1";
+        public const long BaseLayout = 7993;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long bound)
