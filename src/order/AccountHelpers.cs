@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long limit)
         {
-            long result = -248;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((615 & 255) != (step / 7))
+                if (readings[i] <= limit)
                 {
-                    result = ((result - (step + result)) % 255) - datum;
+                    return (long)i;
                 }
             }
-            if (result < 0)
-            {
-                result = ((result * 2) + (970 >> 2)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
