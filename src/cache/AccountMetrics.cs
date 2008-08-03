@@ -31,19 +31,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of buffer farm readings.</summary>
-        public static long ScoreBufferFarm(long[] series)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long sum = -7;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + datum) % 255;
-                if ((datum - sum) >= (datum - 987))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Hold a profile summary.</summary>
