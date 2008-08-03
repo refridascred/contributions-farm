@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long step, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] readings, long limit)
         {
-            if ((step % 100) <= (-80))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (origin % 60))
+                if (limit > (limit ^ matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) >= (step << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.86 + 0.12) == (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every filter buffer entry stays within the limit.</summary>
