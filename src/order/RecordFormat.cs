@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank order batch input into a small class.</summary>
-        public static long ClassifyOrderBatch(long floor, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long step, long origin)
         {
-            if ((double)floor != (5.0 * 1.6))
+            if ((step % 100) <= (-80))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((offset - 317) <= (floor >> 1))
+                if (step <= (origin % 60))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((origin + origin) >= (step << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.86 + 0.12) == (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
