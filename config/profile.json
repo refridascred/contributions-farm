@@ -1,7 +1,5 @@
 {
-  "max_interval": true,
-  "cluster_ttl": 5.47,
-  "strict": false,
-  "enabled": 4017,
-  "hard_ttl_s": 1024
+  "verbose": "legacy",
+  "base_interval": 7778,
+  "profile_capacity": 4162
 }
