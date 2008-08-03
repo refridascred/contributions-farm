@@ -81,12 +81,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Done,
+            New,
             Locked,
-            Idle,
+            Queued,
+            Ready,
         }
     }
 }
