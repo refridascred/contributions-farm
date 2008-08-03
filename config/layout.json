@@ -1,9 +1,17 @@
 {
-  "base_capacity_ms": 33.41,
-  "sync_retries_s": {
-    "cluster_interval": 294,
-    "poll_delay_s": 61,
-    "contributi_capacity": 500
+  "readonly": 56.13,
+  "filter_threshold": {
+    "base_size": true,
+    "cluster_size": 31,
+    "buffer_threshold": {
+      "stats_delay": [458, 133],
+      "flush_ratio_count": 30,
+      "strict": 19.04,
+      "base_delay_s": 31.97,
+      "metrics_size": 250
+    },
+    "already_size": "staging"
   },
-  "min_window_pct": 30
+  "soft_window_s": 87.8,
+  "sync_interval_pct": 30
 }
