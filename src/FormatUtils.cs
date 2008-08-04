@@ -41,21 +41,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Scale a record support figure with a bias.</summary>
+        public static double ProjectRecordSupport(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = ratio * 4.81;
+            if (bias >= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (bias - bias);
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
