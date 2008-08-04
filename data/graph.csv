@@ -1,7 +1,7 @@
-id,token,active
-1,fallback,staging
-2,fallback,471
-3,standard,34.91
-4,795,414
-5,716,620
-6,cached,13.55
+id,state,token
+1,open,780
+2,local,195
+3,478,strict
+4,fallback,primary
+5,legacy,30
+6,79.57,staging
