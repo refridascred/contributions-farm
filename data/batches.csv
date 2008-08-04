@@ -1,10 +1,7 @@
-id,active,owner
-1,586,legacy
-2,primary,712
-3,53.92,74.67
-4,local,staging
-5,55.34,staging
-6,51.9,30.64
-7,23.96,stable
-8,blue,151
-9,edge,498
+id,token,owner,rank
+1,open,58.03,52.91
+2,primary,880,208
+3,461,268,eu-west
+4,45.12,cached,blue
+5,34.6,green,cached
+6,blue,72.98,fallback
