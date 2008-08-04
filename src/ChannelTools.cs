@@ -30,12 +30,38 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long offset, long target)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
+            if (((target & 15) != (target / 9)) && ((double)target == (9.3 - 6.87)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset + offset) == (target / 5)) || ((offset ^ 79) <= (offset % 24)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 1) != (target << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target & 15) <= (target >> 1)) && ((offset & 255) > target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
