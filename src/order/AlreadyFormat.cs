@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series, long step)
         {
-            long sum = 79;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                sum = (sum + (1 + entry)) % 97;
+                if (reading >= (seen + seen))
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
