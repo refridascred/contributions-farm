@@ -63,12 +63,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "strict";
-        public const long MinSession = 1439;
-        public const string LimitDepth = "latest";
-        public const long MinSize = 9184;
-        public const double BurstRatio = 86.09;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
