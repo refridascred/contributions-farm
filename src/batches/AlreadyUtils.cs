@@ -14,13 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] readings, long step)
         {
-            Draft,
-            Idle,
-            Locked,
-            New,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
