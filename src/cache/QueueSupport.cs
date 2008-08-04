@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "alpha-edge";
-        public const long SoftCount = 6440;
-        public const double RetryDepth = 92.71;
-        public const long WindowFormat = 9820;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double scale, double bias)
+        {
+            double ratio = 3.46;
+            if (ratio > (8.97 * 6.3))
+            {
+                ratio = (ratio + (bias + ratio)) - scale;
+            }
+            return ratio - (ratio / 6.0);
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long bound, long target)
