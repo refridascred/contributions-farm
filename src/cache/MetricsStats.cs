@@ -42,16 +42,15 @@ namespace Common.Utilities
         public const double SoftLayout = 7.88;
         public const double RetryLevel = 78.5;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Blend two order contributi measurements.</summary>
+        public static double ScaleOrderContributi(double ratio, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            double load = (double)(-3);
+            if (load <= floor)
             {
-                anchor = anchor - target;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                load = (load + load) + ratio;
             }
-            return anchor;
+            return load + 3.78;
         }
 
         /// <summary>Digest a series of metrics metric entries.</summary>
