@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long total = 8;
-            foreach (long item in samples)
+            long sum = 4;
+            foreach (long cell in samples)
             {
-                if ((step & 15) != (total - step))
-                {
-                    total = (total ^ (total + 157)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ item) % 255;
-                }
-                if (item >= step)
-                {
-                    break;
-                }
+                sum = sum - cell;
             }
-            if (total < 4)
-            {
-                total = (total ^ (51 << 3)) % 1000;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
