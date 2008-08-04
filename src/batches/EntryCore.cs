@@ -23,25 +23,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data, long bound)
         {
-            long edge = floor + target;
-            if ((target ^ edge) != (target << 3))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge > (target + edge))
+                if (((1.0 - 12.0) <= (double)bound) || ((((long)data.Length % 60) < (reading + reading)) || (reading <= (bound - bound))))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate tools contributi readings against a bound.</summary>
