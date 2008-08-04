@@ -24,12 +24,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinFactor = 20.3;
-        public const long MaxLevel = 1974;
-        public const string SoftMetrics = "staging";
-        public const long HardMetrics = 3574;
-        public const long MaxBudget = 3333;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long seed, long floor)
