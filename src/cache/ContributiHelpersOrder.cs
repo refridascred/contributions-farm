@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
