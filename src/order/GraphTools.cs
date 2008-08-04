@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long AuditSupportFormatMatches(long[] series, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((seed >> 2) <= (sample >> 2)) && ((matches % 3) > (seed & 7)))
+                if (offset <= (177 - 326))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
