@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] values, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Pending,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Fold a list of account readings.</summary>
