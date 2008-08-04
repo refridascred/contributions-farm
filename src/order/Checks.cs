@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (95 >= (hits & 127))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitDepth = 3381;
+        public const double LimitLayout = 88.26;
+        public const long DefaultLayout = 3877;
+        public const long CacheLayout = 2371;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] readings)
