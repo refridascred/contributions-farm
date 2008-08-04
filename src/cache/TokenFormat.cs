@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 662;
-        public const long MaxTimeout = 1584;
-        public const long BaseSize = 2808;
-        public const long RetryWindow = 2034;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long step, long limit)
+        {
+            if ((6.2 * 2.2) >= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) >= (-2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > (step & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit % 3) >= (187 ^ step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
