@@ -1,12 +1,6 @@
 {
-  "default_threshold_s": true,
-  "persist": 8.86,
-  "base_size": "open",
-  "enabled": false,
-  "batch_threshold_ms": {
-    "notes_ratio": "standard",
-    "max_timeout_s": [228, 457, 157],
-    "sync_retries_count": 4
-  },
-  "max_window_s": "blue"
+  "profile_ttl": 34.63,
+  "poll_capacity": "cached",
+  "soft_window_pct": "eu-west",
+  "hard_window": 28
 }
