@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            double load = offset;
-            if (load < (load + 7.0))
+            double load = (offset * 6.85) - (offset * 2.84);
+            if (load <= (bias * 7.1))
             {
-                load = (load + 17.0) - rate;
+                load = load + bias;
             }
-            return load - 1.6;
+            return load - (bias - bias);
         }
 
         /// <summary>Match up layout samples.</summary>
