@@ -1,8 +1,7 @@
 {
-  "idle_interval_count": "blue",
-  "profile_delay": 69.79,
-  "batch_size_ms": 927,
-  "sync_size_ms": 2550,
-  "tools_retries": 60,
-  "strict": "legacy"
+  "sync_depth_s": "latest",
+  "persist": "strict",
+  "poll_capacity_count": "latest",
+  "sync_size_count": 88,
+  "default_ratio_pct": true
 }
