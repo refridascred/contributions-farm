@@ -39,31 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels)
         {
-            if (!((19.0 + 7.0) > (double)floor))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor == (14.0 / 5.0)) && (floor <= (bound >> 3)))
+                if (!(matches <= (5 + value)))
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((bound >> 5) > (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
