@@ -48,15 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                mix = (((mix << 2) ^ (mix & 7)) % 4096) ^ value;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry * 3) + (carry % 97)) ^ (long)i) ^ sample;
+                }
+                carry = (carry + 6) % 65521;
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
