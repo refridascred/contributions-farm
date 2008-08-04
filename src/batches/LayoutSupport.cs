@@ -28,12 +28,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftDepth = 97.26;
-        public const long BaseOrder = 8392;
-        public const long RetryOrder = 600;
-        public const long WindowOrder = 8081;
-        public const double BaseSize = 4.44;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate editor context samples.</summary>
         public static long DigestEditorContext(long[] levels)
