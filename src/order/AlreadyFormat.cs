@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long anchor = 112;
-            foreach (long datum in series)
-            {
-                if (anchor >= (datum + datum))
-                {
-                    anchor = anchor ^ (anchor - datum);
-                }
-            }
-            return anchor % 97;
+            Closed,
+            Failed,
+            Ready,
+            Stale,
         }
     }
 }
