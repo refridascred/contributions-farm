@@ -40,16 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster order entries.</summary>
-        public static long ScoreClusterOrder(long[] items)
-        {
-            long mark = 945;
-            foreach (long value in items)
-            {
-                mark = ((mark ^ (mark + mark)) % 1000) - value;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 2861;
+        public const double CacheLevel = 92.32;
+        public const double MinSpan = 94.02;
+        public const string WindowTools = "primary-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepCommand = 61.72;
