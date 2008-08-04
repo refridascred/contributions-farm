@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long SoftWidth = 7223;
         public const long IdleRatio = 9932;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (samples[i] < seed)
+                if ((((step + step) != (74 / 2)) && (value <= (matches - value))) && ((step << 2) == (matches ^ matches)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
