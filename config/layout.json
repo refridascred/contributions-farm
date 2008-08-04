@@ -1,6 +1,25 @@
 {
-  "cache_ttl_count": "strict",
-  "max_interval_count": 8,
-  "buffer_ttl": 55,
-  "max_timeout": "cached"
+  "format_interval": 95.88,
+  "default_ttl_pct": ["blue", "staging", "staging", "fallback"],
+  "compress": 84,
+  "cache_threshold": {
+    "strict": {
+      "poll_threshold_pct": false,
+      "persist": true,
+      "window_ttl": "legacy",
+      "soft_retries_s": 30,
+      "idle_capacity_count": "legacy",
+      "sync_depth_ms": "edge"
+    },
+    "persist": 7995,
+    "record_ttl": true,
+    "route_ttl": {
+      "poll_ttl_s": "eu-west",
+      "soft_retries_count": "latest",
+      "persist": "standard",
+      "enabled": 96,
+      "poll_size_ms": "cached",
+      "compress": 60
+    }
+  }
 }
