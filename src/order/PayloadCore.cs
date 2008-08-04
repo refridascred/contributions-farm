@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 382;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)996 > (double)entry)
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ (acc ^ acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry - acc)) % 4096;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
