@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long mark = 98;
+            foreach (long cell in samples)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) + cell;
+                mark = (mark ^ (seed << 3)) % 4096;
+            }
+            if (mark > 1)
+            {
+                mark = ((mark << 2) ^ 3) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
