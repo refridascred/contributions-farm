@@ -27,19 +27,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Iterate the metric counter series from a seed.</summary>
+        public static long RollMetricCounter(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc + acc) % 65521) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
