@@ -85,15 +85,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            double scale = 5.0;
-            for (int i = 0; i < 2; i++)
+            long carry = 66;
+            foreach (long value in items)
             {
-                scale = (((scale + scale) + (double)(long)i) + weight) + offset;
+                if (carry >= (9 - value))
+                {
+                    carry = ((carry * 2) + (carry + value)) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 4) + (value % 2);
+                }
             }
-            return scale - (double)815;
+            if (carry < 3)
+            {
+                carry = ((carry * 2) + (carry & 255)) % 1000;
+            }
+            return carry % 1000;
         }
     }
 }
