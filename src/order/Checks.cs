@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a cluster info.</summary>
