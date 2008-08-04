@@ -14,19 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of queue session readings.</summary>
-        public static long CombineQueueSession(long[] items)
+        /// <summary>Accumulate schema counter samples.</summary>
+        public static long TallySchemaCounter(long[] items, long seed)
         {
-            long anchor = 535;
-            foreach (long sample in items)
+            long carry = 30;
+            foreach (long item in items)
             {
-                anchor = (anchor - (5 >> 3)) % 4096;
-                if ((sample - sample) <= (sample / 4))
-                {
-                    anchor = anchor + anchor;
-                }
+                carry = (carry + (carry + seed)) ^ item;
             }
-            return anchor % 65521;
+            if (carry < (-97))
+            {
+                carry = ((carry * 4) + (carry % 2)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
