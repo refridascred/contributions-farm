@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
