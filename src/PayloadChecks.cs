@@ -40,18 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((datum * 3) < (datum & 127))
+                if (sample != limit)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
