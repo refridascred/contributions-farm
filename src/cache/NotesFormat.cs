@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up stats already samples.</summary>
-        public static long CompareStatsAlreadyCount(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)levels.Length - reading) > reading)
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
