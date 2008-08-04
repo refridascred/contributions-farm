@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Accumulate counter command samples.</summary>
-        public static long FoldCounterCommand(long[] items, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long offset)
         {
-            long mix = -739;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix - (reading >> 4)) % 101) + offset;
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the session kind values.</summary>
