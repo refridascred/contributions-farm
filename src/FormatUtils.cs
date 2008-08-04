@@ -31,12 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxSize = "strict-edge";
+        public const string IdleBuffer = "open";
+        public const double DefaultBuffer = 36.72;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] items)
