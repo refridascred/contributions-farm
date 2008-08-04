@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long seed)
         {
-            Done,
-            Queued,
-            Idle,
-            Active,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
