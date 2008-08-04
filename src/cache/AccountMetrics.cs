@@ -46,10 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryScore = 40;
-        public const long DefaultFarm = 610;
-        public const double WindowFarm = 32.65;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxWidth = 4474;
+        public const string RetryStream = "stable-edge";
+        public const string LimitWidth = "open-v2";
+        public const long CacheTimeout = 7062;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double span)
