@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 9990;
         public const double SoftCount = 68.22;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a cluster command counter forward.</summary>
+        public static long StepClusterCommand(long step)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Iterate the metric counter series from a seed.</summary>
