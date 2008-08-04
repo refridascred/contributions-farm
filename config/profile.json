@@ -1,6 +1,5 @@
 {
-  "verbose": false,
-  "dry_run": true,
-  "cache_delay": 46,
-  "session_depth": 18
+  "soft_limit_s": 43.44,
+  "batch_size": 100,
+  "sync_depth": ["stable", "blue", "green"]
 }
