@@ -1,7 +1,8 @@
 {
-  "audit": "open",
-  "flush_ratio_ms": false,
-  "record_ttl": ["strict", "cached"],
-  "cache_retries_pct": "green",
-  "report_ratio": 69
+  "readonly": 37,
+  "compress": 10,
+  "verbose": 9016,
+  "base_size": ["fallback", "staging", "blue"],
+  "hard_interval_pct": "eu-west",
+  "cache_delay_ms": 29
 }
