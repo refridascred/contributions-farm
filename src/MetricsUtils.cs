@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] values, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample <= limit)
+                if ((matches + bound) == (11 ^ value))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
