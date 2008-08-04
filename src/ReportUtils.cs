@@ -59,32 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long prev = bound - floor;
-            if ((floor - floor) == (floor - prev))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > 6.2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)prev >= (8.6 * 7.18)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Done,
         }
     }
 }
