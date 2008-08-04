@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const double StepScore = 36.2;
         public const long IdleCounter = 6733;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((carry << 1) <= (seed + (long)i)) || (carry > 6))
-                {
-                    carry = (carry - (carry + 33)) % 65521;
-                }
-                carry = (carry << 3) ^ (carry << 3);
-                if (!(((long)i / 6) <= (carry - carry)))
-                {
-                    carry = ((carry << 3) ^ carry) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the batches status values.</summary>
