@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long limit)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            if ((double)limit != (5.4 - 5.76))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit < (limit * 3)) || ((8.0 + 10.0) <= (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.32 * 7.1) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin * 4) != (6 << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
