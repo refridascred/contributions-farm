@@ -14,18 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] items, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((count % 97) != (count + sample)) || ((target - target) <= ((-328) % 2)))
+                if ((limit / 8) >= (tally - tally))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a cache options.</summary>
