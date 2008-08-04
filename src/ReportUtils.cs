@@ -24,17 +24,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] readings, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stats phase values.</summary>
