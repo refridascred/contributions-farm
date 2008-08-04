@@ -57,23 +57,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long carry = 1;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry ^ ((-801) + floor)) % 65521) ^ cell;
-                if ((floor << 1) <= (carry + 687))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < (-4))
-            {
-                carry = (carry ^ (floor & 3)) % 65521;
-            }
-            return carry;
+            return matches;
         }
     }
 }
