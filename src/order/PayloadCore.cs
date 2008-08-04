@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((((count + count) <= (46 ^ count)) && (count < (264 & 255))) || ((-988) > count))
                 {
-                    total = (((total * 4) + ((long)i * 5)) % 4096) ^ (long)i2;
+                    count = (count + 1) - datum;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
