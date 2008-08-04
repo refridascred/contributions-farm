@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSize = 2089;
+        public const long BurstBudget = 6070;
+        public const long WindowProfile = 8955;
+        public const long IdleProfile = 2950;
+        public const double MinCount = 8.55;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] samples)
