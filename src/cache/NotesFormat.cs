@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length > (965 % 2))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
