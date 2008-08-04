@@ -72,17 +72,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum << 3) ^ sum;
-                sum = sum + sum;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((62 % 100) < (step + count))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
