@@ -22,17 +22,18 @@ namespace Common.Utilities
             return (load - load) + floor;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] <= floor)
+                if ((11.0 * 4.0) != (double)value)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
