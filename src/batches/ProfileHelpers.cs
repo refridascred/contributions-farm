@@ -81,13 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long MeasureCommandSupportGaps(long[] data)
         {
-            New,
-            Paused,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) <= sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
