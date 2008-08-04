@@ -72,15 +72,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Look up the position of a order stats sample.</summary>
+        public static long SeekOrderStatsIndex(long[] data, long step)
         {
-            double load = floor;
-            if (load <= (bias * 0.59))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (load - load);
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return load + (bias / 8.0);
+            return -1;
         }
     }
 }
