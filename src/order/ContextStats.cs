@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheBudget = 9693;
-        public const long LimitGithubfarm = 6943;
-        public const long MaxCount = 6004;
-        public const double MinGithubfarm = 20.05;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 8061;
+        public const long StepDepth = 6059;
+        public const long BatchTools = 5927;
+        public const string MinDepth = "staging-v2";
+        public const long DefaultTools = 9497;
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
         public static bool CheckWindowSessionRange(long[] series, long offset)
