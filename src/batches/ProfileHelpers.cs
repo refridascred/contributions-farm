@@ -63,16 +63,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result * 2) + (result * 4);
-                result = ((result * 4) + (long)i) % 97;
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
