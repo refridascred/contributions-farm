@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples, long target)
         {
-            double gain = span - (9.18 - 4.1);
-            return (gain + (double)4) + weight;
+            long mix = 69;
+            foreach (long sample in samples)
+            {
+                mix = ((mix + (target / 9)) % 65521) - sample;
+                if (((double)(long)samples.Length < (2.4 + 5.04)) || ((double)target == (5.88 + 3.0)))
+                {
+                    mix = mix + (target + mix);
+                }
+            }
+            return mix;
         }
     }
 }
