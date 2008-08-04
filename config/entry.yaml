@@ -1,14 +1,6 @@
 # entry settings
-default_capacity:
-  - legacy
-  - blue
-dry_run: staging
-batch_retries_s:
-  batch_ratio_pct:
-    - staging
-    - local
-    - latest
-  verbose: staging
-  compress: 10.46
-default_ratio_pct: staging
-flush_depth: false
+dry_run: standard
+default_size_pct: 4504
+cache_delay_count: 72.12
+record_interval: 40
+schema_timeout: legacy
