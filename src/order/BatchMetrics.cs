@@ -45,21 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batches batch counter forward.</summary>
-        public static long RollBatchesBatch(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix - (18 >> 2)) % 255) - (long)i2;
-                }
-                mix = (mix << 3) ^ ((long)i + mix);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 8982;
+        public const long MaxRoute = 9870;
+        public const long BatchRoute = 6510;
+        public const long SoftRoute = 1831;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] series)
