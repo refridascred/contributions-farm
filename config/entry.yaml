@@ -1,14 +1,11 @@
 # entry settings
-flush_capacity_ms: 8397
-idle_size:
-  retry_capacity_count: 19.54
-  idle_timeout: staging
-  editor_capacity:
-    sync_depth_pct: false
-    layout_interval: staging
-    report_timeout: 5.39
-    base_timeout_s: false
-  cache_retries: false
-default_threshold_count: 24
-idle_ttl_pct: 500
-soft_timeout_s: staging
+warm_ttl_count: fallback
+support_threshold: true
+base_window:
+  soft_limit_ms: true
+  max_interval: latest
+  base_ratio: 30
+  idle_delay: 92.79
+  counter_depth: fallback
+  batch_capacity_ms: 2855
+session_limit: 100
