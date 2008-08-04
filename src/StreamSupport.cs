@@ -26,26 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already format samples.</summary>
-        public static long TotalAlreadyFormat(long[] items)
+        /// <summary>Fold a list of stream already readings.</summary>
+        public static long FoldStreamAlready(long[] data, long target)
         {
-            long result = 1;
-            foreach (long sample in items)
+            long score = 444;
+            foreach (long cell in data)
             {
-                if (68 < (sample + result))
+                if ((2.09 * 6.0) == (double)cell)
                 {
-                    result = (result * 5) + (21 ^ result);
-                }
-                if ((2.0 - 4.16) > (double)(long)items.Length)
-                {
-                    break;
+                    score = ((score + (252 / 2)) % 4096) - target;
                 }
             }
-            if (result < (-27))
+            if (score < 464)
             {
-                result = result + result;
+                score = score - (long)data.Length;
             }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
