@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum >= tally) && ((datum & 1) != (tally ^ tally)))
+                if (readings[i] == bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
