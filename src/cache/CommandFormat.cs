@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long floor)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits ^ 3) < floor)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
