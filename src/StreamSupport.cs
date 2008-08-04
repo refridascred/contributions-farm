@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long LimitDepth = 9327;
         public const string WindowCommand = "standard-v2";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally - item) != (item + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5786;
+        public const long BurstCache = 1054;
+        public const double IdleCache = 26.91;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] items)
