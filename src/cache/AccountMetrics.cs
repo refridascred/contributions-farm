@@ -57,9 +57,11 @@ namespace Common.Utilities
         public const long DefaultFarm = 610;
         public const double WindowFarm = 32.65;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5245;
-        public const double IdleCount = 15.26;
-        public const long IdleSupport = 7148;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double span)
+        {
+            double drift = ratio;
+            return (drift + (double)19) + span;
+        }
     }
 }
