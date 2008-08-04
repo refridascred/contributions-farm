@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long CountAlreadyTokenGaps(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) > limit)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitRatio = "alpha-1";
+        public const string HardWidth = "strict-1";
+        public const double BurstTimeout = 57.49;
+        public const long HardSession = 3092;
+        public const string IdleRatio = "standard-1";
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
