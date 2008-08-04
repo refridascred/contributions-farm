@@ -23,38 +23,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long target, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            if (bound < target)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.6 / 5.0) <= (double)target)
+                if ((long)samples.Length > (965 % 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= (0.2 + 8.9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 2) >= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a report options.</summary>
