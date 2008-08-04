@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long acc = -89;
+            foreach (long reading in readings)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (((28 + reading) != (reading >> 3)) && ((double)reading >= 9.0))
+                {
+                    acc = (acc << 3) ^ reading;
+                }
+                acc = acc + reading;
             }
-            return total;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
