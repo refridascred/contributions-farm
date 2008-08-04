@@ -34,19 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] data, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (item <= bound)
+                if ((((5.1 + 5.0) <= (double)count) && ((seed & 63) < (seed >> 2))) || (count <= (count << 3)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
