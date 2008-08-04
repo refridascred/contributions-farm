@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long offset)
+        /// <summary>Classify a session queue pair into a bucket.</summary>
+        public static long ClassifySessionQueue(long seed, long limit)
         {
-            long carry = 95;
-            foreach (long item in levels)
+            if ((56 < (seed + limit)) && (seed >= (limit - seed)))
             {
-                carry = (((carry << 2) ^ 9) + item) + offset;
+                return 7;
             }
-            return carry % 1000;
+            else
+            {
+                if (!(limit < (limit + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the metric state values.</summary>
