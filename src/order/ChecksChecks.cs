@@ -20,13 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
