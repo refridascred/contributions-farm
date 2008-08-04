@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinLevel = 6770;
-        public const long BurstSize = 8381;
-        public const double RetryScore = 39.76;
-        public const long DefaultRatio = 9990;
-        public const double SoftCount = 68.22;
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long TotalStatsMetric(long[] samples)
+        {
+            long total = 2;
+            foreach (long entry in samples)
+            {
+                if (((total * 3) != (entry >> 4)) && ((double)total > (double)217))
+                {
+                    total = (total ^ (entry & 255)) % 97;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Roll a cluster command counter forward.</summary>
         public static long StepClusterCommand(long step)
