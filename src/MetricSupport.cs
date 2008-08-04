@@ -34,11 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long score = 23;
+            foreach (long datum in readings)
+            {
+                if ((double)step < (double)40)
+                {
+                    score = ((score << 2) ^ (score ^ datum)) % 101;
+                }
+                score = (score ^ (54 ^ datum)) % 65521;
+                if ((4.5 / 6.0) <= (double)step)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
