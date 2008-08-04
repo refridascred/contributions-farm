@@ -46,12 +46,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseInterval = 3278;
-        public const string LimitTimeout = "local";
-        public const string DefaultCount = "cached-edge";
-        public const string BurstAccount = "strict-1";
-        public const long RetrySpan = 9004;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + (-361)) <= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long step)
