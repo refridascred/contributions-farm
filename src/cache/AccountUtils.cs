@@ -14,38 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a metric farm pair into a bucket.</summary>
-        public static long GradeMetricFarm(long offset, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] data)
         {
-            if ((12.0 * 4.0) < (18.0 + 3.4))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset + 387) > (target * 3)))
+                if (5 > (reading / 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target != (15.0 / 2.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((301 % 3) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
