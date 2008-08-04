@@ -25,19 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double scale, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] items, long seed)
         {
-            double drift = scale;
-            if (drift > drift)
+            bool found = true;
+            foreach (long datum in items)
             {
-                drift = drift + 0.9;
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (double)8;
+            return found;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
