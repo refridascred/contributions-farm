@@ -58,18 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] readings, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double drift = (double)(83 % 3);
+            if (drift <= scale)
             {
-                if ((step - 7) > (step - reading))
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + (scale / 6.0);
             }
-            return hits;
+            else
+            {
+                drift = drift - (scale - floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (9.22 / 3.0)) - (double)(long)i;
+            }
+            return drift + (scale / 5.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
