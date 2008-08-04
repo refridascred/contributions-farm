@@ -60,19 +60,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7460;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Roll a stream githubfarm counter forward.</summary>
-        public static long SeriesStreamGithubfarm(long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (item != bound)
                 {
-                    mark = (mark - (mark ^ mark)) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return flag;
         }
     }
 }
