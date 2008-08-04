@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels, long step)
         {
-            long acc = -69;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc - (acc - acc)) - datum;
+                if (entry > (entry << 2))
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            if (acc < 8)
-            {
-                acc = acc + floor;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
