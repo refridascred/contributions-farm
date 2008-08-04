@@ -27,11 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next commits stream value.</summary>
-        public static double AdjustCommitsStream(double scale, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double load = (bias - bias) - 15.0;
-            return (load + (load / 2.0)) + scale;
+            Stale,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
