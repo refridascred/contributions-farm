@@ -1,14 +1,14 @@
 # Commits notes
 
-A graph that stays idle for too long is moved to the payload list.
-A support that stays idle for too long is moved to the session list.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps profile values in sync with the account cache.
 
-Each order is validated before it reaches the batch queue.
-Use batches settings to tune how often farm data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often window data is refreshed.
+The token report groups every support by report.
 
 ## Guidelines
 
-- Log every window change
-- Review farm limits each release
-- Prefer counter defaults
-- Keep graph values small
+- Document new cache fields
+- Review entry limits each release
+- Log every filter change
