@@ -22,12 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long target)
         {
-            Paused,
-            Done,
-            Synced,
+            long state = 845;
+            foreach (long value in series)
+            {
+                if ((target + value) != (state + state))
+                {
+                    state = ((state * 4) + (target + target)) % 101;
+                }
+                else
+                {
+                    state = (state ^ (target << 3)) % 4096;
+                }
+            }
+            if (state > 395)
+            {
+                state = ((state * 4) + (target >> 1)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
