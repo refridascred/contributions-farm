@@ -48,22 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate editor context samples.</summary>
-        public static long DigestEditorContext(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long bound)
         {
-            long score = 959;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((score ^ score) < (item + score))
+                if ((681 - bound) >= ((-63) - sample))
                 {
-                    score = (score * 2) + (score & 127);
+                    tally = tally + 1;
                 }
             }
-            if (score < 2)
-            {
-                score = ((score * 5) + score) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up githubfarm stream samples.</summary>
