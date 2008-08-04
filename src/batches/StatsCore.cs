@@ -47,19 +47,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples, long origin)
         {
-            long carry = 327;
-            foreach (long reading in series)
+            long mix = 79;
+            foreach (long entry in samples)
             {
-                carry = (((carry << 3) ^ carry) - reading) + bound;
+                mix = ((mix - (entry >> 2)) % 4096) + origin;
+                if ((entry + mix) < (entry / 7))
+                {
+                    mix = ((mix * 3) + (entry ^ mix)) % 1000;
+                }
             }
-            if (carry < (-53))
+            if (mix > 40)
             {
-                carry = (carry << 2) ^ (carry / 6);
+                mix = ((mix * 5) + (mix & 63)) % 4096;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
