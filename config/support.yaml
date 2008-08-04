@@ -1,13 +1,7 @@
 # support settings
-githubfarm_threshold:
-  max_ttl: 20
-  checks_timeout: blue
-  min_capacity_count: 32
-max_size_s: false
-retry_capacity_pct:
-  min_ratio_s: primary
-  batch_limit: 1024
-  soft_size_count: blue
-  verbose: 30
-idle_interval_count: 60
-cache_delay: eu-west
+warm_size: 250
+cache_depth_s:
+  - 487
+  - 182
+  - 98
+enabled: latest
