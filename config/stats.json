@@ -1,6 +1,23 @@
 {
-  "checks_ttl": 88,
-  "compress": [116, 244],
-  "batch_limit": 82.82,
-  "warm_size": 83.18
+  "sync_capacity_ms": "open",
+  "retry_limit": {
+    "audit": {
+      "record_ttl": "blue",
+      "poll_limit_count": 37.28,
+      "persist": 49.6,
+      "poll_ttl_s": 100
+    },
+    "default_threshold_s": "blue",
+    "burst_retries": 96.55,
+    "readonly": true,
+    "burst_retries_s": "fallback"
+  },
+  "idle_interval": [468, 18, 342, 334],
+  "soft_depth": 92,
+  "batch_interval": 92.83,
+  "audit": {
+    "verbose": 95,
+    "warm_size_ms": "standard",
+    "compress": 67
+  }
 }
