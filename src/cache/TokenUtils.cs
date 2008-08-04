@@ -23,21 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 109;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state + (4 / 8)) % 65521) ^ entry) - floor;
             }
-            return tally;
+            return state;
         }
     }
 }
