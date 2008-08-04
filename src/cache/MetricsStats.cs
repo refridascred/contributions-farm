@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Count the context profile entries that pass the check.</summary>
+        public static long TallyContextProfileGaps(long[] samples)
         {
-            long carry = 5;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (entry <= (matches / 3))
                 {
-                    carry = ((((carry << 3) ^ carry) % 65521) ^ (long)i) - sample;
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
+                else
                 {
-                    carry = (((carry * 2) + (carry * 2)) % 255) ^ (long)i2;
+                    matches = matches - 1;
                 }
-                carry = carry + (long)values.Length;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first window cache entry that matches the target.</summary>
