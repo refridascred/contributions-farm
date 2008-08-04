@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long MaxBudget = 6870;
         public const double LimitContext = 2.42;
 
-        /// <summary>Find the first tools already entry that matches the target.</summary>
-        public static long LocateToolsAlreadyIndex(long[] items, long floor)
+        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
+        public static long PairAlreadyContributiCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
