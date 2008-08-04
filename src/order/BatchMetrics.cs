@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const double IdleChannel = 81.02;
         public const long WindowChannel = 4710;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
