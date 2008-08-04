@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Draft,
             Ready,
-            Dropped,
+            New,
+            Done,
             Paused,
         }
 
