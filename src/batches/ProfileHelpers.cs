@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] samples, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double scale = (double)((-42) & 1);
+            if (scale <= rate)
             {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + scale) + offset;
             }
-            return found;
+            else
+            {
+                scale = scale + (double)(-32);
+            }
+            return scale - (double)907;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
