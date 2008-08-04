@@ -20,17 +20,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 311;
+            foreach (long cell in data)
             {
-                if (series[i] > target)
+                sum = (sum ^ (offset - 470)) % 255;
+                if (((-40) - sum) >= (cell & 7))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
