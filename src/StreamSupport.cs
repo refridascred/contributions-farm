@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
-        public static bool GuardQueueMetricsRange(long[] readings, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((step / 8) < (566 + 4))
             {
-                if (entry != limit)
+                return 8;
+            }
+            else
+            {
+                if (((-17) + step) == (9 ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step > (43 >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step < 10.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
