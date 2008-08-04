@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            Locked,
-            New,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - (long)samples.Length) > (sample ^ sample))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
