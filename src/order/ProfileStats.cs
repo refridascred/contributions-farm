@@ -40,18 +40,10 @@ namespace Common.Utilities
         public const long MaxCache = 9168;
         public const long HardCache = 4243;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)752 == (double)item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7284;
+        public const double BaseBatches = 78.03;
+        public const string MinBatches = "standard";
+        public const long StepFactor = 9559;
     }
 }
