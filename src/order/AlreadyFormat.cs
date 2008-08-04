@@ -67,19 +67,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
-        public static bool ValidateContributiFarmRange(long[] levels, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            if (((double)8 >= (double)step) || ((double)(-793) > (double)offset))
             {
-                if (cell >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((step * 5) > (step >> 1))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 3) == (offset / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
