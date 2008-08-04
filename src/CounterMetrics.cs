@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseInterval = 23.52;
+        public const long MinLevel = 1651;
+        public const double DefaultQueue = 38.83;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
