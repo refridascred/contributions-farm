@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state << 2) ^ step) % 101;
-                if ((7.2 - 14.0) == (double)step)
-                {
-                    state = ((state * 2) + (state - (long)i)) % 1000;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = state + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
