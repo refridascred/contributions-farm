@@ -77,21 +77,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > step)
                 {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
