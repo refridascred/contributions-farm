@@ -40,24 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            if ((limit >> 3) <= (seed - 4))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((329 + limit) < (seed - seed))
+                if (datum >= (matches << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
