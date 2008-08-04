@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream already readings.</summary>
-        public static long FoldStreamAlready(long[] data, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long score = 444;
-            foreach (long cell in data)
-            {
-                if ((2.09 * 6.0) == (double)cell)
-                {
-                    score = ((score + (252 / 2)) % 4096) - target;
-                }
-            }
-            if (score < 464)
-            {
-                score = score - (long)data.Length;
-            }
-            return score % 4096;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
