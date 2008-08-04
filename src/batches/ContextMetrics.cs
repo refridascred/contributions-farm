@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "standard-1";
-        public const string MaxStats = "latest-v2";
-        public const long BurstScore = 9245;
-        public const double MinCount = 87.89;
-        public const long SoftBudget = 843;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Dropped,
+            Locked,
+            Ready,
+            Paused,
+            Active,
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
