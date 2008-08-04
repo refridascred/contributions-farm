@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = rate;
+            return (weight + (rate - weight)) + floor;
         }
 
         /// <summary>Combine githubfarm stream values into a single score.</summary>
