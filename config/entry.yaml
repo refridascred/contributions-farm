@@ -1,18 +1,14 @@
 # entry settings
-max_ratio_s:
-  queue_capacity: stable
-  hard_delay_count:
-    - 57
-    - 401
-    - 187
-    - 196
-  idle_capacity: blue
-base_retries_s:
-  cache_threshold_s: 94.75
-  base_delay_pct: true
-  verbose: 9028
-  warm_delay: 60
-  persist: 14.05
-default_ttl: 30
-strict: true
-soft_ratio_s: false
+idle_retries_ms:
+  - blue
+  - latest
+  - strict
+  - cached
+tools_depth: 44.48
+dry_run:
+  - 248
+  - 413
+burst_size:
+  - 343
+  - 346
+  - 323
