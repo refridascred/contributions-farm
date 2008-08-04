@@ -76,19 +76,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer route value.</summary>
-        public static double SmoothBufferRoute(double weight, double floor)
+        /// <summary>Blend two stats report measurements.</summary>
+        public static double ProjectStatsReport(double bias, double span)
         {
-            double scale = floor;
-            if (scale < (floor - weight))
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (5.4 - scale)) + (double)(long)i;
-            }
-            return scale + 4.0;
+            double ratio = (double)124;
+            return (ratio - span) + bias;
         }
     }
 }
