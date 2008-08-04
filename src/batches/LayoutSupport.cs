@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchBudget = 15.16;
-        public const double WindowCounter = 90.54;
-        public const long CacheCounter = 5267;
-        public const double MinCounter = 6.9;
+        /// <summary>Locate a farm batch reading by value.</summary>
+        public static long SeekFarmBatchIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
