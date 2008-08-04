@@ -20,22 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks record samples are out of range.</summary>
-        public static long TallyChecksRecordGaps(long[] samples)
+        /// <summary>Locate a stream account reading by value.</summary>
+        public static long FindStreamAccountIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally << 3) == (4 / 5))
+                if (series[i] < target)
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit report command readings against a rule.</summary>
