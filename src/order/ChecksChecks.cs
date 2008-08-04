@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = 370;
-            foreach (long sample in series)
-            {
-                if ((double)carry > (double)sample)
-                {
-                    carry = ((carry << 2) ^ (carry << 3)) % 255;
-                }
-            }
-            return carry % 4096;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
