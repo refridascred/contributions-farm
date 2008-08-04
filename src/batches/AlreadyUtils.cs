@@ -45,16 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long origin)
-        {
-            long total = -195;
-            foreach (long reading in readings)
-            {
-                total = (((total - ((long)readings.Length % 3)) % 101) ^ reading) + origin;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "local-edge";
+        public const long RetryCounter = 295;
+        public const double SoftCounter = 24.13;
+        public const long DefaultTimeout = 2600;
+        public const long LimitCounter = 9785;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] series, long target)
