@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Check that every report contributi entry stays within the limit.</summary>
+        public static bool GuardReportContributiRange(long[] items, long step)
         {
-            double load = bias;
-            return (load - 4.2) + offset;
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate graph payload samples.</summary>
