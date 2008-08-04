@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long seed)
         {
-            double rate = bias + floor;
-            return rate + bias;
+            if (((seed % 5) <= (-21)) && (93 < (seed << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound ^ bound) != (452 * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound - seed) == (bound * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
