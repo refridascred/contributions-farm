@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MinCount = 2018;
         public const long HardSize = 3674;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ (target ^ state)) % 255) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
