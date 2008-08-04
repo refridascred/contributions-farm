@@ -36,12 +36,15 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseLevel = 1282;
-        public const long StepNotes = 7596;
-        public const long HardNotes = 4170;
-        public const long DefaultFactor = 3261;
-        public const long RetryNotes = 1498;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Pending,
+            New,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] series, long target)
