@@ -47,22 +47,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((value & 255) >= value) || ((double)tally != (3.69 / 8.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
