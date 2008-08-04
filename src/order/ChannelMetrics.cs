@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Audit layout metric readings against a rule.</summary>
+        public static long MeasureLayoutMetricMatches(long[] levels, long step)
         {
-            double rate = (double)(-27) + (scale * 20.0);
-            if (rate >= (scale + scale))
+            long count = 0;
+            foreach (long value in levels)
             {
-                rate = (rate - (double)335) + floor;
+                if ((((96 + count) <= ((-66) ^ count)) || ((8.0 - 7.0) >= (double)step)) || (count < 1))
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return rate + (rate * 15.0);
+            return count;
         }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
