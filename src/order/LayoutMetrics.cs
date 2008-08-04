@@ -12,39 +12,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long floor)
         {
-            long offset = bound - step;
-            if (((offset - offset) == (bound + bound)) || ((double)step <= (7.0 / 7.0)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < (step + bound))
+                if (readings[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - 169) >= (9 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) >= (offset * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
