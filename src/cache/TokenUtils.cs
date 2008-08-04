@@ -25,25 +25,11 @@ namespace Common.Utilities
         public const double IdleSize = 25.91;
         public const long MaxGraph = 26;
 
-        /// <summary>Roll a batch token counter forward.</summary>
-        public static long SeriesBatchToken(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)carry < (8.0 - 13.0))
-                {
-                    long span = (carry / 2) + (4 + carry);
-                    carry = (carry << 3) ^ (limit - span);
-                }
-                if ((double)limit > (9.05 / 8.0))
-                {
-                    carry = ((carry << 2) ^ (9 ^ limit)) % 65521;
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 8813;
+        public const double MaxLevel = 41.53;
+        public const long BurstFormat = 6833;
+        public const string BurstDepth = "legacy-v2";
+        public const string BaseSpan = "staging-edge";
     }
 }
