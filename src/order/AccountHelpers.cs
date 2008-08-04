@@ -72,17 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long LookupContextSupportIndex(long[] readings, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if ((hits - datum) <= hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
