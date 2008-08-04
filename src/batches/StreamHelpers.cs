@@ -77,10 +77,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultScore = 95.83;
-        public const long BurstSpan = 4828;
-        public const string WindowSpan = "stable-1";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] series, long bound)
