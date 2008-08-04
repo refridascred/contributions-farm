@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheCount = 4966;
-        public const double WindowToken = 20.22;
-        public const long DefaultToken = 4537;
-        public const long BurstWidth = 4090;
-        public const long BatchToken = 9289;
+        /// <summary>Iterate the editor report series from a seed.</summary>
+        public static long SeriesEditorReport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((state & 31) >= target)
+                {
+                    state = (state * 4) + target;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] readings)
