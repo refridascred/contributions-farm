@@ -1,6 +1,6 @@
 {
-  "entry_timeout": [341, 353, 62],
-  "idle_retries": "open",
-  "soft_capacity_s": "latest",
-  "audit": true
+  "batch_depth": true,
+  "verbose": 30,
+  "batch_limit": false,
+  "flush_capacity": 4572
 }
