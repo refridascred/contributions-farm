@@ -51,13 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Dropped,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxBudget = "alpha";
+        public const long StepSupport = 1481;
+        public const long CacheSupport = 6585;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterHits(long[] values, long bound)
