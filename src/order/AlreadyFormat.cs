@@ -32,15 +32,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next cluster githubfarm value.</summary>
-        public static double SmoothClusterGithubfarm(double rate, double bias)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double rate2 = (double)(489 + 4);
-            if (rate2 >= bias)
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - (2.3 * 2.7);
+            Stale,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
