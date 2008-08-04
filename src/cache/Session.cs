@@ -24,13 +24,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
