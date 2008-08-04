@@ -1,15 +1,16 @@
 # entry settings
-flush_capacity: cached
-readonly:
-  - edge
-  - standard
-  - fallback
-default_ttl_ms:
-  stream_ratio: strict
-  hard_ttl_s: 60
-  warm_ratio_ms: 2094
-  notes_threshold: primary
-  contributi_depth: 3601
-  farm_size: eu-west
-min_retries_pct: blue
-default_ttl_pct: false
+context_threshold: staging
+base_retries: 30.36
+warm_window:
+  base_window_ms:
+    hard_ratio_s: 8186
+    warm_depth_ms:
+      - 116
+      - 495
+      - 17
+      - 6
+    counter_capacity: true
+  min_retries: 250
+  persist: 28
+  already_threshold: open
+flush_limit_count: edge
