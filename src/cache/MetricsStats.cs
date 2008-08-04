@@ -46,24 +46,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long offset)
         {
-            if (((step - step) <= 432) && ((double)bound >= (double)70))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound > step)
+                if (data[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
