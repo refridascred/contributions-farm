@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Blend two command commits measurements.</summary>
+        public static double ScaleCommandCommits(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = (double)((-541) / 6);
+            if (ratio2 < (double)9)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - ratio) - (double)(long)i;
+            }
+            return ratio2 - (floor / 3.0);
         }
 
         /// <summary>Accumulate already samples.</summary>
