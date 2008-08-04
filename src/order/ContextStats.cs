@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepScore = 71.65;
+        public const double CacheCommits = 1.53;
+        public const string HardFactor = "alpha-edge";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
