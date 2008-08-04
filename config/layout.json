@@ -1,20 +1,6 @@
 {
-  "batch_window": {
-    "dry_run": "green",
-    "idle_interval": "local",
-    "min_interval_count": {
-      "hard_delay_count": ["fallback", "green", "green", "open"],
-      "layout_retries": "local",
-      "verbose": [131, 341, 187, 415]
-    },
-    "sync_threshold_ms": 2869,
-    "cache_ratio_count": 500
-  },
-  "graph_interval": {
-    "notes_timeout": true,
-    "batch_timeout_count": "staging",
-    "warm_limit": "blue"
-  },
-  "sync_capacity_ms": 25.19,
-  "report_capacity": 100
+  "strict": true,
+  "min_ttl_count": "latest",
+  "support_retries": "cached",
+  "flush_ttl_s": "open"
 }
