@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long floor)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                long cur = floor;
+                mix = ((mix * 3) + (cur >> 4)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
