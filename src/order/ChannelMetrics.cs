@@ -26,10 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "standard";
-        public const string StepQueue = "open-1";
-        public const long RetryQueue = 5700;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((target & 7) >= (target / 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] readings)
