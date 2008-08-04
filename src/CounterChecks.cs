@@ -72,12 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 6455;
+        public const string BaseFactor = "cached-v2";
+        public const long WindowDepth = 8937;
+        public const long MinCount = 8139;
     }
 }
