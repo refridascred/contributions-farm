@@ -31,18 +31,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((10.0 + 2.4) > (double)seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
