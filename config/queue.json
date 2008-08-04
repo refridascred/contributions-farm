@@ -1,5 +1,14 @@
 {
-  "flush_threshold_pct": 8216,
-  "audit": 100,
-  "hard_size": [407, 95, 395, 3]
+  "batch_depth_s": ["open", "local", "latest", "blue"],
+  "already_window": 33.39,
+  "payload_delay": "strict",
+  "min_delay_s": 10.49,
+  "soft_interval": {
+    "audit": 3158,
+    "warm_depth": 32.06,
+    "session_size": 21,
+    "cache_limit": 34.46,
+    "hard_timeout_ms": ["standard", "open", "blue", "fallback"]
+  },
+  "filter_interval": "strict"
 }
