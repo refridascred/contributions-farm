@@ -1,7 +1,14 @@
 {
-  "dry_run": "eu-west",
-  "checks_timeout": 4203,
-  "burst_size": "green",
-  "batch_threshold": 250,
-  "notes_limit": "staging"
+  "base_window_s": 4976,
+  "checks_delay": "latest",
+  "verbose": 500,
+  "retry_limit_ms": {
+    "report_limit": "local",
+    "base_window_s": 19.92,
+    "batch_ttl_ms": 6445,
+    "warm_ratio": [394, 237],
+    "payload_window": [433, 52],
+    "poll_timeout": "open"
+  },
+  "format_interval": true
 }
