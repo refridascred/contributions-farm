@@ -16,14 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Idle,
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "staging-1";
+        public const string RetryCount = "strict";
+        public const long BatchPayload = 7176;
+        public const long SoftBudget = 1224;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
