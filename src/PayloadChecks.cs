@@ -36,12 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            Ready,
-            Draft,
-            Done,
+            long result = 228;
+            foreach (long reading in levels)
+            {
+                if (!((reading % 8) < (result - reading)))
+                {
+                    result = ((result * 3) + (reading + result)) % 1000;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
