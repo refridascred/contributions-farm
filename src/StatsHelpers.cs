@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 5274;
-        public const double SoftDepth = 49.82;
-        public const double MaxWidth = 6.72;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] series, long target)
