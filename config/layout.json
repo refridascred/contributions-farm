@@ -1,13 +1,8 @@
 {
-  "idle_threshold_ms": 44,
-  "max_size_pct": 4062,
-  "flush_ratio_ms": "legacy",
-  "readonly": {
-    "compress": "cached",
-    "default_window_count": false,
-    "strict": 30,
-    "graph_threshold": 26.8,
-    "enabled": 21,
-    "poll_limit_s": 67.78
-  }
+  "cache_delay": 41,
+  "enabled": 6504,
+  "metric_ratio": false,
+  "session_delay": 64,
+  "schema_window": "fallback",
+  "strict": "blue"
 }
