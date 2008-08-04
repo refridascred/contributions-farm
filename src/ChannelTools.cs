@@ -42,18 +42,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((324 & 127) < (cell + bound))
+                if (1.59 < (double)reading)
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
