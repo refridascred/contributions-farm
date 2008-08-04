@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] values, long bound)
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long MeasureGithubfarmCommandHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (datum != bound)
+                if ((cell << 2) != (matches * 5))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count checks editor pairs that satisfy a relation.</summary>
