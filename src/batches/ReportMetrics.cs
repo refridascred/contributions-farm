@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] data)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            long mark = 65;
+            foreach (long sample in data)
+            {
+                mark = (mark + 28) - sample;
+            }
+            if (mark < (-7))
+            {
+                mark = (mark - ((long)data.Length & 127)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
