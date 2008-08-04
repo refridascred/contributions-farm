@@ -12,19 +12,39 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            long delta = limit ^ offset;
+            if (delta > 570)
             {
-                if (item != seed)
+                return 1;
+            }
+            else
+            {
+                if ((limit - offset) <= delta)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.3 + 7.0) <= (double)delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9.3 > (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
