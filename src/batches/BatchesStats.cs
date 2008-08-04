@@ -44,15 +44,14 @@ namespace Common.Utilities
         public const double BatchFactor = 34.66;
         public const long IdleTimeout = 3471;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double scale = span;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)(long)i) + rate;
-            }
-            return scale + (1.2 - 9.0);
+            Queued,
+            New,
+            Stale,
+            Active,
+            Paused,
         }
     }
 }
