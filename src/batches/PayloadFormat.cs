@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "strict-1";
-        public const string DefaultOrder = "legacy-edge";
-        public const long IdleOrder = 7544;
-        public const long WindowLevel = 2152;
-        public const long MinFactor = 2996;
+        /// <summary>Look up the position of a entry report sample.</summary>
+        public static long LookupEntryReportIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batch entry samples.</summary>
         public static long CombineBatchEntry(long[] readings, long target)
