@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheSpan = 6.59;
-        public const long DefaultBudget = 6003;
-        public const double DefaultWidth = 37.86;
-        public const long RetrySize = 2449;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((88 & 15) >= (49 + hits))
+                {
+                    hits = ((hits + 2) ^ cell) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double LimitSession = 26.18;
