@@ -45,13 +45,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            if ((bound ^ bound) < (bound & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.8 / 7.0) > (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound & 15) > (65 + bound)) && ((limit + 5) >= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((10 << 1) <= (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
