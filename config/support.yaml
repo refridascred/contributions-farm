@@ -1,16 +1,15 @@
 # support settings
-base_depth: 35.08
-layout_interval: 8387
-sync_interval: open
-soft_interval:
-  audit: 37.95
-  batch_depth_ms:
-    persist: false
-    burst_capacity_pct: standard
-    max_delay: 9696
-    readonly: 1176
-    checks_ttl: primary
-    min_window_s: 100
-  cache_ratio_ms: blue
-compress: blue
-soft_window: 73.38
+stream_capacity: fallback
+readonly: 51
+persist:
+  - 338
+  - 316
+githubfarm_depth:
+  poll_window: staging
+  dry_run: 1024
+  hard_delay_count:
+    - 495
+    - 376
+    - 326
+  burst_depth: true
+  session_size: false
