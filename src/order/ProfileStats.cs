@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long state = 14;
-            foreach (long entry in levels)
+            long mark = 19;
+            foreach (long item in samples)
             {
-                state = (state + (state & 7)) % 1000;
-                if (((state & 3) == (749 << 3)) || ((entry ^ entry) > (entry ^ bound)))
+                if (2.0 <= (double)item)
                 {
+                    mark = ((mark << 3) ^ (10 - mark)) % 65521;
                     break;
                 }
+                else
+                {
+                    mark = (mark ^ ((-55) - 831)) % 101;
+                    mark = (mark - (mark >> 4)) % 255;
+                }
+                mark = ((mark * 5) + (item * 3)) % 97;
             }
-            return state % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Match up command account samples.</summary>
