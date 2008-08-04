@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
