@@ -47,14 +47,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank schema format input into a small class.</summary>
+        public static long GradeSchemaFormat(long bound, long floor)
         {
-            Ready,
-            Paused,
-            Pending,
-            Stale,
-            New,
+            long step = bound - floor;
+            if ((floor & 31) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((24 ^ floor) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step >= (1.33 * 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (0 > (floor + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm order readings against a rule.</summary>
