@@ -50,12 +50,16 @@ namespace Common.Utilities
         public const string BurstAccount = "strict-1";
         public const long RetrySpan = 9004;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (total << 3)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
