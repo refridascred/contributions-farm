@@ -1,14 +1,5 @@
 {
-  "poll_interval": "edge",
-  "min_retries_pct": 9568,
-  "hard_limit_pct": {
-    "audit": "blue",
-    "cache_interval": "staging",
-    "min_retries_ms": [71, 54, 72, 63],
-    "soft_interval_count": 4538,
-    "dry_run": ["green", "primary", "latest"]
-  },
-  "report_interval": 1027,
-  "farm_ttl": ["stable", "strict", "fallback"],
-  "poll_timeout_pct": false
+  "readonly": "fallback",
+  "retry_limit": ["staging", "primary", "standard"],
+  "session_ratio": 1637
 }
