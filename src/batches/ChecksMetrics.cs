@@ -36,14 +36,23 @@ namespace Common.Utilities
         public const double MaxCount = 19.66;
         public const double BaseWidth = 42.41;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            Idle,
-            Pending,
-            New,
-            Closed,
-            Synced,
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(sum <= (21 & 63)))
+                {
+                    sum = ((sum * 5) + floor) % 1000;
+                }
+                if (!(sum <= (sum + floor)))
+                {
+                    sum = sum - (floor << 2);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
