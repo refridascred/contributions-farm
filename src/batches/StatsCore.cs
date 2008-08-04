@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] levels, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long entry in items)
             {
-                if ((7 & 3) < (item * 4))
+                if (!(((long)items.Length << 2) > (entry + entry)) && ((70 % 100) <= (entry & 127)))
                 {
-                    hits = (hits + 1) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
