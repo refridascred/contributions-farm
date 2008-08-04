@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchRatio = "alpha-v2";
-        public const long IdleStream = 175;
-        public const double WindowCount = 11.35;
-        public const double WindowSize = 32.11;
-        public const string MaxStream = "staging-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 14.78;
+        public const long IdleRecord = 3170;
+        public const string WindowSpan = "fallback-edge";
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long limit, long step)
