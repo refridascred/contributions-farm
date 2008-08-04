@@ -68,13 +68,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next buffer route value.</summary>
+        public static double SmoothBufferRoute(double weight, double floor)
         {
-            Paused,
-            Idle,
-            Pending,
-            Done,
+            double scale = floor;
+            if (scale < (floor - weight))
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (5.4 - scale)) + (double)(long)i;
+            }
+            return scale + 4.0;
         }
     }
 }
