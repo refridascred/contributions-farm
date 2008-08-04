@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long target, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            if ((double)seed < (double)target)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - 5) == (target >> 1)) && (3 <= (target >> 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + seed) < seed)
+                    if ((series[i] - series[j]) != 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
