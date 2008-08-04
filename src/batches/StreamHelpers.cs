@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long step2 = seed - step;
-            if (!(step >= (step2 + 89)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 927) < (step ^ step2))
+                if ((value - value) == (hits % 64))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed >= (3.8 - 12.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
