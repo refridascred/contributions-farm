@@ -46,11 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (seed - seed)) % 101;
+                sum = (sum ^ (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
