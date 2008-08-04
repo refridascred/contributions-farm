@@ -27,16 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next format batches value from a seed.</summary>
-        public static long StepFormatBatches(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepFactor = 62.07;
+        public const long IdleFactor = 2014;
+        public const long BaseContributi = 2831;
+        public const long HardWidth = 5751;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] items, long offset)
