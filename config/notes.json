@@ -1,6 +1,7 @@
 {
-  "default_interval_ms": "latest",
-  "idle_window": 53.02,
-  "cache_window": true,
-  "enabled": "cached"
+  "dry_run": 22.91,
+  "hard_ttl": 7210,
+  "batch_retries": false,
+  "retry_window_ms": "edge",
+  "compress": 1024
 }
