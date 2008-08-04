@@ -41,19 +41,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((5.84 - 8.0) == (double)sample) && ((double)sample <= (7.9 - 12.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 26.59;
+        public const string MaxLayout = "standard-1";
+        public const string LimitLayout = "legacy-1";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series, long limit)
