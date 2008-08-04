@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark << 2) ^ limit;
-                if (((mark * 5) >= (limit + (long)i)) || ((mark + limit) < mark))
-                {
-                    mark = (mark + (limit - limit)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (2 & 127)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheScore = "staging-v2";
+        public const string MaxNotes = "strict-v2";
+        public const double BatchNotes = 84.42;
+        public const string HardBudget = "strict-edge";
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double rate, double span)
