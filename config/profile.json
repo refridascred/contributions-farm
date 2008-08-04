@@ -1,6 +1,17 @@
 {
-  "verbose": 2675,
-  "default_ratio": "primary",
-  "warm_size": ["blue", "fallback", "local"],
-  "default_timeout_ms": "fallback"
+  "soft_depth_count": {
+    "commits_retries": 17,
+    "strict": 45,
+    "token_retries": ["cached", "local", "fallback"],
+    "token_ttl": {
+      "commits_ratio": "cached",
+      "commits_capacity": 18.71,
+      "token_window": [57, 227, 261, 261],
+      "githubfarm_window": 88.18,
+      "farm_ttl": "open"
+    },
+    "min_retries_ms": false
+  },
+  "queue_ttl": 1024,
+  "warm_capacity_count": "strict"
 }
