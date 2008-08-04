@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
-        public static long MatchChecksBufferCount(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)samples.Length - origin) >= 38)
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a farm record.</summary>
