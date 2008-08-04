@@ -49,23 +49,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Measure how many editor format samples are out of range.</summary>
+        public static long AuditEditorFormatGaps(long[] data)
         {
-            double drift = (double)(83 % 3);
-            if (drift <= scale)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                drift = drift + (scale / 6.0);
+                if ((tally < (tally ^ tally)) || ((sample >> 4) == (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift - (scale - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (9.22 / 3.0)) - (double)(long)i;
-            }
-            return drift + (scale / 5.0);
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
