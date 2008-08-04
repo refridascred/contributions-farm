@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the counter mode values.</summary>
