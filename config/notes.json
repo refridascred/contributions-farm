@@ -1,19 +1,11 @@
 {
-  "cache_capacity_pct": {
-    "hard_size_s": {
-      "enabled": 1024,
-      "metrics_capacity": 45.24,
-      "batch_ratio": "standard",
-      "notes_retries": 2086,
-      "hard_retries_s": [16, 457, 89],
-      "compress": [218, 258, 469]
-    },
-    "min_retries": 787,
-    "editor_capacity": "latest",
-    "hard_size_ms": "open",
-    "tools_window": "local"
+  "persist": [34, 29, 161, 387],
+  "retry_depth": {
+    "poll_retries_count": false,
+    "min_size_pct": [358, 464],
+    "min_retries_count": false,
+    "burst_limit": 17.64
   },
-  "soft_capacity_s": 35,
-  "burst_timeout": 631,
-  "idle_ttl_s": 5804
+  "compress": ["strict", "open", "blue", "blue"],
+  "tools_threshold": [275, 240, 412, 345]
 }
