@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm cluster samples.</summary>
-        public static long MatchFarmClusterCount(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sum << 1) < offset) || ((double)(long)i >= (10.0 + 15.0)))
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum + 6;
                 }
+                else
+                {
+                    sum = (sum * 5) + (38 - offset);
+                    sum = ((sum << 2) ^ offset) % 4096;
+                }
+                sum = (sum - offset) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the checks state values.</summary>
