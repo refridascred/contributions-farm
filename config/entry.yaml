@@ -1,20 +1,15 @@
 # entry settings
-commits_retries:
-  - 334
-  - 305
-  - 331
-  - 9
-compress: 60
-burst_size_count: primary
-payload_capacity:
-  default_window_pct:
-    - 399
-    - 150
-    - 71
-  contributi_delay: 97.68
-  enabled: false
-soft_interval: edge
-account_capacity:
-  - 122
-  - 438
-  - 177
+flush_capacity: cached
+readonly:
+  - edge
+  - standard
+  - fallback
+default_ttl_ms:
+  stream_ratio: strict
+  hard_ttl_s: 60
+  warm_ratio_ms: 2094
+  notes_threshold: primary
+  contributi_depth: 3601
+  farm_size: eu-west
+min_retries_pct: blue
+default_ttl_pct: false
