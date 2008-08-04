@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool ValidateEntryWindowRange(long[] items, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
