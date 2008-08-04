@@ -77,18 +77,18 @@ namespace Common.Utilities
         public const long BurstSpan = 4828;
         public const string WindowSpan = "stable-1";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (1.9 > (double)reading)
+                if ((69 - 97) > reading)
                 {
-                    matches = (matches + 3) - step;
+                    count = (count + 2) - bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
