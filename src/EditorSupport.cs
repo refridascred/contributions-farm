@@ -32,18 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Adjust a format layout reading.</summary>
+        public static double SmoothFormatLayout(double bias, double span)
         {
-            long mix = 122;
-            foreach (long datum in series)
+            double ratio = span;
+            if (ratio <= (double)93)
             {
-                if ((double)datum > (double)mix)
-                {
-                    mix = mix ^ mix;
-                }
+                ratio = ratio - bias;
             }
-            return mix;
+            else
+            {
+                ratio = ratio + (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (span - ratio)) - (double)(long)i;
+            }
+            return ratio + (double)7;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
