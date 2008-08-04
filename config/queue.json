@@ -1,6 +1,14 @@
 {
-  "warm_timeout_count": false,
-  "enabled": false,
-  "verbose": 41.53,
-  "retry_capacity_s": "edge"
+  "persist": {
+    "poll_ratio": 58,
+    "warm_ratio_ms": false,
+    "verbose": 4185,
+    "hard_limit_pct": 250,
+    "soft_ratio": 8,
+    "default_ratio_ms": [462, 494, 333, 359]
+  },
+  "schema_retries": 30,
+  "verbose": 60,
+  "hard_ttl": false,
+  "sync_window_pct": false
 }
