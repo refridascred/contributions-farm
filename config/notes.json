@@ -1,7 +1,12 @@
 {
-  "flush_timeout": 7.46,
-  "session_limit": ["fallback", "blue"],
-  "flush_delay_pct": ["strict", "standard"],
-  "flush_limit": false,
-  "sync_depth_s": "standard"
+  "default_threshold_s": true,
+  "persist": 8.86,
+  "base_size": "open",
+  "enabled": false,
+  "batch_threshold_ms": {
+    "notes_ratio": "standard",
+    "max_timeout_s": [228, 457, 157],
+    "sync_retries_count": 4
+  },
+  "max_window_s": "blue"
 }
