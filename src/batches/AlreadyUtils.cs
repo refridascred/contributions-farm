@@ -52,16 +52,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format support series from a seed.</summary>
-        public static long IterateFormatSupport(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            double load = floor;
+            if (load <= (bias * 0.59))
             {
-                state = (state - state) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                load = load + (load - load);
             }
-            return state;
+            return load + (bias / 8.0);
         }
     }
 }
