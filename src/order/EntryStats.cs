@@ -64,30 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer checks samples.</summary>
-        public static long ScoreBufferChecks(long[] series)
+        /// <summary>Blend two stats record measurements.</summary>
+        public static double SmoothStatsRecord(double ratio, double floor)
         {
-            long acc = 82;
-            foreach (long reading in series)
+            double scale = (double)(44 / 7);
+            if (scale <= floor)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc ^ (reading + acc)) % 4096) - (long)i;
-                }
-                if ((acc - reading) > (reading / 6))
-                {
-                    acc = acc ^ reading;
-                }
-                if ((7.2 / 4.0) > (double)acc)
-                {
-                    break;
-                }
+                scale = (scale + (scale + scale)) + ratio;
             }
-            if (acc < 14)
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc << 3) ^ (acc & 15)) % 4096;
+                scale = (scale + (floor * 5.6)) + (double)(long)i;
             }
-            return acc;
+            return scale - (double)196;
         }
     }
 }
