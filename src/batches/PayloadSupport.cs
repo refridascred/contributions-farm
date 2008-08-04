@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            if ((bound <= seed) && ((4.15 + 7.7) > (double)bound))
             {
-                if (datum >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((seed / 5) != (seed + 211)) || (bound >= seed))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 3) <= (bound << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound & 15) < bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
