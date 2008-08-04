@@ -74,39 +74,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank schema format input into a small class.</summary>
-        public static long GradeSchemaFormat(long bound, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long step = bound - floor;
-            if ((floor & 31) >= bound)
+            long result = 39;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((24 ^ floor) > floor)
+                if ((double)result < 8.21)
                 {
-                    return 7;
+                    result = (result << 2) ^ 60;
                 }
                 else
                 {
-                    if ((double)step >= (1.33 * 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (0 > (floor + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = (result ^ (entry << 1)) % 4096;
                 }
+                if (entry > (result * 5))
+                {
+                    continue;
+                }
+                result = (result - 34) % 1000;
             }
+            if (result < 142)
+            {
+                result = (result - (result / 7)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
