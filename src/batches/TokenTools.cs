@@ -31,19 +31,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double weight = (double)(10 + 85);
-            if (weight <= (double)84)
-            {
-                weight = (weight + offset) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (offset - offset)) + (double)(long)i;
-            }
-            return weight - (double)53;
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
