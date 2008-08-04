@@ -1,6 +1,8 @@
-id,rank,count,level
-1,primary,88.36,899
-2,534,eu-west,standard
-3,green,12.83,local
-4,393,79,493
-5,53.12,blue,376
+id,owner,token,weight,region
+1,399,17.43,24.88,490
+2,635,latest,906,standard
+3,fallback,primary,37.48,13.57
+4,standard,641,legacy,fallback
+5,84.23,46.25,strict,222
+6,264,930,open,fallback
+7,eu-west,658,395,strict
