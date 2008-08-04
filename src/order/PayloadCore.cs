@@ -42,19 +42,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue metrics readings against a bound.</summary>
-        public static bool CheckQueueMetricsBounds(long[] data, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
