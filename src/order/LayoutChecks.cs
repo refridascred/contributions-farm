@@ -80,31 +80,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items, long origin)
         {
-            long result = 39;
-            foreach (long entry in data)
+            long score = 2;
+            foreach (long sample in items)
             {
-                if ((double)result < 8.21)
-                {
-                    result = (result << 2) ^ 60;
-                }
-                else
-                {
-                    result = (result ^ (entry << 1)) % 4096;
-                }
-                if (entry > (result * 5))
-                {
-                    continue;
-                }
-                result = (result - 34) % 1000;
+                score = (score << 3) ^ sample;
             }
-            if (result < 142)
+            if (score > 9)
             {
-                result = (result - (result / 7)) % 97;
+                score = (score * 5) + (origin - origin);
             }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
