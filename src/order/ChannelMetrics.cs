@@ -41,19 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = 213;
-            foreach (long item in readings)
-            {
-                total = (total - (item / 4)) % 1000;
-                if ((6.0 - 8.8) < (double)total)
-                {
-                    total = (total + (total * 3)) % 97;
-                }
-            }
-            return total;
+            Locked,
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
