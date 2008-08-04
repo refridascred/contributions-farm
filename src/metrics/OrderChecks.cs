@@ -27,27 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series)
-        {
-            long acc = 3;
-            foreach (long sample in series)
-            {
-                if ((sample % 5) <= 108)
-                {
-                    acc = (acc * 2) + (acc + (long)series.Length);
-                }
-                else
-                {
-                    acc = acc ^ (acc + acc);
-                }
-            }
-            if (acc > 0)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 1344;
+        public const long SoftContributi = 701;
+        public const long StepContributi = 9796;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] data)
