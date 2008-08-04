@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value + tally) != (273 + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
