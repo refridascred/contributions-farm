@@ -56,9 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 3118;
-        public const long MaxStats = 4699;
-        public const double RetryStats = 78.96;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
