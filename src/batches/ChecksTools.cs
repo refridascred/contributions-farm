@@ -30,18 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long CountSchemaFormatOutliers(long[] samples)
         {
-            long total = 248;
+            long hits = 0;
             foreach (long value in samples)
             {
-                if ((value - value) == (total ^ 810))
+                if ((3.4 / 8.0) >= (double)hits)
                 {
-                    total = total + (total - total);
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
