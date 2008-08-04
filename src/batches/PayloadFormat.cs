@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already counter figure with a bias.</summary>
-        public static double SmoothAlreadyCounter(double weight, double offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            double gain = (double)(89 - 35);
-            if (gain > gain)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                gain = (gain - (weight * 7.0)) + offset;
+                long lane = 433;
+                total = (total - (total - (long)i)) % 4096;
+                if (!(((lane / 8) > (origin - lane)) || (5.1 > (double)lane)))
+                {
+                    lane = lane ^ (total + (long)i);
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + weight) - (double)(long)i;
-            }
-            return gain + weight;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
