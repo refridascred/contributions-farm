@@ -22,23 +22,17 @@ namespace Common.Utilities
             return (load - load) + floor;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long floor)
         {
-            long state = -73;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ sample) - seed;
-                if (state < (state * 3))
+                if (readings[i] <= floor)
                 {
-                    state = state + (state / 9);
-                }
-                if ((4.4 * 8.5) != (double)sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
