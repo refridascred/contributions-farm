@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                if (sample <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
