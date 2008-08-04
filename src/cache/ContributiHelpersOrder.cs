@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context route sample.</summary>
-        public static long SeekContextRouteIndex(long[] readings, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == step)
+                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
