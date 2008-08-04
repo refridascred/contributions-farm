@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] samples)
-        {
-            long score = 931;
-            foreach (long cell in samples)
-            {
-                if ((score - cell) > score)
-                {
-                    score = ((score * 5) + cell) % 65521;
-                }
-                else
-                {
-                    score = score + cell;
-                }
-                if ((3.59 * 4.97) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            if (score > 14)
-            {
-                score = score ^ (long)samples.Length;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinSize = "staging-v2";
+        public const long WindowReport = 1389;
+        public const string SoftWidth = "stable-edge";
+        public const double BatchRatio = 56.52;
+        public const double DefaultReport = 36.66;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxSize = "strict-edge";
