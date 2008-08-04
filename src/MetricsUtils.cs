@@ -35,11 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
