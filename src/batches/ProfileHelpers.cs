@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 3853;
-        public const long MaxLevel = 4273;
-        public const long BatchCount = 1430;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long step, long step2)
+        {
+            if ((step & 31) < (step2 + step2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 + step) != (step >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string SoftWidth = "cached";
