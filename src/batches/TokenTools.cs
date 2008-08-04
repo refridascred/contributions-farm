@@ -13,24 +13,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values, long limit)
-        {
-            long score = 5;
-            foreach (long cell in values)
-            {
-                score = ((score * 4) + (score + score)) - limit;
-                if (score > (4 + 7))
-                {
-                    score = (score * 2) + (cell / 3);
-                }
-                if ((2.8 * 17.0) <= (double)score)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchBudget = 8876;
+        public const string SoftRatio = "strict";
+        public const long BaseTimeout = 3056;
+        public const long BaseScore = 2471;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
