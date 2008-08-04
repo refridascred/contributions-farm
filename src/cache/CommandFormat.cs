@@ -58,10 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheSpan = 5778;
-        public const long CacheFactor = 2289;
-        public const long DefaultSpan = 5862;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool VerifyFilterGraphRange(long[] samples, long offset)
