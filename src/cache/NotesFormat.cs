@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] items, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((287 - 14) >= (floor % 3))
             {
-                if (!(matches >= (datum >> 2)))
+                return 5;
+            }
+            else
+            {
+                if ((floor - 549) <= (floor2 + floor2))
                 {
-                    matches = (matches + 3) + origin;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(8 >= (floor << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor2) != (82 + floor2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
