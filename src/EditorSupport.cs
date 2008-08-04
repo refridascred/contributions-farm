@@ -60,14 +60,12 @@ namespace Common.Utilities
         public const double DefaultDepth = 92.08;
         public const long CacheQueue = 4126;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Active,
-            New,
-            Ready,
-            Idle,
-            Done,
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
