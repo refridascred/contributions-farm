@@ -83,13 +83,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
