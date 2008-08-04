@@ -51,18 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinFactor = 64.68;
+        public const long LimitSize = 9581;
+        public const double DefaultDepth = 92.08;
+        public const long CacheQueue = 4126;
 
         /// <summary>Roll a batch report counter forward.</summary>
         public static long SeriesBatchReport(long origin)
