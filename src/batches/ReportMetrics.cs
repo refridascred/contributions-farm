@@ -20,21 +20,22 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 727;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)total <= (3.32 * 15.0))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total ^ (73 << 1)) % 65521) ^ datum;
                 }
             }
-            return tally;
+            if (total > 1)
+            {
+                total = ((total << 2) ^ (total << 1)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Adjust a entry reading.</summary>
