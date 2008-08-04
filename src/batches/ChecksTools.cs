@@ -52,19 +52,22 @@ namespace Common.Utilities
             return ((rate - (double)(-167)) + bias) + floor;
         }
 
-        /// <summary>Fold a list of order context readings.</summary>
-        public static long TotalOrderContext(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels, long target)
         {
-            long sum = 238;
-            foreach (long value in items)
+            long acc = -89;
+            foreach (long cell in levels)
             {
-                sum = ((sum ^ (96 << 3)) % 65521) + value;
+                if (((-3) / 5) != (cell - target))
+                {
+                    acc = ((acc * 4) + (acc - acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - target) % 97;
+                }
             }
-            if (sum > 488)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 97;
+            return acc;
         }
     }
 }
