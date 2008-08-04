@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string RetryScore = "latest-v2";
         public const long BaseCommand = 5952;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((reading << 2) != (step / 4)) || (((8 + seen) == (reading * 5)) || ((12.0 / 8.0) > (double)reading)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
