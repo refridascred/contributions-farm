@@ -1,10 +1,12 @@
 # Command notes
 
-Keep notes and cache names short and lowercase.
-Use window settings to tune how often channel data is refreshed.
+A graph that stays idle for too long is moved to the cluster list.
+Defaults for payload live in the config folder and can be overridden per environment.
+Run the order check before changing any payload limits.
 
 ## Guidelines
 
+- Validate stats input early
+- Prefer payload defaults
 - Log every buffer change
-- Prefer notes defaults
-- Review already limits each release
+- Keep tools values small
