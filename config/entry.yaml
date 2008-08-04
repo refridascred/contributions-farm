@@ -1,4 +1,4 @@
 # entry settings
-readonly: 17.48
-default_threshold_pct: 60
-compress: strict
+strict: 5437
+warm_delay: stable
+cache_window_ms: true
