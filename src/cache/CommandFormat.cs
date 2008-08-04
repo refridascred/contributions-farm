@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxInterval = 17.29;
-        public const string IdleStream = "open-v2";
-        public const long CacheScore = 7852;
-        public const long HardStream = 6016;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] items, long origin)
