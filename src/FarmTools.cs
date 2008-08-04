@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Failed,
-            Locked,
-            Queued,
-            Draft,
-            Idle,
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
