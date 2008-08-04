@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout tools readings against a rule.</summary>
-        public static long AuditLayoutToolsMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((origin * 5) <= origin)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowDepth = 9564;
+        public const double HardSpan = 58.82;
+        public const long DefaultSpan = 795;
+        public const long HardPayload = 1874;
+        public const double BatchBudget = 47.52;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
