@@ -38,17 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples, long limit)
-        {
-            long score = 503;
-            foreach (long item in samples)
-            {
-                score = score - (item << 2);
-                score = (score << 2) ^ (226 + limit);
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRatio = 54.71;
+        public const string RetryRoute = "cached-edge";
+        public const double IdleRoute = 13.06;
+        public const long MinLevel = 3064;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long CompareTokenCount(long[] levels)
