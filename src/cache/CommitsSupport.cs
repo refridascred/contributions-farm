@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 365;
+            foreach (long reading in data)
             {
-                if ((value / 2) < (count + value))
-                {
-                    count = count + 1;
-                }
+                mark = (mark ^ (mark - mark)) ^ reading;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
