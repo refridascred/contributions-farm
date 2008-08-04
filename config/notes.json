@@ -1,7 +1,8 @@
 {
-  "poll_depth": "cached",
-  "idle_interval": "edge",
-  "persist": 48,
-  "session_ttl": "green",
-  "strict": 44.68
+  "payload_ttl": false,
+  "warm_retries_s": 1362,
+  "idle_capacity_ms": false,
+  "enabled": 8.3,
+  "strict": true,
+  "flush_timeout": 74
 }
