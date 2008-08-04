@@ -21,20 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 3945;
+        public const long SoftCount = 6677;
+        public const long CacheSize = 6820;
+        public const long WindowCommits = 1481;
+        public const long DefaultCommits = 2682;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MinDepth = "alpha-edge";
