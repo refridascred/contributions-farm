@@ -32,12 +32,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 303;
-        public const string CacheSupport = "standard-edge";
-        public const long BaseSupport = 5459;
-        public const double BatchFactor = 34.66;
-        public const long IdleTimeout = 3471;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
+        {
+            long carry = 34;
+            foreach (long value in data)
+            {
+                carry = (carry * 5) + (value / 8);
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
