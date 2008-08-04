@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (95 >= (hits & 127))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
