@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long WindowStats = 361;
         public const double LimitTimeout = 52.1;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits - seed) < hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
