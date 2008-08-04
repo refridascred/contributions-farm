@@ -75,21 +75,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count metric commits pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCommitsCount(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample << 2) > (sample & 127))
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
