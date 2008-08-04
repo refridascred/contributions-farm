@@ -53,13 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
+            Retry,
+            Active,
+            Queued,
             Stale,
-            Ready,
-            New,
-            Synced,
         }
 
         /// <summary>Check that every checks commits entry stays within the limit.</summary>
