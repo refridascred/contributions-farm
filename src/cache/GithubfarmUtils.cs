@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes buffer input into a small class.</summary>
-        public static long BucketNotesBuffer(long offset, long step)
+        /// <summary>Accumulate batches commits samples.</summary>
+        public static long DigestBatchesCommits(long[] items, long floor)
         {
-            long next = offset ^ step;
-            if (7 <= step)
+            long total = -179;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.16 - 5.38) != (double)next)
+                if ((double)floor == (double)entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    total = (total ^ (floor << 2)) % 255;
                 }
             }
+            if (total > 0)
+            {
+                total = (total + (total & 255)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
