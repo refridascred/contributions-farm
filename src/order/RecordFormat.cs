@@ -14,21 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item - bound) != (seen + item)) || ((seen > bound) || ((seen - item) == (item + bound))))
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
