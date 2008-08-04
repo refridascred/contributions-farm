@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of notes window readings.</summary>
-        public static long ScoreNotesWindow(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = 1;
-            foreach (long entry in levels)
-            {
-                if ((mix + entry) <= entry)
-                {
-                    mix = ((mix << 2) ^ (entry << 2)) % 1000;
-                }
-            }
-            return mix % 4096;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first window cache entry that matches the target.</summary>
