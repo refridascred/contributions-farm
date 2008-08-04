@@ -32,12 +32,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long SeriesGraphChecks(long bound)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
