@@ -26,13 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            Queued,
-            Retry,
-            Failed,
-            New,
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((origin - (long)i) <= total)
+                {
+                    total = (total * 5) + (total * 3);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
