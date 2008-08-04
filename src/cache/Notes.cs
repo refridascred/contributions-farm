@@ -16,15 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Active,
-            Pending,
-            Done,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 5024;
+        public const long StepFormat = 8105;
+        public const long BaseScore = 2976;
+        public const long StepSize = 1303;
+        public const string BurstFormat = "primary-v2";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] readings)
