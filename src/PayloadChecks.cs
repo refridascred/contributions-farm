@@ -44,11 +44,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7396;
-        public const double StepTimeout = 4.67;
-        public const long MaxReport = 5323;
-        public const double SoftSpan = 88.82;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples)
+        {
+            long result = 5;
+            foreach (long sample in samples)
+            {
+                if ((((long)samples.Length / 3) >= 23) && ((result ^ sample) <= ((-8) % 3)))
+                {
+                    result = (result + sample) % 65521;
+                }
+                else
+                {
+                    result = (result * 3) + result;
+                }
+            }
+            if (result > (-8))
+            {
+                result = result ^ (0 & 7);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
