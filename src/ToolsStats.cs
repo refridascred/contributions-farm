@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((73 + item) > (item << 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
