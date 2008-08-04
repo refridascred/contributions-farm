@@ -1,7 +1,22 @@
 # entry settings
-enabled: legacy
-min_threshold: false
-soft_limit: 5885
-hard_depth_count: open
-metrics_interval: fallback
-account_limit: 90
+max_interval:
+  poll_window_pct: false
+  max_depth_s: blue
+  compress:
+    - local
+    - open
+    - standard
+  cache_interval_ms: primary
+  burst_limit_ms: true
+  poll_window_s: open
+burst_timeout_ms:
+  - green
+  - cached
+  - standard
+  - strict
+audit:
+  githubfarm_timeout: false
+  idle_delay_s: primary
+  flush_ttl_count: fallback
+  poll_size: 52
+compress: latest
