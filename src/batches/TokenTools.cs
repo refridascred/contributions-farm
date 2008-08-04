@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchBudget = 8876;
-        public const string SoftRatio = "strict";
-        public const long BaseTimeout = 3056;
-        public const long BaseScore = 2471;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((mark - (long)i) != (mark << 3))
+                {
+                    mark = (mark + (7 + 74)) % 65521;
+                    mark = mark + ((long)i & 3);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 1409;
