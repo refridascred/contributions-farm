@@ -60,12 +60,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Synced,
-            Done,
-            New,
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
