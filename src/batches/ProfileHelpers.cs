@@ -40,18 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= (matches << 3))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a order reading by value.</summary>
