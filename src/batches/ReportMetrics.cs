@@ -14,10 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftRatio = 8.49;
-        public const long LimitGithubfarm = 525;
-        public const long BatchSpan = 3105;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheSpan = 6.59;
+        public const long DefaultBudget = 6003;
+        public const double DefaultWidth = 37.86;
+        public const long RetrySize = 2449;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double LimitSession = 26.18;
