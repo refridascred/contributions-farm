@@ -1,13 +1,8 @@
 {
-  "entry_ratio": {
-    "base_size": 87,
-    "warm_window_count": "local",
-    "compress": "fallback",
-    "order_size": [344, 380]
-  },
-  "cache_limit_pct": 29,
-  "sync_ttl": false,
-  "verbose": 9550,
-  "idle_interval": "stable",
-  "soft_depth": "cached"
+  "filter_interval": false,
+  "burst_ratio_count": ["strict", "eu-west"],
+  "channel_depth": false,
+  "enabled": true,
+  "commits_timeout": 9136,
+  "route_threshold": true
 }
