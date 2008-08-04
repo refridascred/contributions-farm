@@ -1,16 +1,10 @@
 {
-  "batch_timeout_count": ["stable", "primary"],
-  "burst_ttl": 500,
-  "burst_window_ms": false,
-  "soft_timeout_ms": "blue",
-  "sync_depth_count": {
-    "record_size": {
-      "burst_interval_pct": "primary",
-      "context_ttl": 59.87,
-      "idle_size_ms": 21.23
-    },
-    "idle_capacity_ms": 7114,
-    "max_ttl_pct": [272, 72, 208, 464]
+  "channel_size": 100,
+  "strict": {
+    "hard_window_s": 30,
+    "record_threshold": 6,
+    "window_window": "cached",
+    "max_threshold_count": 6676
   },
-  "layout_limit": true
+  "min_timeout_s": 31.33
 }
