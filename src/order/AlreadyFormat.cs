@@ -40,18 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] readings, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((4.9 <= (double)seen) || ((4.33 / 2.0) >= (double)seen))
-                {
-                    seen = ((seen + 3) + entry) - limit;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
