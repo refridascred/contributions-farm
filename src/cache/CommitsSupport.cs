@@ -62,31 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long bound)
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool CheckProfileSupportLimits(long[] items, long floor)
         {
-            if (!((seed & 127) <= seed))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ bound) >= (bound >> 2))
+                if (reading != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((268 * 3) >= (seed % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
