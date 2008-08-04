@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every token stream entry stays within the limit.</summary>
+        public static bool GuardTokenStreamBounds(long[] readings, long floor)
         {
-            Ready,
-            Failed,
-            New,
-            Synced,
-            Closed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
