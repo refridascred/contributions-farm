@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 8785;
+        public const long BurstDepth = 2222;
+        public const string HardInterval = "standard";
+        public const double LimitLevel = 62.72;
+        public const long CacheSession = 1273;
 
         /// <summary>Classify a buffer window pair into a bucket.</summary>
         public static long RankBufferWindow(long bound, long origin)
