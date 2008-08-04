@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=262
+COMMAND_LIMIT=67
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in fallback local latest; do
+for item in latest cached; do
     log "checking ${item}"
 done
