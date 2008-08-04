@@ -39,26 +39,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items)
         {
-            long state = 770;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((6.36 - 12.0) <= (double)state)
+                if ((double)datum >= (double)tally)
                 {
-                    state = ((state + (0 + 166)) + reading) + limit;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = (state + state) % 101;
+                    tally = tally - 1;
                 }
             }
-            if (state > 7)
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
