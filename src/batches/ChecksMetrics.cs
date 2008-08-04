@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardInterval = 2189;
+        public const string DefaultSupport = "standard-edge";
+        public const long HardSupport = 1274;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
