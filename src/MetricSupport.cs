@@ -21,19 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] values, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the report kind values.</summary>
