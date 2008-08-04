@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double floor)
         {
-            Failed,
-            Draft,
-            Retry,
-            Paused,
-            Queued,
+            double rate = bias + floor;
+            return rate + bias;
         }
 
         /// <summary>Roll a farm command counter forward.</summary>
