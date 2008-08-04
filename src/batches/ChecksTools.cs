@@ -39,19 +39,22 @@ namespace Common.Utilities
             return scale - 7.25;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample <= bound)
+                if ((double)seen < 20.0)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
