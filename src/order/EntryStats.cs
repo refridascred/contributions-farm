@@ -35,23 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] levels, long target)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = (result ^ entry) % 65521;
-                if (((-86) / 2) >= (3 - entry))
+                if (4 > (target / 3))
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > 24)
-            {
-                result = ((result << 3) ^ (target - result)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two stats record measurements.</summary>
