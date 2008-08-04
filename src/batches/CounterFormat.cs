@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stream account reading by value.</summary>
-        public static long FindStreamAccountIndex(long[] series, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
