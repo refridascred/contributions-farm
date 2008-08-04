@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the tools batch entries that pass the check.</summary>
-        public static long CountToolsBatchHits(long[] series, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + matches) > sample)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
