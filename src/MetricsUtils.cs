@@ -19,19 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long limit)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long cell in items)
             {
-                if (!!((count + count) < count))
+                if (cell < (limit + cell))
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
