@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            Pending,
-            Retry,
-            Active,
-            Paused,
-            Dropped,
+            double scale2 = scale / 2.0;
+            return scale2 - (bias / 5.0);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
