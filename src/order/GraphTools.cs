@@ -75,12 +75,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            Pending,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!((10.0 + 2.4) > (double)seen))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
