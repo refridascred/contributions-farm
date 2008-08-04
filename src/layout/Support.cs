@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            if (((floor ^ floor) < target) && ((target % 64) > (floor + floor)))
             {
-                if (((double)carry >= 3.4) && ((long)i < ((long)i % 60)))
-                {
-                    carry = (carry + offset) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (!(6.29 < (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((92 + floor) > ((-99) * 5)) && ((target >> 4) >= (49 + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - floor) > (target + 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
