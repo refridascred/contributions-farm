@@ -26,13 +26,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long cur = floor - seed;
+            if ((double)floor > (17.0 + 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed * 3) >= (floor * 2)) && ((seed - cur) != (floor % 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed & 63) > cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
