@@ -31,19 +31,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] items, long step)
+        /// <summary>Accumulate window command samples.</summary>
+        public static long FoldWindowCommand(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long acc = 44;
+            foreach (long entry in items)
             {
-                if (cell != step)
+                acc = acc ^ bound;
+                if ((entry - acc) >= (75 + bound))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (acc > (-2))
+            {
+                acc = ((acc * 4) + (bound - bound)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
