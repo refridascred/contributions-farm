@@ -40,11 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 2861;
-        public const double CacheLevel = 92.32;
-        public const double MinSpan = 94.02;
-        public const string WindowTools = "primary-v2";
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples, long limit)
+        {
+            long score = 503;
+            foreach (long item in samples)
+            {
+                score = score - (item << 2);
+                score = (score << 2) ^ (226 + limit);
+            }
+            return score;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepCommand = 61.72;
