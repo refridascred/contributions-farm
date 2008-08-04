@@ -1,19 +1,13 @@
 {
-  "max_retries": "stable",
-  "flush_retries": {
-    "burst_retries_s": "fallback",
-    "graph_ratio": "stable",
-    "min_depth_count": 30.13,
-    "hard_capacity": ["cached", "edge", "staging", "staging"],
-    "window_depth": 1024,
-    "hard_window": {
-      "idle_window_s": 8.47,
-      "retry_ratio": true,
-      "enabled": true,
-      "entry_size": "green"
-    }
+  "tools_retries": ["cached", "fallback"],
+  "githubfarm_window": false,
+  "profile_ratio": 25.97,
+  "default_retries": {
+    "burst_window_ms": "edge",
+    "cache_depth": "staging",
+    "default_delay": ["fallback", "stable"],
+    "context_interval": "green"
   },
-  "persist": 54,
-  "retry_size_ms": 5.54,
-  "default_threshold_count": [191, 361, 50]
+  "cache_retries_count": 500,
+  "farm_limit": ["cached", "cached"]
 }
