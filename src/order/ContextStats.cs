@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheBudget = 9693;
+        public const long LimitGithubfarm = 6943;
+        public const long MaxCount = 6004;
+        public const double MinGithubfarm = 20.05;
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
         public static bool CheckWindowSessionRange(long[] series, long offset)
