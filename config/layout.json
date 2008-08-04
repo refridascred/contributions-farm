@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "min_ttl_count": "latest",
-  "support_retries": "cached",
-  "flush_ttl_s": "open"
+  "persist": [318, 467, 114, 47],
+  "burst_limit_ms": 3567,
+  "min_window_count": [314, 267],
+  "batch_retries": 47,
+  "flush_ttl_ms": true,
+  "audit": 500
 }
