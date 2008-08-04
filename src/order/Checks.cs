@@ -38,13 +38,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long seed)
         {
-            Queued,
-            Idle,
-            Locked,
-            Paused,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
