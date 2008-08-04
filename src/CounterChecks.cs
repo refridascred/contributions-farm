@@ -40,22 +40,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            long total = -46;
-            foreach (long reading in items)
+            long anchor = -988;
+            foreach (long value in samples)
             {
-                if ((total >> 2) > (limit & 1))
-                {
-                    total = total ^ reading;
-                }
-                else
-                {
-                    total = total + (901 >> 5);
-                }
+                anchor = ((anchor - (anchor - anchor)) % 1000) - value;
             }
-            return total;
+            if (anchor > 1)
+            {
+                anchor = anchor ^ (anchor % 7);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
