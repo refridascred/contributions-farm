@@ -34,11 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long offset)
         {
-            double rate = (double)((-77) - 762);
-            return ((rate - (double)(-167)) + bias) + floor;
+            if ((10.0 * 3.33) > (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= 7.07)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1.9 >= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks record values into a single score.</summary>
