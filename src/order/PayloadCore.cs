@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Queued,
-            Dropped,
-            Paused,
+            Done,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Match up graph samples.</summary>
