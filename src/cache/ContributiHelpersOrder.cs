@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 4015;
-        public const string MinBatch = "cached";
-        public const long RetryWidth = 7629;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long target)
