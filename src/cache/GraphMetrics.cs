@@ -49,31 +49,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long bound, long limit)
+        /// <summary>Check that every support contributi entry stays within the limit.</summary>
+        public static bool ValidateSupportContributiRange(long[] items, long seed)
         {
-            if ((double)limit > (double)bound)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 / 2.0) > (double)limit)
+                if (entry > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ limit) >= (bound & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
