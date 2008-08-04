@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool CheckWindowSessionRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((((entry % 5) >= (50 - (long)samples.Length)) && ((entry % 8) >= (4 << 2))) && (((-9) - hits) != (hits - entry)))
+                if (value >= offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the stats kind values.</summary>
