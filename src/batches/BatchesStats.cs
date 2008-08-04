@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series)
         {
-            Queued,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count < (count ^ 3)) || ((double)count >= (1.0 / 4.0)))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
