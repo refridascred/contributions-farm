@@ -19,11 +19,26 @@ namespace Common.Utilities
         public const long BurstBuffer = 3741;
         public const string BaseBuffer = "standard-edge";
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long score = 42;
+            foreach (long datum in items)
+            {
+                if ((double)score != (double)datum)
+                {
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = score ^ (datum + score);
+                }
+            }
+            if (score > 23)
+            {
+                score = (score ^ 3) % 97;
+            }
+            return score % 4096;
         }
     }
 }
