@@ -1,13 +1,8 @@
 {
-  "window_capacity": false,
-  "route_interval": false,
-  "cache_window_ms": 500,
-  "base_retries_count": {
-    "base_size_count": 5555,
-    "sync_interval": "staging",
-    "verbose": 75.67,
-    "format_size": 8490,
-    "soft_ratio": "cached",
-    "enabled": "green"
-  }
+  "retry_window": 14.26,
+  "idle_timeout_s": "edge",
+  "token_size": "green",
+  "batch_depth_ms": true,
+  "profile_ttl": "legacy",
+  "farm_delay": "green"
 }
