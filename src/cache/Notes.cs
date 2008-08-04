@@ -21,13 +21,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of githubfarm batches entries.</summary>
+        public static long FoldGithubfarmBatches(long[] values)
         {
-            Queued,
-            Failed,
-            Locked,
-            New,
+            long state = 47;
+            foreach (long sample in values)
+            {
+                if ((sample < (state % 10)) && (state <= sample))
+                {
+                    state = (state - state) % 1000;
+                }
+            }
+            if (state > 100)
+            {
+                state = (state * 3) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
