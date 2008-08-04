@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a profile channel value against two limits.</summary>
-        public static long RankProfileChannel(long step, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            if ((double)step <= (20.0 / 5.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < 8.94)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step >> 2) <= ((-9) + origin)) || ((668 << 2) <= (origin + origin)))
+                    if ((series[i] + series[j]) > 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step == (4.6 / 2.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
