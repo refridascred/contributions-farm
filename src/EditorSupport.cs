@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstRatio = 9279;
-        public const long BurstDepth = 9835;
-        public const double RetryContext = 89.38;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + ((long)i ^ 50)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series)
