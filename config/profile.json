@@ -1,13 +1,6 @@
 {
-  "tools_retries": ["cached", "fallback"],
-  "githubfarm_window": false,
-  "profile_ratio": 25.97,
-  "default_retries": {
-    "burst_window_ms": "edge",
-    "cache_depth": "staging",
-    "default_delay": ["fallback", "stable"],
-    "context_interval": "green"
-  },
-  "cache_retries_count": 500,
-  "farm_limit": ["cached", "cached"]
+  "warm_window_pct": "standard",
+  "enabled": true,
+  "base_delay_ms": 1.96,
+  "idle_timeout_s": [363, 11]
 }
