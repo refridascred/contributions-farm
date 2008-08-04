@@ -1,7 +1,8 @@
-id,rank,score,owner,state
-1,375,58.09,913,cached
-2,309,828,62.72,502
-3,503,818,551,72.08
-4,89.2,621,fallback,947
-5,755,fallback,legacy,188
-6,20.88,primary,877,36.51
+id,rank,token,count
+1,latest,702,eu-west
+2,38,590,50.57
+3,26.38,open,cached
+4,85.68,27.36,734
+5,19.21,17,487
+6,8.08,465,417
+7,46.91,97,fallback
