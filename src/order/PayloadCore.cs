@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowDepth = 9564;
-        public const double HardSpan = 58.82;
-        public const long DefaultSpan = 795;
-        public const long HardPayload = 1874;
-        public const double BatchBudget = 47.52;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Queued,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
