@@ -23,40 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long offset)
-        {
-            long prev = origin + offset;
-            if ((prev * 4) <= (prev + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.3 - 1.19) >= (double)3)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= (offset & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset == (0.6 * 0.1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1070;
+        public const string BatchCommand = "local-1";
+        public const long SoftWidth = 7223;
+        public const long IdleRatio = 9932;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] samples, long offset)
