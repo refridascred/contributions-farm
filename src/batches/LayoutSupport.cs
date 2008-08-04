@@ -28,13 +28,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate editor context samples.</summary>
