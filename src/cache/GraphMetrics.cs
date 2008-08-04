@@ -47,19 +47,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every support contributi entry stays within the limit.</summary>
-        public static bool ValidateSupportContributiRange(long[] items, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
