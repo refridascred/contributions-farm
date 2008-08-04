@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long WindowFarm = 242;
         public const double RetryRatio = 26.35;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Paused,
-            Stale,
-            Draft,
-            Idle,
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of githubfarm batches entries.</summary>
