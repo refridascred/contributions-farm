@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((target2 / 5) < (target - target)) || ((9 * 3) <= target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((target2 << 1) <= (target * 5)) || ((target % 2) > (target * 3)))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
