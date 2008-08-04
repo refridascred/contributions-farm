@@ -12,15 +12,15 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Roll a farm command counter forward.</summary>
-        public static long RollFarmCommand(long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            double drift = (double)(623 << 1);
+            if (drift < (drift + drift))
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                drift = drift + span;
             }
-            return mark;
+            return drift + (rate * 9.59);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
