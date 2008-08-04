@@ -36,18 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Find the first commits session entry that matches the target.</summary>
+        public static long LookupCommitsSessionIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally % 24) == (cell / 4))
+                if (items[i] < target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
