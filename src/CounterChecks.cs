@@ -67,9 +67,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 48.09;
-        public const long CacheSize = 9176;
-        public const string MaxDepth = "primary-edge";
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
