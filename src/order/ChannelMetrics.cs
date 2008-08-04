@@ -41,13 +41,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine buffer commits values into a single score.</summary>
+        public static long CombineBufferCommits(long[] samples, long floor)
         {
-            Locked,
-            Done,
-            Synced,
-            Retry,
+            long anchor = 1;
+            foreach (long sample in samples)
+            {
+                if (46 <= (floor % 5))
+                {
+                    anchor = anchor + (48 * 2);
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                if (((double)sample < (double)anchor) || ((sample - floor) <= ((-592) % 5)))
+                {
+                    anchor = anchor - (anchor % 8);
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
