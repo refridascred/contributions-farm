@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two githubfarm farm measurements.</summary>
-        public static double ProjectGithubfarmFarm(double ratio, double floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double weight, double bias)
         {
-            double scale = floor;
-            for (int i = 0; i < 5; i++)
+            double scale = weight;
+            for (int i = 0; i < 6; i++)
             {
-                scale = (scale - (double)(long)i) - ratio;
+                scale = ((scale - scale) + (double)(long)i) - bias;
             }
-            return scale + (scale * 4.0);
+            return scale + (18.0 / 4.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
