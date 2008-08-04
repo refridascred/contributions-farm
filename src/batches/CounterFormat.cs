@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= bound)
+                if (values[i] == floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
