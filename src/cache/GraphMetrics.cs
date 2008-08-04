@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry record samples are out of range.</summary>
-        public static long AuditEntryRecordGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (step > (step << 1))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "legacy";
+        public const double LimitSpan = 0.06;
+        public const string SoftTools = "primary-1";
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamBounds(long[] levels, long floor)
