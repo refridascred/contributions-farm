@@ -40,14 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data, long origin)
         {
-            Pending,
-            Queued,
-            Ready,
-            Active,
-            Done,
+            long carry = 720;
+            foreach (long entry in data)
+            {
+                carry = (carry - (origin & 63)) ^ entry;
+                if ((83 % 12) <= (carry - 560))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
