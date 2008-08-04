@@ -27,12 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] samples, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                if (series[i] < origin)
                 {
                     return (long)i;
                 }
