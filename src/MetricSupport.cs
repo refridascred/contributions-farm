@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine command entry values into a single score.</summary>
-        public static long CombineCommandEntry(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = 409;
-            foreach (long item in values)
-            {
-                if ((item < (4 % 60)) || ((sum / 6) > (sum + item)))
-                {
-                    sum = (sum << 3) ^ ((long)values.Length + sum);
-                }
-            }
-            if (sum > 477)
-            {
-                sum = ((sum * 2) + (sum + sum)) % 1000;
-            }
-            return sum % 65521;
+            New,
+            Ready,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Project the next channel value.</summary>
