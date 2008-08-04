@@ -26,19 +26,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Iterate the already filter series from a seed.</summary>
+        public static long StepAlreadyFilter(long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (floor <= (856 + (long)i))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    result = (result - floor) % 4096;
+                    state = (state + (state + floor)) + (long)i2;
+                    state = (state ^ state) % 101;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
     }
 }
