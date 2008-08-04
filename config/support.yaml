@@ -1,6 +1,6 @@
 # support settings
-poll_limit:
-  - primary
-  - staging
-farm_limit: 95
-persist: true
+hard_threshold: 55.64
+entry_size: stable
+sync_interval_count:
+  - 344
+  - 466
