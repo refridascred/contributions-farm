@@ -26,32 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long floor2)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long diff = floor - floor2;
-            if ((65 - diff) > (diff << 3))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((689 + floor) <= (floor2 - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 5) < diff)
+                    if ((items[i] - items[j]) == 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
