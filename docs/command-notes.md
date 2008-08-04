@@ -1,16 +1,14 @@
 # Command notes
 
-When a session fails, the cluster handler retries a few times before giving up.
-The token helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the commits queue.
+The channel module keeps contributi values in sync with the record cache.
+Use session settings to tune how often tools data is refreshed.
+A buffer that stays idle for too long is moved to the token list.
 
-Run the window check before changing any layout limits.
-The command report groups every graph by metric.
-The profile report groups every context by context.
+Keep entry and cluster names short and lowercase.
+Each command is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every editor change
-- Validate schema input early
-- Document new payload fields
+- Log every counter change
+- Validate notes input early
+- Document new window fields
