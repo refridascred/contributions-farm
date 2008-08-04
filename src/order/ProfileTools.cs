@@ -23,10 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxInterval = 6154;
-        public const long WindowSchema = 3546;
-        public const long BatchCount = 7320;
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long TallyRouteFormatOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((752 ^ step) > cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsLimits(long[] samples, long limit)
