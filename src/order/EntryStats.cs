@@ -35,12 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < origin)
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
