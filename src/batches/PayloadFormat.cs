@@ -40,22 +40,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits + hits) >= (74 << 1)) && (((long)data.Length - cell) > (hits + cell)))
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
