@@ -15,19 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items)
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long TallyEntryContributiMatches(long[] values)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long sample in values)
             {
-                if ((double)(-43) == (double)datum)
+                if ((double)hits < (double)sample)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
