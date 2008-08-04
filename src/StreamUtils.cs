@@ -35,11 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
