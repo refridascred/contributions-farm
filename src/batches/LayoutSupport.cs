@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double WindowSize = 32.11;
         public const string MaxStream = "staging-edge";
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Dropped,
-            Queued,
-            Synced,
+            Closed,
+            Locked,
+            Done,
             Stale,
         }
 
