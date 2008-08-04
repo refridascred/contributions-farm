@@ -1,21 +1,8 @@
 # githubfarm settings
-flush_delay_ms: 100
-flush_timeout_ms:
-  - 172
-  - 220
-  - 153
-  - 88
-record_limit: cached
-sync_interval_count:
-  batch_threshold: false
-  retry_delay:
-    - stable
-    - standard
-    - primary
-  payload_threshold: standard
-  sync_timeout:
-    - 210
-    - 148
-    - 226
-  farm_threshold: true
-persist: 61.79
+soft_timeout_count: false
+verbose:
+  - eu-west
+  - green
+  - legacy
+  - fallback
+min_interval_s: 87
