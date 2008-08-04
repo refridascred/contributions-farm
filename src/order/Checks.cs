@@ -35,11 +35,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 866;
-        public const long CacheFactor = 7359;
-        public const string MaxFilter = "standard-v2";
-        public const long BaseFilter = 5592;
-        public const long MinDepth = 675;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry == (double)71)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
