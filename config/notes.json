@@ -1,5 +1,17 @@
 {
-  "compress": true,
-  "channel_retries": "fallback",
-  "poll_ttl_count": "standard"
+  "stream_threshold": true,
+  "enabled": "cached",
+  "warm_capacity_count": ["standard", "cached", "green", "cached"],
+  "compress": {
+    "idle_depth": ["primary", "blue", "latest"],
+    "farm_limit": 100,
+    "idle_depth_pct": {
+      "profile_delay": [105, 261],
+      "route_timeout": true,
+      "min_window_pct": "latest",
+      "farm_interval": ["green", "open", "open"],
+      "retry_retries": 100,
+      "strict": ["blue", "staging", "blue"]
+    }
+  }
 }
