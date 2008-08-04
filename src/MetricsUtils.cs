@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const double HardTimeout = 58.91;
         public const long StepFactor = 995;
 
-        /// <summary>Digest a series of order githubfarm entries.</summary>
-        public static long TotalOrderGithubfarm(long[] levels)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            long anchor = -435;
-            foreach (long item in levels)
+            double rate = (double)((-959) - 851);
+            if (rate > rate)
             {
-                anchor = (anchor ^ (item ^ 15)) % 101;
+                rate = ((rate + 16.0) + ratio) + span;
             }
-            return anchor;
+            return rate - rate;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
