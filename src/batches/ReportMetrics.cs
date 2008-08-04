@@ -15,38 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items)
         {
-            if (origin >= (origin - 396))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (5 < (target + target))
+                if ((double)(-43) == (double)datum)
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (7.0 <= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.9 * 10.0) < (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
