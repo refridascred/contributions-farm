@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long origin)
         {
-            long acc = 180;
-            foreach (long entry in samples)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 5) + (-73)) % 97;
-                acc = acc + (entry ^ entry);
+                if ((origin <= (92 >> 4)) || ((anchor & 3) >= (origin << 1)))
+                {
+                    anchor = (anchor << 2) ^ entry;
+                }
             }
-            if (acc > 157)
+            if (anchor < (-7))
             {
-                acc = (acc ^ acc) % 65521;
+                anchor = ((anchor << 3) ^ (origin / 8)) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
