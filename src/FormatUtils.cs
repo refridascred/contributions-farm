@@ -50,15 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
