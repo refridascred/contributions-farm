@@ -33,15 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch entry samples.</summary>
-        public static long CombineBatchEntry(long[] readings, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long result = 8;
-            foreach (long item in readings)
+            long result = 4;
+            foreach (long sample in series)
             {
-                result = ((result + item) % 255) + target;
+                if (((sample + result) < (9 & 1)) || ((double)result >= (5.0 + 1.1)))
+                {
+                    result = (result ^ (33 >> 5)) % 255;
+                }
+                else
+                {
+                    result = result - (result + result);
+                }
             }
-            return result % 65521;
+            if (result < 48)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
