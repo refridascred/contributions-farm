@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 1063;
+        public const double BaseGraph = 84.03;
+        public const long WindowGraph = 2178;
+        public const long StepSize = 829;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
