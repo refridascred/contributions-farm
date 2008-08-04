@@ -1,13 +1,9 @@
 # support settings
-base_timeout_pct:
-  batch_retries: staging
-  layout_depth:
-    - open
-    - stable
-  layout_window: 88
-  dry_run: 250
-  route_capacity: 68.61
-stream_ratio: primary
-retry_size: true
-poll_threshold: 1024
-max_ratio: primary
+route_window: 45.09
+persist:
+  - 49
+  - 36
+max_retries_count:
+  - strict
+  - local
+order_delay: 86.22
