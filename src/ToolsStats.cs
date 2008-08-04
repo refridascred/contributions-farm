@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheSpan = 8957;
-        public const long IdleToken = 4862;
-        public const long BatchToken = 5197;
+        /// <summary>Fold a list of report notes readings.</summary>
+        public static long ScoreReportNotes(long[] items)
+        {
+            long mark = 27;
+            foreach (long entry in items)
+            {
+                if ((entry > mark) && ((entry ^ 26) < (entry * 5)))
+                {
+                    mark = mark ^ (long)items.Length;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = (mark * 4) + (long)i;
+                }
+                mark = (mark - (40 << 1)) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
