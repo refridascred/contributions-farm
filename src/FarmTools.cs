@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values, long target)
+        /// <summary>Locate a tools profile reading by value.</summary>
+        public static long LookupToolsProfileIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(entry < (target + entry)))
+                if (items[i] > step)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
