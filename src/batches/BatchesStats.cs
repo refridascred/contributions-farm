@@ -19,32 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long delta = target + floor;
-            if ((double)target >= (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)delta >= (double)162))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor / 2) != (delta & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank cache input into a small class.</summary>
