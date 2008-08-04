@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] samples, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((99 - limit) > limit) || ((limit - 88) < hits))
+                if (sample >= origin)
                 {
-                    hits = (hits + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Match up layout samples.</summary>
