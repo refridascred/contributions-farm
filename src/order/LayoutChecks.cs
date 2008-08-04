@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long target, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            if ((target >> 1) < (limit * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) < (898 + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit < (101 + limit)) || (limit >= target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account snapshot.</summary>
