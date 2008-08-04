@@ -33,11 +33,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 3361;
-        public const long CacheTimeout = 8840;
-        public const long MinBudget = 1930;
-        public const double SoftBatches = 1.81;
-        public const long SoftCount = 9375;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 52.39;
+        public const long IdleAlready = 8503;
+        public const long BaseAlready = 3114;
+        public const long DefaultSize = 1450;
+        public const long BurstSize = 1831;
     }
 }
