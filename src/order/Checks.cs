@@ -49,18 +49,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values, long origin)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count + count) >= origin)
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Failed,
         }
     }
 }
