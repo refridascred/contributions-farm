@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            New,
-            Failed,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((-7) >> 1) < (item & 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
