@@ -42,19 +42,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the context cache entries that pass the check.</summary>
-        public static long CountContextCacheMatches(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed + 3) <= (cell / 6))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 3682;
+        public const long SoftProfile = 9634;
+        public const long BaseSize = 8606;
+        public const string HardProfile = "strict";
+        public const string BatchTimeout = "alpha-edge";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series, long limit)
