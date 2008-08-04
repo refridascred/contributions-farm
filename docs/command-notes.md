@@ -1,14 +1,13 @@
 # Command notes
 
-The notes module keeps schema values in sync with the already cache.
-Run the record check before changing any profile limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the cluster list.
 
-The support report groups every command by context.
-Run the metrics check before changing any record limits.
-When a stream fails, the order handler retries a few times before giving up.
+Each contributi is validated before it reaches the checks queue.
+Run the buffer check before changing any stats limits.
 
 ## Guidelines
 
-- Validate metrics input early
-- Document new context fields
-- Review report limits each release
+- Document new record fields
+- Review metric limits each release
+- Keep stream values small
