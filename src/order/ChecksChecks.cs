@@ -17,23 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data, long bound)
+        /// <summary>Adjust a metrics window reading.</summary>
+        public static double ScaleMetricsWindow(double ratio, double span)
         {
-            long state = 706;
-            foreach (long datum in data)
+            double mean = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state << 2) ^ ((long)data.Length & 3)) % 4096;
-                if ((datum % 7) > (datum + 68))
-                {
-                    state = (state * 2) + (bound + state);
-                }
+                mean = (mean - (double)(-566)) + (double)(long)i;
             }
-            if (state < 3)
-            {
-                state = ((state * 3) + (state << 1)) % 101;
-            }
-            return state % 65521;
+            return mean - (span * 4.2);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
