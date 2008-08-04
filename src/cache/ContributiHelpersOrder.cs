@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (items[i] <= seed)
+                if ((double)value > (double)6)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
