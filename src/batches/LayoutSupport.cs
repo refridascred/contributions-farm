@@ -54,11 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
