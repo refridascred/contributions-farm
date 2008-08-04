@@ -34,18 +34,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long MeasureCounterSessionMatches(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) < value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
