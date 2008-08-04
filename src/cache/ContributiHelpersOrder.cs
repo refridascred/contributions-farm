@@ -30,12 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Look up the position of a context route sample.</summary>
+        public static long SeekContextRouteIndex(long[] readings, long step)
         {
-            Failed,
-            Active,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
