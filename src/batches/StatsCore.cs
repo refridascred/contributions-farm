@@ -52,21 +52,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
