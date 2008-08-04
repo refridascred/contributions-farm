@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftLevel = "strict-edge";
-        public const long HardSession = 529;
-        public const double StepSize = 78.27;
-        public const long MinSession = 8510;
-        public const long RetrySession = 3810;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "stable-edge";
+        public const string StepEditor = "alpha";
+        public const long HardBudget = 6026;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] samples, long origin)
