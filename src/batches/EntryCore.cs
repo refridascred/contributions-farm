@@ -72,25 +72,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long bound)
-        {
-            long offset = seed ^ bound;
-            if (seed > (seed + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)4 != (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 4.28;
+        public const long DefaultRoute = 1913;
+        public const double WindowRoute = 60.31;
+        public const long RetryDepth = 1338;
     }
 }
