@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const string StepQueue = "open-1";
         public const long RetryQueue = 5700;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long total = 213;
+            foreach (long item in readings)
+            {
+                total = (total - (item / 4)) % 1000;
+                if ((6.0 - 8.8) < (double)total)
+                {
+                    total = (total + (total * 3)) % 97;
+                }
+            }
+            return total;
         }
     }
 }
