@@ -65,18 +65,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches <= (1.4 + 0.5))
+                if (levels[i] < origin)
                 {
-                    matches = (matches + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
