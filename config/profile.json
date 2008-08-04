@@ -1,8 +1,18 @@
 {
-  "buffer_depth": 100,
-  "max_size": "legacy",
-  "hard_window_ms": true,
-  "poll_threshold_ms": true,
-  "queue_capacity": 3892,
-  "order_ttl": 76.05
+  "flush_ttl": "legacy",
+  "max_ttl": {
+    "cache_delay_count": 48.81,
+    "compress": "primary",
+    "stats_threshold": false,
+    "dry_run": "local",
+    "format_size": "stable",
+    "session_capacity": "strict"
+  },
+  "sync_limit_s": ["blue", "latest"],
+  "base_limit_s": {
+    "entry_depth": 100,
+    "max_delay": ["standard", "green", "cached"],
+    "enabled": 18
+  },
+  "readonly": "latest"
 }
