@@ -56,11 +56,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 5761;
-        public const string DefaultMetrics = "local-edge";
-        public const long BaseLevel = 7460;
-        public const string BurstMetrics = "alpha-v2";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyLimits(long[] items, long bound)
