@@ -21,23 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] values, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((long)i & 31) > (target - 542))
+                if (reading != seed)
                 {
-                    acc = acc - target;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
