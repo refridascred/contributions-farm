@@ -34,10 +34,22 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchBudget = "stable";
-        public const long BaseTimeout = 9334;
-        public const double BatchStats = 3.4;
+        /// <summary>Match up farm githubfarm samples.</summary>
+        public static long CompareFarmGithubfarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of stream payload entries.</summary>
         public static long ScoreStreamPayload(long[] levels, long step)
