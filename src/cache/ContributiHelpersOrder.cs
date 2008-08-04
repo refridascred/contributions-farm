@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many farm stats samples are out of range.</summary>
-        public static long CountFarmStatsHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits < (item / 7))
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4015;
+        public const string MinBatch = "cached";
+        public const long RetryWidth = 7629;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long target)
