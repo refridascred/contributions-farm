@@ -43,11 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long TallySessionRecord(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            long total = 811;
+            foreach (long item in readings)
+            {
+                if (((double)total >= 7.1) && ((total + item) > (total + total)))
+                {
+                    total = (total + (total * 4)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
