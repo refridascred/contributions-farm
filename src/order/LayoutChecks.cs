@@ -31,18 +31,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long MeasureCounterOrderMatches(long[] items, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen >= 4) || (value >= (value % 2)))
+                if (values[i] >= origin)
                 {
-                    seen = (seen + 1) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
