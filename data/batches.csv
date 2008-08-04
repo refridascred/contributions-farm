@@ -1,6 +1,11 @@
-id,owner,label,rank
-1,71.84,337,81.95
-2,edge,43.15,670
-3,eu-west,27.5,legacy
-4,988,eu-west,edge
-5,fallback,771,797
+id,state,level,active
+1,835,cached,98.73
+2,91.45,latest,54.65
+3,legacy,670,43.55
+4,40.05,eu-west,green
+5,52.59,244,91.09
+6,standard,273,9
+7,latest,760,633
+8,56.2,green,green
+9,23.63,green,fallback
+10,95.35,230,primary
