@@ -26,11 +26,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] readings, long target)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((target + target) > hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
