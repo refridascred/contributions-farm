@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
