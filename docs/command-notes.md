@@ -1,14 +1,15 @@
 # Command notes
 
-The stream module keeps token values in sync with the farm cache.
-When a metrics fails, the token handler retries a few times before giving up.
+Each token is validated before it reaches the payload queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the notes check before changing any format limits.
 
-The report report groups every contributi by graph.
-Run the format check before changing any checks limits.
+The graph report groups every channel by metric.
+Each record is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate buffer input early
-- Keep farm values small
-- Document new route fields
-- Review report limits each release
+- Log every support change
+- Document new channel fields
+- Prefer contributi defaults
+- Review support limits each release
