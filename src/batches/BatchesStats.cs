@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const double BatchFactor = 34.66;
         public const long IdleTimeout = 3471;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double scale = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches - matches) < reading)
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale - (double)(long)i) + rate;
             }
-            return matches;
+            return scale + (1.2 - 9.0);
         }
     }
 }
