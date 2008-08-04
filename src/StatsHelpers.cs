@@ -34,15 +34,14 @@ namespace Common.Utilities
             return gain - (ratio + gain);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = 61;
-            foreach (long cell in samples)
-            {
-                score = score - (cell / 9);
-            }
-            return score;
+            Stale,
+            Synced,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
