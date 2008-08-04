@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 97.84;
-        public const string MaxCommits = "fallback";
-        public const string WindowCommits = "latest-edge";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
