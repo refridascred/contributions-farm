@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheScore = "staging-v2";
-        public const string MaxNotes = "strict-v2";
-        public const double BatchNotes = 84.42;
-        public const string HardBudget = "strict-edge";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double span)
+        {
+            double weight = (double)711 - (bias - span);
+            if (weight > 4.0)
+            {
+                weight = weight - (double)5;
+            }
+            else
+            {
+                weight = weight + (double)223;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (9.1 / 9.0)) + (double)(long)i;
+            }
+            return weight - (double)42;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] series, long origin)
