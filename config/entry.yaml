@@ -1,8 +1,8 @@
 # entry settings
-counter_window: 2204
-notes_depth: 500
-already_capacity: 250
-cache_threshold: 96.64
-readonly:
-  - 346
-  - 90
+contributi_window: open
+idle_window_s: 2628
+burst_capacity_s:
+  - 231
+  - 30
+  - 233
+  - 492
