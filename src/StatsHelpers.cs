@@ -21,22 +21,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] series, long target)
+        /// <summary>Fold a list of profile channel readings.</summary>
+        public static long ScoreProfileChannel(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = -549;
+            foreach (long datum in data)
             {
-                if ((datum << 1) >= datum)
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total + step) + datum;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the command class values.</summary>
