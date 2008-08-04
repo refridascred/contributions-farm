@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached eu-west; do
+mode="${1:-stable}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback edge open blue; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=188
-log "limit is ${RECORD_LIMIT}"
