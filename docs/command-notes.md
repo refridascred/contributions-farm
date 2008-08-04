@@ -1,14 +1,13 @@
 # Command notes
 
-When a tools fails, the commits handler retries a few times before giving up.
-Run the githubfarm check before changing any already limits.
+The already helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often metric data is refreshed.
 
-Use already settings to tune how often command data is refreshed.
-The schema module keeps contributi values in sync with the editor cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any profile limits.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate profile input early
-- Prefer record defaults
-- Review contributi limits each release
+- Validate channel input early
+- Log every farm change
+- Keep stats values small
