@@ -24,23 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            long score = 46;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = (score - (487 ^ offset)) % 1000;
-                if ((value > offset) && ((double)offset >= (1.6 * 6.02)))
+                if ((reading / 5) < (670 * 5))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 4)
-            {
-                score = ((score * 2) + (98 << 3)) % 255;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
