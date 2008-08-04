@@ -15,17 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (origin >= (origin - 396))
             {
-                if (samples[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if (5 < (target + target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (7.0 <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.9 * 10.0) < (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
