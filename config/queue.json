@@ -1,8 +1,8 @@
 {
-  "persist": false,
-  "cache_threshold": 6876,
-  "idle_threshold_pct": [208, 398, 416],
-  "verbose": 100,
-  "default_depth_s": 2,
-  "flush_window_pct": 36.54
+  "idle_interval_count": "blue",
+  "profile_delay": 69.79,
+  "batch_size_ms": 927,
+  "sync_size_ms": 2550,
+  "tools_retries": 60,
+  "strict": "legacy"
 }
