@@ -24,13 +24,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series, long target)
         {
-            Retry,
-            Closed,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (target < (hits % 8))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
