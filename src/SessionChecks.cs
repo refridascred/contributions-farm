@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a stats buffer pair into a bucket.</summary>
+        public static long ClassifyStatsBuffer(long seed, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            if (!(seed < (seed / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + seed) == (limit >> 5)) && ((double)seed < (3.86 + 2.35)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
