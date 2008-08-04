@@ -28,18 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many route counter samples are out of range.</summary>
-        public static long TallyRouteCounterMatches(long[] readings, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (!((11.0 + 9.26) != (double)origin))
             {
-                if ((8 + count) < count)
+                return 2;
+            }
+            else
+            {
+                if ((origin + 343) == (bound + origin))
                 {
-                    count = ((count + 3) + value) + step;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
