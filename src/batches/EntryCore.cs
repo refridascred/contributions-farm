@@ -32,19 +32,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two editor cache measurements.</summary>
-        public static double ScaleEditorCache(double scale, double span)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            double drift = scale;
-            if (drift >= span)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (drift / 2.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (scale - span);
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
