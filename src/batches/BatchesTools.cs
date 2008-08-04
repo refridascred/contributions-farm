@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long WindowSize = 3820;
         public const long StepFactor = 3534;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the already filter series from a seed.</summary>
