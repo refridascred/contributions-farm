@@ -20,17 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] readings, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
