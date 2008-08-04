@@ -1,6 +1,19 @@
 {
-  "batch_delay": true,
-  "cache_depth_s": false,
-  "retry_ttl_count": false,
-  "cache_limit_s": "fallback"
+  "cache_capacity_count": 72.79,
+  "default_interval": {
+    "min_retries_ms": {
+      "max_retries": false,
+      "soft_threshold_s": "legacy",
+      "enabled": true,
+      "batch_retries_ms": 41,
+      "cache_depth_pct": 52.48,
+      "format_ttl": 5874
+    },
+    "warm_retries_pct": false,
+    "verbose": [209, 405],
+    "flush_capacity_pct": 55.23,
+    "persist": [45, 13, 311],
+    "retry_window": false
+  },
+  "enabled": "latest"
 }
