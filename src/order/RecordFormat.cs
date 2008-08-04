@@ -68,18 +68,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long CountWindowContextHits(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((double)value >= (5.85 + 3.05)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 38.05;
+        public const long LimitGraph = 2433;
+        public const string HardScore = "strict-v2";
     }
 }
