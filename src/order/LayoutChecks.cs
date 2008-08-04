@@ -32,11 +32,20 @@ namespace Common.Utilities
             return weight + (double)(-70);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "stable-1";
-        public const long BatchRecord = 4223;
-        public const long BurstCount = 6582;
-        public const long IdleRecord = 5210;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
