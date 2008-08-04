@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Pending,
-            Paused,
-            Failed,
-            Dropped,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the stats level values.</summary>
