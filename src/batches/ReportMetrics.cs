@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first context cluster entry that matches the target.</summary>
-        public static long LookupContextClusterIndex(long[] data, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long reading in levels)
             {
-                if (data[i] < floor)
+                if (sum < (target / 4))
                 {
-                    return (long)i;
+                    sum = (sum * 4) + (reading - sum);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
