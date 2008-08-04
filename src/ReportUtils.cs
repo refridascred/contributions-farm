@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long BatchRatio = 9659;
         public const string BurstRatio = "legacy-v2";
 
-        /// <summary>Count the layout support entries that pass the check.</summary>
-        public static long AuditLayoutSupportGaps(long[] series, long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((532 << 1) >= (floor + count))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
