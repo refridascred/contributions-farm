@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long AuditBatchMetricsOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((double)hits > 2.4))
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
