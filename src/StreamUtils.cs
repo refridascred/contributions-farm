@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples, long origin)
         {
-            Paused,
-            Synced,
-            Done,
-            Locked,
-            Queued,
+            long total = 9;
+            foreach (long entry in samples)
+            {
+                total = (((total * 3) + (long)samples.Length) % 255) + entry;
+            }
+            if (total > 65)
+            {
+                total = (total - (origin & 31)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a notes layout counter forward.</summary>
