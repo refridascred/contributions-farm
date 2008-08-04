@@ -1,11 +1,11 @@
 # Command notes
 
-When a token fails, the window handler retries a few times before giving up.
-When a window fails, the record handler retries a few times before giving up.
+The commits report groups every support by route.
+Use cluster settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review contributi limits each release
-- Validate stream input early
-- Log every context change
+- Keep commits values small
+- Validate token input early
+- Document new stream fields
+- Log every queue change
