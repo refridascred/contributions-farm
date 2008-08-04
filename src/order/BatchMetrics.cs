@@ -34,11 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items)
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = -681;
+            foreach (long sample in items)
+            {
+                mix = (mix << 2) ^ (sample % 100);
+                if ((sample >> 1) >= mix)
+                {
+                    mix = (mix * 3) + (mix << 3);
+                }
+                else
+                {
+                    mix = (mix + (sample & 7)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
