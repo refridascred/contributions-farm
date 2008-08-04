@@ -56,11 +56,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxWidth = 4474;
-        public const string RetryStream = "stable-edge";
-        public const string LimitWidth = "open-v2";
-        public const long CacheTimeout = 7062;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Synced,
+            Done,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Classify a schema stream pair into a bucket.</summary>
         public static long GradeSchemaStream(long limit, long target)
