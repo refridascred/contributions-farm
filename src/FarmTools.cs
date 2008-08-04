@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)limit > (9.93 * 15.0)) || ((limit * 2) <= (step * 3)))
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((-2) >> 2) <= (limit >> 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit + 95) >= (step + 90)) && ((22 * 2) > (limit - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema record.</summary>
