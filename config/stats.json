@@ -1,8 +1,5 @@
 {
-  "max_capacity_pct": 1024,
-  "counter_ratio": ["stable", "primary", "latest", "legacy"],
-  "min_limit_pct": ["local", "stable"],
-  "record_timeout": 10.56,
-  "verbose": 1.85,
-  "retry_limit_pct": "green"
+  "strict": "blue",
+  "flush_window_count": "eu-west",
+  "schema_interval": "standard"
 }
