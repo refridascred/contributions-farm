@@ -1,8 +1,8 @@
-id,weight,token,rank,owner
-1,615,local,94.03,fallback
-2,713,fallback,87.47,local
-3,17.36,95.62,48.92,288
-4,832,strict,789,30.59
-5,367,477,open,latest
-6,eu-west,500,latest,176
-7,staging,65.58,9.6,legacy
+id,label
+1,222
+2,347
+3,604
+4,staging
+5,997
+6,393
+7,856
