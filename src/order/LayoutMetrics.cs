@@ -20,11 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSize = 7609;
-        public const long HardChecks = 7847;
-        public const long MaxSize = 8869;
-        public const long StepChecks = 4826;
-        public const string HardInterval = "open";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double span)
+        {
+            double load = span;
+            return load - (scale * 5.74);
+        }
     }
 }
