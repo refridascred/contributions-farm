@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two githubfarm farm measurements.</summary>
+        public static double ProjectGithubfarmFarm(double ratio, double floor)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Queued,
-            Locked,
+            double scale = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)(long)i) - ratio;
+            }
+            return scale + (scale * 4.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
