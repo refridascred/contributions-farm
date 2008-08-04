@@ -79,11 +79,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 3207;
-        public const long StepLevel = 1146;
-        public const double BatchChannel = 23.4;
-        public const long CacheSize = 7898;
-        public const long CacheChannel = 1352;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryInterval = 3095;
+        public const long LimitLayout = 6109;
+        public const long DefaultWidth = 3381;
     }
 }
