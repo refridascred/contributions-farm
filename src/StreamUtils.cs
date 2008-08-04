@@ -66,11 +66,14 @@ namespace Common.Utilities
             return load + (load * 8.54);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            New,
+            Retry,
+            Ready,
+            Pending,
+            Dropped,
         }
     }
 }
