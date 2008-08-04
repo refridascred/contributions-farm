@@ -53,22 +53,18 @@ namespace Common.Utilities
             return load + 3.78;
         }
 
-        /// <summary>Digest a series of metrics metric entries.</summary>
-        public static long WeighMetricsMetric(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] items, long bound)
         {
-            long carry = -48;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((double)carry > 2.3)
+                if ((6.36 * 6.3) < (double)reading)
                 {
-                    carry = carry + (cell + 8);
-                }
-                if (carry >= (427 & 1))
-                {
-                    break;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
