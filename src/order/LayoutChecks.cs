@@ -53,12 +53,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7277;
-        public const string CacheBuffer = "fallback-edge";
-        public const long CacheFactor = 2213;
-        public const long DefaultInterval = 1233;
-        public const string SoftTimeout = "standard-edge";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double weight, double offset)
