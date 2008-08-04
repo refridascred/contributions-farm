@@ -32,21 +32,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)752 == (double)item)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
