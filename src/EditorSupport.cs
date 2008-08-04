@@ -79,19 +79,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a layout command figure with a bias.</summary>
-        public static double AdjustLayoutCommand(double scale, double bias)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double load = bias;
-            if (load > scale)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
