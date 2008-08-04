@@ -37,12 +37,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Grade a layout cluster value against two limits.</summary>
+        public static long BucketLayoutCluster(long bound, long origin)
         {
-            Locked,
-            New,
-            Dropped,
+            if ((bound + origin) == (origin / 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 1) > (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.35 + 4.83) > (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
