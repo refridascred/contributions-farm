@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Failed,
-            Idle,
-            Stale,
+            New,
+            Done,
             Pending,
         }
 
