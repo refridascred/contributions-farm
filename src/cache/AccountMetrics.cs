@@ -65,19 +65,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (sample != seed)
+                if (datum <= bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
