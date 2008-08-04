@@ -47,15 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double bias)
+        /// <summary>Compare every pair of window editor readings.</summary>
+        public static long MatchWindowEditorCount(long[] values)
         {
-            double bias2 = (bias / 2.0) - 9.83;
-            if (bias2 < ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - (double)138;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + (double)(-64);
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
