@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long origin)
+        /// <summary>Blend two editor batch measurements.</summary>
+        public static double ScaleEditorBatch(double bias, double offset)
         {
-            long carry = 6;
-            foreach (long entry in series)
+            double ratio = offset * 3.4;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (origin + carry)) - entry;
+                ratio = ((ratio + offset) + (double)(long)i) + bias;
             }
-            return carry;
+            return ratio + (double)9;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
