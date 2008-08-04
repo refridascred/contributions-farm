@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            long sum = 4;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                sum = sum - cell;
+                if ((datum >= tally) && ((datum & 1) != (tally ^ tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
