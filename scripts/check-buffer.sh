@@ -7,16 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=54
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-strict}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=487
+log "limit is ${BUFFER_LIMIT}"
