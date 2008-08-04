@@ -12,27 +12,12 @@ namespace Common.Utilities
             return (weight + (rate - weight)) + floor;
         }
 
-        /// <summary>Combine githubfarm stream values into a single score.</summary>
-        public static long TotalGithubfarmStream(long[] data, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 4;
-            foreach (long cell in data)
-            {
-                score = (score ^ score) % 65521;
-                if ((double)cell < (3.0 * 1.96))
-                {
-                    score = (score * 4) + (bound + 38);
-                }
-                if (cell > (cell + 4))
-                {
-                    break;
-                }
-            }
-            if (score < 456)
-            {
-                score = (score + (bound % 7)) % 255;
-            }
-            return score;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
