@@ -19,17 +19,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
