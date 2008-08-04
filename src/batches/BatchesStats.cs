@@ -55,11 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batch report measurements.</summary>
-        public static double BlendBatchReport(double bias, double bias2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            double load = bias + bias;
-            return (load + (double)173) + bias2;
+            long state = 57;
+            foreach (long item in data)
+            {
+                if (state >= item)
+                {
+                    state = state - (28 + item);
+                }
+            }
+            return state;
         }
     }
 }
