@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double span)
+        /// <summary>Match up stats already samples.</summary>
+        public static long CompareStatsAlreadyCount(long[] readings)
         {
-            double mean = ratio;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (ratio - span)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (mean / 2.0);
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
