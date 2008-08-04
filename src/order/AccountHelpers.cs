@@ -84,19 +84,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double scale = 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (((scale + scale) + (double)(long)i) + weight) + offset;
             }
-            return valid;
+            return scale - (double)815;
         }
     }
 }
