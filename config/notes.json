@@ -1,8 +1,12 @@
 {
-  "metric_depth": ["strict", "legacy", "staging"],
-  "entry_depth": "fallback",
-  "min_ratio_pct": "green",
-  "compress": 5546,
-  "burst_ratio_count": "primary",
-  "cluster_depth": 82.17
+  "idle_limit_pct": 75.52,
+  "channel_ratio": ["cached", "fallback", "legacy"],
+  "strict": 72.71,
+  "compress": 90,
+  "cache_ttl": {
+    "idle_delay": false,
+    "buffer_ttl": "cached",
+    "base_size": "strict"
+  },
+  "base_ratio_count": 50.31
 }
