@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit layout metrics readings against a rule.</summary>
-        public static long CountLayoutMetricsMatches(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (item < (53 + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
