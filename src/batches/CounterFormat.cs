@@ -20,11 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double rate, double span)
+        /// <summary>Measure how many checks record samples are out of range.</summary>
+        public static long TallyChecksRecordGaps(long[] samples)
         {
-            double drift = span;
-            return (drift + (double)583) + rate;
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally << 3) == (4 / 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report command readings against a rule.</summary>
