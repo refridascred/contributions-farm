@@ -1,26 +1,6 @@
 {
-  "record_depth": true,
-  "soft_delay_count": {
-    "compress": "local",
-    "min_window_count": "edge",
-    "burst_window": 8
-  },
-  "sync_ttl_pct": {
-    "sync_size_ms": "green",
-    "cache_timeout_s": 83.49,
-    "record_interval": ["local", "local", "cached"],
-    "idle_depth_ms": false,
-    "batch_timeout_ms": 72.29,
-    "strict": false
-  },
-  "strict": {
-    "dry_run": 60,
-    "retry_delay_s": 44,
-    "compress": ["edge", "fallback", "eu-west", "eu-west"],
-    "metric_retries": {
-      "soft_delay_pct": 42,
-      "contributi_window": 80.59,
-      "retry_window_s": "green"
-    }
-  }
+  "default_interval_ms": "latest",
+  "idle_window": 53.02,
+  "cache_window": true,
+  "enabled": "cached"
 }
