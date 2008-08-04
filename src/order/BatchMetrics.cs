@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long bound)
+        /// <summary>Adjust a payload layout reading.</summary>
+        public static double ProjectPayloadLayout(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double bias = (double)(164 << 1);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading >= (2.5 - 6.6))
-                {
-                    seen = (seen + 1) + bound;
-                }
+                bias = ((bias - (double)828) + (double)(long)i) + span;
             }
-            return seen;
+            return bias + (bias - ratio);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
