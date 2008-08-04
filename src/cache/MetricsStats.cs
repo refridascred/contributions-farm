@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Check that every batches layout entry stays within the limit.</summary>
