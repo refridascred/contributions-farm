@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if ((bound <= seed) && ((4.15 + 7.7) > (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed / 5) != (seed + 211)) || (bound >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 3) <= (bound << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound & 15) < bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
