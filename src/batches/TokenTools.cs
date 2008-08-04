@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long acc = 136;
-            foreach (long value in series)
+            long sum = 74;
+            foreach (long reading in items)
             {
-                if (!(acc > (value << 1)))
+                if ((8 - reading) >= sum)
                 {
-                    acc = acc - value;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ value;
-                }
-                if ((value / 8) != (5 - acc))
-                {
-                    acc = (acc * 3) + (value - value);
+                    sum = (sum ^ (84 - reading)) % 255;
                 }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
