@@ -23,15 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] items, long step)
         {
-            double gain = offset / 4.0;
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                gain = gain - (double)(long)i;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (ratio + gain);
+            return valid;
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
