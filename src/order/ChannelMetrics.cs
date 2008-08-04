@@ -14,11 +14,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "local-1";
-        public const string RetrySchema = "local-1";
-        public const long SoftInterval = 9312;
-        public const string BaseSchema = "legacy";
+        /// <summary>Adjust a schema support reading.</summary>
+        public static double BlendSchemaSupport(double rate, double offset)
+        {
+            double load = rate;
+            if (load > rate)
+            {
+                load = load + (3.0 - offset);
+            }
+            else
+            {
+                load = load - 18.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (9.47 * 7.6);
+        }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
         public static long CombineBufferCommits(long[] samples, long floor)
