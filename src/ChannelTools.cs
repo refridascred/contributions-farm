@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long cur = step + bound;
+            if ((7 % 97) > (bound & 31))
             {
-                if ((sample - (long)samples.Length) > (sample ^ sample))
+                return 6;
+            }
+            else
+            {
+                if (((bound * 5) > step) || ((double)6 < (double)cur))
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step >> 5) < (step + 243))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
