@@ -29,10 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 8361;
-        public const long IdleScore = 3533;
-        public const long DefaultChecks = 9949;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 5) <= (hits + bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long floor, long limit)
