@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long state = 74;
-            foreach (long datum in series)
-            {
-                if (((datum << 2) > (state << 3)) || (datum >= (state & 31)))
-                {
-                    state = ((state * 3) + (state + datum)) % 1000;
-                }
-            }
-            return state;
+            Pending,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Match up record samples.</summary>
