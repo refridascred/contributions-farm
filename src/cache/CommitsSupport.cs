@@ -46,24 +46,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long step, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            if ((2 % 97) == (step * 2))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) == (origin % 24))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
