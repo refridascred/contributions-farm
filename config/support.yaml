@@ -1,6 +1,16 @@
 # support settings
-hard_threshold: 55.64
-entry_size: stable
-sync_interval_count:
-  - 344
-  - 466
+notes_ratio: 71.26
+filter_limit: edge
+burst_retries_ms:
+  poll_timeout_count: 30
+  cache_capacity_s: 100
+  max_size_s: eu-west
+  batch_delay:
+    - legacy
+    - fallback
+    - cached
+batch_capacity:
+  - standard
+  - eu-west
+buffer_depth: false
+order_interval: staging
