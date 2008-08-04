@@ -15,39 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batch order input into a small class.</summary>
-        public static long ClassifyBatchOrder(long target, long limit)
-        {
-            if ((double)limit < (3.1 + 10.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < (target * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 ^ limit) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ target) <= (limit / 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultLevel = 69.83;
+        public const string RetryCount = "standard-1";
+        public const double IdleSize = 25.91;
+        public const long MaxGraph = 26;
 
         /// <summary>Roll a batch token counter forward.</summary>
         public static long SeriesBatchToken(long limit)
