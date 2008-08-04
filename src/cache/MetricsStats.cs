@@ -39,28 +39,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples, long target)
-        {
-            long anchor = 53;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor - (anchor - anchor)) % 101) + (long)i;
-                }
-                anchor = (anchor * 2) + (sample << 3);
-                if (target > (target ^ anchor))
-                {
-                    anchor = ((anchor << 3) ^ (long)samples.Length) % 255;
-                }
-                if ((sample << 2) < sample)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 91.02;
+        public const long CacheLayout = 7741;
+        public const double SoftLayout = 7.88;
+        public const double RetryLevel = 78.5;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] readings)
