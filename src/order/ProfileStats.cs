@@ -24,35 +24,29 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a route window value against two limits.</summary>
-        public static long GradeRouteWindow(long seed, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long bound)
         {
-            if ((bound < (bound % 2)) || ((bound - bound) < (53 & 3)))
+            long bound2 = limit + bound;
+            if (bound2 < limit)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)seed > (double)bound)
+                if ((bound ^ 387) >= (bound - bound))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((5 > seed) && ((double)bound < (5.4 - 7.4)))
+                    if (((156 / 9) <= (limit >> 4)) && ((limit / 9) >= limit))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((seed - seed) >= (seed - bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 7;
                     }
                 }
             }
