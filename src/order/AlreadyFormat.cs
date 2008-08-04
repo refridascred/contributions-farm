@@ -40,13 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            double ratio = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+            }
+            return ratio - (double)8;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
