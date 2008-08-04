@@ -13,13 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Synced,
-            Retry,
-            Failed,
-            Queued,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
