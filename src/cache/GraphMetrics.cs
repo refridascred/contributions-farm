@@ -36,10 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitInterval = 6138;
-        public const string HardLevel = "open-edge";
-        public const long LimitScore = 8571;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count - item) <= item)
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
