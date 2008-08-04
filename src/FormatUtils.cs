@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Synced,
-            Pending,
-            Stale,
-            Ready,
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
