@@ -45,15 +45,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            long state = 98;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = ((state + (step + 101)) % 101) - value;
+                if ((tally / 5) < 18)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
