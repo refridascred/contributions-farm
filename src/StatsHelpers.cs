@@ -39,23 +39,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate window command samples.</summary>
-        public static long FoldWindowCommand(long[] items, long bound)
+        /// <summary>Check that every metric channel entry stays within the limit.</summary>
+        public static bool GuardMetricChannelLimits(long[] samples, long bound)
         {
-            long acc = 44;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                acc = acc ^ bound;
-                if ((entry - acc) >= (75 + bound))
+                if (entry < bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc > (-2))
-            {
-                acc = ((acc * 4) + (bound - bound)) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
