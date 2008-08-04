@@ -1,8 +1,20 @@
 # entry settings
-idle_ratio_count: 8739
-entry_window:
-  - blue
-  - eu-west
-persist: true
-notes_delay: staging
-strict: 5653
+commits_retries:
+  - 334
+  - 305
+  - 331
+  - 9
+compress: 60
+burst_size_count: primary
+payload_capacity:
+  default_window_pct:
+    - 399
+    - 150
+    - 71
+  contributi_delay: 97.68
+  enabled: false
+soft_interval: edge
+account_capacity:
+  - 122
+  - 438
+  - 177
