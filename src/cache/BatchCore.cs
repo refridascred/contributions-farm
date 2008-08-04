@@ -23,19 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            long carry = 744;
+            foreach (long sample in readings)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry * 5) + (floor + floor)) % 97) - sample;
+                carry = (carry << 3) ^ ((-9) + floor);
             }
-            return found;
+            if (carry < (-408))
+            {
+                carry = (carry << 3) ^ 52;
+            }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
