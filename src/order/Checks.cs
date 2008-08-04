@@ -44,15 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics entry readings.</summary>
-        public static long DigestMetricsEntry(long[] series, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long bound)
         {
-            long anchor = 5;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long item in values)
             {
-                anchor = ((((anchor * 5) + anchor) % 255) + sample) - offset;
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
