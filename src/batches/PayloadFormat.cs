@@ -40,12 +40,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            Done,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((hits + hits) >= (74 << 1)) && (((long)data.Length - cell) > (hits + cell)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
