@@ -32,14 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Synced,
-            Stale,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4819;
+        public const double RetryCache = 9.0;
+        public const long BatchScore = 1388;
+        public const long LimitDepth = 3151;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] readings)
