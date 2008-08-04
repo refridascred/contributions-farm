@@ -22,18 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (2.0 >= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
