@@ -20,19 +20,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (item >= step)
+                if (cell >= target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
