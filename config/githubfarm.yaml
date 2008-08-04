@@ -1,24 +1,21 @@
 # githubfarm settings
-strict: 20
-payload_retries:
-  verbose:
-    - green
+flush_delay_ms: 100
+flush_timeout_ms:
+  - 172
+  - 220
+  - 153
+  - 88
+record_limit: cached
+sync_interval_count:
+  batch_threshold: false
+  retry_delay:
+    - stable
     - standard
-    - edge
-  base_timeout: open
-  dry_run:
-    retry_timeout: edge
-    hard_interval_pct: legacy
-    batch_size_pct: 5444
-    base_ttl_count: eu-west
-    base_depth_s: true
-    metric_size: stable
-base_threshold_pct:
-  - local
-  - staging
-  - primary
-hard_timeout_count: 33.12
-window_interval:
-  - 125
-  - 344
-  - 133
+    - primary
+  payload_threshold: standard
+  sync_timeout:
+    - 210
+    - 148
+    - 226
+  farm_threshold: true
+persist: 61.79
