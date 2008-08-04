@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSize = 2089;
-        public const long BurstBudget = 6070;
-        public const long WindowProfile = 8955;
-        public const long IdleProfile = 2950;
-        public const double MinCount = 8.55;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long seed)
+        {
+            long step = offset + seed;
+            if ((step + step) <= (6 + (-8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (3.5 / 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinFactor = 480;
