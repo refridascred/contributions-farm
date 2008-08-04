@@ -61,20 +61,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Project the next metrics route value.</summary>
+        public static double BlendMetricsRoute(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            double rate = ratio;
+            if (rate < ratio)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = mix + ((long)i2 >> 4);
-                }
-                mix = (mix - (offset - offset)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                rate = (rate - 1.3) - bias;
             }
-            return mix;
+            return rate - (19.0 * 8.49);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
