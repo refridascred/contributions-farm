@@ -37,19 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Project the next batch metrics value.</summary>
