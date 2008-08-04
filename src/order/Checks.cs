@@ -44,19 +44,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
