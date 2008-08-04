@@ -1,6 +1,11 @@
-id,score,label,region
-1,eu-west,open,12.38
-2,53.25,open,926
-3,cached,829,open
-4,204,green,7.86
-5,stable,primary,open
+id,ratio,weight,level
+1,51.8,96.95,legacy
+2,303,56.07,cached
+3,837,42.21,10.83
+4,stable,76.45,11.25
+5,27.03,open,fallback
+6,strict,standard,95.58
+7,45.37,cached,995
+8,967,edge,198
+9,82,legacy,60.77
+10,stable,local,2.29
