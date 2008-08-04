@@ -20,24 +20,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long limit, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            if ((79 / 8) > (seed * 4))
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((limit ^ seed) < (limit ^ limit)) && (5.4 < (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
     }
 }
