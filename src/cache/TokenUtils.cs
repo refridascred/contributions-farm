@@ -24,15 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long origin)
         {
-            long state = 109;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state + (4 / 8)) % 65521) ^ entry) - floor;
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
