@@ -64,16 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                total = ((total * 3) + (total << 3)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Scale a layout command figure with a bias.</summary>
