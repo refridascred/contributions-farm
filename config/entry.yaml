@@ -1,4 +1,9 @@
 # entry settings
-verbose: blue
-max_window_count: staging
-support_size: true
+hard_ttl: 100
+base_window: latest
+default_delay_count: 9987
+warm_retries:
+  - 343
+  - 382
+  - 313
+idle_size_pct: false
