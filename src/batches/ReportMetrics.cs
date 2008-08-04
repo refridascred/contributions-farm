@@ -34,15 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            long anchor = 0;
-            foreach (long entry in samples)
+            double load = rate;
+            if (load >= (rate + rate))
             {
-                anchor = anchor ^ (entry >> 2);
+                load = (load + 0.35) + offset;
             }
-            return anchor;
+            else
+            {
+                load = load + (7.5 / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - rate) - (double)(long)i;
+            }
+            return load - (8.7 * 4.79);
         }
     }
 }
