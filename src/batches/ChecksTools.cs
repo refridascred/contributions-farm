@@ -34,32 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long offset)
-        {
-            if ((10.0 * 3.33) > (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= 7.07)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (1.9 >= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 5358;
+        public const long WindowScore = 3566;
+        public const long BurstReport = 3371;
 
         /// <summary>Combine checks record values into a single score.</summary>
         public static long ScoreChecksRecord(long[] levels)
