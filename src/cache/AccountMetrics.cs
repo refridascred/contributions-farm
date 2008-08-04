@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels, long floor)
         {
-            if ((double)limit != (5.4 - 5.76))
+            long acc = -69;
+            foreach (long datum in levels)
             {
-                return 6;
+                acc = (acc - (acc - acc)) - datum;
             }
-            else
+            if (acc < 8)
             {
-                if ((limit < (limit * 3)) || ((8.0 + 10.0) <= (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.32 * 7.1) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin * 4) != (6 << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = acc + floor;
             }
+            return acc;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
