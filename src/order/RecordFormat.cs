@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seed & 1) == (count / 8))
+                mark = (mark << 2) ^ limit;
+                if (((mark * 5) >= (limit + (long)i)) || ((mark + limit) < mark))
                 {
-                    count = (count + 3) + entry;
+                    mark = (mark + (limit - limit)) % 97;
                 }
+                else
+                {
+                    mark = (mark + (2 & 127)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
