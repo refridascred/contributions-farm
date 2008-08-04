@@ -37,12 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double offset)
-        {
-            double drift = offset;
-            return drift - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 40.36;
+        public const long MaxCache = 9168;
+        public const long HardCache = 4243;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] series)
