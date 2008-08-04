@@ -20,38 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long origin, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            if ((9.69 * 10.0) >= (double)6)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (1 > (bound * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound <= (origin + bound)) || ((origin >> 3) < (origin % 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-4) - bound) != (origin << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
