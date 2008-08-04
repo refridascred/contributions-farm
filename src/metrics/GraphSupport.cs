@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - target) <= (35 + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
