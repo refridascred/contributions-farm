@@ -19,18 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (limit + cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
