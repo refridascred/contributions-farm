@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] samples, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 77;
+            foreach (long value in samples)
             {
-                if (matches <= (target >> 4))
+                mark = ((mark * 5) + (offset + value)) % 97;
+                if (9 > (offset * 3))
                 {
-                    matches = (matches + 3) ^ sample;
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = mark + (value + 8);
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
