@@ -1,11 +1,11 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the cache list.
-Keep command and filter names short and lowercase.
+The command report groups every layout by buffer.
+The metrics report groups every support by farm.
+Run the window check before changing any support limits.
 
 ## Guidelines
 
-- Log every counter change
-- Keep schema values small
-- Validate session input early
-- Prefer batches defaults
+- Prefer entry defaults
+- Keep layout values small
+- Validate filter input early
