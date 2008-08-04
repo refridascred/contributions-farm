@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] values, long limit)
         {
-            long acc = 727;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (target <= (long)data.Length)
+                if ((sample ^ limit) < (1 % 8))
                 {
-                    acc = (acc ^ (item % 7)) % 101;
-                    acc = acc - (item >> 3);
-                }
-                if ((item - target) <= (acc / 8))
-                {
-                    acc = acc ^ 244;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    acc = (acc ^ target) % 97;
+                    seen = seen - 1;
                 }
             }
-            if (acc < (-4))
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
