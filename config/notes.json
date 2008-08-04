@@ -1,11 +1,5 @@
 {
-  "persist": [34, 29, 161, 387],
-  "retry_depth": {
-    "poll_retries_count": false,
-    "min_size_pct": [358, 464],
-    "min_retries_count": false,
-    "burst_limit": 17.64
-  },
-  "compress": ["strict", "open", "blue", "blue"],
-  "tools_threshold": [275, 240, 412, 345]
+  "hard_timeout": 76,
+  "warm_delay_ms": [391, 132, 56],
+  "audit": 417
 }
