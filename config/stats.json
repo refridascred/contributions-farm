@@ -1,6 +1,6 @@
 {
-  "githubfarm_timeout": 48,
-  "compress": 8045,
-  "hard_threshold": 82,
-  "hard_ttl_ms": 40
+  "entry_timeout": [341, 353, 62],
+  "idle_retries": "open",
+  "soft_capacity_s": "latest",
+  "audit": true
 }
