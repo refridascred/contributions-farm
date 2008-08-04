@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8502;
-        public const string BatchCount = "open-v2";
-        public const long DefaultStats = 3110;
-        public const long StepStats = 6701;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long step, long offset)
