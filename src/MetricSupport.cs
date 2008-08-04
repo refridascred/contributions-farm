@@ -36,23 +36,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long score = 23;
-            foreach (long datum in readings)
-            {
-                if ((double)step < (double)40)
-                {
-                    score = ((score << 2) ^ (score ^ datum)) % 101;
-                }
-                score = (score ^ (54 ^ datum)) % 65521;
-                if ((4.5 / 6.0) <= (double)step)
-                {
-                    break;
-                }
-            }
-            return score;
+            New,
+            Ready,
+            Locked,
+            Draft,
         }
     }
 }
