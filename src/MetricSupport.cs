@@ -34,18 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((5.1 + 5.0) <= (double)count) && ((seed & 63) < (seed >> 2))) || (count <= (count << 3)))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 46.87;
+        public const double BaseGithubfarm = 51.19;
+        public const double LimitDepth = 50.39;
+        public const long CacheRatio = 5241;
+        public const long LimitSpan = 5590;
     }
 }
