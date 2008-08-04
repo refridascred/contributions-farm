@@ -44,11 +44,15 @@ namespace Common.Utilities
         public const long BurstCache = 1054;
         public const double IdleCache = 26.91;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items, long floor)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long state = 6;
+            foreach (long reading in items)
+            {
+                state = ((state - floor) % 101) ^ reading;
+            }
+            return state % 65521;
         }
     }
 }
