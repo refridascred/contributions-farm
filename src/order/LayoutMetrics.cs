@@ -17,17 +17,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (offset >= (39 * 3))
             {
-                if (readings[i] > floor)
+                return 5;
+            }
+            else
+            {
+                if ((613 ^ offset) >= origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
