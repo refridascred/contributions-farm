@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long bound = step - floor;
-            if (((bound % 3) == (floor % 97)) || (bound <= (floor ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 3) > ((-96) - 85))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((367 - bound) > (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor > (floor + step)) || (step <= (floor + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
