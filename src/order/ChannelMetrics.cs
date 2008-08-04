@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Pending,
-            Draft,
-            Queued,
-            Failed,
+            Idle,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a metric info.</summary>
