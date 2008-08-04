@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double gain, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double gain2 = gain;
-            return gain2 + (offset * 4.0);
+            Paused,
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
