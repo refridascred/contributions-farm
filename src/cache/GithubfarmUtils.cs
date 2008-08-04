@@ -28,31 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long target)
+        /// <summary>Locate a filter already reading by value.</summary>
+        public static long FindFilterAlreadyIndex(long[] values, long step)
         {
-            long result = 96;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + reading) != (9 + reading))
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
-                    result = (result - (reading ^ target)) % 1000;
-                }
-                else
-                {
-                    result = (result + reading) % 97;
-                }
-                if ((377 ^ reading) < target)
-                {
-                    result = (result - target) % 1000;
-                    result = result - (8 / 9);
-                }
-                if ((3 + target) <= reading)
-                {
-                    result = (result << 3) ^ (result & 15);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
