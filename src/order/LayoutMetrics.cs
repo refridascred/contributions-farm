@@ -17,11 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            double load = (floor * 4.25) / 8.0;
-            return (load + (load / 8.0)) + ratio;
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count % 100) >= entry) && (entry < (count - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
