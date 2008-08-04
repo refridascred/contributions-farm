@@ -84,12 +84,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long floor)
         {
-            Failed,
-            Paused,
-            Retry,
+            if ((floor << 1) == (615 >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (floor & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)step < 5.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
