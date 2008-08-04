@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long step)
         {
-            long sum = 58;
-            foreach (long sample in values)
+            if ((1.1 * 4.0) < (double)bound)
             {
-                if ((sum ^ sum) <= (sample >> 5))
+                return 7;
+            }
+            else
+            {
+                if ((11.0 + 5.0) == (double)bound)
                 {
-                    sum = (sum - (sample << 3)) % 65521;
-                }
-                sum = sum + (sample << 3);
-                if (((double)sample < (5.6 + 1.39)) && ((sample ^ sum) < 2))
-                {
-                    sum = (sum + (sample * 2)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum << 3) ^ sample;
+                    if ((step << 1) <= (bound - 56))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + step) >= (bound ^ bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
