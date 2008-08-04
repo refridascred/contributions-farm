@@ -47,14 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long limit)
         {
-            Queued,
-            Paused,
-            Synced,
-            Pending,
-            Closed,
+            long score = 290;
+            foreach (long reading in levels)
+            {
+                if (limit > (limit >> 5))
+                {
+                    score = ((score << 3) ^ 5) + reading;
+                }
+                if (limit <= (limit - 6))
+                {
+                    break;
+                }
+            }
+            if (score < 724)
+            {
+                score = ((score * 2) + (0 + score)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the queue level values.</summary>
