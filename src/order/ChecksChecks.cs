@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long bound)
         {
-            long result = -142;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((result + result) <= (origin % 100))
+                if (((3.4 / 2.0) != (double)reading) && ((double)reading < (1.48 - 18.0)))
                 {
-                    result = (((result * 3) + (5 / 7)) % 4096) ^ item;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > 754)
-            {
-                result = ((result * 4) + (92 + origin)) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
