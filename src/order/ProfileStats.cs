@@ -16,13 +16,19 @@ namespace Common.Utilities
             return scale + (18.0 / 4.0);
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] series, long limit)
         {
-            Draft,
-            Done,
-            Synced,
-            Locked,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a token profile counter forward.</summary>
