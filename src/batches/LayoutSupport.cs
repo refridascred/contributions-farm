@@ -55,25 +55,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long span = floor + bound;
-            if (((span - floor) > (bound & 15)) && ((floor / 5) > bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 255) == (1 - span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
