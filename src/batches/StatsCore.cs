@@ -41,11 +41,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9692;
-        public const double RetryLevel = 43.43;
-        public const long MinFormat = 7658;
-        public const double RetryFormat = 2.67;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Failed,
+            Synced,
+            Done,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Rank account buffer input into a small class.</summary>
         public static long RankAccountBuffer(long offset, long limit)
