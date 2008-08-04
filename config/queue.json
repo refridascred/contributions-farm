@@ -1,12 +1,19 @@
 {
-  "profile_retries": "legacy",
-  "warm_limit": "staging",
-  "support_timeout": {
-    "compress": ["open", "legacy", "cached", "eu-west"],
-    "retry_ratio": "standard",
-    "default_depth": false,
-    "min_threshold_count": true,
-    "max_interval": 9508
+  "sync_delay_ms": [409, 190],
+  "audit": "local",
+  "soft_window_count": {
+    "format_window": "staging",
+    "retry_timeout_pct": "fallback",
+    "strict": {
+      "flush_depth_s": ["cached", "standard"],
+      "already_capacity": 8084,
+      "buffer_capacity": "primary",
+      "strict": 54.12,
+      "soft_retries": 14
+    },
+    "hard_ratio_count": "cached"
   },
-  "retry_ratio": "stable"
+  "max_capacity_s": "blue",
+  "min_ttl": "standard",
+  "record_window": true
 }
