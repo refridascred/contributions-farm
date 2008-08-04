@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (target < (hits % 8))
+                if (entry >= floor)
                 {
-                    hits = (hits + 3) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
