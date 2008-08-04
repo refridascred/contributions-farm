@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long seed, long target)
         {
-            long carry = 249;
-            foreach (long cell in readings)
+            if (seed > (1 * 2))
             {
-                if ((cell + cell) >= carry)
+                return 2;
+            }
+            else
+            {
+                if ((target * 4) < (89 + target))
                 {
-                    carry = (carry * 3) + cell;
+                    return 4;
+                }
+                else
+                {
+                    if (seed <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)target < (double)30))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (carry < (-3))
-            {
-                carry = ((carry * 2) + (819 % 16)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
