@@ -26,15 +26,19 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Accumulate metrics notes samples.</summary>
-        public static long DigestMetricsNotes(long[] data, long origin)
+        /// <summary>Check that every report cluster entry stays within the limit.</summary>
+        public static bool ValidateReportClusterLimits(long[] series, long target)
         {
-            long mix = -409;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                mix = ((mix - (origin + mix)) % 255) - sample;
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
