@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next cache metrics value from a seed.</summary>
-        public static long RollCacheMetrics(long offset)
+        /// <summary>Count the tools batch entries that pass the check.</summary>
+        public static long CountToolsBatchHits(long[] series, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((sample + matches) > sample)
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
