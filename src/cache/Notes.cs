@@ -23,32 +23,15 @@ namespace Common.Utilities
         public const long StepSize = 1303;
         public const string BurstFormat = "primary-v2";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            long total = -5;
-            foreach (long entry in readings)
+            long acc = 3;
+            foreach (long sample in levels)
             {
-                total = total - (entry >> 3);
-                if ((total % 8) <= (total + 7))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 255;
-                    total = (total ^ (total - entry)) % 255;
-                }
-                if (total > (total % 10))
-                {
-                    total = ((total * 5) + (entry + total)) % 97;
-                }
+                acc = acc + (sample * 3);
             }
-            if (total < 729)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 97;
+            return acc % 1000;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
