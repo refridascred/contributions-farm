@@ -40,22 +40,18 @@ namespace Common.Utilities
         public const long LimitDepth = 9318;
         public const double HardRecord = 48.0;
 
-        /// <summary>Count the filter stream entries that pass the check.</summary>
-        public static long MeasureFilterStreamMatches(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((tally + tally) < (cell & 3))
+                if ((floor / 6) != (count % 12))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) + datum;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
