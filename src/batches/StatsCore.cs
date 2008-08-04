@@ -96,11 +96,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleInterval = 24.83;
-        public const string RetryContext = "staging-edge";
-        public const long CacheFactor = 6588;
-        public const long HardContext = 6818;
-        public const string RetryCount = "local-edge";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
