@@ -63,17 +63,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
