@@ -43,17 +43,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -6;
+            foreach (long datum in items)
             {
-                if (items[i] < bound)
+                sum = ((sum << 3) ^ target) ^ datum;
+                if (!((double)target < (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (-21);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
