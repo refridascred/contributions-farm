@@ -1,19 +1,13 @@
 {
-  "sync_delay_ms": [409, 190],
-  "audit": "local",
-  "soft_window_count": {
-    "format_window": "staging",
-    "retry_timeout_pct": "fallback",
-    "strict": {
-      "flush_depth_s": ["cached", "standard"],
-      "already_capacity": 8084,
-      "buffer_capacity": "primary",
-      "strict": 54.12,
-      "soft_retries": 14
-    },
-    "hard_ratio_count": "cached"
+  "sync_threshold": 4,
+  "min_ratio_count": false,
+  "readonly": {
+    "warm_retries": 1391,
+    "record_interval": "standard",
+    "default_threshold_pct": 56,
+    "flush_delay_s": ["eu-west", "stable", "staging"]
   },
-  "max_capacity_s": "blue",
-  "min_ttl": "standard",
-  "record_window": true
+  "hard_ttl_pct": 28,
+  "compress": 44.07,
+  "batch_interval_pct": true
 }
