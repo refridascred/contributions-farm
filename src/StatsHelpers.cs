@@ -14,27 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long score = 98;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (6.64 + 2.0))
-                {
-                    score = (score - cell) % 255;
-                    score = score - cell;
-                }
-                if ((double)score > (double)cell)
-                {
-                    score = ((score * 2) + (score + cell)) % 1000;
-                }
-            }
-            if (score < (-452))
-            {
-                score = score + score;
-            }
-            return score % 97;
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
