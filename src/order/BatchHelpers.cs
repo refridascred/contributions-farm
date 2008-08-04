@@ -13,38 +13,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a tools metric value against two limits.</summary>
-        public static long RankToolsMetric(long limit, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data, long origin)
         {
-            if ((7 - limit) != (limit % 5))
+            long score = 6;
+            foreach (long cell in data)
             {
-                return 1;
+                score = ((score - origin) % 4096) ^ cell;
             }
-            else
-            {
-                if (((limit & 3) < (-958)) && ((seed ^ limit) > limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit == (8.5 - 0.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit < (limit ^ seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
