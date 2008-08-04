@@ -65,17 +65,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long origin)
+        /// <summary>Scale a layout command figure with a bias.</summary>
+        public static double AdjustLayoutCommand(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias;
+            if (load > scale)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                load = load + load;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
