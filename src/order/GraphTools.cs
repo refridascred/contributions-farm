@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchTimeout = 5550;
+        public const long BatchMetric = 1776;
+        public const long MinMetric = 1701;
 
         /// <summary>Grade a batch farm value against two limits.</summary>
         public static long SortBatchFarm(long seed, long target)
