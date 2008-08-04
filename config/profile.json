@@ -1,19 +1,8 @@
 {
-  "record_limit": "open",
-  "enabled": 50,
-  "hard_limit": 9724,
-  "default_timeout_count": "open",
-  "farm_retries": {
-    "poll_interval_ms": 24,
-    "audit": "open",
-    "schema_ttl": {
-      "dry_run": "staging",
-      "cache_timeout_count": [132, 180, 235, 296],
-      "flush_delay_count": false,
-      "hard_limit_count": true,
-      "base_interval_ms": 55.15,
-      "strict": "cached"
-    },
-    "persist": ["local", "blue", "fallback"]
-  }
+  "base_threshold_s": "edge",
+  "context_limit": "open",
+  "hard_retries_pct": 30,
+  "hard_ttl_ms": [142, 77],
+  "burst_interval_count": "open",
+  "batches_retries": "stable"
 }
