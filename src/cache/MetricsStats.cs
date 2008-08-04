@@ -93,16 +93,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats notes series from a seed.</summary>
-        public static long SeriesStatsNotes(long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long origin, long target)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            if (!((5.2 - 1.9) < (double)origin))
             {
-                result = (result * 4) + (step >> 4);
-                result = ((result * 2) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((0.4 - 3.0) <= (double)origin) || ((origin - origin) <= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < (12.0 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target > (5.5 / 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
