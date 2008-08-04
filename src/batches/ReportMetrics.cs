@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Find the first context cluster entry that matches the target.</summary>
+        public static long LookupContextClusterIndex(long[] data, long floor)
         {
-            Draft,
-            Retry,
-            Ready,
-            Done,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
