@@ -24,15 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double mean = (double)9 + bias;
-            if (mean <= (double)95)
-            {
-                mean = mean + (mean + offset);
-            }
-            return mean - (double)39;
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
