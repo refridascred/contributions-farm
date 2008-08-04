@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 6684;
-        public const long DefaultLevel = 2593;
-        public const double HardTimeout = 58.91;
-        public const long StepFactor = 995;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data)
+        {
+            long anchor = 6;
+            foreach (long entry in data)
+            {
+                anchor = (anchor ^ (anchor + entry)) % 101;
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double ratio, double span)
