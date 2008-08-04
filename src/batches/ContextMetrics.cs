@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] values, long bound)
+        /// <summary>Blend two buffer layout measurements.</summary>
+        public static double AdjustBufferLayout(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(28 + 756);
+            if (mean >= rate)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean * 20.0)) - span;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (mean * 8.7);
         }
 
         /// <summary>Roll a stream counter forward.</summary>
