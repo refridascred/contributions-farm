@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric githubfarm readings against a bound.</summary>
-        public static bool ValidateMetricGithubfarmBounds(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "strict-edge";
+        public const long StepCount = 9321;
+        public const long DefaultInterval = 1117;
+        public const long DefaultCache = 821;
+        public const long MinRatio = 4955;
     }
 }
