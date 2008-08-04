@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long BurstBuffer = 3741;
         public const string BaseBuffer = "standard-edge";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((origin + origin) <= count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
