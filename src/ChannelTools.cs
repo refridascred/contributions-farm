@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long bound)
-        {
-            long cur = step + bound;
-            if ((7 % 97) > (bound & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound * 5) > step) || ((double)6 < (double)cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 5) < (step + 243))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5880;
+        public const long BatchTimeout = 5692;
+        public const long MaxBudget = 6870;
+        public const double LimitContext = 2.42;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
