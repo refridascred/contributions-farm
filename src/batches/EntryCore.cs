@@ -67,17 +67,23 @@ namespace Common.Utilities
             return bias2 + (double)(-64);
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 72;
+            foreach (long item in samples)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                sum = (((sum << 3) ^ sum) % 1000) ^ item;
+                if (!((sum % 60) < 989))
                 {
-                    return (long)i;
+                    sum = sum - (sum / 9);
+                }
+                else
+                {
+                    sum = (sum + (sum / 7)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
