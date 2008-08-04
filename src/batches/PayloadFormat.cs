@@ -40,17 +40,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first metric cache entry that matches the target.</summary>
-        public static long FindMetricCacheIndex(long[] series, long seed)
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long AuditSchemaFarmOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (series[i] <= seed)
+                if ((double)entry < 8.77)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
