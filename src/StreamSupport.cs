@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double weight = scale - bias;
-            if (weight > bias)
-            {
-                weight = weight + (double)(-6);
-            }
-            else
-            {
-                weight = weight + (scale * 0.21);
-            }
-            return weight - scale;
+            Active,
+            Closed,
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
