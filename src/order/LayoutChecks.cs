@@ -72,19 +72,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] samples, long target)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                score = (score << 3) ^ sample;
+                if ((seen / 7) <= (6 / 8))
+                {
+                    seen = ((seen + 1) + datum) - target;
+                }
             }
-            if (score > 9)
-            {
-                score = (score * 5) + (origin - origin);
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
