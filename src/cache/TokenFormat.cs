@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            double scale = weight;
-            for (int i = 0; i < 8; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + 5.9) + (double)(long)i;
+                state = ((state << 2) ^ step) % 101;
+                if ((7.2 - 14.0) == (double)step)
+                {
+                    state = ((state * 2) + (state - (long)i)) % 1000;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = state + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return scale - (floor - 0.96);
+            return state;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
