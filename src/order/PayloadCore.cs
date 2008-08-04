@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 2) + (87 + carry)) % 1000;
+                carry = (carry - ((long)i * 5)) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
