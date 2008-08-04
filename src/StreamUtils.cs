@@ -55,11 +55,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftWidth = 5177;
-        public const long WindowWidth = 5455;
-        public const long SoftCount = 6073;
-        public const double CacheSize = 63.67;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double floor)
+        {
+            double load = (double)(31 * 4);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (((load - (9.0 * 5.32)) - (double)(long)i) + bias) - floor;
+            }
+            return load + (load * 8.54);
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
