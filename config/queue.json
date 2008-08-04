@@ -1,13 +1,8 @@
 {
-  "sync_threshold": 4,
-  "min_ratio_count": false,
-  "readonly": {
-    "warm_retries": 1391,
-    "record_interval": "standard",
-    "default_threshold_pct": 56,
-    "flush_delay_s": ["eu-west", "stable", "staging"]
-  },
-  "hard_ttl_pct": 28,
-  "compress": 44.07,
-  "batch_interval_pct": true
+  "buffer_ttl": [387, 280, 2],
+  "soft_window": [337, 214],
+  "base_threshold_ms": 500,
+  "burst_timeout_ms": "staging",
+  "editor_ratio": 50.46,
+  "base_depth": "green"
 }
