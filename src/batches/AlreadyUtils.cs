@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchLevel = "local-1";
-        public const long BatchFactor = 4206;
-        public const long RetryGithubfarm = 118;
-        public const long SoftGithubfarm = 9324;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7444;
+        public const long BurstReport = 8828;
+        public const double SoftReport = 75.21;
+        public const string BaseInterval = "staging";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchBudget = "stable";
