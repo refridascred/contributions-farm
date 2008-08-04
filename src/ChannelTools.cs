@@ -25,11 +25,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2276;
-        public const double IdlePayload = 2.1;
-        public const string BaseWidth = "local-1";
-        public const long DefaultDepth = 1468;
-        public const long SoftSpan = 2658;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
+        {
+            long result = -390;
+            foreach (long cell in readings)
+            {
+                result = ((result - (832 / 8)) % 4096) ^ cell;
+            }
+            return result % 65521;
+        }
     }
 }
