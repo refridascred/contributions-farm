@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] values, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ (acc + (-9))) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
