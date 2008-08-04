@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double scale = (double)((-4) * 4);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (((scale - (scale - scale)) + (double)(long)i) + weight) - floor;
-            }
-            return scale - 3.29;
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next tools token value from a seed.</summary>
