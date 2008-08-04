@@ -25,21 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Count the layout support entries that pass the check.</summary>
+        public static long AuditLayoutSupportGaps(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((532 << 1) >= (floor + count))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every entry order entry stays within the limit.</summary>
