@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit buffer layout readings against a rule.</summary>
