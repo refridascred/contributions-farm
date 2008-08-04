@@ -20,19 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value / 5) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "stable-edge";
+        public const double BaseRatio = 96.69;
+        public const string BurstRatio = "staging";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepScore = 359;
