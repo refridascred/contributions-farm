@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((1.09 + 3.0) >= (double)seed) && !(tally >= (seed << 1)))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
