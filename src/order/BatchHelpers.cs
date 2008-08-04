@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long WindowStats = 361;
         public const double LimitTimeout = 52.1;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long score = 898;
-            foreach (long item in samples)
-            {
-                if ((item / 3) != (item - score))
-                {
-                    score = (score + (item + item)) % 101;
-                }
-            }
-            return score % 1000;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
