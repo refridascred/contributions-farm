@@ -1,15 +1,20 @@
 # support settings
-session_window:
-  editor_delay: 69
-  sync_retries: 5.06
-  context_threshold: 219
-  warm_ttl_count:
-    - latest
-    - primary
-    - local
-min_capacity: 13
-record_delay:
-  readonly: 30
-  retry_threshold: 9133
-  persist: edge
-cache_threshold_s: primary
+token_threshold: 61.42
+retry_limit_s: edge
+already_interval: 10.42
+persist: stable
+verbose:
+  soft_size: 7124
+  audit:
+    filter_limit:
+      - legacy
+      - open
+      - open
+      - stable
+    compress: fallback
+    checks_ttl: edge
+    poll_ratio_pct: 10
+    retry_size_count: 28.26
+  readonly: 95.89
+  soft_limit_count: primary
+  warm_limit: 500
