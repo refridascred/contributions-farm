@@ -1,9 +1,8 @@
 # entry settings
-enabled: 1265
-counter_retries: latest
-editor_window:
-  - 66
-  - 325
-  - 97
-  - 285
-entry_delay: 48.55
+idle_ratio_count: 8739
+entry_window:
+  - blue
+  - eu-west
+persist: true
+notes_delay: staging
+strict: 5653
