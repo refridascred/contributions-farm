@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 14.78;
-        public const long IdleRecord = 3170;
-        public const string WindowSpan = "fallback-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchBudget = 15.16;
+        public const double WindowCounter = 90.54;
+        public const long CacheCounter = 5267;
+        public const double MinCounter = 6.9;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
