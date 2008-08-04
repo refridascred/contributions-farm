@@ -33,26 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats command samples.</summary>
-        public static long CombineStatsCommand(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long offset)
         {
-            long state = -9;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((state - state) < (state - entry)))
+                if (cell < offset)
                 {
-                    state = state - entry;
-                }
-                else
-                {
-                    state = (state + (entry - state)) % 1000;
-                }
-                if (!(((long)items.Length % 2) < state))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 65521;
+            return stale;
         }
     }
 }
