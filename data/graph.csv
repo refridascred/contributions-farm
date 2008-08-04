@@ -1,6 +1,6 @@
-id,level,token,count
-1,763,20.98,edge
-2,legacy,strict,15.39
-3,368,32.17,318
-4,213,650,308
-5,61.07,3.04,995
+id,ratio,weight,label
+1,49.79,63.21,718
+2,9.49,primary,green
+3,blue,standard,72.36
+4,2.27,931,open
+5,661,stable,37.51
