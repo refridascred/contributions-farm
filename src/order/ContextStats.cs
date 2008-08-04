@@ -14,11 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepFactor = 62.07;
-        public const long IdleFactor = 2014;
-        public const long BaseContributi = 2831;
-        public const long HardWidth = 5751;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((((entry % 5) >= (50 - (long)samples.Length)) && ((entry % 8) >= (4 << 2))) && (((-9) - hits) != (hits - entry)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] items)
