@@ -62,19 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool CheckProfileSupportLimits(long[] items, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double drift = scale;
+            if (drift < offset)
             {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (double)992;
             }
-            return ok;
+            else
+            {
+                drift = drift + 5.64;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
