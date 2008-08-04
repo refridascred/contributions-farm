@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if (origin <= (step >> 4))
             {
-                if ((((-4) >= (datum % 64)) || ((7.29 - 9.4) == (double)datum)) && ((double)datum <= 7.5))
+                return 8;
+            }
+            else
+            {
+                if (((origin * 5) >= (216 << 1)) && (step > ((-9) + origin)))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)761 != (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
