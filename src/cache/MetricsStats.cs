@@ -19,22 +19,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long seed)
+        /// <summary>Find the first window cache entry that matches the target.</summary>
+        public static long FindWindowCacheIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum * 5) < (datum + matches))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
