@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the command counter series from a seed.</summary>
-        public static long SeriesCommandCounter(long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            double mean = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                mean = (mean - (ratio - span)) + (double)(long)i;
             }
-            return carry;
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
