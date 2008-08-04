@@ -17,18 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double ratio = (span * 9.96) / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)(long)readings.Length >= (double)floor)
-                {
-                    count = (count + 3) + item;
-                }
+                ratio = ratio + (double)(long)i;
             }
-            return count;
+            return ratio + rate;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
