@@ -35,23 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double weight, double offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double load = (double)(632 - 420);
-            if (load < weight)
-            {
-                load = (load + (weight - weight)) - offset;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - weight;
+            Paused,
+            Ready,
+            Retry,
+            Stale,
         }
     }
 }
