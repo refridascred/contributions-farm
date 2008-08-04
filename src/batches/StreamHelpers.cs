@@ -74,11 +74,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowTimeout = "primary-edge";
-        public const string CacheDepth = "latest-1";
-        public const long MinProfile = 9724;
-        public const double LimitProfile = 83.02;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultScore = 95.83;
+        public const long BurstSpan = 4828;
+        public const string WindowSpan = "stable-1";
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
