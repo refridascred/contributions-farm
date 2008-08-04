@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
+        public static bool ValidateSchemaBufferRange(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
