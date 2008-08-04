@@ -22,20 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Audit farm buffer readings against a rule.</summary>
+        public static long AuditFarmBufferMatches(long[] samples, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((mark - (long)i) != (mark << 3))
+                if ((floor >> 1) >= floor)
                 {
-                    mark = (mark + (7 + 74)) % 65521;
-                    mark = mark + ((long)i & 3);
+                    matches = (matches + 3) ^ cell;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
