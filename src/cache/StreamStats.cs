@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
