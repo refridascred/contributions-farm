@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading * 2) <= (-262))
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 1) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
