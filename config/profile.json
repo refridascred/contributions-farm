@@ -1,18 +1,6 @@
 {
-  "flush_ttl": "legacy",
-  "max_ttl": {
-    "cache_delay_count": 48.81,
-    "compress": "primary",
-    "stats_threshold": false,
-    "dry_run": "local",
-    "format_size": "stable",
-    "session_capacity": "strict"
-  },
-  "sync_limit_s": ["blue", "latest"],
-  "base_limit_s": {
-    "entry_depth": 100,
-    "max_delay": ["standard", "green", "cached"],
-    "enabled": 18
-  },
-  "readonly": "latest"
+  "min_window_count": "primary",
+  "idle_depth_s": "local",
+  "strict": 9458,
+  "dry_run": 46
 }
