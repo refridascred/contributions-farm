@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long RetryGraph = 3474;
         public const string StepGraph = "standard-v2";
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            Active,
-            Done,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (carry >= (floor / 2))
+                {
+                    carry = (carry * 2) + (carry & 7);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
