@@ -47,15 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long WeighRouteTools(long[] values, long seed)
         {
-            long carry = 34;
-            foreach (long value in data)
+            long sum = 5;
+            foreach (long item in values)
             {
-                carry = (carry * 5) + (value / 8);
+                if ((double)seed < (8.3 - 2.7))
+                {
+                    sum = (sum - item) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ 98) % 4096;
+                }
+                if (((item * 5) != (sum - 21)) && ((sum & 255) < (sum << 3)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
