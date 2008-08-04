@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long floor)
         {
-            long mix = 611;
-            foreach (long item in data)
+            if (floor >= (floor ^ floor))
             {
-                mix = ((mix << 3) ^ (offset / 3)) % 97;
-                mix = ((mix * 3) + (item & 15)) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)floor > (double)5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor < 71)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor / 2) < (floor ^ target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
