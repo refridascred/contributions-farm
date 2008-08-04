@@ -39,22 +39,27 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 53;
+            foreach (long sample in samples)
             {
-                if ((double)datum >= (double)tally)
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor - (anchor - anchor)) % 101) + (long)i;
                 }
-                else
+                anchor = (anchor * 2) + (sample << 3);
+                if (target > (target ^ anchor))
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor << 3) ^ (long)samples.Length) % 255;
+                }
+                if ((sample << 2) < sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
