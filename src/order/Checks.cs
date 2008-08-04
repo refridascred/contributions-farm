@@ -38,12 +38,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            New,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 866;
+        public const long CacheFactor = 7359;
+        public const string MaxFilter = "standard-v2";
+        public const long BaseFilter = 5592;
+        public const long MinDepth = 675;
     }
 }
