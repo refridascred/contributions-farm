@@ -47,14 +47,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a queue context pair into a bucket.</summary>
+        public static long RankQueueContext(long origin, long limit)
         {
-            Locked,
-            Idle,
-            Ready,
-            Stale,
-            Closed,
+            if (limit > (-70))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit + limit) > (origin & 255)) && (3 < limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)limit > 4.6) && ((8.7 / 8.0) <= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
