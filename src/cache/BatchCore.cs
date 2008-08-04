@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                long cur = floor;
-                mix = ((mix * 3) + (cur >> 4)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (((191 & 63) <= (matches << 2)) && (matches < (target << 3)))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
