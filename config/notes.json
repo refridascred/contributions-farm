@@ -1,7 +1,18 @@
 {
-  "verbose": "standard",
-  "farm_window": 14.59,
-  "burst_window_ms": 37,
-  "min_timeout": 1311,
-  "base_ttl": [415, 368, 267, 125]
+  "max_limit_ms": "strict",
+  "poll_interval_pct": {
+    "format_retries": {
+      "retry_depth_ms": ["cached", "cached", "green", "eu-west"],
+      "warm_capacity": 60,
+      "poll_delay_pct": 25.29
+    },
+    "dry_run": 15.52,
+    "min_capacity": "eu-west",
+    "readonly": "strict",
+    "batch_threshold": 6855
+  },
+  "cache_capacity_pct": false,
+  "metric_retries": false,
+  "account_delay": "local",
+  "strict": 6.92
 }
