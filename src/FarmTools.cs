@@ -27,13 +27,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Stale,
-            Done,
-            Paused,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 994;
+        public const string DefaultTimeout = "latest";
+        public const long RetryChecks = 5754;
+        public const string BaseInterval = "fallback-edge";
     }
 }
