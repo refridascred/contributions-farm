@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a order commits pair into a bucket.</summary>
-        public static long SortOrderCommits(long origin, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long lane = origin + limit;
-            if ((origin / 6) < (lane * 5))
+            long state = 74;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane >= (3.36 - 4.37))
+                if (((datum << 2) > (state << 3)) || (datum >= (state & 31)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    state = ((state * 3) + (state + datum)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
