@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != floor)
                 {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the farm route entries that pass the check.</summary>
