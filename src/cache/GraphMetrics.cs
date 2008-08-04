@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Locate a commits route reading by value.</summary>
+        public static long FindCommitsRouteIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((777 >= (reading * 2)) && ((double)reading < (4.0 + 7.7)))
+                if (levels[i] <= limit)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
