@@ -1,7 +1,6 @@
 # support settings
-warm_size: 250
-cache_depth_s:
-  - 487
-  - 182
-  - 98
-enabled: latest
+poll_limit:
+  - primary
+  - staging
+farm_limit: 95
+persist: true
