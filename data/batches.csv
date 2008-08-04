@@ -1,8 +1,9 @@
-id,active,owner,state
-1,605,868,32.92
-2,866,713,20.9
-3,117,639,7.95
-4,fallback,908,81.19
-5,281,latest,647
-6,403,742,cached
-7,185,78,686
+id,rank,level,token,state
+1,stable,eu-west,36.56,84.87
+2,55,standard,latest,585
+3,100,stable,legacy,466
+4,934,standard,latest,695
+5,875,primary,800,33
+6,primary,22.94,964,49.62
+7,9.96,staging,889,edge
+8,772,535,staging,12
