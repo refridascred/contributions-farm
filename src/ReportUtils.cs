@@ -37,31 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if ((1 - floor) == (212 + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 * 17.0) >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + seed) > (floor >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the checks class values.</summary>
