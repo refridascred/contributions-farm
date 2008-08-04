@@ -1,4 +1,17 @@
 # support settings
-warm_retries_pct: primary
-verbose: eu-west
-base_retries_count: legacy
+retry_interval_s: 91.85
+retry_depth:
+  cache_size_ms: staging
+  tools_delay: true
+  flush_ratio_s:
+    - primary
+    - open
+    - stable
+    - legacy
+  readonly:
+    - green
+    - strict
+    - strict
+    - latest
+  burst_delay: green
+command_interval: 40.05
