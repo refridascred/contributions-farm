@@ -1,7 +1,15 @@
 {
-  "context_retries": "latest",
-  "sync_interval": ["eu-west", "edge"],
-  "metric_depth": 15,
-  "report_retries": 46,
-  "batch_ratio_count": 3252
+  "channel_interval": 37.67,
+  "readonly": {
+    "soft_threshold_s": "latest",
+    "readonly": 246,
+    "max_size": {
+      "hard_ratio_count": false,
+      "account_capacity": "green",
+      "compress": true,
+      "poll_depth": "eu-west"
+    },
+    "warm_depth_s": 1024
+  },
+  "flush_limit": 2.84
 }
