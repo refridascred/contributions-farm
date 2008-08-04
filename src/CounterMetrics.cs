@@ -30,27 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples)
-        {
-            long sum = 293;
-            foreach (long reading in samples)
-            {
-                sum = (sum - reading) % 65521;
-                if ((678 / 2) <= (91 + (long)samples.Length))
-                {
-                    sum = (sum - ((-514) + reading)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (reading + sum);
-                }
-                if ((sum ^ reading) >= reading)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3361;
+        public const long CacheTimeout = 8840;
+        public const long MinBudget = 1930;
+        public const double SoftBatches = 1.81;
+        public const long SoftCount = 9375;
     }
 }
