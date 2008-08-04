@@ -35,26 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long result = 4;
-            foreach (long sample in series)
-            {
-                if (((sample + result) < (9 & 1)) || ((double)result >= (5.0 + 1.1)))
-                {
-                    result = (result ^ (33 >> 5)) % 255;
-                }
-                else
-                {
-                    result = result - (result + result);
-                }
-            }
-            if (result < 48)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 1000;
+            Synced,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
