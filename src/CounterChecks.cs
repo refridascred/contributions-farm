@@ -53,14 +53,10 @@ namespace Common.Utilities
         public const double MinStream = 82.89;
         public const long MaxDepth = 1461;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Failed,
-            Idle,
-            Closed,
-            Active,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowSize = 4243;
+        public const double RetryFarm = 47.46;
+        public const string MaxBudget = "alpha-1";
+        public const long WindowInterval = 1563;
     }
 }
