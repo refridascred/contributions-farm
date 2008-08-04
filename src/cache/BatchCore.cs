@@ -49,39 +49,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long bound, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series)
         {
-            long offset = bound ^ step;
-            if (offset <= (offset % 64))
+            long anchor = -40;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((15.0 - 15.0) != (double)bound)
+                if ((sample / 8) > (sample + anchor))
                 {
-                    return 7;
+                    anchor = (anchor * 2) + (anchor % 16);
+                }
+                if ((double)sample != (18.0 - 7.8))
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) % 101;
                 }
                 else
                 {
-                    if (((double)step >= (6.0 / 9.0)) && ((9.69 - 5.43) > (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (14.0 / 2.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor * 3)) % 255;
                 }
             }
+            return anchor;
         }
     }
 }
