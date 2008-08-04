@@ -13,24 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i + step) == (score >> 4))
-                {
-                    score = ((score << 2) ^ (step >> 4)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 4) + (score - step)) % 65521;
-                }
-                score = ((score * 3) + step) % 255;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
