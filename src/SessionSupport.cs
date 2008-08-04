@@ -48,17 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a commits command reading by value.</summary>
-        public static long FindCommitsCommandIndex(long[] samples, long limit)
+        /// <summary>Iterate the stats metrics series from a seed.</summary>
+        public static long DeriveStatsMetrics(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
