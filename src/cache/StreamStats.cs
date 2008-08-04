@@ -75,21 +75,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
-        public static long MatchCounterToolsCount(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < floor)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
