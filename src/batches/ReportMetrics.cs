@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = 65;
-            foreach (long sample in data)
-            {
-                mark = (mark + 28) - sample;
-            }
-            if (mark < (-7))
-            {
-                mark = (mark - ((long)data.Length & 127)) % 97;
-            }
-            return mark;
+            Draft,
+            Retry,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
