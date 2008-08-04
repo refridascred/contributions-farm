@@ -60,26 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long ScoreStreamPayload(long[] levels, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] values, long floor)
         {
-            long state = 7;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)step != (double)item)
+                if (((439 + floor) != (item >> 3)) || !((floor / 9) > item))
                 {
-                    state = state + (step * 3);
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 255;
+                    hits = hits + 3;
                 }
             }
-            if (state > 8)
-            {
-                state = (state - 0) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Look up the position of a order stats sample.</summary>
