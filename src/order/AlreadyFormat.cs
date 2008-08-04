@@ -34,11 +34,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long target)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel options.</summary>
