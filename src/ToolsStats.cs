@@ -47,12 +47,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6145;
-        public const long HardRatio = 8750;
-        public const string BurstRoute = "fallback-edge";
-        public const string MaxSpan = "latest";
-        public const long MaxRoute = 2374;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchRatio = 5051;
+        public const string IdleBatches = "fallback-v2";
+        public const long LimitWidth = 716;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] readings)
