@@ -85,26 +85,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Rank channel window input into a small class.</summary>
+        public static long ClassifyChannelWindow(long bound, long origin)
         {
-            long carry = 66;
-            foreach (long value in items)
+            long step = bound + origin;
+            if (!(step < (origin ^ 1)))
             {
-                if (carry >= (9 - value))
+                return 1;
+            }
+            else
+            {
+                if (((origin - step) < (3 % 97)) && ((bound & 1) <= origin))
                 {
-                    carry = ((carry * 2) + (carry + value)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry * 4) + (value % 2);
+                    return 7;
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry * 2) + (carry & 255)) % 1000;
-            }
-            return carry % 1000;
         }
     }
 }
