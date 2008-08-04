@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long bound)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
