@@ -1,26 +1,5 @@
 # entry settings
-warm_window: 49.89
-cache_timeout: staging
-stream_ttl:
-  burst_timeout_ms:
-    min_capacity_count:
-      - 200
-      - 60
-    enabled: stable
-    poll_capacity_count:
-      - standard
-      - fallback
-      - open
-      - strict
-    contributi_delay: 62.04
-    compress: 17
-    layout_depth: cached
-  max_ratio_s:
-    - edge
-    - latest
-  tools_ttl: 60
-  persist: local
-  default_interval_pct:
-    - 480
-    - 331
-idle_threshold_ms: 53.96
+strict: strict
+idle_ttl: 6.04
+flush_delay_s: 78.65
+already_size: 250
