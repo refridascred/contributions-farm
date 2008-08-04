@@ -1,9 +1,7 @@
-id,score,state
-1,43.97,64.71
-2,24.58,71.82
-3,703,777
-4,fallback,primary
-5,844,651
-6,474,cached
-7,901,blue
-8,669,4.38
+id,active,label
+1,965,latest
+2,strict,285
+3,64.82,81.63
+4,strict,41.19
+5,896,78
+6,519,65.14
