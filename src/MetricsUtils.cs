@@ -24,19 +24,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark << 2) ^ ((-97) - mark)) % 4096;
-                mark = (mark ^ (step ^ (long)i)) % 101;
-                mark = (mark + (step >> 3)) % 1000;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepFactor = "primary-edge";
+        public const long IdleDepth = 9289;
+        public const long RetryProfile = 743;
+        public const long LimitInterval = 2840;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmGaps(long[] samples, long bound)
