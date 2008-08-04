@@ -23,26 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long CombineContextQueue(long[] values, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            long score = -12;
-            foreach (long cell in values)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell >> 4) != (23 - origin))
-                {
-                    score = (score << 3) ^ (origin ^ 0);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (origin * 2)) % 4096;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (score < 799)
-            {
-                score = score + origin;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Project the next channel value.</summary>
