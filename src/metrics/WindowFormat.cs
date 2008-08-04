@@ -58,10 +58,20 @@ namespace Common.Utilities
         public const long IdleCount = 5348;
         public const long MinDepth = 8680;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "fallback-1";
-        public const string BurstWidth = "cached-1";
-        public const long LimitInterval = 5262;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
         public static bool ValidateCommandClusterLimits(long[] series, long bound)
