@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long BatchCount = 1335;
         public const double RetryRatio = 15.66;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = span;
+            if (drift > rate)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - rate;
             }
-            return -1;
+            return drift + drift;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
