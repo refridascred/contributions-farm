@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const long SoftWidth = 7223;
         public const long IdleRatio = 9932;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] samples, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            New,
+            Queued,
+            Active,
         }
     }
 }
