@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=47
+RECORD_LIMIT=115
 log "limit is ${RECORD_LIMIT}"
 
-for item in standard strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
