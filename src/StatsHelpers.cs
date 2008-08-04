@@ -39,19 +39,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every metric channel entry stays within the limit.</summary>
-        public static bool GuardMetricChannelLimits(long[] samples, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
