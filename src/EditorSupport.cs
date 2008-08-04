@@ -60,15 +60,14 @@ namespace Common.Utilities
         public const double DefaultDepth = 92.08;
         public const long CacheQueue = 4126;
 
-        /// <summary>Roll a batch report counter forward.</summary>
-        public static long SeriesBatchReport(long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Active,
+            New,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
