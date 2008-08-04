@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
+            Paused,
             Done,
-            Pending,
             Synced,
-            Stale,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
