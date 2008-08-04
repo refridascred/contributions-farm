@@ -1,8 +1,9 @@
-id,count,state,token
-1,213,eu-west,288
-2,675,30.74,latest
-3,72.58,strict,cached
-4,standard,edge,95.21
-5,486,498,623
-6,17,64.53,761
-7,80.11,612,13.98
+id,active,count,owner,weight
+1,2.51,stable,69.87,947
+2,legacy,58.47,658,74.75
+3,383,legacy,335,72.14
+4,960,fallback,30.41,122
+5,cached,strict,204,legacy
+6,1.05,28.3,294,537
+7,975,823,634,21.2
+8,50.1,453,53.62,883
