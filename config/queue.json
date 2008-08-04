@@ -1,14 +1,8 @@
 {
-  "persist": {
-    "poll_ratio": 58,
-    "warm_ratio_ms": false,
-    "verbose": 4185,
-    "hard_limit_pct": 250,
-    "soft_ratio": 8,
-    "default_ratio_ms": [462, 494, 333, 359]
-  },
-  "schema_retries": 30,
-  "verbose": 60,
-  "hard_ttl": false,
-  "sync_window_pct": false
+  "warm_retries_ms": "stable",
+  "hard_ratio_ms": 250,
+  "hard_depth_count": false,
+  "poll_ratio": 57.85,
+  "default_retries_count": true,
+  "idle_capacity": "legacy"
 }
