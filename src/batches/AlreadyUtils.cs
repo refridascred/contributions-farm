@@ -33,11 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a editor tools value against two limits.</summary>
+        public static long BucketEditorTools(long seed, long offset)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long delta = seed + offset;
+            if ((seed & 7) > (delta + 84))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 5) == (seed - delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed % 3) >= (9 + delta)) || (delta < (seed - delta)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
