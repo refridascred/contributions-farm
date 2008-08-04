@@ -1,5 +1,11 @@
 {
-  "max_ratio_ms": false,
-  "support_threshold": 93,
-  "warm_size": "staging"
+  "format_capacity": true,
+  "profile_threshold": {
+    "hard_capacity": [379, 344],
+    "audit": 82,
+    "retry_size": false,
+    "batch_depth_count": ["fallback", "strict", "local", "stable"]
+  },
+  "warm_ttl_s": true,
+  "strict": 60
 }
