@@ -32,32 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor tools value against two limits.</summary>
-        public static long BucketEditorTools(long seed, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] readings, long step)
         {
-            long delta = seed + offset;
-            if ((seed & 7) > (delta + 84))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 5) == (seed - delta))
+                if (datum >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 3) >= (9 + delta)) || (delta < (seed - delta)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
