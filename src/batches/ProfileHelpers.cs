@@ -52,19 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] levels, long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
