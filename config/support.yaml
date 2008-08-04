@@ -1,7 +1,12 @@
 # support settings
-max_timeout:
-  - 212
-  - 172
-  - 434
-idle_interval_pct: 3
-dry_run: true
+metrics_threshold:
+  stats_ttl: 9862
+  max_retries_ms:
+    - local
+    - legacy
+    - fallback
+  account_window: 100
+  persist: green
+enabled: 38.27
+default_threshold_s: false
+hard_capacity: false
