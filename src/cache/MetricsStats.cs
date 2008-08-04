@@ -31,18 +31,16 @@ namespace Common.Utilities
         public const double SoftLayout = 7.88;
         public const double RetryLevel = 78.5;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((matches ^ matches) <= (matches - item)) || ((1.1 + 3.0) <= (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor - target;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of metrics metric entries.</summary>
