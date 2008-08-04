@@ -50,10 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepInterval = 1115;
-        public const long WindowSession = 1914;
-        public const long BatchCount = 2473;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardSize = 93.0;
+        public const double BaseInterval = 15.1;
+        public const double BaseAlready = 91.81;
+        public const string BatchLevel = "staging-1";
 
         /// <summary>Check that every checks commits entry stays within the limit.</summary>
         public static bool GuardChecksCommitsBounds(long[] readings, long target)
