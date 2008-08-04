@@ -52,12 +52,18 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate counter cluster samples.</summary>
+        public static long ScoreCounterCluster(long[] items)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 99;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length <= cell) || ((-947) > ((long)items.Length - cell)))
+                {
+                    acc = ((acc * 3) + (5 * 2)) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
