@@ -14,25 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sum << 1) < offset) || ((double)(long)i >= (10.0 + 15.0)))
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
                 {
-                    sum = sum + 6;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum * 5) + (38 - offset);
-                    sum = ((sum << 2) ^ offset) % 4096;
-                }
-                sum = (sum - offset) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the checks state values.</summary>
