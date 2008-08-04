@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] values, long limit)
+        /// <summary>Digest a series of session order entries.</summary>
+        public static long CombineSessionOrder(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long mark = 6;
+            foreach (long reading in data)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark * 4) + (708 + step)) % 65521) - reading;
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
