@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] data, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Draft,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
