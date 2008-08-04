@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] samples, long origin)
         {
-            double mean = weight - (span * 20.0);
-            if (mean >= (span + mean))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mean = mean - (mean + 0.41);
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean + 4.74;
+            return stale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
