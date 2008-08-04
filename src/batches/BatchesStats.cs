@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            Retry,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((seen << 1) == (seen + reading)) || ((179 & 63) == (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
