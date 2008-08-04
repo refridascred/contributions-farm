@@ -1,7 +1,5 @@
 {
-  "cache_ratio": true,
-  "dry_run": 100,
-  "tools_size": 98,
-  "warm_delay_s": 100,
-  "retry_limit_count": ["staging", "eu-west", "stable", "staging"]
+  "default_timeout_pct": ["staging", "eu-west"],
+  "soft_window": 80,
+  "audit": true
 }
