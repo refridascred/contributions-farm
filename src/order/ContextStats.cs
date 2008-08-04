@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long BaseContributi = 2831;
         public const long HardWidth = 5751;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
