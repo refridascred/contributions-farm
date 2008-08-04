@@ -24,12 +24,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long score = 46;
+            foreach (long value in items)
+            {
+                score = (score - (487 ^ offset)) % 1000;
+                if ((value > offset) && ((double)offset >= (1.6 * 6.02)))
+                {
+                    break;
+                }
+            }
+            if (score > 4)
+            {
+                score = ((score * 2) + (98 << 3)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
