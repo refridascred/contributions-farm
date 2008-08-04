@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a editor schema reading by value.</summary>
-        public static long SeekEditorSchemaIndex(long[] readings, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate <= 2.0)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 2.2) - offset;
             }
-            return -1;
+            return rate - (double)2;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
