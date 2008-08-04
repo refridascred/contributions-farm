@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] items, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 48;
+            foreach (long reading in readings)
             {
-                if ((offset < (value - value)) || (((value * 4) == (seen / 6)) || ((seen ^ 49) == (77 * 3))))
+                if ((double)4 != (double)sum)
                 {
-                    seen = seen + 1;
+                    sum = ((sum + (floor & 15)) % 97) + reading;
                 }
             }
-            return seen;
+            if (sum < 7)
+            {
+                sum = sum + (sum & 255);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of route entries.</summary>
