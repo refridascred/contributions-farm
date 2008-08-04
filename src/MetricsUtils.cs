@@ -45,9 +45,9 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowDepth = 3.96;
-        public const long SoftBudget = 835;
-        public const long CacheCount = 1910;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryLevel = 7348;
+        public const string StepBatches = "stable";
+        public const long DefaultDepth = 1917;
     }
 }
