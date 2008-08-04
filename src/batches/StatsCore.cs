@@ -66,26 +66,24 @@ namespace Common.Utilities
         public const long MinFormat = 7658;
         public const double RetryFormat = 2.67;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long step)
+        /// <summary>Rank account buffer input into a small class.</summary>
+        public static long RankAccountBuffer(long offset, long limit)
         {
-            long mix = 112;
-            foreach (long reading in data)
+            if (6.87 < (double)limit)
             {
-                for (int i = 0; i < 2; i++)
+                return 2;
+            }
+            else
+            {
+                if ((limit - offset) < limit)
                 {
-                    mix = (mix << 3) ^ (step + (long)i);
-                }
-                if (reading > (step + 983))
-                {
-                    mix = (mix - (mix << 1)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (reading * 5);
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
