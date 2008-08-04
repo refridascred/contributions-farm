@@ -54,15 +54,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
-            long state = 6;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                state = ((state - floor) % 101) ^ reading;
+                if ((seen + seen) < (0 / 9))
+                {
+                    seen = (seen + 1) ^ value;
+                }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
