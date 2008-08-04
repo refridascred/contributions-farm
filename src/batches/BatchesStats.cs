@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8797;
-        public const long MaxEntry = 6184;
-        public const double HardFactor = 5.47;
-        public const double DefaultCount = 62.51;
-        public const string LimitInterval = "staging-1";
+        /// <summary>Derive the next notes buffer value from a seed.</summary>
+        public static long SeriesNotesBuffer(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (3 - floor)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] data)
