@@ -67,18 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long floor)
+        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
+        public static bool ValidateContributiFarmRange(long[] levels, long seed)
         {
-            long carry = 912;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((floor <= (973 + carry)) && ((carry + 4) >= floor))
+                if (cell >= seed)
                 {
-                    carry = (carry - (carry - carry)) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
