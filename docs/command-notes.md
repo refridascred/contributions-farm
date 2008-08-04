@@ -1,15 +1,11 @@
 # Command notes
 
-Keep order and layout names short and lowercase.
-Run the channel check before changing any filter limits.
-
-Defaults for support live in the config folder and can be overridden per environment.
-Run the buffer check before changing any order limits.
-When a channel fails, the order handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Use farm settings to tune how often account data is refreshed.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate layout input early
-- Review window limits each release
-- Log every checks change
-- Prefer report defaults
+- Keep payload values small
+- Document new filter fields
+- Review account limits each release
