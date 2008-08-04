@@ -60,12 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series, long target)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long sum = 535;
+            foreach (long reading in series)
+            {
+                sum = ((sum ^ (reading - 87)) % 255) - target;
+                sum = (sum - (reading + reading)) % 101;
+            }
+            return sum;
         }
     }
 }
