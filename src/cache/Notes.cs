@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheLevel = 2979;
-        public const long RetryFarm = 4800;
-        public const double DefaultFarm = 90.33;
-        public const long WindowFarm = 242;
-        public const double RetryRatio = 26.35;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheBounds(long[] values, long limit)
