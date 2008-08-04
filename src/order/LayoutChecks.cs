@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
-        public static long MatchMetricsGithubfarmCount(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a account snapshot.</summary>
