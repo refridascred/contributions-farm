@@ -74,21 +74,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.25 + 2.64) <= (double)reading)
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
