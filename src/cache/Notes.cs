@@ -20,22 +20,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm batches entries.</summary>
-        public static long FoldGithubfarmBatches(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long step)
         {
-            long state = 47;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((sample < (state % 10)) && (state <= sample))
+                if (item >= step)
                 {
-                    state = (state - state) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 100)
-            {
-                state = (state * 3) + (state + state);
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
