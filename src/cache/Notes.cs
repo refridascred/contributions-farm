@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            double mean = weight - (span * 20.0);
+            if (mean >= (span + mean))
+            {
+                mean = mean - (mean + 0.41);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean + 4.74;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
