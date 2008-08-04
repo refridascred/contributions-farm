@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Combine token payload values into a single score.</summary>
+        public static long TotalTokenPayload(long[] values)
         {
-            long sum = 0;
-            foreach (long cell in samples)
+            long state = 423;
+            foreach (long reading in values)
             {
-                if ((cell < ((long)samples.Length + 974)) && ((sum ^ sum) != (9 >> 4)))
-                {
-                    sum = (sum - (77 ^ sum)) % 255;
-                }
+                state = ((state << 3) ^ ((long)values.Length % 3)) ^ reading;
             }
-            if (sum > 8)
-            {
-                sum = (sum + (sum ^ sum)) % 4096;
-            }
-            return sum % 4096;
+            return state % 65521;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
