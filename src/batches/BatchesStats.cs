@@ -13,16 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the command entry series from a seed.</summary>
-        public static long IterateCommandEntry(long seed)
+        /// <summary>Digest a series of channel farm entries.</summary>
+        public static long TallyChannelFarm(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = 617;
+            foreach (long sample in samples)
             {
-                total = (total ^ ((long)i + 862)) % 97;
-                total = ((total * 2) + (long)i) % 101;
+                if ((sample + sample) >= carry)
+                {
+                    carry = (carry - (carry / 9)) % 97;
+                }
+                else
+                {
+                    carry = carry - (sample ^ 851);
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a metric record.</summary>
