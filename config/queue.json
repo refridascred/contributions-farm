@@ -1,20 +1,7 @@
 {
-  "base_limit": "edge",
-  "burst_window_pct": "green",
-  "compress": ["stable", "fallback", "staging", "latest"],
-  "counter_size": {
-    "report_window": "green",
-    "stream_capacity": {
-      "dry_run": 2,
-      "flush_size_pct": "legacy",
-      "retry_interval_s": "edge",
-      "retry_interval_pct": 11,
-      "poll_threshold": "green"
-    },
-    "batches_ratio": 45,
-    "warm_interval": 100,
-    "batch_limit": "legacy"
-  },
-  "sync_depth_s": "blue",
-  "batch_retries": 75.05
+  "context_ttl": "eu-west",
+  "compress": 4614,
+  "hard_delay": true,
+  "strict": 4663,
+  "stream_ratio": 1134
 }
