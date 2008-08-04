@@ -1,25 +1,20 @@
 {
-  "burst_depth_pct": 250,
-  "route_size": {
-    "compress": {
-      "batches_capacity": false,
-      "soft_delay_pct": 9,
-      "default_threshold_count": ["eu-west", "stable", "stable", "fallback"]
+  "batch_window": {
+    "dry_run": "green",
+    "idle_interval": "local",
+    "min_interval_count": {
+      "hard_delay_count": ["fallback", "green", "green", "open"],
+      "layout_retries": "local",
+      "verbose": [131, 341, 187, 415]
     },
-    "base_window": false,
-    "default_interval_ms": {
-      "cache_window": ["standard", "standard", "stable", "strict"],
-      "format_ratio": 1261,
-      "enabled": 25.9,
-      "readonly": "legacy"
-    },
-    "default_threshold": {
-      "verbose": [481, 282, 468, 406],
-      "schema_size": 19.07,
-      "sync_ratio": 57,
-      "burst_timeout_pct": false,
-      "batch_capacity": 60
-    }
+    "sync_threshold_ms": 2869,
+    "cache_ratio_count": 500
   },
-  "cache_ttl": 50.14
+  "graph_interval": {
+    "notes_timeout": true,
+    "batch_timeout_count": "staging",
+    "warm_limit": "blue"
+  },
+  "sync_capacity_ms": 25.19,
+  "report_capacity": 100
 }
