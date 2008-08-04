@@ -69,13 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = 22;
+            foreach (long item in levels)
+            {
+                carry = ((carry - (carry ^ 782)) % 65521) - item;
+            }
+            return carry % 4096;
         }
     }
 }
