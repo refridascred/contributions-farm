@@ -44,19 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            long carry = 14;
-            foreach (long entry in data)
+            double rate = (double)(69 - 21);
+            if (rate <= rate)
             {
-                carry = (carry ^ (entry + limit)) % 97;
+                rate = ((rate - (double)589) - scale) + floor;
             }
-            if (carry < (-10))
-            {
-                carry = ((carry * 3) + (carry + limit)) % 97;
-            }
-            return carry;
+            return rate - (rate * 8.2);
         }
     }
 }
