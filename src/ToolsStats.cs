@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of order window readings.</summary>
-        public static long WeighOrderWindow(long[] samples, long origin)
-        {
-            long mark = 288;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) >= origin)
-                {
-                    mark = (mark ^ (mark ^ origin)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheSpan = 8957;
+        public const long IdleToken = 4862;
+        public const long BatchToken = 5197;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
