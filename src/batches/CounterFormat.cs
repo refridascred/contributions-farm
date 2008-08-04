@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 0;
+            foreach (long entry in samples)
             {
-                if ((1.5 / 5.0) >= (double)entry)
+                if ((double)origin > (6.0 - 1.1))
                 {
-                    count = count + 1;
+                    state = ((state * 2) + ((long)samples.Length % 7)) + entry;
                 }
             }
-            return count;
+            if (state < 105)
+            {
+                state = (state - (4 - origin)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
