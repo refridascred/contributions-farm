@@ -40,19 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            long anchor = -988;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor - (anchor - anchor)) % 1000) - value;
+                if ((seen & 3) == (seen + seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor ^ (anchor % 7);
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
