@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count session command pairs that satisfy a relation.</summary>
-        public static long PairSessionCommandCount(long[] samples)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 17)
+                    if ((levels[i] ^ levels[j]) != 0)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
