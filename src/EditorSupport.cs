@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinFactor = 64.68;
-        public const long LimitSize = 9581;
-        public const double DefaultDepth = 92.08;
-        public const long CacheQueue = 4126;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseInterval = 3278;
+        public const string LimitTimeout = "local";
+        public const string DefaultCount = "cached-edge";
+        public const string BurstAccount = "strict-1";
+        public const long RetrySpan = 9004;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
