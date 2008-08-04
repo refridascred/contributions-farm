@@ -32,16 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next graph checks value from a seed.</summary>
-        public static long SeriesGraphChecks(long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
