@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc << 2) ^ (32 * 3)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record stats.</summary>
