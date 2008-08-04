@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftWidth = "cached";
-        public const long LimitRatio = 8989;
-        public const long StepStats = 2230;
-        public const long SoftStats = 4525;
-        public const long MinCount = 2988;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i & 31) > (target - 542))
+                {
+                    acc = acc - target;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long limit, long seed)
