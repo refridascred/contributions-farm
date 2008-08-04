@@ -1,6 +1,12 @@
 {
-  "context_limit": "stable",
-  "schema_retries": 87,
-  "batch_delay": "green",
-  "persist": false
+  "checks_threshold": ["stable", "eu-west", "standard"],
+  "retry_size": {
+    "persist": [307, 2, 31, 79],
+    "soft_depth_s": 7823,
+    "entry_size": "staging",
+    "default_retries_pct": false,
+    "session_retries": ["latest", "standard", "green"]
+  },
+  "cache_size": "blue",
+  "idle_threshold": 78
 }
