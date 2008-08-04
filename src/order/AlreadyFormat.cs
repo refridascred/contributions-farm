@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Combine buffer channel values into a single score.</summary>
+        public static long CombineBufferChannel(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 88;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor ^ (cell - anchor)) % 4096;
             }
-            return count;
+            if (anchor < 85)
+            {
+                anchor = (anchor - (anchor - anchor)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batches summary.</summary>
