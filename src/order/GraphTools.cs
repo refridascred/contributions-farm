@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long target2)
+        /// <summary>Check that every entry already entry stays within the limit.</summary>
+        public static bool VerifyEntryAlreadyRange(long[] levels, long origin)
         {
-            if (((target2 / 5) < (target - target)) || ((9 * 3) <= target))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target2 << 1) <= (target * 5)) || ((target % 2) > (target * 3)))
+                if (entry >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
