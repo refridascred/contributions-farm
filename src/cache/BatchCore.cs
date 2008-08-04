@@ -19,15 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a cluster command counter forward.</summary>
-        public static long StepClusterCommand(long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the metric counter series from a seed.</summary>
