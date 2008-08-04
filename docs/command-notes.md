@@ -1,14 +1,12 @@
 # Command notes
 
-Run the channel check before changing any order limits.
-Each format is validated before it reaches the support queue.
-
-Keep notes and window names short and lowercase.
-Use account settings to tune how often report data is refreshed.
+Each schema is validated before it reaches the channel queue.
+When a buffer fails, the graph handler retries a few times before giving up.
+The layout report groups every metric by profile.
 
 ## Guidelines
 
-- Keep entry values small
-- Document new route fields
-- Validate queue input early
-- Log every checks change
+- Keep support values small
+- Review graph limits each release
+- Log every command change
+- Document new command fields
