@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Active,
-            Queued,
-            Synced,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 2255;
+        public const long BaseProfile = 7182;
+        public const long WindowScore = 9439;
+        public const long CacheProfile = 4228;
+        public const double IdleLevel = 34.0;
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double gain, double span)
