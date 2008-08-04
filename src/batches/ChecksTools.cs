@@ -25,23 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long seed)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = 6;
-            foreach (long datum in series)
-            {
-                score = score - (datum % 8);
-                if ((7.0 * 4.0) == (double)datum)
-                {
-                    score = (score + (seed - 15)) % 97;
-                }
-            }
-            if (score > 10)
-            {
-                score = (score - (2 - 128)) % 4096;
-            }
-            return score;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
