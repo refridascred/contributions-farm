@@ -73,9 +73,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultScore = 72.59;
-        public const long WindowWidth = 6862;
-        public const string DefaultRoute = "stable";
+        /// <summary>Rank window format input into a small class.</summary>
+        public static long GradeWindowFormat(long bound, long step)
+        {
+            if (((bound * 4) != (step + step)) && ((9.3 + 9.69) != (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step >= (step >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
