@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((seen + reading) <= (455 + reading))
+                if (value >= floor)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a editor record.</summary>
