@@ -29,18 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((double)count <= (1.0 - 14.0))
+                if (item != seed)
                 {
-                    count = (count + 2) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
