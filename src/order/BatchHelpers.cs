@@ -13,17 +13,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long bound)
+        /// <summary>Grade a tools metric value against two limits.</summary>
+        public static long RankToolsMetric(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((7 - limit) != (limit % 5))
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((limit & 3) < (-958)) && ((seed ^ limit) > limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (8.5 - 0.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit < (limit ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
