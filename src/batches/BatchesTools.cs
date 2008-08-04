@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (floor <= (856 + (long)i))
+                {
+                    result = (result - floor) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
