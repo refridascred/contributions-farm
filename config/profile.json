@@ -1,26 +1,10 @@
 {
-  "cache_threshold_s": true,
-  "max_limit": ["fallback", "standard", "standard", "staging"],
-  "retry_interval_count": false,
-  "sync_ttl_s": {
-    "dry_run": {
-      "cache_limit_s": 2846,
-      "hard_retries": false,
-      "cache_interval": 60,
-      "batches_ttl": [356, 441],
-      "burst_threshold_s": "blue",
-      "command_window": "latest"
-    },
-    "flush_window_count": 34.72,
-    "commits_depth": "eu-west",
-    "buffer_size": {
-      "retry_size_s": "fallback",
-      "payload_depth": true,
-      "batch_capacity_s": true,
-      "flush_capacity_ms": false,
-      "retry_retries": "primary"
-    },
-    "context_ttl": 250
+  "audit": 2406,
+  "cache_ttl": {
+    "metrics_timeout": 34,
+    "cluster_capacity": "latest",
+    "default_size_count": 100
   },
-  "idle_threshold": [453, 242]
+  "min_capacity_pct": 6774,
+  "schema_delay": "edge"
 }
