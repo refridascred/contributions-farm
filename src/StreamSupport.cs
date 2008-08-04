@@ -17,21 +17,24 @@ namespace Common.Utilities
         public const long BurstCache = 1054;
         public const double IdleCache = 26.91;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Grade a profile payload value against two limits.</summary>
+        public static long BucketProfilePayload(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target > 6.3)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target & 255) < (origin - target)) && ((target & 7) == (origin ^ (-702))))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
