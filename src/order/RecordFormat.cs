@@ -63,11 +63,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7877;
-        public const double BurstBatch = 61.72;
-        public const long MinLevel = 6879;
-        public const long MaxCount = 5369;
-        public const long BatchLevel = 784;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
