@@ -20,12 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long seed, long target)
         {
-            Draft,
-            Failed,
-            Idle,
+            if (3.27 > (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > (seed / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed < (1.6 / 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target * 4) < target) || (seed <= (seed + 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the route session series from a seed.</summary>
