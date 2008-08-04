@@ -1,34 +1,24 @@
 # githubfarm settings
-githubfarm_interval:
-  retry_limit_s:
-    persist: local
-    poll_timeout_s:
-      - 448
-      - 84
-      - 137
-    base_ratio_pct: 72
-    base_window_s: fallback
-    notes_timeout: 98
-    format_timeout: 22.4
-  sync_timeout_ms:
-    - 241
-    - 72
-    - 330
-  graph_threshold: cached
-  checks_ttl: 8520
-soft_size:
-  sync_interval: 27.72
-  cache_size: 24.82
-  idle_timeout_s: green
-  context_depth: standard
-compress:
-  - edge
+strict: 20
+payload_retries:
+  verbose:
+    - green
+    - standard
+    - edge
+  base_timeout: open
+  dry_run:
+    retry_timeout: edge
+    hard_interval_pct: legacy
+    batch_size_pct: 5444
+    base_ttl_count: eu-west
+    base_depth_s: true
+    metric_size: stable
+base_threshold_pct:
   - local
-  - blue
-flush_timeout: blue
-hard_depth_count: false
-metric_limit:
-  - 385
-  - 14
-  - 141
-  - 177
+  - staging
+  - primary
+hard_timeout_count: 33.12
+window_interval:
+  - 125
+  - 344
+  - 133
