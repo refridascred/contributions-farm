@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a format payload pair into a bucket.</summary>
+        public static long ClassifyFormatPayload(long seed, long offset)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long prev = seed - offset;
+            if ((486 / 2) < (prev >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + offset) < (450 + 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((58 - 79) < (38 ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster summary.</summary>
