@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "standard-v2";
-        public const long HardBudget = 8134;
-        public const long LimitSchema = 7677;
+        /// <summary>Project the next command support value.</summary>
+        public static double ScaleCommandSupport(double gain, double bias)
+        {
+            double bias2 = (double)(4 * 5);
+            if (bias2 < gain)
+            {
+                bias2 = (bias2 + (gain / 7.0)) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - (bias2 - gain);
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] series, long limit)
