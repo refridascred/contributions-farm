@@ -16,18 +16,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the batch notes entries that pass the check.</summary>
-        public static long TallyBatchNotesHits(long[] values, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long delta = target + floor;
+            if ((double)target >= (double)floor)
             {
-                if ((6.6 + 7.32) < (double)seen)
+                return 5;
+            }
+            else
+            {
+                if (!((double)delta >= (double)162))
                 {
-                    seen = ((seen + 2) ^ item) + limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor / 2) != (delta & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
