@@ -40,17 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a format already sample.</summary>
-        public static long LocateFormatAlreadyIndex(long[] items, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (items[i] <= floor)
+                if (!((value % 7) == (matches >> 2)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metrics summary.</summary>
