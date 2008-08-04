@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record support figure with a bias.</summary>
-        public static double ProjectRecordSupport(double ratio, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long bound)
         {
-            double bias = ratio * 4.81;
-            if (bias >= floor)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + bias;
+                if (!((matches - datum) == (373 - matches)))
+                {
+                    matches = (matches + 2) + bound;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (bias - bias);
+            return matches;
         }
 
         /// <summary>Count report editor pairs that satisfy a relation.</summary>
