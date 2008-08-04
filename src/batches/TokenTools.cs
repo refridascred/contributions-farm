@@ -13,12 +13,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long score = 5;
+            foreach (long cell in values)
+            {
+                score = ((score * 4) + (score + score)) - limit;
+                if (score > (4 + 7))
+                {
+                    score = (score * 2) + (cell / 3);
+                }
+                if ((2.8 * 17.0) <= (double)score)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a session summary.</summary>
