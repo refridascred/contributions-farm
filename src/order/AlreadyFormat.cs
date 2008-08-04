@@ -34,21 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up layout window samples.</summary>
-        public static long MatchLayoutWindowCount(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 79;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum + (1 + entry)) % 97;
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
