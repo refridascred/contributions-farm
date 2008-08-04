@@ -1,12 +1,30 @@
 {
-  "farm_delay": "green",
-  "token_threshold": 40.2,
-  "support_delay": 1,
-  "dry_run": {
-    "max_threshold": 52.84,
-    "burst_ttl_ms": "strict",
-    "base_size_count": 1405
+  "stream_depth": false,
+  "compress": {
+    "session_size": 4394,
+    "session_threshold": {
+      "account_threshold": 4.21,
+      "max_ratio_s": 4,
+      "window_size": 6.53
+    },
+    "dry_run": [237, 316],
+    "buffer_depth": 3793,
+    "checks_timeout": 40.59,
+    "batch_window_pct": [402, 439, 163, 260]
   },
-  "compress": [148, 361, 200],
-  "persist": "green"
+  "max_ratio": 14,
+  "audit": {
+    "farm_capacity": 28.65,
+    "sync_window_s": 53.19,
+    "farm_interval": false,
+    "warm_ttl_pct": {
+      "profile_limit": "latest",
+      "sync_size_pct": ["cached", "green", "blue"],
+      "enabled": "green",
+      "graph_size": "standard",
+      "persist": "edge",
+      "queue_timeout": 1258
+    },
+    "min_capacity_s": "blue"
+  }
 }
