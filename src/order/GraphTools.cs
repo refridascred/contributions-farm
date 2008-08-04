@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const string CacheFactor = "standard-1";
         public const long BatchInterval = 2853;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long bound)
+        /// <summary>Look up the position of a session commits sample.</summary>
+        public static long LookupSessionCommitsIndex(long[] values, long origin)
         {
-            long score = 3;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - sample) % 101;
-                if (((19.0 * 6.4) >= (2.0 - 4.4)) || ((sample >> 2) > score))
+                if (values[i] < origin)
                 {
-                    score = score ^ score;
+                    return (long)i;
                 }
             }
-            if (score > 263)
-            {
-                score = score + bound;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
