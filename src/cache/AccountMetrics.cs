@@ -65,32 +65,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a schema stream pair into a bucket.</summary>
-        public static long GradeSchemaStream(long limit, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long seed)
         {
-            long edge = limit - target;
-            if ((double)edge > (double)414)
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((7 % 24) >= (edge + limit)))
+                if (sample != seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - target) < (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
