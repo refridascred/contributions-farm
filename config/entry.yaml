@@ -1,20 +1,27 @@
 # entry settings
-soft_ratio_ms: 100
-readonly: strict
-min_depth_count:
-  cache_interval_count: fallback
-  idle_capacity_pct: 100
-  hard_timeout: true
-  base_capacity: primary
-  min_window: green
-soft_ttl_count:
-  session_limit: edge
-  default_size_count: false
-  buffer_capacity: 4759
-  hard_size_pct:
-    max_interval:
-      - 348
-      - 240
-    graph_depth: false
-    audit: green
-min_window_count: 500
+default_interval: edge
+checks_ttl: legacy
+enabled: latest
+default_limit:
+  - open
+  - eu-west
+  - blue
+min_capacity_s:
+  cache_retries: 669
+  base_window: primary
+  stats_delay: 60
+  burst_capacity_pct: 6352
+  idle_size_count:
+    compress: fallback
+    channel_threshold: 41
+    persist: true
+    warm_threshold_pct:
+      - 243
+      - 249
+      - 322
+    enabled: cached
+  already_delay:
+    - primary
+    - cached
+    - legacy
+poll_threshold: 847
