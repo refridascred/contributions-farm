@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) != (entry & 7))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a farm info.</summary>
