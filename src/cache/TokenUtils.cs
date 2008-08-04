@@ -24,17 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 7235;
+        public const long BaseDepth = 5015;
+        public const double WindowSize = 61.27;
+        public const long BurstInterval = 7999;
+        public const long MinLevel = 5708;
     }
 }
