@@ -32,14 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Retry,
-            Synced,
-            New,
-            Locked,
-            Active,
+            Done,
+            Stale,
+            Ready,
         }
     }
 }
