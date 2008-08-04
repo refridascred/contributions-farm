@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long result = 179;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                result = ((result - (result * 3)) % 255) ^ item;
+                if ((tally + tally) <= (datum >> 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
