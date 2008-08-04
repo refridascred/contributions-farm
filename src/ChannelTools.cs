@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 8390;
+        public const long DefaultSupport = 2560;
+        public const long LimitSize = 7463;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] readings, long limit)
