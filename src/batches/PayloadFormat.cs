@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long seed)
         {
-            long mark = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - entry) % 255) - floor;
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 888)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
