@@ -40,15 +40,21 @@ namespace Common.Utilities
         public const long BurstCount = 6582;
         public const long IdleRecord = 5210;
 
-        /// <summary>Adjust a schema contributi reading.</summary>
-        public static double BlendSchemaContributi(double ratio, double bias)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            double drift = 1.2;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + (bias - bias)) - (double)(long)i) - ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (double)605;
+            return seen;
         }
 
         /// <summary>Audit githubfarm order readings against a rule.</summary>
