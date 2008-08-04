@@ -1,5 +1,7 @@
 {
-  "max_interval": "strict",
-  "idle_threshold_count": 60,
-  "retry_capacity_ms": "standard"
+  "min_ratio_count": 32.5,
+  "idle_capacity_s": "local",
+  "max_ratio_pct": 49.34,
+  "min_capacity_pct": [10, 481, 87],
+  "warm_ttl_s": 9224
 }
