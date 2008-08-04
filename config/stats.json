@@ -1,5 +1,5 @@
 {
-  "min_timeout": 82,
-  "soft_size_count": ["stable", "local", "green"],
-  "enabled": 99
+  "retry_ttl": 2935,
+  "stream_ttl": 2821,
+  "editor_ratio": "open"
 }
