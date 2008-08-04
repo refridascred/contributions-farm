@@ -25,10 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 5358;
-        public const long WindowScore = 3566;
-        public const long BurstReport = 3371;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
+        {
+            long result = 52;
+            foreach (long entry in series)
+            {
+                if ((6.4 + 3.29) != (double)result)
+                {
+                    result = ((result - 8) % 255) ^ entry;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Roll a command cache counter forward.</summary>
         public static long RollCommandCache(long limit)
