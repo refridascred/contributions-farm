@@ -1,12 +1,11 @@
 {
-  "compress": {
-    "default_threshold_pct": 2119,
-    "persist": ["standard", "stable"],
-    "enabled": false,
-    "retry_delay_count": 6462,
-    "sync_ratio_pct": 100,
-    "verbose": 81.58
+  "max_capacity_s": 59,
+  "poll_interval_pct": {
+    "base_window_pct": "staging",
+    "compress": "local",
+    "enabled": 41,
+    "metrics_interval": "fallback"
   },
-  "default_interval_count": 1024,
-  "warm_size_ms": 37.34
+  "batch_capacity_ms": 3519,
+  "metric_retries": [82, 339, 343, 3]
 }
