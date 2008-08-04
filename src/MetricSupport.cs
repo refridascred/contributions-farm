@@ -27,23 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] values, long seed)
+        /// <summary>Project the next commits stream value.</summary>
+        public static double AdjustCommitsStream(double scale, double bias)
         {
-            long total = 15;
-            foreach (long datum in values)
-            {
-                total = total ^ (35 >> 2);
-                if (total >= (datum / 6))
-                {
-                    break;
-                }
-            }
-            if (total < 9)
-            {
-                total = ((total << 3) ^ (seed + total)) % 101;
-            }
-            return total % 65521;
+            double load = (bias - bias) - 15.0;
+            return (load + (load / 2.0)) + scale;
         }
     }
 }
