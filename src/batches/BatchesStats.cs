@@ -13,11 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Iterate the command entry series from a seed.</summary>
+        public static long IterateCommandEntry(long seed)
         {
-            double mean = weight;
-            return (mean - (double)607) + offset;
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total ^ ((long)i + 862)) % 97;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the route level values.</summary>
