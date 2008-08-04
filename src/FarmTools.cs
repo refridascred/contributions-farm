@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values, long target)
         {
-            long mix = 33;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                long seen = mix;
-                mix = ((mix + (seen ^ 7)) % 97) - reading;
-                mix = mix - seed;
+                if (!(entry < (target + entry)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Grade a graph command value against two limits.</summary>
