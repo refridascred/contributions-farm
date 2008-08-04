@@ -51,24 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] readings, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long seed)
         {
-            long sum = -8;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum >> 4) > 585)
+                if (items[i] == seed)
                 {
-                    sum = ((sum * 2) + (floor + datum)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum - (2 >> 3)) % 4096;
-                    sum = (sum << 2) ^ (sum / 4);
-                }
-                sum = (sum ^ datum) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
