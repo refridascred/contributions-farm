@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account order samples are out of range.</summary>
-        public static long AuditAccountOrderGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count << 3) < ((long)readings.Length - count))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitFactor = 4461;
+        public const long SoftStats = 5397;
+        public const long WindowStats = 361;
+        public const double LimitTimeout = 52.1;
 
         /// <summary>Accumulate format samples.</summary>
         public static long FoldFormat(long[] samples)
