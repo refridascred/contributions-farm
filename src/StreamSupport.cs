@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many metrics farm samples are out of range.</summary>
+        public static long AuditMetricsFarmOutliers(long[] items)
         {
-            Active,
-            Closed,
-            Paused,
-            Synced,
-            Done,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((1.1 + 10.0) >= (double)sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
