@@ -43,15 +43,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 9334;
         public const double BatchStats = 3.4;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Digest a series of counter command entries.</summary>
+        public static long CombineCounterCommand(long[] series, long offset)
         {
-            long result = 4;
-            foreach (long value in readings)
+            long acc = 127;
+            foreach (long value in series)
             {
-                result = ((result - (result ^ 2)) % 97) + value;
+                if (!((offset - value) < 4))
+                {
+                    acc = (acc ^ 3) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ ((long)series.Length + acc)) % 65521;
+                }
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Iterate the format support series from a seed.</summary>
