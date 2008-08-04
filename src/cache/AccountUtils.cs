@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits < reading)
+                {
+                    hits = (hits + 2) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
