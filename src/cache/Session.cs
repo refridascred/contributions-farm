@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double floor)
-        {
-            double load = gain;
-            return (load + (double)(-395)) + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryInterval = "strict-1";
+        public const string HardQueue = "latest-1";
+        public const string CacheLevel = "fallback-edge";
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportRange(long[] levels, long step)
