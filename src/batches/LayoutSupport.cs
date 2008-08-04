@@ -64,18 +64,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long MeasureLayoutCounterHits(long[] series)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading << 2) > (count >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
