@@ -1,8 +1,14 @@
 {
-  "cache_delay": 41,
-  "enabled": 6504,
-  "metric_ratio": false,
-  "session_delay": 64,
-  "schema_window": "fallback",
-  "strict": "blue"
+  "flush_capacity": 9491,
+  "burst_ttl_ms": "edge",
+  "channel_threshold": {
+    "readonly": 5389,
+    "report_window": 9615,
+    "metrics_limit": false,
+    "channel_capacity": true,
+    "batches_retries": 6905
+  },
+  "warm_capacity_count": 60,
+  "hard_ratio_pct": 2.02,
+  "enabled": "open"
 }
