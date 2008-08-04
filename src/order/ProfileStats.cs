@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long seed)
         {
-            long mark = 19;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (2.0 <= (double)item)
+                if (reading < seed)
                 {
-                    mark = ((mark << 3) ^ (10 - mark)) % 65521;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    mark = (mark ^ ((-55) - 831)) % 101;
-                    mark = (mark - (mark >> 4)) % 255;
-                }
-                mark = ((mark * 5) + (item * 3)) % 97;
             }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Match up command account samples.</summary>
