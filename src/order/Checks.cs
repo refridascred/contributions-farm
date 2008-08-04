@@ -63,11 +63,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] values, long floor)
         {
-            double drift = (double)(60 + 63);
-            return (drift + rate) + span;
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((double)91 != (double)floor) || (((datum - 71) >= (hits / 3)) && (datum >= (3 * 2))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
