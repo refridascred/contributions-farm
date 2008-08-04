@@ -30,23 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double scale = 4.38 * 7.6;
-            if (scale > (scale - floor))
-            {
-                scale = scale - (floor + floor);
-            }
-            else
-            {
-                scale = scale - (floor * 2.4);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)68) + (double)(long)i;
-            }
-            return scale - bias;
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
