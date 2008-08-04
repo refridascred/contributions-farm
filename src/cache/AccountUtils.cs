@@ -32,15 +32,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
