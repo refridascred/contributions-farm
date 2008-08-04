@@ -1,4 +1,10 @@
 # githubfarm settings
-strict: 62.64
-stream_retries: false
-warm_ratio_pct: 75.96
+readonly:
+  - primary
+  - stable
+max_interval: 22
+base_delay: local
+warm_threshold_ms:
+  - 228
+  - 22
+flush_retries_pct: fallback
