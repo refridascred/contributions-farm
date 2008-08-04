@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command commits measurements.</summary>
-        public static double ScaleCommandCommits(double ratio, double floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            double ratio2 = (double)((-541) / 6);
-            if (ratio2 < (double)9)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = ratio2 + ratio2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - ratio) - (double)(long)i;
-            }
-            return ratio2 - (floor / 3.0);
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
