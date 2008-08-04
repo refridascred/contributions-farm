@@ -15,32 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long floor)
-        {
-            if (((floor + limit) >= floor) && ((limit >> 5) < floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor > (2.3 - 7.1)) && (limit > 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + floor) < (limit & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseLevel = 6149;
+        public const string RetryLevel = "strict-edge";
+        public const long BurstMetrics = 9258;
+        public const long LimitScore = 901;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long limit, long step)
