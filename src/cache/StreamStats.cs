@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] items, long floor)
         {
-            Retry,
-            Idle,
-            Pending,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a buffer stats.</summary>
