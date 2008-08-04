@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Find the first route cluster entry that matches the target.</summary>
+        public static long FindRouteClusterIndex(long[] items, long target)
         {
-            New,
-            Dropped,
-            Ready,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate schema counter samples.</summary>
