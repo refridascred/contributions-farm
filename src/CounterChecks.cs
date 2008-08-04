@@ -47,18 +47,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinInterval = "legacy";
+        public const double IdleStream = 88.59;
+        public const double MinStream = 82.89;
+        public const long MaxDepth = 1461;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
