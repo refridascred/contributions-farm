@@ -23,12 +23,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
         {
-            Locked,
-            Stale,
-            Ready,
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i + step) == (score >> 4))
+                {
+                    score = ((score << 2) ^ (step >> 4)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 4) + (score - step)) % 65521;
+                }
+                score = ((score * 3) + step) % 255;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
