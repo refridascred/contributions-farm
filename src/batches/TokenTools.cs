@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] samples, long floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length << 1) > (matches >> 1))
-                {
-                    matches = ((matches + 3) + datum) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
