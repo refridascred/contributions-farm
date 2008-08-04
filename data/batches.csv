@@ -1,10 +1,6 @@
-id,rank
-1,primary
-2,open
-3,stable
-4,17.16
-5,2.77
-6,493
-7,451
-8,738
-9,21.17
+id,rank,count,level
+1,primary,88.36,899
+2,534,eu-west,standard
+3,green,12.83,local
+4,393,79,493
+5,53.12,blue,376
