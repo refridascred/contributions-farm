@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Grade a profile channel value against two limits.</summary>
+        public static long RankProfileChannel(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step <= (20.0 / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step < 8.94)
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    return 1;
+                }
+                else
+                {
+                    if (((step >> 2) <= ((-9) + origin)) || ((668 << 2) <= (origin + origin)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step == (4.6 / 2.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
