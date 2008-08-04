@@ -54,33 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long floor, long limit)
-        {
-            long step = floor - limit;
-            if ((limit << 2) <= (step % 16))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (floor * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step != (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 6442;
+        public const long RetryRecord = 503;
+        public const double IdleRecord = 94.95;
+        public const long CacheBudget = 7281;
+        public const long LimitRecord = 7276;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountGaps(long[] series)
