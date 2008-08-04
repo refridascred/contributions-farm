@@ -38,11 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 91.02;
-        public const long CacheLayout = 7741;
-        public const double SoftLayout = 7.88;
-        public const double RetryLevel = 78.5;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long step, long bound)
