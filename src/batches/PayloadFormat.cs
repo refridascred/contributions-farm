@@ -12,17 +12,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long offset)
+        /// <summary>Grade a batches command value against two limits.</summary>
+        public static long ClassifyBatchesCommand(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)floor < 2.9))
             {
-                if (samples[i] == offset)
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor2) != (floor - floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor < (double)floor2) && ((floor + floor2) < floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
