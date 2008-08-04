@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc << 2) ^ (32 * 3)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((((-4) >= (datum % 64)) || ((7.29 - 9.4) == (double)datum)) && ((double)datum <= 7.5))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
