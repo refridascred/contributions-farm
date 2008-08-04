@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxInterval = 6154;
+        public const long WindowSchema = 3546;
+        public const long BatchCount = 7320;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheStream = 4670;
