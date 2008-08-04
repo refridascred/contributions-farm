@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] values)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= 8.64)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
