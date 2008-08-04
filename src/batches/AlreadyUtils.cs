@@ -15,11 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7444;
-        public const long BurstReport = 8828;
-        public const double SoftReport = 75.21;
-        public const string BaseInterval = "staging";
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double offset)
+        {
+            double bias = (double)3 * 6.69;
+            if (bias < (bias - bias))
+            {
+                bias = (bias - 2.5) - scale;
+            }
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (offset - 2.4)) + (double)(long)i;
+            }
+            return bias - offset;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchBudget = "stable";
