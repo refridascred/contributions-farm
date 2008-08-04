@@ -1,8 +1,6 @@
 {
-  "batch_limit_s": ["stable", "fallback", "eu-west"],
-  "strict": 1024,
-  "soft_depth_pct": 60,
-  "readonly": 30,
-  "checks_timeout": true,
-  "tools_interval": 17.1
+  "batches_ratio": "fallback",
+  "verbose": 29,
+  "retry_limit_pct": "staging",
+  "channel_capacity": false
 }
