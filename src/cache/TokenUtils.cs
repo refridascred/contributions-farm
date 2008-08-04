@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = 362;
-            foreach (long value in samples)
-            {
-                mix = (mix ^ (value + mix)) % 65521;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
