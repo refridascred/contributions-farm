@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double weight = bias;
+            if (weight < (double)4)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (double)4) + offset;
             }
-            return valid;
+            return weight - (double)887;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
