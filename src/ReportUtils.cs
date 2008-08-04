@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Count { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "standard-v2";
+        public const long HardBudget = 8134;
+        public const long LimitSchema = 7677;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
