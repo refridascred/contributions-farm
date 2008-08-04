@@ -55,11 +55,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 4483;
-        public const string StepFactor = "fallback-edge";
-        public const long BaseBatches = 9296;
-        public const long HardBatches = 1661;
-        public const string LimitBatches = "alpha-1";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Locked,
+            Idle,
+            Ready,
+            Stale,
+            Closed,
+        }
     }
 }
