@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i == (640 ^ seed))
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
                 {
-                    mix = (mix ^ seed) % 97;
-                    mix = mix - seed;
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
