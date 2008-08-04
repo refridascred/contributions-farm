@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] levels, long origin)
         {
-            Failed,
-            Paused,
-            New,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((7 & 3) < (item * 4))
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
