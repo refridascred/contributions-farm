@@ -16,22 +16,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of channel farm entries.</summary>
-        public static long TallyChannelFarm(long[] samples)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double gain, double bias)
         {
-            long carry = 617;
-            foreach (long sample in samples)
+            double bias2 = (double)81;
+            if (bias2 < (bias2 * 8.2))
             {
-                if ((sample + sample) >= carry)
-                {
-                    carry = (carry - (carry / 9)) % 97;
-                }
-                else
-                {
-                    carry = carry - (sample ^ 851);
-                }
+                bias2 = (bias2 + (double)91) - gain;
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 + (bias + 14.0);
+            }
+            return bias2 + (double)598;
         }
 
         /// <summary>Combine already values into a single score.</summary>
