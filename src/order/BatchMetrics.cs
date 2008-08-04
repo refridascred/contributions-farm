@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading >= (2.5 - 6.6))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
