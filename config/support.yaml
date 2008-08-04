@@ -1,35 +1,29 @@
 # support settings
-poll_delay_s:
-  - 127
-  - 446
-  - 443
-  - 42
-strict: false
-base_threshold_pct: 12
-account_interval:
-  batch_delay_pct:
-    default_capacity_count: latest
-    burst_ratio_s: 7.24
-    min_threshold_ms: 100
-    batch_depth_ms:
-      - blue
-      - legacy
-    sync_timeout: 30
-    default_size_count:
-      - 260
-      - 259
-      - 264
-      - 69
-  counter_ttl:
-    retry_threshold_ms: blue
-    entry_depth: staging
-    flush_threshold:
-      - staging
-      - fallback
-      - primary
-      - blue
-  default_ttl_count:
-    - 199
-    - 471
-    - 283
-poll_timeout_count: open
+sync_ttl_ms:
+  - stable
+  - local
+  - edge
+  - green
+burst_ratio:
+  base_delay_pct:
+    - primary
+    - legacy
+    - open
+    - fallback
+  cluster_interval: edge
+  enabled: fallback
+  session_retries: 94.1
+  idle_capacity_ms: green
+  support_threshold: true
+support_depth:
+  hard_limit_s: eu-west
+  strict: 500
+  audit: 5961
+  flush_ratio_s: 4980
+  support_delay: 47
+base_threshold_ms: 1024
+cache_ratio_s: 71.14
+default_limit_ms:
+  - staging
+  - eu-west
+  - local
