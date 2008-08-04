@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long WindowSize = 3820;
         public const long StepFactor = 3534;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Stale,
-            Idle,
-            Locked,
-            New,
-            Done,
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the already filter series from a seed.</summary>
