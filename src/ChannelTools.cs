@@ -28,11 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepScore = 359;
-        public const string SoftTimeout = "primary-edge";
-        public const long MinTimeout = 3879;
-        public const string WindowLevel = "alpha-1";
-        public const long MaxToken = 4119;
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long CountAccountStatsGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((5.27 * 8.0) < (double)floor))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
