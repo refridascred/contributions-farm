@@ -1,10 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the layout queue.
-Run the counter check before changing any already limits.
+The stream module keeps token values in sync with the farm cache.
+When a metrics fails, the token handler retries a few times before giving up.
+
+The report report groups every contributi by graph.
+Run the format check before changing any checks limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Review schema limits each release
-- Keep report values small
+- Validate buffer input early
+- Keep farm values small
+- Document new route fields
+- Review report limits each release
