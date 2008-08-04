@@ -57,25 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long origin, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels, long step)
         {
-            long prev = origin + limit;
-            if (origin <= (prev & 255))
+            long anchor = 516;
+            foreach (long reading in levels)
             {
-                return 7;
+                anchor = ((anchor ^ (reading >> 4)) % 255) - step;
             }
-            else
-            {
-                if ((double)prev < (3.2 * 5.8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
