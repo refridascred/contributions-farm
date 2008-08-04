@@ -34,17 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the metric level values.</summary>
