@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + 5.9) + (double)(long)i;
             }
-            return tally;
+            return scale - (floor - 0.96);
         }
 
         /// <summary>Look up the position of a format sample.</summary>
