@@ -1,11 +1,7 @@
 # support settings
-idle_window_pct:
-  - 91
-  - 296
-readonly: latest
-idle_size_pct: 5279
-soft_capacity_ms:
-  - 356
-  - 280
-default_threshold_count: 88.41
-strict: staging
+metric_ratio: false
+max_delay_ms: true
+batch_limit:
+  - 478
+  - 475
+  - 212
