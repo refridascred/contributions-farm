@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double span)
+        /// <summary>Count order counter pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCounterCount(long[] values)
         {
-            double mean = scale;
-            if (mean < 10.0)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (span - 0.5);
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
