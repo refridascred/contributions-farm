@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long target, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series)
         {
-            long offset = target ^ origin;
-            if ((origin % 64) >= (origin + offset))
+            long sum = -810;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) != (target & 1))
+                if (((long)series.Length < cell) && ((916 ^ 779) < cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum << 3) ^ (cell & 255)) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
