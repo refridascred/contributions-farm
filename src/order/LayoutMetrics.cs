@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            long state = 60;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state ^ (625 << 1)) % 97) ^ sample;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
