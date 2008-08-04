@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window cache entry that matches the target.</summary>
-        public static long FindWindowCacheIndex(long[] series, long origin)
+        /// <summary>Check that every batches layout entry stays within the limit.</summary>
+        public static bool CheckBatchesLayoutBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if (item != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
