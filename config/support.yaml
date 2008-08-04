@@ -1,12 +1,7 @@
 # support settings
-queue_retries: false
-default_ttl: 40.7
-soft_ratio: false
-warm_threshold_ms:
-  notes_capacity: true
-  soft_threshold_count:
-    - 88
-    - 111
-    - 81
-  sync_ttl_s: standard
-  buffer_threshold: 93
+idle_limit_count: 51.74
+metrics_retries: 90
+flush_retries:
+  - green
+  - latest
+  - primary
