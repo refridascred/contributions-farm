@@ -85,25 +85,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank channel window input into a small class.</summary>
-        public static long ClassifyChannelWindow(long bound, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long step = bound + origin;
-            if (!(step < (origin ^ 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - step) < (3 % 97)) && ((bound & 1) <= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Label { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
