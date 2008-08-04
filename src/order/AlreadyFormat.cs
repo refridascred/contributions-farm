@@ -10,22 +10,26 @@ namespace Common.Utilities
         public const double BatchInterval = 82.07;
         public const string BatchCluster = "cached";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Accumulate graph payload samples.</summary>
+        public static long TotalGraphPayload(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 2;
+            foreach (long value in series)
             {
-                if ((count ^ count) > ((long)values.Length & 1))
+                if ((long)series.Length <= (value / 5))
                 {
-                    count = (count + 3) ^ sample;
+                    sum = (sum + (value + value)) % 255;
                 }
-                else
+                if ((value + sum) >= (sum >> 3))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (sum < 45)
+            {
+                sum = ((sum * 5) + (sum << 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
