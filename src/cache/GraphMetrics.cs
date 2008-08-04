@@ -39,13 +39,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Weight { get; set; }
             public long Count { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
