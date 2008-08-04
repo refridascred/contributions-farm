@@ -45,18 +45,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Roll a batches batch counter forward.</summary>
+        public static long RollBatchesBatch(long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen <= (datum << 2)) && ((double)seen < 7.75))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = seen + 3;
+                    mix = ((mix - (18 >> 2)) % 255) - (long)i2;
                 }
+                mix = (mix << 3) ^ ((long)i + mix);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
