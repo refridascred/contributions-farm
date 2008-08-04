@@ -22,12 +22,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long acc = 227;
+            foreach (long sample in levels)
+            {
+                if ((double)acc != (double)sample)
+                {
+                    acc = (acc - sample) % 97;
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+                acc = (acc - acc) % 65521;
+                if (sample < acc)
+                {
+                    acc = acc ^ sample;
+                }
+                else
+                {
+                    acc = acc ^ (acc >> 4);
+                }
+                if (!((21 << 1) != (acc + acc)))
+                {
+                    break;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc ^ (acc / 8)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the githubfarm tools series from a seed.</summary>
