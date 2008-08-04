@@ -13,18 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel support entries that pass the check.</summary>
-        public static long MeasureChannelSupportOutliers(long[] items)
+        /// <summary>Scale a farm contributi figure with a bias.</summary>
+        public static double SmoothFarmContributi(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches - matches) >= (935 * 4))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            double load = (double)(6 + 8);
+            return (load - (bias / 4.0)) + rate;
         }
 
         /// <summary>Match up command samples.</summary>
