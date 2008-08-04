@@ -43,14 +43,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            Stale,
-            Queued,
-            Locked,
-            Pending,
-            Paused,
+            double weight = (rate * 7.1) / 9.0;
+            if (weight >= (double)7)
+            {
+                weight = weight - span;
+            }
+            else
+            {
+                weight = weight + (double)220;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (rate / 6.0)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a cache options.</summary>
