@@ -49,18 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data, long target)
+        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
+        public static long CompareSchemaGraphCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally + tally) < 725)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) + datum) - target;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
