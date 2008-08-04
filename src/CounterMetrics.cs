@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long MinLevel = 1651;
         public const double DefaultQueue = 38.83;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Ready,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the context mode values.</summary>
