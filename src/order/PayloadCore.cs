@@ -38,38 +38,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long target)
         {
-            if ((bound ^ bound) < (bound & 63))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.8 / 7.0) > (double)limit)
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 15) > (65 + bound)) && ((limit + 5) >= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((10 << 1) <= (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
