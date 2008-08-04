@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - 1.6;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
             long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell % 12) <= (53 / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
