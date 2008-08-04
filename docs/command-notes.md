@@ -1,13 +1,14 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often metric data is refreshed.
+The command report groups every cache by commits.
+Keep commits and account names short and lowercase.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Run the schema check before changing any profile limits.
+Keep payload and route names short and lowercase.
+Use session settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every farm change
-- Keep stats values small
+- Prefer counter defaults
+- Review stream limits each release
+- Log every report change
+- Document new notes fields
