@@ -1,10 +1,4 @@
 # githubfarm settings
-readonly:
-  - primary
-  - stable
-max_interval: 22
-base_delay: local
-warm_threshold_ms:
-  - 228
-  - 22
-flush_retries_pct: fallback
+soft_window: 9196
+verbose: legacy
+token_delay: fallback
