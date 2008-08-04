@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            double load = span;
-            return load - (scale * 5.74);
+            long state = 60;
+            foreach (long sample in values)
+            {
+                state = ((state ^ (625 << 1)) % 97) ^ sample;
+            }
+            return state;
         }
     }
 }
