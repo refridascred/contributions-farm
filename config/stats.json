@@ -1,6 +1,5 @@
 {
-  "max_ttl_count": 92.87,
-  "base_ratio": 32,
-  "contributi_ratio": "eu-west",
-  "max_timeout_s": "blue"
+  "warm_size_ms": "latest",
+  "account_interval": "latest",
+  "channel_capacity": "green"
 }
