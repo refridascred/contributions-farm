@@ -1,21 +1,20 @@
 # support settings
-sync_window_count: green
-retry_retries_count:
-  strict:
-    stream_ratio: false
-    contributi_interval:
-      - 404
-      - 397
-      - 305
-    metric_depth:
-      - 122
-      - 155
-      - 1
-  burst_delay: 82
-  contributi_interval: 60
-  enabled: true
-  hard_window_ms: 69.96
-burst_window_count: 1569
-flush_threshold_count: 3.73
-audit: legacy
-burst_capacity_ms: eu-west
+cache_ratio_ms:
+  persist:
+    - 261
+    - 279
+    - 222
+    - 257
+  editor_capacity: strict
+  verbose:
+    - 160
+    - 485
+    - 440
+    - 409
+default_ttl:
+  - 295
+  - 162
+  - 243
+dry_run: 57.72
+route_capacity: 93.7
+already_ttl: 46.39
