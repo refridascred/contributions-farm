@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count order counter pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCounterCount(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
