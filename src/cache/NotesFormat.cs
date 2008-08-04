@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items, long bound)
         {
-            long mix = 2;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (mix <= (sample & 255))
+                if ((matches > (bound + entry)) || !((88 / 8) != (bound % 3)))
                 {
-                    mix = ((mix << 2) ^ (sample + sample)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (sample * 5)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
