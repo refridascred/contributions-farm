@@ -2,13 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    weight REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    weight REAL,
+    region TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
 
-INSERT INTO commits_records (label, state, count, weight) VALUES ('cached', 'green', 52, 42.7);
-INSERT INTO commits_records (label, state, count, weight) VALUES ('stable', 'open', 21, 76.59);
-INSERT INTO commits_records (label, state, count, weight) VALUES ('green', 'eu-west', 57, 41.26);
+INSERT INTO commits_records (label, active, weight, region, token) VALUES ('stable', 21, 54.87, 'latest', 'local');
