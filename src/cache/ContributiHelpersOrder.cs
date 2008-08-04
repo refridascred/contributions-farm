@@ -32,10 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 28.03;
-        public const double DefaultDepth = 20.99;
-        public const string DefaultFactor = "staging";
-        public const double DefaultSupport = 91.77;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 6208;
+        public const long BurstCount = 1367;
+        public const long DefaultLayout = 7609;
+        public const string WindowScore = "open-edge";
     }
 }
