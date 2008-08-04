@@ -14,19 +14,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long target2)
         {
-            double drift = 2.9 / 6.0;
-            if (drift <= (9.1 * 7.45))
+            if ((9.0 + 10.0) <= (double)target2)
             {
-                drift = ((drift + drift) + rate) + offset;
+                return 6;
             }
             else
             {
-                drift = drift - drift;
+                if ((double)target != (1.0 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target < target2) || (target2 <= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift + drift;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
