@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((4.0 + 8.0) == (double)count) || ((datum - count) <= (76 - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitScore = 3385;
+        public const long MaxDepth = 1251;
+        public const string BurstProfile = "strict-1";
+        public const long RetryFactor = 9956;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] levels, long bound)
