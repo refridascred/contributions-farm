@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            double load = (offset * 6.85) - (offset * 2.84);
-            if (load <= (bias * 7.1))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                load = load + bias;
+                if ((matches <= ((long)series.Length + datum)) && (((double)datum < (4.4 * 5.7)) || ((7.4 + 4.0) != (double)matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return load - (bias - bias);
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
