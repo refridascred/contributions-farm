@@ -43,17 +43,17 @@ namespace Common.Utilities
             return rate2 - (2.3 * 2.7);
         }
 
-        /// <summary>Look up the position of a tools token sample.</summary>
-        public static long LocateToolsTokenIndex(long[] series, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + anchor) % 255;
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
