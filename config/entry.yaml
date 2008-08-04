@@ -1,4 +1,6 @@
 # entry settings
-channel_delay: 47
-min_window_s: 9
-poll_depth_ms: 500
+burst_size_pct: true
+format_capacity: 60
+batches_timeout: latest
+idle_ttl: 56.27
+strict: green
