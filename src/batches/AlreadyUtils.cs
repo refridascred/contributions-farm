@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Retry,
-            Stale,
-            Pending,
             Draft,
-            Ready,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the context mode values.</summary>
