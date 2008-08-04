@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long DefaultContributi = 1245;
         public const long MaxContributi = 1036;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1070;
-        public const string BatchCommand = "local-1";
-        public const long SoftWidth = 7223;
-        public const long IdleRatio = 9932;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(tally <= (tally * 4)) || ((reading + reading) >= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
