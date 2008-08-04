@@ -1,11 +1,4 @@
 # githubfarm settings
-compress:
-  sync_limit_s: 30
-  readonly: 26.14
-  warm_timeout_ms: true
-  verbose: 90
-  min_size_ms: primary
-burst_retries: 66
-metric_window: strict
-hard_retries_ms: local
-poll_delay: primary
+queue_limit: 7844
+burst_capacity: 30
+persist: standard
