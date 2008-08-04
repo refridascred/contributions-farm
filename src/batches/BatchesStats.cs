@@ -38,10 +38,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 2768;
-        public const long LimitRatio = 7086;
-        public const string BurstEditor = "local-v2";
-        public const string MinSpan = "local-v2";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches - matches) < reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
