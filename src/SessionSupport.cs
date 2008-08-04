@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
-        public static bool VerifyPayloadMetricsRange(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "cached";
+        public const long RetrySpan = 6094;
+        public const long WindowRatio = 6852;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
