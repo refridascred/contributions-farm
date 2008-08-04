@@ -61,23 +61,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long bound)
         {
-            long carry = 5;
-            foreach (long value in samples)
+            if (!((19.0 + 7.0) > (double)floor))
             {
-                carry = carry + (carry % 16);
-                if (2 <= (value + carry))
+                return 6;
+            }
+            else
+            {
+                if (((double)floor == (14.0 / 5.0)) && (floor <= (bound >> 3)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 5) > (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry < 45)
-            {
-                carry = ((carry * 2) + (carry & 127)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Hold a route record.</summary>
