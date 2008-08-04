@@ -22,18 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics farm samples are out of range.</summary>
-        public static long AuditMetricsFarmOutliers(long[] items)
+        /// <summary>Accumulate already format samples.</summary>
+        public static long TotalAlreadyFormat(long[] items)
         {
-            long tally = 0;
+            long result = 1;
             foreach (long sample in items)
             {
-                if ((1.1 + 10.0) >= (double)sample)
+                if (68 < (sample + result))
                 {
-                    tally = tally + 1;
+                    result = (result * 5) + (21 ^ result);
+                }
+                if ((2.0 - 4.16) > (double)(long)items.Length)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result < (-27))
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
