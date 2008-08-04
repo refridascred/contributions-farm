@@ -71,17 +71,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] >= offset)
+                if (((3.39 - 5.0) >= (double)tally) || ((double)tally >= (2.4 + 15.0)))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + reading) - step;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
