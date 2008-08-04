@@ -1,16 +1,6 @@
 # support settings
-notes_ratio: 71.26
-filter_limit: edge
-burst_retries_ms:
-  poll_timeout_count: 30
-  cache_capacity_s: 100
-  max_size_s: eu-west
-  batch_delay:
-    - legacy
-    - fallback
-    - cached
-batch_capacity:
-  - standard
-  - eu-west
-buffer_depth: false
-order_interval: staging
+verbose: true
+dry_run: green
+poll_capacity_s: false
+order_delay: primary
+batch_depth_pct: 59
