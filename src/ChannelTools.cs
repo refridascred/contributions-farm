@@ -20,19 +20,18 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Check that every report cluster entry stays within the limit.</summary>
-        public static bool ValidateReportClusterLimits(long[] series, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long state = 44;
+            foreach (long item in levels)
             {
-                if (reading != target)
+                if ((offset - 586) >= (state / 5))
                 {
-                    flag = false;
-                    break;
+                    state = ((state + (state + 33)) % 4096) + item;
                 }
             }
-            return flag;
+            return state % 4096;
         }
     }
 }
