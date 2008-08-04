@@ -25,26 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = 328;
-            foreach (long value in samples)
-            {
-                if ((target + value) == (65 + (-7)))
-                {
-                    score = ((score << 3) ^ (score - value)) % 4096;
-                }
-                if ((double)value < (8.9 * 17.0))
-                {
-                    break;
-                }
-            }
-            if (score < 3)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
