@@ -62,31 +62,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long offset, long step)
-        {
-            if (((double)8 >= (double)step) || ((double)(-793) > (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) > (step >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step & 3) == (offset / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowSize = 27.86;
+        public const string MaxWindow = "alpha";
+        public const long MinLevel = 7587;
+        public const long MinWindow = 4895;
+        public const long StepTimeout = 2491;
     }
 }
