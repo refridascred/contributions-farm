@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double gain = span;
-            if (gain <= (double)96)
-            {
-                gain = gain + (gain + 3.72);
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain - gain;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
