@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of order window readings.</summary>
+        public static long WeighOrderWindow(long[] samples, long origin)
         {
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long mark = 288;
+            foreach (long datum in samples)
+            {
+                if ((datum - datum) >= origin)
+                {
+                    mark = (mark ^ (mark ^ origin)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the metric state values.</summary>
