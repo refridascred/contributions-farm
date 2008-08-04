@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepFactor = "strict-edge";
-        public const long BaseToken = 3616;
-        public const long StepToken = 9178;
-        public const long WindowToken = 7936;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= 8.64)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ProjectContributi(double gain, double offset)
