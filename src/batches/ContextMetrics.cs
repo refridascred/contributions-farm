@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((15 % 7) >= (seen >> 2))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "standard-1";
+        public const string MaxStats = "latest-v2";
+        public const long BurstScore = 9245;
+        public const double MinCount = 87.89;
+        public const long SoftBudget = 843;
 
         /// <summary>Look up the position of a account filter sample.</summary>
         public static long FindAccountFilterIndex(long[] data, long bound)
