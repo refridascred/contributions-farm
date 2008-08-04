@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long state = 91;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                state = ((state << 3) ^ (state ^ state)) + sample;
+                if (tally < (tally << 1))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            if (state < 6)
-            {
-                state = state ^ ((long)values.Length + state);
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
