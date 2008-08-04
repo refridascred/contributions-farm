@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 7140;
-        public const string BurstSpan = "cached-v2";
-        public const string BurstGraph = "strict-edge";
+        /// <summary>Count report entry pairs that satisfy a relation.</summary>
+        public static long PairReportEntryCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double floor)
