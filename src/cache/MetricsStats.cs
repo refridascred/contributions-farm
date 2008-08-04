@@ -66,18 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] items, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((6.36 * 6.3) < (double)reading)
+                if (datum <= origin)
                 {
-                    matches = (matches + 3) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
