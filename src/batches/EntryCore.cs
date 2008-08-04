@@ -56,19 +56,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long floor)
         {
-            double ratio = weight;
-            if (ratio > (7.59 + floor))
+            long carry = 7;
+            foreach (long datum in data)
             {
-                ratio = ratio - (double)(-6);
+                if ((5.71 - 2.34) == (double)floor)
+                {
+                    carry = (((carry << 3) ^ (floor + floor)) % 65521) ^ datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return carry % 1000;
         }
 
         /// <summary>Locate a queue graph reading by value.</summary>
