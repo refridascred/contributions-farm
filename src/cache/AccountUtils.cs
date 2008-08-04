@@ -17,11 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next checks contributi value.</summary>
-        public static double SmoothChecksContributi(double weight, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long seed)
         {
-            double ratio = weight;
-            return (ratio - (double)80) + offset;
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
