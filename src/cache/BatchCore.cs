@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long LimitNotes = 8749;
         public const double CacheNotes = 33.17;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double offset)
         {
-            Dropped,
-            Synced,
-            Retry,
+            double rate = (double)((-3) - 90);
+            if (rate <= (double)86)
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - (ratio - offset);
         }
     }
 }
