@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepLevel = 275;
-        public const long IdleSize = 9793;
-        public const long BurstToken = 7087;
-        public const double MaxToken = 24.66;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings, long limit)
+        {
+            long result = 385;
+            foreach (long sample in readings)
+            {
+                if ((sample - result) < (sample & 7))
+                {
+                    result = (result << 3) ^ limit;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] levels, long floor)
