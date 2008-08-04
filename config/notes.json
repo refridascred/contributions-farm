@@ -1,12 +1,6 @@
 {
-  "idle_limit_pct": 75.52,
-  "channel_ratio": ["cached", "fallback", "legacy"],
-  "strict": 72.71,
-  "compress": 90,
-  "cache_ttl": {
-    "idle_delay": false,
-    "buffer_ttl": "cached",
-    "base_size": "strict"
-  },
-  "base_ratio_count": 50.31
+  "retry_timeout_count": [381, 445, 390],
+  "burst_limit_pct": "blue",
+  "min_ratio_count": "primary",
+  "retry_retries": 53
 }
