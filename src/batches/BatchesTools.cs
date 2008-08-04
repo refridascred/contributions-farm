@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((limit & 1) == (long)i)
-                {
-                    total = total + (limit - limit);
-                }
-                if ((total & 7) < (total - 44))
-                {
-                    total = ((total * 5) + ((long)i - (long)i)) % 255;
-                }
-                if (6.2 >= (double)(long)i)
-                {
-                    total = (total - ((long)i + total)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
