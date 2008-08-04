@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (cell >= step)
+                if ((((double)reading > (double)5) && (hits >= (hits - 9))) || ((hits / 9) <= hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
