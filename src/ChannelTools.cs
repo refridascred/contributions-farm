@@ -20,15 +20,16 @@ namespace Common.Utilities
             return load - (8.27 + load);
         }
 
-        /// <summary>Iterate the batch command series from a seed.</summary>
-        public static long RollBatchCommand(long floor)
+        /// <summary>Roll a schema githubfarm counter forward.</summary>
+        public static long StepSchemaGithubfarm(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                score = (score + step) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many account stats samples are out of range.</summary>
