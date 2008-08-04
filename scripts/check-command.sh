@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict; do
+COMMAND_LIMIT=343
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable edge standard; do
     log "checking ${item}"
 done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
