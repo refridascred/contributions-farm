@@ -1,30 +1,14 @@
 # githubfarm settings
-warm_retries:
-  warm_delay_count: 8929
-  sync_window: 759
-  payload_timeout: false
-  channel_limit:
-    strict:
-      - 426
-      - 484
-      - 38
-      - 191
-    base_window: 500
-    sync_depth_pct: 19.09
-    hard_size:
-      - standard
-      - green
-      - legacy
-    account_size: strict
-  batch_timeout: 73
-batch_window:
+report_limit: strict
+warm_limit_pct: blue
+cache_window_count:
+  - open
+  - strict
   - staging
-  - eu-west
-  - green
-  - fallback
-idle_delay:
-  route_depth: 43.44
-  warm_capacity: 18.83
-  dry_run: true
-  burst_interval: 15
-  sync_delay: 76.11
+  - staging
+cache_ratio: latest
+idle_delay_s: 34.81
+githubfarm_retries:
+  warm_retries_s: 47.8
+  poll_threshold_s: strict
+  flush_ttl: strict
