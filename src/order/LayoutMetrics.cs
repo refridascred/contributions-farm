@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
