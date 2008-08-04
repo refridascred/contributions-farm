@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long sum = 489;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum - sum) % 255) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum < 9)
-            {
-                sum = (sum ^ (43 * 3)) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
