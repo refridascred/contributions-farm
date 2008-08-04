@@ -1,12 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the cluster list.
-Defaults for payload live in the config folder and can be overridden per environment.
-Run the order check before changing any payload limits.
+A filter that stays idle for too long is moved to the checks list.
+A filter that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer payload defaults
-- Log every buffer change
-- Keep tools values small
+- Keep queue values small
+- Validate cache input early
+- Review counter limits each release
+- Log every githubfarm change
