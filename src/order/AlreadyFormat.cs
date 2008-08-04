@@ -65,11 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowSize = 27.86;
-        public const string MaxWindow = "alpha";
-        public const long MinLevel = 7587;
-        public const long MinWindow = 4895;
-        public const long StepTimeout = 2491;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series)
+        {
+            long anchor = 112;
+            foreach (long datum in series)
+            {
+                if (anchor >= (datum + datum))
+                {
+                    anchor = anchor ^ (anchor - datum);
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
