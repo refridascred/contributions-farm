@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
