@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const long DefaultSize = 6991;
         public const long DefaultEditor = 8122;
 
-        /// <summary>Audit editor buffer readings against a rule.</summary>
-        public static long MeasureEditorBufferMatches(long[] series, long seed)
+        /// <summary>Grade a metric contributi value against two limits.</summary>
+        public static long RankMetricContributi(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((limit % 3) >= (floor / 3))
             {
-                if ((seen + seed) < ((-494) - (long)series.Length))
+                return 1;
+            }
+            else
+            {
+                if ((9.6 * 9.56) != (double)floor)
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the schema phase values.</summary>
