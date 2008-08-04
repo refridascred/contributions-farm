@@ -1,9 +1,8 @@
 # entry settings
-dry_run:
-  - 181
-  - 499
-  - 132
-  - 125
-stats_threshold: 72.06
-flush_threshold_pct: 61.2
-max_timeout_ms: strict
+counter_window: 2204
+notes_depth: 500
+already_capacity: 250
+cache_threshold: 96.64
+readonly:
+  - 346
+  - 90
