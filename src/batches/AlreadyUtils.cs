@@ -45,12 +45,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "local-edge";
-        public const long RetryCounter = 295;
-        public const double SoftCounter = 24.13;
-        public const long DefaultTimeout = 2600;
-        public const long LimitCounter = 9785;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long floor)
+        {
+            long step = limit - floor;
+            if ((double)step != (17.0 + 7.13))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 8) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + floor) > ((-6) ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit + limit) <= floor) || ((4.7 * 6.15) != (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] series, long target)
