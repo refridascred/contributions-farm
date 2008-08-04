@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 53.49;
-        public const long SoftLevel = 1646;
-        public const string BurstDepth = "stable-1";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(matches >= (datum >> 2)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] series, long target)
