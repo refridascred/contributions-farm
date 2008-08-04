@@ -71,25 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long seed, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long origin)
         {
-            long span = seed - limit;
-            if ((limit <= (seed << 3)) || (span >= (span + limit)))
+            long result = 6;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((2.64 / 7.0) <= (double)seed))
+                if ((93 * 5) >= datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    result = (result * 3) + (origin + datum);
                 }
             }
+            if (result < 316)
+            {
+                result = (result + (origin + (long)readings.Length)) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
