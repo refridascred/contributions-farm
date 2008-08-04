@@ -32,13 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] values, long bound)
         {
-            Ready,
-            Closed,
-            Idle,
-            Draft,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
