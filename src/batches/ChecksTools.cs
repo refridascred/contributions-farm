@@ -30,19 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long CountSchemaFormatOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((3.4 / 8.0) >= (double)hits)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5216;
+        public const double LimitDepth = 77.63;
+        public const string BatchCount = "primary-v2";
+        public const double CacheMetrics = 11.92;
+        public const long SoftMetrics = 4352;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double scale, double floor)
