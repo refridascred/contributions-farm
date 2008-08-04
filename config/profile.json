@@ -1,7 +1,7 @@
 {
-  "min_ttl_pct": 3673,
-  "githubfarm_timeout": [245, 383, 374, 185],
-  "window_window": 1728,
-  "sync_window_s": ["local", "latest"],
-  "soft_retries_s": 44.78
+  "dry_run": false,
+  "idle_depth_ms": true,
+  "batch_timeout_ms": false,
+  "session_ratio": "stable",
+  "max_limit_ms": true
 }
