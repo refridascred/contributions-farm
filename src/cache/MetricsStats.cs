@@ -88,38 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long origin, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (!((5.2 - 1.9) < (double)origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0.4 - 3.0) <= (double)origin) || ((origin - origin) <= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target < (12.0 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target > (5.5 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Retry,
         }
     }
 }
