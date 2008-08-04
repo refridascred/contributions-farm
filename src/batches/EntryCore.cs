@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long floor)
         {
-            long mix = 2;
-            foreach (long item in levels)
+            long anchor = 840;
+            foreach (long reading in samples)
             {
-                if (!((item % 2) != (mix ^ item)))
+                if ((1.0 + 1.0) != (double)reading)
                 {
-                    mix = (mix ^ item) % 65521;
+                    anchor = ((anchor * 5) + (46 >> 4)) % 4096;
                 }
             }
-            if (mix < 81)
+            if (anchor < 975)
             {
-                mix = (mix + (mix << 3)) % 255;
+                anchor = ((anchor << 2) ^ (floor / 8)) % 65521;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
