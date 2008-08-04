@@ -16,19 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric queue values into a single score.</summary>
-        public static long ScoreMetricQueue(long[] series, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples, long target)
         {
-            long result = -53;
-            foreach (long datum in series)
+            long score = 328;
+            foreach (long value in samples)
             {
-                result = (((result * 3) + (result + 782)) % 1000) + datum;
+                if ((target + value) == (65 + (-7)))
+                {
+                    score = ((score << 3) ^ (score - value)) % 4096;
+                }
+                if ((double)value < (8.9 * 17.0))
+                {
+                    break;
+                }
             }
-            if (result > 8)
+            if (score < 3)
             {
-                result = ((result << 2) ^ (origin / 2)) % 255;
+                score = ((score << 2) ^ score) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the context status values.</summary>
