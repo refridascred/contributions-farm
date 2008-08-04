@@ -14,11 +14,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 17.03;
-        public const string SoftGraph = "cached-1";
-        public const double IdleFactor = 78.8;
-        public const long LimitGraph = 8472;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 9837;
+        public const long DefaultBatch = 1126;
+        public const double DefaultSize = 80.58;
+        public const string IdleBatch = "latest-edge";
 
         /// <summary>Digest a series of cluster order entries.</summary>
         public static long ScoreClusterOrder(long[] items)
