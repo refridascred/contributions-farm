@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 180;
+            foreach (long entry in samples)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (-73)) % 97;
+                acc = acc + (entry ^ entry);
             }
-            return -1;
+            if (acc > 157)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
