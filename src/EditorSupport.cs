@@ -32,24 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((double)offset < (8.4 - 2.05))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) >= 3)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Locked,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
