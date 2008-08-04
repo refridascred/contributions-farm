@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double scale, double bias)
-        {
-            double load = (double)48 + 0.4;
-            if (load >= 8.0)
-            {
-                load = load - bias;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            return load - (8.27 + load);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepFactor = "strict-edge";
+        public const long BaseToken = 3616;
+        public const long StepToken = 9178;
+        public const long WindowToken = 7936;
 
         /// <summary>Roll a schema githubfarm counter forward.</summary>
         public static long StepSchemaGithubfarm(long step)
