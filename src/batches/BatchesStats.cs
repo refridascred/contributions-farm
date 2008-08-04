@@ -47,16 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes buffer value from a seed.</summary>
-        public static long SeriesNotesBuffer(long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long floor, long floor2)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            if (((floor2 ^ floor) < 410) || ((9.0 / 5.0) <= (double)floor))
             {
-                mark = (mark - (3 - floor)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((floor >> 5) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
