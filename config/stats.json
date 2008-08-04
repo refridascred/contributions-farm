@@ -1,8 +1,21 @@
 {
-  "retry_window": 14.26,
-  "idle_timeout_s": "edge",
-  "token_size": "green",
-  "batch_depth_ms": true,
-  "profile_ttl": "legacy",
-  "farm_delay": "green"
+  "strict": "cached",
+  "commits_threshold": {
+    "enabled": 250,
+    "min_limit_s": 92.6,
+    "queue_depth": 40.34
+  },
+  "default_retries_ms": {
+    "audit": "latest",
+    "order_depth": [33, 51, 271, 360],
+    "idle_ttl_s": 6622,
+    "filter_interval": {
+      "max_ratio_s": 60.89,
+      "cache_threshold_ms": 500,
+      "persist": "fallback",
+      "poll_threshold_count": true,
+      "compress": false,
+      "base_delay_ms": true
+    }
+  }
 }
