@@ -75,14 +75,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long target, long origin)
         {
-            Active,
-            Paused,
-            Draft,
-            Failed,
-            Pending,
+            if ((4 > (target + target)) && (target >= origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((7.43 / 9.0) == (double)target) && ((double)target < (5.35 - 2.51)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
