@@ -1,15 +1,11 @@
 # support settings
-dry_run: true
-tools_size:
-  flush_ttl_s: false
-  strict:
-    verbose: 64
-    flush_ttl:
-      - cached
-      - latest
-      - latest
-    schema_limit: 37
-    base_threshold: primary
-    enabled: standard
-  dry_run: true
-base_limit_pct: standard
+idle_window_pct:
+  - 91
+  - 296
+readonly: latest
+idle_size_pct: 5279
+soft_capacity_ms:
+  - 356
+  - 280
+default_threshold_count: 88.41
+strict: staging
