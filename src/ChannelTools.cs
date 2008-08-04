@@ -18,22 +18,24 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long CountAccountStatsGaps(long[] items, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((target << 1) < (offset & 1))
             {
-                if (!((5.27 * 8.0) < (double)floor))
+                return 8;
+            }
+            else
+            {
+                if (((target - 134) > 8) || ((target >> 5) >= (offset >> 1)))
                 {
-                    hits = (hits + 3) + sample;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
