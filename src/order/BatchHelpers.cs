@@ -13,15 +13,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long score = 6;
-            foreach (long cell in data)
-            {
-                score = ((score - origin) % 4096) ^ cell;
-            }
-            return score % 65521;
+            Synced,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
