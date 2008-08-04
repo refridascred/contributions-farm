@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool ValidateEntryWindowRange(long[] items, long target)
         {
-            New,
-            Done,
-            Pending,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
