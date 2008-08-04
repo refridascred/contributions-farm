@@ -22,26 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long state = 845;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + value) != (state + state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 4) + (target + target)) % 101;
-                }
-                else
-                {
-                    state = (state ^ (target << 3)) % 4096;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 395)
-            {
-                state = ((state * 4) + (target >> 1)) % 1000;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
