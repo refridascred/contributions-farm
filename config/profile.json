@@ -1,6 +1,7 @@
 {
-  "warm_window_pct": "standard",
-  "enabled": true,
-  "base_delay_ms": 1.96,
-  "idle_timeout_s": [363, 11]
+  "hard_size_count": "standard",
+  "min_ttl_ms": false,
+  "soft_threshold_ms": "green",
+  "burst_depth_pct": "fallback",
+  "cache_size": [477, 461, 256]
 }
