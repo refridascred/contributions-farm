@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long TallySchemaBufferGaps(long[] levels, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (hits < (step % 64))
+                if (((long)i + origin) != (origin + state))
                 {
-                    hits = (hits + 3) + entry;
+                    state = (state - (177 >> 5)) % 97;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state + (origin ^ state)) % 255) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count already batches pairs that satisfy a relation.</summary>
