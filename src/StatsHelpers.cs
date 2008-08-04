@@ -52,17 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a report metrics sample.</summary>
-        public static long FindReportMetricsIndex(long[] data, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate batches samples.</summary>
