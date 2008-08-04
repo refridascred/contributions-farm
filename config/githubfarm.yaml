@@ -1,5 +1,12 @@
 # githubfarm settings
-max_depth: stable
-queue_capacity: open
-batch_interval: 49.72
-editor_window: 250
+soft_ttl_count: eu-west
+idle_ttl: open
+payload_window: 92
+verbose:
+  - 172
+  - 245
+  - 463
+base_limit_s:
+  strict: 31.55
+  format_delay: 77
+  batch_capacity: true
