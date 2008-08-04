@@ -53,18 +53,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next commits batches value from a seed.</summary>
-        public static long StepCommitsBatches(long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score + (origin + score)) % 4096;
-                score = (score << 2) ^ (score / 2);
-                score = (score << 2) ^ score;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
