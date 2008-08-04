@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Look up the position of a channel batches sample.</summary>
+        public static long LookupChannelBatchesIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches % 100) <= matches)
+                if (levels[i] <= offset)
                 {
-                    matches = (matches + 1) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
