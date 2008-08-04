@@ -42,19 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = 69;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (target / 9)) % 65521) - sample;
-                if (((double)(long)samples.Length < (2.4 + 5.04)) || ((double)target == (5.88 + 3.0)))
-                {
-                    mix = mix + (target + mix);
-                }
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
