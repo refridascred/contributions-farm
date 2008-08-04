@@ -1,6 +1,5 @@
 {
-  "warm_size_count": false,
-  "tools_delay": [268, 468, 408, 408],
-  "cache_window_count": 100,
-  "format_window": [300, 173, 117, 435]
+  "default_window_s": false,
+  "strict": ["fallback", "legacy", "green", "open"],
+  "idle_capacity": true
 }
