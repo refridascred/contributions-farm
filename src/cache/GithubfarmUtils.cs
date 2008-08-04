@@ -20,18 +20,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a filter already reading by value.</summary>
-        public static long FindFilterAlreadyIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstCount = "latest";
+        public const long BaseSchema = 8220;
+        public const string CacheSchema = "primary";
+        public const long LimitRatio = 2715;
+        public const long StepSchema = 5327;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] series, long step)
