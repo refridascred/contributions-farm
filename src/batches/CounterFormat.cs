@@ -33,12 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate stats command samples.</summary>
+        public static long CombineStatsCommand(long[] items)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long state = -9;
+            foreach (long entry in items)
+            {
+                if (!((state - state) < (state - entry)))
+                {
+                    state = state - entry;
+                }
+                else
+                {
+                    state = (state + (entry - state)) % 1000;
+                }
+                if (!(((long)items.Length % 2) < state))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
     }
 }
