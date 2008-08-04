@@ -43,13 +43,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Closed,
-            Failed,
-            Ready,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
