@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseInterval = 23.52;
-        public const long MinLevel = 1651;
-        public const double DefaultQueue = 38.83;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
