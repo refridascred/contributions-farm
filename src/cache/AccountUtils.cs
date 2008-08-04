@@ -17,15 +17,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Classify a metric farm pair into a bucket.</summary>
+        public static long GradeMetricFarm(long offset, long target)
         {
-            double drift = span;
-            if (drift > rate)
+            if ((12.0 * 4.0) < (18.0 + 3.4))
             {
-                drift = drift - rate;
+                return 3;
             }
-            return drift + drift;
+            else
+            {
+                if (!((offset + 387) > (target * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target != (15.0 / 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((301 % 3) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
