@@ -26,22 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] series, long origin)
         {
-            long sum = 3;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sum >> 4) >= (0 - step)))
+                if ((series[i] >= origin) && ((series[i] % 5) == 0))
                 {
-                    sum = sum + (value + step);
+                    return (long)i;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum - (step & 7)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
