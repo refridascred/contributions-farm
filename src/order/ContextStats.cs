@@ -20,19 +20,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate commits stream readings against a bound.</summary>
-        public static bool GuardCommitsStreamRange(long[] readings, long offset)
+        /// <summary>Derive the next format batches value from a seed.</summary>
+        public static long StepFormatBatches(long bound)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Digest a series of route entries.</summary>
