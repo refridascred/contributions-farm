@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 8390;
-        public const long DefaultSupport = 2560;
-        public const long LimitSize = 7463;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long target, long seed)
+        {
+            if ((double)seed < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed - 5) == (target >> 1)) && (3 <= (target >> 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + seed) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] readings, long limit)
