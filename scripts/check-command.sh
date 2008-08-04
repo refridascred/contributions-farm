@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=219
-log "limit is ${COMMAND_LIMIT}"
-
 mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge green blue local; do
+    log "checking ${item}"
+done
