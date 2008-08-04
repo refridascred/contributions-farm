@@ -99,12 +99,11 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Pending,
-            New,
-            Locked,
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
