@@ -56,10 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 49.04;
-        public const long CacheBudget = 3126;
-        public const long WindowLevel = 5861;
-        public const string BatchAlready = "alpha";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
