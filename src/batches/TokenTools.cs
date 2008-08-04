@@ -19,10 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchWidth = 4486;
-        public const double DefaultContext = 85.03;
-        public const double WindowContext = 72.27;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double BlendChannel(double gain, double offset)
