@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Stale,
-            New,
-            Synced,
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
