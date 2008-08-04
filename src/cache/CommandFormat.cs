@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const double BaseScore = 1.49;
         public const string WindowInterval = "local-v2";
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long CountProfileSessionGaps(long[] readings, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((952 / 2) >= tally)
-                {
-                    tally = ((tally + 3) ^ value) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a account stats.</summary>
