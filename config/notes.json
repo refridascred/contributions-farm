@@ -1,5 +1,18 @@
 {
-  "min_depth_pct": "strict",
-  "readonly": 9,
-  "strict": true
+  "sync_ratio_pct": 94.85,
+  "base_threshold_s": {
+    "base_capacity": [200, 200, 447],
+    "sync_limit": true,
+    "layout_window": {
+      "flush_timeout_s": [177, 429, 252],
+      "poll_capacity": "legacy",
+      "soft_window_count": "latest",
+      "burst_delay_ms": 4521,
+      "entry_ttl": 30,
+      "cache_threshold": "edge"
+    },
+    "metrics_threshold": false,
+    "burst_delay_pct": "open"
+  },
+  "enabled": 64
 }
