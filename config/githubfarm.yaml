@@ -1,4 +1,4 @@
 # githubfarm settings
-queue_limit: 7844
-burst_capacity: 30
-persist: standard
+soft_delay: 93.65
+persist: 1024
+flush_limit_s: green
