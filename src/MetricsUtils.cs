@@ -12,16 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long seed)
         {
-            long anchor = 6;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (anchor + entry)) % 101;
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
