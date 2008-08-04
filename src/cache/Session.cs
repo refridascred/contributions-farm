@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] series, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] < limit)
+                if ((datum / 9) < (count - count))
                 {
-                    return (long)i;
+                    count = (count + 2) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
