@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double span)
-        {
-            double weight = (double)711 - (bias - span);
-            if (weight > 4.0)
-            {
-                weight = weight - (double)5;
-            }
-            else
-            {
-                weight = weight + (double)223;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (9.1 / 9.0)) + (double)(long)i;
-            }
-            return weight - (double)42;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "legacy-edge";
+        public const long MinProfile = 8128;
+        public const long MaxProfile = 6572;
+        public const string MinScore = "local-1";
+        public const double LimitProfile = 12.87;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
