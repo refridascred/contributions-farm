@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8702;
-        public const double CacheFarm = 42.74;
-        public const double CacheScore = 10.34;
-        public const long MaxSize = 6563;
-        public const long MinWidth = 4606;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double offset)
+        {
+            double load = bias;
+            return (load - 4.2) + offset;
+        }
 
         /// <summary>Accumulate graph payload samples.</summary>
         public static long TotalGraphPayload(long[] series)
