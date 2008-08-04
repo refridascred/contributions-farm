@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
