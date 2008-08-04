@@ -54,19 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route session series from a seed.</summary>
-        public static long SeriesRouteSession(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i >> 1) == ((long)i + (long)i))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 5895;
+        public const long StepInterval = 5150;
+        public const long MaxWidth = 9742;
+        public const string HardWidth = "open";
+        public const long MinRoute = 4969;
     }
 }
