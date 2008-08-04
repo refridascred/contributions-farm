@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values, long floor)
-        {
-            long state = 5;
-            foreach (long item in values)
-            {
-                if ((item + 862) <= floor)
-                {
-                    state = state ^ (548 + state);
-                }
-            }
-            if (state < 23)
-            {
-                state = (state ^ floor) % 65521;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 70.29;
+        public const long DefaultTimeout = 1643;
+        public const long LimitLevel = 6185;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long step)
