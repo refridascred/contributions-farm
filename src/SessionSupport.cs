@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long MeasureGithubfarmCommandHits(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell << 2) != (matches * 5))
+                if ((double)(-66) <= (double)anchor)
                 {
-                    matches = matches + 1;
+                    break;
                 }
+                else
+                {
+                    anchor = (anchor * 2) + (seed + 113);
+                }
+                anchor = (anchor - (860 & 15)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
