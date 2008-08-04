@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string MinDepth = "staging-v2";
         public const long DefaultTools = 9497;
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool CheckWindowSessionRange(long[] series, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
