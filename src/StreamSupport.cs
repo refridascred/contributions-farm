@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const long BurstCache = 1054;
         public const double IdleCache = 26.91;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Synced,
-            Failed,
-            Done,
-            Locked,
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
