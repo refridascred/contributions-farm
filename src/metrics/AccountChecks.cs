@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] series, long seed)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (6.6 > (double)tally)
+                {
+                    tally = ((tally + 1) + cell) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
