@@ -38,21 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((696 % 12) < (count >> 5)))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
