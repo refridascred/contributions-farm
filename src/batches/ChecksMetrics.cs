@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 3261;
         public const long RetryNotes = 1498;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long bound)
+        /// <summary>Count checks route pairs that satisfy a relation.</summary>
+        public static long MatchChecksRouteCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
