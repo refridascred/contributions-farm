@@ -1,14 +1,16 @@
 # Command notes
 
-Keep githubfarm and session names short and lowercase.
-Keep cluster and channel names short and lowercase.
+Keep checks and stream names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
+Use tools settings to tune how often metrics data is refreshed.
 
-Use token settings to tune how often githubfarm data is refreshed.
-Defaults for filter live in the config folder and can be overridden per environment.
-Run the batch check before changing any profile limits.
+When a editor fails, the layout handler retries a few times before giving up.
+Use githubfarm settings to tune how often metrics data is refreshed.
+A support that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer route defaults
-- Validate checks input early
+- Document new metric fields
+- Prefer layout defaults
+- Review window limits each release
+- Log every format change
