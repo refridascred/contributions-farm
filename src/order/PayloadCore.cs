@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] levels)
         {
-            long acc = 382;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)996 > (double)entry)
+                if ((double)seen >= (6.86 + 8.0))
                 {
-                    acc = (acc ^ (acc ^ acc)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry - acc)) % 4096;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
