@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long DigestAccountChecks(long[] data, long bound)
-        {
-            long total = 246;
-            foreach (long entry in data)
-            {
-                total = ((total + total) % 255) + entry;
-                if ((total & 63) >= (bound >> 1))
-                {
-                    total = (total - (bound - 556)) % 101;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total << 2) ^ 1;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 6684;
+        public const long DefaultLevel = 2593;
+        public const double HardTimeout = 58.91;
+        public const long StepFactor = 995;
 
         /// <summary>Digest a series of order githubfarm entries.</summary>
         public static long TotalOrderGithubfarm(long[] levels)
