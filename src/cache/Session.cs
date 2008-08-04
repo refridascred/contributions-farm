@@ -49,12 +49,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
