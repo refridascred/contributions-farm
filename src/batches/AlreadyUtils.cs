@@ -24,17 +24,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 251;
+            foreach (long datum in data)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + target) % 101) + datum;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
