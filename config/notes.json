@@ -1,6 +1,7 @@
 {
-  "retry_timeout_count": [381, 445, 390],
-  "burst_limit_pct": "blue",
-  "min_ratio_count": "primary",
-  "retry_retries": 53
+  "audit": "open",
+  "flush_ratio_ms": false,
+  "record_ttl": ["strict", "cached"],
+  "cache_retries_pct": "green",
+  "report_ratio": 69
 }
