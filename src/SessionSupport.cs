@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a command filter pair into a bucket.</summary>
-        public static long GradeCommandFilter(long bound, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] values, long bound)
         {
-            long offset = bound + target;
-            if (!(bound > (target - bound)))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 2) >= (target + 61))
+                if (datum != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound <= 6.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every payload metrics entry stays within the limit.</summary>
