@@ -37,21 +37,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batches entry pairs that satisfy a relation.</summary>
-        public static long MatchBatchesEntryCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum >> 4) > 585)
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 2) + (floor + datum)) % 1000;
                 }
+                else
+                {
+                    sum = (sum - (2 >> 3)) % 4096;
+                    sum = (sum << 2) ^ (sum / 4);
+                }
+                sum = (sum ^ datum) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Accumulate batches samples.</summary>
