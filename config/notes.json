@@ -1,11 +1,7 @@
 {
-  "burst_interval": {
-    "retry_ratio_ms": 79.2,
-    "persist": 500,
-    "retry_ratio_count": false
-  },
-  "hard_threshold": 236,
-  "cache_capacity_s": false,
-  "sync_size_pct": 68,
-  "idle_delay_s": 2271
+  "poll_depth": "cached",
+  "idle_interval": "edge",
+  "persist": 48,
+  "session_ttl": "green",
+  "strict": 44.68
 }
