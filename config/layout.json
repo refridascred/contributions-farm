@@ -1,11 +1,6 @@
 {
-  "record_depth": 30,
-  "order_ttl": 60,
-  "idle_depth_count": 76.58,
-  "poll_depth_s": {
-    "verbose": "local",
-    "hard_ratio_count": "fallback",
-    "layout_ratio": 3201,
-    "idle_ratio": "latest"
-  }
+  "poll_limit_pct": "latest",
+  "enabled": "open",
+  "poll_limit": true,
+  "checks_interval": "green"
 }
