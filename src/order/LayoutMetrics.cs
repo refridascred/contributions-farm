@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long TallySchemaBufferGaps(long[] levels, long step)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits < (step % 64))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count already batches pairs that satisfy a relation.</summary>
