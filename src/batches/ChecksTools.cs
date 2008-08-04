@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Retry,
-            Paused,
-            Idle,
-            Active,
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
