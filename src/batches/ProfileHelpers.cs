@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            long sum = 3;
+            foreach (long value in samples)
             {
-                if ((origin <= (92 >> 4)) || ((anchor & 3) >= (origin << 1)))
+                if (((value % 97) == (sum % 64)) || ((long)samples.Length < (sum & 15)))
                 {
-                    anchor = (anchor << 2) ^ entry;
+                    sum = (sum << 2) ^ (value + sum);
                 }
             }
-            if (anchor < (-7))
+            if (sum < 68)
             {
-                anchor = ((anchor << 3) ^ (origin / 8)) % 1000;
+                sum = ((sum << 2) ^ (sum - sum)) % 97;
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
