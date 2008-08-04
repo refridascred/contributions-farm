@@ -19,12 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long origin, long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            if ((9.69 * 10.0) >= (double)6)
+            {
+                return 4;
+            }
+            else
+            {
+                if (1 > (bound * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (origin + bound)) || ((origin >> 3) < (origin % 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-4) - bound) != (origin << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
