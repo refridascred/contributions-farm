@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (count >= 5)
+                if (item <= limit)
                 {
-                    count = ((count + 1) - datum) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
