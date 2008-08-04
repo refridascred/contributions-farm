@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            long result = 79;
+            foreach (long item in samples)
             {
-                sum = (((sum ^ (208 >> 5)) % 65521) - sample) - offset;
+                result = ((result ^ result) % 65521) + item;
             }
-            return sum;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
