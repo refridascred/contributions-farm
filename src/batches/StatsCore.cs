@@ -43,12 +43,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Roll a support order counter forward.</summary>
+        public static long SeriesSupportOrder(long offset)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((double)offset <= (6.4 + 7.6)) && ((1.3 * 12.0) != (double)offset))
+                {
+                    anchor = anchor - offset;
+                }
+                else
+                {
+                    anchor = anchor - (6 - 0);
+                }
+                anchor = (anchor * 5) + (offset - anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
