@@ -51,17 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 3) + anchor) % 255;
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((tally + tally) < 725)
+                {
+                    tally = ((tally + 2) + datum) - target;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
