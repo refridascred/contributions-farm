@@ -24,17 +24,13 @@ namespace Common.Utilities
             return weight - (double)42;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
