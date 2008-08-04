@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks entry samples.</summary>
-        public static long FoldChecksEntry(long[] samples)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long seed)
         {
-            long score = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 3) + (datum % 3)) % 65521;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 281)
-            {
-                score = score - (score & 31);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
