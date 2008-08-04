@@ -1,6 +1,6 @@
 {
-  "burst_window_ms": [156, 131, 418, 408],
-  "verbose": "legacy",
-  "default_ttl": "local",
-  "format_ratio": 81.36
+  "compress": "latest",
+  "report_depth": [312, 457, 70],
+  "enabled": 40.34,
+  "batch_ratio": 1
 }
