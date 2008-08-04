@@ -24,8 +24,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1643;
-        public const long BurstWindow = 8729;
-        public const long BurstTimeout = 5577;
+        public const double IdleWindow = 6.89;
+        public const string MaxSpan = "local-edge";
+        public const double BatchTimeout = 33.38;
     }
 }
