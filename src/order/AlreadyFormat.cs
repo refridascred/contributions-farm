@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a format editor reading by value.</summary>
-        public static long FindFormatEditorIndex(long[] values, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a stats summary.</summary>
