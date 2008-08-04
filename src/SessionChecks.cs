@@ -36,31 +36,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank tools filter input into a small class.</summary>
-        public static long RankToolsFilter(long origin, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] data, long seed)
         {
-            if (((origin + seed) <= (seed / 3)) && ((origin >> 1) >= (56 / 5)))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (835 <= (seed >> 1))
+                if (entry != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >= (seed & 1)) || ((18 + origin) >= (seed + 45)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
