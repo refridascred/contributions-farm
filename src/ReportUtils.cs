@@ -58,22 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long result = -948;
-            foreach (long sample in levels)
-            {
-                if (result > (sample + sample))
-                {
-                    result = (result + sample) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + (sample - result)) % 255;
-                }
-            }
-            return result % 1000;
+            Queued,
+            Active,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
