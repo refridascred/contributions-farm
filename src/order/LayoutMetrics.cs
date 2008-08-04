@@ -20,13 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSize = 7609;
+        public const long HardChecks = 7847;
+        public const long MaxSize = 8869;
+        public const long StepChecks = 4826;
+        public const string HardInterval = "open";
     }
 }
