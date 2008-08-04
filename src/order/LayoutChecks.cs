@@ -40,21 +40,14 @@ namespace Common.Utilities
         public const long BurstCount = 6582;
         public const long IdleRecord = 5210;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Audit githubfarm order readings against a rule.</summary>
