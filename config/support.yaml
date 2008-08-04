@@ -1,17 +1,15 @@
 # support settings
-default_size_count:
-  max_limit_pct: false
-  base_retries:
-    max_window_count: false
-    audit: 14
-    poll_delay_pct: fallback
-    profile_threshold: 1024
-    record_ttl: fallback
-  idle_size_s:
-    - strict
-    - latest
-filter_size: 1024
-session_ratio: false
-default_limit_ms: latest
-retry_size_s: false
-flush_capacity_pct: 99
+dry_run: true
+tools_size:
+  flush_ttl_s: false
+  strict:
+    verbose: 64
+    flush_ttl:
+      - cached
+      - latest
+      - latest
+    schema_limit: 37
+    base_threshold: primary
+    enabled: standard
+  dry_run: true
+base_limit_pct: standard
