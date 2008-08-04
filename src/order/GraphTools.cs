@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const string StepSize = "cached-edge";
         public const string IdleCommand = "local-1";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] values, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double drift = 7.17;
+            if (drift > (bias / 8.0))
             {
-                if (17 >= (limit - value))
-                {
-                    hits = hits + 1;
-                }
+                drift = (drift - drift) + offset;
             }
-            return hits;
+            return drift + 5.0;
         }
 
         /// <summary>Hold a route summary.</summary>
