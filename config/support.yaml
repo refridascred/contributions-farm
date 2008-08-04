@@ -1,6 +1,21 @@
 # support settings
-sync_timeout: 75.21
-checks_limit: false
-sync_size_s: 72.07
-warm_threshold: green
-poll_window_s: 500
+sync_window_count: green
+retry_retries_count:
+  strict:
+    stream_ratio: false
+    contributi_interval:
+      - 404
+      - 397
+      - 305
+    metric_depth:
+      - 122
+      - 155
+      - 1
+  burst_delay: 82
+  contributi_interval: 60
+  enabled: true
+  hard_window_ms: 69.96
+burst_window_count: 1569
+flush_threshold_count: 3.73
+audit: legacy
+burst_capacity_ms: eu-west
