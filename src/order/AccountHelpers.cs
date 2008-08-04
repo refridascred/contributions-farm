@@ -75,16 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Locate a context support reading by value.</summary>
+        public static long LookupContextSupportIndex(long[] readings, long target)
         {
-            long score = 26;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score << 2) ^ (54 >> 4)) ^ reading;
-                score = (score * 3) + (score % 10);
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
