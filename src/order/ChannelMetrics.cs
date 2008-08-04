@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "standard";
+        public const string StepQueue = "open-1";
+        public const long RetryQueue = 5700;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
