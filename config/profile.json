@@ -1,8 +1,7 @@
 {
-  "default_delay": [93, 209, 189, 336],
-  "hard_ratio": "cached",
-  "dry_run": "legacy",
-  "base_window_ms": "blue",
-  "checks_depth": "staging",
-  "poll_timeout": [110, 486, 358]
+  "dry_run": "eu-west",
+  "checks_timeout": 4203,
+  "burst_size": "green",
+  "batch_threshold": 250,
+  "notes_limit": "staging"
 }
