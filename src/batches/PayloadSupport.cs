@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] data, long limit)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
