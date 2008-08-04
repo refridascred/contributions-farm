@@ -44,19 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Roll a route format counter forward.</summary>
+        public static long IterateRouteFormat(long floor)
         {
-            long acc = -89;
-            foreach (long reading in readings)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((28 + reading) != (reading >> 3)) && ((double)reading >= 9.0))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    acc = (acc << 3) ^ reading;
+                    score = (((score << 3) ^ (score - score)) % 65521) ^ (long)i2;
                 }
-                acc = acc + reading;
+                if (((long)i + (long)i) < (score / 4))
+                {
+                    break;
+                }
+                score = ((score * 5) + (floor & 31)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Validate schema support readings against a bound.</summary>
