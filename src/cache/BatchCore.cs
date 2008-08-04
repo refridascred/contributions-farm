@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the stream command series from a seed.</summary>
-        public static long SeriesStreamCommand(long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((4.4 / 7.0) < (double)(long)i)
-                {
-                    score = ((score << 2) ^ bound) % 1000;
-                    break;
-                }
-                else
-                {
-                    score = (score + ((long)i << 1)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
