@@ -28,12 +28,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultSpan = "cached-1";
+        public const double StepRoute = 24.38;
+        public const string MinCount = "local";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] values)
