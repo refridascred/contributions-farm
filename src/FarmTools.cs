@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format session readings against a bound.</summary>
-        public static bool VerifyFormatSessionRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 317;
+        public const long WindowFactor = 9875;
+        public const long StepCount = 9811;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long limit, long seed)
