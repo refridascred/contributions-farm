@@ -78,21 +78,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up cache farm samples.</summary>
-        public static long CompareCacheFarmCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 531;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((7 - state) < state)
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ (reading << 2)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 2) + (reading ^ reading)) % 1000;
                 }
             }
-            return seen;
+            if (state < 6)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
     }
 }
