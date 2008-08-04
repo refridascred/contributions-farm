@@ -62,18 +62,22 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Accumulate counter cluster samples.</summary>
-        public static long ScoreCounterCluster(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series, long floor)
         {
-            long acc = 99;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((long)items.Length <= cell) || ((-947) > ((long)items.Length - cell)))
+                if (((-4) + cell) < 7)
                 {
-                    acc = ((acc * 3) + (5 * 2)) % 65521;
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
