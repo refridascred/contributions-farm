@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long CountContributiContextGaps(long[] readings, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((offset << 3) > offset)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                total = (total - total) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a metrics summary.</summary>
