@@ -29,19 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] readings, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
