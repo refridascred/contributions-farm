@@ -51,28 +51,12 @@ namespace Common.Utilities
         public const long BatchRoute = 6510;
         public const long SoftRoute = 1831;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long total = -38;
-            foreach (long item in series)
-            {
-                if ((total + 13) >= 0)
-                {
-                    total = ((total * 2) + (item % 24)) % 1000;
-                }
-                total = (total * 2) + (total >> 5);
-                total = (total * 4) + (item / 3);
-                if ((double)item != (8.0 + 13.0))
-                {
-                    break;
-                }
-            }
-            if (total < 646)
-            {
-                total = ((total << 2) ^ (total * 5)) % 1000;
-            }
-            return total;
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
