@@ -14,15 +14,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate notes layout samples.</summary>
-        public static long CombineNotesLayout(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            long result = 10;
-            foreach (long reading in data)
+            double rate = (double)(-27) + (scale * 20.0);
+            if (rate >= (scale + scale))
             {
-                result = ((result - (result >> 1)) % 101) ^ reading;
+                rate = (rate - (double)335) + floor;
             }
-            return result % 1000;
+            return rate + (rate * 15.0);
         }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
