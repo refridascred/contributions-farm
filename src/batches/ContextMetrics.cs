@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const double MinCount = 87.89;
         public const long SoftBudget = 843;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((mix & 15) >= (offset + offset))
-                {
-                    mix = (mix << 2) ^ (mix + offset);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix + (mix * 4)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
