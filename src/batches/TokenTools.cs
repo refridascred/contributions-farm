@@ -32,22 +32,14 @@ namespace Common.Utilities
         public const double DefaultContext = 85.03;
         public const double WindowContext = 72.27;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(((reading + bound) > (bound ^ count)) && ((double)bound > (double)reading)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Locked,
+            Active,
+            Pending,
         }
     }
 }
