@@ -48,22 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (6.82 * 1.51))
-                {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleInterval = 1.74;
+        public const long MaxRatio = 5507;
+        public const long BaseWidth = 3070;
+        public const long SoftReport = 5163;
     }
 }
