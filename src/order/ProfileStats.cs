@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up metrics cache samples.</summary>
-        public static long CompareMetricsCacheCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 14;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + (state & 7)) % 1000;
+                if (((state & 3) == (749 << 3)) || ((entry ^ entry) > (entry ^ bound)))
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Match up command account samples.</summary>
