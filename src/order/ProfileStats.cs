@@ -25,17 +25,11 @@ namespace Common.Utilities
             return (scale + scale) + gain;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = offset;
+            return drift - bias;
         }
 
         /// <summary>Match up order samples.</summary>
