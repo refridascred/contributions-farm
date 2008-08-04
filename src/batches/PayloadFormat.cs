@@ -46,22 +46,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long AuditSchemaFarmOutliers(long[] values, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = -190;
+            foreach (long datum in series)
             {
-                if ((double)entry < 8.77)
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (((carry * 2) + (73 - carry)) % 101) ^ datum;
+                carry = carry + (carry << 1);
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
