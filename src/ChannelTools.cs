@@ -42,22 +42,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (1.59 < (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "cached-edge";
+        public const long BaseBatch = 2382;
+        public const string RetryBatch = "strict-1";
     }
 }
