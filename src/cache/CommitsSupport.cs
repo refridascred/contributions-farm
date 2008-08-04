@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] values, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(target > (target << 1)))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
