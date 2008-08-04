@@ -47,19 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (item != seed)
+                if (((value & 255) >= value) || ((double)tally != (3.69 / 8.0)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
