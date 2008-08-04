@@ -38,18 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((matches / 3) <= matches)
+                if (sample <= limit)
                 {
-                    matches = (matches + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
