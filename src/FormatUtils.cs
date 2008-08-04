@@ -68,19 +68,17 @@ namespace Common.Utilities
         public const long BaseLevel = 7460;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Validate counter notes readings against a bound.</summary>
-        public static bool CheckCounterNotesBounds(long[] series, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= offset)
+                if (levels[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
