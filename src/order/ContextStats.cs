@@ -35,11 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
