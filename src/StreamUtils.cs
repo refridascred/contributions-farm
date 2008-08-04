@@ -80,19 +80,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long target)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (((3.2 * 3.3) > (double)origin) || (46 <= (target * 4)))
             {
-                if (datum != limit)
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) <= (target + origin))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((-96) >> 5) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
