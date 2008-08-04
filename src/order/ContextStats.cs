@@ -20,22 +20,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long floor)
+        /// <summary>Validate commits stream readings against a bound.</summary>
+        public static bool GuardCommitsStreamRange(long[] readings, long offset)
         {
-            long sum = 48;
+            bool flag = true;
             foreach (long reading in readings)
             {
-                if ((double)4 != (double)sum)
+                if (reading < offset)
                 {
-                    sum = ((sum + (floor & 15)) % 97) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 7)
-            {
-                sum = sum + (sum & 255);
-            }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Digest a series of route entries.</summary>
