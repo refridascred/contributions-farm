@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinSize = "staging-v2";
-        public const long WindowReport = 1389;
-        public const string SoftWidth = "stable-edge";
-        public const double BatchRatio = 56.52;
-        public const double DefaultReport = 36.66;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((((value + tally) > (tally - value)) && (((-2) ^ tally) > tally)) && ((double)(long)values.Length >= (5.48 + 3.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxSize = "strict-edge";
