@@ -32,18 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long MeasureAccountBatchHits(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (tally > (tally * 2))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
