@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long step)
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long CountProfileSessionGaps(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample <= step)
+                if ((952 / 2) >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) ^ value) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
