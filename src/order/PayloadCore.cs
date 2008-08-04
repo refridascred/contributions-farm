@@ -36,24 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] data, long limit)
         {
-            if ((target + target) < (target >> 3))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor) > target)
+                if (cell != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
