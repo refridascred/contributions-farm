@@ -52,31 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Find the first context contributi entry that matches the target.</summary>
+        public static long LocateContextContributiIndex(long[] data, long origin)
         {
-            if ((floor & 63) > (floor >> 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 / 8.0) == (double)floor)
+                if (data[i] == origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + floor) > (98 % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
