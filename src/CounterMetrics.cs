@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long MinLevel = 1651;
         public const double DefaultQueue = 38.83;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data, long bound)
         {
-            Done,
-            Ready,
-            New,
-            Dropped,
-            Active,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((bound % 5) > (964 * 5)) || ((seen / 9) <= (entry + entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
