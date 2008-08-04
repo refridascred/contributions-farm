@@ -36,20 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (limit >= ((long)i - state))
-                {
-                    state = (state - (state % 60)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepLevel = 275;
+        public const long IdleSize = 9793;
+        public const long BurstToken = 7087;
+        public const double MaxToken = 24.66;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] levels, long floor)
