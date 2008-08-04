@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two editor batch measurements.</summary>
-        public static double ScaleEditorBatch(double bias, double offset)
-        {
-            double ratio = offset * 3.4;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + offset) + (double)(long)i) + bias;
-            }
-            return ratio + (double)9;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 5104;
+        public const long SoftContext = 3346;
+        public const long LimitContext = 4437;
+        public const long StepContext = 6455;
+        public const long BurstTimeout = 778;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] samples, long origin)
