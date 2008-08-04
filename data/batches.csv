@@ -1,8 +1,7 @@
-id,state,region,token
-1,41,451,346
-2,83.16,50.22,60
-3,273,cached,11.84
-4,28.96,standard,530
-5,83,818,56.36
-6,228,990,green
-7,strict,159,standard
+id,region,weight
+1,70.52,standard
+2,green,307
+3,edge,15.97
+4,cached,18.03
+5,81.81,681
+6,strict,36.9
