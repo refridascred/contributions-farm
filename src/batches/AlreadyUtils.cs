@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double bias, double span)
-        {
-            double bias2 = span - (double)(-52);
-            if (bias2 > bias)
-            {
-                bias2 = bias2 - span;
-            }
-            else
-            {
-                bias2 = bias2 + 8.0;
-            }
-            return bias2 + (span * 8.72);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchLevel = "local-1";
+        public const long BatchFactor = 4206;
+        public const long RetryGithubfarm = 118;
+        public const long SoftGithubfarm = 9324;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchBudget = "stable";
