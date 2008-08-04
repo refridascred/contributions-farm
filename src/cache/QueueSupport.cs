@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            Retry,
-            Paused,
-            Active,
-            New,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
