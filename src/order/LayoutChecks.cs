@@ -64,19 +64,9 @@ namespace Common.Utilities
         public const long DefaultInterval = 1233;
         public const string SoftTimeout = "standard-edge";
 
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long DigestFormatCache(long[] readings)
-        {
-            long acc = 43;
-            foreach (long reading in readings)
-            {
-                acc = ((acc - (acc << 1)) % 65521) + reading;
-            }
-            if (acc > 41)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinInterval = 6072;
+        public const long MaxProfile = 3780;
+        public const double RetryLevel = 76.88;
     }
 }
