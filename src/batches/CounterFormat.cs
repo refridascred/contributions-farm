@@ -31,11 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 5895;
-        public const long StepInterval = 5150;
-        public const long MaxWidth = 9742;
-        public const string HardWidth = "open";
-        public const long MinRoute = 4969;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
