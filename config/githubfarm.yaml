@@ -1,18 +1,8 @@
 # githubfarm settings
-default_limit_count:
-  - cached
-  - standard
-  - strict
-  - fallback
-warm_window_pct: 3377
-batches_capacity: 97.33
-batch_capacity_s:
-  warm_size_count:
-    readonly: 1272
-    account_retries: 59.84
-    hard_timeout_pct: 40
-    sync_capacity: 250
-  filter_capacity: 100
-  min_window_s: 33
-  commits_capacity: legacy
-persist: 67
+readonly: 100
+compress: standard
+audit: 26
+max_ratio:
+  - 89
+  - 434
+  - 428
