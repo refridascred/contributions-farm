@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            if (((seed % 5) <= (-21)) && (93 < (seed << 3)))
+            long state = 653;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound ^ bound) != (452 * 3)))
+                state = (state << 3) ^ (459 / 4);
+                if ((double)reading >= (double)state)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound - seed) == (bound * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
