@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Dropped,
-            Locked,
-            Paused,
-            Failed,
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
