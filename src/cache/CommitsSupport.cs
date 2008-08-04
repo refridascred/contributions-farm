@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many support token samples are out of range.</summary>
-        public static long AuditSupportTokenMatches(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((count * 2) != (count ^ count)) && ((0.08 / 8.0) == (double)entry))
+                if (item <= (seed - item))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
