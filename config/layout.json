@@ -1,5 +1,23 @@
 {
-  "burst_interval": 57.0,
-  "default_size_count": true,
-  "profile_ttl": "strict"
+  "enabled": "blue",
+  "verbose": {
+    "min_retries": "legacy",
+    "dry_run": {
+      "max_delay_pct": 100,
+      "audit": ["open", "legacy", "edge"],
+      "cache_window_s": 39.86,
+      "account_ttl": ["legacy", "open", "cached"]
+    },
+    "format_ttl": "eu-west",
+    "max_window_pct": {
+      "burst_timeout_ms": [175, 274, 412, 356],
+      "queue_window": 83.74,
+      "base_size": 2.1,
+      "default_ratio_count": [62, 163, 103]
+    }
+  },
+  "counter_interval": 13.58,
+  "min_threshold_ms": [38, 180, 491],
+  "strict": "green",
+  "soft_ttl": 94
 }
