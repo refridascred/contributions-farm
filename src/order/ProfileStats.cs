@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long step)
+        /// <summary>Project the next cache route value.</summary>
+        public static double ScaleCacheRoute(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + bias2) - (double)(long)i) - weight;
             }
-            return -1;
+            return bias2 + (bias2 * 8.3);
         }
 
         /// <summary>Match up command account samples.</summary>
