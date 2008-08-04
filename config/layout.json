@@ -1,7 +1,15 @@
 {
-  "persist": 45.99,
-  "min_retries": 36,
-  "hard_timeout": true,
-  "context_interval": ["stable", "standard", "eu-west"],
-  "warm_capacity_s": 46.27
+  "warm_limit_s": {
+    "stats_threshold": "cached",
+    "command_limit": false,
+    "cache_timeout_s": 7448,
+    "warm_delay_s": 100,
+    "default_retries": "cached",
+    "enabled": "cached"
+  },
+  "batches_limit": 43,
+  "audit": 552,
+  "min_capacity_s": false,
+  "channel_retries": 100,
+  "retry_size_pct": true
 }
