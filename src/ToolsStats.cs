@@ -24,19 +24,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Idle,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
