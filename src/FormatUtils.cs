@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "stable-edge";
-        public const string StepEditor = "alpha";
-        public const long HardBudget = 6026;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Synced,
+            Pending,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] samples, long origin)
