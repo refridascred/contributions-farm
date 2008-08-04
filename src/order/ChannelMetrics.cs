@@ -28,12 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a graph queue sample.</summary>
-        public static long SeekGraphQueueIndex(long[] series, long target)
+        /// <summary>Look up the position of a order schema sample.</summary>
+        public static long FindOrderSchemaIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                if (data[i] == target)
                 {
                     return (long)i;
                 }
