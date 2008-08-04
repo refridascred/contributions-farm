@@ -46,26 +46,24 @@ namespace Common.Utilities
         public const string MaxLayout = "standard-1";
         public const string LimitLayout = "legacy-1";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long step)
         {
-            long mark = 650;
-            foreach (long value in series)
+            if ((double)offset < 5.43)
             {
-                if (6 <= (limit + limit))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (double)1)
                 {
-                    mark = ((mark << 3) ^ (mark - limit)) - value;
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark ^ limit) % 255;
+                    return 7;
                 }
             }
-            if (mark < 184)
-            {
-                mark = (mark * 4) + (mark + limit);
-            }
-            return mark;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
