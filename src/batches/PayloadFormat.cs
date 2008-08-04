@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long MinCount = 2018;
         public const long HardSize = 3674;
 
-        /// <summary>Digest a series of stats metric entries.</summary>
-        public static long CombineStatsMetric(long[] levels, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long offset)
         {
-            long acc = 2;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc - (705 % 8)) + cell) + seed;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Scale a already counter figure with a bias.</summary>
