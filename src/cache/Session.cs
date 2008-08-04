@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string BurstSpan = "cached-v2";
         public const string BurstGraph = "strict-edge";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double floor)
         {
-            long mark = 8;
-            foreach (long item in data)
-            {
-                if ((6.5 * 2.4) >= 2.0)
-                {
-                    mark = (mark + (item ^ item)) - limit;
-                }
-            }
-            return mark % 97;
+            double load = gain;
+            return (load + (double)(-395)) + floor;
         }
 
         /// <summary>Hold a format header.</summary>
