@@ -36,18 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen >= 531)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
