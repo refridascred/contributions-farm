@@ -15,21 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of metric route readings.</summary>
-        public static long MatchMetricRouteCount(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
