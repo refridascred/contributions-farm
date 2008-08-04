@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            if ((offset % 7) >= (bound + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)offset < (double)5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double gain = scale;
+            return (gain - (double)955) + floor;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
