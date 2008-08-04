@@ -1,17 +1,6 @@
 # support settings
-retry_interval_s: 91.85
-retry_depth:
-  cache_size_ms: staging
-  tools_delay: true
-  flush_ratio_s:
-    - primary
-    - open
-    - stable
-    - legacy
-  readonly:
-    - green
-    - strict
-    - strict
-    - latest
-  burst_delay: green
-command_interval: 40.05
+verbose:
+  - 25
+  - 123
+context_depth: 2950
+min_interval_pct: false
