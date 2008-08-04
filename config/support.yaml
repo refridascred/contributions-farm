@@ -1,15 +1,17 @@
 # support settings
-stream_capacity: fallback
-readonly: 51
-persist:
-  - 338
-  - 316
-githubfarm_depth:
-  poll_window: staging
-  dry_run: 1024
-  hard_delay_count:
-    - 495
-    - 376
-    - 326
-  burst_depth: true
-  session_size: false
+flush_depth_pct: 500
+strict: 5461
+cache_depth_ms: 8
+account_ttl:
+  already_depth: 65
+  verbose: 27
+  command_threshold: 90.0
+  poll_size:
+    max_threshold_ms: standard
+    hard_timeout_pct:
+      - 268
+      - 151
+      - 314
+      - 303
+    dry_run: false
+    max_threshold_count: edge
