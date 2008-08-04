@@ -34,17 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
