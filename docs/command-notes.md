@@ -1,12 +1,14 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Use queue settings to tune how often graph data is refreshed.
-When a entry fails, the stats handler retries a few times before giving up.
+When a tools fails, the githubfarm handler retries a few times before giving up.
+The report module keeps farm values in sync with the window cache.
+Each stream is validated before it reaches the account queue.
+
+When a cache fails, the cache handler retries a few times before giving up.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer session defaults
-- Review profile limits each release
-- Keep metrics values small
-- Document new record fields
+- Log every cluster change
+- Validate queue input early
+- Document new githubfarm fields
