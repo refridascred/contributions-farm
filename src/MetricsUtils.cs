@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((seen / 2) > (entry + (-84))))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 4293;
+        public const double MaxRatio = 69.14;
+        public const string MaxStream = "strict-1";
+        public const long BatchStream = 5016;
 
         /// <summary>Compare every pair of editor queue readings.</summary>
         public static long CompareEditorQueueCount(long[] values)
