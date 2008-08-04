@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] values, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Locked,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
