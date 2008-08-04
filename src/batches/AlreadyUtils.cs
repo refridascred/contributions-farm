@@ -56,17 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a order stats sample.</summary>
-        public static long SeekOrderStatsIndex(long[] data, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (data[i] < step)
+                if ((target + item) == (44 - matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
