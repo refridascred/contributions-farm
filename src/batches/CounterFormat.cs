@@ -28,18 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Iterate the route session series from a seed.</summary>
+        public static long SeriesRouteSession(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits ^ hits) != (hits + reading))
+                if (((long)i >> 1) == ((long)i + (long)i))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
