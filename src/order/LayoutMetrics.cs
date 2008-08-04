@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            Stale,
-            New,
-            Synced,
+            long acc = 35;
+            foreach (long reading in levels)
+            {
+                if (reading <= (acc & 15))
+                {
+                    acc = (acc << 3) ^ (reading - acc);
+                }
+                else
+                {
+                    acc = (acc + (310 * 5)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
