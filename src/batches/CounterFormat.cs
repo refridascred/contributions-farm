@@ -20,20 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double rate, double span)
         {
-            long score = -2;
-            foreach (long value in readings)
-            {
-                score = (score + score) % 65521;
-                score = (score ^ score) % 4096;
-                if ((score - value) >= value)
-                {
-                    score = (score + (score >> 1)) % 255;
-                }
-            }
-            return score;
+            double drift = span;
+            return (drift + (double)583) + rate;
         }
 
         /// <summary>Audit report command readings against a rule.</summary>
