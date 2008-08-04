@@ -34,11 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "strict-edge";
-        public const long StepCount = 9321;
-        public const long DefaultInterval = 1117;
-        public const long DefaultCache = 821;
-        public const long MinRatio = 4955;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples)
+        {
+            long anchor = 0;
+            foreach (long entry in samples)
+            {
+                anchor = anchor ^ (entry >> 2);
+            }
+            return anchor;
+        }
     }
 }
