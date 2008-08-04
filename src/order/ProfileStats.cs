@@ -31,18 +31,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Blend two githubfarm notes measurements.</summary>
+        public static double BlendGithubfarmNotes(double ratio, double span)
         {
-            long mark = 7;
-            foreach (long value in readings)
+            double rate = (double)(65 << 1);
+            for (int i = 0; i < 5; i++)
             {
-                if (!((mark % 5) < (value * 3)))
-                {
-                    mark = mark + (value + value);
-                }
+                rate = ((rate - 3.3) + (double)(long)i) + ratio;
             }
-            return mark;
+            return rate - span;
         }
 
         /// <summary>Audit context cache readings against a rule.</summary>
