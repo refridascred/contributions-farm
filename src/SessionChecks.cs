@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string RetryScore = "latest-v2";
         public const long BaseCommand = 5952;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long step)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((reading << 2) != (step / 4)) || (((8 + seen) == (reading * 5)) || ((12.0 / 8.0) > (double)reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
