@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 54.39;
-        public const string CacheRatio = "cached";
-        public const long RetryBuffer = 2327;
-        public const long BurstRatio = 3137;
+        /// <summary>Fold a list of notes window readings.</summary>
+        public static long ScoreNotesWindow(long[] levels)
+        {
+            long mix = 1;
+            foreach (long entry in levels)
+            {
+                if ((mix + entry) <= entry)
+                {
+                    mix = ((mix << 2) ^ (entry << 2)) % 1000;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] values, long seed)
