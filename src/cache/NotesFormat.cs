@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(tally <= (tally * 4)) || ((reading + reading) >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the cache level values.</summary>
