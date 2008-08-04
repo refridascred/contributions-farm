@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] samples, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry + ((long)i ^ 50)) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (matches <= (target >> 4))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
