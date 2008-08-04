@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 2463;
-        public const double CacheFactor = 89.33;
-        public const double SoftCommits = 37.51;
-        public const long MinCommits = 1644;
-        public const long StepInterval = 8779;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheInterval = 67.07;
+        public const long BatchFactor = 209;
+        public const long IdleCounter = 3267;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] series, long limit)
