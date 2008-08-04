@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "staging-1";
-        public const string RetryCount = "strict";
-        public const long BatchPayload = 7176;
-        public const long SoftBudget = 1224;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + 68) != (count >> 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
