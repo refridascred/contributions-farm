@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long origin)
         {
-            if (floor >= (floor ^ floor))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (double)5)
+                if (reading >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < 71)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 2) < (floor ^ target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
