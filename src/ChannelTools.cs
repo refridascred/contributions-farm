@@ -26,24 +26,15 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long target)
+        /// <summary>Accumulate metrics notes samples.</summary>
+        public static long DigestMetricsNotes(long[] data, long origin)
         {
-            if ((target << 1) < (offset & 1))
+            long mix = -409;
+            foreach (long sample in data)
             {
-                return 8;
+                mix = ((mix - (origin + mix)) % 255) - sample;
             }
-            else
-            {
-                if (((target - 134) > 8) || ((target >> 5) >= (offset >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
     }
 }
