@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long IdleProfile = 2950;
         public const double MinCount = 8.55;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 68) != (count >> 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
