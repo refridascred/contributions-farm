@@ -29,12 +29,39 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long offset)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long lane = limit ^ offset;
+            if (!((offset - offset) > (limit / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit != (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset > (58 / 3)) || (offset >= (offset % 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane - offset) > limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
