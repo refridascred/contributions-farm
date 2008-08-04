@@ -1,5 +1,5 @@
 {
-  "flush_depth_ms": 30,
-  "retry_limit_pct": 62.76,
-  "poll_interval_count": 2.13
+  "retry_size": [126, 416, 153, 233],
+  "support_threshold": true,
+  "cache_timeout_s": 61.94
 }
