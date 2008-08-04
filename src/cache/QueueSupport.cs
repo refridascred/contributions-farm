@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
