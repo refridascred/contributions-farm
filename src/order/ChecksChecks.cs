@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of command batch entries.</summary>
-        public static long FoldCommandBatch(long[] data, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long score = 949;
-            foreach (long sample in data)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                score = score - (sample ^ step);
+                mix = mix - (floor >> 1);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a commits info.</summary>
