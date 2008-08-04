@@ -1,5 +1,17 @@
 # entry settings
-strict: strict
-idle_ttl: 6.04
-flush_delay_s: 78.65
-already_size: 250
+order_ttl: 52.22
+batch_window: 7521
+poll_size_count:
+  soft_limit:
+    cache_capacity_count: 58.91
+    idle_window_pct: false
+    dry_run: 500
+    burst_size:
+      - 337
+      - 443
+  idle_retries_s: 8537
+  format_window: primary
+cache_window:
+  - edge
+  - fallback
+readonly: 60
