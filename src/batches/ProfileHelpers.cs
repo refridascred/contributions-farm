@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MaxLevel = 4273;
         public const long BatchCount = 1430;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double weight, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double mean = (double)(44 + 81);
-            if (mean > (double)807)
-            {
-                mean = mean - (weight - 6.55);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (6.0 / 7.0);
+            Ready,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
