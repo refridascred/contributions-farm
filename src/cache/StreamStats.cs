@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] items, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (cell >= floor)
+                if ((2.13 / 7.0) > (double)item)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
