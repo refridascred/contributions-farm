@@ -48,39 +48,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long prev = step + limit;
-            if ((6 > (prev + 10)) || ((limit + prev) >= (15 - limit)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - step) > prev)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step << 3) <= (limit - step)) || ((prev % 97) == (prev * 2)))
+                    if ((series[i] - series[j]) < 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (4.3 <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
