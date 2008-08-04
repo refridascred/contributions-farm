@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxSize = "strict-edge";
-        public const string IdleBuffer = "open";
-        public const double DefaultBuffer = 36.72;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((99 - limit) > limit) || ((limit - 88) < hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] items)
