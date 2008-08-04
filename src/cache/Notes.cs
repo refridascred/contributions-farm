@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long WindowFarm = 242;
         public const double RetryRatio = 26.35;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] values, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of account readings.</summary>
