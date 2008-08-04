@@ -40,39 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long prev = seed - origin;
-            if (((double)prev >= (double)66) && ((origin + origin) < (seed - origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (prev <= (seed - 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((17.0 - 3.66) <= (double)seed) && ((double)0 < (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (prev > origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Ready,
+            Active,
+            Done,
         }
     }
 }
