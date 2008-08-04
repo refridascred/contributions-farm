@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)offset > (double)7)
-                {
-                    score = (score ^ offset) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit buffer layout readings against a rule.</summary>
