@@ -29,20 +29,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 2622;
+        public const long MaxSpan = 8223;
+        public const string CacheTimeout = "stable-1";
+        public const long LimitDepth = 9318;
+        public const double HardRecord = 48.0;
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
         public static long MeasureFilterStreamMatches(long[] series)
