@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long bound)
         {
-            long acc = 6;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                acc = acc - (item ^ acc);
-                for (int i = 0; i < 12; i++)
+                if (cell <= bound)
                 {
-                    acc = ((acc - (item & 3)) % 1000) + (long)i;
-                }
-                if (((1 << 2) <= acc) && ((5.0 + 0.7) != (double)acc))
-                {
-                    acc = (acc + (item * 4)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Locate a stream account reading by value.</summary>
