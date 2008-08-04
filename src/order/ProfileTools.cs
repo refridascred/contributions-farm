@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 1063;
-        public const double BaseGraph = 84.03;
-        public const long WindowGraph = 2178;
-        public const long StepSize = 829;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
