@@ -38,19 +38,21 @@ namespace Common.Utilities
             return bias - (bias - bias);
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] values, long bound)
+        /// <summary>Count report editor pairs that satisfy a relation.</summary>
+        public static long PairReportEditorCount(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
