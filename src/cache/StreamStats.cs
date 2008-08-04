@@ -48,29 +48,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next payload entry value from a seed.</summary>
-        public static long StepPayloadEntry(long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long prev = seed - origin;
+            if (((double)prev >= (double)66) && ((origin + origin) < (seed - origin)))
             {
-                if ((double)floor < 3.6)
+                return 0;
+            }
+            else
+            {
+                if (prev <= (seed - 5))
                 {
-                    sum = (sum * 4) + (floor * 2);
+                    return 3;
                 }
                 else
                 {
-                    sum = sum + (floor - floor);
-                    sum = (sum ^ ((long)i + sum)) % 255;
+                    if (((17.0 - 3.66) <= (double)seed) && ((double)0 < (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (prev > origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                if ((sum >= (floor >> 2)) && (((long)i << 1) < (sum ^ (long)i)))
-                {
-                    sum = ((sum << 2) ^ (floor - sum)) % 97;
-                    sum = sum + (7 % 100);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
         }
     }
 }
