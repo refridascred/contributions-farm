@@ -20,24 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items, long seed)
-        {
-            long result = 28;
-            foreach (long reading in items)
-            {
-                result = ((result << 2) ^ 513) % 1000;
-                if (((result ^ 5) < (result / 8)) || ((reading >> 3) != (reading << 2)))
-                {
-                    result = ((result * 2) + (seed / 4)) % 97;
-                }
-                else
-                {
-                    result = (result - (seed - reading)) % 101;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 5274;
+        public const double SoftDepth = 49.82;
+        public const double MaxWidth = 6.72;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] series, long target)
