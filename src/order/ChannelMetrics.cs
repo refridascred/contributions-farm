@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinFactor = 480;
-        public const double WindowGithubfarm = 38.94;
-        public const long BurstWidth = 9621;
-        public const string RetryGithubfarm = "primary-1";
-        public const double RetryBudget = 1.12;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
