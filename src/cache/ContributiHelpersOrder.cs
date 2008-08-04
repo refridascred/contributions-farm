@@ -33,10 +33,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3671;
-        public const double RetryTools = 61.83;
-        public const string BatchTools = "standard-v2";
-        public const double StepWidth = 27.08;
-        public const string CacheTools = "primary";
+        public const double IdleBudget = 69.45;
+        public const string CacheFactor = "latest-edge";
+        public const long StepTools = 6319;
     }
 }
