@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((long)data.Length != (entry - entry))
+                if (reading < origin)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Audit batches already readings against a rule.</summary>
