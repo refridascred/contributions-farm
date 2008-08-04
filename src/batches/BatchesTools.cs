@@ -14,19 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((limit / 8) >= (tally - tally))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "legacy-1";
+        public const long IdleSpan = 5423;
+        public const long RetryLevel = 3064;
+        public const long BurstWidth = 8100;
+        public const long MinMetric = 9404;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
