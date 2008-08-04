@@ -1,16 +1,6 @@
 # support settings
-hard_size_count: 2208
-base_ratio_s:
-  max_size_s: 2786
-  min_limit_s: 60
-  metrics_size:
-    format_threshold: blue
-    contributi_retries: latest
-    checks_timeout: 34.02
-    batch_threshold_pct: true
-    sync_limit: blue
-    default_limit: true
-verbose:
-  - staging
-  - blue
-  - local
+sync_timeout: 75.21
+checks_limit: false
+sync_size_s: 72.07
+warm_threshold: green
+poll_window_s: 500
