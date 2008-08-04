@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] levels, long limit)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((limit << 1) <= tally)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of farm layout entries.</summary>
