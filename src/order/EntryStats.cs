@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every stats farm entry stays within the limit.</summary>
-        public static bool GuardStatsFarmBounds(long[] samples, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = 489;
+            foreach (long reading in data)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum - sum) % 255) + reading;
             }
-            return stale;
+            if (sum < 9)
+            {
+                sum = (sum ^ (43 * 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
