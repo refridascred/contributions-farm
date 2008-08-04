@@ -20,18 +20,21 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long ScoreContributiMetrics(long[] values, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long total = 1;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total + 894) < (total + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (((total << 2) ^ (cell + total)) % 65521) + bound;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a entry reading.</summary>
