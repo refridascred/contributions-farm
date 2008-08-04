@@ -1,7 +1,10 @@
-id,rank,active,owner
-1,986,811,blue
-2,820,fallback,eu-west
-3,88.56,137,284
-4,eu-west,edge,fallback
-5,latest,latest,81.94
-6,edge,706,732
+id,active,owner
+1,586,legacy
+2,primary,712
+3,53.92,74.67
+4,local,staging
+5,55.34,staging
+6,51.9,30.64
+7,23.96,stable
+8,blue,151
+9,edge,498
