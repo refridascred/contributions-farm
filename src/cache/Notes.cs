@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 5024;
-        public const long StepFormat = 8105;
-        public const long BaseScore = 2976;
-        public const long StepSize = 1303;
-        public const string BurstFormat = "primary-v2";
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] levels)
