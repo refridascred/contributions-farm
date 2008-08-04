@@ -47,18 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] values, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = -195;
+            foreach (long reading in readings)
             {
-                if (((439 + floor) != (item >> 3)) || !((floor / 9) > item))
-                {
-                    hits = hits + 3;
-                }
+                total = (((total - ((long)readings.Length % 3)) % 101) ^ reading) + origin;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Look up the position of a order stats sample.</summary>
