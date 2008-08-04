@@ -26,12 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
