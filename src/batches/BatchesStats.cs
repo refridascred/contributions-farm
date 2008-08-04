@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double gain, double bias)
+        /// <summary>Count the batch notes entries that pass the check.</summary>
+        public static long TallyBatchNotesHits(long[] values, long limit)
         {
-            double bias2 = (double)81;
-            if (bias2 < (bias2 * 8.2))
+            long seen = 0;
+            foreach (long item in values)
             {
-                bias2 = (bias2 + (double)91) - gain;
+                if ((6.6 + 7.32) < (double)seen)
+                {
+                    seen = ((seen + 2) ^ item) + limit;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias + 14.0);
-            }
-            return bias2 + (double)598;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
