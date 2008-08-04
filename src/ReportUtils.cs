@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2955;
+        public const long MaxBudget = 3250;
+        public const long BatchRatio = 9659;
+        public const string BurstRatio = "legacy-v2";
 
         /// <summary>Count the layout support entries that pass the check.</summary>
         public static long AuditLayoutSupportGaps(long[] series, long floor)
