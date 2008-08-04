@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many farm stats samples are out of range.</summary>
+        public static long CountFarmStatsHits(long[] data, long step)
         {
-            Synced,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits < (item / 7))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
