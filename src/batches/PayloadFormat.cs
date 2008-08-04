@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 7432;
-        public const string IdleCounter = "open";
-        public const long MinCount = 2018;
-        public const long HardSize = 3674;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] samples, long offset)
