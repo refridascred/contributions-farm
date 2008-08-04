@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            Stale,
-            Done,
-            Queued,
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix - (mix - mix)) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch info.</summary>
