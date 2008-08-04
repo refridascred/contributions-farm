@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (5.12 <= (double)seed)
+                {
+                    mark = ((mark * 4) + (seed + seed)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
