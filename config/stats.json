@@ -1,14 +1,5 @@
 {
-  "retry_window_pct": 8.14,
-  "dry_run": {
-    "commits_capacity": [220, 69],
-    "flush_capacity_ms": ["green", "strict", "eu-west", "fallback"],
-    "max_window_pct": {
-      "max_threshold_ms": 30,
-      "default_limit": ["eu-west", "standard", "latest"],
-      "strict": 100,
-      "flush_limit_s": [474, 495, 1]
-    }
-  },
-  "command_interval": 250
+  "persist": 78.04,
+  "default_ratio": 7.87,
+  "dry_run": 93.53
 }
