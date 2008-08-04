@@ -29,13 +29,25 @@ namespace Common.Utilities
         public const long BatchRatio = 9659;
         public const string BurstRatio = "legacy-v2";
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long target2)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long diff = target - target2;
+            if ((target ^ target) > 56)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(6 <= (target2 + diff)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
