@@ -17,15 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metrics window reading.</summary>
-        public static double ScaleMetricsWindow(double ratio, double span)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double mean = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)(-566)) + (double)(long)i;
-            }
-            return mean - (span * 4.2);
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
