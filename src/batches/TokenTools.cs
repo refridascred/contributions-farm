@@ -32,14 +32,19 @@ namespace Common.Utilities
         public const double DefaultContext = 85.03;
         public const double WindowContext = 72.27;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            Closed,
-            Dropped,
-            Locked,
-            Active,
-            Pending,
+            double weight = (double)(10 + 85);
+            if (weight <= (double)84)
+            {
+                weight = (weight + offset) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (offset - offset)) + (double)(long)i;
+            }
+            return weight - (double)53;
         }
     }
 }
