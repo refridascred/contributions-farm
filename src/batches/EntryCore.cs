@@ -65,12 +65,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a queue graph reading by value.</summary>
-        public static long LocateQueueGraphIndex(long[] levels, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
