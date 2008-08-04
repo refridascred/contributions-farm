@@ -71,19 +71,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long origin)
+        /// <summary>Locate a queue graph reading by value.</summary>
+        public static long LocateQueueGraphIndex(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < origin)
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
