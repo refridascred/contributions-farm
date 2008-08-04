@@ -42,18 +42,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = 98;
+            foreach (long value in items)
             {
-                if ((432 % 8) != (79 - seen))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                state = ((state + (step + 101)) % 101) - value;
             }
-            return seen;
+            return state;
         }
     }
 }
