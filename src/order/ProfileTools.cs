@@ -27,14 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Closed,
-            Paused,
-            Locked,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 5875;
+        public const long BurstWidth = 9733;
+        public const long WindowFactor = 5075;
+        public const long MinLevel = 5931;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorBounds(long[] levels, long offset)
