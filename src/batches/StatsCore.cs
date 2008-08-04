@@ -23,31 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long target)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long AuditTokenGraphOutliers(long[] values)
         {
-            if (4.37 > (double)offset)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > (offset % 3))
+                if (((hits * 5) <= (value - hits)) && !((11.0 + 1.7) <= (double)value))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (!((double)target != (2.5 / 9.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
