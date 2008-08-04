@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Active,
+            Retry,
             Closed,
-            Ready,
-            Stale,
-            Done,
         }
 
         /// <summary>Audit farm buffer readings against a rule.</summary>
