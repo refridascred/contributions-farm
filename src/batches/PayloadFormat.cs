@@ -53,18 +53,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step == (1.0 / 2.0))
+                if ((values[i] == seed) && ((values[i] % 5) == 0))
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
