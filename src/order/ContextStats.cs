@@ -58,21 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain = span - (9.18 - 4.1);
+            return (gain + (double)4) + weight;
         }
     }
 }
