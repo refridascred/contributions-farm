@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long AuditTokenGraphOutliers(long[] values)
+        /// <summary>Combine metric queue values into a single score.</summary>
+        public static long ScoreMetricQueue(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = -53;
+            foreach (long datum in series)
             {
-                if (((hits * 5) <= (value - hits)) && !((11.0 + 1.7) <= (double)value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result * 3) + (result + 782)) % 1000) + datum;
             }
-            return hits;
+            if (result > 8)
+            {
+                result = ((result << 2) ^ (origin / 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the context status values.</summary>
