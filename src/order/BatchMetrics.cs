@@ -35,20 +35,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 5983;
+        public const string BaseChannel = "latest-v2";
+        public const double IdleChannel = 81.02;
+        public const long WindowChannel = 4710;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
