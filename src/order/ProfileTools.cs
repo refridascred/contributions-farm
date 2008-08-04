@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long WindowSchema = 3546;
         public const long BatchCount = 7320;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long limit)
         {
-            double rate = ratio;
-            return rate - span;
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
