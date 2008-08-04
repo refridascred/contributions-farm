@@ -40,16 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next notes checks value from a seed.</summary>
-        public static long SeriesNotesChecks(long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                sum = (sum << 3) ^ (target * 3);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Project the next batch metrics value.</summary>
