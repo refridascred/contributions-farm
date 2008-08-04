@@ -46,21 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 818;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 3) + mix) + value;
             }
-            return hits;
+            if (mix < 83)
+            {
+                mix = mix - (step ^ mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a counter batches sample.</summary>
