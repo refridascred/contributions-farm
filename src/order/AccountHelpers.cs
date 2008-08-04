@@ -88,11 +88,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] levels, long limit)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
