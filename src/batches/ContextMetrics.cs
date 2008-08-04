@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer layout measurements.</summary>
-        public static double AdjustBufferLayout(double rate, double span)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            double mean = (double)(28 + 756);
-            if (mean >= rate)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (mean * 20.0)) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (mean * 8.7);
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
