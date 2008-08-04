@@ -65,22 +65,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches & 3) >= (136 - 32))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3207;
+        public const long StepLevel = 1146;
+        public const double BatchChannel = 23.4;
+        public const long CacheSize = 7898;
+        public const long CacheChannel = 1352;
     }
 }
