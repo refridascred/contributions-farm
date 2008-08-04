@@ -27,17 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first filter metrics entry that matches the target.</summary>
-        public static long LookupFilterMetricsIndex(long[] samples, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
