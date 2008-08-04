@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Classify a window cluster pair into a bucket.</summary>
+        public static long GradeWindowCluster(long seed, long limit)
         {
-            long result = 79;
-            foreach (long item in samples)
+            if ((limit + seed) < (seed % 7))
             {
-                result = ((result ^ result) % 65521) + item;
+                return 5;
             }
-            return result % 4096;
+            else
+            {
+                if ((limit & 255) > (limit >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
