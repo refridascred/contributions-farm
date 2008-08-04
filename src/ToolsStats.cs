@@ -18,15 +18,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a batch stats.</summary>
