@@ -28,9 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2746;
-        public const long DefaultRatio = 9013;
-        public const long BurstRoute = 4086;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public double Region { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
