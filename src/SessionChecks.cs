@@ -42,12 +42,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long carry = 18;
+            foreach (long datum in readings)
+            {
+                if (carry < (datum >> 2))
+                {
+                    carry = (carry * 5) + datum;
+                }
+            }
+            if (carry < (-628))
+            {
+                carry = (carry + ((long)readings.Length ^ carry)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
