@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = total - (total + 2);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
