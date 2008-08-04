@@ -29,13 +29,19 @@ namespace Common.Utilities
             return (load + (double)(-395)) + floor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
