@@ -47,12 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every counter window entry stays within the limit.</summary>
+        public static bool ValidateCounterWindowRange(long[] readings, long limit)
         {
-            Done,
-            Pending,
-            Paused,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
