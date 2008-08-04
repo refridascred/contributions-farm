@@ -67,17 +67,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long step)
+        /// <summary>Count the buffer already entries that pass the check.</summary>
+        public static long CountBufferAlreadyGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if ((datum + (long)series.Length) <= (857 ^ count))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
