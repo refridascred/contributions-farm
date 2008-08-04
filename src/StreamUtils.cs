@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + reading) <= (455 + reading))
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
