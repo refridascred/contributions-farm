@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] levels, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 61;
+            foreach (long cell in data)
             {
-                if (entry > (entry << 2))
-                {
-                    hits = (hits + 2) + step;
-                }
+                mark = ((mark * 2) + (floor + 9)) - cell;
             }
-            return hits;
+            if (mark < 540)
+            {
+                mark = (mark - (floor * 4)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
