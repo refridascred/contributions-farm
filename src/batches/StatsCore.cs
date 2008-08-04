@@ -58,24 +58,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank account buffer input into a small class.</summary>
-        public static long RankAccountBuffer(long offset, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long floor)
         {
-            if (6.87 < (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - offset) < limit)
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
