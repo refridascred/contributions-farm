@@ -27,11 +27,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 4293;
-        public const double MaxRatio = 69.14;
-        public const string MaxStream = "strict-1";
-        public const long BatchStream = 5016;
+        /// <summary>Digest a series of order githubfarm entries.</summary>
+        public static long TotalOrderGithubfarm(long[] levels)
+        {
+            long anchor = -435;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (item ^ 15)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
