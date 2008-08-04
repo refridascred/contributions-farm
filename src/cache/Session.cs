@@ -33,20 +33,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long score = 601;
-            foreach (long datum in samples)
-            {
-                if ((score << 3) <= (score * 2))
-                {
-                    score = ((score << 2) ^ (datum % 60)) - floor;
-                    score = ((score * 3) + (datum & 1)) % 65521;
-                }
-                score = (score + (score & 63)) % 4096;
-            }
-            return score % 1000;
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
