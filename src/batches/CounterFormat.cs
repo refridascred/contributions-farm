@@ -20,38 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long seed, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            if (3.27 > (double)target)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (seed / 9))
+                if ((1.5 / 5.0) >= (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed < (1.6 / 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target * 4) < target) || (seed <= (seed + 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
