@@ -31,21 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
