@@ -40,22 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = -46;
+            foreach (long reading in items)
             {
-                if (!((value % 7) == (matches >> 2)))
+                if ((total >> 2) > (limit & 1))
                 {
-                    matches = (matches + 2) + step;
+                    total = total ^ reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = total + (901 >> 5);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
