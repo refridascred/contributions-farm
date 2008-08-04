@@ -1,5 +1,10 @@
 {
-  "strict": "blue",
-  "flush_window_count": "eu-west",
-  "schema_interval": "standard"
+  "poll_delay_pct": 57.39,
+  "readonly": false,
+  "persist": {
+    "hard_size_count": [363, 243, 33],
+    "channel_window": "local",
+    "sync_delay_ms": 1024,
+    "burst_capacity_pct": 5632
+  }
 }
