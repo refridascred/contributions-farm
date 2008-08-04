@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3386;
-        public const long WindowSpan = 8570;
-        public const string WindowFarm = "cached-1";
-        public const string BatchCount = "cached-edge";
-        public const long BatchSpan = 4204;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
