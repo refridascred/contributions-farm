@@ -61,22 +61,23 @@ namespace Common.Utilities
         public const long DefaultSize = 6991;
         public const long DefaultEditor = 8122;
 
-        /// <summary>Grade a metric contributi value against two limits.</summary>
-        public static long RankMetricContributi(long floor, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long bound, long seed)
         {
-            if ((limit % 3) >= (floor / 3))
+            long cur = bound ^ seed;
+            if (!((cur ^ (-809)) > seed))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((9.6 * 9.56) != (double)floor)
+                if ((6.04 / 4.0) >= (double)seed)
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
