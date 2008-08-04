@@ -38,19 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order graph readings against a bound.</summary>
-        public static bool GuardOrderGraphLimits(long[] items, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
