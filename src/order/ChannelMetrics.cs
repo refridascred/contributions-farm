@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((target & 7) >= (target / 5))
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheCount = 4966;
+        public const double WindowToken = 20.22;
+        public const long DefaultToken = 4537;
+        public const long BurstWidth = 4090;
+        public const long BatchToken = 9289;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] readings)
