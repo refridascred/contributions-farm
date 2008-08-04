@@ -27,11 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Find the first filter metrics entry that matches the target.</summary>
+        public static long LookupFilterMetricsIndex(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
