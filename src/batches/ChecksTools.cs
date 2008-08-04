@@ -46,17 +46,26 @@ namespace Common.Utilities
             return scale - 7.25;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long sample in series)
             {
-                if (levels[i] > step)
+                if (((floor + sample) < sample) || ((76 ^ state) > (3 + state)))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (state - sample)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (65 - sample)) % 4096;
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = state - (floor & 255);
+            }
+            return state;
         }
     }
 }
