@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Derive the next order layout value from a seed.</summary>
+        public static long IterateOrderLayout(long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)levels.Length - reading) > reading)
+                if (((long)i ^ acc) < 12)
                 {
-                    count = count + 2;
+                    acc = (acc ^ 58) % 65521;
+                    acc = (acc - (660 + 7)) % 1000;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc + (seed - seed)) % 97) ^ (long)i2;
+                }
+                if ((seed - 1) < ((long)i - (long)i))
+                {
+                    acc = (acc + (acc % 7)) % 1000;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the buffer state values.</summary>
