@@ -65,15 +65,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout token values into a single score.</summary>
-        public static long FoldLayoutToken(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long total = 1;
-            foreach (long value in levels)
-            {
-                total = total + (value % 2);
-            }
-            return total;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
