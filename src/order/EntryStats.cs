@@ -20,39 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            long cur = step - bound;
-            if (step < (cur + bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (cur >= (step % 60))
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.0 * 8.01) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) < (cur >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
