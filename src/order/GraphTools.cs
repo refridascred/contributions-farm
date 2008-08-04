@@ -25,11 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 94.06;
-        public const long LimitCommand = 4488;
-        public const string StepSize = "cached-edge";
-        public const string IdleCommand = "local-1";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double bias, double offset)
