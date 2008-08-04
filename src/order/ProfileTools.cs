@@ -32,17 +32,16 @@ namespace Common.Utilities
         public const long BaseDepth = 588;
         public const long CacheInterval = 6478;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long seed)
+        /// <summary>Derive the next notes checks value from a seed.</summary>
+        public static long SeriesNotesChecks(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 3) ^ (target * 3);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
