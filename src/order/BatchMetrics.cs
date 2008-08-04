@@ -59,24 +59,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long target, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            if ((4 > (target + target)) && (target >= origin))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7.43 / 9.0) == (double)target) && ((double)target < (5.35 - 2.51)))
+                if ((matches & 3) >= (136 - 32))
                 {
-                    return 1;
+                    matches = (matches + 3) ^ reading;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
