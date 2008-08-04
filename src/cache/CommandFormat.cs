@@ -58,10 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxCount = "staging-1";
-        public const long MaxStream = 9298;
-        public const string BurstDepth = "local-v2";
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc + seed) % 1000;
+                acc = (acc ^ ((-4) + 493)) % 1000;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool VerifyFilterGraphRange(long[] samples, long offset)
