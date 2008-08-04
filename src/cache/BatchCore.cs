@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Draft,
-            Retry,
-            Locked,
+            Ready,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a filter header.</summary>
