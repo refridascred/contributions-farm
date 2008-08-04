@@ -41,10 +41,33 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 26.59;
-        public const string MaxLayout = "standard-1";
-        public const string LimitLayout = "legacy-1";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long limit, long step)
+        {
+            long prev = limit + step;
+            if ((prev - 67) > step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 407) < (limit % 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(step <= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long offset, long step)
