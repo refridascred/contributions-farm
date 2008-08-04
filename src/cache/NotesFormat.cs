@@ -32,16 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor - anchor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
