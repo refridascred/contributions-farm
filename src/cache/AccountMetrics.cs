@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long origin)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long MeasureOrderNotesGaps(long[] values)
         {
-            long anchor = 83;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((long)samples.Length > value)
+                if (value > (value + seen))
                 {
-                    anchor = ((anchor << 2) ^ value) - origin;
+                    seen = seen + 2;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
