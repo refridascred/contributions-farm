@@ -13,19 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every support cluster entry stays within the limit.</summary>
-        public static bool GuardSupportClusterRange(long[] readings, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = weight;
+            return (mean - (double)607) + offset;
         }
 
         /// <summary>Describe the route level values.</summary>
