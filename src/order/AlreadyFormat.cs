@@ -20,26 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph payload samples.</summary>
-        public static long TotalGraphPayload(long[] series)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)series.Length <= (value / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (value + value)) % 255;
-                }
-                if ((value + sum) >= (sum >> 3))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 45)
-            {
-                sum = ((sum * 5) + (sum << 3)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
