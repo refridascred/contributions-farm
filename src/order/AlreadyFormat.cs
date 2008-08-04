@@ -34,21 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long MeasureCounterSessionMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + value) < value)
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
