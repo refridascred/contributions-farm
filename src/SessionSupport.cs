@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)(-66) <= (double)anchor)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (seed + 113);
-                }
-                anchor = (anchor - (860 & 15)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
