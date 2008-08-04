@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next order layout value from a seed.</summary>
-        public static long IterateOrderLayout(long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((long)i ^ acc) < 12)
+                if (cell > floor)
                 {
-                    acc = (acc ^ 58) % 65521;
-                    acc = (acc - (660 + 7)) % 1000;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc + (seed - seed)) % 97) ^ (long)i2;
-                }
-                if ((seed - 1) < ((long)i - (long)i))
-                {
-                    acc = (acc + (acc % 7)) % 1000;
+                    ok = false;
                     break;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the buffer state values.</summary>
