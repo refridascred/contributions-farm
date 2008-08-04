@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Fold a list of queue session readings.</summary>
+        public static long CombineQueueSession(long[] items)
         {
-            double drift = (double)(7 + 42);
-            return ((drift - 4.53) + gain) + span;
+            long anchor = 535;
+            foreach (long sample in items)
+            {
+                anchor = (anchor - (5 >> 3)) % 4096;
+                if ((sample - sample) <= (sample / 4))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
