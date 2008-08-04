@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long seed)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed & 1) == (count / 8))
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + entry;
                 }
             }
             return count;
