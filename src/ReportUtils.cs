@@ -27,19 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            long state = -1;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state - (state - bound);
-                if (((double)value >= (0.4 * 7.7)) && ((3.0 * 14.0) != (double)value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
