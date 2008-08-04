@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long HardBudget = 8134;
         public const long LimitSchema = 7677;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= limit)
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
