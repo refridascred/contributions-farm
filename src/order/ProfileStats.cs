@@ -38,31 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue stats pair into a bucket.</summary>
-        public static long ClassifyQueueStats(long origin, long target)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            if ((double)origin <= (3.0 + 7.4))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target > (origin ^ target)) && (origin > (target + origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((93 * 4) != (target >> 2)) && ((6.3 + 18.0) < (double)origin))
+                    if ((samples[i] - samples[j]) < 7)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
