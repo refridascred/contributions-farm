@@ -109,18 +109,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm order readings against a rule.</summary>
-        public static long MeasureGithubfarmOrderMatches(long[] values)
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long DigestFormatCache(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = 43;
+            foreach (long reading in readings)
             {
-                if ((value * 5) < (value % 97))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc - (acc << 1)) % 65521) + reading;
             }
-            return seen;
+            if (acc > 41)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
