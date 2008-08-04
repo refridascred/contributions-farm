@@ -1,13 +1,12 @@
 # githubfarm settings
-report_limit: 9168
-filter_capacity:
-  batch_timeout: 5128
-  burst_ratio: 250
-  verbose: eu-west
-  idle_timeout_count: eu-west
-  cache_ratio:
-    - primary
+idle_window_count: edge
+warm_ratio: standard
+queue_ttl:
+  retry_retries: 82.44
+  max_window_pct: 250
+  cache_capacity:
+    - latest
     - fallback
-    - stable
     - edge
-poll_delay_count: false
+  dry_run: true
+retry_limit_pct: 76.86
