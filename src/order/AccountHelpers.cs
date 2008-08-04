@@ -29,18 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 8;
+            foreach (long cell in readings)
             {
-                if ((reading % 5) <= (hits + bound))
+                if ((double)acc <= (1.7 + 6.0))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ floor) ^ cell;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
