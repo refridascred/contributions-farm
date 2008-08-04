@@ -23,18 +23,10 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 525;
         public const long BatchSpan = 3105;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((-277) & 31) < (datum + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 26.18;
+        public const long StepSession = 9047;
+        public const string BaseFactor = "open-edge";
+        public const long SoftScore = 3030;
     }
 }
