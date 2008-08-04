@@ -43,12 +43,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long step, long origin)
         {
-            Paused,
-            Ready,
-            Done,
+            if ((2 % 97) == (step * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + step) == (origin % 24))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
