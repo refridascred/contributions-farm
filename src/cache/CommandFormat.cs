@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((hits ^ 3) < floor)
+                if (sample <= step)
                 {
-                    hits = (hits + 2) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
