@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Synced,
-            Closed,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
