@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] data, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = -234;
-            foreach (long datum in data)
-            {
-                if (!((datum - 958) > datum))
-                {
-                    anchor = (anchor << 2) ^ (bound - 379);
-                }
-                anchor = ((anchor << 3) ^ ((long)data.Length ^ (long)data.Length)) % 65521;
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor % 1000;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the githubfarm tools series from a seed.</summary>
