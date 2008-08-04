@@ -20,17 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                long edge = state;
+                long offset = edge;
+                if ((offset & 127) != (state / 5))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state % 3)) % 97;
+                    edge = ((edge << 3) ^ (edge << 3)) % 101;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
