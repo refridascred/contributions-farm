@@ -1,8 +1,7 @@
 {
-  "warm_retries": 94,
-  "format_size": "strict",
-  "default_ratio_ms": 5703,
-  "tools_retries": 40.15,
-  "enabled": 1.14,
-  "checks_capacity": 8739
+  "dry_run": "standard",
+  "readonly": true,
+  "cache_capacity_count": 26,
+  "metrics_retries": 8818,
+  "tools_delay": 11
 }
