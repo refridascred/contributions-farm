@@ -1,12 +1,8 @@
 {
-  "command_ratio": [286, 314],
-  "audit": 8,
-  "soft_delay_ms": "blue",
-  "compress": {
-    "poll_delay_pct": ["standard", "latest", "cached", "strict"],
-    "hard_depth_pct": 1024,
-    "max_delay_count": ["green", "staging", "latest"],
-    "default_threshold": [17, 201]
-  },
-  "poll_window_count": "cached"
+  "max_capacity_pct": 1024,
+  "counter_ratio": ["stable", "primary", "latest", "legacy"],
+  "min_limit_pct": ["local", "stable"],
+  "record_timeout": 10.56,
+  "verbose": 1.85,
+  "retry_limit_pct": "green"
 }
