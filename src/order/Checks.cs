@@ -45,18 +45,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)entry == (double)71)
+                if ((count + count) >= origin)
                 {
-                    seen = seen + 3;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
