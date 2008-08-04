@@ -20,19 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long bound)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long cur = step - bound;
+            if (step < (cur + bound))
             {
-                if (item <= limit)
+                return 5;
+            }
+            else
+            {
+                if (cur >= (step % 60))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((8.0 * 8.01) != (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - step) < (cur >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
