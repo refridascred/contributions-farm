@@ -1,6 +1,5 @@
 {
-  "batches_ratio": "fallback",
-  "verbose": 29,
-  "retry_limit_pct": "staging",
-  "channel_capacity": false
+  "min_timeout": 82,
+  "soft_size_count": ["stable", "local", "green"],
+  "enabled": 99
 }
