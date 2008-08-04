@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((((double)reading > (double)5) && (hits >= (hits - 9))) || ((hits / 9) <= hits))
+                if (!((tally + 94) >= 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
