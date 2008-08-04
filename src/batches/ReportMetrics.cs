@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long floor)
         {
-            long total = 727;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)total <= (3.32 * 15.0))
+                if (samples[i] >= floor)
                 {
-                    total = ((total ^ (73 << 1)) % 65521) ^ datum;
+                    return (long)i;
                 }
             }
-            if (total > 1)
-            {
-                total = ((total << 2) ^ (total << 1)) % 1000;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
