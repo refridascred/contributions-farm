@@ -20,19 +20,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
