@@ -1,9 +1,6 @@
-id,rank,level,token,state
-1,stable,eu-west,36.56,84.87
-2,55,standard,latest,585
-3,100,stable,legacy,466
-4,934,standard,latest,695
-5,875,primary,800,33
-6,primary,22.94,964,49.62
-7,9.96,staging,889,edge
-8,772,535,staging,12
+id,token
+1,11.07
+2,primary
+3,76
+4,11.36
+5,0.76
