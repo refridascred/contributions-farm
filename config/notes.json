@@ -1,10 +1,8 @@
 {
-  "soft_delay": true,
-  "cache_threshold_count": "cached",
-  "verbose": 57.3,
-  "filter_threshold": {
-    "cache_interval_s": "eu-west",
-    "cache_retries_s": 7224,
-    "warm_window_ms": false
-  }
+  "audit": "legacy",
+  "compress": 1024,
+  "cache_limit_s": 15.35,
+  "soft_retries": 60,
+  "commits_limit": false,
+  "warm_retries_s": false
 }
