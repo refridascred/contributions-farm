@@ -40,12 +40,23 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitBudget = 8785;
-        public const long MinCommand = 140;
-        public const long CacheBudget = 6843;
-        public const string CacheSpan = "cached-edge";
-        public const double StepCommand = 39.93;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] levels, long seed)
+        {
+            long total = 797;
+            foreach (long value in levels)
+            {
+                if ((18.0 - 12.0) >= (double)total)
+                {
+                    total = (((total << 2) ^ (seed >> 5)) % 97) ^ value;
+                }
+            }
+            if (total < 460)
+            {
+                total = (total - (total + 6)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] values, long bound)
