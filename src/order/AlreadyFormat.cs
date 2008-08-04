@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (seen + seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a farm editor reading by value.</summary>
