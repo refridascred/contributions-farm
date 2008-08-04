@@ -56,13 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a batch token counter forward.</summary>
+        public static long SeriesBatchToken(long limit)
         {
-            Paused,
-            Ready,
-            Retry,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)carry < (8.0 - 13.0))
+                {
+                    long span = (carry / 2) + (4 + carry);
+                    carry = (carry << 3) ^ (limit - span);
+                }
+                if ((double)limit > (9.05 / 8.0))
+                {
+                    carry = ((carry << 2) ^ (9 ^ limit)) % 65521;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
