@@ -21,21 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
