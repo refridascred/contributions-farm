@@ -67,34 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long mark = 243;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < (mark + item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark ^ (item << 2)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (item ^ (long)readings.Length)) % 4096;
-                }
-                if ((item & 63) <= (item & 3))
-                {
-                    mark = (mark + (mark * 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (item / 7)) % 101;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 27)
-            {
-                mark = (mark * 4) + (mark & 15);
-            }
-            return mark;
+            return hits;
         }
     }
 }
