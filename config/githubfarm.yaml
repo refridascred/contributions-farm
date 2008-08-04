@@ -1,4 +1,5 @@
 # githubfarm settings
-commits_threshold: stable
-idle_threshold_s: eu-west
-audit: eu-west
+base_capacity_ms: 19
+warm_limit: 81.44
+readonly: 19
+stats_limit: standard
