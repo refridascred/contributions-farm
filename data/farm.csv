@@ -1,8 +1,8 @@
-id,label,owner,score
-1,eu-west,edge,351
-2,857,256,150
-3,11,255,677
-4,549,staging,13.54
-5,stable,local,stable
-6,staging,53,333
-7,85.22,661,881
+id,level,region
+1,standard,67.26
+2,29.38,900
+3,264,35.59
+4,eu-west,299
+5,stable,edge
+6,open,39.48
+7,fallback,35.85
