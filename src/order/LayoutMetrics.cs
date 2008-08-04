@@ -12,15 +12,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 281;
+            foreach (long item in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                total = (((total ^ total) % 65521) + item) - floor;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Fold a list of format readings.</summary>
