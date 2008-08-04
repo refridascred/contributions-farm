@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long limit)
         {
-            long result = 649;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value ^ result) > (66 + value))
+                if (series[i] < limit)
                 {
-                    result = (result * 2) + value;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
