@@ -39,17 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] < origin)
+                if ((count >> 4) != (count + count))
                 {
-                    return (long)i;
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
