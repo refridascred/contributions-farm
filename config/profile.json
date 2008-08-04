@@ -1,12 +1,6 @@
 {
-  "batch_timeout_pct": 7853,
-  "compress": {
-    "account_size": "blue",
-    "checks_size": "green",
-    "graph_ratio": 25.0,
-    "cache_capacity_s": 54
-  },
-  "dry_run": 57,
-  "readonly": 64.85,
-  "support_depth": 68.56
+  "account_limit": "open",
+  "sync_interval_pct": "stable",
+  "soft_window_pct": "standard",
+  "flush_threshold_s": [483, 124, 262, 102]
 }
