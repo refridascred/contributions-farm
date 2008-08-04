@@ -27,17 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long floor)
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long TallySessionCacheHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
+                if ((item & 31) != (hits << 1))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
