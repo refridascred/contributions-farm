@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long SoftWidth = 7223;
         public const long IdleRatio = 9932;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((((step + step) != (74 / 2)) && (value <= (matches - value))) && ((step << 2) == (matches ^ matches)))
+                if (reading != seed)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
