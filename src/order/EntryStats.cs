@@ -20,14 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            Done,
-            Draft,
-            Queued,
-            New,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
