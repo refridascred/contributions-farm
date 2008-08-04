@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] items, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= seed)
+                if (((4.0 + 8.0) == (double)count) || ((datum - count) <= (76 - count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
