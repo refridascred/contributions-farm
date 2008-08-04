@@ -55,13 +55,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7460;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate counter notes readings against a bound.</summary>
+        public static bool CheckCounterNotesBounds(long[] series, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
