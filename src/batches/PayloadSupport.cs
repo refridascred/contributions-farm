@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long acc = 13;
+            foreach (long sample in levels)
             {
-                if (datum < offset)
+                if (((long)levels.Length % 7) < (sample * 3))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ sample) % 4096;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
