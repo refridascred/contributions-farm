@@ -15,10 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "latest";
-        public const string BurstBuffer = "latest-v2";
-        public const double CacheBuffer = 83.78;
+        /// <summary>Roll a farm command counter forward.</summary>
+        public static long RollFarmCommand(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] levels)
