@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two notes window measurements.</summary>
-        public static double ScaleNotesWindow(double gain, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            double rate = (double)82 / 4.0;
-            for (int i = 0; i < 6; i++)
+            long sum = 0;
+            foreach (long cell in samples)
             {
-                rate = ((rate - (double)234) + (double)(long)i) + floor;
+                if ((cell < ((long)samples.Length + 974)) && ((sum ^ sum) != (9 >> 4)))
+                {
+                    sum = (sum - (77 ^ sum)) % 255;
+                }
             }
-            return rate - (gain - rate);
+            if (sum > 8)
+            {
+                sum = (sum + (sum ^ sum)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
