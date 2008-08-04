@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "retry_size": "legacy",
-  "flush_capacity_s": "open"
+  "max_interval": "strict",
+  "idle_threshold_count": 60,
+  "retry_capacity_ms": "standard"
 }
