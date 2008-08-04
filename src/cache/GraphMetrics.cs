@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Measure how many entry record samples are out of range.</summary>
+        public static long AuditEntryRecordGaps(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (step > (step << 1))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
