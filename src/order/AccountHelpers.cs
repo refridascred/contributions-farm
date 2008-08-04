@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Failed,
-            Retry,
-            Idle,
-            Synced,
+            Paused,
+            Closed,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
