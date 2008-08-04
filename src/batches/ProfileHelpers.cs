@@ -70,15 +70,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long MeasureCommandSupportGaps(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - sample) <= sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
