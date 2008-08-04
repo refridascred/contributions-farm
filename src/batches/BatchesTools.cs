@@ -18,13 +18,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Draft,
-            Ready,
-            Synced,
-            Idle,
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
