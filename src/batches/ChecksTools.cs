@@ -37,26 +37,11 @@ namespace Common.Utilities
         public const long MinSize = 6747;
         public const long SoftWidth = 2241;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series, long floor)
-        {
-            long state = 6;
-            foreach (long sample in series)
-            {
-                if (((floor + sample) < sample) || ((76 ^ state) > (3 + state)))
-                {
-                    state = ((state * 4) + (state - sample)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (65 - sample)) % 4096;
-                }
-            }
-            if (state < 0)
-            {
-                state = state - (floor & 255);
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstInterval = 4584;
+        public const double IdleWidth = 14.43;
+        public const double SoftInterval = 47.9;
+        public const long RetryCommand = 828;
+        public const long LimitScore = 2225;
     }
 }
