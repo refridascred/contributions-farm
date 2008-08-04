@@ -26,10 +26,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheDepth = 1545;
-        public const long SoftSchema = 6990;
-        public const string MaxSchema = "staging-1";
+        /// <summary>Scale a already counter figure with a bias.</summary>
+        public static double SmoothAlreadyCounter(double weight, double offset)
+        {
+            double gain = (double)(89 - 35);
+            if (gain > gain)
+            {
+                gain = (gain - (weight * 7.0)) + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + weight) - (double)(long)i;
+            }
+            return gain + weight;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4271;
