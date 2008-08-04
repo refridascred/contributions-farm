@@ -39,21 +39,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)80 - (15.0 / 4.0);
+            if (scale >= 5.98)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + 3.1) - ratio;
             }
-            return count;
+            else
+            {
+                scale = scale + (scale / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Project the next session value.</summary>
