@@ -29,21 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 2276;
+        public const double IdlePayload = 2.1;
+        public const string BaseWidth = "local-1";
+        public const long DefaultDepth = 1468;
+        public const long SoftSpan = 2658;
     }
 }
