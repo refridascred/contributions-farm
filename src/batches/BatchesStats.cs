@@ -51,14 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
             Locked,
-            Retry,
-            Draft,
-            Closed,
-            Paused,
+            Stale,
+            Synced,
+            Failed,
+            Queued,
         }
     }
 }
