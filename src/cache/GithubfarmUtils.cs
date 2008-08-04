@@ -12,12 +12,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank notes buffer input into a small class.</summary>
+        public static long BucketNotesBuffer(long offset, long step)
         {
-            New,
-            Retry,
-            Paused,
+            long next = offset ^ step;
+            if (7 <= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.16 - 5.38) != (double)next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
