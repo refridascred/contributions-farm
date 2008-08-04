@@ -1,17 +1,7 @@
 # support settings
-flush_depth_pct: 500
-strict: 5461
-cache_depth_ms: 8
-account_ttl:
-  already_depth: 65
-  verbose: 27
-  command_threshold: 90.0
-  poll_size:
-    max_threshold_ms: standard
-    hard_timeout_pct:
-      - 268
-      - 151
-      - 314
-      - 303
-    dry_run: false
-    max_threshold_count: edge
+max_timeout:
+  - 212
+  - 172
+  - 434
+idle_interval_pct: 3
+dry_run: true
