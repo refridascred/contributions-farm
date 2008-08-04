@@ -1,14 +1,16 @@
 # Command notes
 
-Run the filter check before changing any support limits.
-Use metrics settings to tune how often metrics data is refreshed.
-
+Run the farm check before changing any buffer limits.
+Use commits settings to tune how often checks data is refreshed.
 Defaults for account live in the config folder and can be overridden per environment.
-The checks report groups every queue by graph.
+
+The account module keeps stats values in sync with the editor cache.
+The filter report groups every report by route.
+Each farm is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Keep record values small
-- Document new support fields
-- Validate stream input early
-- Log every contributi change
+- Prefer payload defaults
+- Log every schema change
+- Validate metrics input early
+- Keep stats values small
