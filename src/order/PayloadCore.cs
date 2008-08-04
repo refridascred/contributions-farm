@@ -31,21 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry < (tally >> 1)) || (tally <= (entry - 541)))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
