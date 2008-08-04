@@ -55,30 +55,11 @@ namespace Common.Utilities
         public const long SoftCount = 6073;
         public const double CacheSize = 63.67;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + (total - total)) % 101;
-                if ((total % 64) != (long)i)
-                {
-                    total = total + 47;
-                    continue;
-                }
-                else
-                {
-                    total = (total << 2) ^ (310 / 6);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total + ((long)i2 << 3)) % 1000;
-                    total = ((total << 2) ^ total) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
