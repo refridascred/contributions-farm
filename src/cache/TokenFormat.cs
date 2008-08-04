@@ -56,15 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 856;
-            foreach (long value in series)
-            {
-                mix = mix + value;
-            }
-            return mix;
+            Locked,
+            Done,
+            Queued,
+            Dropped,
         }
     }
 }
