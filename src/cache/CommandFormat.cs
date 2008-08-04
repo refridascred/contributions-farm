@@ -60,16 +60,19 @@ namespace Common.Utilities
         public const long MaxStream = 9298;
         public const string BurstDepth = "local-v2";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series, long target)
+        /// <summary>Check that every filter graph entry stays within the limit.</summary>
+        public static bool VerifyFilterGraphRange(long[] samples, long offset)
         {
-            long sum = 535;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                sum = ((sum ^ (reading - 87)) % 255) - target;
-                sum = (sum - (reading + reading)) % 101;
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
