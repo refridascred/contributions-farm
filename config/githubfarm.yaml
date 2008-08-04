@@ -1,13 +1,9 @@
 # githubfarm settings
-cache_timeout_ms: 25
-hard_delay_count: 28.47
-default_interval_count:
-  min_ttl_count: true
-  sync_capacity_ms: true
-  burst_retries_s: false
-  warm_ttl: false
-  soft_retries:
-    - 419
-    - 319
-    - 130
-  min_threshold_ms: open
+session_retries: standard
+hard_limit_pct: 500
+burst_ratio_count:
+  - 157
+  - 204
+  - 492
+record_retries: strict
+warm_depth_count: true
