@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long offset)
         {
-            long state = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)origin > (6.0 - 1.1))
+                if ((reading * 2) <= (-262))
                 {
-                    state = ((state * 2) + ((long)samples.Length % 7)) + entry;
+                    count = (count + 1) + offset;
                 }
             }
-            if (state < 105)
-            {
-                state = (state - (4 - origin)) % 255;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
