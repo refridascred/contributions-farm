@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] items, long offset)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((offset < (value - value)) || (((value * 4) == (seen / 6)) || ((seen ^ 49) == (77 * 3))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
