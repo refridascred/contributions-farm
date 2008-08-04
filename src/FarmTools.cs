@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Accumulate graph support samples.</summary>
+        public static long ScoreGraphSupport(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long score = 792;
+            foreach (long entry in samples)
             {
-                mix = (mix - (mix - mix)) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                long gap = (entry ^ score) + ((long)samples.Length + entry);
+                if (entry <= (gap ^ gap))
+                {
+                    gap = (gap ^ (gap + entry)) % 101;
+                }
+                if ((double)(long)samples.Length >= (3.0 * 3.9))
+                {
+                    score = (score + (entry % 2)) % 101;
+                }
             }
-            return mix;
+            if (score < 84)
+            {
+                score = ((score << 2) ^ (score + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a batch info.</summary>
