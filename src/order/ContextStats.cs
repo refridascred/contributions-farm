@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stream format entries.</summary>
-        public static long DigestStreamFormat(long[] readings, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings, long floor)
         {
-            long sum = 178;
-            foreach (long datum in readings)
+            long result = 4;
+            foreach (long sample in readings)
             {
-                sum = (sum - (8 * 2)) - datum;
-                if ((sum / 9) <= bound)
+                if ((8.7 - 9.0) < (double)sample)
+                {
+                    result = ((result * 2) + (floor % 97)) % 255;
+                }
+                if ((floor + sample) > floor)
                 {
                     break;
                 }
             }
-            return sum % 65521;
+            if (result > 930)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
