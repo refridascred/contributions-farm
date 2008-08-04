@@ -35,15 +35,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((entry - tally) <= (tally << 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
