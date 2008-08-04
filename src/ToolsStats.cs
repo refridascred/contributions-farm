@@ -16,22 +16,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long carry = 5;
-            foreach (long sample in levels)
-            {
-                if ((sample >> 3) != (333 >> 5))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                if ((36 / 6) != (carry * 2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
