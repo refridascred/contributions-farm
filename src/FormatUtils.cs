@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] values, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long score = 261;
+            foreach (long cell in items)
             {
-                if (sample >= origin)
+                if (!((step << 3) > (score << 2)))
                 {
-                    stale = false;
+                    score = ((score << 2) ^ (score - step)) % 65521;
+                }
+                else
+                {
+                    score = (score - (cell & 127)) % 4096;
+                }
+                if ((step - step) > cell)
+                {
                     break;
                 }
             }
-            return stale;
+            return score % 4096;
         }
 
         /// <summary>Match up layout samples.</summary>
