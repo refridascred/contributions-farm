@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultSpan = "cached-1";
-        public const double StepRoute = 24.38;
-        public const string MinCount = "local";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Done,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
