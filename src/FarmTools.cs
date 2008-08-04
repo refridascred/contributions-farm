@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate format session readings against a bound.</summary>
+        public static bool VerifyFormatSessionRange(long[] values, long origin)
         {
-            Ready,
-            Locked,
-            Done,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stats level values.</summary>
