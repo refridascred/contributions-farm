@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((8.0 * 4.9) == (double)count)
-                {
-                    count = ((count + 3) + cell) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinLevel = 6770;
+        public const long BurstSize = 8381;
+        public const double RetryScore = 39.76;
+        public const long DefaultRatio = 9990;
+        public const double SoftCount = 68.22;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
