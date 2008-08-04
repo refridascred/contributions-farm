@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 5067;
-        public const long BatchCount = 1335;
-        public const double RetryRatio = 15.66;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix - ((-9) & 3)) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double rate, double span)
