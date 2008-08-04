@@ -33,39 +33,15 @@ namespace Common.Utilities
             return ratio - (ratio / 6.0);
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            long slot = bound ^ target;
-            if ((25 << 2) == (bound ^ slot))
+            double mean = (double)9 + bias;
+            if (mean <= (double)95)
             {
-                return 2;
+                mean = mean + (mean + offset);
             }
-            else
-            {
-                if ((double)bound < (double)slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target >= 18.0) && ((slot >> 2) <= 256))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)bound >= (double)target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean - (double)39;
         }
     }
 }
