@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data, long floor)
+        /// <summary>Digest a series of command batch entries.</summary>
+        public static long FoldCommandBatch(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = 949;
+            foreach (long sample in data)
             {
-                if ((reading << 2) > hits)
-                {
-                    hits = (hits + 1) - floor;
-                }
+                score = score - (sample ^ step);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a commits info.</summary>
