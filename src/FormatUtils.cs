@@ -46,15 +46,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double span)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            double mean = (double)3 * 7.99;
-            if (mean > (double)655)
+            long mix = 6;
+            foreach (long datum in levels)
             {
-                mean = (mean + (span * 1.0)) + weight;
+                if (!((mix - 788) < mix))
+                {
+                    mix = ((mix << 3) ^ (datum / 9)) % 255;
+                }
             }
-            return mean + (span - span);
+            return mix;
         }
     }
 }
