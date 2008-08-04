@@ -23,19 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] series, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long prev = origin + offset;
+            if ((prev * 4) <= (prev + offset))
             {
-                if (datum <= target)
+                return 7;
+            }
+            else
+            {
+                if ((9.3 - 1.19) >= (double)3)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= (offset & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset == (0.6 * 0.1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
