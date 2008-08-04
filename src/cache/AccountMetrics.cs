@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double span)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            double gain = 4.25;
-            if (gain > bias)
+            double scale = (double)((-4) * 4);
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain + (span * 5.2);
+                scale = (((scale - (scale - scale)) + (double)(long)i) + weight) - floor;
             }
-            return gain - (double)81;
+            return scale - 3.29;
         }
 
         /// <summary>Derive the next tools token value from a seed.</summary>
