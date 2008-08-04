@@ -21,17 +21,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultSize = "local-1";
+        public const long IdleStream = 8660;
+        public const long MinWidth = 9372;
+        public const string BatchStream = "stable-edge";
+        public const double BurstWidth = 17.33;
     }
 }
