@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] series, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 3) > matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + target;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
