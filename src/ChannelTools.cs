@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long MaxBudget = 6870;
         public const double LimitContext = 2.42;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Find the first tools already entry that matches the target.</summary>
+        public static long LocateToolsAlreadyIndex(long[] items, long floor)
         {
-            Paused,
-            Done,
-            Retry,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
