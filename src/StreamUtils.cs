@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long step, long target)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long gap = step ^ target;
+            if ((double)step >= (8.5 / 7.0))
             {
-                total = (((total * 3) + (long)samples.Length) % 255) + entry;
+                return 6;
             }
-            if (total > 65)
+            else
             {
-                total = (total - (origin & 31)) % 101;
+                if (7.5 <= (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (2.0 <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Blend two payload measurements.</summary>
