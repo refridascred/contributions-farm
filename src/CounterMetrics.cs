@@ -15,14 +15,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            Done,
-            Pending,
-            Synced,
-            Retry,
-            Paused,
+            if (((floor + limit) >= floor) && ((limit >> 5) < floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)floor > (2.3 - 7.1)) && (limit > 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + floor) < (limit & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
