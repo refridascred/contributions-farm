@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count % 100) >= entry) && (entry < (count - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "standard";
+        public const long RetryRatio = 335;
+        public const long BaseFilter = 4038;
+        public const double MinRatio = 79.77;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] levels, long step)
