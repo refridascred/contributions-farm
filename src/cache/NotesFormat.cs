@@ -23,13 +23,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long target, long bound)
         {
-            Idle,
-            Queued,
-            Synced,
-            Retry,
+            if (bound < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.6 / 5.0) <= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (0.2 + 8.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 2) >= target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report options.</summary>
