@@ -60,11 +60,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 3398;
-        public const double WindowSchema = 41.2;
-        public const long BurstSchema = 5545;
-        public const long SoftFactor = 9620;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count counter tools pairs that satisfy a relation.</summary>
         public static long MatchCounterToolsCount(long[] series)
