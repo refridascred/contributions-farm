@@ -52,17 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context contributi entry that matches the target.</summary>
-        public static long LocateContextContributiIndex(long[] data, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (data[i] == origin)
+                if (step > (cell % 60))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
