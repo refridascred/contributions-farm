@@ -1,8 +1,5 @@
 {
-  "warm_retries_ms": "stable",
-  "hard_ratio_ms": 250,
-  "hard_depth_count": false,
-  "poll_ratio": 57.85,
-  "default_retries_count": true,
-  "idle_capacity": "legacy"
+  "verbose": false,
+  "route_interval": 890,
+  "default_depth": "primary"
 }
