@@ -46,19 +46,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Look up the position of a format already sample.</summary>
+        public static long LocateFormatAlreadyIndex(long[] items, long floor)
         {
-            double weight = 6.59 * 0.32;
-            if (weight < bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - bias;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (offset * 2.59)) - (double)(long)i;
-            }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
