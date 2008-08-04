@@ -23,18 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (4.37 > (double)offset)
             {
-                if ((offset + offset) <= (matches & 3))
+                return 1;
+            }
+            else
+            {
+                if (offset > (offset % 3))
                 {
-                    matches = (matches + 1) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target != (2.5 / 9.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
