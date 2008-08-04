@@ -31,15 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
