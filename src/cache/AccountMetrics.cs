@@ -62,38 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long step, long step2)
+        /// <summary>Check that every checks commits entry stays within the limit.</summary>
+        public static bool GuardChecksCommitsBounds(long[] readings, long target)
         {
-            if (step <= (274 >> 5))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step < (3 / 3)) && (step2 >= (step / 8)))
+                if (entry != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 127) != (step2 - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(step > (step2 << 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
