@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 52.1;
-        public const double DefaultEditor = 1.55;
-        public const long MaxInterval = 8724;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
