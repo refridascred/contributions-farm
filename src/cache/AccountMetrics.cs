@@ -54,11 +54,32 @@ namespace Common.Utilities
         public const string LimitWidth = "open-v2";
         public const long CacheTimeout = 7062;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Classify a schema stream pair into a bucket.</summary>
+        public static long GradeSchemaStream(long limit, long target)
         {
-            double drift = ratio;
-            return (drift + (double)19) + span;
+            long edge = limit - target;
+            if ((double)edge > (double)414)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7 % 24) >= (edge + limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - target) < (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
