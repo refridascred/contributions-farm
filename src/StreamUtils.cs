@@ -89,31 +89,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long target)
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long TotalCommandCounter(long[] series, long limit)
         {
-            if (((3.2 * 3.3) > (double)origin) || (46 <= (target * 4)))
+            long mix = 2;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) <= (target + origin))
+                if ((double)mix == (9.04 - 2.27))
                 {
-                    return 1;
+                    mix = mix - (item + item);
                 }
                 else
                 {
-                    if (((-96) >> 5) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = mix + (52 - 816);
+                }
+                if (((double)(long)series.Length >= (0.76 * 0.5)) || (7.0 > (double)limit))
+                {
+                    break;
                 }
             }
+            if (mix < 73)
+            {
+                mix = (mix ^ ((-26) - limit)) % 1000;
+            }
+            return mix;
         }
     }
 }
