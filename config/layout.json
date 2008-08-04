@@ -1,6 +1,13 @@
 {
-  "persist": false,
-  "editor_ratio": 54.81,
-  "channel_capacity": "legacy",
-  "min_delay_count": 1024
+  "idle_threshold_ms": 44,
+  "max_size_pct": 4062,
+  "flush_ratio_ms": "legacy",
+  "readonly": {
+    "compress": "cached",
+    "default_window_count": false,
+    "strict": 30,
+    "graph_threshold": 26.8,
+    "enabled": 21,
+    "poll_limit_s": 67.78
+  }
 }
