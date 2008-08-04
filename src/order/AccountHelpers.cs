@@ -29,18 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long limit)
         {
-            long acc = 8;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((double)acc <= (1.7 + 6.0))
+                if (item >= limit)
                 {
-                    acc = (acc ^ floor) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
