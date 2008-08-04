@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 627;
+        public const long DefaultInterval = 4458;
+        public const string RetryRatio = "staging-v2";
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
