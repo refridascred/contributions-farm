@@ -1,39 +1,27 @@
 # entry settings
-poll_depth:
-  audit: 55.24
-  burst_size_count:
-    - 28
-    - 219
-  base_limit_pct: 2
-min_threshold_pct: open
-retry_capacity_count:
-  batch_window: 30
-  cache_window: fallback
-  profile_retries:
-    cache_capacity_count: 1478
-    persist: standard
-    min_delay: 92.29
-    burst_threshold: primary
-    base_size_count:
-      - 361
-      - 96
-      - 136
-      - 446
-    cluster_timeout: 46
-  soft_window_ms:
-    entry_depth:
-      - latest
-      - local
-      - stable
-      - staging
-    poll_size_count: fallback
-    retry_window_count: legacy
-    cluster_interval: eu-west
-  soft_ratio_pct: legacy
-  cache_threshold_ms: green
-schema_capacity: 100
-sync_depth_count:
-  - 240
-  - 482
-  - 264
-  - 350
+poll_capacity: 9234
+batches_depth:
+  base_threshold_s:
+    channel_capacity: true
+    min_retries_count: false
+    soft_retries_s: 55
+    idle_ratio_ms: 94.51
+    default_depth_ms: 21
+  order_retries: 1024
+  sync_threshold:
+    base_interval_count: latest
+    batch_window_ms: true
+    retry_capacity: blue
+    batches_window: 13
+  flush_ratio:
+    - local
+    - stable
+    - primary
+    - edge
+sync_interval_s:
+  - 117
+  - 207
+  - 438
+flush_ratio_count: 70
+default_depth: false
+warm_window: staging
