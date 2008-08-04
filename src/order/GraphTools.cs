@@ -59,39 +59,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long bound)
+        /// <summary>Validate schema support readings against a bound.</summary>
+        public static bool GuardSchemaSupportBounds(long[] data, long seed)
         {
-            long slot = step - bound;
-            if ((slot + bound) == (step ^ slot))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step <= (bound % 64)) && (bound <= slot))
+                if (datum <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step % 5) >= (7 % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5 / 5) > (slot + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a route summary.</summary>
