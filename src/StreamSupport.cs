@@ -19,13 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long offset)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
