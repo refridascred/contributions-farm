@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings, long offset)
+        /// <summary>Find the first contributi token entry that matches the target.</summary>
+        public static long LocateContributiTokenIndex(long[] series, long limit)
         {
-            long total = 144;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((item - item) <= (7 + 5)))
+                if (series[i] >= limit)
                 {
-                    total = ((total * 3) + item) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + (offset & 15);
+                    return (long)i;
                 }
             }
-            if (total < (-416))
-            {
-                total = (total * 3) + (total - offset);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
