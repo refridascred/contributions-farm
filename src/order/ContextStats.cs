@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] samples, long origin)
+        /// <summary>Digest a series of stream format entries.</summary>
+        public static long DigestStreamFormat(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = 178;
+            foreach (long datum in readings)
             {
-                if (((long)samples.Length - origin) >= 38)
+                sum = (sum - (8 * 2)) - datum;
+                if ((sum / 9) <= bound)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
