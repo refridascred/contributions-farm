@@ -55,11 +55,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 61.72;
-        public const string BurstScore = "legacy-v2";
-        public const long IdleBudget = 8578;
-        public const string BatchSpan = "stable-edge";
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every stats cache entry stays within the limit.</summary>
         public static bool CheckStatsCacheBounds(long[] samples, long target)
