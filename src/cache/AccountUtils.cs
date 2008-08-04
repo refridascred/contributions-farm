@@ -17,23 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long bound)
+        /// <summary>Project the next checks contributi value.</summary>
+        public static double SmoothChecksContributi(double weight, double offset)
         {
-            long anchor = 4;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor + (entry + anchor)) % 255) - (long)i;
-                    anchor = ((anchor << 2) ^ (79 & 127)) % 97;
-                }
-                if ((16.0 >= (double)anchor) && ((bound % 24) <= bound))
-                {
-                    anchor = (anchor + (entry + anchor)) % 101;
-                }
-            }
-            return anchor % 1000;
+            double ratio = weight;
+            return (ratio - (double)80) + offset;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
