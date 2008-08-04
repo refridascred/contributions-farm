@@ -30,17 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits route reading by value.</summary>
-        public static long FindCommitsRouteIndex(long[] levels, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a already header.</summary>
