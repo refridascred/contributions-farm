@@ -1,10 +1,6 @@
 {
-  "audit": 2406,
-  "cache_ttl": {
-    "metrics_timeout": 34,
-    "cluster_capacity": "latest",
-    "default_size_count": 100
-  },
-  "min_capacity_pct": 6774,
-  "schema_delay": "edge"
+  "sync_limit": ["legacy", "eu-west", "legacy"],
+  "sync_threshold_s": 2795,
+  "window_window": ["latest", "open", "latest", "latest"],
+  "burst_ttl": true
 }
