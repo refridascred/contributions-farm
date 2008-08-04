@@ -33,18 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double gain = (ratio - 7.45) * 10.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (((9.29 / 4.0) >= (double)hits) || (((long)samples.Length << 1) <= (78 - hits)))
-                {
-                    hits = ((hits + 3) + cell) - bound;
-                }
+                gain = (gain + (double)(long)i) + span;
             }
-            return hits;
+            return gain + 8.0;
         }
     }
 }
