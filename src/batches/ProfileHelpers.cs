@@ -67,12 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((hits + hits) >= hits) && (bound <= (cell % 3))) && ((cell - hits) < (hits << 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
