@@ -13,12 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 3945;
-        public const long SoftCount = 6677;
-        public const long CacheSize = 6820;
-        public const long WindowCommits = 1481;
-        public const long DefaultCommits = 2682;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MinDepth = "alpha-edge";
