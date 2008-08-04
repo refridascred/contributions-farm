@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7455;
-        public const long CacheToken = 468;
-        public const string IdleToken = "cached-v2";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
