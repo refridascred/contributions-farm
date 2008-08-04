@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] series, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
