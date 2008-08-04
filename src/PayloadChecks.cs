@@ -43,13 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen >= 531)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batches tools entry stays within the limit.</summary>
