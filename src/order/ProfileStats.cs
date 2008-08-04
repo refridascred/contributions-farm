@@ -40,10 +40,18 @@ namespace Common.Utilities
         public const long MaxCache = 9168;
         public const long HardCache = 4243;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7284;
-        public const double BaseBatches = 78.03;
-        public const string MinBatches = "standard";
-        public const long StepFactor = 9559;
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long AuditContextCacheGaps(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((3.96 * 6.3) != (double)floor)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
     }
 }
