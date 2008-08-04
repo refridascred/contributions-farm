@@ -39,22 +39,26 @@ namespace Common.Utilities
         public const long BaseTimeout = 9334;
         public const double BatchStats = 3.4;
 
-        /// <summary>Digest a series of counter command entries.</summary>
-        public static long CombineCounterCommand(long[] series, long offset)
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long ScoreStreamPayload(long[] levels, long step)
         {
-            long acc = 127;
-            foreach (long value in series)
+            long state = 7;
+            foreach (long item in levels)
             {
-                if (!((offset - value) < 4))
+                if ((double)step != (double)item)
                 {
-                    acc = (acc ^ 3) % 65521;
+                    state = state + (step * 3);
                 }
                 else
                 {
-                    acc = (acc ^ ((long)series.Length + acc)) % 65521;
+                    state = ((state * 3) + state) % 255;
                 }
             }
-            return acc;
+            if (state > 8)
+            {
+                state = (state - 0) % 255;
+            }
+            return state;
         }
 
         /// <summary>Project the next route value.</summary>
