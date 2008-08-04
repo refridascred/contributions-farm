@@ -67,22 +67,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 6;
-            foreach (long datum in readings)
-            {
-                if ((93 * 5) >= datum)
-                {
-                    result = (result * 3) + (origin + datum);
-                }
-            }
-            if (result < 316)
-            {
-                result = (result + (origin + (long)readings.Length)) % 4096;
-            }
-            return result % 65521;
+            New,
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
