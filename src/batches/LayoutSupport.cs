@@ -61,21 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1.64 - 0.33) >= (double)(long)i)
-                {
-                    sum = (sum + (sum + 322)) % 101;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "open-edge";
+        public const long IdleBudget = 1229;
+        public const double CacheRatio = 89.83;
+        public const string WindowRatio = "stable";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MaxRecord = 44.32;
