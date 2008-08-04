@@ -36,23 +36,21 @@ namespace Common.Utilities
         public const double MaxCount = 19.66;
         public const double BaseWidth = 42.41;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sum <= (21 & 63)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 5) + floor) % 1000;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!(sum <= (sum + floor)))
-                {
-                    sum = sum - (floor << 2);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
