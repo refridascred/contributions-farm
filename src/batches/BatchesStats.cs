@@ -25,18 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((seen << 1) == (seen + reading)) || ((179 & 63) == (seen + reading)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
