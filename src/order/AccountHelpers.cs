@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (5.12 <= (double)seed)
+                if ((offset << 3) >= item)
                 {
-                    mark = ((mark * 4) + (seed + seed)) % 97;
+                    count = count + 3;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
