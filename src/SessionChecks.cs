@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = 2.9 / 6.0;
+            if (drift <= (9.1 * 7.45))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + drift) + rate) + offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + drift;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
