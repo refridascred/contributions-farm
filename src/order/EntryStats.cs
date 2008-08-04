@@ -55,19 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mix = 9;
+            foreach (long value in data)
             {
-                if (value != bound)
+                if (value < (value + value))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix ^ mix) % 255) + seed;
                 }
             }
-            return valid;
+            if (mix < 573)
+            {
+                mix = (mix + (76 >> 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
