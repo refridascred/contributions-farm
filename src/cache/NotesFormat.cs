@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinCount = "strict-1";
-        public const string MinContributi = "fallback";
-        public const long DefaultContributi = 1245;
-        public const long MaxContributi = 1036;
+        /// <summary>Iterate the command counter series from a seed.</summary>
+        public static long SeriesCommandCounter(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] series)
