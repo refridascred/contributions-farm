@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a session queue pair into a bucket.</summary>
-        public static long ClassifySessionQueue(long seed, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if ((56 < (seed + limit)) && (seed >= (limit - seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(limit < (limit + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
