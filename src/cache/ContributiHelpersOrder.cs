@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double rate = bias;
-            if (rate <= 2.0)
-            {
-                rate = (rate + 2.2) - offset;
-            }
-            return rate - (double)2;
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
