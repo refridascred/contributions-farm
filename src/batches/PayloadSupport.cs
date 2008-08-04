@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long origin)
         {
-            long acc = 13;
-            foreach (long sample in levels)
+            long carry = 6;
+            foreach (long entry in series)
             {
-                if (((long)levels.Length % 7) < (sample * 3))
-                {
-                    acc = (acc ^ sample) % 4096;
-                }
+                carry = (carry ^ (origin + carry)) - entry;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
