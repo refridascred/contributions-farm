@@ -43,19 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter graph entry stays within the limit.</summary>
-        public static bool VerifyFilterGraphRange(long[] samples, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < offset)
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
