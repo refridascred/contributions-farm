@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Active,
-            Failed,
+            Ready,
+            Queued,
             Stale,
-            Done,
         }
 
         /// <summary>Audit buffer layout readings against a rule.</summary>
