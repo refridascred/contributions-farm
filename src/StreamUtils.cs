@@ -41,12 +41,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3682;
-        public const long SoftProfile = 9634;
-        public const long BaseSize = 8606;
-        public const string HardProfile = "strict";
-        public const string BatchTimeout = "alpha-edge";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!((5.84 - 8.0) == (double)sample) && ((double)sample <= (7.9 - 12.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] series, long limit)
