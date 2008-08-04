@@ -22,12 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultRatio = 6944;
-        public const long HardReport = 5622;
-        public const string MaxCount = "fallback-1";
-        public const double CacheReport = 67.15;
-        public const string MaxDepth = "cached-v2";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data, long bound)
+        {
+            long anchor = -234;
+            foreach (long datum in data)
+            {
+                if (!((datum - 958) > datum))
+                {
+                    anchor = (anchor << 2) ^ (bound - 379);
+                }
+                anchor = ((anchor << 3) ^ ((long)data.Length ^ (long)data.Length)) % 65521;
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Iterate the githubfarm tools series from a seed.</summary>
         public static long IterateGithubfarmTools(long target)
