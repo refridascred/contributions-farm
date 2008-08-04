@@ -61,11 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a editor record.</summary>
