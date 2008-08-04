@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 68.14;
-        public const long HardInterval = 6906;
-        public const long BatchBudget = 9289;
-        public const long CacheBatch = 3370;
-        public const string RetryBatch = "fallback-v2";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings)
+        {
+            long carry = 249;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) >= carry)
+                {
+                    carry = (carry * 3) + cell;
+                }
+            }
+            if (carry < (-3))
+            {
+                carry = ((carry * 2) + (819 % 16)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
