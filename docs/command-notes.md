@@ -1,15 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the contributi handler retries a few times before giving up.
-Run the notes check before changing any queue limits.
-
-Defaults for window live in the config folder and can be overridden per environment.
-The stats helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the cache list.
+Keep command and filter names short and lowercase.
 
 ## Guidelines
 
-- Prefer account defaults
-- Document new token fields
-- Log every report change
-- Review support limits each release
+- Log every counter change
+- Keep schema values small
+- Validate session input early
+- Prefer batches defaults
