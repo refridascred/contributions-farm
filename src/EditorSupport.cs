@@ -75,18 +75,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((3.39 - 5.0) >= (double)tally) || ((double)tally >= (2.4 + 15.0)))
+                if ((double)matches <= (1.4 + 0.5))
                 {
-                    tally = ((tally + 1) + reading) - step;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
