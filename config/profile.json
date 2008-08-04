@@ -1,14 +1,10 @@
 {
-  "verbose": ["stable", "edge", "cached"],
-  "flush_limit_count": 250,
-  "payload_interval": ["cached", "cached"],
-  "tools_ttl": 5080,
-  "dry_run": "open",
-  "hard_interval": {
-    "hard_capacity_count": [173, 246],
-    "session_window": ["edge", "local", "legacy", "open"],
-    "batch_limit": "strict",
-    "base_limit_count": 21.06,
-    "account_threshold": false
-  }
+  "contributi_depth": 250,
+  "githubfarm_window": "primary",
+  "verbose": {
+    "max_limit": [265, 101],
+    "cache_threshold_ms": 44.88,
+    "idle_threshold": false
+  },
+  "profile_size": 156
 }
