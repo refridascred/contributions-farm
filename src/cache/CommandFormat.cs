@@ -32,18 +32,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)sample != (double)matches)
+                if (!(((117 * 4) < (floor + seen)) && (floor > 74)))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
