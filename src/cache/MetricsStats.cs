@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the context profile entries that pass the check.</summary>
-        public static long TallyContextProfileGaps(long[] samples)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= (matches / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every batches layout entry stays within the limit.</summary>
