@@ -28,11 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 7235;
-        public const long BaseDepth = 5015;
-        public const double WindowSize = 61.27;
-        public const long BurstInterval = 7999;
-        public const long MinLevel = 5708;
+        /// <summary>Iterate the stats record series from a seed.</summary>
+        public static long DeriveStatsRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!!((12.0 * 14.0) >= (double)mark))
+                {
+                    mark = mark - (limit << 1);
+                }
+                mark = (mark ^ (mark * 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
