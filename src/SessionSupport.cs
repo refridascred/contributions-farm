@@ -48,24 +48,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a stream stats counter forward.</summary>
-        public static long DeriveStreamStats(long limit)
+        /// <summary>Locate a commits command reading by value.</summary>
+        public static long FindCommitsCommandIndex(long[] samples, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i < (double)60)
+                if (samples[i] < limit)
                 {
-                    acc = acc - (limit - limit);
+                    return (long)i;
                 }
-                if ((acc / 4) == (limit + limit))
-                {
-                    acc = acc ^ (7 + acc);
-                    acc = (acc + ((long)i >> 5)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
