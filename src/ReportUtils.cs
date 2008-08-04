@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheInterval = 67.07;
-        public const long BatchFactor = 209;
-        public const long IdleCounter = 3267;
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long AuditAccountChannelMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (double)matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit layout tools readings against a rule.</summary>
         public static long MeasureLayoutToolsOutliers(long[] series, long limit)
