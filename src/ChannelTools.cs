@@ -30,38 +30,18 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long offset, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data, long bound)
         {
-            if (((target & 15) != (target / 9)) && ((double)target == (9.3 - 6.87)))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset + offset) == (target / 5)) || ((offset ^ 79) <= (offset % 24)))
+                if ((324 & 127) < (cell + bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 1) != (target << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target & 15) <= (target >> 1)) && ((offset & 255) > target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
