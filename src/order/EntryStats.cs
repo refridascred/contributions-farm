@@ -33,22 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long offset)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (value < (value + value))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mix = ((mix ^ mix) % 255) + seed;
+                    score = ((score * 4) + (offset + score)) + (long)i2;
                 }
+                if (((offset * 5) >= score) || ((double)score != (6.78 / 2.0)))
+                {
+                    score = (score ^ (long)i) % 97;
+                }
+                else
+                {
+                    score = (score + score) % 101;
+                    score = (score << 2) ^ (score % 16);
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (mix < 573)
-            {
-                mix = (mix + (76 >> 1)) % 97;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
