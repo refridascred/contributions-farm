@@ -71,23 +71,17 @@ namespace Common.Utilities
             return gain - (2.1 / 5.0);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long floor)
         {
-            double drift = scale;
-            if (drift < offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (double)992;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + 5.64;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
     }
 }
