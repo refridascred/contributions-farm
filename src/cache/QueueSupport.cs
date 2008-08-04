@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch commits values into a single score.</summary>
-        public static long TallyBatchCommits(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long step)
         {
-            long mix = 86;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 3) + datum) % 101;
-                if ((double)mix != (2.2 + 7.18))
+                if (entry >= step)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
