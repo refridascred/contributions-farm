@@ -32,11 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 7497;
-        public const string BaseBudget = "fallback";
-        public const long IdleCount = 3210;
-        public const long SoftWidth = 6893;
-        public const long StepWidth = 255;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3671;
+        public const double RetryTools = 61.83;
+        public const string BatchTools = "standard-v2";
+        public const double StepWidth = 27.08;
+        public const string CacheTools = "primary";
     }
 }
