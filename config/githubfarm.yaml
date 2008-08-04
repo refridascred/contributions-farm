@@ -1,8 +1,18 @@
 # githubfarm settings
-soft_timeout_count: false
-verbose:
-  - eu-west
-  - green
-  - legacy
+default_limit_count:
+  - cached
+  - standard
+  - strict
   - fallback
-min_interval_s: 87
+warm_window_pct: 3377
+batches_capacity: 97.33
+batch_capacity_s:
+  warm_size_count:
+    readonly: 1272
+    account_retries: 59.84
+    hard_timeout_pct: 40
+    sync_capacity: 250
+  filter_capacity: 100
+  min_window_s: 33
+  commits_capacity: legacy
+persist: 67
