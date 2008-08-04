@@ -31,17 +31,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a token profile counter forward.</summary>
-        public static long IterateTokenProfile(long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long mark = 7;
+            foreach (long value in readings)
             {
-                if (!(181 <= mark))
+                if (!((mark % 5) < (value * 3)))
                 {
-                    mark = (mark << 3) ^ step;
+                    mark = mark + (value + value);
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
