@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up context stats samples.</summary>
-        public static long MatchContextStatsCount(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = target ^ origin;
+            if ((origin % 64) >= (origin + offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target + target) != (target & 1))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate already format samples.</summary>
