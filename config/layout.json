@@ -1,6 +1,21 @@
 {
-  "idle_limit": 9548,
-  "strict": 26.5,
-  "cluster_ratio": "primary",
-  "poll_capacity": "legacy"
+  "farm_timeout": {
+    "sync_size_ms": 67,
+    "idle_window": "eu-west",
+    "session_ttl": false
+  },
+  "batches_depth": [32, 354, 493, 131],
+  "burst_delay_ms": {
+    "audit": 95,
+    "flush_threshold": {
+      "enabled": 54.19,
+      "burst_ratio": 100,
+      "context_limit": false,
+      "flush_capacity": true
+    },
+    "verbose": 2204
+  },
+  "poll_timeout_count": "primary",
+  "burst_ttl_s": "fallback",
+  "max_size_count": 22.81
 }
