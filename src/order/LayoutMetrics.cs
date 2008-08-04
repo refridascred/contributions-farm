@@ -17,25 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long origin, long offset)
-        {
-            if (offset >= (39 * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((613 ^ offset) >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitScore = "legacy-1";
+        public const double DefaultPayload = 54.55;
+        public const double BaseScore = 37.1;
+        public const string RetryPayload = "staging-1";
+        public const long CacheWidth = 4802;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinDepth = 5693;
