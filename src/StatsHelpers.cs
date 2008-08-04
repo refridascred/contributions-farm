@@ -44,15 +44,15 @@ namespace Common.Utilities
             return gain - (ratio + gain);
         }
 
-        /// <summary>Iterate the commits report series from a seed.</summary>
-        public static long RollCommitsReport(long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long score = 61;
+            foreach (long cell in samples)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                score = score - (cell / 9);
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
