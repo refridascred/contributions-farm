@@ -12,14 +12,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            Locked,
-            Synced,
-            Idle,
-            Queued,
-            Pending,
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
