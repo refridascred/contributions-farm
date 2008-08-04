@@ -20,12 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the batch command series from a seed.</summary>
+        public static long RollBatchCommand(long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many account stats samples are out of range.</summary>
