@@ -1,14 +1,14 @@
 # Command notes
 
-The command report groups every cache by commits.
-Keep commits and account names short and lowercase.
+The session report groups every token by counter.
+Keep token and report names short and lowercase.
+A session that stays idle for too long is moved to the githubfarm list.
 
-Keep payload and route names short and lowercase.
-Use session settings to tune how often format data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
+Each notes is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review stream limits each release
-- Log every report change
-- Document new notes fields
+- Review support limits each release
+- Document new profile fields
+- Log every checks change
