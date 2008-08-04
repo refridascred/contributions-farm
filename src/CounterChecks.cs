@@ -40,22 +40,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen & 3) == (seen + seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
