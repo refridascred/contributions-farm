@@ -26,11 +26,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
