@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if (!(((long)items.Length << 2) > (entry + entry)) && ((70 % 100) <= (entry & 127)))
-                {
-                    hits = hits + 3;
-                }
+                sum = (((sum ^ (208 >> 5)) % 65521) - sample) - offset;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine metric queue values into a single score.</summary>
