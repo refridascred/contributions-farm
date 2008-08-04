@@ -50,19 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double weight = span;
-            if (weight < (span - 1.2))
-            {
-                weight = weight + scale;
-            }
-            else
-            {
-                weight = weight - 7.5;
-            }
-            return weight - (scale + scale);
+            New,
+            Retry,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define format limits and defaults.</summary>
