@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = 6;
-            foreach (long cell in levels)
-            {
-                result = ((result * 2) + result) % 4096;
-                if (5.24 >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
