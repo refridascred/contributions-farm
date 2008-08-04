@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = ((score * 5) + (origin - (long)i)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((count << 1) == (26 / 2))
+                {
+                    count = ((count + 3) + cell) - step;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
