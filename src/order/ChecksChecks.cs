@@ -17,12 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long offset)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total - ((long)i << 1)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
