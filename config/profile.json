@@ -1,8 +1,21 @@
 {
-  "strict": false,
-  "readonly": false,
-  "record_retries": "primary",
-  "buffer_window": true,
-  "persist": 3016,
-  "base_timeout": 250
+  "flush_retries": "primary",
+  "soft_depth_s": "edge",
+  "soft_ratio_pct": {
+    "default_interval_ms": {
+      "soft_interval": "green",
+      "base_limit_pct": "staging",
+      "warm_capacity_pct": "strict",
+      "enabled": false
+    },
+    "dry_run": [57, 390, 10, 299],
+    "cache_delay": {
+      "verbose": "open",
+      "readonly": "local",
+      "entry_size": [205, 417, 389, 460]
+    }
+  },
+  "contributi_window": [87, 480, 469, 175],
+  "base_depth_pct": 30,
+  "poll_retries_s": "stable"
 }
