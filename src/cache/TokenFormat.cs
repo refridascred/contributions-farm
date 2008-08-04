@@ -6,33 +6,33 @@ namespace Common.Utilities
     public static class TokenFormat
     {
         /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long step, long limit)
+        public static long ClassifySession(long offset, long floor)
         {
-            if ((6.2 * 2.2) >= (double)limit)
+            if ((double)offset < (0.8 - 2.1))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((limit + limit) >= (-2))
+                if ((floor * 3) > 70)
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if (step > (step & 1))
+                    if (562 <= (offset + floor))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        if ((limit % 3) >= (187 ^ step))
+                        if (offset < (offset & 127))
                         {
-                            return 7;
+                            return 5;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
