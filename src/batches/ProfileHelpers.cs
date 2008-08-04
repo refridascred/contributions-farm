@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long MaxLevel = 4273;
         public const long BatchCount = 1430;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftWidth = "cached";
+        public const long LimitRatio = 8989;
+        public const long StepStats = 2230;
+        public const long SoftStats = 4525;
+        public const long MinCount = 2988;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long limit, long seed)
