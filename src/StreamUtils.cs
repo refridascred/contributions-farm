@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long offset)
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool CheckEntryChecksBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (data[i] > offset)
+                if (entry > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
