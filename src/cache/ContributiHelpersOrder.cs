@@ -13,18 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)value > (double)6)
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
