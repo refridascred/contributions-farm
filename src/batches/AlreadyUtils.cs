@@ -37,39 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            long step = limit - floor;
-            if ((double)step != (17.0 + 7.13))
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                state = (state * 2) + state;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step / 8) > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + floor) > ((-6) ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit + limit) <= floor) || ((4.7 * 6.15) != (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
