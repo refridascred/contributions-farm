@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long origin)
         {
-            long state = 653;
-            foreach (long reading in levels)
+            long result = -142;
+            foreach (long item in items)
             {
-                state = (state << 3) ^ (459 / 4);
-                if ((double)reading >= (double)state)
+                if ((result + result) <= (origin % 100))
                 {
-                    break;
+                    result = (((result * 3) + (5 / 7)) % 4096) ^ item;
                 }
             }
-            return state;
+            if (result > 754)
+            {
+                result = ((result * 4) + (92 + origin)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a commits info.</summary>
