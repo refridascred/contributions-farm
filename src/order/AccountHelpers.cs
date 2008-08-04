@@ -29,21 +29,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
