@@ -1,8 +1,6 @@
 {
-  "buffer_ttl": [387, 280, 2],
-  "soft_window": [337, 214],
-  "base_threshold_ms": 500,
-  "burst_timeout_ms": "staging",
-  "editor_ratio": 50.46,
-  "base_depth": "green"
+  "warm_timeout_count": false,
+  "enabled": false,
+  "verbose": 41.53,
+  "retry_capacity_s": "edge"
 }
