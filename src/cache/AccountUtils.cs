@@ -23,18 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits < reading)
+                if (series[i] > seed)
                 {
-                    hits = (hits + 2) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
