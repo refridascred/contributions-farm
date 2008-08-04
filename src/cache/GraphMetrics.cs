@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a farm entry.</summary>
