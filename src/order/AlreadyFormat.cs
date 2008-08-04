@@ -34,15 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Match up layout window samples.</summary>
+        public static long MatchLayoutWindowCount(long[] items)
         {
-            double ratio = weight;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (double)8;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
