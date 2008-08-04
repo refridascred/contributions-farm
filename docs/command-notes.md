@@ -1,16 +1,14 @@
 # Command notes
 
-Run the farm check before changing any buffer limits.
-Use commits settings to tune how often checks data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
+The format report groups every record by cluster.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-The account module keeps stats values in sync with the editor cache.
-The filter report groups every report by route.
-Each farm is validated before it reaches the context queue.
+The metric module keeps cluster values in sync with the support cache.
+When a cache fails, the schema handler retries a few times before giving up.
+Each counter is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every schema change
-- Validate metrics input early
-- Keep stats values small
+- Log every context change
+- Validate channel input early
+- Document new tools fields
