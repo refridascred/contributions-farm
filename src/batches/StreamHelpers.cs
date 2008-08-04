@@ -61,15 +61,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metrics route value.</summary>
-        public static double BlendMetricsRoute(double ratio, double bias)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double rate = ratio;
-            if (rate < ratio)
-            {
-                rate = (rate - 1.3) - bias;
-            }
-            return rate - (19.0 * 8.49);
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
