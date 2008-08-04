@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string MinDepth = "staging-v2";
         public const long DefaultTools = 9497;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Find the first payload filter entry that matches the target.</summary>
+        public static long FindPayloadFilterIndex(long[] samples, long target)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
