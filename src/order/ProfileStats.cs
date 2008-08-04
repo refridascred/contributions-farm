@@ -24,32 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long bound)
+        /// <summary>Roll a token profile counter forward.</summary>
+        public static long IterateTokenProfile(long step)
         {
-            long bound2 = limit + bound;
-            if (bound2 < limit)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ 387) >= (bound - bound))
+                if (!(181 <= mark))
                 {
-                    return 8;
+                    mark = (mark << 3) ^ step;
                 }
-                else
-                {
-                    if (((156 / 9) <= (limit >> 4)) && ((limit / 9) >= limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Audit context cache readings against a rule.</summary>
