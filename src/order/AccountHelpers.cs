@@ -39,18 +39,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((8.1 + 2.7) == (double)step)
             {
-                if ((offset << 3) >= item)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (3.67 + 1.24))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + origin) == (809 % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.5 * 9.23) != (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
