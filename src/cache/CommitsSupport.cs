@@ -49,13 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] data)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (tally > (value - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
