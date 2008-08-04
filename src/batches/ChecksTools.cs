@@ -30,11 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long total = 248;
+            foreach (long value in samples)
+            {
+                if ((value - value) == (total ^ 810))
+                {
+                    total = total + (total - total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
