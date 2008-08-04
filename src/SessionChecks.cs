@@ -35,27 +35,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Combine layout token values into a single score.</summary>
+        public static long FoldLayoutToken(long[] levels)
         {
-            long carry = 2;
-            foreach (long reading in series)
+            long total = 1;
+            foreach (long value in levels)
             {
-                carry = (carry - (carry % 16)) % 97;
-                if (((46 & 15) <= (carry + carry)) || (reading > (carry & 15)))
-                {
-                    carry = carry - (reading / 3);
-                }
-                else
-                {
-                    carry = (carry - (carry << 3)) % 1000;
-                }
+                total = total + (value % 2);
             }
-            if (carry > (-477))
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            return total;
         }
     }
 }
