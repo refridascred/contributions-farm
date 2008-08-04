@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter token entries that pass the check.</summary>
-        public static long AuditFilterTokenGaps(long[] series, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((item - item) < (step - step)) && ((0.7 + 3.7) <= (double)step))
+                if (((((long)values.Length & 7) > (85 + matches)) || ((double)reading != (double)98)) && (reading > matches))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
