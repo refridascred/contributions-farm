@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepScore = 18.38;
-        public const string RetryEntry = "standard-1";
-        public const string BatchScore = "alpha";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
