@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
-        public static bool ValidateSchemaBufferRange(long[] readings, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long mark = 30;
+            foreach (long value in values)
             {
-                if (reading >= offset)
+                if ((8.65 * 10.0) >= (double)limit)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark * 4) + (1 % 12)) % 4096) - value;
                 }
             }
-            return found;
+            if (mark < 7)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
