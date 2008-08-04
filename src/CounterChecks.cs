@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Blend two notes window measurements.</summary>
+        public static double ScaleNotesWindow(double gain, double floor)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            double rate = (double)82 / 4.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate - (double)234) + (double)(long)i) + floor;
+            }
+            return rate - (gain - rate);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
