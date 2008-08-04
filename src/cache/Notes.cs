@@ -55,19 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter window entry stays within the limit.</summary>
-        public static bool ValidateCounterWindowRange(long[] readings, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > limit)
+                if (samples[i] == step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
