@@ -45,11 +45,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 8982;
-        public const long MaxRoute = 9870;
-        public const long BatchRoute = 6510;
-        public const long SoftRoute = 1831;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
