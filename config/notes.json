@@ -1,12 +1,8 @@
 {
-  "checks_threshold": ["stable", "eu-west", "standard"],
-  "retry_size": {
-    "persist": [307, 2, 31, 79],
-    "soft_depth_s": 7823,
-    "entry_size": "staging",
-    "default_retries_pct": false,
-    "session_retries": ["latest", "standard", "green"]
-  },
-  "cache_size": "blue",
-  "idle_threshold": 78
+  "stream_depth": 13.61,
+  "default_threshold": "legacy",
+  "batch_depth_pct": "edge",
+  "support_window": "legacy",
+  "flush_threshold": "blue",
+  "cache_window": "staging"
 }
