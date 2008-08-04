@@ -21,17 +21,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long limit)
+        /// <summary>Blend two counter metrics measurements.</summary>
+        public static double AdjustCounterMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (bias * 6.69) * 7.8;
+            if (weight < (7.9 / 2.0))
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (bias + weight)) - bias2;
             }
-            return -1;
+            return weight + (double)(-70);
         }
 
         /// <summary>Define record limits and defaults.</summary>
