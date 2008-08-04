@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Locked,
-            Draft,
-            New,
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
