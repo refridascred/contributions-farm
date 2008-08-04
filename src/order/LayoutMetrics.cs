@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels, long floor)
+        /// <summary>Count already batches pairs that satisfy a relation.</summary>
+        public static long PairAlreadyBatchesCount(long[] values)
         {
-            long total = 281;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total ^ total) % 65521) + item) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
