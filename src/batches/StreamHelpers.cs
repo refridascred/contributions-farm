@@ -74,39 +74,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long limit)
-        {
-            if (2 <= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(1 >= (offset - offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (579 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset < 3.3)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowTimeout = "primary-edge";
+        public const string CacheDepth = "latest-1";
+        public const long MinProfile = 9724;
+        public const double LimitProfile = 83.02;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
