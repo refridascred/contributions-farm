@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Synced,
-            Ready,
-            Draft,
+            Failed,
+            Paused,
             New,
         }
 
