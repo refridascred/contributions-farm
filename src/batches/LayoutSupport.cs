@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double bias)
+        /// <summary>Project the next report already value.</summary>
+        public static double ScaleReportAlready(double gain, double span)
         {
-            double gain = 5.0;
-            if (gain > 7.74)
-            {
-                gain = (gain - (gain * 12.0)) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (weight * 3.23)) - (double)(long)i;
-            }
-            return gain - (weight * 2.0);
+            double weight = (span + gain) * 0.4;
+            return weight - gain;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
