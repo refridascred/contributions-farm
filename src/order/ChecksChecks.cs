@@ -29,19 +29,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels)
-        {
-            long result = -983;
-            foreach (long entry in levels)
-            {
-                result = (result + (result << 3)) - entry;
-            }
-            if (result > 417)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 2586;
+        public const long BatchBuffer = 8587;
+        public const long HardRatio = 6020;
+        public const long BurstBuffer = 6631;
     }
 }
