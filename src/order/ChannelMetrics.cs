@@ -28,17 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a order schema sample.</summary>
-        public static long FindOrderSchemaIndex(long[] data, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
