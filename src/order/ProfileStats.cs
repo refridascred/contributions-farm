@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next cache route value.</summary>
-        public static double ScaleCacheRoute(double weight, double bias)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double bias2 = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = ((bias2 + bias2) - (double)(long)i) - weight;
-            }
-            return bias2 + (bias2 * 8.3);
+            Dropped,
+            Retry,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the record kind values.</summary>
