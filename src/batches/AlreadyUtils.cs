@@ -15,18 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long TotalToolsSession(long[] items)
+        /// <summary>Compare every pair of metric route readings.</summary>
+        public static long MatchMetricRouteCount(long[] samples)
         {
-            long score = 24;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value - value) > (score + score)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 5) + value) % 4096;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a editor tools value against two limits.</summary>
