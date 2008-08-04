@@ -1,7 +1,6 @@
 {
-  "sync_ttl_count": "strict",
-  "enabled": [123, 56, 271, 19],
-  "audit": 93.89,
-  "route_delay": 60,
-  "burst_ratio": 68.59
+  "retry_window_ms": 100,
+  "base_ttl_count": true,
+  "profile_delay": "strict",
+  "context_retries": "strict"
 }
