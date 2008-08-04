@@ -36,38 +36,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout cluster value against two limits.</summary>
-        public static long BucketLayoutCluster(long bound, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long bound)
         {
-            if ((bound + origin) == (origin / 6))
+            long result = 97;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 1) > (bound + bound))
+                result = result ^ (bound + result);
+                if ((9.43 * 8.02) >= (double)result)
                 {
-                    return 8;
+                    result = ((result * 3) + (cell % 3)) % 4096;
                 }
                 else
                 {
-                    if (origin > (bound << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.35 + 4.83) > (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = (result - (6 % 12)) % 255;
+                }
+                if (!((double)result > (1.0 + 0.4)))
+                {
+                    break;
                 }
             }
+            if (result > 5)
+            {
+                result = (result * 5) + (bound << 2);
+            }
+            return result % 65521;
         }
     }
 }
