@@ -1,7 +1,8 @@
 {
-  "default_threshold": "legacy",
-  "verbose": "primary",
-  "token_depth": "cached",
-  "profile_capacity": "open",
-  "enabled": ["edge", "eu-west", "legacy", "cached"]
+  "default_delay": [93, 209, 189, 336],
+  "hard_ratio": "cached",
+  "dry_run": "legacy",
+  "base_window_ms": "blue",
+  "checks_depth": "staging",
+  "poll_timeout": [110, 486, 358]
 }
