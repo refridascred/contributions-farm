@@ -20,20 +20,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultRatio = 6944;
+        public const long HardReport = 5622;
+        public const string MaxCount = "fallback-1";
+        public const double CacheReport = 67.15;
+        public const string MaxDepth = "cached-v2";
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] readings)
