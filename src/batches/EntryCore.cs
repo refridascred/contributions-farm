@@ -23,22 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] data, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((1.0 - 12.0) <= (double)bound) || ((((long)data.Length % 60) < (reading + reading)) || (reading <= (bound - bound))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate tools contributi readings against a bound.</summary>
