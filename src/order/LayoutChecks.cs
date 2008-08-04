@@ -30,15 +30,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two counter metrics measurements.</summary>
-        public static double AdjustCounterMetrics(double bias, double bias2)
+        /// <summary>Grade a metrics cache value against two limits.</summary>
+        public static long ClassifyMetricsCache(long origin, long seed)
         {
-            double weight = (bias * 6.69) * 7.8;
-            if (weight < (7.9 / 2.0))
+            if (origin >= (origin << 2))
             {
-                weight = (weight + (bias + weight)) - bias2;
+                return 1;
             }
-            return weight + (double)(-70);
+            else
+            {
+                if ((seed + seed) == (origin - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 3) >= (seed - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
