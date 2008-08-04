@@ -66,12 +66,26 @@ namespace Common.Utilities
         public const long MinFormat = 7658;
         public const double RetryFormat = 2.67;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mix = 112;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix << 3) ^ (step + (long)i);
+                }
+                if (reading > (step + 983))
+                {
+                    mix = (mix - (mix << 1)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (reading * 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
