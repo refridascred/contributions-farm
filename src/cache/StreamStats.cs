@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 70.29;
-        public const long DefaultTimeout = 1643;
-        public const long LimitLevel = 6185;
+        /// <summary>Digest a series of checks session entries.</summary>
+        public static long ScoreChecksSession(long[] samples, long target)
+        {
+            long mix = 277;
+            foreach (long item in samples)
+            {
+                if (target >= (item / 2))
+                {
+                    mix = ((mix * 4) + item) % 101;
+                }
+                if ((mix + item) == (40 - mix))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long step)
