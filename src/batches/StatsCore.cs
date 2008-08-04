@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
