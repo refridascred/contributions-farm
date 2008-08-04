@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
