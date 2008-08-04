@@ -13,18 +13,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Digest a series of farm layout entries.</summary>
+        public static long DigestFarmLayout(long[] items)
         {
-            long result = 23;
-            foreach (long item in values)
+            long mark = 361;
+            foreach (long cell in items)
             {
-                if ((item + result) != (item >> 2))
+                if ((mark ^ cell) >= (mark ^ 514))
                 {
-                    result = (result + (7 + result)) % 1000;
+                    mark = ((mark * 5) + (cell + cell)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (mark & 127);
+                }
+                if (cell > (cell >> 4))
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Describe the counter state values.</summary>
