@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long MeasureFarmCommandMatches(long[] samples)
         {
-            double ratio = 3.46;
-            if (ratio > (8.97 * 6.3))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio + (bias + ratio)) - scale;
+                if ((item + item) >= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio - (ratio / 6.0);
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
