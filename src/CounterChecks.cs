@@ -62,13 +62,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 48.09;
+        public const long CacheSize = 9176;
+        public const string MaxDepth = "primary-edge";
     }
 }
