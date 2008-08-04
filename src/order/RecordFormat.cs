@@ -39,11 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((783 - tally) < (tally + tally))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
