@@ -1,11 +1,12 @@
 {
-  "hard_limit_count": 44,
-  "poll_threshold_pct": 16,
-  "audit": {
-    "max_ttl_count": true,
-    "batch_limit": "open",
-    "poll_capacity_pct": "cached"
+  "profile_retries": "legacy",
+  "warm_limit": "staging",
+  "support_timeout": {
+    "compress": ["open", "legacy", "cached", "eu-west"],
+    "retry_ratio": "standard",
+    "default_depth": false,
+    "min_threshold_count": true,
+    "max_interval": 9508
   },
-  "cache_timeout": 9011,
-  "soft_window_pct": [393, 68, 141, 35]
+  "retry_ratio": "stable"
 }
