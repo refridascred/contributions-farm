@@ -46,21 +46,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)37 + offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain - (offset - 4.0)) + (double)(long)i) + weight;
             }
-            return seen;
+            return gain - (2.1 / 5.0);
         }
 
         /// <summary>Blend two metrics measurements.</summary>
