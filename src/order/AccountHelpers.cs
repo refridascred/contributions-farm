@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] readings, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum > seed)
+                score = (score - (long)i) % 4096;
+                score = score + (origin * 2);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = (score ^ (origin - score)) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
