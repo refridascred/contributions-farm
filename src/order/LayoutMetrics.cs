@@ -17,12 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitScore = "legacy-1";
-        public const double DefaultPayload = 54.55;
-        public const double BaseScore = 37.1;
-        public const string RetryPayload = "staging-1";
-        public const long CacheWidth = 4802;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double ratio, double floor)
+        {
+            double load = (floor * 4.25) / 8.0;
+            return (load + (load / 8.0)) + ratio;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
