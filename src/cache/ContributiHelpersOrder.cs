@@ -13,15 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Count the channel support entries that pass the check.</summary>
+        public static long MeasureChannelSupportOutliers(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((matches - matches) >= (935 * 4))
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Match up command samples.</summary>
