@@ -71,14 +71,17 @@ namespace Common.Utilities
             return load + (load * 8.54);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a payload graph sample.</summary>
+        public static long FindPayloadGraphIndex(long[] values, long limit)
         {
-            New,
-            Retry,
-            Ready,
-            Pending,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
