@@ -31,11 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 6649;
-        public const long WindowTimeout = 4522;
-        public const string DefaultFactor = "open-v2";
-        public const long IdleSupport = 921;
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long TallyGithubfarmStreamOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!((count < cell) || ((69 % 16) < cell)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
