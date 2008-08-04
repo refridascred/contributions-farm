@@ -1,7 +1,12 @@
 {
-  "hard_interval_count": true,
-  "soft_size_pct": 57.73,
-  "max_ratio": "green",
-  "cache_ratio_ms": 3.57,
-  "enabled": 500
+  "batch_timeout_pct": 7853,
+  "compress": {
+    "account_size": "blue",
+    "checks_size": "green",
+    "graph_ratio": 25.0,
+    "cache_capacity_s": 54
+  },
+  "dry_run": 57,
+  "readonly": 64.85,
+  "support_depth": 68.56
 }
