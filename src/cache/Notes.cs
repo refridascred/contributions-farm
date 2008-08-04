@@ -55,17 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long step)
+        /// <summary>Derive the next commits batches value from a seed.</summary>
+        public static long StepCommitsBatches(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                score = (score + (origin + score)) % 4096;
+                score = (score << 2) ^ (score / 2);
+                score = (score << 2) ^ score;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
