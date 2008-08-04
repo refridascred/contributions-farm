@@ -1,12 +1,6 @@
 {
-  "retry_window_ms": 11.1,
-  "format_threshold": "blue",
-  "enabled": 43,
-  "flush_window_s": {
-    "counter_timeout": 68,
-    "idle_limit_count": 8715,
-    "retry_delay": 87
-  },
-  "max_retries_pct": true,
-  "burst_threshold_ms": 2
+  "sync_window": [5, 34, 216, 277],
+  "window_window": 21,
+  "soft_depth_s": false,
+  "hard_ttl_pct": ["stable", "standard"]
 }
