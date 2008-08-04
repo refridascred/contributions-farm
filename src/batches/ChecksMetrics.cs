@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string DefaultSupport = "standard-edge";
         public const long HardSupport = 1274;
 
-        /// <summary>Compare every pair of profile counter readings.</summary>
-        public static long PairProfileCounterCount(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count < (count + 441))
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a stream reading.</summary>
