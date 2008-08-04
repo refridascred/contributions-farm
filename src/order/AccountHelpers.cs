@@ -22,14 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] samples, long origin)
         {
-            Paused,
-            Closed,
-            Stale,
-            Queued,
-            Draft,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
