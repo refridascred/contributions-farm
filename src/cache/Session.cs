@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = 8;
+            foreach (long item in data)
             {
-                if (tally < (tally << 1))
+                if ((6.5 * 2.4) >= 2.0)
                 {
-                    tally = (tally + 3) + entry;
+                    mark = (mark + (item ^ item)) - limit;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Accumulate stats samples.</summary>
