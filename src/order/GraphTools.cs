@@ -64,19 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema support readings against a bound.</summary>
-        public static bool GuardSchemaSupportBounds(long[] data, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a route summary.</summary>
