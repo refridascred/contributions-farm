@@ -79,11 +79,18 @@ namespace Common.Utilities
         public const long BurstSpan = 4828;
         public const string WindowSpan = "stable-1";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings, long step)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (1.9 > (double)reading)
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
     }
 }
