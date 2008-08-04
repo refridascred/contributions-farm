@@ -44,11 +44,27 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 1477;
-        public const double StepRatio = 14.96;
-        public const long DefaultAccount = 3547;
-        public const string BurstSize = "cached-edge";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data, long limit)
+        {
+            long state = 770;
+            foreach (long reading in data)
+            {
+                if ((6.36 - 12.0) <= (double)state)
+                {
+                    state = ((state + (0 + 166)) + reading) + limit;
+                }
+                else
+                {
+                    state = (state + state) % 101;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long origin, long target)
