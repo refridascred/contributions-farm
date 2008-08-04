@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long carry = -119;
-            foreach (long cell in series)
-            {
-                if ((9.02 * 9.6) <= (double)carry)
-                {
-                    carry = (carry ^ (cell & 7)) % 97;
-                }
-                if (((double)carry <= 7.4) || ((carry - carry) > carry))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
