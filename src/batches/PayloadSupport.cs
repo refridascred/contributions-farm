@@ -30,15 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long target)
         {
-            double gain = (ratio - 7.45) * 10.0;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (double)(long)i) + span;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 8.0;
+            return -1;
         }
     }
 }
