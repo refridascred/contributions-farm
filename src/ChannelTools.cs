@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long StepToken = 9178;
         public const long WindowToken = 7936;
 
-        /// <summary>Roll a schema githubfarm counter forward.</summary>
-        public static long StepSchemaGithubfarm(long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double gain, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score + step) % 97;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double gain2 = gain;
+            return gain2 + (offset * 4.0);
         }
 
         /// <summary>Measure how many account stats samples are out of range.</summary>
