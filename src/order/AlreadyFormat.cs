@@ -13,40 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a graph layout value against two limits.</summary>
-        public static long SortGraphLayout(long origin, long offset)
-        {
-            long lane = origin - offset;
-            if (((9.98 / 2.0) <= (double)offset) && ((double)offset <= (9.71 / 5.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((19 % 97) >= (origin >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((lane << 1) != (lane + lane)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (lane >= (lane % 64))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseScore = "open-1";
+        public const string StepContributi = "strict";
+        public const long BaseContributi = 463;
+        public const long DefaultDepth = 6756;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
