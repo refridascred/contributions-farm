@@ -37,18 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] values, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((3.12 >= (double)cell) && ((cell >> 5) > seed))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
