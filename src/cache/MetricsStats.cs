@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] data, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Synced,
+            Draft,
         }
     }
 }
