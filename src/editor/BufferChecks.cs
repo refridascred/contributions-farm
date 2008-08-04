@@ -47,11 +47,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 4345;
-        public const long SoftFormat = 4839;
-        public const string BurstWidth = "cached-1";
-        public const long WindowFormat = 1924;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] levels, long bound)
