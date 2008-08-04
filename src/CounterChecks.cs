@@ -59,19 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 65;
-            foreach (long value in items)
-            {
-                mix = ((mix - (556 - 5)) % 65521) ^ value;
-            }
-            if (mix > 7)
-            {
-                mix = mix - 51;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
