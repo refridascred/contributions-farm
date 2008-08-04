@@ -31,23 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long limit)
         {
-            long mix = 79;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix - (entry >> 2)) % 4096) + origin;
-                if ((entry + mix) < (entry / 7))
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    mix = ((mix * 3) + (entry ^ mix)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 40)
-            {
-                mix = ((mix * 5) + (mix & 63)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
