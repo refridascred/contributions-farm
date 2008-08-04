@@ -46,26 +46,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Rank tools filter input into a small class.</summary>
+        public static long RankToolsFilter(long origin, long seed)
         {
-            long score = 6;
-            foreach (long datum in data)
+            if (((origin + seed) <= (seed / 3)) && ((origin >> 1) >= (56 / 5)))
             {
-                if ((5 - score) != (datum % 12))
+                return 6;
+            }
+            else
+            {
+                if (835 <= (seed >> 1))
                 {
-                    score = score - score;
+                    return 2;
                 }
-                if (((double)datum != (6.24 + 5.54)) || ((datum % 64) < 60))
+                else
                 {
-                    score = score - (score + datum);
+                    if ((origin >= (seed & 1)) || ((18 + origin) >= (seed + 45)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (score > 441)
-            {
-                score = (score + ((long)data.Length << 2)) % 65521;
-            }
-            return score;
         }
     }
 }
