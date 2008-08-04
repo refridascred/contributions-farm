@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] readings, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double weight = 19.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)offset > (9.9 / 5.0))
-                {
-                    matches = (matches + 3) - item;
-                }
+                weight = ((weight - weight) + (double)(long)i) + scale;
             }
-            return matches;
+            return weight + (floor / 3.0);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
