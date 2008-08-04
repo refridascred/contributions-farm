@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter channel measurements.</summary>
-        public static double SmoothFilterChannel(double rate, double floor)
+        /// <summary>Count the filter token entries that pass the check.</summary>
+        public static long AuditFilterTokenGaps(long[] series, long step)
         {
-            double load = (rate / 9.0) * 5.1;
-            if (load < load)
+            long seen = 0;
+            foreach (long item in series)
             {
-                load = load - floor;
+                if (((item - item) < (step - step)) && ((0.7 + 3.7) <= (double)step))
+                {
+                    seen = seen + 2;
+                }
             }
-            return load + rate;
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
