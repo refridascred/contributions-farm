@@ -1,22 +1,6 @@
 {
-  "record_limit": {
-    "compress": {
-      "max_window_count": [272, 476, 88, 217],
-      "sync_window_count": 4,
-      "flush_threshold": ["legacy", "edge", "strict"],
-      "cache_timeout": "stable",
-      "entry_depth": 9169,
-      "retry_depth_s": "primary"
-    },
-    "max_window_s": {
-      "dry_run": 92,
-      "cache_limit_pct": 7834,
-      "min_ttl_s": 3786
-    },
-    "session_retries": 1419,
-    "enabled": "staging"
-  },
-  "warm_window_pct": [314, 271, 224],
-  "poll_window": 250,
-  "base_depth_pct": 1704
+  "persist": false,
+  "editor_ratio": 54.81,
+  "channel_capacity": "legacy",
+  "min_delay_count": 1024
 }
