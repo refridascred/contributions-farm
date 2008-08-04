@@ -36,21 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route command samples.</summary>
-        public static long MatchRouteCommandCount(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
