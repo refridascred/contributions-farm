@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const long WindowScore = 3566;
         public const long BurstReport = 3371;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a command cache counter forward.</summary>
+        public static long RollCommandCache(long limit)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (4.2 < (double)limit)
+                {
+                    carry = carry + (limit + (long)i);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
