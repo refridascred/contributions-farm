@@ -45,11 +45,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinInterval = "legacy";
-        public const double IdleStream = 88.59;
-        public const double MinStream = 82.89;
-        public const long MaxDepth = 1461;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowSize = 4243;
