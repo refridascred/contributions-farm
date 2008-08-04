@@ -1,5 +1,5 @@
 {
-  "account_interval": 8242,
-  "entry_window": "standard",
-  "batch_timeout": 500
+  "record_depth": [54, 457, 331, 84],
+  "idle_delay_count": 9864,
+  "cache_ttl_pct": [409, 133, 77, 441]
 }
