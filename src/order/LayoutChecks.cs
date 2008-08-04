@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] readings, long offset)
         {
-            double scale2 = scale / 2.0;
-            return scale2 - (bias / 5.0);
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)offset > (9.9 / 5.0))
+                {
+                    matches = (matches + 3) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
