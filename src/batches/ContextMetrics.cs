@@ -70,12 +70,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] series, long bound)
         {
-            Locked,
-            Pending,
-            New,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
