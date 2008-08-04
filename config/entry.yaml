@@ -1,21 +1,18 @@
 # entry settings
-session_capacity:
-  cache_depth:
-    - eu-west
-    - edge
-    - latest
-    - blue
-  tools_timeout: 9657
-  default_depth_pct:
-    compress: legacy
-    sync_interval_count: green
-    persist: 6755
-    farm_retries: staging
-  hard_interval_pct:
-    - 14
-    - 444
-dry_run: 5704
-sync_retries_ms: true
-audit: 64
-flush_capacity: 38
-hard_retries_count: 87.98
+max_ratio_s:
+  queue_capacity: stable
+  hard_delay_count:
+    - 57
+    - 401
+    - 187
+    - 196
+  idle_capacity: blue
+base_retries_s:
+  cache_threshold_s: 94.75
+  base_delay_pct: true
+  verbose: 9028
+  warm_delay: 60
+  persist: 14.05
+default_ttl: 30
+strict: true
+soft_ratio_s: false
