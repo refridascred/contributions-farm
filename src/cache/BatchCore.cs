@@ -24,17 +24,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first context route entry that matches the target.</summary>
-        public static long LookupContextRouteIndex(long[] levels, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] < origin)
+                if (!((double)hits > (5.8 - 4.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
