@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Classify a command filter pair into a bucket.</summary>
+        public static long GradeCommandFilter(long bound, long target)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            long offset = bound + target;
+            if (!(bound > (target - bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset % 2) >= (target + 61))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound <= 6.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every payload metrics entry stays within the limit.</summary>
