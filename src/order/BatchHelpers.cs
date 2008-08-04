@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((0.8 / 6.0) >= (double)origin)
-                {
-                    result = result - origin;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
