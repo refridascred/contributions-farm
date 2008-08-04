@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of session order entries.</summary>
-        public static long CombineSessionOrder(long[] data, long step)
+        /// <summary>Rank queue order input into a small class.</summary>
+        public static long ClassifyQueueOrder(long seed, long step)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            if ((step - step) > step)
             {
-                mark = (((mark * 4) + (708 + step)) % 65521) - reading;
+                return 4;
             }
-            return mark % 97;
+            else
+            {
+                if (step < (6 % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
