@@ -26,32 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long cur = floor - seed;
-            if ((double)floor > (17.0 + 6.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed * 3) >= (floor * 2)) && ((seed - cur) != (floor % 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed & 63) > cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
     }
 }
