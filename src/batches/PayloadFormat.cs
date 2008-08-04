@@ -46,16 +46,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels, long step)
         {
-            long carry = -190;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                carry = (((carry * 2) + (73 - carry)) % 101) ^ datum;
-                carry = carry + (carry << 1);
+                if ((double)step == (1.0 / 2.0))
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
