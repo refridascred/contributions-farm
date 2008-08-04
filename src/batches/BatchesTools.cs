@@ -42,24 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Find the first buffer githubfarm entry that matches the target.</summary>
+        public static long LookupBufferGithubfarmIndex(long[] series, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.0 - 5.65) <= (double)floor)
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    acc = (acc - (floor + (long)i)) % 255;
-                    continue;
+                    return (long)i;
                 }
-                if (!(floor < (acc % 97)))
-                {
-                    acc = ((acc * 3) + (floor - acc)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
