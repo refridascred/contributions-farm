@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a context info.</summary>
