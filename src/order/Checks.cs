@@ -63,18 +63,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 809;
+            foreach (long cell in readings)
             {
-                if ((((14.0 - 7.61) < (double)tally) && (value <= tally)) && ((6 - tally) < tally))
+                total = (total * 5) + total;
+                if (6.7 >= (double)cell)
                 {
-                    tally = tally + 3;
+                    total = ((total << 3) ^ (cell + total)) % 4096;
                 }
             }
-            return tally;
+            return total % 97;
         }
     }
 }
