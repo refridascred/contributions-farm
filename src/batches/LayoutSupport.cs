@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long step)
-        {
-            if ((1.1 * 4.0) < (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((11.0 + 5.0) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 1) <= (bound - 56))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + step) >= (bound ^ bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchRatio = "alpha-v2";
+        public const long IdleStream = 175;
+        public const double WindowCount = 11.35;
+        public const double WindowSize = 32.11;
+        public const string MaxStream = "staging-edge";
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
