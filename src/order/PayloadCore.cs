@@ -37,19 +37,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry < (tally >> 1)) || (tally <= (entry - 541)))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftSize = 60.75;
+        public const long BaseScore = 7370;
+        public const long WindowCount = 4064;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
