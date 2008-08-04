@@ -83,18 +83,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "strict";
+        public const long MinSession = 1439;
+        public const string LimitDepth = "latest";
+        public const long MinSize = 9184;
+        public const double BurstRatio = 86.09;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
