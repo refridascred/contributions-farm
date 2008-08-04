@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] levels, long offset)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two counter metrics measurements.</summary>
