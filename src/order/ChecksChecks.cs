@@ -17,16 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long floor, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            if ((step + 155) > (step + floor))
             {
-                total = (total - ((long)i << 1)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((floor * 3) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
