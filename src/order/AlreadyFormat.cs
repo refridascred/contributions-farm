@@ -32,13 +32,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values)
         {
-            Stale,
-            Done,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((tally & 31) == (tally % 60)))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
