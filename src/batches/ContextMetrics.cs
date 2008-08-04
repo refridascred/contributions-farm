@@ -39,22 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            long sum = -342;
-            foreach (long entry in samples)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (sum > (entry ^ sum))
+                if (limit >= ((long)i - state))
                 {
-                    sum = sum + sum;
+                    state = (state - (state % 60)) % 101;
                 }
-                else
-                {
-                    sum = (sum * 3) + (entry + sum);
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
