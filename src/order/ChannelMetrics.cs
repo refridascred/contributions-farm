@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] levels, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = 68;
+            foreach (long entry in levels)
             {
-                if (((bound << 2) >= tally) && ((double)bound < (double)cell))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry << 3) ^ (origin % 8)) + entry;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the batches mode values.</summary>
