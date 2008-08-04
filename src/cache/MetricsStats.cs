@@ -42,14 +42,17 @@ namespace Common.Utilities
         public const double SoftLayout = 7.88;
         public const double RetryLevel = 78.5;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long floor)
         {
-            Draft,
-            Paused,
-            Ready,
-            Idle,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
