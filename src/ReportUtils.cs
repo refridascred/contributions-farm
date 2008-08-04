@@ -65,12 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] levels, long origin)
         {
-            Closed,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((((reading * 5) > (tally - origin)) || ((70 / 9) >= origin)) && ((double)origin == (double)77))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
