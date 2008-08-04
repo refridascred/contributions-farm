@@ -30,18 +30,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long state = 5;
-            foreach (long reading in items)
-            {
-                if ((double)184 != (double)state)
-                {
-                    state = ((state + (reading & 255)) % 255) + limit;
-                }
-            }
-            return state % 65521;
+            Retry,
+            Closed,
+            Pending,
+            Done,
         }
     }
 }
