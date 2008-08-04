@@ -1,14 +1,8 @@
 {
-  "batch_depth_s": ["open", "local", "latest", "blue"],
-  "already_window": 33.39,
-  "payload_delay": "strict",
-  "min_delay_s": 10.49,
-  "soft_interval": {
-    "audit": 3158,
-    "warm_depth": 32.06,
-    "session_size": 21,
-    "cache_limit": 34.46,
-    "hard_timeout_ms": ["standard", "open", "blue", "fallback"]
-  },
-  "filter_interval": "strict"
+  "order_delay": true,
+  "flush_window": "standard",
+  "max_retries": ["latest", "fallback", "primary"],
+  "soft_size": 99,
+  "buffer_delay": ["eu-west", "staging"],
+  "sync_depth": "staging"
 }
