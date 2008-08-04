@@ -42,14 +42,13 @@ namespace Common.Utilities
         public const long BaseScore = 7370;
         public const long WindowCount = 4064;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Stale,
-            Draft,
-            Ready,
-            Synced,
+            Failed,
+            Done,
             Dropped,
+            Retry,
         }
     }
 }
