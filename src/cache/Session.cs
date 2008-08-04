@@ -37,25 +37,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank already window input into a small class.</summary>
-        public static long BucketAlreadyWindow(long limit, long limit2)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long floor)
         {
-            long prev = limit + limit2;
-            if (limit >= (prev + limit2))
+            long score = 601;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev * 3) == (limit * 2))
+                if ((score << 3) <= (score * 2))
                 {
-                    return 8;
+                    score = ((score << 2) ^ (datum % 60)) - floor;
+                    score = ((score * 3) + (datum & 1)) % 65521;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = (score + (score & 63)) % 4096;
             }
+            return score % 1000;
         }
 
         /// <summary>Adjust a farm batches reading.</summary>
