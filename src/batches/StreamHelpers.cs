@@ -92,18 +92,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] series, long bound)
+        /// <summary>Match up cache farm samples.</summary>
+        public static long CompareCacheFarmCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((69 - 97) > reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) - bound;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
