@@ -62,31 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] readings)
         {
-            if (((target * 2) <= (target - target)) || (17.0 < (double)origin))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (origin & 7))
+                if (((matches ^ matches) <= (matches - item)) || ((1.1 + 3.0) <= (double)matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >= (target % 16)) && ((origin ^ target) != (origin + origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank order input into a small class.</summary>
