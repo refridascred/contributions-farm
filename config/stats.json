@@ -1,21 +1,13 @@
 {
-  "strict": "cached",
-  "commits_threshold": {
-    "enabled": 250,
-    "min_limit_s": 92.6,
-    "queue_depth": 40.34
+  "entry_ratio": {
+    "base_size": 87,
+    "warm_window_count": "local",
+    "compress": "fallback",
+    "order_size": [344, 380]
   },
-  "default_retries_ms": {
-    "audit": "latest",
-    "order_depth": [33, 51, 271, 360],
-    "idle_ttl_s": 6622,
-    "filter_interval": {
-      "max_ratio_s": 60.89,
-      "cache_threshold_ms": 500,
-      "persist": "fallback",
-      "poll_threshold_count": true,
-      "compress": false,
-      "base_delay_ms": true
-    }
-  }
+  "cache_limit_pct": 29,
+  "sync_ttl": false,
+  "verbose": 9550,
+  "idle_interval": "stable",
+  "soft_depth": "cached"
 }
