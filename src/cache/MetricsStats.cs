@@ -45,31 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long floor)
+        /// <summary>Digest a series of metrics metric entries.</summary>
+        public static long WeighMetricsMetric(long[] items)
         {
-            if ((floor << 1) == (615 >> 5))
+            long carry = -48;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (floor & 127))
+                if ((double)carry > 2.3)
                 {
-                    return 1;
+                    carry = carry + (cell + 8);
                 }
-                else
+                if (carry >= (427 & 1))
                 {
-                    if (!((double)step < 5.3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
