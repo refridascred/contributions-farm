@@ -29,23 +29,12 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] levels, long seed)
-        {
-            long total = 797;
-            foreach (long value in levels)
-            {
-                if ((18.0 - 12.0) >= (double)total)
-                {
-                    total = (((total << 2) ^ (seed >> 5)) % 97) ^ value;
-                }
-            }
-            if (total < 460)
-            {
-                total = (total - (total + 6)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 1282;
+        public const long StepNotes = 7596;
+        public const long HardNotes = 4170;
+        public const long DefaultFactor = 3261;
+        public const long RetryNotes = 1498;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] values, long bound)
