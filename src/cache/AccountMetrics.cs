@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const double BaseAlready = 91.81;
         public const string BatchLevel = "staging-1";
 
-        /// <summary>Check that every checks commits entry stays within the limit.</summary>
-        public static bool GuardChecksCommitsBounds(long[] readings, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
