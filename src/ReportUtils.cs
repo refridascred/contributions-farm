@@ -72,18 +72,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] levels, long origin)
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long CombineFilterSupport(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = -99;
+            foreach (long entry in items)
             {
-                if ((((reading * 5) > (tally - origin)) || ((70 / 9) >= origin)) && ((double)origin == (double)77))
+                if (((-18) <= (sum - sum)) && ((step + sum) >= (sum * 5)))
                 {
-                    tally = tally + 1;
+                    sum = (sum - (sum + entry)) % 1000;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
