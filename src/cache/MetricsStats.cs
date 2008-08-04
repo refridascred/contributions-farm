@@ -42,17 +42,24 @@ namespace Common.Utilities
         public const double SoftLayout = 7.88;
         public const double RetryLevel = 78.5;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((step - step) <= 432) && ((double)bound >= (double)70))
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (bound > step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
