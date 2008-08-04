@@ -36,10 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftSize = 60.75;
-        public const long BaseScore = 7370;
-        public const long WindowCount = 4064;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long target, long floor)
+        {
+            if ((target + target) < (target >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 2378;
