@@ -40,18 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((tally & 31) == (tally % 60)))
+                if ((4.9 <= (double)seen) || ((4.33 / 2.0) >= (double)seen))
                 {
-                    tally = (tally + 1) + entry;
+                    seen = ((seen + 3) + entry) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
