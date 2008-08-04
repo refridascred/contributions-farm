@@ -71,12 +71,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long score = 6;
+            foreach (long datum in data)
+            {
+                if ((5 - score) != (datum % 12))
+                {
+                    score = score - score;
+                }
+                if (((double)datum != (6.24 + 5.54)) || ((datum % 64) < 60))
+                {
+                    score = score - (score + datum);
+                }
+            }
+            if (score > 441)
+            {
+                score = (score + ((long)data.Length << 2)) % 65521;
+            }
+            return score;
         }
     }
 }
