@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 1.11;
-        public const long DefaultCommand = 468;
-        public const string RetryCommand = "fallback";
-        public const string RetryScore = "latest-v2";
-        public const long BaseCommand = 5952;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long seed, long origin)
+        {
+            if ((1 ^ seed) != (seed - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed > (seed % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed >= (seed % 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((seed + 24) <= (origin - seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
