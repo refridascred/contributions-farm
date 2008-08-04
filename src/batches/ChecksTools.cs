@@ -31,20 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double floor)
-        {
-            double scale = ratio - floor;
-            if (scale <= scale)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor - 2.5)) + (double)(long)i;
-            }
-            return scale - 7.25;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1377;
+        public const long HardRecord = 1179;
+        public const long MinSize = 6747;
+        public const long SoftWidth = 2241;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] series, long floor)
