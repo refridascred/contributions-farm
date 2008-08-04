@@ -29,23 +29,17 @@ namespace Common.Utilities
         public const long SoftWidth = 7223;
         public const long IdleRatio = 9932;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long seed)
         {
-            long result = 754;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (sample & 127)) % 65521;
-                if (((-2) / 5) > (sample & 31))
+                if (samples[i] < seed)
                 {
-                    result = (result + offset) % 1000;
-                }
-                if ((sample - 547) >= (result + 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
