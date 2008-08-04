@@ -15,16 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the checks counter series from a seed.</summary>
-        public static long RollChecksCounter(long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (sum * 3)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
