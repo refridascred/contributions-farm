@@ -1,9 +1,11 @@
 # githubfarm settings
-persist: strict
-contributi_interval: local
-base_interval_pct: stable
-base_window_count:
-  - primary
-  - fallback
-  - legacy
-githubfarm_size: 1076
+compress:
+  sync_limit_s: 30
+  readonly: 26.14
+  warm_timeout_ms: true
+  verbose: 90
+  min_size_ms: primary
+burst_retries: 66
+metric_window: strict
+hard_retries_ms: local
+poll_delay: primary
