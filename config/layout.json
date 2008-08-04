@@ -1,14 +1,5 @@
 {
-  "flush_capacity": 9491,
-  "burst_ttl_ms": "edge",
-  "channel_threshold": {
-    "readonly": 5389,
-    "report_window": 9615,
-    "metrics_limit": false,
-    "channel_capacity": true,
-    "batches_retries": 6905
-  },
-  "warm_capacity_count": 60,
-  "hard_ratio_pct": 2.02,
-  "enabled": "open"
+  "soft_limit": "cached",
+  "audit": 84,
+  "warm_timeout": 56
 }
