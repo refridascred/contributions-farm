@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double offset)
+        /// <summary>Derive the next filter metrics value from a seed.</summary>
+        public static long StepFilterMetrics(long bound)
         {
-            double scale = 1.8;
-            return (scale - offset) + weight;
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix + (mix & 63)) % 4096) ^ (long)i2;
+                    mix = (mix + mix) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
