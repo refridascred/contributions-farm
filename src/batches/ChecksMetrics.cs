@@ -56,22 +56,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((17.0 / 8.0) != (double)datum)
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 3118;
+        public const long MaxStats = 4699;
+        public const double RetryStats = 78.96;
     }
 }
