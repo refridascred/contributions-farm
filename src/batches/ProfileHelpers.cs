@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxLevel = 4273;
         public const long BatchCount = 1430;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] data, long origin)
         {
-            Ready,
-            Active,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((83 - count) < (sample % 10))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
