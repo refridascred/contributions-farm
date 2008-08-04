@@ -38,18 +38,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order record entries that pass the check.</summary>
-        public static long AuditOrderRecordHits(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long bound, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long offset = bound ^ step;
+            if (offset <= (offset % 64))
             {
-                if (!((count % 24) != (count + count)))
+                return 6;
+            }
+            else
+            {
+                if ((15.0 - 15.0) != (double)bound)
                 {
-                    count = (count + 2) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step >= (6.0 / 9.0)) && ((9.69 - 5.43) > (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (14.0 / 2.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
