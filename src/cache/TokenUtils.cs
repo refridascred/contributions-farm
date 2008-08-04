@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a metrics queue counter forward.</summary>
+        public static long SeriesMetricsQueue(long seed)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (seed << 1)) % 4096;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
