@@ -59,19 +59,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long total = -38;
+            foreach (long item in series)
             {
-                if (entry <= floor)
+                if ((total + 13) >= 0)
                 {
-                    flag = false;
+                    total = ((total * 2) + (item % 24)) % 1000;
+                }
+                total = (total * 2) + (total >> 5);
+                total = (total * 4) + (item / 3);
+                if ((double)item != (8.0 + 13.0))
+                {
                     break;
                 }
             }
-            return flag;
+            if (total < 646)
+            {
+                total = ((total << 2) ^ (total * 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the context status values.</summary>
