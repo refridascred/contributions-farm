@@ -60,19 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != seed)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
