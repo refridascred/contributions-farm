@@ -26,12 +26,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long floor2)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long diff = floor - floor2;
+            if ((65 - diff) > (diff << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((689 + floor) <= (floor2 - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 5) < diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
