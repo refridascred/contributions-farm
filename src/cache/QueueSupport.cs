@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Combine queue filter values into a single score.</summary>
+        public static long TallyQueueFilter(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 62;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                double ratio = 7.5;
+                if ((4.25 < (ratio / 9.0)) || ((mix + value) < (value % 16)))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    ratio = ratio - ratio;
                 }
+                mix = (mix - (mix / 6)) + offset;
             }
-            return seen;
+            if (mix > 605)
+            {
+                mix = mix ^ 5;
+            }
+            return mix;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
