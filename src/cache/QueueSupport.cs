@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine queue filter values into a single score.</summary>
-        public static long TallyQueueFilter(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data, long floor)
         {
-            long mix = 62;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                double ratio = 7.5;
-                if ((4.25 < (ratio / 9.0)) || ((mix + value) < (value % 16)))
+                if ((double)matches != (double)84)
                 {
-                    ratio = ratio - ratio;
+                    matches = ((matches + 2) + reading) - floor;
                 }
-                mix = (mix - (mix / 6)) + offset;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mix > 605)
-            {
-                mix = mix ^ 5;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
