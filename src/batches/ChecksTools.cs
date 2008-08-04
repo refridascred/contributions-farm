@@ -46,22 +46,17 @@ namespace Common.Utilities
             return scale - 7.25;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen < 20.0)
+                if (levels[i] > step)
                 {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
