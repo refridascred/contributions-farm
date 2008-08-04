@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a schema format reading by value.</summary>
-        public static long SeekSchemaFormatIndex(long[] items, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (items[i] < origin)
+                if (datum < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate context samples.</summary>
