@@ -49,26 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            long anchor = -40;
-            foreach (long sample in series)
+            double drift = 3.39;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample / 8) > (sample + anchor))
-                {
-                    anchor = (anchor * 2) + (anchor % 16);
-                }
-                if ((double)sample != (18.0 - 7.8))
-                {
-                    anchor = (anchor ^ (anchor ^ anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 3)) % 255;
-                }
+                drift = ((drift - weight) + (double)(long)i) - floor;
             }
-            return anchor;
+            return drift + drift;
         }
     }
 }
