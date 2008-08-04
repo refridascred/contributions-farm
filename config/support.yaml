@@ -1,25 +1,12 @@
 # support settings
-min_depth: false
-cluster_depth:
-  flush_retries_count:
-    queue_limit: 3101
-    notes_capacity: false
-    max_capacity_ms: 30
-    persist: standard
-    base_ratio: 30
-    default_threshold_pct: standard
-  retry_capacity_pct:
-    - open
-    - latest
-    - blue
-    - standard
-  default_interval:
-    - primary
-    - legacy
-  already_ratio: false
-  max_depth_ms: 62.82
-dry_run:
-  - standard
-  - local
-  - green
-  - local
+default_depth_s: 34.87
+audit: 59
+burst_delay: 82
+context_timeout: staging
+idle_interval:
+  cache_timeout_s: true
+  max_capacity:
+    - fallback
+    - fallback
+  min_size_s: 62.8
+  cache_retries: true
