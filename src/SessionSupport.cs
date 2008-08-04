@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long CacheProfile = 4228;
         public const double IdleLevel = 34.0;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
+        public static bool VerifyPayloadMetricsRange(long[] data, long limit)
         {
-            double drift = (9.39 + span) / 3.0;
-            if (drift >= span)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                drift = drift - (double)611;
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift / 7.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return stale;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
