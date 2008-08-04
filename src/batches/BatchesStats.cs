@@ -31,12 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
