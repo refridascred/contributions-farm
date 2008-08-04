@@ -44,13 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Project the next batch metrics value.</summary>
+        public static double SmoothBatchMetrics(double rate, double bias)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            double mean = (double)(3 + 41);
+            if (mean >= (rate + mean))
+            {
+                mean = mean - (double)617;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
