@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((15.0 + 2.13) == (double)count)
+                if (datum > limit)
                 {
-                    count = (count + 1) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
