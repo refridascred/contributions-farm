@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long mix = 33;
+            foreach (long reading in data)
+            {
+                long seen = mix;
+                mix = ((mix + (seen ^ 7)) % 97) - reading;
+                mix = mix - seed;
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a graph command value against two limits.</summary>
