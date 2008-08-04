@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((acc + acc) >= ((long)i << 2)))
-                {
-                    acc = acc ^ acc;
-                    acc = ((acc * 4) + target) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Locate a filter already reading by value.</summary>
