@@ -37,26 +37,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Rank already window input into a small class.</summary>
+        public static long BucketAlreadyWindow(long limit, long limit2)
         {
-            long anchor = 29;
-            foreach (long sample in series)
+            long prev = limit + limit2;
+            if (limit >= (prev + limit2))
             {
-                if ((4.0 - 4.84) == (double)anchor)
+                return 5;
+            }
+            else
+            {
+                if ((prev * 3) == (limit * 2))
                 {
-                    anchor = ((anchor * 2) + (anchor >> 1)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor + (sample ^ anchor)) % 1000;
+                    return 6;
                 }
             }
-            if (anchor > (-12))
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Adjust a farm batches reading.</summary>
