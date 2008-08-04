@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of batches layout readings.</summary>
-        public static long CompareBatchesLayoutCount(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a entry stats.</summary>
