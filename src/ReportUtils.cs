@@ -44,34 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Check that every entry order entry stays within the limit.</summary>
+        public static bool VerifyEntryOrderLimits(long[] samples, long seed)
         {
-            long sum = -34;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (201 <= (sum ^ sample))
+                if (entry <= seed)
                 {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = ((sum * 2) + sample) % 1000;
-                }
-                if (((sample - sample) >= (1 * 4)) && ((double)sample > (8.5 / 8.0)))
-                {
-                    sum = (sum + (sum % 16)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sample / 7)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum - (sum / 4)) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
