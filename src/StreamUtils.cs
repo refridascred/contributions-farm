@@ -95,17 +95,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a payload graph sample.</summary>
-        public static long FindPayloadGraphIndex(long[] values, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (values[i] >= limit)
+                if (datum != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
