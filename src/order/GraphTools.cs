@@ -12,17 +12,38 @@ namespace Common.Utilities
         public const double BatchAlready = 41.08;
         public const long RetryDepth = 8066;
 
-        /// <summary>Look up the position of a session commits sample.</summary>
-        public static long LookupSessionCommitsIndex(long[] values, long origin)
+        /// <summary>Grade a batch farm value against two limits.</summary>
+        public static long SortBatchFarm(long seed, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target - target) <= seed)
             {
-                if (values[i] < origin)
+                return 4;
+            }
+            else
+            {
+                if (((seed / 5) >= (seed + seed)) && ((double)7 >= (double)target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (328 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed < (10.0 + 5.9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
