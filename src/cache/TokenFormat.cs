@@ -56,18 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((15.0 + 5.0) >= (double)datum)
+                if (((seen ^ 943) > 503) && (5 > (seen - step)))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
