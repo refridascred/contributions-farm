@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long MaxBudget = 6870;
         public const double LimitContext = 2.42;
 
-        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
-        public static long PairAlreadyContributiCount(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < limit)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
