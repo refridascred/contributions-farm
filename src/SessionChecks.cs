@@ -26,13 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            Paused,
-            Active,
-            Done,
-            Dropped,
+            long total = 684;
+            foreach (long value in samples)
+            {
+                if (total <= (total << 3))
+                {
+                    total = ((total + 26) % 1000) + value;
+                }
+            }
+            if (total > 0)
+            {
+                total = (total - (total - 225)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Combine layout token values into a single score.</summary>
