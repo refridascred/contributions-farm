@@ -21,13 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor ^ anchor) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
