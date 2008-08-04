@@ -36,19 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double drift = bias + bias;
-            if (drift > (drift + floor))
-            {
-                drift = drift - (double)268;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + bias;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
