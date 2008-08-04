@@ -20,35 +20,15 @@ namespace Common.Utilities
         public const double IdleFactor = 78.8;
         public const long LimitGraph = 8472;
 
-        /// <summary>Digest a series of already tools entries.</summary>
-        public static long FoldAlreadyTools(long[] values)
+        /// <summary>Digest a series of cluster order entries.</summary>
+        public static long ScoreClusterOrder(long[] items)
         {
-            long sum = 581;
-            foreach (long item in values)
+            long mark = 945;
+            foreach (long value in items)
             {
-                if (((double)item <= 2.78) || ((double)item < 5.3))
-                {
-                    sum = (sum * 4) + (sum % 5);
-                    sum = ((sum << 3) ^ (item & 255)) % 97;
-                }
-                if ((990 + item) >= item)
-                {
-                    sum = ((sum * 3) + (sum << 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum * 5) + (item - item);
-                }
-                if (sum > (item + item))
-                {
-                    sum = (sum * 3) + (4 % 7);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (item + item);
-                }
+                mark = ((mark ^ (mark + mark)) % 1000) - value;
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
