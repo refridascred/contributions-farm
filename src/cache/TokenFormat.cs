@@ -56,14 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series)
         {
-            New,
-            Synced,
-            Paused,
-            Pending,
-            Draft,
+            long mix = 856;
+            foreach (long value in series)
+            {
+                mix = mix + value;
+            }
+            return mix;
         }
     }
 }
