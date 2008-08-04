@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            double drift = rate;
-            if (drift < drift)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (double)6;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (rate - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (bias + bias)) + (double)(long)i;
-            }
-            return drift - (rate + rate);
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
