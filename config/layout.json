@@ -1,5 +1,17 @@
 {
-  "audit": "open",
-  "retry_capacity": false,
-  "flush_depth_count": "latest"
+  "hard_ttl_s": {
+    "warm_timeout": [499, 182, 14],
+    "max_delay": 1662,
+    "audit": 79.84
+  },
+  "report_window": false,
+  "filter_size": 9981,
+  "entry_interval": {
+    "flush_ratio_ms": 1024,
+    "retry_size": [3, 471, 292],
+    "idle_threshold": "open",
+    "retry_delay": "cached"
+  },
+  "burst_window": 500,
+  "metric_ratio": 7207
 }
