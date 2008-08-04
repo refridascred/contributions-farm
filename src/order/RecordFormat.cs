@@ -36,19 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] values, long seed)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((3.12 >= (double)cell) && ((cell >> 5) > seed))
                 {
-                    carry = (((carry * 3) + (carry % 97)) ^ (long)i) ^ sample;
+                    seen = seen + 2;
                 }
-                carry = (carry + 6) % 65521;
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
