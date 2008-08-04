@@ -28,24 +28,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a checks profile counter forward.</summary>
-        public static long StepChecksProfile(long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            double scale = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)(long)i <= (3.3 + 7.05)))
-                {
-                    state = ((state * 5) + 827) % 97;
-                }
-                else
-                {
-                    long bound = (state + state) & 31;
-                    state = (state + bound) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                scale = ((scale - 1.5) + (double)(long)i) + span;
             }
-            return state;
+            return scale + (rate - rate);
         }
     }
 }
