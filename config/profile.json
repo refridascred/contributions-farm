@@ -1,6 +1,7 @@
 {
-  "account_limit": "open",
-  "sync_interval_pct": "stable",
-  "soft_window_pct": "standard",
-  "flush_threshold_s": [483, 124, 262, 102]
+  "entry_capacity": "local",
+  "max_timeout": true,
+  "flush_delay": 4176,
+  "batches_delay": true,
+  "warm_capacity": [163, 184]
 }
