@@ -16,19 +16,14 @@ namespace Common.Utilities
             return weight - (double)887;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] data, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Roll a account counter forward.</summary>
