@@ -24,21 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long PairAlreadyBatchesCount(long[] values)
+        /// <summary>Roll a stats githubfarm counter forward.</summary>
+        public static long RollStatsGithubfarm(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
