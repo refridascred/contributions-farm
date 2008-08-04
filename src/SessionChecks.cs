@@ -26,20 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long total = 684;
-            foreach (long value in samples)
+            long total = 764;
+            foreach (long datum in data)
             {
-                if (total <= (total << 3))
+                if ((total - datum) >= total)
                 {
-                    total = ((total + 26) % 1000) + value;
+                    total = (total + (total / 7)) % 4096;
                 }
             }
-            if (total > 0)
+            if (total > 98)
             {
-                total = (total - (total - 225)) % 255;
+                total = total - total;
             }
             return total;
         }
