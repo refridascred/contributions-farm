@@ -20,31 +20,19 @@ namespace Common.Utilities
         public const string BurstBuffer = "latest-v2";
         public const double CacheBuffer = 83.78;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] data, long seed)
         {
-            long carry = 1;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading <= seed)
                 {
-                    carry = (carry - sample) - (long)i;
-                    carry = (carry * 2) + carry;
-                }
-                if (sample > (carry + 439))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (sample + sample);
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 269)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry;
+            return found;
         }
     }
 }
