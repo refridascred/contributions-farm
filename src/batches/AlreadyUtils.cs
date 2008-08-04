@@ -15,23 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples, long limit)
         {
-            double bias = (double)3 * 6.69;
-            if (bias < (bias - bias))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                bias = (bias - 2.5) - scale;
+                if (!((653 + limit) != (limit - cell)) || ((510 / 5) > cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (offset - 2.4)) + (double)(long)i;
-            }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Match up farm githubfarm samples.</summary>
