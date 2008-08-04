@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (5 > (reading / 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
