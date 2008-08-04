@@ -1,14 +1,4 @@
 # entry settings
-idle_retries_ms:
-  - blue
-  - latest
-  - strict
-  - cached
-tools_depth: 44.48
-dry_run:
-  - 248
-  - 413
-burst_size:
-  - 343
-  - 346
-  - 323
+readonly: 17.48
+default_threshold_pct: 60
+compress: strict
