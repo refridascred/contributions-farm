@@ -34,15 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long acc = 3;
-            foreach (long sample in levels)
-            {
-                acc = acc + (sample * 3);
-            }
-            return acc % 1000;
+            Idle,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the channel level values.</summary>
