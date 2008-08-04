@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const long BatchScore = 1388;
         public const long LimitDepth = 3151;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
