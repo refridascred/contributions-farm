@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long target)
         {
-            long acc = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)acc > 6.55))
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
-                    acc = ((acc + 463) + value) + floor;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
