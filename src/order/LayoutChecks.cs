@@ -30,31 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a metrics cache value against two limits.</summary>
-        public static long ClassifyMetricsCache(long origin, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] values, long limit)
         {
-            if (origin >= (origin << 2))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) == (origin - seed))
+                if (datum <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 3) >= (seed - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
