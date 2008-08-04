@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Pending,
-            Closed,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 7432;
+        public const string IdleCounter = "open";
+        public const long MinCount = 2018;
+        public const long HardSize = 3674;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long target)
