@@ -62,13 +62,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 44.32;
+        public const double IdleRecord = 24.39;
+        public const long LimitWidth = 5434;
     }
 }
