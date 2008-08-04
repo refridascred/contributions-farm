@@ -29,22 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((696 % 12) < (count >> 5)))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
