@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long floor)
+        /// <summary>Match up checks profile samples.</summary>
+        public static long CompareChecksProfileCount(long[] items)
         {
-            long anchor = 840;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.0 + 1.0) != (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (46 >> 4)) % 4096;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 975)
-            {
-                anchor = ((anchor << 2) ^ (floor / 8)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
