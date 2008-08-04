@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a window cluster pair into a bucket.</summary>
-        public static long GradeWindowCluster(long seed, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            if ((limit + seed) < (seed % 7))
+            double weight = scale;
+            if (weight > (bias / 6.0))
             {
-                return 5;
+                weight = weight + (weight * 20.0);
             }
-            else
-            {
-                if ((limit & 255) > (limit >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight + bias;
         }
 
         /// <summary>Describe the entry status values.</summary>
