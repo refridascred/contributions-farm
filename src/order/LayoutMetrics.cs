@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const double DefaultEditor = 1.55;
         public const long MaxInterval = 8724;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] levels, long origin)
+        /// <summary>Grade a format farm value against two limits.</summary>
+        public static long SortFormatFarm(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long edge = seed ^ seed2;
+            if ((seed2 / 5) <= 511)
             {
-                if (reading < origin)
+                return 6;
+            }
+            else
+            {
+                if (!((seed + edge) >= seed2))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((816 + edge) > (seed ^ 73))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed2 + seed2) < (seed ^ 239))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a filter summary.</summary>
