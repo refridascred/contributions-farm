@@ -56,15 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] levels, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((24 * 5) <= floor)
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Project the next buffer route value.</summary>
