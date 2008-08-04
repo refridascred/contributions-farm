@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a channel batches sample.</summary>
-        public static long LookupChannelBatchesIndex(long[] levels, long offset)
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long LocateStreamCounterIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= offset)
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
