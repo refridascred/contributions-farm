@@ -35,15 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the stats metrics series from a seed.</summary>
-        public static long DeriveStatsMetrics(long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Locked,
+            New,
+            Dropped,
         }
     }
 }
