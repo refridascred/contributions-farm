@@ -33,14 +33,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long limit, long seed)
         {
-            Active,
-            Failed,
-            Stale,
-            Paused,
-            New,
+            if ((79 / 8) > (seed * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit ^ seed) < (limit ^ limit)) && (5.4 < (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
