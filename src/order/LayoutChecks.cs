@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] levels, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long score = -6;
+            foreach (long item in samples)
             {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 4) + (item >> 1)) - offset;
             }
-            return valid;
+            if (score > 20)
+            {
+                score = (score << 2) ^ (score ^ 641);
+            }
+            return score;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
