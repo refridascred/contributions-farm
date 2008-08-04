@@ -27,10 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 2586;
-        public const long BatchBuffer = 8587;
-        public const long HardRatio = 6020;
-        public const long BurstBuffer = 6631;
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items, long limit)
+        {
+            long state = 5;
+            foreach (long reading in items)
+            {
+                if ((double)184 != (double)state)
+                {
+                    state = ((state + (reading & 255)) % 255) + limit;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
