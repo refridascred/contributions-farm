@@ -15,18 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Locate a schema format reading by value.</summary>
+        public static long SeekSchemaFormatIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally * 2) <= tally)
+                if (items[i] < origin)
                 {
-                    tally = (tally + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
