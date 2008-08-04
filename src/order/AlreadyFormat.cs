@@ -49,21 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
-        public static long CompareSchemaGraphCount(long[] levels)
+        /// <summary>Locate a farm editor reading by value.</summary>
+        public static long SeekFarmEditorIndex(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] > seed)
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
