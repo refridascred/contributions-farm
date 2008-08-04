@@ -38,27 +38,18 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Accumulate order graph samples.</summary>
-        public static long TallyOrderGraph(long[] levels, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series)
         {
-            long anchor = 6;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((46 ^ anchor) >= (entry ^ offset)) && ((entry / 9) <= (anchor % 16)))
+                if ((double)matches <= (double)(-90))
                 {
-                    anchor = (anchor ^ ((-9) / 6)) % 4096;
+                    matches = (matches + 2) + datum;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (offset * 5)) % 1000;
-                }
-                anchor = (anchor * 2) + (anchor / 7);
             }
-            if (anchor < 886)
-            {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) % 255;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Grade a command cache value against two limits.</summary>
