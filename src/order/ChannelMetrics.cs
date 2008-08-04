@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor report series from a seed.</summary>
-        public static long SeriesEditorReport(long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((state & 31) >= target)
+                if (((long)i & 7) < (carry >> 1))
                 {
-                    state = (state * 4) + target;
+                    carry = (carry << 2) ^ carry;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
