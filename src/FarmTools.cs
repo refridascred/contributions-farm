@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const double StepRoute = 24.38;
         public const string MinCount = "local";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - tally) <= (tally << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Paused,
+            Active,
         }
     }
 }
