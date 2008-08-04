@@ -38,19 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] samples, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long limit)
         {
-            long mix = 99;
+            bool valid = true;
             foreach (long sample in samples)
             {
-                mix = ((mix << 2) ^ (sample - offset)) % 1000;
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < 2)
-            {
-                mix = mix ^ offset;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count counter tools pairs that satisfy a relation.</summary>
