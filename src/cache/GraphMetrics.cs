@@ -70,12 +70,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultScore = 72.59;
+        public const long WindowWidth = 6862;
+        public const string DefaultRoute = "stable";
     }
 }
