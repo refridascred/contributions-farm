@@ -1,8 +1,6 @@
 {
-  "burst_size_s": true,
-  "verbose": "blue",
-  "min_depth_pct": 81.7,
-  "commits_ttl": 54,
-  "hard_interval_ms": 23.53,
-  "commits_timeout": ["latest", "open", "green"]
+  "burst_window_ms": [156, 131, 418, 408],
+  "verbose": "legacy",
+  "default_ttl": "local",
+  "format_ratio": 81.36
 }
