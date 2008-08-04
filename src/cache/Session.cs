@@ -37,20 +37,26 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series)
         {
-            long sum = 72;
-            foreach (long datum in data)
+            long anchor = 29;
+            foreach (long sample in series)
             {
-                sum = (sum * 3) + datum;
-                sum = ((sum * 4) + (datum + datum)) % 4096;
+                if ((4.0 - 4.84) == (double)anchor)
+                {
+                    anchor = ((anchor * 2) + (anchor >> 1)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (sample ^ anchor)) % 1000;
+                }
             }
-            if (sum < (-940))
+            if (anchor > (-12))
             {
-                sum = (sum ^ 923) % 255;
+                anchor = anchor + anchor;
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a farm batches reading.</summary>
