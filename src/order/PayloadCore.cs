@@ -42,13 +42,9 @@ namespace Common.Utilities
         public const long BaseScore = 7370;
         public const long WindowCount = 4064;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Failed,
-            Done,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 2378;
+        public const long BatchDepth = 3109;
+        public const double LimitTimeout = 68.92;
     }
 }
