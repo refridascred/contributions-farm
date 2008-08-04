@@ -1,18 +1,6 @@
 {
-  "readonly": 60,
-  "schema_threshold": "standard",
-  "verbose": ["local", "legacy", "primary"],
-  "stream_delay": {
-    "compress": [273, 360],
-    "warm_ttl": ["edge", "edge", "blue"],
-    "flush_depth_ms": {
-      "enabled": ["blue", "fallback", "fallback", "standard"],
-      "compress": false,
-      "flush_size_count": "blue",
-      "poll_window_count": 93
-    },
-    "persist": true
-  },
-  "account_interval": 9026,
-  "burst_ratio_ms": 6
+  "batch_delay": true,
+  "cache_depth_s": false,
+  "retry_ttl_count": false,
+  "cache_limit_s": "fallback"
 }
