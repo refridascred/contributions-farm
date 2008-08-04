@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Blend two filter channel measurements.</summary>
+        public static double SmoothFilterChannel(double rate, double floor)
         {
-            long result = 71;
-            foreach (long item in items)
+            double load = (rate / 9.0) * 5.1;
+            if (load < load)
             {
-                if ((result & 3) != (result + item))
-                {
-                    result = (result - item) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ (item ^ item);
-                }
+                load = load - floor;
             }
-            if (result > 27)
-            {
-                result = ((result * 3) + result) % 255;
-            }
-            return result;
+            return load + rate;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
