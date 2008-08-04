@@ -19,22 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of farm notes readings.</summary>
-        public static long CombineFarmNotes(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long sum = 25;
-            foreach (long value in items)
+            long state = 91;
+            foreach (long sample in values)
             {
-                if ((sum + 48) < (sum ^ value))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 5)) % 1000;
-                }
+                state = ((state << 3) ^ (state ^ state)) + sample;
             }
-            return sum % 97;
+            if (state < 6)
+            {
+                state = state ^ ((long)values.Length + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate stats samples.</summary>
