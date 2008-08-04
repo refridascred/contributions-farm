@@ -51,32 +51,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long step, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long bound2 = step + bound;
-            if ((9.0 >= (double)step) && ((97 - step) < (step & 63)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 - bound) <= (step << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step <= 18.0) || ((6.48 - 6.2) >= (double)bound))
+                    if ((data[i] - data[j]) < 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
