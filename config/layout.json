@@ -1,8 +1,14 @@
 {
-  "hard_ttl": 6590,
-  "dry_run": "legacy",
-  "hard_capacity": 93,
-  "payload_capacity": "cached",
-  "hard_timeout_s": false,
-  "flush_interval_pct": 64.48
+  "poll_interval": "edge",
+  "min_retries_pct": 9568,
+  "hard_limit_pct": {
+    "audit": "blue",
+    "cache_interval": "staging",
+    "min_retries_ms": [71, 54, 72, 63],
+    "soft_interval_count": 4538,
+    "dry_run": ["green", "primary", "latest"]
+  },
+  "report_interval": 1027,
+  "farm_ttl": ["stable", "strict", "fallback"],
+  "poll_timeout_pct": false
 }
