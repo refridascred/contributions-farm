@@ -1,18 +1,10 @@
 {
-  "sync_ratio_pct": 94.85,
-  "base_threshold_s": {
-    "base_capacity": [200, 200, 447],
-    "sync_limit": true,
-    "layout_window": {
-      "flush_timeout_s": [177, 429, 252],
-      "poll_capacity": "legacy",
-      "soft_window_count": "latest",
-      "burst_delay_ms": 4521,
-      "entry_ttl": 30,
-      "cache_threshold": "edge"
-    },
-    "metrics_threshold": false,
-    "burst_delay_pct": "open"
+  "cache_window": {
+    "enabled": "strict",
+    "soft_capacity_s": "local",
+    "hard_threshold_s": [222, 363, 210, 72]
   },
-  "enabled": 64
+  "soft_depth": true,
+  "default_window": "edge",
+  "session_capacity": 33
 }
