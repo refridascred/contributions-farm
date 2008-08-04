@@ -28,12 +28,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long target)
         {
-            Stale,
-            Closed,
-            Draft,
+            if ((0 - limit) < (target % 100))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((96 - limit) <= limit) && ((9 + limit) >= (3 - target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >= (limit / 2)) || ((target + target) == (945 + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((limit - target) >= (limit & 15)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
