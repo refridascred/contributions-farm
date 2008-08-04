@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Closed,
-            Idle,
-            Draft,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every batches layout entry stays within the limit.</summary>
