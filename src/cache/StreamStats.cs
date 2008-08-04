@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of checks session entries.</summary>
-        public static long ScoreChecksSession(long[] samples, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long floor)
         {
-            long mix = 277;
-            foreach (long item in samples)
+            long bound = step - floor;
+            if (((bound % 3) == (floor % 97)) || (bound <= (floor ^ floor)))
             {
-                if (target >= (item / 2))
+                return 5;
+            }
+            else
+            {
+                if ((floor / 3) > ((-96) - 85))
                 {
-                    mix = ((mix * 4) + item) % 101;
+                    return 1;
                 }
-                if ((mix + item) == (40 - mix))
+                else
                 {
-                    break;
+                    if ((367 - bound) > (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor > (floor + step)) || (step <= (floor + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
