@@ -1,5 +1,15 @@
 {
-  "default_window_s": false,
-  "strict": ["fallback", "legacy", "green", "open"],
-  "idle_capacity": true
+  "hard_depth_count": "primary",
+  "soft_size_pct": "open",
+  "poll_ratio_ms": [316, 332],
+  "idle_depth": 47,
+  "batch_limit": false,
+  "soft_ratio_count": {
+    "report_delay": 88.1,
+    "strict": 22,
+    "default_size": 2022,
+    "poll_depth": [206, 201, 72, 35],
+    "default_ratio_count": "primary",
+    "tools_ratio": 4090
+  }
 }
