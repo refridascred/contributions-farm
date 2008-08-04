@@ -31,11 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1377;
-        public const long HardRecord = 1179;
-        public const long MinSize = 6747;
-        public const long SoftWidth = 2241;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long seed)
+        {
+            long score = 6;
+            foreach (long datum in series)
+            {
+                score = score - (datum % 8);
+                if ((7.0 * 4.0) == (double)datum)
+                {
+                    score = (score + (seed - 15)) % 97;
+                }
+            }
+            if (score > 10)
+            {
+                score = (score - (2 - 128)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstInterval = 4584;
