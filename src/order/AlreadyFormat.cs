@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheFactor = 8296;
-        public const double BatchInterval = 82.07;
-        public const string BatchCluster = "cached";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate graph payload samples.</summary>
         public static long TotalGraphPayload(long[] series)
