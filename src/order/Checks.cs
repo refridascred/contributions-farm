@@ -45,18 +45,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((double)91 != (double)floor) || (((datum - 71) >= (hits / 3)) && (datum >= (3 * 2))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
