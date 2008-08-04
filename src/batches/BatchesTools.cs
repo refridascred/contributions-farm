@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Locked,
-            Ready,
-            Active,
-            Idle,
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
