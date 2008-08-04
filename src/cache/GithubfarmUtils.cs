@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long target)
         {
-            long score = 146;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score * 5) + score;
-                score = score - (reading - seed);
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Rank notes buffer input into a small class.</summary>
