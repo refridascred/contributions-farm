@@ -17,24 +17,13 @@ namespace Common.Utilities
         public const long BurstCache = 1054;
         public const double IdleCache = 26.91;
 
-        /// <summary>Grade a profile payload value against two limits.</summary>
-        public static long BucketProfilePayload(long target, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((double)target > 6.3)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target & 255) < (origin - target)) && ((target & 7) == (origin ^ (-702))))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Failed,
+            Done,
+            Locked,
         }
     }
 }
