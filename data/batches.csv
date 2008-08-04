@@ -1,8 +1,9 @@
-id,owner,token,weight,region
-1,399,17.43,24.88,490
-2,635,latest,906,standard
-3,fallback,primary,37.48,13.57
-4,standard,641,legacy,fallback
-5,84.23,46.25,strict,222
-6,264,930,open,fallback
-7,eu-west,658,395,strict
+id,region,owner,ratio
+1,63.12,181,staging
+2,665,green,open
+3,875,64.66,840
+4,766,legacy,fallback
+5,25.29,9.06,440
+6,local,51.77,470
+7,21.46,77.19,edge
+8,575,5.75,staging
