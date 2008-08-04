@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data, long floor)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long reading in data)
             {
-                if (((3.4 / 2.0) != (double)reading) && ((double)reading < (1.48 - 18.0)))
+                if ((reading << 2) > hits)
                 {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) - floor;
                 }
             }
             return hits;
