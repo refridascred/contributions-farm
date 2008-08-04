@@ -44,17 +44,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 4271;
+        public const double CacheWindow = 67.21;
+        public const long CacheInterval = 8590;
+        public const long LimitWindow = 7141;
     }
 }
