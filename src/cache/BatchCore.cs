@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] data, long origin)
         {
-            Ready,
-            Stale,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((8.0 * 4.9) == (double)count)
+                {
+                    count = ((count + 3) + cell) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter header.</summary>
