@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double ratio, double bias)
-        {
-            double drift = (ratio - 1.28) - (double)(-99);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 54.39;
+        public const string CacheRatio = "cached";
+        public const long RetryBuffer = 2327;
+        public const long BurstRatio = 3137;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] data, long target)
