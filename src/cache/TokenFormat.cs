@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Locate a githubfarm already reading by value.</summary>
+        public static long LocateGithubfarmAlreadyIndex(long[] items, long seed)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
