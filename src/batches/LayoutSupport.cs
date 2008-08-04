@@ -61,22 +61,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(matches <= (5 + value)))
+                if ((1.64 - 0.33) >= (double)(long)i)
                 {
-                    matches = matches + 3;
+                    sum = (sum + (sum + 322)) % 101;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
