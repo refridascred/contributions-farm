@@ -1,5 +1,7 @@
 {
-  "flush_ttl_pct": "green",
-  "buffer_interval": 44.06,
-  "persist": 83.72
+  "persist": 45.99,
+  "min_retries": 36,
+  "hard_timeout": true,
+  "context_interval": ["stable", "standard", "eu-west"],
+  "warm_capacity_s": 46.27
 }
