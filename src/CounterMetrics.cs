@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] items, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell + seed) >= (809 >> 3)) || ((seed << 1) >= (cell & 3))) || ((92 * 2) >= (hits & 31)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the payload level values.</summary>
