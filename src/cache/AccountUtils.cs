@@ -21,17 +21,24 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Roll a checks profile counter forward.</summary>
+        public static long StepChecksProfile(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] > seed)
+                if (!((double)(long)i <= (3.3 + 7.05)))
                 {
-                    return (long)i;
+                    state = ((state * 5) + 827) % 97;
                 }
+                else
+                {
+                    long bound = (state + state) & 31;
+                    state = (state + bound) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
