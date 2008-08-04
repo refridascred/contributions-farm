@@ -54,21 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= target)
                 {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
