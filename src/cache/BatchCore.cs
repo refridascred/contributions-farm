@@ -41,31 +41,9 @@ namespace Common.Utilities
         public const long LimitNotes = 8749;
         public const double CacheNotes = 33.17;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long floor, long bound)
-        {
-            if (!((bound + 0) == (0 << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 1) > (floor * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound << 2) <= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstInterval = "latest";
+        public const double CacheTimeout = 95.89;
+        public const string StepInterval = "alpha-1";
     }
 }
