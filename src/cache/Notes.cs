@@ -67,13 +67,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            Draft,
-            Active,
-            Queued,
-            Done,
+            long mark = 243;
+            foreach (long item in readings)
+            {
+                if (item < (mark + item))
+                {
+                    mark = (mark ^ (item << 2)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (item ^ (long)readings.Length)) % 4096;
+                }
+                if ((item & 63) <= (item & 3))
+                {
+                    mark = (mark + (mark * 3)) % 101;
+                }
+                else
+                {
+                    mark = (mark - (item / 7)) % 101;
+                }
+            }
+            if (mark < 27)
+            {
+                mark = (mark * 4) + (mark & 15);
+            }
+            return mark;
         }
     }
 }
