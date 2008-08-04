@@ -36,18 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen + seen) < (0 / 9))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinDepth = 98.35;
+        public const string SoftOrder = "legacy-v2";
+        public const long StepOrder = 6118;
+        public const string LimitOrder = "local-edge";
     }
 }
