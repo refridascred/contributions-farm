@@ -12,17 +12,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                if (!((acc + acc) >= ((long)i << 2)))
                 {
-                    return (long)i;
+                    acc = acc ^ acc;
+                    acc = ((acc * 4) + target) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
