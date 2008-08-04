@@ -23,11 +23,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 3056;
         public const long BaseScore = 2471;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 1409;
+        public const string LimitBatch = "stable-1";
+        public const long MaxBudget = 3524;
+        public const long MaxBatch = 5255;
     }
 }
