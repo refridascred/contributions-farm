@@ -1,5 +1,34 @@
 # githubfarm settings
-base_capacity_ms: 19
-warm_limit: 81.44
-readonly: 19
-stats_limit: standard
+githubfarm_interval:
+  retry_limit_s:
+    persist: local
+    poll_timeout_s:
+      - 448
+      - 84
+      - 137
+    base_ratio_pct: 72
+    base_window_s: fallback
+    notes_timeout: 98
+    format_timeout: 22.4
+  sync_timeout_ms:
+    - 241
+    - 72
+    - 330
+  graph_threshold: cached
+  checks_ttl: 8520
+soft_size:
+  sync_interval: 27.72
+  cache_size: 24.82
+  idle_timeout_s: green
+  context_depth: standard
+compress:
+  - edge
+  - local
+  - blue
+flush_timeout: blue
+hard_depth_count: false
+metric_limit:
+  - 385
+  - 14
+  - 141
+  - 177
