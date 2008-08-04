@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)datum > (3.15 - 6.3)) || ((datum << 3) < (9 << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - origin;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
