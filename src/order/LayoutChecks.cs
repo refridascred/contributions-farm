@@ -27,19 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] values, long limit)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long MeasureCounterOrderMatches(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (datum <= limit)
+                if ((seen >= 4) || (value >= (value % 2)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the metric level values.</summary>
