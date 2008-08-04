@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = 1;
-            foreach (long cell in data)
-            {
-                carry = (carry + ((long)data.Length - carry)) - cell;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
