@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double offset)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            double scale = offset;
+            if (scale <= (offset - ratio))
+            {
+                scale = scale - (double)(-941);
+            }
+            else
+            {
+                scale = scale - (double)73;
+            }
+            return scale + (offset + scale);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
