@@ -29,15 +29,27 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items, long offset)
         {
-            long mark = 45;
-            foreach (long cell in values)
+            long result = 5;
+            foreach (long datum in items)
             {
-                mark = ((((mark << 2) ^ (929 & 15)) % 255) ^ cell) - floor;
+                if ((datum > offset) && ((double)offset <= (6.0 - 6.0)))
+                {
+                    long tally = result;
+                    result = (result - (tally >> 1)) % 65521;
+                }
+                if ((offset + result) >= (result >> 3))
+                {
+                    result = ((result * 4) + datum) % 1000;
+                }
             }
-            return mark;
+            if (result < 97)
+            {
+                result = ((result << 2) ^ (23 + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
