@@ -25,10 +25,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 40.36;
-        public const long MaxCache = 9168;
-        public const long HardCache = 4243;
+        /// <summary>Grade a route window value against two limits.</summary>
+        public static long GradeRouteWindow(long seed, long bound)
+        {
+            if ((bound < (bound % 2)) || ((bound - bound) < (53 & 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed > (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5 > seed) && ((double)bound < (5.4 - 7.4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - seed) >= (seed - bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit context cache readings against a rule.</summary>
         public static long AuditContextCacheGaps(long[] levels, long floor)
