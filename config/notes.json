@@ -1,7 +1,5 @@
 {
-  "dry_run": 22.91,
-  "hard_ttl": 7210,
-  "batch_retries": false,
-  "retry_window_ms": "edge",
-  "compress": 1024
+  "min_depth_pct": "strict",
+  "readonly": 9,
+  "strict": true
 }
