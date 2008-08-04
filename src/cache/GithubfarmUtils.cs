@@ -36,12 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheWidth = 8138;
-        public const double LimitCommits = 51.94;
-        public const double WindowWidth = 5.5;
-        public const long IdleCommits = 1560;
-        public const double IdleScore = 49.69;
+        /// <summary>Match up route command samples.</summary>
+        public static long MatchRouteCommandCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] values, long offset)
