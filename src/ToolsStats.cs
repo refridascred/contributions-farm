@@ -51,13 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Retry,
-            Closed,
-            Ready,
-            Locked,
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
