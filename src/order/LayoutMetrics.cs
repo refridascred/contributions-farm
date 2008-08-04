@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const long BaseFilter = 4038;
         public const double MinRatio = 79.77;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 4574;
+        public const long BurstWidth = 206;
+        public const long SoftRecord = 8310;
+        public const string LimitCount = "legacy-edge";
     }
 }
