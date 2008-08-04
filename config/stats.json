@@ -1,5 +1,6 @@
 {
-  "compress": ["staging", "strict", "edge"],
-  "min_ratio": "latest",
-  "base_interval": [112, 286]
+  "checks_ttl": 88,
+  "compress": [116, 244],
+  "batch_limit": 82.82,
+  "warm_size": 83.18
 }
