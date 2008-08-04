@@ -31,19 +31,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((origin - (long)i) <= total)
-                {
-                    total = (total * 5) + (total * 3);
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
