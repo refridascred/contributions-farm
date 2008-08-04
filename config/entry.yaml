@@ -1,22 +1,4 @@
 # entry settings
-max_interval:
-  poll_window_pct: false
-  max_depth_s: blue
-  compress:
-    - local
-    - open
-    - standard
-  cache_interval_ms: primary
-  burst_limit_ms: true
-  poll_window_s: open
-burst_timeout_ms:
-  - green
-  - cached
-  - standard
-  - strict
-audit:
-  githubfarm_timeout: false
-  idle_delay_s: primary
-  flush_ttl_count: fallback
-  poll_size: 52
-compress: latest
+sync_limit: stable
+cache_interval: staging
+hard_capacity_s: 60
