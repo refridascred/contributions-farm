@@ -48,18 +48,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] levels, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long bound2 = step + bound;
+            if ((9.0 >= (double)step) && ((97 - step) < (step & 63)))
             {
-                if ((62 % 100) < (step + count))
+                return 4;
+            }
+            else
+            {
+                if ((bound2 - bound) <= (step << 3))
                 {
-                    count = (count + 3) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step <= 18.0) || ((6.48 - 6.2) >= (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
