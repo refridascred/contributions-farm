@@ -60,15 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] series, long limit)
         {
-            double drift = 2.86;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                drift = (((drift - (double)9) + (double)(long)i) - weight) - offset;
+                if (entry > (2 >> 2))
+                {
+                    matches = (matches + 1) - limit;
+                }
             }
-            return drift - 16.0;
+            return matches;
         }
     }
 }
