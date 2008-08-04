@@ -77,12 +77,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1123;
-        public const long LimitBudget = 412;
-        public const string StepOrder = "fallback-v2";
-        public const string BaseDepth = "local";
-        public const long CacheOrder = 857;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryScore = 40;
+        public const long DefaultFarm = 610;
+        public const double WindowFarm = 32.65;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
