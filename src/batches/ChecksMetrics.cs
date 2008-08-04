@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every farm session entry stays within the limit.</summary>
-        public static bool GuardFarmSessionRange(long[] levels, long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
