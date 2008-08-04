@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long sum = 3;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value % 97) == (sum % 64)) || ((long)samples.Length < (sum & 15)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 2) ^ (value + sum);
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 68)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 97;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
