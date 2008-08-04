@@ -1,7 +1,19 @@
 # support settings
-metric_ratio: false
-max_delay_ms: true
-batch_limit:
-  - 478
-  - 475
-  - 212
+batch_ttl_ms: stable
+strict: 13
+payload_threshold: 5930
+farm_interval: primary
+readonly:
+  hard_capacity_s:
+    - 236
+    - 277
+  sync_limit_ms: 250
+  persist:
+    - local
+    - green
+  poll_capacity_pct:
+    - blue
+    - stable
+    - stable
+  stats_limit: 9765
+  verbose: green
