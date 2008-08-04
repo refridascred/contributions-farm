@@ -64,12 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardTimeout = 1022;
-        public const double BaseRatio = 78.76;
-        public const long CacheSpan = 2401;
-        public const long SoftFactor = 9024;
-        public const double MaxSpan = 3.99;
+        /// <summary>Roll a batch report counter forward.</summary>
+        public static long SeriesBatchReport(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] levels, long step)
