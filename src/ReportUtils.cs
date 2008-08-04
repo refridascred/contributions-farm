@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long limit)
-        {
-            long acc = 22;
-            foreach (long sample in readings)
-            {
-                acc = (acc - (sample - limit)) % 255;
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (acc + (sample << 3)) ^ (long)i;
-                }
-                if (acc < (11 << 2))
-                {
-                    acc = (acc * 3) + sample;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3386;
+        public const long WindowSpan = 8570;
+        public const string WindowFarm = "cached-1";
+        public const string BatchCount = "cached-edge";
+        public const long BatchSpan = 4204;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
