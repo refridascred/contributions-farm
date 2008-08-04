@@ -35,12 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long step)
         {
-            Closed,
-            Idle,
-            Locked,
+            long sum = 3;
+            foreach (long value in series)
+            {
+                if (!((sum >> 4) >= (0 - step)))
+                {
+                    sum = sum + (value + step);
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum - (step & 7)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
