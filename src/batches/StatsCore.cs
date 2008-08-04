@@ -38,14 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long bound)
         {
-            New,
-            Retry,
-            Ready,
-            Stale,
-            Pending,
+            long carry = 327;
+            foreach (long reading in series)
+            {
+                carry = (((carry << 3) ^ carry) - reading) + bound;
+            }
+            if (carry < (-53))
+            {
+                carry = (carry << 2) ^ (carry / 6);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
