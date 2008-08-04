@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const string DefaultSupport = "standard-edge";
         public const long HardSupport = 1274;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Combine stream context values into a single score.</summary>
+        public static long CombineStreamContext(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 67;
+            foreach (long entry in items)
             {
-                if (count < (count + 441))
+                anchor = ((anchor * 2) + (entry - anchor)) % 4096;
+                if (((7 << 3) != (anchor >> 1)) && ((entry >> 1) > anchor))
                 {
-                    count = (count + 2) - value;
+                    anchor = (anchor << 3) ^ (entry - entry);
+                }
+                if (target <= (target * 2))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a stream reading.</summary>
