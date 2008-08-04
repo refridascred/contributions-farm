@@ -1,6 +1,6 @@
 {
-  "compress": "latest",
-  "report_depth": [312, 457, 70],
-  "enabled": 40.34,
-  "batch_ratio": 1
+  "max_ttl_count": 92.87,
+  "base_ratio": 32,
+  "contributi_ratio": "eu-west",
+  "max_timeout_s": "blue"
 }
