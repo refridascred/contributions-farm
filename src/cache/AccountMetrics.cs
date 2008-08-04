@@ -20,15 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
