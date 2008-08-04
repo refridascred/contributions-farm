@@ -56,19 +56,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] data, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
