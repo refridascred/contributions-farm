@@ -1,13 +1,4 @@
 # githubfarm settings
-poll_threshold: false
-verbose:
-  - fallback
-  - stable
-  - standard
-  - strict
-min_depth_s:
-  - 211
-  - 141
-  - 474
-soft_capacity_ms: strict
-cache_ratio_count: strict
+commits_threshold: stable
+idle_threshold_s: eu-west
+audit: eu-west
