@@ -25,13 +25,31 @@ namespace Common.Utilities
         public const string BurstBuffer = "latest-v2";
         public const double CacheBuffer = 83.78;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long carry = 1;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (carry - sample) - (long)i;
+                    carry = (carry * 2) + carry;
+                }
+                if (sample > (carry + 439))
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (sample + sample);
+                }
+            }
+            if (carry > 269)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
