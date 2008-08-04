@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate tools contributi readings against a bound.</summary>
-        public static bool CheckToolsContributiBounds(long[] samples, long limit)
+        /// <summary>Blend two editor cache measurements.</summary>
+        public static double ScaleEditorCache(double scale, double span)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            double drift = scale;
+            if (drift >= span)
             {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (drift / 2.0);
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (scale - span);
         }
 
         /// <summary>Compare every pair of window editor readings.</summary>
