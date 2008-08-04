@@ -28,38 +28,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            if ((0 - limit) < (target % 100))
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                anchor = (anchor - anchor) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((96 - limit) <= limit) && ((9 + limit) >= (3 - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target >= (limit / 2)) || ((target + target) == (945 + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit - target) >= (limit & 15)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
