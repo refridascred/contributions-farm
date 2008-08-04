@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long offset)
         {
-            if (7.1 < (double)target)
+            long step = bound + offset;
+            if (!((double)step > (0.4 / 2.0)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((floor - floor) < (target & 31))
+                if (bound < (479 % 8))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (((floor + floor) == (target ^ 255)) && ((floor & 1) >= target))
+                    if (((bound + bound) == (offset ^ offset)) && (step > (offset >> 5)))
                     {
                         return 7;
                     }
                     else
                     {
-                        if ((96 / 3) > floor)
+                        if ((bound >> 2) == (bound % 12))
                         {
-                            return 5;
+                            return 2;
                         }
                         else
                         {
-                            return 8;
+                            return 1;
                         }
                     }
                 }
