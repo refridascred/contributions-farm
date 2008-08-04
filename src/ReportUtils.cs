@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry order entry stays within the limit.</summary>
-        public static bool VerifyEntryOrderLimits(long[] samples, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double mean = bias;
+            if (mean < mean)
             {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - (double)4) - scale;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
