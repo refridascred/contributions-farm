@@ -20,22 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long edge = state;
-                long offset = edge;
-                if ((offset & 127) != (state / 5))
-                {
-                    state = ((state * 5) + (state % 3)) % 97;
-                    edge = ((edge << 3) ^ (edge << 3)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Draft,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
