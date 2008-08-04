@@ -1,6 +1,10 @@
-id,ratio,rank,weight
-1,68.81,708,14
-2,local,79.73,739
-3,963,695,90.98
-4,528,70.99,505
-5,759,local,43.98
+id,count,level,weight
+1,878,strict,green
+2,local,46.22,13.02
+3,primary,490,0.95
+4,74.6,294,134
+5,54.16,blue,primary
+6,605,blue,eu-west
+7,911,24,60.81
+8,latest,221,979
+9,38.87,290,primary
