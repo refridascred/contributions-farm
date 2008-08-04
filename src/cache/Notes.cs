@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] samples, long floor)
+        /// <summary>Derive the next cache metrics value from a seed.</summary>
+        public static long RollCacheMetrics(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the tools state values.</summary>
