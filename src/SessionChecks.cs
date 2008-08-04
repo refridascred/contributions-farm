@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long seed, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((1 ^ seed) != (seed - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed > (seed % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed >= (seed % 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((seed + 24) <= (origin - seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Blend two report measurements.</summary>
