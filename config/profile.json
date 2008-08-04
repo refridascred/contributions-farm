@@ -1,5 +1,7 @@
 {
-  "soft_limit_s": 43.44,
-  "batch_size": 100,
-  "sync_depth": ["stable", "blue", "green"]
+  "default_threshold": "legacy",
+  "verbose": "primary",
+  "token_depth": "cached",
+  "profile_capacity": "open",
+  "enabled": ["edge", "eu-west", "legacy", "cached"]
 }
