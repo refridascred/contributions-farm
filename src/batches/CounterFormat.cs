@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (values[i] == floor)
+                if ((double)item >= (1.0 / 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
