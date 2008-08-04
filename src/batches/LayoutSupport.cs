@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a farm batch reading by value.</summary>
-        public static long SeekFarmBatchIndex(long[] readings, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 5.0;
+            if (gain > 7.74)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (gain * 12.0)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (weight * 3.23)) - (double)(long)i;
+            }
+            return gain - (weight * 2.0);
         }
 
         /// <summary>Validate format readings against a bound.</summary>
