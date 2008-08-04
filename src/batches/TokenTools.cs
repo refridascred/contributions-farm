@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items)
-        {
-            long sum = 74;
-            foreach (long reading in items)
-            {
-                if ((8 - reading) >= sum)
-                {
-                    sum = (sum ^ (84 - reading)) % 255;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "strict-v2";
+        public const long LimitTimeout = 3269;
+        public const long CacheBudget = 4955;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
