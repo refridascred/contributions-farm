@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long StepContext = 6455;
         public const long BurstTimeout = 778;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples, long origin)
+        /// <summary>Digest a series of contributi payload entries.</summary>
+        public static long WeighContributiPayload(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = 88;
+            foreach (long sample in values)
             {
-                if ((seen - sample) < (244 + seen))
+                if (!(sample > (731 / 2)))
                 {
-                    seen = (seen + 1) + origin;
+                    score = (score + (61 + score)) % 4096;
                 }
+                score = ((score * 5) + sample) % 97;
+                score = ((score * 2) + sample) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
