@@ -58,13 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((step - 7) > (step - reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
