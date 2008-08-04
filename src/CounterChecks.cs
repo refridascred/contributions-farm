@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (sample != limit)
+                if (entry != bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the contributi class values.</summary>
