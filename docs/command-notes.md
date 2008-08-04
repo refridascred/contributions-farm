@@ -1,11 +1,15 @@
 # Command notes
 
-The commits report groups every support by route.
-Use cluster settings to tune how often cluster data is refreshed.
+Run the contributi check before changing any token limits.
+The buffer report groups every graph by entry.
+
+The context helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every filter by context.
+The metrics module keeps report values in sync with the notes cache.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate token input early
-- Document new stream fields
-- Log every queue change
+- Validate payload input early
+- Review route limits each release
+- Log every token change
+- Prefer farm defaults
