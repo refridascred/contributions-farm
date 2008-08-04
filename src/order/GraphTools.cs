@@ -52,13 +52,19 @@ namespace Common.Utilities
         public const long IdleBudget = 8578;
         public const string BatchSpan = "stable-edge";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every stats cache entry stays within the limit.</summary>
+        public static bool CheckStatsCacheBounds(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
