@@ -31,15 +31,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            double rate = (double)((-959) - 851);
-            if (rate > rate)
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                rate = ((rate + 16.0) + ratio) + span;
+                mark = ((mark << 2) ^ ((-97) - mark)) % 4096;
+                mark = (mark ^ (step ^ (long)i)) % 101;
+                mark = (mark + (step >> 3)) % 1000;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return rate - rate;
+            return mark;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
