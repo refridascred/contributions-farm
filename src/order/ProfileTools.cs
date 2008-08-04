@@ -37,18 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long AuditSchemaReportOutliers(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!!((double)sample != (6.4 - 5.0)))
+                if (((9.6 / 5.0) == (double)cell) || (cell < (cell * 4)))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) - step;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
