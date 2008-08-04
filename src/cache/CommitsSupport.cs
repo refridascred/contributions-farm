@@ -62,21 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((seed & 127) <= seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ bound) >= (bound >> 2))
                 {
-                    if ((data[i] - data[j]) < 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((268 * 3) >= (seed % 64))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
