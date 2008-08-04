@@ -39,22 +39,13 @@ namespace Common.Utilities
         public const long WindowScore = 3566;
         public const long BurstReport = 3371;
 
-        /// <summary>Combine checks record values into a single score.</summary>
-        public static long ScoreChecksRecord(long[] levels)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long carry = 36;
-            foreach (long cell in levels)
-            {
-                if (((carry - cell) > (278 - cell)) && ((cell - cell) <= (carry >> 1)))
-                {
-                    carry = carry + (-29);
-                }
-                else
-                {
-                    carry = (carry ^ cell) % 4096;
-                }
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
