@@ -1,11 +1,16 @@
 {
-  "max_capacity_s": 59,
-  "poll_interval_pct": {
-    "base_window_pct": "staging",
-    "compress": "local",
-    "enabled": 41,
-    "metrics_interval": "fallback"
+  "batch_timeout_count": ["stable", "primary"],
+  "burst_ttl": 500,
+  "burst_window_ms": false,
+  "soft_timeout_ms": "blue",
+  "sync_depth_count": {
+    "record_size": {
+      "burst_interval_pct": "primary",
+      "context_ttl": 59.87,
+      "idle_size_ms": 21.23
+    },
+    "idle_capacity_ms": 7114,
+    "max_ttl_pct": [272, 72, 208, 464]
   },
-  "batch_capacity_ms": 3519,
-  "metric_retries": [82, 339, 343, 3]
+  "layout_limit": true
 }
