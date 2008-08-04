@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const double LimitSpan = 0.06;
         public const string SoftTools = "primary-1";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double bias)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long bound2)
         {
-            double scale = (double)(0 << 1);
-            if (scale < 10.0)
+            if ((bound - bound2) > bound2)
             {
-                scale = scale - (gain + 9.0);
+                return 7;
             }
             else
             {
-                scale = scale - (scale * 5.16);
+                if ((bound / 7) != (bound2 - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return scale - bias;
         }
 
         /// <summary>Describe the queue state values.</summary>
