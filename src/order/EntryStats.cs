@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] data, long origin)
         {
-            long mark = 849;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark * 4) == (datum * 2))
+                if (data[i] == origin)
                 {
-                    mark = ((mark * 2) + (mark - mark)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
