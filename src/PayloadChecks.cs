@@ -65,19 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample != limit)
+                if ((matches - entry) > (entry + entry))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
