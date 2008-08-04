@@ -26,23 +26,15 @@ namespace Common.Utilities
         public const double CacheReport = 67.15;
         public const string MaxDepth = "cached-v2";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Iterate the githubfarm tools series from a seed.</summary>
+        public static long IterateGithubfarmTools(long target)
         {
-            long score = 952;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((score + score) > (15 - score))
-                {
-                    score = score - (reading + reading);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score * 4)) % 97;
-                }
-                score = ((score << 2) ^ 7) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
