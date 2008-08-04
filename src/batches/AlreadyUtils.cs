@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Draft,
-            Dropped,
-            Pending,
-            Stale,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a batches stats.</summary>
