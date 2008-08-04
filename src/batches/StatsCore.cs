@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] readings, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] readings, long offset)
         {
-            bool stale = true;
+            long matches = 0;
             foreach (long entry in readings)
             {
-                if (entry >= limit)
+                if ((offset + offset) <= (matches & 3))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
