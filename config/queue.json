@@ -1,15 +1,6 @@
 {
-  "default_ratio_s": "cached",
-  "counter_ttl": {
-    "soft_depth_ms": "eu-west",
-    "enabled": false,
-    "sync_ttl": 30,
-    "counter_limit": 8451,
-    "report_interval": "latest",
-    "default_timeout_count": "standard"
-  },
-  "audit": ["blue", "local"],
-  "batch_ratio_pct": 62,
-  "burst_delay": ["stable", "stable", "open", "primary"],
-  "retry_timeout": 8.55
+  "warm_size_count": false,
+  "tools_delay": [268, 468, 408, 408],
+  "cache_window_count": 100,
+  "format_window": [300, 173, 117, 435]
 }
