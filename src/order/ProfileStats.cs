@@ -26,14 +26,39 @@ namespace Common.Utilities
             return (scale + scale) + gain;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Paused,
-            Retry,
+            long offset = floor - limit;
+            if (((offset ^ 668) == (floor + offset)) && ((limit + floor) != (offset ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor & 1) < (limit << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (limit / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit - offset) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a queue stats pair into a bucket.</summary>
