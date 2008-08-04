@@ -24,14 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
-            New,
-            Idle,
-            Failed,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (2.0 >= (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
