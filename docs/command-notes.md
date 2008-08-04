@@ -1,11 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the checks list.
-A filter that stays idle for too long is moved to the entry list.
+The notes module keeps schema values in sync with the already cache.
+Run the record check before changing any profile limits.
+
+The support report groups every command by context.
+Run the metrics check before changing any record limits.
+When a stream fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate cache input early
-- Review counter limits each release
-- Log every githubfarm change
+- Validate metrics input early
+- Document new context fields
+- Review report limits each release
