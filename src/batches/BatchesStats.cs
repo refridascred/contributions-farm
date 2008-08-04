@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((tally + tally) <= (datum >> 3))
+                if (entry <= floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Rank command input into a small class.</summary>
