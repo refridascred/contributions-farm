@@ -42,17 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer githubfarm entry that matches the target.</summary>
-        public static long LookupBufferGithubfarmIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2746;
+        public const long DefaultRatio = 9013;
+        public const long BurstRoute = 4086;
     }
 }
