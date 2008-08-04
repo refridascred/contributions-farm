@@ -1,11 +1,10 @@
 {
-  "format_capacity": true,
-  "profile_threshold": {
-    "hard_capacity": [379, 344],
-    "audit": 82,
-    "retry_size": false,
-    "batch_depth_count": ["fallback", "strict", "local", "stable"]
-  },
-  "warm_ttl_s": true,
-  "strict": 60
+  "soft_delay": true,
+  "cache_threshold_count": "cached",
+  "verbose": 57.3,
+  "filter_threshold": {
+    "cache_interval_s": "eu-west",
+    "cache_retries_s": 7224,
+    "warm_window_ms": false
+  }
 }
