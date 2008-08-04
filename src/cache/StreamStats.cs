@@ -20,11 +20,33 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "strict-edge";
-        public const long IdleCount = 8850;
-        public const long RetryGraph = 3474;
-        public const string StepGraph = "standard-v2";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long bound, long limit)
+        {
+            long bound2 = bound ^ limit;
+            if (908 >= (8 - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((17.0 / 9.0) > (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 - 13) > limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long floor)
