@@ -56,13 +56,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double bias)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            double bias2 = (bias / 2.0) - 9.83;
+            if (bias2 < ratio)
+            {
+                bias2 = bias2 - (double)138;
+            }
+            return bias2 + (double)(-64);
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
