@@ -35,21 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long PairGithubfarmStreamCount(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = carry + (carry % 16);
+                if (2 <= (value + carry))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (carry < 45)
+            {
+                carry = ((carry * 2) + (carry & 127)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
