@@ -26,13 +26,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Queued,
-            Retry,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 4670;
+        public const string SoftStream = "stable-1";
+        public const long BaseDepth = 588;
+        public const long CacheInterval = 6478;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] samples, long seed)
