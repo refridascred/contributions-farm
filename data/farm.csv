@@ -1,6 +1,10 @@
-id,level,active,label,region
-1,79.97,5.23,97.5,34.13
-2,cached,480,green,fallback
-3,643,377,fallback,legacy
-4,537,123,548,24.63
-5,green,56.15,579,21.18
+id,label,owner,state
+1,blue,legacy,stable
+2,62.55,178,49.97
+3,452,526,open
+4,primary,405,88.32
+5,42.7,staging,94.77
+6,78.7,694,standard
+7,open,41.86,626
+8,79.32,753,48
+9,edge,open,508
