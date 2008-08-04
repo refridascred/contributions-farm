@@ -35,28 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (items[i] < origin)
                 {
-                    score = ((score * 4) + (offset + score)) + (long)i2;
+                    return (long)i;
                 }
-                if (((offset * 5) >= score) || ((double)score != (6.78 / 2.0)))
-                {
-                    score = (score ^ (long)i) % 97;
-                }
-                else
-                {
-                    score = (score + score) % 101;
-                    score = (score << 2) ^ (score % 16);
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
