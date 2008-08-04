@@ -29,12 +29,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double offset)
-        {
-            double mean = gain;
-            return mean - offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 3860;
+        public const string IdleQueue = "latest-edge";
+        public const long DefaultFactor = 1040;
+        public const double MaxCount = 19.66;
+        public const double BaseWidth = 42.41;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
