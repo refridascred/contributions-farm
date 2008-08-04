@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            double rate = span + (span + 5.42);
-            if (rate > rate)
+            long mix = 362;
+            foreach (long value in samples)
             {
-                rate = (rate - (span * 8.0)) - gain;
+                mix = (mix ^ (value + mix)) % 65521;
             }
-            else
-            {
-                rate = rate - (rate / 2.0);
-            }
-            return rate - (double)958;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
