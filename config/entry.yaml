@@ -1,6 +1,10 @@
 # entry settings
-burst_size_pct: true
-format_capacity: 60
-batches_timeout: latest
-idle_ttl: 56.27
-strict: green
+flush_ttl_s: cached
+soft_ttl: 94.35
+retry_retries_count: 61.49
+stream_timeout: 74.17
+readonly:
+  - standard
+  - open
+  - primary
+burst_threshold_count: edge
