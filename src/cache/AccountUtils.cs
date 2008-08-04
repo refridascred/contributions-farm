@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix - ((-9) & 3)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a metric farm pair into a bucket.</summary>
