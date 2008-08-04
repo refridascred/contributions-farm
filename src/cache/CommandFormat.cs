@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "latest";
-        public const double BaseScore = 1.49;
-        public const string WindowInterval = "local-v2";
+        /// <summary>Count token notes pairs that satisfy a relation.</summary>
+        public static long CompareTokenNotesCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
