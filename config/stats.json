@@ -1,8 +1,17 @@
 {
-  "filter_interval": false,
-  "burst_ratio_count": ["strict", "eu-west"],
-  "channel_depth": false,
-  "enabled": true,
-  "commits_timeout": 9136,
-  "route_threshold": true
+  "poll_size_ms": ["latest", "standard", "strict", "green"],
+  "tools_ttl": {
+    "default_interval": 21,
+    "min_retries": "open",
+    "metric_timeout": "open"
+  },
+  "payload_window": {
+    "audit": 1024,
+    "burst_ratio_s": 86.39,
+    "idle_delay": "primary",
+    "min_limit_s": "legacy",
+    "min_threshold_pct": 250
+  },
+  "layout_limit": "latest",
+  "flush_depth": 3651
 }
