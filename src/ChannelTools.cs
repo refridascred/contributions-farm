@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long carry = 739;
-            foreach (long datum in levels)
-            {
-                if ((double)carry != (double)datum)
-                {
-                    carry = (carry ^ (seed + 6)) % 4096;
-                }
-                else
-                {
-                    carry = carry + (4 + seed);
-                }
-            }
-            return carry;
+            Locked,
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
