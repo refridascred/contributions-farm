@@ -21,18 +21,12 @@ namespace Common.Utilities
             return gain2 + (offset * 4.0);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long state = 44;
-            foreach (long item in levels)
-            {
-                if ((offset - 586) >= (state / 5))
-                {
-                    state = ((state + (state + 33)) % 4096) + item;
-                }
-            }
-            return state % 4096;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
