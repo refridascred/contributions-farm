@@ -1,12 +1,6 @@
 {
-  "dry_run": {
-    "enabled": 97,
-    "poll_size_ms": [29, 140, 8],
-    "queue_capacity": true,
-    "batch_window": 79,
-    "compress": 39
-  },
-  "poll_timeout_count": 976,
-  "persist": 2243,
-  "cache_depth_s": 5.55
+  "cache_delay": "primary",
+  "token_delay": 9579,
+  "checks_ttl": "green",
+  "batches_delay": 29.86
 }
