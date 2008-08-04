@@ -19,19 +19,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every support route entry stays within the limit.</summary>
-        public static bool VerifySupportRouteRange(long[] values, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
