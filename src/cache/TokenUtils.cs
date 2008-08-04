@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            Ready,
-            Queued,
-            Stale,
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)offset > (double)7)
+                {
+                    score = (score ^ offset) % 101;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit buffer layout readings against a rule.</summary>
