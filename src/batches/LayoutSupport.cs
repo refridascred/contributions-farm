@@ -21,18 +21,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long bound)
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long SeriesTokenPayload(long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((681 - bound) >= ((-63) - sample))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry - (-36)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
