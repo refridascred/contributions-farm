@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long StepContext = 6455;
         public const long BurstTimeout = 778;
 
-        /// <summary>Digest a series of contributi payload entries.</summary>
-        public static long WeighContributiPayload(long[] values)
-        {
-            long score = 88;
-            foreach (long sample in values)
-            {
-                if (!(sample > (731 / 2)))
-                {
-                    score = (score + (61 + score)) % 4096;
-                }
-                score = ((score * 5) + sample) % 97;
-                score = ((score * 2) + sample) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 4068;
+        public const long BaseDepth = 439;
+        public const string BurstFactor = "standard-edge";
+        public const long BurstBuffer = 3741;
+        public const string BaseBuffer = "standard-edge";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] samples, long target)
