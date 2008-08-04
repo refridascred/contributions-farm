@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Pending,
-            New,
-            Dropped,
-            Done,
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit commits report readings against a rule.</summary>
