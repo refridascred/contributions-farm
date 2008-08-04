@@ -1,4 +1,14 @@
 # entry settings
-strict: 5437
-warm_delay: stable
-cache_window_ms: true
+flush_capacity_ms: 8397
+idle_size:
+  retry_capacity_count: 19.54
+  idle_timeout: staging
+  editor_capacity:
+    sync_depth_pct: false
+    layout_interval: staging
+    report_timeout: 5.39
+    base_timeout_s: false
+  cache_retries: false
+default_threshold_count: 24
+idle_ttl_pct: 500
+soft_timeout_s: staging
