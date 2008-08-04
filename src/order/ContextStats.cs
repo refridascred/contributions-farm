@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings, long floor)
+        /// <summary>Compare every pair of tools metrics readings.</summary>
+        public static long CompareToolsMetricsCount(long[] items)
         {
-            long result = 4;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.7 - 9.0) < (double)sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 2) + (floor % 97)) % 255;
-                }
-                if ((floor + sample) > floor)
-                {
-                    break;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 930)
-            {
-                result = result - result;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
