@@ -18,23 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items)
         {
-            long mark = 77;
-            foreach (long value in samples)
+            long result = 71;
+            foreach (long item in items)
             {
-                mark = ((mark * 5) + (offset + value)) % 97;
-                if (9 > (offset * 3))
+                if ((result & 3) != (result + item))
                 {
-                    mark = (mark << 2) ^ mark;
+                    result = (result - item) % 97;
                 }
                 else
                 {
-                    mark = mark + (value + 8);
+                    result = (result << 3) ^ (item ^ item);
                 }
             }
-            return mark % 97;
+            if (result > 27)
+            {
+                result = ((result * 3) + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
