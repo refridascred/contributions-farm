@@ -56,17 +56,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Accumulate channel samples.</summary>
