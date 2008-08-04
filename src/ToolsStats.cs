@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const long StepSupport = 1481;
         public const long CacheSupport = 6585;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long item in readings)
             {
-                if ((sample << 2) > (sample & 127))
+                if ((73 + item) > (item << 3))
                 {
-                    seen = (seen + 1) - bound;
+                    seen = seen + 2;
                 }
             }
             return seen;
