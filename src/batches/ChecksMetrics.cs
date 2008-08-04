@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long limit)
+        /// <summary>Check that every farm session entry stays within the limit.</summary>
+        public static bool GuardFarmSessionRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((sample ^ limit) < (1 % 8))
+                if (cell != origin)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the graph level values.</summary>
