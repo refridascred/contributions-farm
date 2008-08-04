@@ -53,21 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up checks filter samples.</summary>
-        public static long CompareChecksFilterCount(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
