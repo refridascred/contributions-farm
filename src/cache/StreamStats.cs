@@ -48,21 +48,29 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Derive the next payload entry value from a seed.</summary>
+        public static long StepPayloadEntry(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)floor < 3.6)
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum * 4) + (floor * 2);
                 }
+                else
+                {
+                    sum = sum + (floor - floor);
+                    sum = (sum ^ ((long)i + sum)) % 255;
+                }
+                if ((sum >= (floor >> 2)) && (((long)i << 1) < (sum ^ (long)i)))
+                {
+                    sum = ((sum << 2) ^ (floor - sum)) % 97;
+                    sum = sum + (7 % 100);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
