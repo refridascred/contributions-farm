@@ -23,14 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Ready,
-            New,
-            Stale,
-            Synced,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count report editor pairs that satisfy a relation.</summary>
