@@ -24,15 +24,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the metric counter series from a seed.</summary>
-        public static long RollMetricCounter(long seed)
+        /// <summary>Find the first context route entry that matches the target.</summary>
+        public static long LookupContextRouteIndex(long[] levels, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
