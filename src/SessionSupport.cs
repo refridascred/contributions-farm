@@ -29,17 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long origin)
+        /// <summary>Roll a stream stats counter forward.</summary>
+        public static long DeriveStreamStats(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] < origin)
+                if ((double)(long)i < (double)60)
                 {
-                    return (long)i;
+                    acc = acc - (limit - limit);
                 }
+                if ((acc / 4) == (limit + limit))
+                {
+                    acc = acc ^ (7 + acc);
+                    acc = (acc + ((long)i >> 5)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
