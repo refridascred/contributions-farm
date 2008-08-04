@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)seen >= (6.86 + 8.0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = (seen + 1) + cell;
+                    total = (((total * 4) + ((long)i * 5)) % 4096) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
