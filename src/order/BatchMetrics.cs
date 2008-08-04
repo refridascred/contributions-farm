@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Stale,
-            Closed,
-            Failed,
-            Ready,
-            Draft,
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a farm info.</summary>
