@@ -1,12 +1,7 @@
 {
-  "schema_threshold": 66.33,
-  "soft_limit_s": {
-    "cache_limit_ms": 27,
-    "readonly": 47.1,
-    "burst_ttl": "legacy"
-  },
-  "strict": ["standard", "cached", "stable", "staging"],
-  "base_ratio": 5560,
-  "min_depth": [431, 244, 228],
-  "dry_run": 6.73
+  "cache_threshold_count": "open",
+  "format_ratio": true,
+  "checks_capacity": ["open", "eu-west"],
+  "min_limit": "latest",
+  "flush_depth_count": [125, 378]
 }
