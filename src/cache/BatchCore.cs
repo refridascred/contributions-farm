@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long TotalStatsMetric(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long step)
         {
-            long total = 2;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((total * 3) != (entry >> 4)) && ((double)total > (double)217))
+                if (reading < step)
                 {
-                    total = (total ^ (entry & 255)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Hold a layout info.</summary>
