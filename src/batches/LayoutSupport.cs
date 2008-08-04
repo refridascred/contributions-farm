@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long seed)
         {
-            Failed,
-            Pending,
-            Stale,
-            New,
-            Idle,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the token payload series from a seed.</summary>
