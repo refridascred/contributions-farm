@@ -103,10 +103,12 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepDepth = "stable-v2";
-        public const long SoftFactor = 3280;
-        public const double StepInterval = 35.64;
-        public const long WindowDepth = 8943;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Pending,
+            New,
+            Locked,
+        }
     }
 }
