@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 2370;
-        public const long SoftBudget = 9498;
-        public const long WindowSpan = 6158;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value / 2) < (count + value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
