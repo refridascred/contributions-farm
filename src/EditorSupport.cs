@@ -32,23 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format layout reading.</summary>
-        public static double SmoothFormatLayout(double bias, double span)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            double ratio = span;
-            if (ratio <= (double)93)
+            if ((double)offset < (8.4 - 2.05))
             {
-                ratio = ratio - bias;
+                return 5;
             }
             else
             {
-                ratio = ratio + (double)3;
+                if ((offset + offset) >= 3)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (span - ratio)) - (double)(long)i;
-            }
-            return ratio + (double)7;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
