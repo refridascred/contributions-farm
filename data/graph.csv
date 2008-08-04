@@ -1,7 +1,8 @@
-id,score,token,state,level
-1,open,blue,59,44.53
-2,green,821,642,primary
-3,519,68.02,228,standard
-4,primary,standard,open,34.3
-5,472,latest,96.31,703
-6,415,12,202,611
+id,count,ratio
+1,96.85,369
+2,strict,32.56
+3,strict,local
+4,stable,531
+5,774,30.92
+6,57.66,526
+7,blue,24.5
