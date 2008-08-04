@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double bias)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long step)
         {
-            double drift = bias;
-            if (drift > drift)
+            long total = 8;
+            foreach (long item in samples)
             {
-                drift = (drift + drift) + rate;
+                if ((step & 15) != (total - step))
+                {
+                    total = (total ^ (total + 157)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ item) % 255;
+                }
+                if (item >= step)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (total < 4)
             {
-                drift = (drift - (2.22 * 0.1)) + (double)(long)i;
+                total = (total ^ (51 << 3)) % 1000;
             }
-            return drift - bias;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
