@@ -62,13 +62,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
+            public double Rank { get; set; }
             public long Count { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
