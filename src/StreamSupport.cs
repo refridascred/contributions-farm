@@ -26,11 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
