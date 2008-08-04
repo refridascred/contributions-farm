@@ -1,10 +1,6 @@
 {
-  "contributi_depth": 250,
-  "githubfarm_window": "primary",
-  "verbose": {
-    "max_limit": [265, 101],
-    "cache_threshold_ms": 44.88,
-    "idle_threshold": false
-  },
-  "profile_size": 156
+  "verbose": 2675,
+  "default_ratio": "primary",
+  "warm_size": ["blue", "fallback", "local"],
+  "default_timeout_ms": "fallback"
 }
