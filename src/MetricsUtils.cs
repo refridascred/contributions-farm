@@ -44,9 +44,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryLevel = 7348;
-        public const string StepBatches = "stable";
-        public const long DefaultDepth = 1917;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((432 % 8) != (79 - seen))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
