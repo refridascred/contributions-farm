@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const double LimitSpan = 0.06;
         public const string SoftTools = "primary-1";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            double scale = (double)(0 << 1);
+            if (scale < 10.0)
             {
-                if (datum < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (gain + 9.0);
             }
-            return ready;
+            else
+            {
+                scale = scale - (scale * 5.16);
+            }
+            return scale - bias;
         }
 
         /// <summary>Describe the queue state values.</summary>
