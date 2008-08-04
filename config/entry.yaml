@@ -1,5 +1,9 @@
 # entry settings
-retry_retries_count: true
-audit: false
-min_depth_pct: standard
-schema_limit: 566
+dry_run:
+  - 181
+  - 499
+  - 132
+  - 125
+stats_threshold: 72.06
+flush_threshold_pct: 61.2
+max_timeout_ms: strict
