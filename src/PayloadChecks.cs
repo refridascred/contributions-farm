@@ -40,18 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] series)
         {
-            long result = 228;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (!((reading % 8) < (result - reading)))
+                if ((datum * 3) < (datum & 127))
                 {
-                    result = ((result * 3) + (reading + result)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
