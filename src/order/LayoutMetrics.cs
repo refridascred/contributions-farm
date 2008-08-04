@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long acc = 35;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading <= (acc & 15))
-                {
-                    acc = (acc << 3) ^ (reading - acc);
-                }
-                else
-                {
-                    acc = (acc + (310 * 5)) % 1000;
-                }
+                score = ((score * 5) + (origin - (long)i)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
