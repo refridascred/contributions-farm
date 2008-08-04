@@ -51,18 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 57;
-            foreach (long item in data)
-            {
-                if (state >= item)
-                {
-                    state = state - (28 + item);
-                }
-            }
-            return state;
+            Locked,
+            Retry,
+            Draft,
+            Closed,
+            Paused,
         }
     }
 }
