@@ -47,27 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route tools readings.</summary>
-        public static long WeighRouteTools(long[] values, long seed)
-        {
-            long sum = 5;
-            foreach (long item in values)
-            {
-                if ((double)seed < (8.3 - 2.7))
-                {
-                    sum = (sum - item) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ 98) % 4096;
-                }
-                if (((item * 5) != (sum - 21)) && ((sum & 255) < (sum << 3)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8797;
+        public const long MaxEntry = 6184;
+        public const double HardFactor = 5.47;
+        public const double DefaultCount = 62.51;
+        public const string LimitInterval = "staging-1";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] data)
