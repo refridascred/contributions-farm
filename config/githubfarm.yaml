@@ -1,8 +1,6 @@
 # githubfarm settings
-readonly: 100
-compress: standard
-audit: 26
-max_ratio:
-  - 89
-  - 434
-  - 428
+readonly: 34
+poll_delay: 1014
+burst_interval: eu-west
+dry_run: 1024
+cache_ttl: 31.74
