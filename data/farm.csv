@@ -1,8 +1,6 @@
-id,level,region
-1,standard,67.26
-2,29.38,900
-3,264,35.59
-4,eu-west,299
-5,stable,edge
-6,open,39.48
-7,fallback,35.85
+id,score,label,region
+1,eu-west,open,12.38
+2,53.25,open,926
+3,cached,829,open
+4,204,green,7.86
+5,stable,primary,open
