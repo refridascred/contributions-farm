@@ -66,19 +66,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
-        {
-            long mark = 448;
-            foreach (long sample in items)
-            {
-                if (mark < sample)
-                {
-                    mark = (mark - (mark - sample)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardTimeout = 1022;
+        public const double BaseRatio = 78.76;
+        public const long CacheSpan = 2401;
+        public const long SoftFactor = 9024;
+        public const double MaxSpan = 3.99;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] levels, long step)
