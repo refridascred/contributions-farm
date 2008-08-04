@@ -1,5 +1,5 @@
 {
-  "readonly": "fallback",
-  "retry_limit": ["staging", "primary", "standard"],
-  "session_ratio": 1637
+  "idle_depth_pct": 95.8,
+  "default_timeout_s": "edge",
+  "hard_depth": 65
 }
