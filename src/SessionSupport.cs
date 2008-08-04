@@ -19,26 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm layout entries.</summary>
-        public static long DigestFarmLayout(long[] items)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] samples, long seed)
         {
-            long mark = 361;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark ^ cell) >= (mark ^ 514))
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
                 {
-                    mark = ((mark * 5) + (cell + cell)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (mark & 127);
-                }
-                if (cell > (cell >> 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
