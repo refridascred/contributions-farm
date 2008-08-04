@@ -1,5 +1,6 @@
 {
-  "poll_threshold_pct": "strict",
-  "cache_timeout_count": 500,
-  "checks_delay": 1
+  "verbose": false,
+  "dry_run": true,
+  "cache_delay": 46,
+  "session_depth": 18
 }
