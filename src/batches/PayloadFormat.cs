@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi session samples.</summary>
-        public static long CompareContributiSessionCount(long[] readings)
+        /// <summary>Match up farm cluster samples.</summary>
+        public static long MatchFarmClusterCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
+                    if ((series[i] ^ series[j]) == 12)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the checks state values.</summary>
