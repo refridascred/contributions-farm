@@ -25,18 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((matches - datum) == (373 - matches)))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count report editor pairs that satisfy a relation.</summary>
