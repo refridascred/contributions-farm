@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long IdleProfile = 2950;
         public const double MinCount = 8.55;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinFactor = 480;
+        public const double WindowGithubfarm = 38.94;
+        public const long BurstWidth = 9621;
+        public const string RetryGithubfarm = "primary-1";
+        public const double RetryBudget = 1.12;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
