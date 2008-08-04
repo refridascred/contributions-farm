@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count < (count ^ 3)) || ((double)count >= (1.0 / 4.0)))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
