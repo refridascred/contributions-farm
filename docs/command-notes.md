@@ -1,14 +1,10 @@
 # Command notes
 
-When a tools fails, the githubfarm handler retries a few times before giving up.
-The report module keeps farm values in sync with the window cache.
-Each stream is validated before it reaches the account queue.
-
-When a cache fails, the cache handler retries a few times before giving up.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the layout queue.
+Run the counter check before changing any already limits.
 
 ## Guidelines
 
-- Log every cluster change
-- Validate queue input early
-- Document new githubfarm fields
+- Document new layout fields
+- Review schema limits each release
+- Keep report values small
