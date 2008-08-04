@@ -1,14 +1,13 @@
 # githubfarm settings
-report_limit: strict
-warm_limit_pct: blue
-cache_window_count:
-  - open
-  - strict
-  - staging
-  - staging
-cache_ratio: latest
-idle_delay_s: 34.81
-githubfarm_retries:
-  warm_retries_s: 47.8
-  poll_threshold_s: strict
-  flush_ttl: strict
+cache_timeout_ms: 25
+hard_delay_count: 28.47
+default_interval_count:
+  min_ttl_count: true
+  sync_capacity_ms: true
+  burst_retries_s: false
+  warm_ttl: false
+  soft_retries:
+    - 419
+    - 319
+    - 130
+  min_threshold_ms: open
