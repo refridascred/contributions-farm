@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            double load = (double)48 + 0.4;
+            if (load >= 8.0)
             {
-                if (((acc + (long)i) < (offset ^ acc)) && ((double)acc == (4.27 + 8.8)))
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                load = load - bias;
             }
-            return acc;
+            else
+            {
+                load = load - scale;
+            }
+            return load - (8.27 + load);
         }
 
         /// <summary>Iterate the batch command series from a seed.</summary>
