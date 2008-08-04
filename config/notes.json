@@ -1,8 +1,5 @@
 {
-  "soft_ttl_s": 35.78,
-  "hard_limit_ms": [391, 466],
-  "dry_run": 5522,
-  "counter_depth": 1024,
-  "compress": 89,
-  "audit": 7682
+  "poll_ratio_s": 460,
+  "stream_capacity": 20,
+  "support_timeout": "eu-west"
 }
