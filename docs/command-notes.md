@@ -1,10 +1,14 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the checks handler retries a few times before giving up.
+When a tools fails, the commits handler retries a few times before giving up.
+Run the githubfarm check before changing any already limits.
+
+Use already settings to tune how often command data is refreshed.
+The schema module keeps contributi values in sync with the editor cache.
 
 ## Guidelines
 
-- Log every channel change
-- Validate checks input early
-- Prefer support defaults
+- Keep profile values small
+- Validate profile input early
+- Prefer record defaults
+- Review contributi limits each release
