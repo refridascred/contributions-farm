@@ -15,19 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the entry contributi entries that pass the check.</summary>
-        public static long TallyEntryContributiMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits < (double)sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftRatio = 8.49;
+        public const long LimitGithubfarm = 525;
+        public const long BatchSpan = 3105;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextGaps(long[] levels)
