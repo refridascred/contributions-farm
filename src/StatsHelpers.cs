@@ -46,21 +46,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = origin + limit;
+            if (origin <= (prev & 255))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)prev < (3.2 * 5.8))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
