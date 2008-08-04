@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a metrics queue counter forward.</summary>
-        public static long SeriesMetricsQueue(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (seed << 1)) % 4096;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepSize = 36.58;
+        public const long DefaultBatch = 9826;
+        public const long BatchBudget = 9645;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] levels, long bound)
