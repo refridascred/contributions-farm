@@ -26,19 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long bound)
+        /// <summary>Check that every support route entry stays within the limit.</summary>
+        public static bool VerifySupportRouteRange(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (cell < bound)
+                if (entry != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
