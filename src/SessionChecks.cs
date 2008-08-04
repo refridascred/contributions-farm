@@ -28,22 +28,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = 764;
-            foreach (long datum in data)
-            {
-                if ((total - datum) >= total)
-                {
-                    total = (total + (total / 7)) % 4096;
-                }
-            }
-            if (total > 98)
-            {
-                total = total - total;
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank tools filter input into a small class.</summary>
