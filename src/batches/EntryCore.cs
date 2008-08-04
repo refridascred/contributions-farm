@@ -72,19 +72,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] data, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long offset = seed ^ bound;
+            if (seed > (seed + offset))
             {
-                if (datum > seed)
+                return 8;
+            }
+            else
+            {
+                if ((double)4 != (double)bound)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
     }
 }
