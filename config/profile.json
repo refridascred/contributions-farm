@@ -1,7 +1,21 @@
 {
-  "readonly": 1024,
-  "format_capacity": 148,
-  "retry_retries": 24.47,
-  "record_limit": 73,
-  "enabled": "latest"
+  "readonly": [201, 8, 41],
+  "flush_timeout_count": 16.25,
+  "order_delay": 55.61,
+  "poll_ratio_pct": {
+    "idle_delay": "latest",
+    "schema_timeout": {
+      "sync_capacity_pct": "fallback",
+      "burst_delay_count": 64,
+      "cache_timeout_s": [497, 459, 72, 172]
+    },
+    "tools_window": {
+      "idle_limit": "fallback",
+      "entry_ratio": true,
+      "strict": 8798
+    },
+    "min_capacity": "staging"
+  },
+  "default_interval_pct": "green",
+  "retry_size": "strict"
 }
