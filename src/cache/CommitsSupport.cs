@@ -27,12 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 6649;
+        public const long WindowTimeout = 4522;
+        public const string DefaultFactor = "open-v2";
+        public const long IdleSupport = 921;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
