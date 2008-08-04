@@ -36,19 +36,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((item - 21) < (item << 3))
                 {
-                    sum = (((sum << 3) ^ 160) % 4096) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
