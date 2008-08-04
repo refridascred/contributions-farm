@@ -49,12 +49,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((((14.0 - 7.61) < (double)tally) && (value <= tally)) && ((6 - tally) < tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
