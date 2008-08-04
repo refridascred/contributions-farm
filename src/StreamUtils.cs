@@ -32,18 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] readings, long limit)
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long MeasureAccountBatchHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((11.0 * 4.0) != (double)value)
+                if (tally > (tally * 2))
                 {
-                    matches = (matches + 3) - limit;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
