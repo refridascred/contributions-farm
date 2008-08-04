@@ -39,19 +39,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a command cache counter forward.</summary>
-        public static long RollCommandCache(long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (4.2 < (double)limit)
+                if (sample <= bound)
                 {
-                    carry = carry + (limit + (long)i);
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return found;
         }
     }
 }
