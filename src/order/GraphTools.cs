@@ -31,22 +31,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 61.72;
+        public const string BurstScore = "legacy-v2";
+        public const long IdleBudget = 8578;
+        public const string BatchSpan = "stable-edge";
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
