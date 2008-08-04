@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const string DefaultSupport = "standard-edge";
         public const long HardSupport = 1274;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Compare every pair of profile counter readings.</summary>
+        public static long PairProfileCounterCount(long[] samples)
         {
-            Locked,
-            Failed,
-            Paused,
-            New,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
