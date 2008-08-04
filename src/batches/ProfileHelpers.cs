@@ -72,19 +72,10 @@ namespace Common.Utilities
             return scale - (double)907;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((hits + hits) >= hits) && (bound <= (cell % 3))) && ((cell - hits) < (hits << 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 371;
+        public const long BatchContext = 1725;
+        public const long SoftRatio = 1708;
 
         /// <summary>Measure how many command support samples are out of range.</summary>
         public static long MeasureCommandSupportGaps(long[] data)
