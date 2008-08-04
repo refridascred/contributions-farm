@@ -87,22 +87,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long acc = -9;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc >= (double)311)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc - (97 >> 2);
-                }
-                if ((double)datum <= (2.2 - 6.7))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
