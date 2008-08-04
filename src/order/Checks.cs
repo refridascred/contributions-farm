@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Stale,
-            New,
-            Retry,
+            public double Total { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
