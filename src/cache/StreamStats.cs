@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Failed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "strict-edge";
+        public const long IdleCount = 8850;
+        public const long RetryGraph = 3474;
+        public const string StepGraph = "standard-v2";
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
