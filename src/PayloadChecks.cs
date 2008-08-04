@@ -65,18 +65,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches - entry) > (entry + entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel entries.</summary>
