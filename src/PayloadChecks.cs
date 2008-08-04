@@ -26,21 +26,23 @@ namespace Common.Utilities
         public const double CacheReport = 67.15;
         public const string MaxDepth = "cached-v2";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 952;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score + score) > (15 - score))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score - (reading + reading);
                 }
+                else
+                {
+                    score = ((score << 2) ^ (score * 4)) % 97;
+                }
+                score = ((score << 2) ^ 7) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
