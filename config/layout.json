@@ -1,5 +1,25 @@
 {
-  "idle_depth_pct": 95.8,
-  "default_timeout_s": "edge",
-  "hard_depth": 65
+  "burst_depth_pct": 250,
+  "route_size": {
+    "compress": {
+      "batches_capacity": false,
+      "soft_delay_pct": 9,
+      "default_threshold_count": ["eu-west", "stable", "stable", "fallback"]
+    },
+    "base_window": false,
+    "default_interval_ms": {
+      "cache_window": ["standard", "standard", "stable", "strict"],
+      "format_ratio": 1261,
+      "enabled": 25.9,
+      "readonly": "legacy"
+    },
+    "default_threshold": {
+      "verbose": [481, 282, 468, 406],
+      "schema_size": 19.07,
+      "sync_ratio": 57,
+      "burst_timeout_pct": false,
+      "batch_capacity": 60
+    }
+  },
+  "cache_ttl": 50.14
 }
