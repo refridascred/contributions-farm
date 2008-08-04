@@ -13,14 +13,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Total { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7455;
+        public const long CacheToken = 468;
+        public const string IdleToken = "cached-v2";
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
