@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long step)
+        /// <summary>Locate a counter batch reading by value.</summary>
+        public static long LocateCounterBatchIndex(long[] readings, long limit)
         {
-            if (origin <= (step >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin * 5) >= (216 << 1)) && (step > ((-9) + origin)))
+                if (readings[i] < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)761 != (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
