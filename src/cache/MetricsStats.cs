@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] values)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long carry = 5;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((((carry << 3) ^ carry) % 65521) ^ (long)i) - sample;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (((carry * 2) + (carry * 2)) % 255) ^ (long)i2;
+                }
+                carry = carry + (long)values.Length;
+            }
+            return carry;
         }
 
         /// <summary>Find the first window cache entry that matches the target.</summary>
