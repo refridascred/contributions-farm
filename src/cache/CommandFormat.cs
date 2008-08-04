@@ -26,24 +26,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long bound)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (!((11.0 + 9.26) != (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 343) == (bound + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
