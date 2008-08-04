@@ -52,18 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] values)
+        /// <summary>Look up the position of a graph githubfarm sample.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.8 - 5.73) == (double)seen)
+                if ((data[i] < step) && ((data[i] % 2) != 0))
                 {
-                    seen = (seen + 2) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
