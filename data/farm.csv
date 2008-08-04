@@ -1,10 +1,6 @@
-id,region,active,owner,ratio
-1,494,740,edge,973
-2,126,primary,745,115
-3,750,808,standard,edge
-4,edge,primary,265,8.4
-5,staging,cached,7.25,fallback
-6,stable,746,green,35.4
-7,816,93.15,cached,59.61
-8,91.56,127,608,latest
-9,965,304,464,82.82
+id,level,active,label,region
+1,79.97,5.23,97.5,34.13
+2,cached,480,green,fallback
+3,643,377,fallback,legacy
+4,537,123,548,24.63
+5,green,56.15,579,21.18
