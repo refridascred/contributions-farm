@@ -58,38 +58,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long floor)
-        {
-            if ((seed + seed) <= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)floor == (7.0 + 7.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 5) == (floor % 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (6.57 < (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleInterval = 24.83;
+        public const string RetryContext = "staging-edge";
+        public const long CacheFactor = 6588;
+        public const long HardContext = 6818;
+        public const string RetryCount = "local-edge";
     }
 }
