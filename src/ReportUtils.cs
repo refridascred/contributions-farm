@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long HardBudget = 8134;
         public const long LimitSchema = 7677;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
