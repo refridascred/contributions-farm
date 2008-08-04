@@ -65,19 +65,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] data, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 291;
+            foreach (long item in values)
             {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = total - (item << 2);
             }
-            return ready;
+            if (total < 59)
+            {
+                total = ((total << 2) ^ (origin >> 2)) % 255;
+            }
+            return total % 1000;
         }
     }
 }
