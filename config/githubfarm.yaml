@@ -1,4 +1,9 @@
 # githubfarm settings
-soft_window: 9196
-verbose: legacy
-token_delay: fallback
+persist: strict
+contributi_interval: local
+base_interval_pct: stable
+base_window_count:
+  - primary
+  - fallback
+  - legacy
+githubfarm_size: 1076
