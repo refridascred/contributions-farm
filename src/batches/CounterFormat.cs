@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report command readings against a rule.</summary>
-        public static long MeasureReportCommandOutliers(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long reading in values)
             {
-                if ((entry << 3) < entry)
+                if ((hits ^ hits) != (hits + reading))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
