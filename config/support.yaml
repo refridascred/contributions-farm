@@ -1,6 +1,16 @@
 # support settings
-verbose: true
-dry_run: green
-poll_capacity_s: false
-order_delay: primary
-batch_depth_pct: 59
+hard_size_count: 2208
+base_ratio_s:
+  max_size_s: 2786
+  min_limit_s: 60
+  metrics_size:
+    format_threshold: blue
+    contributi_retries: latest
+    checks_timeout: 34.02
+    batch_threshold_pct: true
+    sync_limit: blue
+    default_limit: true
+verbose:
+  - staging
+  - blue
+  - local
