@@ -49,12 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            Active,
+            Failed,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
