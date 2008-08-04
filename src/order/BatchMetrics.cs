@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] values, long limit)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
