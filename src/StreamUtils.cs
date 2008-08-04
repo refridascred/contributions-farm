@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long step, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long offset)
         {
-            long gap = step ^ target;
-            if ((double)step >= (8.5 / 7.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (7.5 <= (double)gap)
+                if (data[i] > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (2.0 <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
