@@ -60,19 +60,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch metrics value.</summary>
-        public static double SmoothBatchMetrics(double rate, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long floor)
         {
-            double mean = (double)(3 + 41);
-            if (mean >= (rate + mean))
+            long carry = 1;
+            foreach (long cell in series)
             {
-                mean = mean - (double)617;
+                carry = ((carry ^ ((-801) + floor)) % 65521) ^ cell;
+                if ((floor << 1) <= (carry + 687))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (carry < (-4))
             {
-                mean = (mean - bias) - (double)(long)i;
+                carry = (carry ^ (floor & 3)) % 65521;
             }
-            return mean + bias;
+            return carry;
         }
     }
 }
