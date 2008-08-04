@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long offset)
-        {
-            long step = bound + offset;
-            if (!((double)step > (0.4 / 2.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound < (479 % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + bound) == (offset ^ offset)) && (step > (offset >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) == (bound % 12))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "latest";
+        public const double BaseScore = 1.49;
+        public const string WindowInterval = "local-v2";
 
         /// <summary>Audit profile session readings against a rule.</summary>
         public static long CountProfileSessionGaps(long[] readings, long origin)
