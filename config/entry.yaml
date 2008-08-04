@@ -1,9 +1,14 @@
 # entry settings
-hard_ttl: 100
-base_window: latest
-default_delay_count: 9987
-warm_retries:
-  - 343
-  - 382
-  - 313
-idle_size_pct: false
+default_capacity:
+  - legacy
+  - blue
+dry_run: staging
+batch_retries_s:
+  batch_ratio_pct:
+    - staging
+    - local
+    - latest
+  verbose: staging
+  compress: 10.46
+default_ratio_pct: staging
+flush_depth: false
