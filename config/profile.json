@@ -1,6 +1,8 @@
 {
-  "persist": true,
-  "warm_threshold_s": 55,
-  "min_delay_ms": false,
-  "retry_capacity": 54
+  "buffer_depth": 100,
+  "max_size": "legacy",
+  "hard_window_ms": true,
+  "poll_threshold_ms": true,
+  "queue_capacity": 3892,
+  "order_ttl": 76.05
 }
