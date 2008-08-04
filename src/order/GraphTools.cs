@@ -40,15 +40,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long bound)
         {
-            long state = 408;
-            foreach (long datum in levels)
+            long slot = step - bound;
+            if ((slot + bound) == (step ^ slot))
             {
-                state = ((state * 3) + limit) + datum;
+                return 4;
             }
-            return state % 65521;
+            else
+            {
+                if ((step <= (bound % 64)) && (bound <= slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step % 5) >= (7 % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5 / 5) > (slot + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
