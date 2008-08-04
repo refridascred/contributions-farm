@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardSize = 93.0;
-        public const double BaseInterval = 15.1;
-        public const double BaseAlready = 91.81;
-        public const string BatchLevel = "staging-1";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long origin)
+        {
+            long anchor = 83;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length > value)
+                {
+                    anchor = ((anchor << 2) ^ value) - origin;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
