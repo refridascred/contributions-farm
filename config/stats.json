@@ -1,8 +1,8 @@
 {
-  "record_depth": true,
-  "checks_size": 6650,
-  "stats_delay": 2601,
-  "checks_ttl": "strict",
-  "token_threshold": 60,
-  "retry_ratio_s": 59
+  "batch_limit_s": ["stable", "fallback", "eu-west"],
+  "strict": 1024,
+  "soft_depth_pct": 60,
+  "readonly": 30,
+  "checks_timeout": true,
+  "tools_interval": 17.1
 }
