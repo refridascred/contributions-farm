@@ -82,11 +82,9 @@ namespace Common.Utilities
         public const long DefaultFarm = 610;
         public const double WindowFarm = 32.65;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5245;
+        public const double IdleCount = 15.26;
+        public const long IdleSupport = 7148;
     }
 }
