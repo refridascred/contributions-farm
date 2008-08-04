@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxLevel = 4273;
         public const long BatchCount = 1430;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] data, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((83 - count) < (sample % 10))
+                if (value >= floor)
                 {
-                    count = (count + 1) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
