@@ -1,29 +1,17 @@
 # support settings
-sync_ttl_ms:
-  - stable
-  - local
-  - edge
-  - green
-burst_ratio:
-  base_delay_pct:
-    - primary
-    - legacy
-    - open
-    - fallback
-  cluster_interval: edge
-  enabled: fallback
-  session_retries: 94.1
-  idle_capacity_ms: green
-  support_threshold: true
-support_depth:
-  hard_limit_s: eu-west
-  strict: 500
-  audit: 5961
-  flush_ratio_s: 4980
-  support_delay: 47
-base_threshold_ms: 1024
-cache_ratio_s: 71.14
-default_limit_ms:
-  - staging
-  - eu-west
-  - local
+default_size_count:
+  max_limit_pct: false
+  base_retries:
+    max_window_count: false
+    audit: 14
+    poll_delay_pct: fallback
+    profile_threshold: 1024
+    record_ttl: fallback
+  idle_size_s:
+    - strict
+    - latest
+filter_size: 1024
+session_ratio: false
+default_limit_ms: latest
+retry_size_s: false
+flush_capacity_pct: 99
