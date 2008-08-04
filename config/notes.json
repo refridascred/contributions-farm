@@ -1,6 +1,11 @@
 {
-  "cache_delay": "primary",
-  "token_delay": 9579,
-  "checks_ttl": "green",
-  "batches_delay": 29.86
+  "sync_size_pct": [383, 12, 207],
+  "min_ratio_s": {
+    "batch_timeout_count": false,
+    "poll_window_s": true,
+    "cluster_window": "strict",
+    "dry_run": 6773
+  },
+  "verbose": "standard",
+  "enabled": "eu-west"
 }
