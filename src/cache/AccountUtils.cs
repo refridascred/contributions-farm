@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long sum = -164;
-            foreach (long item in series)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                sum = sum - (sum & 15);
-                sum = ((sum * 2) + (item & 127)) % 97;
-                if (limit < (sum & 255))
-                {
-                    sum = sum - (limit << 2);
-                }
+                long seen = offset;
+                acc = acc + (72 - acc);
+                acc = (acc + seen) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
