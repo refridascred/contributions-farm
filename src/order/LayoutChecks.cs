@@ -61,9 +61,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 1233;
         public const string SoftTimeout = "standard-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinInterval = 6072;
-        public const long MaxProfile = 3780;
-        public const double RetryLevel = 76.88;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double offset)
+        {
+            double drift = 2.86;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift - (double)9) + (double)(long)i) - weight) - offset;
+            }
+            return drift - 16.0;
+        }
     }
 }
