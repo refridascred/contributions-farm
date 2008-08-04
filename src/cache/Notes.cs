@@ -20,19 +20,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] samples, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long total = -5;
+            foreach (long entry in readings)
             {
-                if (cell >= target)
+                total = total - (entry >> 3);
+                if ((total % 8) <= (total + 7))
                 {
-                    ready = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 255;
+                    total = (total ^ (total - entry)) % 255;
+                }
+                if (total > (total % 10))
+                {
+                    total = ((total * 5) + (entry + total)) % 97;
                 }
             }
-            return ready;
+            if (total < 729)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first format order entry that matches the target.</summary>
