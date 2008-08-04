@@ -57,18 +57,21 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long CombineFilterSupport(long[] items, long step)
+        /// <summary>Match up checks command samples.</summary>
+        public static long CompareChecksCommandCount(long[] levels)
         {
-            long sum = -99;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-18) <= (sum - sum)) && ((step + sum) >= (sum * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (sum + entry)) % 1000;
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
