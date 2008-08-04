@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long DigestEntryGithubfarm(long[] samples, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] readings)
         {
-            long sum = 31;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((long)samples.Length <= (value / 5))
+                if ((value + tally) != (273 + tally))
                 {
-                    sum = (sum << 3) ^ (sum >> 5);
+                    tally = tally + 1;
                 }
-                if ((sum ^ 2) == (bound + sum))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Adjust a schema reading.</summary>
