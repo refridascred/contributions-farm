@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout tools readings against a rule.</summary>
-        public static long MeasureLayoutToolsOutliers(long[] series, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (matches >= limit)
+                if (datum <= limit)
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the layout support entries that pass the check.</summary>
