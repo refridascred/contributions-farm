@@ -53,18 +53,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Match up checks filter samples.</summary>
+        public static long CompareChecksFilterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally / 5) < 18)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
