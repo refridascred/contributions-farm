@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 849;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark * 4) == (datum * 2))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 2) + (mark - mark)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the profile level values.</summary>
