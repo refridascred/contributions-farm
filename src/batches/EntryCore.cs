@@ -56,18 +56,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long carry = 7;
-            foreach (long datum in data)
-            {
-                if ((5.71 - 2.34) == (double)floor)
-                {
-                    carry = (((carry << 3) ^ (floor + floor)) % 65521) ^ datum;
-                }
-            }
-            return carry % 1000;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a queue graph reading by value.</summary>
