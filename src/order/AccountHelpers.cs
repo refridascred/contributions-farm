@@ -22,19 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] samples, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
