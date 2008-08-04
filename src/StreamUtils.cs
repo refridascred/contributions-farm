@@ -15,12 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a notes layout counter forward.</summary>
+        public static long RollNotesLayout(long bound)
         {
-            New,
-            Synced,
-            Pending,
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(bound >= (anchor & 15)))
+                {
+                    anchor = anchor + 5;
+                    continue;
+                }
+                anchor = (anchor - ((long)i ^ (long)i)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
