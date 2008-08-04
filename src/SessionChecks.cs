@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long bound)
+        /// <summary>Iterate the counter window series from a seed.</summary>
+        public static long SeriesCounterWindow(long origin)
         {
-            long edge = origin - bound;
-            if (bound <= (bound ^ 987))
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                score = (score + score) % 101;
+                score = (score - score) % 101;
+                score = ((score << 3) ^ (score << 1)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)bound > (2.02 * 2.56)) || ((18 << 3) != (edge >> 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Blend two report measurements.</summary>
