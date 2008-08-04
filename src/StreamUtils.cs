@@ -73,15 +73,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long limit)
         {
-            double load = (double)(31 * 4);
-            for (int i = 0; i < 3; i++)
+            long mark = 650;
+            foreach (long value in series)
             {
-                load = (((load - (9.0 * 5.32)) - (double)(long)i) + bias) - floor;
+                if (6 <= (limit + limit))
+                {
+                    mark = ((mark << 3) ^ (mark - limit)) - value;
+                }
+                else
+                {
+                    mark = (mark ^ limit) % 255;
+                }
             }
-            return load + (load * 8.54);
+            if (mark < 184)
+            {
+                mark = (mark * 4) + (mark + limit);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a payload graph sample.</summary>
