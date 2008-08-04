@@ -38,15 +38,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] series, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long state = 521;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                state = state ^ (target + entry);
+                if ((entry * 2) <= entry)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (state < 567)
+            {
+                state = (state - (state / 5)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a order reading by value.</summary>
