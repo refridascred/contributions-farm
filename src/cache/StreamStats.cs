@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((2.13 / 7.0) > (double)item)
+                if ((15.0 + 2.13) == (double)count)
                 {
-                    hits = hits + 2;
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
