@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Classify a order commits pair into a bucket.</summary>
+        public static long SortOrderCommits(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = origin + limit;
+            if ((origin / 6) < (lane * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)lane >= (3.36 - 4.37))
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
