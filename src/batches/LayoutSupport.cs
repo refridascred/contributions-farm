@@ -53,13 +53,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long span = floor + bound;
+            if (((span - floor) > (bound & 15)) && ((floor / 5) > bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 255) == (1 - span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
