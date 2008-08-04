@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "cached";
-        public const long RetrySpan = 6094;
-        public const long WindowRatio = 6852;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            New,
+            Failed,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
