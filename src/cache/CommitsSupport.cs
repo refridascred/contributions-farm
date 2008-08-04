@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Measure how many support token samples are out of range.</summary>
+        public static long AuditSupportTokenMatches(long[] samples)
         {
-            long mark = 365;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark ^ (mark - mark)) ^ reading;
+                if (((count * 2) != (count ^ count)) && ((0.08 / 8.0) == (double)entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
