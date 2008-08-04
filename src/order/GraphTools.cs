@@ -36,15 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels, long limit)
         {
-            double drift = 7.17;
-            if (drift > (bias / 8.0))
+            long state = 408;
+            foreach (long datum in levels)
             {
-                drift = (drift - drift) + offset;
+                state = ((state * 3) + limit) + datum;
             }
-            return drift + 5.0;
+            return state % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
