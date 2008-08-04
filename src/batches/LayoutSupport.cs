@@ -67,9 +67,21 @@ namespace Common.Utilities
         public const double CacheRatio = 89.83;
         public const string WindowRatio = "stable";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 44.32;
-        public const double IdleRecord = 24.39;
-        public const long LimitWidth = 5434;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
