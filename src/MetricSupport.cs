@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
