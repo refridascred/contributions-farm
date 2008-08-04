@@ -23,29 +23,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long bound, long bound2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            if ((44 - bound2) > bound2)
+            long edge = floor + target;
+            if ((target ^ edge) != (target << 3))
             {
                 return 6;
             }
             else
             {
-                if ((bound2 + bound2) != (bound2 % 2))
+                if (edge > (target + edge))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound - bound) != (bound & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 8;
                 }
             }
         }
