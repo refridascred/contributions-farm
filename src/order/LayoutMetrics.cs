@@ -24,10 +24,13 @@ namespace Common.Utilities
         public const string RetryPayload = "staging-1";
         public const long CacheWidth = 4802;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinDepth = 5693;
-        public const long CacheRatio = 5302;
-        public const long BaseCount = 6607;
-        public const long MinRatio = 2570;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Active,
+            Locked,
+            New,
+            Queued,
+        }
     }
 }
