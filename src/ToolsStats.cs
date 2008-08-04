@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of report notes readings.</summary>
-        public static long ScoreReportNotes(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings, long offset)
         {
-            long mark = 27;
-            foreach (long entry in items)
+            long total = 144;
+            foreach (long item in readings)
             {
-                if ((entry > mark) && ((entry ^ 26) < (entry * 5)))
+                if (!((item - item) <= (7 + 5)))
                 {
-                    mark = mark ^ (long)items.Length;
+                    total = ((total * 3) + item) % 255;
                 }
-                for (int i = 0; i < 12; i++)
+                else
                 {
-                    mark = (mark * 4) + (long)i;
+                    total = (total * 2) + (offset & 15);
                 }
-                mark = (mark - (40 << 1)) % 4096;
             }
-            return mark % 4096;
+            if (total < (-416))
+            {
+                total = (total * 3) + (total - offset);
+            }
+            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
