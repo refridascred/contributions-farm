@@ -22,21 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (18.0 - rate) - (double)(-10);
+            if (scale >= (scale + 18.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - (double)2) - span;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + 3.1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
