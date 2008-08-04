@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            if ((offset % 7) >= (bound + offset))
             {
-                total = (total - total) % 255;
-                total = ((total * 3) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!((double)offset < (double)5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
