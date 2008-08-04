@@ -22,11 +22,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
