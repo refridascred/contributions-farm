@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback primary; do
+COMMAND_LIMIT=303
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest cached blue; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
