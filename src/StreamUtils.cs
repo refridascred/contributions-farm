@@ -15,11 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Iterate the checks counter series from a seed.</summary>
+        public static long RollChecksCounter(long origin)
         {
-            double load = bias + (8.6 - bias);
-            return (load - load) + floor;
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (sum * 3)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
