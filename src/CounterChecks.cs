@@ -77,10 +77,9 @@ namespace Common.Utilities
             return drift + (scale / 5.0);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 6455;
-        public const string BaseFactor = "cached-v2";
-        public const long WindowDepth = 8937;
-        public const long MinCount = 8139;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultScore = "latest-edge";
+        public const long MinReport = 6426;
+        public const long RetryWidth = 1836;
     }
 }
