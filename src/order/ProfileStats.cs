@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double StepScore = 36.2;
         public const long IdleCounter = 6733;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            Paused,
-            Draft,
-            Failed,
+            double scale = bias * 12.0;
+            return (scale + scale) + gain;
         }
 
         /// <summary>Describe the batches status values.</summary>
