@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long WindowSchema = 3546;
         public const long BatchCount = 7320;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 4670;
-        public const string SoftStream = "stable-1";
-        public const long BaseDepth = 588;
-        public const long CacheInterval = 6478;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
         public static long SeriesNotesChecks(long target)
