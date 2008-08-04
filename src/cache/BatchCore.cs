@@ -33,10 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinDepth = "alpha-edge";
-        public const long LimitNotes = 8749;
-        public const double CacheNotes = 33.17;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc + acc) % 65521) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] readings, long limit)
