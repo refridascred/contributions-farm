@@ -34,13 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a channel options.</summary>
