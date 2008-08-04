@@ -1,5 +1,6 @@
 {
-  "enabled": true,
-  "flush_delay_count": 66.87,
-  "poll_limit_pct": 3.86
+  "idle_limit": 9548,
+  "strict": 26.5,
+  "cluster_ratio": "primary",
+  "poll_capacity": "legacy"
 }
