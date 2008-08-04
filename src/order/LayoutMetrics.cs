@@ -25,17 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "staging-v2";
+        public const string BaseFormat = "latest-v2";
+        public const long SoftDepth = 5460;
+        public const long SoftScore = 9171;
     }
 }
