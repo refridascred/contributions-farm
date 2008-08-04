@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long step, long step2)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if ((step & 31) < (step2 + step2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 + step) != (step >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
