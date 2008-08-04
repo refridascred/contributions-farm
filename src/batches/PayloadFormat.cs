@@ -40,12 +40,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long origin)
+        /// <summary>Find the first metric cache entry that matches the target.</summary>
+        public static long FindMetricCacheIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
