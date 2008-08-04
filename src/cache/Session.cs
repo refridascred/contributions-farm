@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count report entry pairs that satisfy a relation.</summary>
-        public static long PairReportEntryCount(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 13)
+                    if ((series[i] - series[j]) > 3)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
