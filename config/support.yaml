@@ -1,30 +1,25 @@
 # support settings
-batches_retries: 500
-min_limit: green
-soft_size_s: 5
-tools_size:
-  enabled: 18.94
-  counter_threshold: 1024
-  flush_depth: 23
-burst_depth_pct:
-  retry_timeout_count: 82
-  audit:
+min_depth: false
+cluster_depth:
+  flush_retries_count:
+    queue_limit: 3101
+    notes_capacity: false
+    max_capacity_ms: 30
+    persist: standard
+    base_ratio: 30
+    default_threshold_pct: standard
+  retry_capacity_pct:
+    - open
     - latest
-    - strict
-    - green
-  idle_depth: 720
-retry_window_count:
-  window_threshold: eu-west
-  tools_window:
-    min_timeout: edge
-    sync_depth_s: 29.32
-    max_limit_count: true
-    batches_timeout: 19
-    farm_limit: 61.46
-    strict:
-      - 8
-      - 102
-      - 19
-  cache_depth_pct: 3758
-  soft_ratio_s: 100
-  default_retries_count: 93.77
+    - blue
+    - standard
+  default_interval:
+    - primary
+    - legacy
+  already_ratio: false
+  max_depth_ms: 62.82
+dry_run:
+  - standard
+  - local
+  - green
+  - local
