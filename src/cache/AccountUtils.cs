@@ -21,19 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (values[i] <= seed)
                 {
-                    anchor = ((anchor ^ anchor) % 4096) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
