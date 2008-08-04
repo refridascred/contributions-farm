@@ -40,11 +40,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
