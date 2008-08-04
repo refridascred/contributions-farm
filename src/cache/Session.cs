@@ -53,15 +53,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a farm batches reading.</summary>
-        public static double ScaleFarmBatches(double ratio, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double scale = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (2.4 * 7.8)) + (double)(long)i;
-            }
-            return scale + ratio;
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
