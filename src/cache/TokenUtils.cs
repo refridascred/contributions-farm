@@ -15,19 +15,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long step)
+        /// <summary>Rank batch order input into a small class.</summary>
+        public static long ClassifyBatchOrder(long target, long limit)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((double)limit < (3.1 + 10.0))
             {
-                if (sample > step)
+                return 3;
+            }
+            else
+            {
+                if (limit < (target * 4))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7 ^ limit) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ target) <= (limit / 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the channel phase values.</summary>
