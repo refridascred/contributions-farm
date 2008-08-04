@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long DefaultBatch = 9826;
         public const long BatchBudget = 9645;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] levels, long bound)
+        /// <summary>Audit buffer layout readings against a rule.</summary>
+        public static long TallyBufferLayoutHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] == bound)
+                if ((double)seen <= 9.6)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
