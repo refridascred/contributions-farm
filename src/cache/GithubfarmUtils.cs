@@ -14,22 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate batches commits samples.</summary>
-        public static long DigestBatchesCommits(long[] items, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double span)
         {
-            long total = -179;
-            foreach (long entry in items)
-            {
-                if ((double)floor == (double)entry)
-                {
-                    total = (total ^ (floor << 2)) % 255;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + (total & 255)) % 65521;
-            }
-            return total;
+            double drift = (double)(7 + 42);
+            return ((drift - 4.53) + gain) + span;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
