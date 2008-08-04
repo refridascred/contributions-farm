@@ -53,16 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools token value from a seed.</summary>
-        public static long DeriveToolsToken(long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 4) + (origin + (long)i)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
