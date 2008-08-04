@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepScore = 71.65;
-        public const double CacheCommits = 1.53;
-        public const string HardFactor = "alpha-edge";
+        /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
+        public static long MatchChecksBufferCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
