@@ -58,19 +58,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double mean = (double)3 * 7.99;
+            if (mean > (double)655)
             {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (span * 1.0)) + weight;
             }
-            return flag;
+            return mean + (span - span);
         }
     }
 }
