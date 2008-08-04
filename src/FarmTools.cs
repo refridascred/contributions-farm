@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate graph support samples.</summary>
-        public static long ScoreGraphSupport(long[] samples)
+        /// <summary>Audit counter support readings against a rule.</summary>
+        public static long CountCounterSupportOutliers(long[] values, long limit)
         {
-            long score = 792;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                long gap = (entry ^ score) + ((long)samples.Length + entry);
-                if (entry <= (gap ^ gap))
+                if ((1 * 2) >= (limit - item))
                 {
-                    gap = (gap ^ (gap + entry)) % 101;
-                }
-                if ((double)(long)samples.Length >= (3.0 * 3.9))
-                {
-                    score = (score + (entry % 2)) % 101;
+                    matches = matches + 2;
                 }
             }
-            if (score < 84)
-            {
-                score = ((score << 2) ^ (score + score)) % 255;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
