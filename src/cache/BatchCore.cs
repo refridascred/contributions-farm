@@ -41,9 +41,12 @@ namespace Common.Utilities
         public const long LimitNotes = 8749;
         public const double CacheNotes = 33.17;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstInterval = "latest";
-        public const double CacheTimeout = 95.89;
-        public const string StepInterval = "alpha-1";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Dropped,
+            Synced,
+            Retry,
+        }
     }
 }
