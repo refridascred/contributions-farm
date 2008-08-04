@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long WindowFactor = 5075;
         public const long MinLevel = 5931;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] levels, long offset)
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long MeasureFilterGithubfarmGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell >= offset)
+                if ((double)cell == (13.0 - 7.5))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
