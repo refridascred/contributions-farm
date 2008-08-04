@@ -1,19 +1,5 @@
 {
-  "base_interval_pct": {
-    "context_ratio": [215, 102, 456, 395],
-    "poll_ttl": 66,
-    "warm_ratio_s": 18.83,
-    "payload_interval": "strict",
-    "warm_interval_pct": 250,
-    "readonly": {
-      "poll_size_ms": "eu-west",
-      "notes_window": 22.93,
-      "sync_delay": 3352,
-      "queue_retries": 1024
-    }
-  },
-  "batch_ttl": "green",
-  "compress": true,
-  "contributi_capacity": true,
-  "min_size_pct": "legacy"
+  "batch_limit_ms": "green",
+  "window_depth": 32,
+  "persist": [185, 421]
 }
