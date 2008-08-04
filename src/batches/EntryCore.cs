@@ -47,21 +47,18 @@ namespace Common.Utilities
             return drift + (scale - span);
         }
 
-        /// <summary>Compare every pair of window editor readings.</summary>
-        public static long MatchWindowEditorCount(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.6 - 19.0) > (double)count)
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
