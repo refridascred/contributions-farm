@@ -1,12 +1,10 @@
 # Command notes
 
-Each schema is validated before it reaches the channel queue.
-When a buffer fails, the graph handler retries a few times before giving up.
-The layout report groups every metric by profile.
+Keep checks and stats names short and lowercase.
+The queue module keeps batch values in sync with the account cache.
 
 ## Guidelines
 
-- Keep support values small
-- Review graph limits each release
-- Log every command change
-- Document new command fields
+- Prefer support defaults
+- Document new route fields
+- Review session limits each release
