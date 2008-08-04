@@ -23,24 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            if (((double)step != (1.7 / 3.0)) && (offset > (step & 255)))
+            double gain = floor;
+            if (gain <= gain)
             {
-                return 2;
+                gain = gain + ratio;
             }
             else
             {
-                if (offset >= (offset + 16))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                gain = gain + (double)9;
             }
+            return gain - (double)96;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
