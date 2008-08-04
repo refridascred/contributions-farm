@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Token { get; set; }
             public long Mode { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
