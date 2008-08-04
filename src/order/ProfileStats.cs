@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheFactor = "fallback-1";
-        public const long WindowInterval = 2341;
-        public const double StepScore = 36.2;
-        public const long IdleCounter = 6733;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches % 100) <= matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double ProjectContext(double gain, double bias)
