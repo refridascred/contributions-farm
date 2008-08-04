@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultLevel = 69.83;
-        public const string RetryCount = "standard-1";
-        public const double IdleSize = 25.91;
-        public const long MaxGraph = 26;
+        /// <summary>Scale a farm record figure with a bias.</summary>
+        public static double ScaleFarmRecord(double scale, double offset)
+        {
+            double scale2 = scale;
+            if (scale2 > scale)
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - (offset + 3.3);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepWidth = 8813;
