@@ -37,19 +37,17 @@ namespace Common.Utilities
         public const long LimitNotes = 8749;
         public const double CacheNotes = 33.17;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
         {
-            double rate = (double)((-3) - 90);
-            if (rate <= (double)86)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - ratio;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate - (ratio - offset);
+            return -1;
         }
     }
 }
