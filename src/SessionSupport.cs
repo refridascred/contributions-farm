@@ -25,10 +25,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstScore = 83.72;
-        public const double CacheWidth = 36.89;
-        public const double BaseSchema = 98.86;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double scale, double span)
+        {
+            double drift = scale;
+            if (drift > drift)
+            {
+                drift = drift + 0.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (double)8;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] levels, long bound)
