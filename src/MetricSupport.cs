@@ -29,11 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 46.87;
-        public const double BaseGithubfarm = 51.19;
-        public const double LimitDepth = 50.39;
-        public const long CacheRatio = 5241;
-        public const long LimitSpan = 5590;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Active,
+            Closed,
+            Idle,
+        }
     }
 }
