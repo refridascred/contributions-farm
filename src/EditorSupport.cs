@@ -36,22 +36,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long lane = limit + bound;
+            if ((lane * 5) < limit)
             {
-                if ((cell + (-361)) <= matches)
+                return 6;
+            }
+            else
+            {
+                if (((double)lane > (double)bound) || ((1.88 * 0.8) >= (double)limit))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((limit & 31) <= (limit - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
