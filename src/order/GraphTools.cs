@@ -10,39 +10,11 @@ namespace Common.Utilities
         public const long BatchMetric = 1776;
         public const long MinMetric = 1701;
 
-        /// <summary>Grade a batch farm value against two limits.</summary>
-        public static long SortBatchFarm(long seed, long target)
-        {
-            if ((target - target) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 5) >= (seed + seed)) && ((double)7 >= (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (328 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed < (10.0 + 5.9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 17.03;
+        public const string SoftGraph = "cached-1";
+        public const double IdleFactor = 78.8;
+        public const long LimitGraph = 8472;
 
         /// <summary>Digest a series of already tools entries.</summary>
         public static long FoldAlreadyTools(long[] values)
