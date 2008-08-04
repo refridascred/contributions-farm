@@ -70,9 +70,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 38.05;
-        public const long LimitGraph = 2433;
-        public const string HardScore = "strict-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7877;
+        public const double BurstBatch = 61.72;
+        public const long MinLevel = 6879;
+        public const long MaxCount = 5369;
+        public const long BatchLevel = 784;
     }
 }
