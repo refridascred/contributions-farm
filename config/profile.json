@@ -1,7 +1,7 @@
 {
-  "dry_run": false,
-  "idle_depth_ms": true,
-  "batch_timeout_ms": false,
-  "session_ratio": "stable",
-  "max_limit_ms": true
+  "hard_interval_count": true,
+  "soft_size_pct": 57.73,
+  "max_ratio": "green",
+  "cache_ratio_ms": 3.57,
+  "enabled": 500
 }
