@@ -68,19 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] samples, long seed)
+        /// <summary>Check that every batches tools entry stays within the limit.</summary>
+        public static bool CheckBatchesToolsBounds(long[] samples, long bound)
         {
-            bool found = true;
+            bool ok = true;
             foreach (long datum in samples)
             {
-                if (datum != seed)
+                if (datum <= bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a report info.</summary>
