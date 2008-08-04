@@ -33,11 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((9.29 / 4.0) >= (double)hits) || (((long)samples.Length << 1) <= (78 - hits)))
+                {
+                    hits = ((hits + 3) + cell) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
