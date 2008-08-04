@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "legacy-edge";
-        public const long MinProfile = 8128;
-        public const long MaxProfile = 6572;
-        public const string MinScore = "local-1";
-        public const double LimitProfile = 12.87;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
