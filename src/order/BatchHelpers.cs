@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long AuditBatchMetricsOutliers(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!!((double)hits > 2.4))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
