@@ -58,17 +58,10 @@ namespace Common.Utilities
         public const string BaseDepth = "local";
         public const long CacheOrder = 857;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepDepth = "stable-v2";
+        public const long SoftFactor = 3280;
+        public const double StepInterval = 35.64;
+        public const long WindowDepth = 8943;
     }
 }
