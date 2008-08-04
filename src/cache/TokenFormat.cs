@@ -56,12 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            New,
+            Synced,
+            Paused,
+            Pending,
+            Draft,
         }
     }
 }
