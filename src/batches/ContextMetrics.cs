@@ -35,12 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 5541;
-        public const long BaseBudget = 9026;
-        public const double LimitInterval = 88.77;
-        public const long DefaultSize = 6991;
-        public const long DefaultEditor = 8122;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples)
+        {
+            long sum = -342;
+            foreach (long entry in samples)
+            {
+                if (sum > (entry ^ sum))
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum * 3) + (entry + sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long bound)
