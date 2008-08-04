@@ -30,9 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleBudget = 69.45;
-        public const string CacheFactor = "latest-edge";
-        public const long StepTools = 6319;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double floor)
+        {
+            double scale = 4.38 * 7.6;
+            if (scale > (scale - floor))
+            {
+                scale = scale - (floor + floor);
+            }
+            else
+            {
+                scale = scale - (floor * 2.4);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)68) + (double)(long)i;
+            }
+            return scale - bias;
+        }
     }
 }
