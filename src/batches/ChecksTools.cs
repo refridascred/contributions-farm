@@ -52,22 +52,22 @@ namespace Common.Utilities
             return ((rate - (double)(-167)) + bias) + floor;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long target)
+        /// <summary>Combine checks record values into a single score.</summary>
+        public static long ScoreChecksRecord(long[] levels)
         {
-            long acc = -89;
+            long carry = 36;
             foreach (long cell in levels)
             {
-                if (((-3) / 5) != (cell - target))
+                if (((carry - cell) > (278 - cell)) && ((cell - cell) <= (carry >> 1)))
                 {
-                    acc = ((acc * 4) + (acc - acc)) % 1000;
+                    carry = carry + (-29);
                 }
                 else
                 {
-                    acc = (acc - target) % 97;
+                    carry = (carry ^ cell) % 4096;
                 }
             }
-            return acc;
+            return carry;
         }
     }
 }
