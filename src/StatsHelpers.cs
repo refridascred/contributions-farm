@@ -51,38 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue context pair into a bucket.</summary>
-        public static long RankQueueContext(long origin, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long offset)
         {
-            if (limit > (-70))
+            long total = 3;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit + limit) > (origin & 255)) && (3 < limit))
+                if ((value ^ total) == (total - value))
                 {
-                    return 3;
+                    total = ((total * 4) + (value + offset)) % 4096;
                 }
                 else
                 {
-                    if (origin <= (origin >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)limit > 4.6) && ((8.7 / 8.0) <= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total ^ offset) % 1000;
                 }
             }
+            return total;
         }
     }
 }
