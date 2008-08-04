@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long AuditMetricsSessionGaps(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry + tally) == (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
