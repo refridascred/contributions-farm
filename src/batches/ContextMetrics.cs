@@ -61,25 +61,15 @@ namespace Common.Utilities
         public const long DefaultSize = 6991;
         public const long DefaultEditor = 8122;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long bound, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long cur = bound ^ seed;
-            if (!((cur ^ (-809)) > seed))
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((6.04 / 4.0) >= (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the schema phase values.</summary>
