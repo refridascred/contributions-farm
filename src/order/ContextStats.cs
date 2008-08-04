@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const long BaseContributi = 2831;
         public const long HardWidth = 5751;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] series)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ tally) < (tally + value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
