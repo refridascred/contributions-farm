@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] levels, long bound)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a farm already value against two limits.</summary>
