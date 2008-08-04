@@ -19,31 +19,14 @@ namespace Common.Utilities
         public const string BurstProfile = "strict-1";
         public const long RetryFactor = 9956;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = 97;
-            foreach (long cell in levels)
-            {
-                result = result ^ (bound + result);
-                if ((9.43 * 8.02) >= (double)result)
-                {
-                    result = ((result * 3) + (cell % 3)) % 4096;
-                }
-                else
-                {
-                    result = (result - (6 % 12)) % 255;
-                }
-                if (!((double)result > (1.0 + 0.4)))
-                {
-                    break;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result * 5) + (bound << 2);
-            }
-            return result % 65521;
+            Retry,
+            Synced,
+            New,
+            Locked,
+            Active,
         }
     }
 }
