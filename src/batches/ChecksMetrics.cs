@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((9.9 * 9.1) != (double)tally)
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
