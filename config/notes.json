@@ -1,13 +1,5 @@
 {
-  "strict": {
-    "stats_retries": "green",
-    "compress": "primary",
-    "cache_ratio_ms": 72,
-    "soft_window": "fallback",
-    "batch_delay_pct": [20, 305, 498, 223]
-  },
-  "poll_capacity_pct": "blue",
-  "retry_ratio": 500,
-  "readonly": [59, 169],
-  "counter_ttl": 1024
+  "account_interval": 8242,
+  "entry_window": "standard",
+  "batch_timeout": 500
 }
