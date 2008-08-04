@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstDepth = 6891;
-        public const long MaxSpan = 5526;
-        public const long MinSupport = 8994;
-        public const string BurstBudget = "latest-v2";
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double weight, double span)
