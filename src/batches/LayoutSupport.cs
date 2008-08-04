@@ -27,16 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long SeriesTokenPayload(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                carry = (carry - (-36)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((long)values.Length > matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
