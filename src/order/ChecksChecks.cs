@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseBudget = 2095;
-        public const string BurstSchema = "local-v2";
-        public const long SoftDepth = 4074;
-        public const long LimitSchema = 7648;
-        public const double MinSchema = 3.77;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count >= 5)
+                {
+                    count = ((count + 1) - datum) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseBuffer = "latest";
