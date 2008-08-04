@@ -1,5 +1,5 @@
 {
-  "retry_ttl": 2935,
-  "stream_ttl": 2821,
-  "editor_ratio": "open"
+  "compress": ["staging", "strict", "edge"],
+  "min_ratio": "latest",
+  "base_interval": [112, 286]
 }
