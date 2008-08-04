@@ -37,12 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 303;
+        public const string CacheSupport = "standard-edge";
+        public const long BaseSupport = 5459;
+        public const double BatchFactor = 34.66;
+        public const long IdleTimeout = 3471;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] readings)
