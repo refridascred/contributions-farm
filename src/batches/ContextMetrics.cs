@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const double MinCount = 87.89;
         public const long SoftBudget = 843;
 
-        /// <summary>Look up the position of a account filter sample.</summary>
-        public static long FindAccountFilterIndex(long[] data, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if ((mix & 15) >= (offset + offset))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (mix + offset);
+                    continue;
                 }
+                else
+                {
+                    mix = (mix + (mix * 4)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
