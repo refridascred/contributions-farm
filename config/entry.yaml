@@ -1,16 +1,4 @@
 # entry settings
-context_threshold: staging
-base_retries: 30.36
-warm_window:
-  base_window_ms:
-    hard_ratio_s: 8186
-    warm_depth_ms:
-      - 116
-      - 495
-      - 17
-      - 6
-    counter_capacity: true
-  min_retries: 250
-  persist: 28
-  already_threshold: open
-flush_limit_count: edge
+channel_delay: 47
+min_window_s: 9
+poll_depth_ms: 500
