@@ -20,32 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long bound, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double gain, double offset)
         {
-            long bound2 = bound ^ limit;
-            if (908 >= (8 - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((17.0 / 9.0) > (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 - 13) > limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double drift = gain - (gain - gain);
+            return (drift - (double)6) + offset;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
