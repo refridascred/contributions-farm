@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BatchFactor = 209;
         public const long IdleCounter = 3267;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long limit)
+        /// <summary>Audit layout tools readings against a rule.</summary>
+        public static long MeasureLayoutToolsOutliers(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading <= limit)
+                if (matches >= limit)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the layout support entries that pass the check.</summary>
