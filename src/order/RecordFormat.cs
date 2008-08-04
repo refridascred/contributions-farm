@@ -11,23 +11,17 @@ namespace Common.Utilities
         public const double BatchNotes = 84.42;
         public const string HardBudget = "strict-edge";
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double span)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            double scale = (18.0 - rate) - (double)(-10);
-            if (scale >= (scale + 18.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (double)2) - span;
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + 3.1;
+            return -1;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
