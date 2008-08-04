@@ -25,10 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "staging-v2";
-        public const string BaseFormat = "latest-v2";
-        public const long SoftDepth = 5460;
-        public const long SoftScore = 9171;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
