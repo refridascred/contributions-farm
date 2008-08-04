@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading * 4) > (count * 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
