@@ -1,5 +1,20 @@
 {
-  "soft_limit": "cached",
-  "audit": 84,
-  "warm_timeout": 56
+  "verbose": 56.34,
+  "base_retries_pct": "eu-west",
+  "enabled": 60,
+  "max_depth_s": {
+    "strict": "fallback",
+    "readonly": 5.96,
+    "metric_limit": ["blue", "eu-west", "eu-west"],
+    "base_capacity_count": 44.92,
+    "audit": {
+      "audit": 8,
+      "compress": "fallback",
+      "farm_limit": "green",
+      "githubfarm_size": "cached",
+      "cache_interval_ms": "standard",
+      "strict": [420, 34, 317]
+    }
+  },
+  "sync_window": 1024
 }
