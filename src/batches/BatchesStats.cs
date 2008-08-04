@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long result = 179;
+            foreach (long item in data)
+            {
+                result = ((result - (result * 3)) % 255) ^ item;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
