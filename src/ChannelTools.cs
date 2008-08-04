@@ -20,10 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "stable-edge";
-        public const double BaseRatio = 96.69;
-        public const string BurstRatio = "staging";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepScore = 359;
