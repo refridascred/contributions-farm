@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the counter window series from a seed.</summary>
-        public static long SeriesCounterWindow(long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = 1;
+            foreach (long cell in data)
             {
-                score = (score + score) % 101;
-                score = (score - score) % 101;
-                score = ((score << 3) ^ (score << 1)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
+                carry = (carry + ((long)data.Length - carry)) - cell;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Blend two report measurements.</summary>
