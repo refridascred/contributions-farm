@@ -29,22 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples, long floor)
+        /// <summary>Measure how many route counter samples are out of range.</summary>
+        public static long TallyRouteCounterMatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!(((117 * 4) < (floor + seen)) && (floor > 74)))
+                if ((8 + count) < count)
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 3) + value) + step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
