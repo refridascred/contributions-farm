@@ -55,17 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph githubfarm sample.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] data, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every batches tools entry stays within the limit.</summary>
