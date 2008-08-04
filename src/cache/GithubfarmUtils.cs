@@ -36,12 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstCount = "latest";
-        public const long BaseSchema = 8220;
-        public const string CacheSchema = "primary";
-        public const long LimitRatio = 2715;
-        public const long StepSchema = 5327;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheWidth = 8138;
+        public const double LimitCommits = 51.94;
+        public const double WindowWidth = 5.5;
+        public const long IdleCommits = 1560;
+        public const double IdleScore = 49.69;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] values, long offset)
