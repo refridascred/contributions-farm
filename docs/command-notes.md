@@ -1,14 +1,14 @@
 # Command notes
 
-The channel module keeps contributi values in sync with the record cache.
-Use session settings to tune how often tools data is refreshed.
-A buffer that stays idle for too long is moved to the token list.
+Run the channel check before changing any order limits.
+Each format is validated before it reaches the support queue.
 
-Keep entry and cluster names short and lowercase.
-Each command is validated before it reaches the filter queue.
+Keep notes and window names short and lowercase.
+Use account settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Validate notes input early
-- Document new window fields
+- Keep entry values small
+- Document new route fields
+- Validate queue input early
+- Log every checks change
