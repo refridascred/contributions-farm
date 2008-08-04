@@ -42,14 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Queued,
-            New,
-            Stale,
-            Active,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 4535;
+        public const long DefaultChannel = 4986;
+        public const long IdleRatio = 6771;
+        public const long MaxDepth = 1446;
+        public const long CacheLevel = 7310;
     }
 }
