@@ -1,20 +1,4 @@
 # support settings
-cache_ratio_ms:
-  persist:
-    - 261
-    - 279
-    - 222
-    - 257
-  editor_capacity: strict
-  verbose:
-    - 160
-    - 485
-    - 440
-    - 409
-default_ttl:
-  - 295
-  - 162
-  - 243
-dry_run: 57.72
-route_capacity: 93.7
-already_ttl: 46.39
+warm_retries_pct: primary
+verbose: eu-west
+base_retries_count: legacy
