@@ -27,12 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
