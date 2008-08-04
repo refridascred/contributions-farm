@@ -34,13 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] data, long bound)
         {
-            Stale,
-            Queued,
-            Done,
-            Failed,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
