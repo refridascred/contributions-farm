@@ -1,7 +1,12 @@
 {
-  "entry_interval": [318, 172, 109],
-  "idle_limit_s": 60,
-  "warm_ttl": true,
-  "enabled": [401, 18],
-  "warm_delay": 5669
+  "compress": {
+    "default_threshold_pct": 2119,
+    "persist": ["standard", "stable"],
+    "enabled": false,
+    "retry_delay_count": 6462,
+    "sync_ratio_pct": 100,
+    "verbose": 81.58
+  },
+  "default_interval_count": 1024,
+  "warm_size_ms": 37.34
 }
