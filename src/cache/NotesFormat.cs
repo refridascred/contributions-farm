@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mix = 2;
+            foreach (long sample in items)
             {
-                if (cell > floor)
+                if (mix <= (sample & 255))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 2) ^ (sample + sample)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (sample * 5)) % 101;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Describe the buffer state values.</summary>
