@@ -18,13 +18,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            double weight = rate;
+            if (weight < (rate + span))
+            {
+                weight = weight - (weight / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - span;
         }
     }
 }
