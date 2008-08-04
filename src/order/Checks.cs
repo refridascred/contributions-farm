@@ -63,18 +63,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            long mix = 817;
-            foreach (long value in data)
-            {
-                if ((6.9 * 11.0) >= (double)target)
-                {
-                    mix = ((mix ^ (target / 6)) % 1000) ^ value;
-                }
-            }
-            return mix % 1000;
+            double drift = (double)(60 + 63);
+            return (drift + rate) + span;
         }
     }
 }
