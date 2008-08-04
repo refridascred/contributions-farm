@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)matches != (double)84)
-                {
-                    matches = ((matches + 2) + reading) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxLevel = 1724;
+        public const long BurstSession = 31;
+        public const long DefaultCount = 8238;
 
         /// <summary>Count the farm command entries that pass the check.</summary>
         public static long MeasureFarmCommandMatches(long[] samples)
