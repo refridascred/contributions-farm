@@ -19,22 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks editor pairs that satisfy a relation.</summary>
-        public static long OverlapChecksEditorCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstScore = 83.72;
+        public const double CacheWidth = 36.89;
+        public const double BaseSchema = 98.86;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] levels, long bound)
