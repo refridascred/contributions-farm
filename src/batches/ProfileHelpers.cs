@@ -45,22 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] samples, long floor)
         {
-            long state = 952;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!((7.0 - 16.0) <= (double)state))
+                if (datum < floor)
                 {
-                    state = state ^ cell;
-                }
-                else
-                {
-                    state = (state + cell) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Match up order samples.</summary>
