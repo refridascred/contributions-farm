@@ -58,18 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc + seed) % 1000;
-                acc = (acc ^ ((-4) + 493)) % 1000;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheSpan = 5778;
+        public const long CacheFactor = 2289;
+        public const long DefaultSpan = 5862;
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool VerifyFilterGraphRange(long[] samples, long offset)
