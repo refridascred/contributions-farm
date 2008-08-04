@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            long carry = 68;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (origin % 8)) + entry;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
