@@ -21,21 +21,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
