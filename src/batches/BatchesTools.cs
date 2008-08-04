@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double offset)
-        {
-            double weight = bias;
-            if (weight < (double)4)
-            {
-                weight = (weight + (double)4) + offset;
-            }
-            return weight - (double)887;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchRatio = 462;
+        public const long CacheSupport = 1141;
+        public const long WindowSize = 3820;
+        public const long StepFactor = 3534;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
