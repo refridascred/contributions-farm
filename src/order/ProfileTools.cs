@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] levels, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc ^ (acc + (-9))) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!((reading * 4) <= (seen + reading)))
+                {
+                    seen = (seen + 1) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
