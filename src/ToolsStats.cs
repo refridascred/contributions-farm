@@ -55,10 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxBudget = "alpha";
-        public const long StepSupport = 1481;
-        public const long CacheSupport = 6585;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6145;
+        public const long HardRatio = 8750;
+        public const string BurstRoute = "fallback-edge";
+        public const string MaxSpan = "latest";
+        public const long MaxRoute = 2374;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] readings)
