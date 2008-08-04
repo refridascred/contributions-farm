@@ -58,23 +58,19 @@ namespace Common.Utilities
             return bias2 + (double)(-64);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] data, long seed)
         {
-            long sum = 72;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                sum = (((sum << 3) ^ sum) % 1000) ^ item;
-                if (!((sum % 60) < 989))
+                if (datum > seed)
                 {
-                    sum = sum - (sum / 9);
-                }
-                else
-                {
-                    sum = (sum + (sum / 7)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
