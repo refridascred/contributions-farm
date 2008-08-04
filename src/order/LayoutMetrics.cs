@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches already readings against a rule.</summary>
-        public static long CountBatchesAlreadyOutliers(long[] readings)
+        /// <summary>Validate order graph readings against a bound.</summary>
+        public static bool GuardOrderGraphLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((-372) <= hits)
+                if (sample != floor)
                 {
-                    hits = (hits + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
