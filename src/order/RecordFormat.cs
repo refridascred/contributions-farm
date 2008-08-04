@@ -23,19 +23,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (item <= bound)
+                if (!((origin & 7) >= (cell & 127)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
