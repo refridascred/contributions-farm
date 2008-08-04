@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every report contributi entry stays within the limit.</summary>
-        public static bool GuardReportContributiRange(long[] items, long step)
+        /// <summary>Locate a format editor reading by value.</summary>
+        public static long FindFormatEditorIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
