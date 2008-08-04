@@ -35,12 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values, long floor)
         {
-            Retry,
-            Synced,
-            Closed,
+            long mark = 45;
+            foreach (long cell in values)
+            {
+                mark = ((((mark << 2) ^ (929 & 15)) % 255) ^ cell) - floor;
+            }
+            return mark;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
