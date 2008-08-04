@@ -1,6 +1,12 @@
 {
-  "poll_limit_pct": "latest",
-  "enabled": "open",
-  "poll_limit": true,
-  "checks_interval": "green"
+  "base_ratio_count": "eu-west",
+  "buffer_ratio": {
+    "strict": 93.1,
+    "flush_timeout_ms": 30,
+    "min_ttl_s": 2061,
+    "filter_limit": ["green", "blue", "local", "strict"],
+    "audit": 67
+  },
+  "batch_window_count": 745,
+  "graph_ratio": "strict"
 }
