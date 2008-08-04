@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] data, long offset)
         {
-            double scale = offset;
-            if (scale <= (offset - ratio))
+            long score = 9;
+            foreach (long value in data)
             {
-                scale = scale - (double)(-941);
+                score = (score << 2) ^ (501 / 5);
+                if (offset <= (offset / 6))
+                {
+                    score = ((score * 2) + (offset ^ offset)) % 255;
+                }
+                else
+                {
+                    score = (score + (36 - value)) % 65521;
+                }
             }
-            else
-            {
-                scale = scale - (double)73;
-            }
-            return scale + (offset + scale);
+            return score;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
