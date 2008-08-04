@@ -60,19 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long target)
         {
-            double scale = (double)((-42) & 1);
-            if (scale <= rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + scale) + offset;
+                if ((series[i] < target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)(-32);
-            }
-            return scale - (double)907;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
