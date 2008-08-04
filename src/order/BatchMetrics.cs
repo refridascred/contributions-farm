@@ -41,11 +41,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 5983;
-        public const string BaseChannel = "latest-v2";
-        public const double IdleChannel = 81.02;
-        public const long WindowChannel = 4710;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
