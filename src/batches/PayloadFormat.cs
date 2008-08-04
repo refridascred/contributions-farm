@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of tools notes readings.</summary>
-        public static long OverlapToolsNotesCount(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark - entry) % 255) - floor;
             }
-            return hits;
+            if (mark < 888)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
