@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long WindowSchema = 3546;
         public const long BatchCount = 7320;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            double rate = ratio;
+            return rate - span;
         }
 
         /// <summary>Derive the next notes checks value from a seed.</summary>
