@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a stats notes counter forward.</summary>
-        public static long RollStatsNotes(long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((total << 1) > target)
-                {
-                    total = (total - (total & 15)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
