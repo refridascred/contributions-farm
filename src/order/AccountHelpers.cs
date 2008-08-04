@@ -93,19 +93,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] levels, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long acc = -9;
+            foreach (long datum in series)
             {
-                if (sample != limit)
+                if ((double)acc >= (double)311)
                 {
-                    ok = false;
+                    acc = acc - (97 >> 2);
+                }
+                if ((double)datum <= (2.2 - 6.7))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
