@@ -1,13 +1,22 @@
 {
-  "dry_run": "open",
-  "retry_window": "fallback",
-  "sync_ttl_count": 1024,
-  "retry_limit_count": 57.27,
-  "poll_size_s": false,
-  "notes_ttl": {
-    "record_retries": "edge",
-    "cache_ttl_s": 47.17,
-    "burst_delay_pct": 96,
-    "schema_window": 78.93
-  }
+  "notes_retries": [337, 484, 462, 146],
+  "session_ratio": {
+    "filter_timeout": {
+      "compress": false,
+      "hard_depth_count": true,
+      "idle_size_pct": false,
+      "enabled": 60
+    },
+    "retry_capacity_pct": ["legacy", "cached", "stable", "stable"],
+    "soft_threshold_ms": 33,
+    "compress": "cached",
+    "poll_limit_pct": {
+      "support_interval": "edge",
+      "batch_interval_s": 64.65,
+      "token_delay": 500,
+      "base_interval": ["open", "local", "open", "eu-west"]
+    },
+    "payload_limit": 100
+  },
+  "cache_limit_count": 45.89
 }
