@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Ready,
+            Stale,
+            New,
             Synced,
-            Retry,
-            Draft,
         }
 
         /// <summary>Measure how many route counter samples are out of range.</summary>
