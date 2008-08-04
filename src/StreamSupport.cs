@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 5786;
-        public const long BurstCache = 1054;
-        public const double IdleCache = 26.91;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double bias)
+        {
+            double weight = scale - bias;
+            if (weight > bias)
+            {
+                weight = weight + (double)(-6);
+            }
+            else
+            {
+                weight = weight + (scale * 0.21);
+            }
+            return weight - scale;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] items, long floor)
