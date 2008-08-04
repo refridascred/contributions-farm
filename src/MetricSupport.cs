@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const string WindowMetric = "primary-edge";
         public const long CacheSize = 9399;
 
-        /// <summary>Check that every graph context entry stays within the limit.</summary>
-        public static bool GuardGraphContextLimits(long[] data, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            if (((double)step != (1.7 / 3.0)) && (offset > (step & 255)))
             {
-                if (sample < seed)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset + 16))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the counter status values.</summary>
