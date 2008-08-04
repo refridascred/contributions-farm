@@ -23,38 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm already value against two limits.</summary>
-        public static long RankFarmAlready(long limit, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            if ((978 % 5) >= offset)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + 85) <= (1 ^ limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 2) <= (limit ^ offset))
+                    if ((data[i] - data[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit / 4) != (limit & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
