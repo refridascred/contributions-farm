@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] values, long seed)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long IterateLayoutStats(long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
