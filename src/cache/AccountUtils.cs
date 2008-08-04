@@ -38,12 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            Synced,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally % 24) == (cell / 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
