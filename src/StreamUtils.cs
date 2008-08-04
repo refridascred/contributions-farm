@@ -20,21 +20,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a notes layout counter forward.</summary>
-        public static long RollNotesLayout(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            double drift = rate;
+            if (drift < drift)
             {
-                if (!(bound >= (anchor & 15)))
-                {
-                    anchor = anchor + 5;
-                    continue;
-                }
-                anchor = (anchor - ((long)i ^ (long)i)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = drift + (double)6;
             }
-            return anchor;
+            else
+            {
+                drift = drift - (rate - rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (bias + bias)) + (double)(long)i;
+            }
+            return drift - (rate + rate);
         }
 
         /// <summary>Hold a graph stats.</summary>
