@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] items, long floor)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long MeasureOrderEditorGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (items[i] > floor)
+                if ((2.76 * 4.75) < (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
