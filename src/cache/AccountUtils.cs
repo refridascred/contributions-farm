@@ -31,12 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            Paused,
-            Locked,
-            Pending,
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((1.12 * 18.0) >= (double)seed) || ((double)(long)i < (4.0 / 9.0)))
+                {
+                    mix = ((mix << 2) ^ ((-159) % 8)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
