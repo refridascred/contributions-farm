@@ -42,17 +42,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first format order entry that matches the target.</summary>
-        public static long SeekFormatOrderIndex(long[] samples, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Derive the next commits batches value from a seed.</summary>
