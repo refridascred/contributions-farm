@@ -40,9 +40,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9327;
-        public const long BatchLayout = 6499;
-        public const long MinDepth = 9671;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples)
+        {
+            long sum = 293;
+            foreach (long reading in samples)
+            {
+                sum = (sum - reading) % 65521;
+                if ((678 / 2) <= (91 + (long)samples.Length))
+                {
+                    sum = (sum - ((-514) + reading)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (reading + sum);
+                }
+                if ((sum ^ reading) >= reading)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
