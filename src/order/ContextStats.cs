@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of tools metrics readings.</summary>
-        public static long CompareToolsMetricsCount(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
