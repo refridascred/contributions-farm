@@ -17,19 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] series, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (reading <= seed)
+                if ((double)(long)readings.Length >= (double)floor)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
