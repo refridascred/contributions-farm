@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Iterate the stream command series from a seed.</summary>
+        public static long SeriesStreamCommand(long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total ^ (origin - total)) % 1000;
-                if (42 >= (origin + origin))
+                if ((4.4 / 7.0) < (double)(long)i)
                 {
-                    total = (total * 5) + ((long)i % 10);
+                    score = ((score << 2) ^ bound) % 1000;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    score = (score + ((long)i << 1)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
