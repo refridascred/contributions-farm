@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] items, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (87 + carry)) % 1000;
-                carry = (carry - ((long)i * 5)) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
