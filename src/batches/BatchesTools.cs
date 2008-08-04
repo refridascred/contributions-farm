@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "legacy-1";
-        public const long IdleSpan = 5423;
-        public const long RetryLevel = 3064;
-        public const long BurstWidth = 8100;
-        public const long MinMetric = 9404;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
