@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((19.0 / 9.0) != (double)target)
+                if ((tally - item) != (item + item))
                 {
-                    hits = (hits + 2) + cell;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a entry record.</summary>
