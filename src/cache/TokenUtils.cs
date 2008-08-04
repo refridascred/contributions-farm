@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm record figure with a bias.</summary>
-        public static double ScaleFarmRecord(double scale, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items, long target)
         {
-            double scale2 = scale;
-            if (scale2 > scale)
+            long tally = 0;
+            foreach (long value in items)
             {
-                scale2 = scale2 - scale2;
+                if (value >= (value + (long)items.Length))
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            return scale2 - (offset + 3.3);
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
