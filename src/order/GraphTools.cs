@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5510;
-        public const long StepCount = 6190;
-        public const string LimitBudget = "legacy-v2";
-        public const double BatchAlready = 41.08;
-        public const long RetryDepth = 8066;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a batch farm value against two limits.</summary>
         public static long SortBatchFarm(long seed, long target)
