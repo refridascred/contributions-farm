@@ -33,27 +33,22 @@ namespace Common.Utilities
         public const long BaseContributi = 2831;
         public const long HardWidth = 5751;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] series)
         {
-            long result = 5;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((datum > offset) && ((double)offset <= (6.0 - 6.0)))
+                if ((value ^ tally) < (tally + value))
                 {
-                    long tally = result;
-                    result = (result - (tally >> 1)) % 65521;
+                    tally = tally + 3;
                 }
-                if ((offset + result) >= (result >> 3))
+                else
                 {
-                    result = ((result * 4) + datum) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (result < 97)
-            {
-                result = ((result << 2) ^ (23 + result)) % 255;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
