@@ -14,28 +14,36 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long step)
+        /// <summary>Grade a graph command value against two limits.</summary>
+        public static long BucketGraphCommand(long limit, long step)
         {
-            if (((double)limit > (9.93 * 15.0)) || ((limit * 2) <= (step * 3)))
+            long gap = limit + step;
+            if ((limit >> 3) != (gap * 3))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((-2) >> 2) <= (limit >> 5))
+                if (((step << 1) > gap) && (0 >= (gap % 3)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((limit + 95) >= (step + 90)) && ((22 * 2) > (limit - step)))
+                    if (!((75 * 4) < (4 - limit)))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        if (!(limit >= (gap + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
