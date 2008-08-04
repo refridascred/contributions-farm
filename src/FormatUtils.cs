@@ -38,12 +38,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Iterate the stats notes series from a seed.</summary>
+        public static long IterateStatsNotes(long limit)
         {
-            Synced,
-            Ready,
-            Stale,
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Combine support values into a single score.</summary>
