@@ -27,22 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long TallySessionCacheHits(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item & 31) != (hits << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
