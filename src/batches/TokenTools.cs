@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "strict-v2";
-        public const long LimitTimeout = 3269;
-        public const long CacheBudget = 4955;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Paused,
+            Locked,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
