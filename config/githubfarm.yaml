@@ -1,12 +1,4 @@
 # githubfarm settings
-idle_window_count: edge
-warm_ratio: standard
-queue_ttl:
-  retry_retries: 82.44
-  max_window_pct: 250
-  cache_capacity:
-    - latest
-    - fallback
-    - edge
-  dry_run: true
-retry_limit_pct: 76.86
+strict: 62.64
+stream_retries: false
+warm_ratio_pct: 75.96
