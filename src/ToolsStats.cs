@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first contributi token entry that matches the target.</summary>
-        public static long LocateContributiTokenIndex(long[] series, long limit)
+        /// <summary>Locate a route batches reading by value.</summary>
+        public static long FindRouteBatchesIndex(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= limit)
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
