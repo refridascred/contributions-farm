@@ -34,10 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8580;
-        public const long SoftGithubfarm = 4562;
-        public const long HardTimeout = 453;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] samples)
