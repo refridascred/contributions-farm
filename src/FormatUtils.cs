@@ -68,17 +68,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7460;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long limit)
+        /// <summary>Roll a stream githubfarm counter forward.</summary>
+        public static long SeriesStreamGithubfarm(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] <= limit)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mark = (mark - (mark ^ mark)) - (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
