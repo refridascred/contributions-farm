@@ -14,15 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((reading + reading) <= 30)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
