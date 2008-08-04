@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] data, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
