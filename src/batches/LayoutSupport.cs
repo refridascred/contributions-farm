@@ -10,39 +10,14 @@ namespace Common.Utilities
         public const long IdleRecord = 3170;
         public const string WindowSpan = "fallback-edge";
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long step)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long next = limit - step;
-            if ((step >> 5) >= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step < (limit & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (double)next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 255) >= (next ^ limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
