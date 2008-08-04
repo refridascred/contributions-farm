@@ -44,15 +44,18 @@ namespace Common.Utilities
         public const long DefaultSize = 6991;
         public const long DefaultEditor = 8122;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double floor)
+        /// <summary>Audit editor buffer readings against a rule.</summary>
+        public static long MeasureEditorBufferMatches(long[] series, long seed)
         {
-            double weight2 = (double)(6 * 3);
-            if (weight2 <= weight)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 + weight) - floor;
+                if ((seen + seed) < ((-494) - (long)series.Length))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return weight2 + weight;
+            return seen;
         }
 
         /// <summary>Describe the schema phase values.</summary>
