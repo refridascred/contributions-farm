@@ -36,17 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits session entry that matches the target.</summary>
-        public static long LookupCommitsSessionIndex(long[] items, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
