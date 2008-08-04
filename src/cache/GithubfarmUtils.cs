@@ -12,19 +12,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] values, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum <= floor)
+                if ((long)i == (640 ^ seed))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ seed) % 97;
+                    mix = mix - seed;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
