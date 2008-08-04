@@ -37,11 +37,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstInterval = 4584;
-        public const double IdleWidth = 14.43;
-        public const double SoftInterval = 47.9;
-        public const long RetryCommand = 828;
-        public const long LimitScore = 2225;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data, long limit)
+        {
+            long carry = 14;
+            foreach (long entry in data)
+            {
+                carry = (carry ^ (entry + limit)) % 97;
+            }
+            if (carry < (-10))
+            {
+                carry = ((carry * 3) + (carry + limit)) % 97;
+            }
+            return carry;
+        }
     }
 }
