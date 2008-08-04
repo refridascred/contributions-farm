@@ -43,18 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema report entries that pass the check.</summary>
-        public static long AuditSchemaReportOutliers(long[] data, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((9.6 / 5.0) == (double)cell) || (cell < (cell * 4)))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
