@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitScore = 3385;
-        public const long MaxDepth = 1251;
-        public const string BurstProfile = "strict-1";
-        public const long RetryFactor = 9956;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values)
+        {
+            long result = 23;
+            foreach (long item in values)
+            {
+                if ((item + result) != (item >> 2))
+                {
+                    result = (result + (7 + result)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
