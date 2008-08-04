@@ -27,12 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels, long bound)
         {
-            Paused,
-            Queued,
-            Done,
+            long state = -1;
+            foreach (long value in levels)
+            {
+                state = state - (state - bound);
+                if (((double)value >= (0.4 * 7.7)) && ((3.0 * 14.0) != (double)value))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
