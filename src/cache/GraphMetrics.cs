@@ -36,33 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long bound)
-        {
-            long span = step ^ bound;
-            if (!((double)span == (7.0 + 7.7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((221 ^ bound) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (744 >= (step + span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitInterval = 6138;
+        public const string HardLevel = "open-edge";
+        public const long LimitScore = 8571;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
