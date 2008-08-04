@@ -19,26 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long origin)
         {
-            long score = 261;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((step << 3) > (score << 2)))
+                if (samples[i] > origin)
                 {
-                    score = ((score << 2) ^ (score - step)) % 65521;
-                }
-                else
-                {
-                    score = (score - (cell & 127)) % 4096;
-                }
-                if ((step - step) > cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Scale a record support figure with a bias.</summary>
