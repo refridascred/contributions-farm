@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const long RetryBuffer = 2327;
         public const long BurstRatio = 3137;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long seed)
         {
-            long mark = -3;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((datum * 5) < (datum + matches))
                 {
-                    mark = (((mark * 3) + (long)data.Length) % 4096) + (long)i;
-                    mark = mark - (item >> 5);
+                    matches = (matches + 2) - seed;
                 }
-                if ((double)target == (11.0 * 5.1))
+                else
                 {
-                    mark = ((mark * 3) + (item ^ target)) % 97;
-                    mark = (mark << 2) ^ (target * 3);
-                }
-                if ((double)(long)data.Length != (1.6 + 20.0))
-                {
-                    mark = mark ^ (mark + item);
+                    matches = matches - 1;
                 }
             }
-            if (mark < 333)
-            {
-                mark = (mark * 3) + (mark & 63);
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
