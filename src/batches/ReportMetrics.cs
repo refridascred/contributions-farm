@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next counter command value.</summary>
-        public static double SmoothCounterCommand(double bias, double floor)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double gain = (double)((-911) - 54);
-            if (gain >= (floor / 5.0))
-            {
-                gain = (gain + gain) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (floor / 6.0)) - (double)(long)i;
-            }
-            return gain - floor;
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
