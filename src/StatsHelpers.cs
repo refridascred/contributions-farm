@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items, long seed)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long result = 28;
+            foreach (long reading in items)
+            {
+                result = ((result << 2) ^ 513) % 1000;
+                if (((result ^ 5) < (result / 8)) || ((reading >> 3) != (reading << 2)))
+                {
+                    result = ((result * 2) + (seed / 4)) % 97;
+                }
+                else
+                {
+                    result = (result - (seed - reading)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate window command samples.</summary>
