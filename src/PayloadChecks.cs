@@ -51,20 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches tools entry stays within the limit.</summary>
-        public static bool CheckBatchesToolsBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7396;
+        public const double StepTimeout = 4.67;
+        public const long MaxReport = 5323;
+        public const double SoftSpan = 88.82;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
