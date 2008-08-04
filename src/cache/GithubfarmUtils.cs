@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] readings, long seed)
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            long score = 146;
+            foreach (long reading in readings)
+            {
+                score = (score * 5) + score;
+                score = score - (reading - seed);
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank notes buffer input into a small class.</summary>
