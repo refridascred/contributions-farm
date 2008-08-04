@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = 3;
-            foreach (long reading in levels)
-            {
-                if (sum < (target / 4))
-                {
-                    sum = (sum * 4) + (reading - sum);
-                }
-            }
-            return sum % 1000;
+            New,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
