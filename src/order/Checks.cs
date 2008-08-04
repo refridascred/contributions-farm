@@ -55,13 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 8420;
+        public const long MaxScore = 5371;
+        public const long CacheSupport = 2374;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] readings)
