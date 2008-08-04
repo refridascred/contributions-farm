@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long origin)
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long CountContributiContextGaps(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (reading >= origin)
+                if ((offset << 3) > offset)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
