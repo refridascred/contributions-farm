@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] levels)
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long ScoreContributiMetrics(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = 1;
+            foreach (long cell in values)
             {
-                if ((matches & 7) < matches)
+                if ((total + 894) < (total + cell))
                 {
-                    matches = (matches + 1) ^ cell;
+                    total = (((total << 2) ^ (cell + total)) % 65521) + bound;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
