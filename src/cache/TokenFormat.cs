@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            if ((double)offset < (0.8 - 2.1))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 3) > 70)
+                if ((1 ^ matches) <= cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (562 <= (offset + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset < (offset & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
