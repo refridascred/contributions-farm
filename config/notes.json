@@ -1,8 +1,5 @@
 {
-  "payload_ttl": false,
-  "warm_retries_s": 1362,
-  "idle_capacity_ms": false,
-  "enabled": 8.3,
-  "strict": true,
-  "flush_timeout": 74
+  "max_ratio_ms": false,
+  "support_threshold": 93,
+  "warm_size": "staging"
 }
