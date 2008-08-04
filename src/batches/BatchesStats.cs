@@ -41,11 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 4535;
-        public const long DefaultChannel = 4986;
-        public const long IdleRatio = 6771;
-        public const long MaxDepth = 1446;
-        public const long CacheLevel = 7310;
+        /// <summary>Blend two batch report measurements.</summary>
+        public static double BlendBatchReport(double bias, double bias2)
+        {
+            double load = bias + bias;
+            return (load + (double)173) + bias2;
+        }
     }
 }
