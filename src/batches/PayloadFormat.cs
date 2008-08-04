@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] data, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
