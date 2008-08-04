@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up profile samples.</summary>
