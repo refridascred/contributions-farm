@@ -1,8 +1,4 @@
 # entry settings
-contributi_window: open
-idle_window_s: 2628
-burst_capacity_s:
-  - 231
-  - 30
-  - 233
-  - 492
+verbose: blue
+max_window_count: staging
+support_size: true
