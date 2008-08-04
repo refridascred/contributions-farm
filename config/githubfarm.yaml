@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: eu-west
-soft_interval_s: 79
-already_threshold: eu-west
+poll_ttl_count:
+  - 195
+  - 468
+compress:
+  - legacy
+  - latest
+warm_depth_ms: 30
+cache_depth_s: green
+cache_limit: open
