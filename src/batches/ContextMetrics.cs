@@ -64,19 +64,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] series, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Idle,
+            Pending,
+            Done,
         }
     }
 }
