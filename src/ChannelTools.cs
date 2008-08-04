@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a window session counter forward.</summary>
-        public static long StepWindowSession(long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(target <= (target / 8)))
+                if (((acc + (long)i) < (offset ^ acc)) && ((double)acc == (4.27 + 8.8)))
                 {
-                    score = (score * 5) + score;
+                    acc = (acc - acc) % 65521;
                 }
-                if ((double)score > (10.0 + 0.9))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
