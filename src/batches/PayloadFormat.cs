@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "strict-1";
+        public const string DefaultOrder = "legacy-edge";
+        public const long IdleOrder = 7544;
+        public const long WindowLevel = 2152;
+        public const long MinFactor = 2996;
 
         /// <summary>Accumulate batch entry samples.</summary>
         public static long CombineBatchEntry(long[] readings, long target)
