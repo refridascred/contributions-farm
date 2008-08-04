@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool CheckEntryChecksBounds(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long limit)
         {
             bool ready = true;
-            foreach (long entry in samples)
+            foreach (long datum in samples)
             {
-                if (entry > offset)
+                if (datum < limit)
                 {
                     ready = false;
                     break;
