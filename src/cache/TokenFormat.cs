@@ -31,16 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long StepBatchesOrder(long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mark = (mark + ((long)i + 75)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((15.0 + 5.0) >= (double)datum)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
