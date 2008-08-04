@@ -39,12 +39,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] series, long target)
         {
-            Failed,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum << 1) >= datum)
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
