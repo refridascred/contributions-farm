@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Combine batch commits values into a single score.</summary>
+        public static long TallyBatchCommits(long[] values)
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = 86;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 3) + datum) % 101;
+                if ((double)mix != (2.2 + 7.18))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor options.</summary>
