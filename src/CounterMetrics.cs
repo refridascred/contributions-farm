@@ -32,19 +32,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] values, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if ((step % 5) >= limit)
             {
-                if (value != bound)
+                return 6;
+            }
+            else
+            {
+                if ((17.0 + 5.0) > (double)limit)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) <= (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
