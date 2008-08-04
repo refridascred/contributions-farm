@@ -72,19 +72,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen / 7) <= (6 / 8))
-                {
-                    seen = ((seen + 1) + datum) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7277;
+        public const string CacheBuffer = "fallback-edge";
+        public const long CacheFactor = 2213;
+        public const long DefaultInterval = 1233;
+        public const string SoftTimeout = "standard-edge";
 
         /// <summary>Combine format cache values into a single score.</summary>
         public static long DigestFormatCache(long[] readings)
