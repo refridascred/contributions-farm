@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer channel values into a single score.</summary>
-        public static long CombineBufferChannel(long[] series)
-        {
-            long anchor = 88;
-            foreach (long cell in series)
-            {
-                anchor = (anchor ^ (cell - anchor)) % 4096;
-            }
-            if (anchor < 85)
-            {
-                anchor = (anchor - (anchor - anchor)) % 4096;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepScore = 18.38;
+        public const string RetryEntry = "standard-1";
+        public const string BatchScore = "alpha";
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
