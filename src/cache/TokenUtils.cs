@@ -28,20 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats record series from a seed.</summary>
-        public static long DeriveStatsRecord(long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!!((12.0 * 14.0) >= (double)mark))
+                if (item > bound)
                 {
-                    mark = mark - (limit << 1);
+                    valid = false;
+                    break;
                 }
-                mark = (mark ^ (mark * 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return valid;
         }
     }
 }
