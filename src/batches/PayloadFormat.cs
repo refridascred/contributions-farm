@@ -27,14 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Synced,
-            Queued,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheDepth = 1545;
+        public const long SoftSchema = 6990;
+        public const string MaxSchema = "staging-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4271;
