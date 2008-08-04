@@ -33,23 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels)
         {
-            double load = rate;
-            if (load >= (rate + rate))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                load = (load + 0.35) + offset;
+                if (((-277) & 31) < (datum + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                load = load + (7.5 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - rate) - (double)(long)i;
-            }
-            return load - (8.7 * 4.79);
+            return tally;
         }
     }
 }
