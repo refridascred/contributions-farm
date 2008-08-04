@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine command entry values into a single score.</summary>
+        public static long CombineCommandEntry(long[] values)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long sum = 409;
+            foreach (long item in values)
+            {
+                if ((item < (4 % 60)) || ((sum / 6) > (sum + item)))
+                {
+                    sum = (sum << 3) ^ ((long)values.Length + sum);
+                }
+            }
+            if (sum > 477)
+            {
+                sum = ((sum * 2) + (sum + sum)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
