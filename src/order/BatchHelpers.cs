@@ -20,11 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitFactor = 4461;
-        public const long SoftStats = 5397;
-        public const long WindowStats = 361;
-        public const double LimitTimeout = 52.1;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] samples, long seed)
