@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            long carry = 739;
+            foreach (long datum in levels)
+            {
+                if ((double)carry != (double)datum)
+                {
+                    carry = (carry ^ (seed + 6)) % 4096;
+                }
+                else
+                {
+                    carry = carry + (4 + seed);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
