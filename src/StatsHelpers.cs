@@ -14,15 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = 382;
-            foreach (long entry in values)
-            {
-                carry = (carry * 5) + (carry - entry);
-            }
-            return carry % 1000;
+            Failed,
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
