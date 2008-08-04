@@ -38,17 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long limit)
+        /// <summary>Count the order record entries that pass the check.</summary>
+        public static long AuditOrderRecordHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] <= limit)
+                if (!((count % 24) != (count + count)))
                 {
-                    return (long)i;
+                    count = (count + 2) - datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
