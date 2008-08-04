@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long floor)
+        /// <summary>Combine githubfarm stream values into a single score.</summary>
+        public static long TotalGithubfarmStream(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 4;
+            foreach (long cell in data)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                score = (score ^ score) % 65521;
+                if ((double)cell < (3.0 * 1.96))
                 {
-                    return (long)i;
+                    score = (score * 4) + (bound + 38);
+                }
+                if (cell > (cell + 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score < 456)
+            {
+                score = (score + (bound % 7)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
