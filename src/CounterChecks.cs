@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine token payload values into a single score.</summary>
-        public static long TotalTokenPayload(long[] values)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = 423;
-            foreach (long reading in values)
-            {
-                state = ((state << 3) ^ ((long)values.Length % 3)) ^ reading;
-            }
-            return state % 65521;
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
