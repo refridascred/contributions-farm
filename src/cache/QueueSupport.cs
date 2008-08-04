@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSpan = 8537;
-        public const string StepAccount = "primary";
-        public const long DefaultAccount = 7034;
-        public const double RetryLevel = 38.61;
-        public const long LimitBudget = 8392;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
         public static long MeasureFarmCommandMatches(long[] samples)
