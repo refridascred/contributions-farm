@@ -1,10 +1,13 @@
 # entry settings
-flush_ttl_s: cached
-soft_ttl: 94.35
-retry_retries_count: 61.49
-stream_timeout: 74.17
-readonly:
-  - standard
-  - open
-  - primary
-burst_threshold_count: edge
+batch_timeout: false
+stream_window: true
+default_retries_ms:
+  idle_retries_s: 6781
+  dry_run: true
+  min_limit_pct: open
+  retry_window_ms: 27.41
+  base_delay_count:
+    - 322
+    - 313
+    - 48
+filter_ttl: true
