@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long mix = 611;
+            foreach (long item in data)
+            {
+                mix = ((mix << 3) ^ (offset / 3)) % 97;
+                mix = ((mix * 3) + (item & 15)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
