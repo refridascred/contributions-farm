@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a commits schema value against two limits.</summary>
-        public static long RankCommitsSchema(long step, long step2)
+        /// <summary>Match up context stats samples.</summary>
+        public static long MatchContextStatsCount(long[] values)
         {
-            if (((step2 & 255) >= (step >> 3)) && ((70 - step) >= 8))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (4.24 + 13.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + 186) <= step2)
+                    if ((values[i] + values[j]) == 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 % 16) < (step ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many metrics farm samples are out of range.</summary>
