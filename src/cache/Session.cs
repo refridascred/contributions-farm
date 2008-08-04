@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] samples, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 9) < (count - count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + floor;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
