@@ -56,18 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((seen ^ 943) > 503) && (5 > (seen - step)))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
