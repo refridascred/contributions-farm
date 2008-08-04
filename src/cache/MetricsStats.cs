@@ -36,17 +36,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] < offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    sum = (((sum << 3) ^ 160) % 4096) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the buffer level values.</summary>
