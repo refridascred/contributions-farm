@@ -26,20 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i & 7) < (carry >> 1))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "local-1";
+        public const string RetrySchema = "local-1";
+        public const long SoftInterval = 9312;
+        public const string BaseSchema = "legacy";
 
         /// <summary>Combine buffer commits values into a single score.</summary>
         public static long CombineBufferCommits(long[] samples, long floor)
