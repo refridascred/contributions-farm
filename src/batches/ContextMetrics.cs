@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            Pending,
-            Done,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((15 % 7) >= (seen >> 2))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
