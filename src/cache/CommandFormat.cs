@@ -32,12 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
