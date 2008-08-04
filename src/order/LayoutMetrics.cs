@@ -30,19 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinDepth = 5693;
+        public const long CacheRatio = 5302;
+        public const long BaseCount = 6607;
+        public const long MinRatio = 2570;
     }
 }
