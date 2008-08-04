@@ -56,18 +56,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many editor format samples are out of range.</summary>
-        public static long AuditEditorFormatGaps(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally < (tally ^ tally)) || ((sample >> 4) == (tally + tally)))
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
