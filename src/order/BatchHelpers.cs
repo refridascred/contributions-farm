@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((value - seen) < (value << 1))
+                if ((0.8 / 6.0) >= (double)origin)
                 {
-                    seen = seen + 1;
+                    result = result - origin;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
