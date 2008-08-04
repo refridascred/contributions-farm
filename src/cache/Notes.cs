@@ -45,18 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics support readings against a rule.</summary>
-        public static long AuditMetricsSupportOutliers(long[] series, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((17.0 / 4.0) != (double)hits) || !((2.9 + 5.55) != (double)offset))
+                if ((double)cell > (6.82 * 1.51))
                 {
-                    hits = (hits + 1) ^ sample;
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
