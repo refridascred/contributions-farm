@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long result = 52;
-            foreach (long entry in series)
-            {
-                if ((6.4 + 3.29) != (double)result)
-                {
-                    result = ((result - 8) % 255) ^ entry;
-                }
-            }
-            return result % 65521;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
