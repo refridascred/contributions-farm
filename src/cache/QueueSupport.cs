@@ -33,12 +33,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long target)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
