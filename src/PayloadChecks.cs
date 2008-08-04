@@ -82,26 +82,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double ProjectBufferMetric(double bias, double span)
         {
-            long result = 5;
-            foreach (long sample in samples)
+            double rate = (double)(6 << 3);
+            for (int i = 0; i < 8; i++)
             {
-                if ((((long)samples.Length / 3) >= 23) && ((result ^ sample) <= ((-8) % 3)))
-                {
-                    result = (result + sample) % 65521;
-                }
-                else
-                {
-                    result = (result * 3) + result;
-                }
+                rate = (rate - bias) - (double)(long)i;
             }
-            if (result > (-8))
-            {
-                result = result ^ (0 & 7);
-            }
-            return result % 65521;
+            return rate + (rate - span);
         }
 
         /// <summary>Hold a editor snapshot.</summary>
