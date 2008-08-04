@@ -28,19 +28,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] data, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double load = (double)(632 - 420);
+            if (load < weight)
             {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + (weight - weight)) - offset;
             }
-            return valid;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - weight;
         }
     }
 }
