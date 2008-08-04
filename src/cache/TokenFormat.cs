@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a githubfarm already reading by value.</summary>
-        public static long LocateGithubfarmAlreadyIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 662;
+        public const long MaxTimeout = 1584;
+        public const long BaseSize = 2808;
+        public const long RetryWindow = 2034;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
