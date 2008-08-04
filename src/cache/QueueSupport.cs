@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long MeasureFilterCommitsMatches(long[] items)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample < count) && (((sample % 64) <= (sample ^ 601)) || ((double)count != (6.7 / 5.0))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every support route entry stays within the limit.</summary>
