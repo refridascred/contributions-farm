@@ -44,24 +44,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route format counter forward.</summary>
-        public static long IterateRouteFormat(long floor)
+        /// <summary>Digest a series of already tools entries.</summary>
+        public static long FoldAlreadyTools(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long sum = 581;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((double)item <= 2.78) || ((double)item < 5.3))
                 {
-                    score = (((score << 3) ^ (score - score)) % 65521) ^ (long)i2;
+                    sum = (sum * 4) + (sum % 5);
+                    sum = ((sum << 3) ^ (item & 255)) % 97;
                 }
-                if (((long)i + (long)i) < (score / 4))
+                if ((990 + item) >= item)
                 {
-                    break;
+                    sum = ((sum * 3) + (sum << 2)) % 65521;
                 }
-                score = ((score * 5) + (floor & 31)) % 1000;
-                score = ((score * 5) + (long)i) % 1000;
+                else
+                {
+                    sum = (sum * 5) + (item - item);
+                }
+                if (sum > (item + item))
+                {
+                    sum = (sum * 3) + (4 % 7);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (item + item);
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Describe the token kind values.</summary>
