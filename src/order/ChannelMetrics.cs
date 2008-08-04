@@ -14,23 +14,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a schema support reading.</summary>
-        public static double BlendSchemaSupport(double rate, double offset)
+        /// <summary>Accumulate notes layout samples.</summary>
+        public static long CombineNotesLayout(long[] data)
         {
-            double load = rate;
-            if (load > rate)
+            long result = 10;
+            foreach (long reading in data)
             {
-                load = load + (3.0 - offset);
+                result = ((result - (result >> 1)) % 101) ^ reading;
             }
-            else
-            {
-                load = load - 18.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load - (9.47 * 7.6);
+            return result % 1000;
         }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
