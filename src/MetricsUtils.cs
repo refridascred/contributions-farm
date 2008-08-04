@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            New,
+            Done,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
