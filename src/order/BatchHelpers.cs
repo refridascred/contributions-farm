@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
