@@ -1,11 +1,25 @@
 # entry settings
-warm_ttl_count: fallback
-support_threshold: true
-base_window:
-  soft_limit_ms: true
-  max_interval: latest
-  base_ratio: 30
-  idle_delay: 92.79
-  counter_depth: fallback
-  batch_capacity_ms: 2855
-session_limit: 100
+poll_ratio_s:
+  min_ratio_ms: legacy
+  base_capacity_count: primary
+  audit: latest
+  editor_interval: open
+  base_threshold_count:
+    - local
+    - cached
+    - fallback
+  order_limit:
+    - edge
+    - latest
+    - blue
+    - standard
+checks_timeout:
+  sync_ratio_ms: 2670
+  retry_depth_ms: 7213
+  sync_interval_ms: blue
+verbose:
+  - blue
+  - cached
+  - strict
+  - cached
+readonly: open
