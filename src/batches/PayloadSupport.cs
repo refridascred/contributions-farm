@@ -19,18 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits report readings against a rule.</summary>
-        public static long CountCommitsReportOutliers(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((14.0 + 4.0) == (double)matches)
+                if ((seen - sample) < (244 + seen))
                 {
-                    matches = (matches + 1) - entry;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
