@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer layout readings against a rule.</summary>
-        public static long TallyBufferLayoutHits(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double rate = span + (span + 5.42);
+            if (rate > rate)
             {
-                if ((double)seen <= 9.6)
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                rate = (rate - (span * 8.0)) - gain;
             }
-            return seen;
+            else
+            {
+                rate = rate - (rate / 2.0);
+            }
+            return rate - (double)958;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
