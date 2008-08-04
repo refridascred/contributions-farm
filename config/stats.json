@@ -1,7 +1,17 @@
 {
-  "cache_threshold_count": "open",
-  "format_ratio": true,
-  "checks_capacity": ["open", "eu-west"],
-  "min_limit": "latest",
-  "flush_depth_count": [125, 378]
+  "sync_delay": ["latest", "green", "local", "eu-west"],
+  "min_limit_s": {
+    "context_interval": {
+      "min_limit": ["fallback", "legacy", "green", "cached"],
+      "cache_ratio_s": "open",
+      "cache_ttl_s": 9406,
+      "window_size": 872,
+      "warm_retries_ms": ["stable", "stable", "edge", "stable"],
+      "verbose": "open"
+    },
+    "buffer_window": true,
+    "batch_window": 93.53,
+    "dry_run": false
+  },
+  "audit": "standard"
 }
