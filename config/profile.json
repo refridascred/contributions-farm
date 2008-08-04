@@ -1,8 +1,6 @@
 {
-  "report_ttl": "green",
-  "audit": ["strict", "staging"],
-  "warm_ttl_pct": 250,
-  "command_depth": 79.03,
-  "idle_size_pct": 6468,
-  "dry_run": false
+  "persist": true,
+  "warm_threshold_s": 55,
+  "min_delay_ms": false,
+  "retry_capacity": 54
 }
