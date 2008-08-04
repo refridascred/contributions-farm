@@ -42,19 +42,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] levels, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
