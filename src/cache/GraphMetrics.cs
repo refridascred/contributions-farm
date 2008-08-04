@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] data, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((count - item) <= item)
+                if (datum < floor)
                 {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the queue state values.</summary>
