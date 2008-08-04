@@ -1,7 +1,7 @@
-id,owner,weight,level
-1,522,36.32,347
-2,855,79.85,849
-3,200,standard,54.64
-4,standard,open,19.52
-5,21.06,stable,stable
-6,633,local,67.5
+id,level,score,state,region
+1,19.94,primary,640,766
+2,781,123,589,5.76
+3,stable,464,90.3,59.96
+4,331,cached,cached,blue
+5,17.02,stable,6.27,edge
+6,134,25.89,93.67,613
