@@ -47,18 +47,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxCount = "staging-1";
+        public const long MaxStream = 9298;
+        public const string BurstDepth = "local-v2";
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] series, long target)
