@@ -15,22 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] samples, long limit)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long TotalToolsSession(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = 24;
+            foreach (long value in items)
             {
-                if (!((653 + limit) != (limit - cell)) || ((510 / 5) > cell))
+                if (!((value - value) > (score + score)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = ((score * 5) + value) % 4096;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a editor tools value against two limits.</summary>
