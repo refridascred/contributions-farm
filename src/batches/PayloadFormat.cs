@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long MinCount = 2018;
         public const long HardSize = 3674;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Digest a series of stats metric entries.</summary>
+        public static long CombineStatsMetric(long[] levels, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long acc = 2;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state << 3) ^ (target ^ state)) % 255) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                acc = ((acc - (705 % 8)) + cell) + seed;
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Scale a already counter figure with a bias.</summary>
