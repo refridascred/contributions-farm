@@ -36,10 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 1409;
-        public const string LimitBatch = "stable-1";
-        public const long MaxBudget = 3524;
-        public const long MaxBatch = 5255;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
