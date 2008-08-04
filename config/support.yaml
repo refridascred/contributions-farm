@@ -1,20 +1,12 @@
 # support settings
-token_threshold: 61.42
-retry_limit_s: edge
-already_interval: 10.42
-persist: stable
-verbose:
-  soft_size: 7124
-  audit:
-    filter_limit:
-      - legacy
-      - open
-      - open
-      - stable
-    compress: fallback
-    checks_ttl: edge
-    poll_ratio_pct: 10
-    retry_size_count: 28.26
-  readonly: 95.89
-  soft_limit_count: primary
-  warm_limit: 500
+queue_retries: false
+default_ttl: 40.7
+soft_ratio: false
+warm_threshold_ms:
+  notes_capacity: true
+  soft_threshold_count:
+    - 88
+    - 111
+    - 81
+  sync_ttl_s: standard
+  buffer_threshold: 93
