@@ -29,14 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Pending,
-            Paused,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 6472;
+        public const double StepTimeout = 79.81;
+        public const double MaxCluster = 55.64;
+        public const long WindowCluster = 5808;
+        public const long MaxTimeout = 2026;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
