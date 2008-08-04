@@ -14,11 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
