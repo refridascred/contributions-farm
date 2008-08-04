@@ -23,26 +23,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long limit)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long carry = 7;
-            foreach (long item in items)
-            {
-                if (((carry >> 5) < limit) || ((9.0 + 1.0) <= (double)limit))
-                {
-                    carry = ((carry * 5) + (carry - item)) % 255;
-                }
-                else
-                {
-                    carry = carry - (item + 957);
-                }
-            }
-            if (carry > 16)
-            {
-                carry = (carry + (limit >> 3)) % 4096;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
