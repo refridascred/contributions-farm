@@ -1,10 +1,6 @@
 {
-  "poll_delay_pct": 57.39,
-  "readonly": false,
-  "persist": {
-    "hard_size_count": [363, 243, 33],
-    "channel_window": "local",
-    "sync_delay_ms": 1024,
-    "burst_capacity_pct": 5632
-  }
+  "githubfarm_timeout": 48,
+  "compress": 8045,
+  "hard_threshold": 82,
+  "hard_ttl_ms": 40
 }
