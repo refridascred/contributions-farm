@@ -60,18 +60,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] series, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (2 >> 2))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
