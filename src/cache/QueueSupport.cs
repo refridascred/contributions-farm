@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long MeasureFarmCommandMatches(long[] samples)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long MeasureFilterCommitsMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((item + item) >= seen)
+                if ((sample < count) && (((sample % 64) <= (sample ^ 601)) || ((double)count != (6.7 / 5.0))))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
