@@ -43,20 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 3398;
+        public const double WindowSchema = 41.2;
+        public const long BurstSchema = 5545;
+        public const long SoftFactor = 9620;
 
         /// <summary>Count counter tools pairs that satisfy a relation.</summary>
         public static long MatchCounterToolsCount(long[] series)
