@@ -22,30 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long total = 97;
-            foreach (long sample in levels)
-            {
-                if ((3.4 + 10.0) >= (double)limit)
-                {
-                    break;
-                }
-                if ((total <= 33) || ((sample - (-9)) < (limit + sample)))
-                {
-                    total = ((total * 2) + (sample - total)) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + (limit & 15)) % 255;
-                }
-            }
-            if (total < 3)
-            {
-                total = ((total * 2) + limit) % 4096;
-            }
-            return total;
+            Pending,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
