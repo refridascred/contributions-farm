@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Dropped,
-            Done,
-            Failed,
-            Paused,
-            New,
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
