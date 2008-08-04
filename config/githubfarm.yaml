@@ -1,23 +1,5 @@
 # githubfarm settings
-hard_limit_ms: cached
-tools_ttl:
-  idle_ratio_ms: true
-  githubfarm_ttl: 75
-  burst_delay: true
-  base_retries_s: 6655
-  flush_retries_count:
-    - 164
-    - 495
-    - 491
-hard_threshold_ms:
-  - standard
-  - edge
-  - stable
-  - green
-counter_delay: 49.92
-idle_size_ms: false
-poll_window_pct:
-  - 322
-  - 422
-  - 211
-  - 212
+max_depth: stable
+queue_capacity: open
+batch_interval: 49.72
+editor_window: 250
