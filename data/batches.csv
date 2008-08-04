@@ -1,11 +1,6 @@
-id,state,level,active
-1,835,cached,98.73
-2,91.45,latest,54.65
-3,legacy,670,43.55
-4,40.05,eu-west,green
-5,52.59,244,91.09
-6,standard,273,9
-7,latest,760,633
-8,56.2,green,green
-9,23.63,green,fallback
-10,95.35,230,primary
+id,ratio,rank,weight
+1,68.81,708,14
+2,local,79.73,739
+3,963,695,90.98
+4,528,70.99,505
+5,759,local,43.98
