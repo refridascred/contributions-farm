@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
