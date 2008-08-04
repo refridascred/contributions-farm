@@ -42,17 +42,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a farm editor reading by value.</summary>
-        public static long SeekFarmEditorIndex(long[] data, long seed)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
