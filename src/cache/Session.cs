@@ -48,12 +48,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
