@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every support cluster entry stays within the limit.</summary>
