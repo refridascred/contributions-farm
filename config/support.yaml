@@ -1,19 +1,15 @@
 # support settings
-batch_ttl_ms: stable
-strict: 13
-payload_threshold: 5930
-farm_interval: primary
-readonly:
-  hard_capacity_s:
-    - 236
-    - 277
-  sync_limit_ms: 250
-  persist:
+session_window:
+  editor_delay: 69
+  sync_retries: 5.06
+  context_threshold: 219
+  warm_ttl_count:
+    - latest
+    - primary
     - local
-    - green
-  poll_capacity_pct:
-    - blue
-    - stable
-    - stable
-  stats_limit: 9765
-  verbose: green
+min_capacity: 13
+record_delay:
+  readonly: 30
+  retry_threshold: 9133
+  persist: edge
+cache_threshold_s: primary
