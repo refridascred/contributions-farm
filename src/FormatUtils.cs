@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 77;
+            foreach (long item in series)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark - (mark * 4)) % 1000) ^ item) + seed;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the report kind values.</summary>
