@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long WindowSize = 3820;
         public const long StepFactor = 3534;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings, long target)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (target < (hits + target))
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next buffer value.</summary>
