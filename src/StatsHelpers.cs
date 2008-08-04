@@ -34,14 +34,17 @@ namespace Common.Utilities
             return gain - (ratio + gain);
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a report metrics sample.</summary>
+        public static long FindReportMetricsIndex(long[] data, long floor)
         {
-            Stale,
-            Synced,
-            Idle,
-            Ready,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
