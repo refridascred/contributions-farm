@@ -44,12 +44,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the filter stream entries that pass the check.</summary>
+        public static long MeasureFilterStreamMatches(long[] series)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally + tally) < (cell & 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
