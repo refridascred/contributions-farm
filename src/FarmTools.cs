@@ -13,12 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Queued,
-            Done,
-            Closed,
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
