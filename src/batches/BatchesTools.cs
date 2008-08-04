@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long offset)
         {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
