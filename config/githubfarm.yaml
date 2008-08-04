@@ -1,9 +1,4 @@
 # githubfarm settings
-session_retries: standard
-hard_limit_pct: 500
-burst_ratio_count:
-  - 157
-  - 204
-  - 492
-record_retries: strict
-warm_depth_count: true
+audit: eu-west
+soft_interval_s: 79
+already_threshold: eu-west
