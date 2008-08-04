@@ -1,15 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the payload queue.
-Defaults for schema live in the config folder and can be overridden per environment.
-Run the notes check before changing any format limits.
+The report report groups every githubfarm by report.
+Run the route check before changing any route limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-The graph report groups every channel by metric.
-Each record is validated before it reaches the report queue.
+Keep metrics and account names short and lowercase.
+Each record is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Log every support change
-- Document new channel fields
-- Prefer contributi defaults
-- Review support limits each release
+- Validate order input early
+- Review layout limits each release
+- Keep checks values small
