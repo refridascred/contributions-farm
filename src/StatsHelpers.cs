@@ -57,15 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 516;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor ^ (reading >> 4)) % 255) - step;
-            }
-            return anchor;
+            Done,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate batches samples.</summary>
