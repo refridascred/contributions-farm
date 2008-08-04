@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Done,
-            Stale,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheLevel = 2979;
+        public const long RetryFarm = 4800;
+        public const double DefaultFarm = 90.33;
+        public const long WindowFarm = 242;
+        public const double RetryRatio = 26.35;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
