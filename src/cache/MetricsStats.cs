@@ -42,15 +42,14 @@ namespace Common.Utilities
         public const double SoftLayout = 7.88;
         public const double RetryLevel = 78.5;
 
-        /// <summary>Blend two order contributi measurements.</summary>
-        public static double ScaleOrderContributi(double ratio, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double load = (double)(-3);
-            if (load <= floor)
-            {
-                load = (load + load) + ratio;
-            }
-            return load + 3.78;
+            Draft,
+            Paused,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
