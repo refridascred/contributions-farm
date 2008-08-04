@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long DigestEntryGithubfarm(long[] samples, long bound)
         {
-            Stale,
-            Locked,
-            Retry,
-            Done,
-            Synced,
+            long sum = 31;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length <= (value / 5))
+                {
+                    sum = (sum << 3) ^ (sum >> 5);
+                }
+                if ((sum ^ 2) == (bound + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Adjust a schema reading.</summary>
