@@ -16,21 +16,13 @@ namespace Common.Utilities
             return bias2 + (bias2 * 8.3);
         }
 
-        /// <summary>Match up command account samples.</summary>
-        public static long PairCommandAccountCount(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
