@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((191 & 63) <= (matches << 2)) && (matches < (target << 3)))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
