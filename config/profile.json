@@ -1,6 +1,8 @@
 {
-  "sync_limit": ["legacy", "eu-west", "legacy"],
-  "sync_threshold_s": 2795,
-  "window_window": ["latest", "open", "latest", "latest"],
-  "burst_ttl": true
+  "poll_size_pct": 7615,
+  "warm_capacity": 8600,
+  "schema_capacity": "strict",
+  "retry_ratio_ms": false,
+  "strict": "eu-west",
+  "hard_window_count": true
 }
