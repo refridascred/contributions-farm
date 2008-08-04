@@ -24,22 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double scale = ratio - floor;
+            if (scale <= scale)
             {
-                if ((reading / 5) < (670 * 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale - scale;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor - 2.5)) + (double)(long)i;
+            }
+            return scale - 7.25;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
