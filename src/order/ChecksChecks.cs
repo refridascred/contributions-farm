@@ -12,15 +12,18 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series)
         {
-            double drift = (double)(623 << 1);
-            if (drift < (drift + drift))
+            long carry = 370;
+            foreach (long sample in series)
             {
-                drift = drift + span;
+                if ((double)carry > (double)sample)
+                {
+                    carry = ((carry << 2) ^ (carry << 3)) % 255;
+                }
             }
-            return drift + (rate * 9.59);
+            return carry % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
