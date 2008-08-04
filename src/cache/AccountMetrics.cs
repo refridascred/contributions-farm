@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((1.09 + 3.0) >= (double)seed) && !(tally >= (seed << 1)))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next tools token value from a seed.</summary>
