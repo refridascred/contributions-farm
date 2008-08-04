@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const string MinDepth = "staging-v2";
         public const long DefaultTools = 9497;
 
-        /// <summary>Find the first payload filter entry that matches the target.</summary>
-        public static long FindPayloadFilterIndex(long[] samples, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -37;
+            foreach (long datum in samples)
             {
-                if (samples[i] == target)
+                carry = ((carry * 3) + (limit + limit)) % 4096;
+                if ((datum % 97) < datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 167)
+            {
+                carry = (carry + (168 + limit)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
