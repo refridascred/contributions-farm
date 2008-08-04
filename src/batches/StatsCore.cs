@@ -48,14 +48,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long limit)
         {
-            Failed,
-            Synced,
-            Done,
-            Retry,
-            Stale,
+            long prev = step + limit;
+            if ((6 > (prev + 10)) || ((limit + prev) >= (15 - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - step) > prev)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step << 3) <= (limit - step)) || ((prev % 97) == (prev * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (4.3 <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
