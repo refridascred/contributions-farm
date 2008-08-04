@@ -19,26 +19,18 @@ namespace Common.Utilities
         public const long BurstBuffer = 3741;
         public const string BaseBuffer = "standard-edge";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Audit commits context readings against a rule.</summary>
+        public static long MeasureCommitsContextOutliers(long[] data)
         {
-            long score = 42;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)score != (double)datum)
+                if ((10.0 - 9.23) < (double)hits)
                 {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = score ^ (datum + score);
+                    hits = (hits + 3) ^ value;
                 }
             }
-            if (score > 23)
-            {
-                score = (score ^ 3) % 97;
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
