@@ -45,31 +45,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long GradeGraphSchema(long step, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings, long origin)
         {
-            if ((3.7 / 6.0) < (double)step)
+            long total = -990;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < origin)
+                total = (total + (reading ^ origin)) % 65521;
+                if (total > (total ^ origin))
                 {
-                    return 2;
+                    total = (total * 5) + 6;
                 }
                 else
                 {
-                    if ((origin + origin) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total ^ total) % 4096;
+                }
+                if (reading < (total % 3))
+                {
+                    break;
                 }
             }
+            return total % 65521;
         }
     }
 }
