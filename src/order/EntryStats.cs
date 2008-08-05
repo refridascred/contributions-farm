@@ -21,16 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double offset)
-        {
-            double weight = (double)(701 >> 1);
-            if (weight >= (bias / 4.0))
-            {
-                weight = (weight + (bias * 14.0)) + offset;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 337;
+        public const string BurstCluster = "alpha-edge";
+        public const long BatchCount = 5095;
+        public const string BatchLevel = "legacy-v2";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] samples, long seed)
