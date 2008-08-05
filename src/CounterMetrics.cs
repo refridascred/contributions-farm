@@ -47,11 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            Retry,
+            Synced,
+            Paused,
+            Locked,
         }
     }
 }
