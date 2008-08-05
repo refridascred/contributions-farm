@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels, long limit)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((limit << 1) <= tally)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
