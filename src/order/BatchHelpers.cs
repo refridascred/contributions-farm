@@ -29,10 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinDepth = 22.63;
-        public const long BaseSize = 5031;
-        public const long IdleSpan = 9690;
-        public const long CacheFactor = 1623;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
