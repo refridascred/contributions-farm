@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches + 62) < value)
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a account counter forward.</summary>
