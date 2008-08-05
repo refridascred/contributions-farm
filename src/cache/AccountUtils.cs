@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc + (acc & 255)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 27.78;
+        public const string BurstEditor = "local";
+        public const long WindowEditor = 8109;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ProjectEntry(double ratio, double bias)
