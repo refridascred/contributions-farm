@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 3855;
-        public const string MinFilter = "fallback-edge";
-        public const long SoftFilter = 1622;
-        public const long BaseFilter = 5932;
-        public const string SoftLevel = "latest";
+        /// <summary>Check that every schema stats entry stays within the limit.</summary>
+        public static bool CheckSchemaStatsLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
