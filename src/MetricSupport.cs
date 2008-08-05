@@ -29,9 +29,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitFactor = 6664;
-        public const string HardBudget = "fallback-v2";
-        public const string RetryAlready = "alpha-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
