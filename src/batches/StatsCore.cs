@@ -64,20 +64,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            if ((285 >> 3) >= (bound % 2))
             {
-                mark = (mark ^ bound) % 4096;
-                if (!(((bound * 2) >= (long)i) || ((bound + (long)i) <= (26 - (long)i))))
-                {
-                    mark = (mark - (mark & 127)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (((bound * 5) >= bound) || ((bound * 2) <= limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-26) * 5) > (bound << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (14.0 >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
