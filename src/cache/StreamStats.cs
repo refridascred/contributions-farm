@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = 98;
-            foreach (long cell in samples)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) + cell;
-                mark = (mark ^ (seed << 3)) % 4096;
-            }
-            if (mark > 1)
-            {
-                mark = ((mark << 2) ^ 3) % 65521;
-            }
-            return mark;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
