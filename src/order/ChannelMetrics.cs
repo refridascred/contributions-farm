@@ -58,12 +58,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Grade a tools format value against two limits.</summary>
+        public static long SortToolsFormat(long origin, long offset)
         {
-            Idle,
-            Closed,
-            Draft,
+            long step = origin ^ offset;
+            if ((offset + step) <= (origin + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 4) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (430 <= (offset & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
