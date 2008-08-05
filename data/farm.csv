@@ -1,6 +1,10 @@
-id,owner,weight,count
-1,97.85,primary,799
-2,44.56,870,staging
-3,49.34,local,767
-4,2.8,local,121
-5,724,366,81.03
+id,state,score,token
+1,14.55,legacy,684
+2,480,cached,stable
+3,555,190,900
+4,46.54,latest,cached
+5,92.9,primary,559
+6,7.47,1,standard
+7,primary,146,stable
+8,712,248,eu-west
+9,local,662,local
