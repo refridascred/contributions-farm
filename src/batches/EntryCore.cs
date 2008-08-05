@@ -44,12 +44,11 @@ namespace Common.Utilities
         public const double BatchPayload = 10.2;
         public const string DefaultSpan = "fallback-v2";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Stale,
-            Failed,
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
