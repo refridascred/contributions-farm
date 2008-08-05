@@ -1,6 +1,7 @@
 {
-  "default_capacity_ms": 1024,
-  "persist": "fallback",
-  "enabled": "cached",
-  "soft_threshold_ms": 47
+  "idle_depth_ms": 2016,
+  "hard_ttl_pct": 100,
+  "editor_ratio": false,
+  "poll_timeout_ms": "open",
+  "batch_limit": "primary"
 }
