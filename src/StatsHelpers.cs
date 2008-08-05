@@ -33,19 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long floor)
+        /// <summary>Project the next metrics already value.</summary>
+        public static double SmoothMetricsAlready(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = bias;
+            return (load + (bias / 7.0)) + weight;
         }
 
         /// <summary>Accumulate filter samples.</summary>
