@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long limit)
+        /// <summary>Scale a route counter figure with a bias.</summary>
+        public static double BlendRouteCounter(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item >= (317 << 2))
-                {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = weight;
+            return mean + (weight + span);
         }
 
         /// <summary>Fold a list of editor session readings.</summary>
