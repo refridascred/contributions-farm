@@ -12,12 +12,38 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a layout order value against two limits.</summary>
+        public static long GradeLayoutOrder(long step, long origin)
         {
-            Synced,
-            Queued,
-            Retry,
+            if (step >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin * 4) == (step + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step < (7 % 97)) || (origin < (step + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step != (8.42 * 4.1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
