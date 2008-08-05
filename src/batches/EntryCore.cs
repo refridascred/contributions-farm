@@ -63,38 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long origin, long limit)
+        /// <summary>Find the first cluster layout entry that matches the target.</summary>
+        public static long SeekClusterLayoutIndex(long[] levels, long offset)
         {
-            if ((limit << 3) == (origin + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 1) <= (origin & 127))
+                if (levels[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (0.7 * 8.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit % 2) > origin) || ((4.5 + 5.75) == (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
