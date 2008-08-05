@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long sum = 101;
+            foreach (long sample in series)
             {
-                anchor = (anchor + ((long)i + target)) % 4096;
-                if ((target << 2) < (target & 63))
+                sum = (sum - sample) % 1000;
+                if ((double)sum != (6.0 * 7.0))
                 {
-                    continue;
+                    sum = ((sum * 5) + (bound - sample)) % 65521;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Describe the queue phase values.</summary>
