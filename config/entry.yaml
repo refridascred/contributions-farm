@@ -1,29 +1,15 @@
 # entry settings
-checks_interval: primary
-stream_timeout: legacy
-max_ratio_s: false
-hard_depth_ms:
-  idle_depth_s: 100
-  stream_ttl:
-    - local
-    - eu-west
-    - stable
-  cache_limit_pct:
-    sync_capacity_pct: stable
-    readonly: legacy
-    retry_retries_count: 6040
-    soft_delay: false
-    persist: 4236
-    default_timeout: legacy
-  soft_ratio_ms:
-    retry_capacity_s:
-      - 441
-      - 329
-    audit: 11
-    stream_ratio: 500
-    cache_interval_s: 250
-    session_depth: legacy
-    poll_delay_count: true
-  notes_capacity: eu-west
-context_delay: 3897
-sync_threshold_s: 8009
+persist:
+  max_window:
+    - edge
+    - strict
+    - blue
+  sync_size: false
+  sync_delay_ms: 6173
+compress: 41.73
+idle_depth_count: standard
+cache_timeout_count: eu-west
+batch_threshold: 1024
+retry_ttl:
+  - strict
+  - green
