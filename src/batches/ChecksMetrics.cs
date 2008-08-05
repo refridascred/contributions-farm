@@ -69,15 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] series, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long sample in series)
             {
-                if (((double)seen >= (4.0 / 7.0)) || (datum < origin))
+                if ((sample >> 1) > sample)
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
