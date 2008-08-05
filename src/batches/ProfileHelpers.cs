@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Match up command support samples.</summary>
+        public static long OverlapCommandSupportCount(long[] values)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
