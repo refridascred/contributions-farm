@@ -67,13 +67,22 @@ namespace Common.Utilities
             return bias - (double)805;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] samples)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) > 82)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
