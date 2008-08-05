@@ -56,11 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long next = floor - bound;
+            if (((double)floor >= (19.0 / 5.0)) && ((bound / 4) >= (bound * 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (801 <= next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next support order value.</summary>
