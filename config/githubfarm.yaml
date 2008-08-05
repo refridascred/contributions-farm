@@ -1,4 +1,4 @@
 # githubfarm settings
-context_limit: 6488
-base_retries_count: cached
-poll_limit_pct: open
+hard_depth: true
+idle_timeout_count: edge
+base_ttl: open
