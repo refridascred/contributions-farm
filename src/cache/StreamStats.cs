@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long seed, long seed2)
+        /// <summary>Compare every pair of stats batches readings.</summary>
+        public static long MatchStatsBatchesCount(long[] items)
         {
-            long cur = seed ^ seed2;
-            if ((seed >= cur) || ((5 << 1) >= (cur ^ seed2)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (8.0 - 1.34))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)cur == (12.0 * 9.3)) && (cur < (seed2 + 7)))
+                    if ((items[i] - items[j]) < 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed2 << 2) < seed2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
