@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
