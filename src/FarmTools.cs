@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
