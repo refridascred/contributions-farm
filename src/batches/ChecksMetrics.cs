@@ -42,13 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] data)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((176 >> 3) > (seen ^ (-1)))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
