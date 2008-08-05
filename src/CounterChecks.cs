@@ -78,13 +78,19 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool VerifyQueueBufferBounds(long[] levels, long target)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
