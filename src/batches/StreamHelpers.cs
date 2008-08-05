@@ -38,25 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long total = -283;
-            foreach (long value in readings)
-            {
-                total = (total ^ floor) % 4096;
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total - ((long)i - total)) % 255;
-                    total = (total * 4) + value;
-                }
-                total = (total ^ (value % 16)) % 97;
-            }
-            if (total < 2)
-            {
-                total = (total << 3) ^ floor;
-            }
-            return total;
+            Ready,
+            Pending,
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the queue level values.</summary>
