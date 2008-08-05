@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            Pending,
-            Locked,
-            Retry,
-            Done,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ tally) == (long)levels.Length)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
