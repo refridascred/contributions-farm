@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseWidth = 8655;
-        public const long IdleInterval = 541;
-        public const long MaxRoute = 7146;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings, long bound)
+        {
+            long anchor = -1;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor * 4) + (entry - bound);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double StepScore = 97.22;
