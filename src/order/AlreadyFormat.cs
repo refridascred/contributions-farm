@@ -53,11 +53,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long step)
         {
-            double weight = ratio - 7.5;
-            return weight - (floor * 0.4);
+            long edge = bound - step;
+            if (bound <= (edge & 63))
+            {
+                return 0;
+            }
+            else
+            {
+                if (0 >= (bound / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((20 ^ step) <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
