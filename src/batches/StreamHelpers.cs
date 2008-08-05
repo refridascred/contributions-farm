@@ -67,12 +67,11 @@ namespace Common.Utilities
         public const double MinSupport = 26.57;
         public const long BaseDepth = 2990;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Paused,
-            Failed,
-            Queued,
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
