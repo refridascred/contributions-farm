@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long step)
-        {
-            if (step >= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (32 <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step > (step >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= (offset / 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 81.87;
+        public const double DefaultSize = 59.49;
+        public const double HardSpan = 49.2;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
