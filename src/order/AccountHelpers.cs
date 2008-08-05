@@ -61,11 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultSpan = 34.11;
-        public const long BatchChannel = 8060;
-        public const string MaxChannel = "local-v2";
-        public const long HardBudget = 885;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] items, long seed)
