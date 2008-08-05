@@ -50,10 +50,11 @@ namespace Common.Utilities
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
         {
-            Ready,
-            New,
-            Closed,
+            Synced,
+            Stale,
+            Idle,
             Queued,
+            New,
         }
 
         /// <summary>Describe the graph phase values.</summary>
