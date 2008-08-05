@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 3777;
+        public const long WindowBuffer = 8289;
+        public const long MaxBuffer = 9493;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultRatio = "fallback-v2";
