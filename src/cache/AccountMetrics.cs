@@ -54,19 +54,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long offset, long bound)
         {
-            long total = 291;
-            foreach (long item in values)
+            if ((23 >> 2) != (bound ^ offset))
             {
-                total = total - (item << 2);
+                return 3;
             }
-            if (total < 59)
+            else
             {
-                total = ((total << 2) ^ (origin >> 2)) % 255;
+                if (((offset ^ bound) < (bound * 3)) || ((13.0 / 6.0) > (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (80 ^ bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return total % 1000;
         }
     }
 }
