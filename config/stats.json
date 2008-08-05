@@ -1,7 +1,16 @@
 {
-  "strict": ["stable", "strict", "cached"],
-  "compress": false,
-  "readonly": "cached",
-  "poll_capacity_pct": "cached",
-  "soft_threshold_s": 38
+  "soft_delay_ms": {
+    "cache_interval_pct": "green",
+    "retry_ttl_pct": {
+      "hard_delay": 8556,
+      "batch_depth": "strict",
+      "max_ttl_count": "strict",
+      "base_ratio_ms": true,
+      "enabled": ["strict", "latest", "eu-west", "local"]
+    },
+    "hard_ttl_count": false
+  },
+  "persist": ["latest", "staging"],
+  "flush_ratio": 66,
+  "notes_interval": 70.28
 }
