@@ -1,23 +1,6 @@
 {
-  "idle_size": "standard",
-  "checks_capacity": {
-    "base_size_count": "staging",
-    "warm_depth": 3324,
-    "metric_timeout": 7709,
-    "compress": 49,
-    "channel_timeout": "blue"
-  },
-  "poll_depth_pct": {
-    "flush_ratio": {
-      "record_capacity": 338,
-      "readonly": 9649,
-      "hard_ratio_count": [84, 349, 428],
-      "max_threshold_ms": 96,
-      "metric_capacity": 13.66
-    },
-    "soft_timeout_pct": ["standard", "cached", "blue", "standard"],
-    "stats_retries": 49
-  },
-  "strict": 69,
-  "persist": 88.81
+  "verbose": 250,
+  "audit": 16,
+  "readonly": "primary",
+  "warm_timeout_count": 500
 }
