@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long SoftStats = 1106;
         public const long CacheRatio = 4711;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Dropped,
+            New,
+            Retry,
+            Paused,
         }
     }
 }
