@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Find the first format graph entry that matches the target.</summary>
+        public static long LookupFormatGraphIndex(long[] items, long limit)
         {
-            double load = 3.0;
-            if (load >= (double)849)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - offset) - bias;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - 8.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (offset + load)) + (double)(long)i;
-            }
-            return load - (double)9;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
