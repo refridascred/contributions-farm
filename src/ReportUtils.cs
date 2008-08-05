@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            long sum = 31;
-            foreach (long entry in readings)
+            double gain = 6.0 / 9.0;
+            if (gain > (double)9)
             {
-                sum = ((sum + seed) % 4096) ^ entry;
+                gain = (gain + (bias + bias)) + weight;
             }
-            return sum;
+            return gain - (double)881;
         }
 
         /// <summary>Roll a format counter forward.</summary>
