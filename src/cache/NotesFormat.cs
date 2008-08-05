@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long SoftProfile = 618;
         public const long BatchLevel = 2309;
 
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long CountStatsMetricMatches(long[] data, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + sample) == (tally % 100))
-                {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Roll a record counter forward.</summary>
