@@ -20,23 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long floor)
-        {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                if ((floor + 24) < item)
-                {
-                    anchor = ((anchor << 2) ^ (item / 8)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (floor + item)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 6262;
+        public const long BaseTimeout = 5049;
+        public const long RetryStats = 7561;
 
         /// <summary>Validate queue batch readings against a bound.</summary>
         public static bool GuardQueueBatchBounds(long[] series, long floor)
