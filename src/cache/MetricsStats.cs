@@ -13,19 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every batches layout entry stays within the limit.</summary>
-        public static bool CheckBatchesLayoutBounds(long[] readings, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
