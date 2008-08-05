@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            double gain2 = 20.0;
+            if (gain2 < gain)
             {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = gain2 + offset;
             }
-            return ok;
+            return gain2 + gain2;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
