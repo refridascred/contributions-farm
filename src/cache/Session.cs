@@ -21,14 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Dropped,
-            Pending,
-            Ready,
-            Synced,
-            Queued,
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
