@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)anchor <= (3.0 / 6.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (anchor + anchor)) % 97;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
