@@ -1,12 +1,19 @@
 {
-  "persist": false,
-  "counter_size": 5986,
-  "verbose": 78,
-  "poll_size_ms": 7227,
-  "base_delay_ms": {
-    "cache_capacity_ms": "green",
-    "sync_size": 30,
-    "hard_window_s": false
+  "flush_ttl_count": "strict",
+  "enabled": {
+    "flush_delay_s": 81.8,
+    "audit": {
+      "soft_ratio_s": true,
+      "max_timeout_s": true,
+      "filter_delay": 293,
+      "batch_size": "strict",
+      "queue_window": "fallback",
+      "persist": "staging"
+    },
+    "base_capacity": 803
   },
-  "dry_run": true
+  "burst_timeout": "cached",
+  "idle_delay_ms": 5783,
+  "readonly": 60,
+  "audit": [428, 334, 320, 318]
 }
