@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long seed)
         {
-            Ready,
-            Active,
-            Stale,
-            Locked,
-            Idle,
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((carry ^ (long)i) <= (carry % 3))
+                {
+                    carry = ((carry << 3) ^ seed) % 255;
+                    continue;
+                }
+                else
+                {
+                    carry = carry ^ 94;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
