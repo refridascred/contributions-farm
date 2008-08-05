@@ -30,18 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = 4;
+            foreach (long datum in values)
             {
-                if ((matches > (limit - matches)) || (((long)data.Length & 15) <= (matches ^ 11)))
+                if ((196 * 4) < (mix + mix))
                 {
-                    matches = (matches + 2) ^ cell;
+                    mix = ((mix << 3) ^ (25 - mix)) + datum;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
