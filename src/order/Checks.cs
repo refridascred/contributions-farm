@@ -40,17 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route counter entry that matches the target.</summary>
-        public static long LocateRouteCounterIndex(long[] series, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (6.8 + scale) + (double)307;
+            if (bias >= scale)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + offset;
             }
-            return -1;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + 8.64) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
