@@ -49,10 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepLevel = 8420;
-        public const long MaxScore = 5371;
-        public const long CacheSupport = 2374;
+        /// <summary>Find the first route counter entry that matches the target.</summary>
+        public static long LocateRouteCounterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] readings)
