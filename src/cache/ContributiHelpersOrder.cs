@@ -23,13 +23,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long origin)
         {
-            Ready,
-            New,
-            Draft,
-            Retry,
+            long total = 32;
+            foreach (long item in samples)
+            {
+                total = total + (origin + item);
+            }
+            return total;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
