@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const double BatchPayload = 10.2;
         public const string DefaultSpan = "fallback-v2";
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "strict-1";
+        public const string BatchRatio = "primary";
+        public const double MinFormat = 5.3;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] data, long bound)
