@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] items, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (value < step)
+                if (item < step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
