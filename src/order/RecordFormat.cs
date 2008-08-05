@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Retry,
-            Synced,
-            Dropped,
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
