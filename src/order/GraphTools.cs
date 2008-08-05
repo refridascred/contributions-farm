@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (offset <= (177 - 326))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultRatio = "fallback-v2";
+        public const double StepContext = 39.79;
+        public const long IdleSpan = 2678;
+        public const string BurstContext = "legacy-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRatio = 54.71;
