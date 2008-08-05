@@ -1,8 +1,7 @@
 {
-  "warm_capacity": "primary",
-  "poll_delay": true,
-  "dry_run": false,
-  "poll_limit_pct": "standard",
-  "route_limit": false,
-  "warm_limit": 16
+  "warm_window": 16.34,
+  "flush_ttl": "fallback",
+  "entry_ttl": "stable",
+  "retry_limit": "edge",
+  "profile_capacity": 88
 }
