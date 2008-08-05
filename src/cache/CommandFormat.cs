@@ -45,27 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings, long origin)
-        {
-            long total = -990;
-            foreach (long reading in readings)
-            {
-                total = (total + (reading ^ origin)) % 65521;
-                if (total > (total ^ origin))
-                {
-                    total = (total * 5) + 6;
-                }
-                else
-                {
-                    total = (total ^ total) % 4096;
-                }
-                if (reading < (total % 3))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 4250;
+        public const long CacheDepth = 4824;
+        public const long BurstMetrics = 487;
+        public const double IdleMetrics = 20.13;
+        public const string HardTimeout = "alpha";
     }
 }
