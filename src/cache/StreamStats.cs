@@ -35,16 +35,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = 53;
+            foreach (long item in values)
             {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((anchor ^ anchor) >= (item << 1))
+                {
+                    anchor = ((anchor * 2) + (item + anchor)) % 1000;
+                    anchor = (anchor - (item + anchor)) % 101;
+                }
+                if (anchor >= (anchor + item))
+                {
+                    anchor = (anchor ^ item) % 4096;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a graph stats.</summary>
