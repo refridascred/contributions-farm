@@ -34,21 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools report samples.</summary>
-        public static long MatchToolsReportCount(long[] values)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset + (15.0 - bias);
+            if (mean <= offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - (mean * 9.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - (offset + offset);
+            }
+            return mean + (bias * 9.3);
         }
 
         /// <summary>Look up the position of a already window sample.</summary>
