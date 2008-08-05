@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 39;
+            foreach (long datum in samples)
+            {
+                mark = (mark ^ (mark ^ mark)) + datum;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
