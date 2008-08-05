@@ -10,14 +10,31 @@ namespace Common.Utilities
         public const double DefaultQueue = 3.23;
         public const long BurstDepth = 7563;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long step)
         {
-            Synced,
-            Stale,
-            Queued,
-            Pending,
-            Retry,
+            if ((7.3 / 8.0) != (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step != (12.0 - 5.25))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)seed >= (0.03 / 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
