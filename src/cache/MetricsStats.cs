@@ -56,21 +56,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((15 ^ step) <= step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (step >= (origin >> 4))
                 {
-                    if ((levels[i] + levels[j]) > 7)
+                    return 2;
+                }
+                else
+                {
+                    if (step > 57)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
