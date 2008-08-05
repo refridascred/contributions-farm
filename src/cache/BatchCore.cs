@@ -40,15 +40,15 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            double drift = 3.39;
-            for (int i = 0; i < 8; i++)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                drift = ((drift - weight) + (double)(long)i) - floor;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return drift + drift;
+            return result;
         }
     }
 }
