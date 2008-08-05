@@ -57,15 +57,16 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                total = (total << 3) ^ (origin << 3);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
