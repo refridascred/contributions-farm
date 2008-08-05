@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleLevel = 4960;
-        public const long DefaultQueue = 9765;
-        public const double SoftQueue = 1.34;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double floor)
+        {
+            double mean = floor / 4.0;
+            if (mean <= (8.64 / 8.0))
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - (double)9;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
