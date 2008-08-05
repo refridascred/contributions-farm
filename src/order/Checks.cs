@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits << 1) != (hits + value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a metric cache reading by value.</summary>
