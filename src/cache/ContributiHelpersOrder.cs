@@ -20,21 +20,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 17;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell + (long)data.Length) < (carry ^ 0)) && ((carry + cell) != (cell / 8)))
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (carry % 5)) % 4096;
                 }
             }
-            return seen;
+            if (carry > 1)
+            {
+                carry = ((carry * 2) + (carry & 63)) % 4096;
+            }
+            return carry;
         }
     }
 }
