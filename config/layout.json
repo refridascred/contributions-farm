@@ -1,14 +1,7 @@
 {
-  "base_delay_ms": true,
-  "burst_delay_s": "legacy",
-  "base_capacity_ms": false,
-  "command_limit": "blue",
-  "order_capacity": 100,
-  "warm_delay": {
-    "base_ttl_s": 46.16,
-    "contributi_threshold": ["edge", "staging", "edge"],
-    "burst_limit_count": "strict",
-    "profile_timeout": "strict",
-    "payload_threshold": "green"
-  }
+  "warm_depth": 17.19,
+  "support_ttl": 5065,
+  "verbose": 7458,
+  "cache_capacity_ms": 500,
+  "batch_ttl": "legacy"
 }
