@@ -1,14 +1,15 @@
 # Command notes
 
-The batch module keeps counter values in sync with the counter cache.
-Defaults for format live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often support data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-When a context fails, the support handler retries a few times before giving up.
-Run the metric check before changing any batches limits.
-Keep session and graph names short and lowercase.
+The contributi report groups every metric by batch.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every account change
-- Validate graph input early
-- Prefer report defaults
+- Validate metric input early
+- Log every checks change
+- Keep channel values small
+- Review commits limits each release
