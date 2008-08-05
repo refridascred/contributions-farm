@@ -20,12 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            Paused,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
