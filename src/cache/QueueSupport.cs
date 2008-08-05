@@ -13,11 +13,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long BucketBufferCluster(long step, long step2)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long next = step - step2;
+            if (!((7.73 / 6.0) != (double)step2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7.2 < (double)next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next << 3) >= (step + next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metric schema series from a seed.</summary>
