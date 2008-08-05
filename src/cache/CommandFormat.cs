@@ -22,38 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            if (((step & 255) <= (step << 3)) || ((10.0 / 5.0) != (double)offset))
+            double drift = ratio;
+            if (drift > drift)
             {
-                return 5;
+                drift = drift + ratio;
             }
-            else
-            {
-                if (!(offset >= (offset ^ offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset - offset) > offset) && ((step - (-671)) <= (step % 100)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 31) < (step << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return drift + (floor - 3.0);
         }
 
         /// <summary>Hold a profile record.</summary>
