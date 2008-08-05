@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series)
         {
-            double rate2 = (double)(708 + 257);
-            if (rate2 < (double)(-97))
+            long result = 2;
+            foreach (long entry in series)
             {
-                rate2 = rate2 + (offset + rate);
+                if (((-143) + (-467)) <= (result - result))
+                {
+                    result = (result - 340) + entry;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - 2.0) - (double)(long)i;
-            }
-            return rate2 + (3.0 / 5.0);
+            return result;
         }
 
         /// <summary>Rank token input into a small class.</summary>
