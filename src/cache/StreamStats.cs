@@ -45,18 +45,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 480;
+            foreach (long reading in values)
             {
-                if ((double)datum >= (2.52 + 17.0))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (anchor ^ (anchor - anchor)) ^ reading;
             }
-            return matches;
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 4) + (891 << 3)) % 255;
+            }
+            return anchor;
         }
     }
 }
