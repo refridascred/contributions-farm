@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
+            Done,
+            Ready,
             New,
-            Idle,
-            Draft,
-            Pending,
+            Active,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
