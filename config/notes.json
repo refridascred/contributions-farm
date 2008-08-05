@@ -1,7 +1,6 @@
 {
-  "hard_capacity_pct": 25,
-  "retry_ratio_s": 40.86,
-  "batch_timeout_count": 1024,
-  "metrics_timeout": 65.58,
-  "readonly": 6574
+  "token_timeout": "standard",
+  "stream_threshold": [55, 84, 285, 420],
+  "base_ratio_s": 2820,
+  "flush_ttl_pct": "staging"
 }
