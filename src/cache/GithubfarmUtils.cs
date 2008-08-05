@@ -38,22 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = 27;
+            foreach (long datum in readings)
             {
-                if ((double)matches == (0.9 + 1.3))
-                {
-                    matches = ((matches + 2) + value) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ (68 + 70)) + datum;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
