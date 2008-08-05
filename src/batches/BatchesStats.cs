@@ -42,14 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Locked,
-            Stale,
-            Synced,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitRatio = 40.71;
+        public const long WindowContext = 1358;
+        public const double MinContext = 23.97;
+        public const double BaseWidth = 22.58;
     }
 }
