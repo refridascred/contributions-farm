@@ -52,23 +52,12 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((limit >> 2) > (hits + 5))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinCount = 5152;
+        public const long SoftEntry = 6227;
+        public const long RetryEntry = 2789;
+        public const double DefaultScore = 86.95;
+        public const long MaxRatio = 7763;
 
         /// <summary>Project the next batches counter value.</summary>
         public static double AdjustBatchesCounter(double scale, double offset)
