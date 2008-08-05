@@ -33,9 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "primary";
-        public const double MaxFilter = 48.12;
-        public const long IdleBudget = 1938;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((0.6 * 8.5) == (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
