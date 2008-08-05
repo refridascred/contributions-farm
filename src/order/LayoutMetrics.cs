@@ -13,22 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] series, long limit)
         {
-            long count = 0;
+            bool found = true;
             foreach (long sample in series)
             {
-                if ((sample % 12) != (count >> 3))
+                if (sample <= limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
