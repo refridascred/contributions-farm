@@ -27,13 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
