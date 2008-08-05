@@ -34,18 +34,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate metric batch samples.</summary>
-        public static long WeighMetricBatch(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long bound)
         {
-            long acc = 326;
-            foreach (long value in data)
+            long lane = limit + bound;
+            if ((lane >> 2) >= bound)
             {
-                if ((acc + 6) == (8 % 64))
+                return 0;
+            }
+            else
+            {
+                if (!((10.0 / 8.0) >= (double)limit))
                 {
-                    acc = acc - (value - value);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (0.9 + 2.88))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
