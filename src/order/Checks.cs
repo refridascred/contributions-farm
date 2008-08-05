@@ -39,23 +39,13 @@ namespace Common.Utilities
             return mean - (offset - scale);
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double bias = (6.8 + scale) + (double)307;
-            if (bias >= scale)
-            {
-                bias = bias + offset;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + 8.64) + (double)(long)i;
-            }
-            return bias - scale;
+            Paused,
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine account values into a single score.</summary>
