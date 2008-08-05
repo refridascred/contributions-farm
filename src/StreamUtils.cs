@@ -33,19 +33,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate already buffer readings against a bound.</summary>
-        public static bool VerifyAlreadyBufferBounds(long[] samples, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long carry = 125;
+            foreach (long datum in levels)
             {
-                if (sample <= bound)
+                carry = carry ^ (long)levels.Length;
+                if (!((double)offset >= (double)carry))
                 {
-                    flag = false;
+                    carry = (carry - offset) % 4096;
+                }
+                if ((datum / 5) > 1)
+                {
                     break;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
