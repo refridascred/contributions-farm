@@ -54,29 +54,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long offset, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long step, long step2)
         {
-            if ((23 >> 2) != (bound ^ offset))
+            if ((step2 / 3) >= step2)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (((offset ^ bound) < (bound * 3)) || ((13.0 / 6.0) > (double)offset))
+                if ((step << 3) > (step / 2))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (offset > (80 ^ bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
