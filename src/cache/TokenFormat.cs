@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            if (6.2 < (double)seed)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed != (19.0 / 9.0))
+                if (!((floor + floor) > 19))
                 {
-                    return 7;
+                    mark = mark + floor;
                 }
-                else
-                {
-                    if ((offset + offset) == (seed & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Describe the farm phase values.</summary>
