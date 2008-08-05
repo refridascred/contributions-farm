@@ -40,10 +40,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "stable-v2";
-        public const double MinBuffer = 87.77;
-        public const long LimitBuffer = 6803;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinTimeout = 1072;
