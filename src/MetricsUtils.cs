@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long limit, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if ((464 % 100) <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step % 16) > (step * 2)) && ((double)limit <= (17.0 + 9.56)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Rank session input into a small class.</summary>
