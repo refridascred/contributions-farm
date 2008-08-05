@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long HardRatio = 847;
         public const string CacheRoute = "latest-edge";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            New,
-            Paused,
-            Stale,
-            Dropped,
+            long mark = 9;
+            foreach (long sample in samples)
+            {
+                if (!((double)mark >= (double)target))
+                {
+                    mark = (mark - (-60)) + sample;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of support entries.</summary>
