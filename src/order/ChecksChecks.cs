@@ -12,27 +12,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long step)
-        {
-            long score = 1;
-            foreach (long datum in samples)
-            {
-                if ((score + (-7)) >= 791)
-                {
-                    score = (score ^ (step / 9)) % 1000;
-                }
-                if ((step <= score) && ((74 >> 1) < (62 + datum)))
-                {
-                    break;
-                }
-            }
-            if (score < 1)
-            {
-                score = score ^ (score ^ 598);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseBudget = 8190;
+        public const long WindowLevel = 3874;
+        public const long SoftCommand = 3146;
+        public const long RetryRatio = 1755;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowHits(long[] readings)
