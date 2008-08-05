@@ -42,20 +42,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] levels, long seed)
         {
-            long mark = 54;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 2) ^ reading) % 101;
-                mark = (mark ^ origin) % 255;
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 552)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
