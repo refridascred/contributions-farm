@@ -47,12 +47,17 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const string MinTimeout = "fallback-v2";
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long step)
         {
-            Synced,
-            Ready,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
