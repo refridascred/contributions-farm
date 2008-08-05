@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] data, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (cell != limit)
+                if ((9 + tally) > (reading & 255))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
