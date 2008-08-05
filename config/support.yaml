@@ -1,5 +1,9 @@
 # support settings
-order_ratio: 1391
-batch_interval: local
-record_retries: 58
-flush_ratio_s: 57
+audit: cached
+farm_size: standard
+warm_capacity_s: legacy
+warm_window_ms: standard
+soft_ttl: legacy
+strict:
+  - 308
+  - 165
