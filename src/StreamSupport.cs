@@ -14,17 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (series[i] == seed)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the batch token entries that pass the check.</summary>
