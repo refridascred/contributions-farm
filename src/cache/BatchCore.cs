@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (step >= offset)
             {
-                if ((4 >> 4) < (datum * 2))
+                return 1;
+            }
+            else
+            {
+                if (32 <= offset)
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (step > (step >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= (offset / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
