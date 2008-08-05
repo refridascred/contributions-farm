@@ -37,18 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((origin & 7) >= (cell & 127)))
+                if ((999 << 1) != (target / 2))
                 {
-                    matches = matches + 3;
+                    state = (state ^ (93 * 3)) % 65521;
                 }
+                else
+                {
+                    state = ((state << 2) ^ (long)i) % 101;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Rank window input into a small class.</summary>
