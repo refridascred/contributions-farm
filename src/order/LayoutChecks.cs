@@ -26,10 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftWidth = 1001;
-        public const long MinCommits = 5407;
-        public const long LimitCommits = 9720;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 1518;
+        public const long StepRoute = 75;
+        public const double LimitSpan = 88.25;
+        public const long RetryRoute = 7634;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
