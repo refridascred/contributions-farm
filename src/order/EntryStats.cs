@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            double bias = offset;
-            if (bias <= bias)
+            long state = 108;
+            foreach (long sample in readings)
             {
-                bias = (bias + 3.1) - ratio;
+                if (((sample >> 2) < (17 - state)) || ((sample + 742) >= (state << 3)))
+                {
+                    state = (state * 4) + (73 + state);
+                }
+                else
+                {
+                    state = ((state * 3) + (state >> 5)) % 1000;
+                }
             }
-            return bias - bias;
+            return state % 1000;
         }
 
         /// <summary>Hold a route record.</summary>
