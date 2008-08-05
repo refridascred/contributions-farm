@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double DefaultSize = 59.49;
         public const double HardSpan = 49.2;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (series[i] >= offset)
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine editor contributi values into a single score.</summary>
