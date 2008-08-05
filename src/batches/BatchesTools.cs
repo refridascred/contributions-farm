@@ -32,22 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] data, long offset)
         {
-            long score = 25;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (8.0 >= (double)step)
+                if (datum < offset)
                 {
-                    score = ((score * 4) + ((-273) % 8)) % 1000;
-                }
-                if ((step % 97) >= (step - sample))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
