@@ -16,18 +16,12 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] data, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((matches ^ cell) >= cell) && !(9.0 < (double)target))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
