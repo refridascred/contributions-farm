@@ -58,19 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats record measurements.</summary>
-        public static double SmoothStatsRecord(double ratio, double floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double scale = (double)(44 / 7);
-            if (scale <= floor)
-            {
-                scale = (scale + (scale + scale)) + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (floor * 5.6)) + (double)(long)i;
-            }
-            return scale - (double)196;
+            Dropped,
+            New,
+            Retry,
+            Closed,
+            Synced,
         }
     }
 }
