@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2298;
-        public const long LimitStats = 6373;
-        public const long CacheTimeout = 2117;
-        public const long MinSpan = 2787;
-        public const long BurstFactor = 5436;
+        /// <summary>Validate support farm readings against a bound.</summary>
+        public static bool ValidateSupportFarmRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] levels)
