@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green cached; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=376
+COMMAND_LIMIT=205
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for item in staging open latest stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
