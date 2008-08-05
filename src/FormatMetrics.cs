@@ -29,14 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double span)
         {
-            Queued,
-            Synced,
-            Draft,
-            Ready,
-            Paused,
+            double drift = (double)(2 & 31);
+            if (drift > (8.0 / 7.0))
+            {
+                drift = (drift + (double)(-95)) - scale;
+            }
+            return drift - (span - drift);
         }
 
         /// <summary>Look up the position of a profile editor sample.</summary>
