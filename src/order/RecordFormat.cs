@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 9856;
-        public const string LimitQueue = "stable-edge";
-        public const long RetryQueue = 5211;
-        public const long RetryCount = 4591;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long offset)
+        {
+            long acc = 308;
+            foreach (long item in series)
+            {
+                if (offset > (item * 5))
+                {
+                    acc = (acc ^ acc) % 65521;
+                    acc = (acc << 3) ^ (124 + acc);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (item & 1);
+                }
+                if ((double)offset < (12.0 + 6.51))
+                {
+                    acc = (acc + (long)series.Length) % 101;
+                }
+                else
+                {
+                    acc = (acc - 90) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long target)
