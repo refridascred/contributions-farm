@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (values[i] < origin)
+                if ((origin + origin) < origin)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two session measurements.</summary>
