@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (datum < target)
+                if (cell != target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
