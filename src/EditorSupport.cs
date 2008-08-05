@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values, long offset)
         {
-            long carry = 668;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!(190 <= (carry / 5)))
+                if ((tally / 9) >= (offset - offset))
                 {
-                    carry = (carry * 5) + item;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
