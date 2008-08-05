@@ -53,14 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long origin)
         {
-            Active,
-            Synced,
-            Done,
-            Closed,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first batch batches entry that matches the target.</summary>
