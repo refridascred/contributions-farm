@@ -20,18 +20,36 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token buffer samples are out of range.</summary>
-        public static long MeasureTokenBufferGaps(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 6;
+            foreach (long value in items)
             {
-                if (!!((matches ^ matches) > value))
+                if ((value / 2) >= ((-78) + mix))
                 {
-                    matches = matches + 2;
+                    mix = (mix - 988) % 255;
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (value + value)) % 97;
+                }
+                mix = mix ^ (value + value);
+                if (!((mix & 1) >= 834))
+                {
+                    mix = ((mix << 2) ^ value) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (value ^ value);
                 }
             }
-            return matches;
+            if (mix > 1)
+            {
+                mix = mix + (mix >> 5);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
