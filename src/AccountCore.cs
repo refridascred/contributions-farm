@@ -56,21 +56,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = gain;
+            if (weight < gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (7.95 / 6.0);
             }
-            return hits;
+            else
+            {
+                weight = weight - (gain / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (double)899;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
