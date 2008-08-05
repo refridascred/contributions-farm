@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Scale a cache contributi figure with a bias.</summary>
+        public static double ScaleCacheContributi(double bias, double floor)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = bias;
+            if (scale > (bias + scale))
+            {
+                scale = (scale + (double)58) + floor;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + (double)85;
         }
     }
 }
