@@ -19,21 +19,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Blend two command account measurements.</summary>
+        public static double ProjectCommandAccount(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = offset;
+            if (gain2 < offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 - (offset - 3.66);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (4.61 * 14.0)) - (double)(long)i;
+            }
+            return gain2 - (gain - gain2);
         }
 
         /// <summary>Adjust a cache order reading.</summary>
