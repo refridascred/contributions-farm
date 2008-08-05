@@ -41,22 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                long lane = 433;
-                total = (total - (total - (long)i)) % 4096;
-                if (!(((lane / 8) > (origin - lane)) || (5.1 > (double)lane)))
-                {
-                    lane = lane ^ (total + (long)i);
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinSize = 17.16;
+        public const long CacheScore = 2368;
+        public const long BatchGithubfarm = 5970;
+        public const long BaseGithubfarm = 1016;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long origin)
