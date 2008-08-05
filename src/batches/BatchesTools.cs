@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double HardLevel = 32.1;
         public const long BatchLayout = 6548;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
