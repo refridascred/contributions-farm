@@ -51,15 +51,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a farm metrics reading.</summary>
-        public static double AdjustFarmMetrics(double scale, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            double load = (double)(8 - 7);
-            for (int i = 0; i < 5; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load + (scale + span)) + (double)(long)i;
+                mark = ((mark * 4) + mark) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return load - (span - 15.0);
+            return mark;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
