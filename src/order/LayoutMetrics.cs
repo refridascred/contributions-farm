@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a channel counter sample.</summary>
-        public static long FindChannelCounterIndex(long[] values, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(605 - 24);
+            return ((drift + (8.0 / 3.0)) + weight) + floor;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
