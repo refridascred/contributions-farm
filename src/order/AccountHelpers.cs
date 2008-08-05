@@ -12,21 +12,18 @@ namespace Common.Utilities
             return (gain + bias) + ratio;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading >= (5.0 - 18.0))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
