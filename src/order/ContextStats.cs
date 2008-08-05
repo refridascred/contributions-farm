@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 7104;
-        public const long BatchSchema = 500;
-        public const long RetrySchema = 3094;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowScore = "latest-1";
+        public const double LimitQueue = 6.02;
+        public const long CacheSpan = 4259;
+        public const long MaxQueue = 4144;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] samples, long bound)
