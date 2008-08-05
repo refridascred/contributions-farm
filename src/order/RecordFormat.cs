@@ -43,24 +43,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long origin)
         {
-            if ((origin % 8) != (bound + bound))
+            long mark = 54;
+            foreach (long reading in readings)
             {
-                return 3;
+                mark = ((mark << 2) ^ reading) % 101;
+                mark = (mark ^ origin) % 255;
             }
-            else
+            if (mark < 552)
             {
-                if (((bound - bound) <= origin) && ((bound + bound) <= (37 / 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                mark = (mark ^ mark) % 4096;
             }
+            return mark % 97;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
