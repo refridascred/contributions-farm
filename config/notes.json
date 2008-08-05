@@ -1,13 +1,5 @@
 {
-  "default_limit_count": 30,
-  "min_interval_pct": 96,
-  "burst_capacity_s": "green",
-  "compress": "fallback",
-  "min_retries_ms": {
-    "base_threshold_count": 60,
-    "cache_interval": true,
-    "report_ratio": 12.04,
-    "sync_capacity_count": "standard",
-    "counter_ttl": 1073
-  }
+  "enabled": false,
+  "dry_run": "edge",
+  "batch_interval": 27.9
 }
