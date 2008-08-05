@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long origin)
         {
-            long total = -103;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((item - item) < item)
+                if (value < origin)
                 {
-                    total = (total * 4) + total;
+                    found = false;
+                    break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Describe the window level values.</summary>
