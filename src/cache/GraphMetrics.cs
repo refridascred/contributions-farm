@@ -51,19 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long step)
+        /// <summary>Scale a cache already figure with a bias.</summary>
+        public static double SmoothCacheAlready(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double rate2 = bias;
+            if (rate2 <= (rate - 19.0))
             {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = rate2 + (2.0 - rate);
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + bias) - (double)(long)i;
+            }
+            return rate2 + (rate - rate2);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
