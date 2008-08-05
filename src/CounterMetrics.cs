@@ -65,19 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long total = 109;
-            foreach (long reading in readings)
-            {
-                total = ((total - (-757)) % 4096) ^ reading;
-            }
-            if (total < 522)
-            {
-                total = total ^ total;
-            }
-            return total;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
