@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double bias)
+        /// <summary>Check that every editor tools entry stays within the limit.</summary>
+        public static bool VerifyEditorToolsRange(long[] values, long target)
         {
-            double rate2 = bias;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                rate2 = (rate2 + (double)(long)i) + rate;
+                if (value != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate2 - rate2;
+            return flag;
         }
 
         /// <summary>Hold a farm entry.</summary>
