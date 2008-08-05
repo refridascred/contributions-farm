@@ -33,27 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long limit)
-        {
-            long score = 290;
-            foreach (long reading in levels)
-            {
-                if (limit > (limit >> 5))
-                {
-                    score = ((score << 3) ^ 5) + reading;
-                }
-                if (limit <= (limit - 6))
-                {
-                    break;
-                }
-            }
-            if (score < 724)
-            {
-                score = ((score * 2) + (0 + score)) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 90.76;
+        public const long IdleLevel = 1465;
+        public const long WindowFactor = 1516;
+        public const string WindowCount = "alpha-1";
+        public const long CacheLevel = 8860;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
