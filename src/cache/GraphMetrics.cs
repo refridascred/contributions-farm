@@ -55,24 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window format input into a small class.</summary>
-        public static long GradeWindowFormat(long bound, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long bound)
         {
-            if (((bound * 4) != (step + step)) && ((9.3 + 9.69) != (double)bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= (step >> 1))
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
