@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            double gain = (double)((-685) - 829);
-            return (gain + bias) + ratio;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
