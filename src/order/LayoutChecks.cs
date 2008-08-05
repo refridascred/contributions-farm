@@ -52,17 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first queue commits entry that matches the target.</summary>
-        public static long LookupQueueCommitsIndex(long[] series, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
