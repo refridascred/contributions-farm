@@ -38,15 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double span)
+        /// <summary>Locate a window token reading by value.</summary>
+        public static long SeekWindowTokenIndex(long[] series, long floor)
         {
-            double drift = rate;
-            if (drift < span)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (double)(-991);
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (span + rate);
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
