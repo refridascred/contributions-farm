@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 27.78;
-        public const string BurstEditor = "local";
-        public const long WindowEditor = 8109;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ProjectEntry(double ratio, double bias)
