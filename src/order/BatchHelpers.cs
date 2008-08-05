@@ -13,12 +13,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double bias)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            double weight2 = (weight / 5.0) + (bias - 8.22);
+            if (weight2 > (bias + 6.0))
+            {
+                weight2 = weight2 - weight2;
+            }
+            else
+            {
+                weight2 = weight2 + (weight2 * 7.88);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + bias) + (double)(long)i;
+            }
+            return weight2 - (bias - weight);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
