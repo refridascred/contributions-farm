@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 4068;
-        public const long BaseDepth = 439;
-        public const string BurstFactor = "standard-edge";
-        public const long BurstBuffer = 3741;
-        public const string BaseBuffer = "standard-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchBudget = 6501;
+        public const long LimitQueue = 9534;
+        public const long CacheTimeout = 5194;
+        public const long StepFactor = 6253;
+        public const long SoftQueue = 1493;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 4139;
