@@ -85,19 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer batches counter forward.</summary>
-        public static long RollBufferBatches(long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((step / 2) >= 2)
-                {
-                    mix = mix - (step >> 1);
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
