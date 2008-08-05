@@ -33,34 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = 138;
-            foreach (long cell in items)
-            {
-                if ((score - (-6)) < seed)
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score + (1 / 5)) % 65521;
-                }
-                if ((score * 4) >= seed)
-                {
-                    score = (score ^ ((long)items.Length * 2)) % 97;
-                }
-                else
-                {
-                    score = (score * 5) + cell;
-                }
-            }
-            if (score < 61)
-            {
-                score = (score << 2) ^ seed;
-            }
-            return score;
+            Synced,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a schema info.</summary>
