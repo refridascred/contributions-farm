@@ -1,14 +1,4 @@
 # githubfarm settings
-burst_interval_ms:
-  - fallback
-  - primary
-  - cached
-hard_size_pct:
-  - 130
-  - 431
-  - 500
-  - 408
-dry_run: local
-base_delay: false
-flush_threshold: 500
-batch_interval_ms: 82
+flush_window: 1024
+soft_size: 30.13
+burst_ttl_count: local
