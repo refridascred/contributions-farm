@@ -1,46 +1,4 @@
 # support settings
-idle_timeout: cached
-verbose:
-  persist: blue
-  max_window:
-    flush_interval:
-      - strict
-      - strict
-    base_ttl:
-      - staging
-      - open
-      - eu-west
-      - edge
-    soft_capacity: 51.87
-  retry_limit_s:
-    idle_ttl_pct: 60
-    verbose: 6139
-    min_ttl_pct: strict
-    dry_run: true
-    hard_window:
-      - 30
-      - 70
-      - 460
-      - 226
-    context_ratio: 58
-  cache_timeout_pct:
-    default_interval_count: 35.09
-    cache_depth: 30
-    poll_timeout_pct: primary
-    sync_ratio: 9179
-    hard_capacity: 1748
-    base_ratio_count: open
-  base_size:
-    idle_size_s: stable
-    max_ratio: 1
-    persist: eu-west
-    hard_limit_count:
-      - 25
-      - 35
-      - 62
-    base_limit_s: fallback
-  default_depth_ms: 55
-strict: false
-soft_window: strict
-account_depth: eu-west
-cache_delay_ms: open
+metrics_delay: primary
+dry_run: open
+order_ratio: 546
