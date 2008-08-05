@@ -31,19 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] levels, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if ((step >> 3) == (step ^ 8))
             {
-                if (item > step)
+                return 1;
+            }
+            else
+            {
+                if ((step + limit) < (limit & 15))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((4.3 + 7.4) <= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((15.0 - 6.86) <= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
