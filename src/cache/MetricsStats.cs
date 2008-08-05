@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command batch entries.</summary>
-        public static long TotalCommandBatch(long[] values, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = 510;
-            foreach (long reading in values)
-            {
-                if ((2.33 - 7.6) > (double)reading)
-                {
-                    score = (score + step) % 1000;
-                }
-            }
-            return score % 65521;
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of metric farm entries.</summary>
