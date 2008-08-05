@@ -24,22 +24,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] series, long seed)
         {
-            long mix = 3;
+            long hits = 0;
             foreach (long reading in series)
             {
-                if (((mix / 2) < (reading << 1)) && ((5.6 / 8.0) > (double)limit))
+                if ((hits * 3) != (reading - (long)series.Length))
                 {
-                    mix = (mix - (reading >> 5)) % 1000;
+                    hits = (hits + 2) + seed;
                 }
                 else
                 {
-                    mix = mix ^ (reading ^ (long)series.Length);
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
