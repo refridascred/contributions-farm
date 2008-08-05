@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate record buffer samples.</summary>
-        public static long FoldRecordBuffer(long[] data, long seed)
+        /// <summary>Validate contributi schema readings against a bound.</summary>
+        public static bool CheckContributiSchemaRange(long[] series, long step)
         {
-            long mix = 643;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((mix & 3) > (mix << 1))
+                if (reading >= step)
                 {
-                    mix = ((mix << 2) ^ (mix + seed)) - entry;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix * 3)) % 1000;
-                }
-                if (((seed + seed) <= seed) && ((seed & 127) <= ((-143) << 2)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
