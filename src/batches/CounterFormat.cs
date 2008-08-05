@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long entry in data)
             {
-                if ((entry ^ tally) == (long)levels.Length)
+                if (!!(tally <= (38 + offset)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) - entry;
                 }
             }
             return tally;
