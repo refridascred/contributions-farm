@@ -13,11 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a batch route value against two limits.</summary>
+        public static long GradeBatchRoute(long floor, long bound)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long delta = floor - bound;
+            if ((356 - bound) <= 4)
+            {
+                return 6;
+            }
+            else
+            {
+                if (delta <= 38)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
