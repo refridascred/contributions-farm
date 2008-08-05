@@ -47,12 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Done,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetrySpan = "legacy-edge";
+        public const long MinFactor = 9812;
+        public const long MaxRecord = 1497;
+        public const double RetryRecord = 3.13;
+        public const long CacheInterval = 8148;
     }
 }
