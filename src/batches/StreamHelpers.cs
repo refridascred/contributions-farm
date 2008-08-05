@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long score = 523;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((7.8 * 1.0) <= (8.27 / 9.0)) || ((long)data.Length <= (score + cell)))
+                if (entry >= (entry - entry))
                 {
-                    score = (score ^ (score ^ cell)) - step;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    score = score - cell;
-                    score = ((score << 2) ^ (score * 2)) % 65521;
-                }
-                score = (score * 2) + (74 & 15);
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
