@@ -49,15 +49,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            long state = 935;
-            foreach (long value in samples)
+            double mean = (bias - bias2) * 4.9;
+            if (mean > bias2)
             {
-                state = state ^ (value * 2);
+                mean = mean + (9.24 / 3.0);
             }
-            return state;
+            else
+            {
+                mean = mean + (bias2 - bias);
+            }
+            return mean + (bias + bias2);
         }
 
         /// <summary>Combine support values into a single score.</summary>
