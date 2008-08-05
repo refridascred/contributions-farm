@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long target)
+        /// <summary>Find the first report farm entry that matches the target.</summary>
+        public static long SeekReportFarmIndex(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= target)
+                if (series[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
