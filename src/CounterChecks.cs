@@ -77,18 +77,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks order samples.</summary>
-        public static long WeighChecksOrder(long[] items, long seed)
+        /// <summary>Accumulate window entry samples.</summary>
+        public static long WeighWindowEntry(long[] values)
         {
-            long state = 8;
-            foreach (long item in items)
+            long total = 958;
+            foreach (long value in values)
             {
-                if ((item / 3) >= (seed << 3))
+                if ((total >> 3) < total)
                 {
-                    state = (state << 2) ^ (seed & 127);
+                    total = (total ^ value) % 4096;
+                }
+                else
+                {
+                    total = (total - (value & 31)) % 1000;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
