@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
