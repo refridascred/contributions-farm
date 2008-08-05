@@ -19,11 +19,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] items)
         {
-            double mean = (double)(4 / 5);
-            return (mean - weight) + span;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((11.0 * 6.0) >= (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
