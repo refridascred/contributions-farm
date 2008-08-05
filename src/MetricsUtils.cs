@@ -27,32 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long next = offset + origin;
-            if ((offset + 38) < (offset + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (70 > origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)next != (15.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
