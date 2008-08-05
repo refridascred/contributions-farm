@@ -50,12 +50,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 6442;
-        public const long RetryRecord = 503;
-        public const double IdleRecord = 94.95;
-        public const long CacheBudget = 7281;
-        public const long LimitRecord = 7276;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double DefaultSpan = 34.11;
