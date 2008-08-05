@@ -78,10 +78,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 1958;
-        public const long BurstStats = 6615;
-        public const string WindowStats = "stable-1";
-        public const long MinStats = 1545;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
