@@ -17,14 +17,15 @@ namespace Common.Utilities
         public const long SoftStats = 1106;
         public const long CacheRatio = 4711;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            Done,
-            Dropped,
-            New,
-            Retry,
-            Paused,
+            double ratio2 = 8.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (((ratio2 - (double)361) + (double)(long)i) + ratio) - offset;
+            }
+            return ratio2 + 6.8;
         }
     }
 }
