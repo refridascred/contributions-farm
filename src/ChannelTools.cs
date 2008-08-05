@@ -31,10 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultTimeout = 28.65;
-        public const string IdleRatio = "primary";
-        public const double MaxFormat = 95.59;
-        public const long BaseLevel = 5256;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen << 1) <= (66 & 31))
+                {
+                    seen = ((seen + 2) - datum) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
