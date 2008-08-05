@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const double MinBudget = 16.36;
         public const long BatchSize = 8606;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample & 3) > (tally + sample))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
