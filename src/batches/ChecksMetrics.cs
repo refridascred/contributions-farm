@@ -68,22 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer already entries that pass the check.</summary>
-        public static long CountBufferAlreadyGaps(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] series, long origin)
         {
-            long count = 0;
+            long seen = 0;
             foreach (long datum in series)
             {
-                if ((datum + (long)series.Length) <= (857 ^ count))
+                if (((double)seen >= (4.0 / 7.0)) || (datum < origin))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
