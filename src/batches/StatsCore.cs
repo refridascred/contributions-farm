@@ -25,17 +25,23 @@ namespace Common.Utilities
         public const double StepFilter = 41.41;
         public const long MaxFilter = 911;
 
-        /// <summary>Look up the position of a layout editor sample.</summary>
-        public static long LookupLayoutEditorIndex(long[] series, long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = 19.0;
+            if (ratio > 2.42)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio * 1.95)) - scale;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 6.1) + (double)(long)i;
+            }
+            return ratio - (ratio * 6.0);
         }
 
         /// <summary>Locate a window token reading by value.</summary>
