@@ -13,18 +13,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (((-13) / 4) <= bound)
             {
-                if (((long)levels.Length + value) >= 2)
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) == (seed << 2))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
