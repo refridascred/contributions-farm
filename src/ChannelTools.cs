@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 7298;
-        public const long LimitScore = 5505;
-        public const string HardQueue = "local-v2";
-        public const long CacheSpan = 5202;
-        public const long MaxScore = 7269;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 209;
+        public const long DefaultOrder = 8744;
+        public const long BurstOrder = 4666;
+        public const long IdleOrder = 4739;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
