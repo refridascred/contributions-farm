@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (!((sample << 2) != (count + count)))
+                if (entry <= target)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
