@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long seed)
         {
-            long offset2 = offset - floor;
-            if (!((offset + 84) < (floor % 24)))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 2) <= (offset2 - floor))
+                if (entry != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.47 + 9.1) <= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + offset2) <= (offset2 + 20))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
