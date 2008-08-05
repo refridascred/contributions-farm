@@ -28,22 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Compare every pair of metric entry readings.</summary>
+        public static long OverlapMetricEntryCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits + hits) >= (0 - datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
