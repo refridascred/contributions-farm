@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double HardLevel = 32.1;
         public const long BatchLayout = 6548;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Ready,
-            Locked,
-            Pending,
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
