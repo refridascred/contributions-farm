@@ -13,22 +13,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7378;
+        public const double StepCounter = 69.12;
+        public const long CacheSize = 2268;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double offset)
