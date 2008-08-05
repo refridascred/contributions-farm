@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 4458;
         public const string RetryRatio = "staging-v2";
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long origin)
         {
-            Idle,
-            Synced,
-            Failed,
-            Pending,
+            long mix = 903;
+            foreach (long reading in data)
+            {
+                mix = ((mix * 2) + (origin + reading)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
