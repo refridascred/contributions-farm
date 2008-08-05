@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "open-1";
-        public const long MaxFactor = 5038;
-        public const long IdleCache = 263;
-        public const double CacheCount = 70.09;
-        public const long BaseCache = 8583;
+        /// <summary>Adjust a layout metrics reading.</summary>
+        public static double BlendLayoutMetrics(double rate, double offset)
+        {
+            double gain = (double)(801 * 3);
+            return ((gain - gain) + rate) + offset;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] items, long offset)
