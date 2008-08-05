@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long BatchInterval = 3172;
         public const double MinCommits = 6.67;
 
-        /// <summary>Blend two notes report measurements.</summary>
-        public static double ProjectNotesReport(double weight, double span)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double floor)
         {
-            double scale = (double)(8 & 127);
-            for (int i = 0; i < 7; i++)
+            double gain = floor;
+            if (gain <= (double)65)
             {
-                scale = (scale + (double)(long)i) - weight;
+                gain = (gain + (floor * 4.57)) + ratio;
             }
-            return scale + span;
+            return gain + (double)765;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
