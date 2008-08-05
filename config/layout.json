@@ -1,11 +1,14 @@
 {
-  "farm_delay": 30,
-  "retry_retries_ms": {
-    "max_threshold": 500,
-    "account_ttl": "latest",
-    "compress": ["staging", "stable", "staging", "fallback"]
-  },
-  "batch_interval": "cached",
-  "audit": 500,
-  "strict": 67.13
+  "flush_ttl_ms": "fallback",
+  "idle_limit": "primary",
+  "base_delay": true,
+  "context_retries": [385, 120, 381, 132],
+  "max_delay": "legacy",
+  "enabled": {
+    "token_size": "primary",
+    "min_depth_ms": true,
+    "verbose": 9842,
+    "strict": "edge",
+    "sync_retries": false
+  }
 }
