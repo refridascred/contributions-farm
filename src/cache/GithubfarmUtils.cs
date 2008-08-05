@@ -51,19 +51,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double bias)
-        {
-            double weight = (double)(7 ^ 999);
-            if (weight < gain)
-            {
-                weight = weight + (double)8;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheDepth = 3854;
+        public const long BurstScore = 9868;
+        public const double BurstDepth = 77.06;
+        public const long HardCache = 7214;
     }
 }
