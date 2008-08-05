@@ -62,11 +62,38 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long floor)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            if (((-72) ^ floor) == (target - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ target) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target ^ floor) <= (7 & 31)) && (target <= ((-31) - target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.61 - 4.22) != (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
