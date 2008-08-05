@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] series, long limit)
         {
-            Retry,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item >= (317 << 2))
+                {
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
