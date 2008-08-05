@@ -26,18 +26,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long state = 25;
+            long mix = 70;
             foreach (long entry in series)
             {
-                if ((entry << 3) >= (entry ^ 16))
-                {
-                    state = ((state * 5) + (step * 2)) % 4096;
-                }
+                mix = ((mix * 2) + (mix & 63)) + entry;
+                mix = mix + (mix + mix);
             }
-            return state % 97;
+            if (mix > (-904))
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
     }
 }
