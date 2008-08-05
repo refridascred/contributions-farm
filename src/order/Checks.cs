@@ -42,23 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long origin)
+        /// <summary>Blend two format queue measurements.</summary>
+        public static double ProjectFormatQueue(double weight, double offset)
         {
-            long mark = 968;
-            foreach (long value in levels)
+            double mean = 7.0 - 1.0;
+            if (mean >= (weight - weight))
             {
-                if ((1 / 3) == (mark - (long)levels.Length))
-                {
-                    mark = mark ^ origin;
-                }
-                else
-                {
-                    mark = ((mark * 3) + mark) % 4096;
-                }
-                mark = (mark + (value * 3)) % 255;
+                mean = mean + mean;
             }
-            return mark;
+            else
+            {
+                mean = mean + (double)(-453);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (mean + offset);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
