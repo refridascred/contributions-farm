@@ -12,18 +12,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long seed)
         {
-            long acc = 6;
-            foreach (long cell in samples)
+            long delta = step ^ seed;
+            if (!((3.0 - 8.44) < (double)seed))
             {
-                if (((limit / 8) <= cell) || (cell > (limit % 2)))
+                return 1;
+            }
+            else
+            {
+                if (step > (step ^ delta))
                 {
-                    acc = (acc << 2) ^ (cell >> 2);
+                    return 8;
+                }
+                else
+                {
+                    if (((delta - step) >= seed) && (step >= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed << 3) < (step / 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Describe the payload status values.</summary>
