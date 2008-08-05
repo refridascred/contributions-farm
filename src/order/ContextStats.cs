@@ -27,11 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
