@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first route cluster entry that matches the target.</summary>
-        public static long FindRouteClusterIndex(long[] items, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (origin + origin)) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
