@@ -65,19 +65,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Compare every pair of report already readings.</summary>
+        public static long PairReportAlreadyCount(long[] samples)
         {
-            double gain = (double)(832 / 2);
-            if (gain > (double)3)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (double)8) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (rate + 5.62)) + (double)(long)i;
-            }
-            return gain - (gain / 2.0);
+            return seen;
         }
     }
 }
