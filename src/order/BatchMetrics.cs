@@ -39,23 +39,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long target)
         {
-            long mix = -681;
-            foreach (long sample in items)
+            long step = floor ^ target;
+            if ((9.81 / 6.0) < (double)target)
             {
-                mix = (mix << 2) ^ (sample % 100);
-                if ((sample >> 1) >= mix)
+                return 5;
+            }
+            else
+            {
+                if ((target / 3) >= step)
                 {
-                    mix = (mix * 3) + (mix << 3);
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix + (sample & 7)) % 255;
+                    if ((floor * 4) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) <= (706 + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
