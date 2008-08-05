@@ -16,10 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 26.41;
-        public const long WindowContext = 6307;
-        public const string BatchContext = "latest-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinCount = 6322;
+        public const long MinWindow = 9274;
+        public const long CacheWindow = 6608;
+        public const string WindowFactor = "primary";
 
         /// <summary>Roll a metric already counter forward.</summary>
         public static long StepMetricAlready(long offset)
