@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSize = 4910;
+        public const string BaseScore = "staging-1";
+        public const long BaseDepth = 5457;
+        public const double StepFilter = 41.41;
+        public const long MaxFilter = 911;
 
         /// <summary>Combine metrics support values into a single score.</summary>
         public static long DigestMetricsSupport(long[] series, long seed)
