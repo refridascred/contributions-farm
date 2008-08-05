@@ -58,10 +58,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 4271;
-        public const double CacheWindow = 67.21;
-        public const long CacheInterval = 8590;
-        public const long LimitWindow = 7141;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)91 < (double)(long)i) || ((double)26 >= (double)origin))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score + (long)i) % 4096;
+                }
+                if (!(((520 - score) < (score ^ origin)) && ((double)score != (20.0 - 8.0))))
+                {
+                    score = ((score << 3) ^ (origin * 2)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
