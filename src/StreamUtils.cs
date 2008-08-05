@@ -26,23 +26,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels, long offset)
+        /// <summary>Look up the position of a channel context sample.</summary>
+        public static long LocateChannelContextIndex(long[] data, long floor)
         {
-            long carry = 125;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (long)levels.Length;
-                if (!((double)offset >= (double)carry))
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    carry = (carry - offset) % 4096;
-                }
-                if ((datum / 5) > 1)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
