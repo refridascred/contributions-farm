@@ -23,22 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long limit)
         {
-            long carry = 17;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((cell + (long)data.Length) < (carry ^ 0)) && ((carry + cell) != (cell / 8)))
+                if ((tally / 2) >= 11)
                 {
-                    carry = (carry - (carry % 5)) % 4096;
+                    tally = ((tally + 3) + cell) - limit;
                 }
             }
-            if (carry > 1)
-            {
-                carry = ((carry * 2) + (carry & 63)) % 4096;
-            }
-            return carry;
+            return tally;
         }
     }
 }
