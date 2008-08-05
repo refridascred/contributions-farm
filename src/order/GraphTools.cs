@@ -25,15 +25,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long acc = 772;
+            foreach (long value in levels)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                acc = ((acc * 4) + acc) - value;
             }
-            return mark;
+            if (acc < 9)
+            {
+                acc = (acc * 4) + (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit record layout readings against a rule.</summary>
