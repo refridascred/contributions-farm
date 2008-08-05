@@ -35,19 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            double load = floor;
+            if (load <= (double)948)
             {
-                if (carry >= (floor / 2))
-                {
-                    carry = (carry * 2) + (carry & 7);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                load = load + bias;
             }
-            return carry;
+            return load - (9.61 + 2.52);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
