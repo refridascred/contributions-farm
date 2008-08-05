@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSize = 3824;
+        public const long BaseReport = 7894;
+        public const long HardReport = 5874;
+        public const string MaxReport = "cached";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 9170;
