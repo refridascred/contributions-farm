@@ -27,31 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if ((offset ^ offset) < step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.8 * 16.0) > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + 51) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
