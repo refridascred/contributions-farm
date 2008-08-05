@@ -49,19 +49,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result ^ (entry & 1)) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (result > 558)
-            {
-                result = result + (result ^ floor);
-            }
-            return result % 65521;
+            return result;
         }
     }
 }
