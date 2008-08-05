@@ -57,19 +57,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats cache entry stays within the limit.</summary>
-        public static bool CheckStatsCacheBounds(long[] samples, long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
