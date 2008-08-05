@@ -21,25 +21,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long offset)
         {
-            long delta = bound + floor;
-            if (!((delta + bound) > delta))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((1.5 * 12.0) < (double)floor) && ((1.0 * 5.21) > (double)delta))
+                if ((89 + tally) >= (offset + tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) + item;
                 }
             }
+            return tally;
         }
     }
 }
