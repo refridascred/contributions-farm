@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7703;
-        public const double LimitRatio = 42.63;
-        public const long SoftScore = 6796;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((double)seed != (2.3 + 0.8)) && (((item * 3) <= tally) && ((7.8 - 15.0) <= (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinBudget = 7156;
