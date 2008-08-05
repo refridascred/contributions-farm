@@ -59,32 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long limit)
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long LocateOrderRouteIndex(long[] data, long step)
         {
-            long cur = target - limit;
-            if ((cur + cur) >= (limit << 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target < cur) || (17.0 <= (double)cur))
+                if (data[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((cur ^ limit) < 603))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
