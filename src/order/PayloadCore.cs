@@ -29,17 +29,12 @@ namespace Common.Utilities
             return drift + (weight - bias);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
