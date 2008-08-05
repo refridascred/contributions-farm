@@ -63,13 +63,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Project the next support order value.</summary>
+        public static double ProjectSupportOrder(double rate, double offset)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            double ratio = 16.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (rate + offset)) - (double)(long)i;
+            }
+            return ratio - rate;
         }
     }
 }
