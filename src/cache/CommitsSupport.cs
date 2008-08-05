@@ -73,22 +73,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long seed)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long acc = 470;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (((acc << 3) ^ (datum / 8)) % 101) - (long)i;
-                }
-                if (seed >= datum)
-                {
-                    acc = (acc ^ datum) % 1000;
-                }
-            }
-            return acc;
+            Done,
+            Paused,
+            Pending,
+            Locked,
         }
     }
 }
