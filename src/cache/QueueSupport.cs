@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a cache buffer reading by value.</summary>
-        public static long FindCacheBufferIndex(long[] values, long target)
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long MeasureNotesAlreadyHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] == target)
+                if ((14 - hits) > entry)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a batches info.</summary>
