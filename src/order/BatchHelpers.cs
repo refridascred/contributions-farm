@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the schema metric entries that pass the check.</summary>
+        public static long AuditSchemaMetricMatches(long[] levels, long bound)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((116 + bound) <= ((long)levels.Length << 3))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token kind values.</summary>
