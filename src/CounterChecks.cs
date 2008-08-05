@@ -19,22 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long TotalAlreadyEntry(long[] readings, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long mark = 4;
-            foreach (long value in readings)
+            long state = 990;
+            foreach (long entry in readings)
             {
-                if (!((double)mark <= (0.54 - 8.68)))
+                if ((1 - 375) != (entry & 3))
                 {
-                    mark = ((mark ^ (mark - value)) % 97) - origin;
+                    state = state ^ (entry ^ state);
+                }
+                else
+                {
+                    state = (state ^ (state + (long)readings.Length)) % 65521;
+                }
+                if (!((entry - entry) < (state - entry)))
+                {
+                    break;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark * 2) + (9 + mark);
-            }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Adjust a report reading.</summary>
