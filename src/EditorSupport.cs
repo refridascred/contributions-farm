@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next filter metrics value from a seed.</summary>
-        public static long StepFilterMetrics(long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 668;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!(190 <= (carry / 5)))
                 {
-                    mix = ((mix + (mix & 63)) % 4096) ^ (long)i2;
-                    mix = (mix + mix) % 4096;
+                    carry = (carry * 5) + item;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
