@@ -19,14 +19,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values, long bound)
         {
-            Closed,
-            Queued,
-            Pending,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((bound * 2) == (item & 255)) || ((278 - tally) <= item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
