@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double DefaultSize = 59.49;
         public const double HardSpan = 49.2;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long step)
         {
-            Done,
-            Ready,
-            New,
-            Active,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
