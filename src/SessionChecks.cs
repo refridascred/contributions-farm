@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
