@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm tools series from a seed.</summary>
-        public static long IterateGithubfarmTools(long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate layout samples.</summary>
