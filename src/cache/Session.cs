@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryInterval = "strict-1";
-        public const string HardQueue = "latest-1";
-        public const string CacheLevel = "fallback-edge";
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportRange(long[] levels, long step)
