@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)seed < (12.0 * 2.9)) && ((529 >> 2) < (seed - (-725))))
             {
-                if (series[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((seed & 1) < (floor << 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (4.9 * 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
