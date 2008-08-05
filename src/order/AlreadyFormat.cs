@@ -29,23 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i - step) != ((long)i & 63))
-                {
-                    carry = ((carry << 3) ^ (step + (long)i)) % 255;
-                }
-                if ((((long)i % 97) >= carry) || ((carry % 97) != (step & 3)))
-                {
-                    carry = (carry << 2) ^ ((long)i << 1);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Done,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
