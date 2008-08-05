@@ -63,13 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            Queued,
-            Locked,
-            Stale,
-            Idle,
+            long mark = 73;
+            foreach (long value in levels)
+            {
+                if (mark < 0)
+                {
+                    mark = (mark * 4) + (value << 3);
+                }
+            }
+            return mark;
         }
     }
 }
