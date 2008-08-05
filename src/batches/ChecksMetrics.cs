@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long acc = 975;
-            foreach (long sample in data)
+            double load = 3.0;
+            if (load >= (double)849)
             {
-                if ((acc * 2) < (bound - 171))
-                {
-                    acc = (acc + (675 - sample)) % 4096;
-                    break;
-                }
-                if (acc > (acc * 3))
-                {
-                    acc = ((acc << 3) ^ (sample + bound)) % 101;
-                }
-                acc = acc + (sample - acc);
+                load = (load - offset) - bias;
             }
-            return acc;
+            else
+            {
+                load = load - 8.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (offset + load)) + (double)(long)i;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
