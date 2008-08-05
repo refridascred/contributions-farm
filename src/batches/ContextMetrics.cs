@@ -35,18 +35,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long FoldMetricsEntry(long[] items)
-        {
-            long carry = -887;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) != (carry / 7))
-                {
-                    carry = (carry + (sample ^ sample)) % 255;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 1226;
+        public const long BaseOrder = 8717;
+        public const long IdleOrder = 6845;
     }
 }
