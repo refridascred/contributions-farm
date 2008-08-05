@@ -75,14 +75,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Stale,
-            Queued,
+            double rate = (double)(-775) * 4.36;
+            if (rate > (rate - rate))
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (bias * 11.0)) + (double)(long)i;
+            }
+            return rate - (rate - span);
         }
     }
 }
