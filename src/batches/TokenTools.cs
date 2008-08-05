@@ -35,13 +35,13 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
