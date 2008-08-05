@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftTimeout = "cached-edge";
-        public const long WindowCommand = 1311;
-        public const long HardCommand = 8812;
-        public const long SoftInterval = 4467;
-        public const string LimitScore = "legacy-edge";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item * 2) != (item >> 2))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] items)
