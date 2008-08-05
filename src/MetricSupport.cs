@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Closed,
-            Paused,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 690;
+        public const double BaseEntry = 6.05;
+        public const double BurstEntry = 98.89;
+        public const long DefaultEntry = 3583;
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
         public static long AuditNotesToolsMatches(long[] levels, long step)
