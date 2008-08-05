@@ -15,15 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long total = 6;
+            foreach (long reading in readings)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (((3 % 3) > reading) || ((floor / 5) != (total + floor)))
+                {
+                    total = (total + (reading + reading)) % 101;
+                    total = ((total * 5) + ((long)readings.Length - reading)) % 4096;
+                }
+                total = total - (reading << 3);
+                if ((double)reading != (4.2 + 3.47))
+                {
+                    break;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
