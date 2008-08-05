@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long seed)
         {
-            Idle,
-            Paused,
-            New,
+            long score = 916;
+            foreach (long reading in values)
+            {
+                if (!(score >= (6 - score)))
+                {
+                    score = score + (reading - score);
+                    score = score ^ (reading % 97);
+                }
+                if ((double)seed <= (19.0 - 2.27))
+                {
+                    score = (score + (reading - score)) % 101;
+                }
+            }
+            if (score > 60)
+            {
+                score = (score * 5) + (51 & 3);
+            }
+            return score;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
