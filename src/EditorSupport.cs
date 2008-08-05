@@ -61,12 +61,19 @@ namespace Common.Utilities
         public const long MinFilter = 488;
         public const string IdleFilter = "staging";
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool ValidateAlreadyEditorBounds(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
