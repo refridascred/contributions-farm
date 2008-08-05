@@ -1,14 +1,11 @@
 {
-  "flush_ttl_ms": "fallback",
-  "idle_limit": "primary",
-  "base_delay": true,
-  "context_retries": [385, 120, 381, 132],
-  "max_delay": "legacy",
-  "enabled": {
-    "token_size": "primary",
-    "min_depth_ms": true,
-    "verbose": 9842,
-    "strict": "edge",
-    "sync_retries": false
+  "max_limit_s": 927,
+  "default_limit_pct": "strict",
+  "max_capacity_pct": {
+    "burst_threshold": 23.99,
+    "counter_delay": 51.25,
+    "batch_threshold": 71,
+    "session_ratio": 2774,
+    "audit": true
   }
 }
