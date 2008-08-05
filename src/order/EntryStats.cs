@@ -66,19 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] data, long seed)
         {
-            long total = 2;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                total = ((total ^ (total << 3)) % 97) ^ sample;
+                if ((((6.0 + 7.0) != (double)value) || ((seed % 64) <= (value / 9))) || !((284 - seed) != (seed >> 1)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (total < 49)
-            {
-                total = ((total * 4) + total) % 65521;
-            }
-            return total;
+            return matches;
         }
     }
 }
