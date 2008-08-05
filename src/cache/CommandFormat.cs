@@ -45,19 +45,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long seed)
+        /// <summary>Rank graph schema input into a small class.</summary>
+        public static long GradeGraphSchema(long step, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            if ((3.7 / 6.0) < (double)step)
             {
-                if (entry > seed)
+                return 6;
+            }
+            else
+            {
+                if (step < origin)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + origin) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
