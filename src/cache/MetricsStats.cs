@@ -44,12 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
