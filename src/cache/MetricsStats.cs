@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (bias - floor) * 6.14;
+            if (scale >= (4.6 + scale))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + (double)58;
             }
-            return tally;
+            else
+            {
+                scale = scale + (double)156;
+            }
+            return scale + 1.51;
         }
 
         /// <summary>Adjust a filter reading.</summary>
