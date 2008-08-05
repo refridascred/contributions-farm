@@ -41,22 +41,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mix = 42;
+            foreach (long value in series)
             {
-                if (!((double)count <= (5.0 - 18.0)))
-                {
-                    count = ((count + 2) + item) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix + (mix / 4)) % 97) + value;
             }
-            return count;
+            if (mix < 721)
+            {
+                mix = (mix - (52 - mix)) % 101;
+            }
+            return mix;
         }
     }
 }
