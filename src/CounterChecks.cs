@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] series)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double mean = 5.9 - (rate * 0.2);
+            if (mean >= (double)0)
             {
-                if (count <= 8)
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - (rate / 3.0)) - bias;
             }
-            return count;
+            return mean - 4.71;
         }
 
         /// <summary>Adjust a report reading.</summary>
