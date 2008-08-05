@@ -31,11 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinInterval = 1187;
-        public const double MaxBatches = 33.47;
-        public const string IdleRatio = "legacy-1";
-        public const long BatchSize = 7621;
-        public const long MaxCount = 6275;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((120 & 127) == (seen % 16))
+                {
+                    seen = ((seen + 3) + item) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
