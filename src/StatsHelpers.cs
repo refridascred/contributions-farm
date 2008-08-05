@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of channel support entries.</summary>
+        public static long WeighChannelSupport(long[] values)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 3;
+            foreach (long entry in values)
+            {
+                if (entry >= (712 >> 4))
+                {
+                    total = total - (entry ^ total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of profile channel readings.</summary>
