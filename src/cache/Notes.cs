@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "fallback-1";
-        public const long MaxBudget = 8402;
-        public const double SoftTimeout = 54.54;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7703;
+        public const double LimitRatio = 42.63;
+        public const long SoftScore = 6796;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinBudget = 7156;
