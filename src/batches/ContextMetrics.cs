@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftBudget = 8776;
-        public const double IdleBudget = 72.93;
-        public const long BurstSize = 3545;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 4) < (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryAccount = "legacy-edge";
