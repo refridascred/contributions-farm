@@ -56,9 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 5495;
-        public const long BatchStats = 3356;
-        public const long RetryStats = 8585;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
