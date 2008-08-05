@@ -24,16 +24,22 @@ namespace Common.Utilities
         public const long BurstAlready = 3528;
         public const double DefaultLevel = 87.4;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long carry = 6;
+            foreach (long cell in series)
             {
-                score = (score << 2) ^ (score << 2);
-                score = ((score * 3) + (long)i) % 1000;
+                if ((145 * 3) <= cell)
+                {
+                    carry = (carry + (cell - carry)) % 97;
+                }
+                if ((20.0 / 3.0) >= (double)cell)
+                {
+                    carry = (carry + (carry + cell)) % 4096;
+                }
             }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
