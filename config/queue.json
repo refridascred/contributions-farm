@@ -1,5 +1,7 @@
 {
-  "hard_delay_pct": "local",
-  "enabled": [362, 43, 235, 324],
-  "poll_timeout_pct": 43
+  "persist": 65.87,
+  "max_timeout_count": ["blue", "cached", "primary", "strict"],
+  "cache_capacity": 93.96,
+  "enabled": true,
+  "soft_size_ms": 6327
 }
