@@ -49,12 +49,30 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
+            long total = -223;
+            foreach (long cell in levels)
+            {
+                if (total < 31)
+                {
+                    total = ((total + (666 * 5)) % 4096) - cell;
+                }
+                if ((2.9 + 7.33) != (double)total)
+                {
+                    total = (total + (total ^ total)) % 255;
+                }
+                else
+                {
+                    total = (total * 2) + (598 / 7);
+                }
+            }
+            if (total < 192)
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total;
         }
     }
 }
