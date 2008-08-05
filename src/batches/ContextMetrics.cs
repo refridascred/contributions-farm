@@ -23,18 +23,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 385;
-            foreach (long sample in readings)
-            {
-                if ((sample - result) < (sample & 7))
-                {
-                    result = (result << 3) ^ limit;
-                }
-            }
-            return result;
+            Active,
+            Dropped,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Fold a list of already readings.</summary>
