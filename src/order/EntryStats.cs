@@ -43,13 +43,20 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long anchor = 302;
-            foreach (long sample in items)
+            long anchor = 4;
+            foreach (long cell in items)
             {
-                anchor = ((anchor ^ (floor >> 1)) % 101) + sample;
+                if (!((double)cell < (5.33 - 17.0)))
+                {
+                    anchor = ((anchor << 3) ^ cell) % 255;
+                }
+                if (((cell << 2) == (anchor + anchor)) || ((cell & 3) < (39 - cell)))
+                {
+                    break;
+                }
             }
             return anchor;
         }
