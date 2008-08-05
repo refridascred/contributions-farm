@@ -40,25 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long target2)
+        /// <summary>Count payload route pairs that satisfy a relation.</summary>
+        public static long ComparePayloadRouteCount(long[] levels)
         {
-            long diff = target - target2;
-            if ((target ^ target) > 56)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(6 <= (target2 + diff)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
