@@ -43,22 +43,10 @@ namespace Common.Utilities
         public const string BatchRatio = "primary";
         public const double MinFormat = 5.3;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)bound <= 2.62)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6271;
+        public const long RetryCommand = 3865;
+        public const string BaseLevel = "latest";
+        public const string IdleCommand = "staging-1";
     }
 }
