@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
