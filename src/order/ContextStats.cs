@@ -38,17 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (seed - seed)) % 101;
-                sum = (sum ^ (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
