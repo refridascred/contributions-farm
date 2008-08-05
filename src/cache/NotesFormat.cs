@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long edge = origin + origin2;
-            if (!((2 + edge) >= edge))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((edge - origin) < (edge + origin)) && ((origin - edge) <= (origin & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
