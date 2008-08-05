@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mean + (ratio / 5.0);
         }
 
-        /// <summary>Roll a report token counter forward.</summary>
-        public static long RollReportToken(long floor)
+        /// <summary>Count the counter stream entries that pass the check.</summary>
+        public static long AuditCounterStreamHits(long[] series, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!!((seen % 100) > (5 - (long)series.Length)))
+                {
+                    seen = ((seen + 3) - sample) + target;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
