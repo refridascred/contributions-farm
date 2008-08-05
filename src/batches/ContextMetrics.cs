@@ -27,13 +27,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank graph cache input into a small class.</summary>
+        public static long GradeGraphCache(long limit, long bound)
         {
-            Synced,
-            Failed,
-            Retry,
-            Stale,
+            if ((double)limit < (17.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) < (limit + 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound <= (0.6 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit & 255) >= (limit * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
