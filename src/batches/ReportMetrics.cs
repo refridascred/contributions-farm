@@ -35,11 +35,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 5192;
+        public const double CacheRecord = 21.45;
+        public const long BaseRecord = 2288;
     }
 }
