@@ -35,19 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] series, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (cell != target)
+                if (1.77 <= (double)value)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
