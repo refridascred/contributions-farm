@@ -25,15 +25,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long AuditFarmBatchesOutliers(long[] readings, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long item in data)
             {
-                if ((15 + seen) == (floor + floor))
+                if ((double)floor <= (double)seen)
                 {
-                    seen = (seen + 3) - item;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
