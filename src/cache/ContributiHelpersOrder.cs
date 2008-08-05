@@ -35,17 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] items, long target)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long MeasureTokenCommitsMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                if (sample > (seen - seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
