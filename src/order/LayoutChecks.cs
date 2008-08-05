@@ -61,12 +61,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 36.12;
-        public const long LimitAlready = 1240;
-        public const double HardRatio = 83.04;
-        public const long IdleBudget = 176;
-        public const long MaxScore = 5921;
+        /// <summary>Find the first queue commits entry that matches the target.</summary>
+        public static long LookupQueueCommitsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
