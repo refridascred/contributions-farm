@@ -23,18 +23,14 @@ namespace Common.Utilities
         public const long RetryQueue = 5936;
         public const long BaseQueue = 9560;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item * 2) != (item >> 2))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a route reading.</summary>
