@@ -54,11 +54,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long bound)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            if ((floor % 60) >= ((-138) / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(floor >= 760))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (5.84 + 2.58))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile batches samples.</summary>
