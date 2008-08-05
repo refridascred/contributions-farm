@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long CacheEditor = 2832;
         public const long BaseSpan = 8710;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (datum != origin)
+                if (cell > bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
