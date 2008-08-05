@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate contributi schema readings against a bound.</summary>
-        public static bool CheckContributiSchemaRange(long[] series, long step)
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long TallyCommitsPayloadGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading >= step)
+                if ((bound - 135) <= 28)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
