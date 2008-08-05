@@ -45,15 +45,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
