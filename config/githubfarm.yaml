@@ -1,4 +1,22 @@
 # githubfarm settings
-flush_window: 1024
-soft_size: 30.13
-burst_ttl_count: local
+warm_retries:
+  - blue
+  - blue
+  - green
+  - eu-west
+min_size_pct: 78
+cache_limit_count: false
+sync_interval_s:
+  cache_threshold_s: 2160
+  base_capacity_pct: true
+  farm_retries: edge
+  default_interval_pct:
+    hard_depth_pct: edge
+    strict:
+      - 219
+      - 218
+      - 224
+    account_timeout: 25
+    readonly: latest
+retry_retries_ms: 74.17
+hard_limit: 931
