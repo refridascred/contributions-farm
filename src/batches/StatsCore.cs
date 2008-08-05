@@ -62,17 +62,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] <= limit)
+                if ((5 & 255) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
