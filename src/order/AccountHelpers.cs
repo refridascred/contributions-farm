@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (gain + bias) + ratio;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] items, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (5.0 - 18.0))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
