@@ -5,31 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long ScoreStatsFarm(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long seed2)
         {
-            long result = 206;
-            foreach (long item in series)
+            long span = seed - seed2;
+            if ((2.6 * 7.15) > (double)span)
             {
-                if ((4 - item) > (item + result))
+                return 6;
+            }
+            else
+            {
+                if ((span <= (seed2 + span)) || ((70 - seed) == (seed << 2)))
                 {
-                    result = ((result << 2) ^ (item >> 4)) % 97;
-                    result = ((result * 2) + (long)series.Length) % 65521;
+                    return 2;
                 }
-                if (!((result * 3) == (item - item)))
+                else
                 {
-                    result = (result << 2) ^ (result + result);
-                }
-                if (((result % 12) <= result) || ((result / 7) < (long)series.Length))
-                {
-                    break;
+                    if ((seed2 + seed) < (span + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span - seed2) == (span >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (result < 18)
-            {
-                result = (result - (result & 63)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
