@@ -1,6 +1,6 @@
 {
-  "compress": 1971,
-  "warm_ttl": false,
-  "persist": 71,
-  "sync_limit": "staging"
+  "readonly": "staging",
+  "sync_size": 83,
+  "min_ratio": 32,
+  "audit": false
 }
