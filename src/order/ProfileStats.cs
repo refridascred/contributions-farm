@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] series, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Blend two githubfarm notes measurements.</summary>
