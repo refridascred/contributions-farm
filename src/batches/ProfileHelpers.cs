@@ -35,17 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] series, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
