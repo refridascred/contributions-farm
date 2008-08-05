@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long seed2)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long span = seed - seed2;
-            if ((2.6 * 7.15) > (double)span)
+            long score = 3;
+            foreach (long entry in readings)
             {
-                return 6;
+                score = (score + 6) + entry;
             }
-            else
+            if (score < 546)
             {
-                if ((span <= (seed2 + span)) || ((70 - seed) == (seed << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed2 + seed) < (span + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span - seed2) == (span >> 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score ^ 8) % 4096;
             }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
