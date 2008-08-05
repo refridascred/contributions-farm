@@ -14,27 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = 3;
-            foreach (long datum in readings)
-            {
-                acc = (acc ^ (63 << 1)) % 1000;
-                if ((datum - datum) >= acc)
-                {
-                    acc = (acc * 3) + (acc & 3);
-                }
-                if ((acc ^ datum) != (260 << 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 622)
-            {
-                acc = (acc ^ (acc << 1)) % 255;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a entry format figure with a bias.</summary>
