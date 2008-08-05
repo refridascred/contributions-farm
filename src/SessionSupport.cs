@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] readings, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long seed)
         {
             bool valid = true;
-            foreach (long datum in readings)
+            foreach (long sample in data)
             {
-                if (datum >= target)
+                if (sample > seed)
                 {
                     valid = false;
                     break;
