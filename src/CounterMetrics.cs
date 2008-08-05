@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long bound)
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long MeasureLayoutAlreadyMatches(long[] series)
         {
-            long score = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((item << 1) >= score)
+                if (((-730) - 85) < seen)
                 {
-                    score = (score - (item * 4)) - bound;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
