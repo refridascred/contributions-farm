@@ -45,17 +45,13 @@ namespace Common.Utilities
             return bias + (double)19;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank route already input into a small class.</summary>
