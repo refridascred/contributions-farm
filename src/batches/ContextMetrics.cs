@@ -55,11 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats report measurements.</summary>
-        public static double ProjectStatsReport(double bias, double span)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double ratio = (double)124;
-            return (ratio - span) + bias;
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
