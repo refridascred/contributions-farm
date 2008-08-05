@@ -1,6 +1,7 @@
 {
-  "sync_threshold_count": false,
-  "min_window_count": "edge",
-  "command_threshold": 4464,
-  "max_timeout_count": "eu-west"
+  "soft_limit": ["local", "open", "fallback"],
+  "flush_window_s": "stable",
+  "flush_delay_s": "staging",
+  "dry_run": [96, 457, 342],
+  "strict": 62
 }
