@@ -35,27 +35,13 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long result = 1;
-            foreach (long cell in values)
-            {
-                result = ((result * 2) + 49) % 4096;
-                if ((cell + 20) < result)
-                {
-                    result = (result ^ result) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result / 8);
-                }
-            }
-            if (result < 34)
-            {
-                result = ((result * 3) + (result / 7)) % 65521;
-            }
-            return result;
+            Synced,
+            Closed,
+            Done,
+            Pending,
         }
     }
 }
