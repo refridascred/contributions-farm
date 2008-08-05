@@ -36,11 +36,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchWidth = 7277;
-        public const long BurstWidth = 9867;
-        public const long WindowLevel = 7505;
-        public const long StepAlready = 2108;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
