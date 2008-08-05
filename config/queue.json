@@ -1,5 +1,5 @@
 {
-  "default_capacity_count": 88.17,
-  "soft_size_ms": 88,
-  "readonly": 13.5
+  "layout_window": "primary",
+  "batch_delay_ms": 3019,
+  "commits_threshold": false
 }
