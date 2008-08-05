@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxInterval = 80.18;
-        public const string RetrySpan = "primary-v2";
-        public const long SoftCluster = 510;
-        public const double IdleCluster = 21.35;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] levels, long floor)
