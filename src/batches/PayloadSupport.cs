@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] levels, long floor)
         {
-            long state = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((5.95 - 6.2) != (double)datum)
+                if ((datum + matches) > (floor & 255))
                 {
-                    state = ((state - (state & 3)) % 97) + target;
-                }
-                else
-                {
-                    state = (state - (1 * 5)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
