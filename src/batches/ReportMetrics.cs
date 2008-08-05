@@ -41,10 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 26.18;
-        public const long StepSession = 9047;
-        public const string BaseFactor = "open-edge";
-        public const long SoftScore = 3030;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
