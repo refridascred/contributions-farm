@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi filter samples are out of range.</summary>
-        public static long TallyContributiFilterOutliers(long[] samples, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((16.0 / 6.0) > (double)item) || !((offset * 5) == (matches + offset)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up tools filter samples.</summary>
