@@ -13,21 +13,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset - target;
+            if ((offset2 < (offset2 / 2)) && ((offset << 3) >= 95))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((target / 3) >= (target * 3)))
                 {
-                    if ((items[i] - items[j]) > 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 4) < offset)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
