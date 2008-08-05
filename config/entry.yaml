@@ -1,25 +1,7 @@
 # entry settings
-poll_ratio_s:
-  min_ratio_ms: legacy
-  base_capacity_count: primary
-  audit: latest
-  editor_interval: open
-  base_threshold_count:
-    - local
-    - cached
-    - fallback
-  order_limit:
-    - edge
-    - latest
-    - blue
-    - standard
-checks_timeout:
-  sync_ratio_ms: 2670
-  retry_depth_ms: 7213
-  sync_interval_ms: blue
-verbose:
-  - blue
-  - cached
-  - strict
-  - cached
-readonly: open
+cache_depth_count: latest
+burst_ratio_s: 500
+hard_ttl_count:
+  checks_interval: 2698
+  strict: cached
+  graph_timeout: latest
