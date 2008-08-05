@@ -22,10 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxFactor = 5314;
-        public const long CacheFactor = 4847;
-        public const long HardFactor = 9483;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long step)
+        {
+            if (((step & 255) <= (step << 3)) || ((10.0 / 5.0) != (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(offset >= (offset ^ offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - offset) > offset) && ((step - (-671)) <= (step % 100)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 31) < (step << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutMatches(long[] items)
