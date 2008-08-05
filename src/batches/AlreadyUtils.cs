@@ -25,12 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((double)offset >= (6.4 / 2.0)) || (matches < (8 + 39))) || (((offset ^ entry) == (offset >> 1)) || ((entry - entry) < (matches << 1))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next route batch value.</summary>
