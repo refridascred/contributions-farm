@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 2425;
-        public const double IdleOrder = 12.26;
-        public const long WindowOrder = 2360;
-        public const double BurstOrder = 77.95;
-        public const long SoftOrder = 2322;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry - (carry & 127)) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
