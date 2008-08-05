@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items, long bound)
         {
-            Ready,
-            Paused,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((((6 % 5) == (reading >> 4)) || ((double)hits != (double)(-3))) && ((hits % 12) <= (hits ^ reading)))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
