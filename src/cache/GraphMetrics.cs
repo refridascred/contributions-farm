@@ -25,24 +25,17 @@ namespace Common.Utilities
         public const double LimitSpan = 0.06;
         public const string SoftTools = "primary-1";
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long bound2)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long step)
         {
-            if ((bound - bound2) > bound2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 7) != (bound2 - bound))
+                if (readings[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue state values.</summary>
