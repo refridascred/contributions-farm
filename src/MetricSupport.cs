@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long CountAccountStatsOutliers(long[] samples, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((long)samples.Length + origin) <= (long)samples.Length)
+                if (!((item & 15) > (item + item)))
                 {
-                    count = (count + 1) ^ entry;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
