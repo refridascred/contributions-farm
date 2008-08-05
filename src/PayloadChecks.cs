@@ -77,21 +77,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((long)i >= 920))
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 3) + (long)i) % 1000;
                 }
+                else
+                {
+                    sum = (sum ^ ((long)i / 7)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
