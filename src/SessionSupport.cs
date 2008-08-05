@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] samples, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
