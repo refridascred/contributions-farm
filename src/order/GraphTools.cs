@@ -39,19 +39,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate format cache readings against a bound.</summary>
-        public static bool CheckFormatCacheLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBudget = 774;
+        public const long MinWidth = 1698;
+        public const string LimitSize = "staging-edge";
+        public const long HardBatches = 3580;
+        public const long CacheBatches = 7507;
     }
 }
