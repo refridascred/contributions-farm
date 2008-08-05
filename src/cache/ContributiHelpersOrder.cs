@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels, long bound)
         {
-            long mark = -8;
-            foreach (long reading in data)
+            long mark = 1;
+            foreach (long cell in levels)
             {
-                mark = mark - (long)data.Length;
-                if ((-14) >= (reading & 63))
+                if (!((mark << 2) <= (mark & 1)))
                 {
-                    break;
+                    mark = (((mark << 2) ^ mark) % 4096) ^ cell;
+                }
+                else
+                {
+                    mark = mark + bound;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark ^ (mark & 3)) % 255;
-            }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
