@@ -1,7 +1,8 @@
 {
-  "batch_threshold": 60,
-  "window_ratio": 85,
-  "base_size": 9231,
-  "payload_window": ["cached", "latest", "legacy", "strict"],
-  "hard_capacity": 27.31
+  "retry_size_count": 30,
+  "readonly": ["latest", "staging", "fallback"],
+  "flush_ttl_s": [429, 319, 360],
+  "format_threshold": true,
+  "report_delay": 54,
+  "base_size": "standard"
 }
