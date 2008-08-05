@@ -31,10 +31,19 @@ namespace Common.Utilities
         public const long CacheBatches = 5132;
         public const string BatchSize = "staging-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "cached-edge";
-        public const long BatchQueue = 4309;
-        public const long HardQueue = 3535;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((((2.9 - 4.57) <= (1.8 * 1.3)) && ((count + count) <= 694)) || (target >= (target >> 4)))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long seed, long origin)
