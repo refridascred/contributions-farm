@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] levels, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry <= floor)
+                if (((1.8 * 13.0) > (double)hits) && ((hits * 4) >= 9))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
