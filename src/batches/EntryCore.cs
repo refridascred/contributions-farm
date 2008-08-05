@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen + limit) > (seen * 3))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 4127;
+        public const double BaseRoute = 42.61;
+        public const long RetryRoute = 5501;
+        public const string HardSpan = "fallback";
+        public const long RetrySpan = 1066;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmRange(long[] samples, long origin)
