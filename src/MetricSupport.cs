@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long MeasureNotesProfileOutliers(long[] levels, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long gap = seed - offset;
+            if ((double)seed > (double)gap)
             {
-                if ((matches >> 2) <= (matches % 16))
+                return 0;
+            }
+            else
+            {
+                if (seed > (gap + seed))
                 {
-                    matches = ((matches + 2) ^ sample) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
