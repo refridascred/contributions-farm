@@ -40,15 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long offset)
         {
-            double gain = 6.0 / 9.0;
-            if (gain > (double)9)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain + (bias + bias)) + weight;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score + ((long)i2 - score)) % 101;
+                }
+                score = ((score * 3) + (score + (long)i)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return gain - (double)881;
+            return score;
         }
 
         /// <summary>Roll a format counter forward.</summary>
