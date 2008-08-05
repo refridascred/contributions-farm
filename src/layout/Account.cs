@@ -31,24 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Combine command contributi values into a single score.</summary>
+        public static long TallyCommandContributi(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = 1;
+            foreach (long item in readings)
             {
-                if ((double)(long)i <= 6.43)
+                if (((item % 12) <= (9 - acc)) && ((item / 2) <= acc))
                 {
-                    carry = carry + (carry / 2);
-                    continue;
+                    acc = (acc ^ 14) % 101;
                 }
-                if (!(((long)i % 2) <= (carry << 2)))
-                {
-                    carry = carry ^ ((long)i + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return acc % 1000;
         }
     }
 }
