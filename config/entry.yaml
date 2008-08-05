@@ -1,7 +1,7 @@
 # entry settings
-cache_depth_count: latest
-burst_ratio_s: 500
-hard_ttl_count:
-  checks_interval: 2698
-  strict: cached
-  graph_timeout: latest
+sync_retries: eu-west
+dry_run: 6793
+format_threshold: fallback
+strict: 14.25
+poll_ratio_ms: false
+layout_threshold: true
