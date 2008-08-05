@@ -48,19 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (entry <= offset)
+                if (item < floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Locate a support reading by value.</summary>
