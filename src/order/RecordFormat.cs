@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many channel context samples are out of range.</summary>
-        public static long TallyChannelContextMatches(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + 215) >= (cell + cell))
+                if (levels[i] >= floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
