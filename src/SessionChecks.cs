@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 872;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value + score) > (score - 2)) || ((double)limit > (double)value))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 2) ^ (score + 999);
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Blend two editor measurements.</summary>
