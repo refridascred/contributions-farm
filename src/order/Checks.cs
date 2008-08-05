@@ -42,11 +42,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstScore = 79.08;
-        public const long RetryInterval = 5303;
-        public const string BaseFilter = "primary-edge";
-        public const double MinDepth = 94.86;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long origin)
+        {
+            long mark = 968;
+            foreach (long value in levels)
+            {
+                if ((1 / 3) == (mark - (long)levels.Length))
+                {
+                    mark = mark ^ origin;
+                }
+                else
+                {
+                    mark = ((mark * 3) + mark) % 4096;
+                }
+                mark = (mark + (value * 3)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] values)
