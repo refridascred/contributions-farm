@@ -26,36 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long step)
         {
-            if (!((double)step <= (double)bound))
+            long prev = origin ^ step;
+            if ((0.93 + 1.31) < (6.8 / 7.0))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((2.3 - 4.61) > (double)step)
+                if (((4 + step) <= prev) && ((prev << 1) == (step % 12)))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (40 > (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)step < (1.0 + 11.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
