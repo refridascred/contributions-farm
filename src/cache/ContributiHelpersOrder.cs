@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate queue command readings against a bound.</summary>
-        public static bool GuardQueueCommandRange(long[] readings, long floor)
+        /// <summary>Digest a series of farm batch entries.</summary>
+        public static long TallyFarmBatch(long[] series)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long acc = -602;
+            foreach (long item in series)
             {
-                if (value < floor)
+                acc = (acc + (acc - acc)) + item;
+                if (acc > (-321))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Adjust a checks reading.</summary>
