@@ -1,5 +1,9 @@
 {
-  "base_size_s": 7889,
-  "flush_interval_s": 64.98,
-  "hard_ratio_s": 500
+  "strict": 6692,
+  "retry_ttl_ms": "primary",
+  "githubfarm_depth": {
+    "soft_window_pct": 30,
+    "stream_interval": "edge",
+    "base_timeout_pct": false
+  }
 }
