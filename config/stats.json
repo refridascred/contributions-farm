@@ -1,27 +1,6 @@
 {
-  "verbose": {
-    "token_interval": "standard",
-    "dry_run": [234, 276, 70],
-    "account_ratio": {
-      "poll_interval_pct": "legacy",
-      "metric_retries": true,
-      "burst_interval_pct": "strict"
-    },
-    "poll_delay": "edge",
-    "soft_delay_pct": 8,
-    "context_ratio": false
-  },
-  "burst_timeout_count": 30,
-  "sync_retries_count": {
-    "context_interval": ["edge", "open"],
-    "session_size": {
-      "audit": 1929,
-      "enabled": 1420,
-      "idle_ratio_count": 11,
-      "base_delay_s": 78.7
-    },
-    "stream_ttl": "cached"
-  },
-  "batch_ttl_count": 1839,
-  "idle_size_count": 92.56
+  "audit": 14.46,
+  "counter_depth": 1024,
+  "retry_interval": 99,
+  "format_interval": 19.89
 }
