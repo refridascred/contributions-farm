@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            Closed,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Adjust a window reading.</summary>
