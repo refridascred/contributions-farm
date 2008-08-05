@@ -31,23 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] samples, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((9 + offset) == (acc / 2))
+                if (datum < origin)
                 {
-                    acc = acc - (long)i;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc * 2) + (offset + offset);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
