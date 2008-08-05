@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] samples, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long carry = 90;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                carry = carry ^ (36 % 3);
-                if (((double)carry >= (7.0 + 3.55)) && ((double)cell > (7.6 * 10.0)))
+                if ((item % 24) < (seen ^ item))
                 {
-                    carry = (carry * 5) + seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate metric batch samples.</summary>
