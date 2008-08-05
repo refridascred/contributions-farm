@@ -16,11 +16,26 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long acc = 5;
+            foreach (long sample in samples)
+            {
+                if (!(sample > (acc << 2)))
+                {
+                    acc = ((acc * 5) + sample) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (sample + acc)) % 4096;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc - (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
