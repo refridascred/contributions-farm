@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long target)
         {
-            long diff = floor - limit;
-            if ((66 >> 1) < (limit - diff))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff * 4) <= diff)
+                if (cell > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
