@@ -14,12 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Iterate the context filter series from a seed.</summary>
+        public static long StepContextFilter(long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark - (offset + (long)i2)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
