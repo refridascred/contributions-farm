@@ -13,18 +13,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long MeasureNotesAlreadyHits(long[] levels)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double rate = (double)(3 % 97);
+            if (rate < gain)
             {
-                if ((14 - hits) > entry)
-                {
-                    hits = hits + 3;
-                }
+                rate = (rate - gain) - offset;
             }
-            return hits;
+            return rate - rate;
         }
 
         /// <summary>Hold a batches info.</summary>
