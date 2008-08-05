@@ -37,25 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long floor, long seed)
+        /// <summary>Roll a notes stats counter forward.</summary>
+        public static long SeriesNotesStats(long bound)
         {
-            long cur = floor ^ seed;
-            if ((double)seed < (20.0 / 9.0))
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed << 2) < (cur + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
     }
 }
