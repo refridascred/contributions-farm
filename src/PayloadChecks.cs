@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
