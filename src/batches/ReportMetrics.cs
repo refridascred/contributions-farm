@@ -38,19 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long offset)
+        /// <summary>Find the first command session entry that matches the target.</summary>
+        public static long SeekCommandSessionIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= offset)
+                if (items[i] == offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
