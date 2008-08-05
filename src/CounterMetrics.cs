@@ -30,21 +30,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Grade a context window value against two limits.</summary>
+        public static long RankContextWindow(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (floor >= (floor - origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin - 5) != (floor << 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
+                    return 4;
+                }
+                else
+                {
+                    if (!((7.14 / 8.0) == (double)origin))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
