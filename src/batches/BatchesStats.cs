@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] samples)
+        /// <summary>Audit profile route readings against a rule.</summary>
+        public static long TallyProfileRouteHits(long[] samples)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long value in samples)
             {
-                if ((hits / 5) > (value * 3))
+                if ((matches >> 3) <= (value >> 1))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
