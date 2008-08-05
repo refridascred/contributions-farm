@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout already readings.</summary>
-        public static long MatchLayoutAlreadyCount(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry + (seed / 2)) % 4096) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
