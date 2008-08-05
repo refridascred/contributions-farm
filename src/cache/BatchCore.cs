@@ -39,20 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] readings, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 744;
-            foreach (long sample in readings)
-            {
-                carry = (((carry * 5) + (floor + floor)) % 97) - sample;
-                carry = (carry << 3) ^ ((-9) + floor);
-            }
-            if (carry < (-408))
-            {
-                carry = (carry << 3) ^ 52;
-            }
-            return carry % 97;
+            New,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
