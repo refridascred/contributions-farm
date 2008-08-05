@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultTimeout = 7492;
-        public const long LimitLevel = 6705;
-        public const long IdleEditor = 7100;
-        public const long RetryEditor = 7200;
-        public const long SoftEditor = 1920;
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long SortSessionMetrics(long limit, long origin)
+        {
+            if (limit >= (limit + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit + limit) <= (origin - origin)) && ((origin - limit) != (origin / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 8816;
