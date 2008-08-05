@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string HardSpan = "fallback";
         public const long RetrySpan = 1066;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
