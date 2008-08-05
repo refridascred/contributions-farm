@@ -1,11 +1,6 @@
 # entry settings
-burst_interval:
-  - fallback
-  - primary
-min_size_ms: 88.52
-retry_window_s: 92.92
-poll_size: 60
-soft_ratio:
-  - 498
-  - 275
-  - 50
+enabled: 27.67
+checks_ratio: 77
+audit: latest
+layout_limit: 89.18
+min_capacity_ms: 5
