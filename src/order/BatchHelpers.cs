@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double gain = 3.1;
+            if (gain > (double)50)
             {
-                if ((661 + matches) >= item)
-                {
-                    matches = (matches + 2) - origin;
-                }
+                gain = ((gain - (8.49 * 2.72)) + bias) + offset;
             }
-            return matches;
+            else
+            {
+                gain = gain - (3.0 * 5.26);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + 7.73;
         }
 
         /// <summary>Check that every record editor entry stays within the limit.</summary>
