@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] readings, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = -103;
+            foreach (long item in levels)
             {
-                if (sample >= (target << 1))
+                if ((item - item) < item)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total * 4) + total;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Describe the window level values.</summary>
