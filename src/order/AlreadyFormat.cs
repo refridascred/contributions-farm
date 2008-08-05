@@ -48,17 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already window sample.</summary>
-        public static long LocateAlreadyWindowIndex(long[] series, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -613;
+            foreach (long reading in values)
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (5 << 3)) + reading;
             }
-            return -1;
+            if (score > 1)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
