@@ -47,24 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long target, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((1.09 * 15.0) < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((7.3 - 9.2) > (double)target) && ((target >> 4) <= (592 / 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
