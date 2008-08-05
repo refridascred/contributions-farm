@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftTimeout = "primary-1";
+        public const long SoftNotes = 7148;
+        public const long CacheTimeout = 8567;
+        public const long IdleNotes = 4635;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
