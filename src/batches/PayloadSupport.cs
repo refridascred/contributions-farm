@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double load = (offset * 2.0) / 3.0;
-            if (load >= load)
-            {
-                load = (load - offset) + rate;
-            }
-            return load + (9.06 - load);
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
