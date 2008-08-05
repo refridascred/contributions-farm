@@ -14,10 +14,33 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 627;
-        public const long DefaultInterval = 4458;
-        public const string RetryRatio = "staging-v2";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long seed)
+        {
+            long offset = origin ^ seed;
+            if ((offset >> 5) == (seed % 64))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((17.0 - 3.9) < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= 4.92)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] data, long origin)
