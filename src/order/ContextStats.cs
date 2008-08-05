@@ -27,16 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long DigestEditorGithubfarm(long[] levels)
+        /// <summary>Compare every pair of cache queue readings.</summary>
+        public static long CompareCacheQueueCount(long[] values)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 2) ^ (cell * 4);
-                total = ((total << 2) ^ (total - total)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
