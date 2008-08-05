@@ -58,16 +58,15 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = 23;
+            foreach (long sample in readings)
             {
-                mark = mark + (mark - (long)i);
-                mark = ((mark * 4) + (long)i) % 97;
+                sum = ((sum - sum) ^ sample) + target;
             }
-            return mark;
+            return sum;
         }
     }
 }
