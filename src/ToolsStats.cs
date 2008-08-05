@@ -66,13 +66,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long carry = 97;
+            foreach (long cell in readings)
+            {
+                carry = ((carry - (carry >> 2)) % 4096) + cell;
+                if ((16.0 + 6.0) > (double)origin)
+                {
+                    carry = carry + (carry + origin);
+                }
+            }
+            return carry;
         }
     }
 }
