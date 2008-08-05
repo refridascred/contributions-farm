@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] levels, long bound)
-        {
-            long mark = 1;
-            foreach (long cell in levels)
-            {
-                if (!((mark << 2) <= (mark & 1)))
-                {
-                    mark = (((mark << 2) ^ mark) % 4096) ^ cell;
-                }
-                else
-                {
-                    mark = mark + bound;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 7087;
+        public const double MinBudget = 16.36;
+        public const long BatchSize = 8606;
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
