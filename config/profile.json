@@ -1,16 +1,7 @@
 {
-  "soft_retries": {
-    "max_interval_pct": "eu-west",
-    "readonly": 44,
-    "cache_limit_pct": {
-      "context_depth": 8236,
-      "max_interval_s": 42,
-      "base_capacity": ["primary", "fallback"],
-      "warm_timeout": 34.94,
-      "flush_delay": true,
-      "flush_depth_count": "legacy"
-    }
-  },
-  "base_interval": "strict",
-  "dry_run": [216, 110]
+  "strict": ["stable", "eu-west"],
+  "stats_window": "blue",
+  "min_capacity_s": 43.81,
+  "max_capacity_pct": 60.84,
+  "soft_size_pct": ["strict", "latest"]
 }
