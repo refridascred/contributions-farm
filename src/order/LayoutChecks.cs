@@ -29,13 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Done,
-            Queued,
-            Active,
-            New,
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
