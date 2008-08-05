@@ -1,8 +1,14 @@
 {
-  "already_ratio": ["primary", "legacy", "strict"],
-  "soft_window_s": "green",
-  "idle_retries": "fallback",
-  "retry_limit_pct": 4.17,
-  "burst_retries_ms": 81.0,
-  "audit": 8311
+  "retry_timeout_ms": 89,
+  "soft_timeout_count": "local",
+  "filter_capacity": 27.47,
+  "persist": 500,
+  "soft_ttl_pct": {
+    "batch_limit": 2962,
+    "payload_limit": "primary",
+    "strict": true,
+    "cache_retries_ms": "legacy",
+    "schema_limit": [366, 431, 282]
+  },
+  "buffer_ttl": "strict"
 }
