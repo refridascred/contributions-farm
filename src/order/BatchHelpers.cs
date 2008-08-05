@@ -37,12 +37,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Stale,
-            Active,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleTimeout = 17.05;
+        public const double CacheBatches = 41.64;
+        public const long IdleLevel = 3779;
+        public const double BaseBatches = 30.94;
     }
 }
