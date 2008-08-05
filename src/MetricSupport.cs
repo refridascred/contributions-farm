@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchSize = "local-v2";
-        public const long SoftGithubfarm = 8818;
-        public const long DefaultGithubfarm = 8531;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowInterval = "standard-v2";
