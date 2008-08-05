@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((floor << 2) >= (count - floor))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
