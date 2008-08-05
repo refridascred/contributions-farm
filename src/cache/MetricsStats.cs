@@ -34,21 +34,14 @@ namespace Common.Utilities
             return scale + 1.51;
         }
 
-        /// <summary>Match up cache metrics samples.</summary>
-        public static long MatchCacheMetricsCount(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
