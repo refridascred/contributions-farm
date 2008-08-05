@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 81.87;
-        public const double DefaultSize = 59.49;
-        public const double HardSpan = 49.2;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 675;
+        public const long MaxCount = 3167;
+        public const long HardSize = 6212;
+        public const string SoftCache = "stable";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] items, long offset)
