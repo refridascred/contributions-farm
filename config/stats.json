@@ -1,5 +1,6 @@
 {
-  "persist": 78.04,
-  "default_ratio": 7.87,
-  "dry_run": 93.53
+  "token_ttl": 40.11,
+  "soft_capacity": "latest",
+  "enabled": 59.52,
+  "default_size_pct": [434, 381, 364]
 }
