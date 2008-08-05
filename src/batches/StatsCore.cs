@@ -21,11 +21,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long DigestMetricsSupport(long[] series, long seed)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long state = 2;
+            foreach (long value in series)
+            {
+                if (!((state + seed) > (value + value)))
+                {
+                    state = (state * 5) + (long)series.Length;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
