@@ -68,15 +68,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = 22;
-            foreach (long item in levels)
-            {
-                carry = ((carry - (carry ^ 782)) % 65521) - item;
-            }
-            return carry % 4096;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
