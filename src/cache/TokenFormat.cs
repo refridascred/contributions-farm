@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading + tally) >= reading) || !((reading + tally) <= (reading + 8)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
