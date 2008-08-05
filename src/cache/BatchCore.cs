@@ -25,11 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            double weight = 8.0;
+            if (weight > (weight * 3.8))
+            {
+                weight = (weight - ratio) + floor;
+            }
+            else
+            {
+                weight = weight + 2.2;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Project the next session value.</summary>
