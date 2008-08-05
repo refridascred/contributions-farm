@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long prev = origin + limit;
-            if ((limit & 127) <= (origin + prev))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev + limit) == (limit + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ origin) != (21 ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
