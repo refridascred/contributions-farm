@@ -22,21 +22,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio - scale) + (double)(long)i;
             }
-            return count;
+            return ratio - (double)78;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
