@@ -23,17 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit2 != (double)721)
             {
-                if (readings[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if (((2 & 63) <= (limit + limit)) && ((limit % 2) != (limit2 << 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)limit2 <= (9.7 * 4.61)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
