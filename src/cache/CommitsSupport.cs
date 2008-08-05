@@ -67,18 +67,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the support channel entries that pass the check.</summary>
-        public static long AuditSupportChannelGaps(long[] values)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length - (-38)) == (96 % 97))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of report already readings.</summary>
