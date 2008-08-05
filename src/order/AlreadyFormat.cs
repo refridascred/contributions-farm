@@ -21,17 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Adjust a batches reading.</summary>
