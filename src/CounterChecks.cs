@@ -19,19 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] series, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            if (((origin ^ limit) >= (limit & 31)) && ((origin % 97) == (origin << 2)))
             {
-                if (entry != bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin != (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin < (5.0 * 1.0)) && ((double)limit != (14.0 / 9.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((45 ^ origin) == (origin >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of token layout readings.</summary>
