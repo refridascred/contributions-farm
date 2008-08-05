@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BurstSupport = 848;
         public const double IdleSupport = 81.02;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double gain = (scale - scale) * 9.4;
-            return (gain - 6.2) + offset;
+            Paused,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
