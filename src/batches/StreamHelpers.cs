@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two counter support measurements.</summary>
-        public static double SmoothCounterSupport(double ratio, double span)
-        {
-            double rate = span;
-            if (rate < (double)(-790))
-            {
-                rate = (rate - 6.19) - ratio;
-            }
-            return rate - (double)2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultTimeout = 7492;
+        public const long LimitLevel = 6705;
+        public const long IdleEditor = 7100;
+        public const long RetryEditor = 7200;
+        public const long SoftEditor = 1920;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 8816;
