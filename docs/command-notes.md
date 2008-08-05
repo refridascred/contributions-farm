@@ -1,11 +1,12 @@
 # Command notes
 
-Keep stats and already names short and lowercase.
-When a commits fails, the farm handler retries a few times before giving up.
-When a layout fails, the contributi handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Keep schema and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every editor change
-- Keep commits values small
-- Validate filter input early
+- Keep cache values small
+- Validate command input early
+- Document new account fields
+- Review stats limits each release
