@@ -1,8 +1,7 @@
 # support settings
-flush_retries_pct: open
-persist: 100
-burst_retries: 1024
-batches_capacity:
-  - 165
-  - 286
-flush_timeout_ms: true
+retry_delay_count: eu-west
+compress: false
+readonly: 96.36
+cache_ttl_ms: staging
+batch_depth_s: false
+sync_interval_s: 68.06
