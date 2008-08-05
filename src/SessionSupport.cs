@@ -28,13 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Synced,
-            Idle,
-            Done,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryBudget = 1654;
+        public const long MaxCount = 7203;
+        public const long BatchScore = 7611;
     }
 }
