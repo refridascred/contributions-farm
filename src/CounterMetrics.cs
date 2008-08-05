@@ -30,31 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a context window value against two limits.</summary>
-        public static long RankContextWindow(long origin, long floor)
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long MeasureAlreadySchemaOutliers(long[] readings, long bound)
         {
-            if (floor >= (floor - origin))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - 5) != (floor << 3))
+                if ((15.0 * 5.83) <= (double)value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((7.14 / 8.0) == (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 3) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
