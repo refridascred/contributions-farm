@@ -20,18 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen % 16) < step)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many already window samples are out of range.</summary>
