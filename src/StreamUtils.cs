@@ -54,19 +54,9 @@ namespace Common.Utilities
         public const long BatchScore = 3155;
         public const double HardSession = 31.52;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleRatio = 27.05;
+        public const long SoftFactor = 2284;
+        public const long HardSchema = 7335;
     }
 }
