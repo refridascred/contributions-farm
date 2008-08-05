@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up checks profile samples.</summary>
-        public static long PairChecksProfileCount(long[] levels)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count stats editor pairs that satisfy a relation.</summary>
