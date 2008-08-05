@@ -79,24 +79,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long step2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long seed)
         {
-            if ((step2 / 3) >= step2)
+            long carry = 89;
+            foreach (long reading in levels)
             {
-                return 1;
+                carry = (((carry << 3) ^ (seed - 46)) % 97) + reading;
             }
-            else
-            {
-                if ((step << 3) > (step / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
     }
 }
