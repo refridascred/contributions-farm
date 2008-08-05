@@ -28,12 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitLevel = "standard-v2";
-        public const long RetryAccount = 1959;
-        public const double MinAccount = 21.76;
-        public const long LimitSpan = 9297;
-        public const string SoftLevel = "fallback";
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long DigestAccountContext(long[] data, long offset)
+        {
+            long anchor = -52;
+            foreach (long cell in data)
+            {
+                anchor = anchor - anchor;
+                if (((offset * 3) <= (anchor - cell)) && ((double)anchor < (double)cell))
+                {
+                    anchor = ((anchor << 2) ^ offset) % 97;
+                }
+                if (((offset % 16) >= (cell * 3)) && ((offset / 9) >= (anchor / 4)))
+                {
+                    anchor = anchor ^ cell;
+                }
+                else
+                {
+                    anchor = (anchor ^ (offset >> 1)) % 97;
+                }
+                if ((double)offset <= (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BurstBudget = "open";
