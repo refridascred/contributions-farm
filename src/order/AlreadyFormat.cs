@@ -41,13 +41,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Closed,
-            Queued,
-            Done,
-            Pending,
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
