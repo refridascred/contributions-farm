@@ -16,23 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already schema readings.</summary>
-        public static long FoldAlreadySchema(long[] values, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] levels, long step)
         {
-            long sum = 20;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum - sum) % 65521) - value;
-                if ((double)bound < 9.33)
+                if (sample <= step)
                 {
-                    sum = sum + bound;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 968)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
