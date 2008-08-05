@@ -12,10 +12,22 @@ namespace Common.Utilities
             return (gain + bias) + ratio;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepSize = "latest";
-        public const double LimitSize = 76.74;
-        public const double MaxScore = 54.94;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] items)
