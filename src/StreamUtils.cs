@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((((long)items.Length ^ value) <= (value - matches)) && (6.99 > (double)value)) || ((double)value < (9.8 - 0.5)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstRatio = 8836;
+        public const long CacheDepth = 2115;
+        public const string LimitInterval = "legacy-1";
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
