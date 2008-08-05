@@ -22,38 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            if (78 > (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 2) <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.0 * 20.0) >= (double)origin)
+                    if ((readings[i] - readings[j]) > 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9 + seed) >= (48 * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
