@@ -29,19 +29,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            double mean = offset + (15.0 - bias);
-            if (mean <= offset)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - (mean * 9.0);
+                if (((long)i - step) != ((long)i & 63))
+                {
+                    carry = ((carry << 3) ^ (step + (long)i)) % 255;
+                }
+                if ((((long)i % 97) >= carry) || ((carry % 97) != (step & 3)))
+                {
+                    carry = (carry << 2) ^ ((long)i << 1);
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (offset + offset);
-            }
-            return mean + (bias * 9.3);
+            return carry;
         }
 
         /// <summary>Look up the position of a already window sample.</summary>
