@@ -1,7 +1,5 @@
 {
-  "enabled": [303, 91, 229, 243],
-  "burst_depth_s": 69.17,
-  "strict": "green",
-  "soft_window_pct": false,
-  "idle_capacity_count": 60
+  "soft_retries": false,
+  "cluster_retries": "latest",
+  "default_threshold_pct": 4903
 }
