@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next tools order value from a seed.</summary>
-        public static long SeriesToolsOrder(long step)
+        /// <summary>Accumulate support commits samples.</summary>
+        public static long TotalSupportCommits(long[] values, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long mix = 664;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                mix = mix ^ step;
+                if (step > sample)
+                {
+                    mix = mix + (75 - sample);
+                }
             }
             return mix;
         }
