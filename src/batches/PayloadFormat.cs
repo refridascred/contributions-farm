@@ -41,27 +41,18 @@ namespace Common.Utilities
         public const long RetryScore = 4414;
         public const long DefaultAlready = 3754;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long carry = 669;
+            foreach (long sample in readings)
             {
-                if (((double)91 < (double)(long)i) || ((double)26 >= (double)origin))
+                if (sample < 77)
                 {
-                    continue;
+                    carry = (carry * 4) + (carry * 5);
                 }
-                else
-                {
-                    score = (score + (long)i) % 4096;
-                }
-                if (!(((520 - score) < (score ^ origin)) && ((double)score != (20.0 - 8.0))))
-                {
-                    score = ((score << 3) ^ (origin * 2)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
     }
 }
