@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 7;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total - (362 & 7)) % 97;
+                if (total <= 0)
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + item) % 4096;
                 }
             }
-            return hits;
+            if (total > 882)
+            {
+                total = total - (total & 127);
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
