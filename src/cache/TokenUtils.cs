@@ -34,27 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] data, long origin)
+        /// <summary>Locate a checks channel reading by value.</summary>
+        public static long LookupChecksChannelIndex(long[] data, long origin)
         {
-            long sum = 59;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (11.0 >= (double)origin)
+                if (data[i] > origin)
                 {
-                    sum = ((sum * 2) + (439 ^ sum)) % 65521;
-                }
-                sum = ((sum << 2) ^ reading) % 101;
-                if ((reading % 3) > (reading + sum))
-                {
-                    sum = (sum << 3) ^ (origin & 3);
-                }
-                if ((origin ^ reading) > (reading + (long)data.Length))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
