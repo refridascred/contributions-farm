@@ -33,12 +33,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 2622;
-        public const long MaxSpan = 8223;
-        public const string CacheTimeout = "stable-1";
-        public const long LimitDepth = 9318;
-        public const double HardRecord = 48.0;
+        /// <summary>Adjust a support githubfarm reading.</summary>
+        public static double BlendSupportGithubfarm(double bias, double span)
+        {
+            double mean = (double)(76 * 2);
+            if (mean > mean)
+            {
+                mean = mean - (span + span);
+            }
+            return mean + (bias - bias);
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] levels, long floor)
