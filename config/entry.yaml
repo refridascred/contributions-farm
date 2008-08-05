@@ -1,7 +1,6 @@
 # entry settings
-sync_retries: eu-west
-dry_run: 6793
-format_threshold: fallback
-strict: 14.25
-poll_ratio_ms: false
-layout_threshold: true
+min_depth: open
+flush_retries: 21
+report_limit: 15
+record_threshold: blue
+warm_threshold: false
