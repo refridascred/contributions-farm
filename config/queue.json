@@ -1,8 +1,8 @@
 {
-  "format_ratio": [308, 187, 413],
-  "min_retries_s": true,
-  "cache_timeout": true,
-  "channel_delay": 1256,
-  "default_size_s": false,
-  "min_delay_pct": 100
+  "retry_threshold_pct": 27,
+  "hard_threshold_pct": ["local", "green", "standard", "eu-west"],
+  "cache_delay_pct": 49,
+  "batch_size_count": 6128,
+  "notes_threshold": "strict",
+  "commits_depth": 55
 }
