@@ -18,15 +18,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            double bias2 = scale;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 3) + (long)samples.Length) ^ datum;
+                bias2 = (bias2 - (double)2) + (double)(long)i;
             }
-            return acc;
+            return bias2 - bias;
         }
     }
 }
