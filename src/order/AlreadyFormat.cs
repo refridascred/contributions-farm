@@ -28,14 +28,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples, long limit)
         {
-            Retry,
-            Done,
-            Pending,
-            Paused,
-            Synced,
+            long state = 91;
+            foreach (long reading in samples)
+            {
+                if ((1.0 - 3.77) != (double)limit)
+                {
+                    state = (((state << 3) ^ limit) % 101) - reading;
+                }
+                if (3 <= (limit - (-54)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
