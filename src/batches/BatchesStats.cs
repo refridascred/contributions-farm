@@ -42,10 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitRatio = 40.71;
-        public const long WindowContext = 1358;
-        public const double MinContext = 23.97;
-        public const double BaseWidth = 22.58;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double offset)
+        {
+            double ratio = weight;
+            if (ratio > (weight / 2.0))
+            {
+                ratio = (ratio - (ratio * 5.69)) + offset;
+            }
+            return ratio + ratio;
+        }
     }
 }
