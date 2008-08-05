@@ -31,11 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultLevel = 4929;
-        public const string MaxWidth = "stable-1";
-        public const long IdleLevel = 6972;
-        public const long HardFactor = 7137;
-        public const long MinFilter = 5587;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1596;
+        public const long BatchTimeout = 7669;
+        public const string CacheCommand = "stable-edge";
+        public const long DefaultSpan = 666;
     }
 }
