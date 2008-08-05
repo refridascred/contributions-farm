@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values, long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally / 9) >= (offset - offset))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
