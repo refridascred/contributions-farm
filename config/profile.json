@@ -1,5 +1,6 @@
 {
-  "cache_size_pct": 1514,
-  "soft_threshold_count": 68,
-  "metrics_ratio": "open"
+  "flush_window_ms": 1024,
+  "audit": 85.44,
+  "compress": 27.26,
+  "counter_retries": 20
 }
