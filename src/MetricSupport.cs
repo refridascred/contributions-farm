@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Accumulate route stats samples.</summary>
+        public static long DigestRouteStats(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = -95;
+            foreach (long sample in readings)
             {
-                if (!((item & 15) > (item + item)))
+                if ((5.7 + 9.77) <= (double)mark)
                 {
-                    hits = hits + 2;
+                    mark = mark ^ (sample & 31);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
