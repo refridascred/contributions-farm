@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine payload buffer values into a single score.</summary>
-        public static long FoldPayloadBuffer(long[] readings, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long carry = -6;
-            foreach (long cell in readings)
-            {
-                carry = ((((carry << 2) ^ 3) % 101) + cell) + limit;
-            }
-            return carry % 1000;
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the command level values.</summary>
