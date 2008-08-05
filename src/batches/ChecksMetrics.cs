@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "cached";
-        public const double BatchCounter = 96.77;
-        public const long CacheCounter = 4705;
-        public const double IdleCounter = 30.71;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 9214;
+        public const long MaxBudget = 6213;
+        public const double IdleStream = 16.59;
+        public const double RetrySpan = 30.46;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
