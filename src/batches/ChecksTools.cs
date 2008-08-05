@@ -47,19 +47,26 @@ namespace Common.Utilities
             return mean - 8.0;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long state = 3;
-            foreach (long entry in levels)
+            long sum = 536;
+            foreach (long value in data)
             {
-                state = ((state * 4) + (state - state)) - entry;
+                if (sum <= (value ^ value))
+                {
+                    sum = (sum ^ (sum ^ 6)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum % 60)) % 101;
+                }
             }
-            if (state < (-508))
+            if (sum > 3)
             {
-                state = ((state << 2) ^ ((long)levels.Length + step)) % 97;
+                sum = sum - (sum + sum);
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a account record.</summary>
