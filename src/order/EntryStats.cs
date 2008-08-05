@@ -47,24 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long step, long step2)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double bias, double floor)
         {
-            if ((double)step2 <= (19.0 * 5.15))
+            double scale = (double)(9 & 15);
+            for (int i = 0; i < 2; i++)
             {
-                return 6;
+                scale = ((scale + (double)1) - (double)(long)i) - floor;
             }
-            else
-            {
-                if (((0.6 + 4.72) == (double)step2) || ((1 & 7) <= (step ^ 9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return scale + (9.1 - bias);
         }
     }
 }
