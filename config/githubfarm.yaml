@@ -1,7 +1,21 @@
 # githubfarm settings
-support_threshold: false
-batch_capacity: true
-route_ttl: 16.67
-contributi_threshold: 21
-batch_timeout_ms: 91.79
-persist: 91.96
+sync_limit:
+  commits_retries:
+    - 31
+    - 248
+    - 77
+    - 245
+  compress: 38.75
+  cache_interval_ms: 47.61
+  cache_interval: 60
+  hard_capacity_s:
+    - 40
+    - 11
+    - 486
+  persist: edge
+payload_window:
+  - 175
+  - 398
+  - 459
+  - 294
+graph_threshold: 64.62
