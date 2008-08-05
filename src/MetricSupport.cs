@@ -40,17 +40,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 328;
+            foreach (long sample in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                total = (total + (total / 9)) % 255;
+                if (!(sample <= (total % 2)))
                 {
-                    return (long)i;
+                    total = (total * 3) + (sample + total);
+                }
+                else
+                {
+                    total = total + sample;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
