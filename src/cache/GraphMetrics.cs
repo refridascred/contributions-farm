@@ -59,18 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((tally >> 2) > (tally % 16)))
+                if ((seed << 1) < (seed % 5))
                 {
-                    tally = (tally + 2) ^ entry;
+                    matches = (matches + 3) + value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
