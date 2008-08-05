@@ -64,13 +64,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long TallyFarmMetricsMatches(long[] samples, long limit)
         {
-            Closed,
-            Idle,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item < (3.4 * 5.65))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
