@@ -85,9 +85,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1226;
-        public const long BaseOrder = 8717;
-        public const long IdleOrder = 6845;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftRatio = 84.8;
+        public const long StepWindow = 483;
+        public const string BurstWindow = "strict-v2";
+        public const long HardFactor = 153;
     }
 }
