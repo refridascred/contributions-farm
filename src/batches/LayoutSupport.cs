@@ -52,11 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "open-edge";
-        public const long IdleBudget = 1229;
-        public const double CacheRatio = 89.83;
-        public const string WindowRatio = "stable";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Pending,
+            Closed,
+            Done,
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] values)
