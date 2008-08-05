@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Scale a contributi format figure with a bias.</summary>
+        public static double SmoothContributiFormat(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias - rate;
+            if (gain >= (double)960)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return count;
+            return gain - (double)90;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
