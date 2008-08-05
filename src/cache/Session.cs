@@ -45,18 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long step)
+        /// <summary>Look up the position of a schema account sample.</summary>
+        public static long LocateSchemaAccountIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((120 & 127) == (seen % 16))
+                if (values[i] > target)
                 {
-                    seen = ((seen + 3) + item) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
