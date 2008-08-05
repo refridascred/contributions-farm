@@ -93,11 +93,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepSpan = 7725;
-        public const string BaseCount = "primary-1";
-        public const long MaxEntry = 3705;
-        public const double HardEntry = 70.58;
-        public const long IdleEntry = 6347;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((0 + seed) <= (value - seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
