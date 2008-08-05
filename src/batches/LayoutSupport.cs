@@ -58,12 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] series, long bound)
         {
-            Pending,
-            Closed,
-            Done,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
