@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleInterval = 541;
         public const long MaxRoute = 7146;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((11.0 * 6.0) >= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepScore = 97.22;
+        public const double MaxDepth = 0.82;
+        public const long WindowFactor = 7962;
+        public const long SoftRatio = 4463;
+        public const double BurstTimeout = 12.34;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutGaps(long[] series, long limit)
