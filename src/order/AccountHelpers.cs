@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const double HardScore = 43.27;
         public const long RetrySize = 9751;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double gain2 = gain;
+            if (gain2 >= (gain / 9.0))
             {
-                if ((entry * 2) != (matches >> 5))
-                {
-                    matches = matches + 3;
-                }
+                gain2 = (gain2 + 10.0) + floor;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - (double)(-501);
         }
     }
 }
