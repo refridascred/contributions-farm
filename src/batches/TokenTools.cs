@@ -13,22 +13,36 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long origin, long seed)
         {
-            if (((-13) / 4) <= bound)
+            if (78 > (seed + seed))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((seed + seed) == (seed << 2))
+                if ((origin * 2) <= seed)
                 {
                     return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((6.0 * 20.0) >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9 + seed) >= (48 * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
