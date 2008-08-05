@@ -1,24 +1,4 @@
 # githubfarm settings
-sync_window:
-  - local
-  - cached
-  - stable
-batch_depth_s: green
-dry_run:
-  default_retries_pct: 42
-  max_threshold: fallback
-  burst_interval_count: strict
-  default_limit: false
-  report_retries:
-    token_retries:
-      - 373
-      - 106
-      - 436
-    strict: 31.26
-    order_delay: 1707
-  warm_window_count:
-    - blue
-    - latest
-    - latest
-    - fallback
-strict: 85.75
+batch_size_ms: 2.62
+warm_size_ms: local
+flush_threshold_count: 100
