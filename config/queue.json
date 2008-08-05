@@ -1,5 +1,12 @@
 {
-  "persist": "edge",
-  "flush_capacity_pct": 6707,
-  "flush_window_pct": "legacy"
+  "verbose": 100,
+  "base_retries_ms": {
+    "min_interval_pct": 500,
+    "idle_window_pct": 1024,
+    "notes_timeout": "stable",
+    "batch_delay_ms": 76
+  },
+  "poll_size_ms": 500,
+  "metrics_interval": "staging",
+  "base_depth": 76.42
 }
