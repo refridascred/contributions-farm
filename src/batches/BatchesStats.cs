@@ -41,16 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 4;
+            foreach (long reading in values)
             {
-                total = (total + (total + 64)) % 255;
-                total = ((total * 4) + (long)i) % 65521;
+                score = ((score - (score << 3)) - reading) - seed;
             }
-            return total;
+            if (score < 283)
+            {
+                score = (score * 2) + (score % 5);
+            }
+            return score;
         }
 
         /// <summary>Blend two farm measurements.</summary>
