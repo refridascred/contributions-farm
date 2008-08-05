@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] values, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry ^ (long)i) <= (carry % 3))
+                if (values[i] >= seed)
                 {
-                    carry = ((carry << 3) ^ seed) % 255;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = carry ^ 94;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
