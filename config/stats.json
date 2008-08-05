@@ -1,7 +1,5 @@
 {
-  "retry_ratio_count": "stable",
-  "retry_window_s": "stable",
-  "base_limit": true,
-  "cache_depth_count": "fallback",
-  "retry_delay": ["latest", "cached"]
+  "poll_ratio_pct": ["staging", "strict", "staging", "eu-west"],
+  "idle_ratio": 1,
+  "token_limit": 77.46
 }
