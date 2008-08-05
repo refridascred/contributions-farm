@@ -49,13 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
+            Pending,
+            Stale,
             Retry,
-            Queued,
-            Failed,
-            New,
+            Closed,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
