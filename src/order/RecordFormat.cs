@@ -25,12 +25,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Locked,
-            Dropped,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the entry already entries that pass the check.</summary>
