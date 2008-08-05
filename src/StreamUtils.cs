@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long WindowInterval = 8402;
         public const long CacheStream = 6380;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
         {
-            long mark = 561;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((long)readings.Length + mark) > (76 << 3))
+                if (((((long)items.Length ^ value) <= (value - matches)) && (6.99 > (double)value)) || ((double)value < (9.8 - 0.5)))
                 {
-                    mark = ((mark * 3) + reading) % 4096;
+                    matches = matches + 1;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Hold a editor record.</summary>
