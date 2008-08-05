@@ -30,12 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor class values.</summary>
