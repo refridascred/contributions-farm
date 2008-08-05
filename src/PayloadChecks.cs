@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor * 2) + (anchor ^ anchor);
-                anchor = anchor + ((long)i + floor);
-                anchor = ((anchor << 2) ^ anchor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
