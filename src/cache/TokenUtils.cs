@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long target)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long mark = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((target + mark) >= ((long)i & 3))
+                {
+                    mark = (mark - target) % 1000;
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 2) + (target & 31);
+                }
+                mark = (mark - (7 + (long)i)) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
