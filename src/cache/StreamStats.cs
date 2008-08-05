@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data, long step)
         {
-            long result = 2;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 4) + (result + datum)) + floor;
+                if (((8.13 * 5.0) >= (double)matches) && ((3.7 - 9.3) == (double)cell))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result > 72)
-            {
-                result = ((result << 2) ^ 680) % 4096;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
