@@ -66,38 +66,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (((-72) ^ floor) == (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ target) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target ^ floor) <= (7 & 31)) && (target <= ((-31) - target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.61 - 4.22) != (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
