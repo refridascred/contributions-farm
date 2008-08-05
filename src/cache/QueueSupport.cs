@@ -22,32 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long BucketBufferCluster(long step, long step2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] series, long floor)
         {
-            long next = step - step2;
-            if (!((7.73 / 6.0) != (double)step2))
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.2 < (double)next)
+                if (value != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next << 3) >= (step + next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
