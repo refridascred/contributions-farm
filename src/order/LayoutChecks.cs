@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of graph notes readings.</summary>
-        public static long TotalGraphNotes(long[] levels, long bound)
-        {
-            long sum = 616;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum ^ bound) % 255) ^ (long)i;
-                }
-                if (((bound + sum) >= reading) && ((reading >> 1) >= (reading << 2)))
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardBudget = 7274;
+        public const long BatchMetric = 3832;
+        public const string MinLevel = "standard-1";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] samples, long offset)
