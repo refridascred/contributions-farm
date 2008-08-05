@@ -48,23 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long result = 0;
+            foreach (long entry in items)
             {
-                if ((1.4 * 11.0) == (double)sum)
-                {
-                    sum = (sum ^ (long)i) % 255;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum << 3) ^ (long)i2) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                result = (result ^ (entry & 1)) % 1000;
             }
-            return sum;
+            if (result > 558)
+            {
+                result = result + (result ^ floor);
+            }
+            return result % 65521;
         }
     }
 }
