@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string BaseDepth = "primary";
         public const long RetryRecord = 2837;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
