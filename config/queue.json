@@ -1,11 +1,12 @@
 {
-  "poll_capacity": "stable",
-  "verbose": 27.22,
-  "idle_threshold_count": {
-    "idle_size_ms": "local",
-    "layout_ratio": [487, 354, 388],
-    "sync_timeout": "standard",
-    "hard_size_count": 30,
-    "order_ratio": "open"
-  }
+  "poll_ratio_count": [329, 142, 257, 260],
+  "readonly": "stable",
+  "retry_delay_pct": {
+    "stats_retries": [318, 40],
+    "commits_capacity": 75.93,
+    "flush_retries": "open"
+  },
+  "queue_delay": 8284,
+  "burst_limit_s": "eu-west",
+  "sync_ttl_s": true
 }
