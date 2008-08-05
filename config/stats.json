@@ -1,6 +1,23 @@
 {
-  "batch_ratio_s": ["edge", "latest", "cached", "blue"],
-  "strict": 72,
-  "graph_window": false,
-  "retry_ttl": "strict"
+  "dry_run": "fallback",
+  "flush_window_ms": {
+    "counter_limit": "open",
+    "warm_window": "edge",
+    "retry_ttl_pct": [333, 284, 17, 228],
+    "checks_retries": false
+  },
+  "sync_ratio": 73.71,
+  "readonly": {
+    "context_retries": {
+      "soft_depth_ms": 100,
+      "batch_timeout_pct": 24.78,
+      "warm_timeout_ms": 100,
+      "notes_limit": "cached",
+      "readonly": "legacy"
+    },
+    "dry_run": "open",
+    "idle_limit_pct": "staging",
+    "max_depth_ms": 60.62,
+    "batch_threshold": "cached"
+  }
 }
