@@ -25,13 +25,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Adjust a githubfarm contributi reading.</summary>
+        public static double AdjustGithubfarmContributi(double ratio, double offset)
         {
-            Pending,
-            Closed,
-            Ready,
-            Synced,
+            double mean = ratio / 7.0;
+            if (mean <= 11.0)
+            {
+                mean = (mean + 1.7) + offset;
+            }
+            else
+            {
+                mean = mean - (double)(-55);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean / 3.0)) - (double)(long)i;
+            }
+            return mean - (double)883;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
