@@ -1,6 +1,6 @@
 {
-  "burst_limit_pct": ["strict", "legacy", "latest"],
-  "base_timeout": 33.95,
-  "retry_size": 49,
-  "burst_delay_pct": 1311
+  "compress": 1971,
+  "warm_ttl": false,
+  "persist": 71,
+  "sync_limit": "staging"
 }
