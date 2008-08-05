@@ -33,21 +33,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 2;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ value) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
