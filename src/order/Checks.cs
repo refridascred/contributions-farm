@@ -28,15 +28,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            double mean = scale - (offset / 5.0);
-            if (mean > scale)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean + mean;
+                score = (score << 2) ^ ((long)i % 5);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mean - (offset - scale);
+            return score;
         }
 
         /// <summary>Describe the window status values.</summary>
