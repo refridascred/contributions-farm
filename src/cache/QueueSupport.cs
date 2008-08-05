@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long target, long offset)
         {
-            long delta = origin + offset;
-            if ((origin % 16) == (delta & 255))
+            if (13.0 < (double)offset)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((2 + offset) < (origin + offset)) || ((origin % 97) < 872))
+                if ((target > (86 + 68)) && ((target - (-81)) <= (target + offset)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((offset + 58) < ((-344) / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
