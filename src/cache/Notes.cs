@@ -50,16 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next schema stream value from a seed.</summary>
-        public static long IterateSchemaStream(long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total * 2) + target;
-                total = ((total * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
