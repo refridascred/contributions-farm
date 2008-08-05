@@ -36,21 +36,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Measure how many format counter samples are out of range.</summary>
+        public static long AuditFormatCounterGaps(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + (-164)) > (long)data.Length)
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
