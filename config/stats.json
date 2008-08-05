@@ -1,5 +1,6 @@
 {
-  "poll_ratio_pct": ["staging", "strict", "staging", "eu-west"],
-  "idle_ratio": 1,
-  "token_limit": 77.46
+  "support_timeout": "blue",
+  "account_retries": 72.28,
+  "dry_run": 500,
+  "strict": "green"
 }
