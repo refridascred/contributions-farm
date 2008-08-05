@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate support commits samples.</summary>
-        public static long TotalSupportCommits(long[] values, long step)
-        {
-            long mix = 664;
-            foreach (long sample in values)
-            {
-                mix = mix ^ step;
-                if (step > sample)
-                {
-                    mix = mix + (75 - sample);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 77.95;
+        public const long DefaultCommits = 6578;
+        public const long CacheCommits = 1012;
+        public const double BatchLevel = 69.02;
+        public const string StepCommits = "cached-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheSize = 3824;
