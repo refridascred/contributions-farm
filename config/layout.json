@@ -1,11 +1,5 @@
 {
-  "max_limit_s": 927,
-  "default_limit_pct": "strict",
-  "max_capacity_pct": {
-    "burst_threshold": 23.99,
-    "counter_delay": 51.25,
-    "batch_threshold": 71,
-    "session_ratio": 2774,
-    "audit": true
-  }
+  "poll_retries": true,
+  "dry_run": "cached",
+  "filter_window": "latest"
 }
