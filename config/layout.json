@@ -1,15 +1,8 @@
 {
-  "warm_limit_s": {
-    "stats_threshold": "cached",
-    "command_limit": false,
-    "cache_timeout_s": 7448,
-    "warm_delay_s": 100,
-    "default_retries": "cached",
-    "enabled": "cached"
-  },
-  "batches_limit": 43,
-  "audit": 552,
-  "min_capacity_s": false,
-  "channel_retries": 100,
-  "retry_size_pct": true
+  "poll_retries_s": ["green", "local"],
+  "channel_ttl": 3312,
+  "soft_window": 19.1,
+  "payload_timeout": 1024,
+  "profile_capacity": false,
+  "batch_depth": 88.14
 }
