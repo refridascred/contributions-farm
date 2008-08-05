@@ -28,12 +28,32 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long origin)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            long diff = offset - origin;
+            if (!((offset + diff) != (diff + 12)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((566 >> 3) < diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff * 2) >= (origin * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
