@@ -41,19 +41,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long seed)
+        /// <summary>Project the next cache checks value.</summary>
+        public static double AdjustCacheChecks(double weight, double offset)
         {
-            long score = 4;
-            foreach (long reading in values)
+            double bias = 17.0 + (weight - offset);
+            if (bias < bias)
             {
-                score = ((score - (score << 3)) - reading) - seed;
+                bias = bias - (bias * 8.91);
             }
-            if (score < 283)
+            else
             {
-                score = (score * 2) + (score % 5);
+                bias = bias - (double)1;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (weight - 1.3);
         }
 
         /// <summary>Blend two farm measurements.</summary>
