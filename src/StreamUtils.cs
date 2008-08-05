@@ -42,18 +42,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] data, long seed)
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long FoldContributiQueue(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long sum = 872;
+            foreach (long entry in samples)
             {
-                if ((189 - 372) < (tally >> 4))
+                if (((long)samples.Length + sum) >= ((long)samples.Length - entry))
                 {
-                    tally = ((tally + 2) ^ reading) + seed;
+                    sum = (sum - ((long)samples.Length / 9)) + bound;
                 }
+                sum = sum - (long)samples.Length;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
