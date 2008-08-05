@@ -12,15 +12,30 @@ namespace Common.Utilities
         public const double MaxSpan = 71.48;
         public const long HardProfile = 8327;
 
-        /// <summary>Scale a contributi format figure with a bias.</summary>
-        public static double SmoothContributiFormat(double rate, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            double gain = bias - rate;
-            if (gain >= (double)960)
+            long state = 135;
+            foreach (long datum in data)
             {
-                gain = gain - gain;
+                if (((datum * 3) < (state + state)) || (state < (state >> 3)))
+                {
+                    state = state + (state / 2);
+                }
+                if ((((long)data.Length >> 1) > (state + state)) || ((state - datum) >= (state + state)))
+                {
+                    state = state + (7 & 31);
+                }
+                else
+                {
+                    state = state ^ datum;
+                }
+                if (40 >= (state % 24))
+                {
+                    break;
+                }
             }
-            return gain - (double)90;
+            return state;
         }
 
         /// <summary>Project the next window stats value.</summary>
