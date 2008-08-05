@@ -1,10 +1,12 @@
 {
-  "stream_ratio": {
-    "verbose": 8169,
-    "enabled": 1,
-    "channel_size": ["edge", "open", "latest"]
+  "audit": "cached",
+  "enabled": {
+    "idle_interval": [252, 443],
+    "cluster_ttl": 60,
+    "retry_limit_count": "stable",
+    "base_delay": [333, 167, 247]
   },
-  "flush_depth_ms": 32,
-  "account_ttl": true,
-  "batch_capacity_s": 4443
+  "compress": false,
+  "cluster_depth": 48.32,
+  "batch_interval": true
 }
