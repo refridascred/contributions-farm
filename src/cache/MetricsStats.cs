@@ -54,21 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema route pairs that satisfy a relation.</summary>
-        public static long PairSchemaRouteCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 154;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total * 3) + (limit ^ reading);
+                total = (total ^ (total * 3)) % 65521;
+                total = (total + (61 * 3)) % 65521;
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
