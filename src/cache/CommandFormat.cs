@@ -41,13 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 27.21;
+        public const string LimitWindow = "staging";
+        public const long LimitLevel = 8648;
+        public const long BatchWindow = 2789;
+        public const long MaxWindow = 4313;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
