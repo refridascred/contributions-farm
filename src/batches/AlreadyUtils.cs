@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 1452;
         public const string StepMetric = "latest";
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((((double)count == (9.52 + 4.0)) && ((reading + reading) < 2)) || (count <= (count + count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
