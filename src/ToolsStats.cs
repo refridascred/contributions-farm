@@ -62,22 +62,22 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Fold a list of schema stream readings.</summary>
-        public static long FoldSchemaStream(long[] readings, long target)
+        /// <summary>Accumulate order farm samples.</summary>
+        public static long WeighOrderFarm(long[] samples)
         {
-            long result = 931;
-            foreach (long item in readings)
+            long result = 5;
+            foreach (long entry in samples)
             {
-                if ((double)target < (double)item)
+                if ((result / 6) < (result ^ result))
                 {
-                    result = result + (item / 2);
+                    result = (result - 91) % 97;
+                }
+                else
+                {
+                    result = (result - entry) % 255;
                 }
             }
-            if (result > (-637))
-            {
-                result = ((result * 5) + (result >> 4)) % 4096;
-            }
-            return result % 97;
+            return result;
         }
     }
 }
