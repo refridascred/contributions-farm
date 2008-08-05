@@ -35,22 +35,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            long carry = 810;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((bound % 8) < (89 << 1)) || (reading >= (bound % 10)))
+                if ((cell << 2) >= 8)
                 {
-                    carry = (carry * 2) + (reading << 1);
+                    count = count + 1;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (reading + reading);
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Adjust a contributi entry reading.</summary>
