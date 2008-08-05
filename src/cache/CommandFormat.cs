@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen <= 7.76)
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
