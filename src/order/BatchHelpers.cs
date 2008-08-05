@@ -14,23 +14,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double bias)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings)
         {
-            double weight2 = (weight / 5.0) + (bias - 8.22);
-            if (weight2 > (bias + 6.0))
+            long acc = 3;
+            foreach (long datum in readings)
             {
-                weight2 = weight2 - weight2;
+                acc = (acc ^ (63 << 1)) % 1000;
+                if ((datum - datum) >= acc)
+                {
+                    acc = (acc * 3) + (acc & 3);
+                }
+                if ((acc ^ datum) != (260 << 3))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 622)
             {
-                weight2 = weight2 + (weight2 * 7.88);
+                acc = (acc ^ (acc << 1)) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + bias) + (double)(long)i;
-            }
-            return weight2 - (bias - weight);
+            return acc;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
