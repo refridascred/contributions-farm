@@ -49,10 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "open-v2";
-        public const long IdleBatches = 5399;
-        public const double CacheBatches = 5.95;
+        /// <summary>Roll a editor route counter forward.</summary>
+        public static long StepEditorRoute(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark - mark;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string LimitFilter = "cached-1";
