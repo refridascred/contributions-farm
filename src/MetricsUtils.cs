@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate stream stats samples.</summary>
-        public static long CombineStreamStats(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long limit, long step)
         {
-            long mark = 23;
-            foreach (long sample in samples)
+            if ((464 % 100) <= limit)
             {
-                if ((sample & 1) > 342)
+                return 7;
+            }
+            else
+            {
+                if (((step % 16) > (step * 2)) && ((double)limit <= (17.0 + 9.56)))
                 {
-                    mark = ((mark << 3) ^ (sample + mark)) % 4096;
+                    return 4;
                 }
-                if (7.0 <= (double)mark)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
