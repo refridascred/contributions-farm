@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long origin)
-        {
-            long next = limit + origin;
-            if (2.9 >= (double)next)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((next + limit) > next)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxTimeout = "alpha-v2";
+        public const long BurstReport = 7935;
+        public const long BatchReport = 4384;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorHits(long[] data, long offset)
