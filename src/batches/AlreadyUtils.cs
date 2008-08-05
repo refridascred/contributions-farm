@@ -25,17 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long SeekCommandRecordIndex(long[] values, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 866;
+            foreach (long reading in samples)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ reading) % 1000;
             }
-            return -1;
+            if (state < 96)
+            {
+                state = state + ((long)samples.Length + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
