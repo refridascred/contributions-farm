@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 548;
-        public const long BatchSupport = 780;
-        public const string MaxSupport = "latest";
-        public const long BurstSupport = 848;
-        public const double IdleSupport = 81.02;
+        /// <summary>Check that every layout stats entry stays within the limit.</summary>
+        public static bool CheckLayoutStatsRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] data, long limit)
