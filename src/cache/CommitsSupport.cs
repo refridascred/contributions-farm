@@ -34,22 +34,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long TallyGithubfarmStreamOutliers(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!((count < cell) || ((69 % 16) < cell)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
