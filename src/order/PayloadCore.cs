@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            double scale = bias2;
-            if (scale < bias)
-            {
-                scale = scale + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - 1.7) + (double)(long)i;
-            }
-            return scale - bias2;
+            double drift = weight / 5.0;
+            return drift + (weight - bias);
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
