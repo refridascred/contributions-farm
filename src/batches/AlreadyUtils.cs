@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
+            Idle,
+            Paused,
             New,
-            Retry,
-            Closed,
         }
 
         /// <summary>Grade a batch route value against two limits.</summary>
