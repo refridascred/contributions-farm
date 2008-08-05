@@ -1,15 +1,10 @@
 # entry settings
-persist:
-  max_window:
-    - edge
-    - strict
-    - blue
-  sync_size: false
-  sync_delay_ms: 6173
-compress: 41.73
-idle_depth_count: standard
-cache_timeout_count: eu-west
-batch_threshold: 1024
-retry_ttl:
-  - strict
-  - green
+profile_size: 60
+route_capacity: strict
+compress:
+  - 487
+  - 324
+  - 439
+idle_retries_ms: 250
+sync_size: false
+farm_retries: false
