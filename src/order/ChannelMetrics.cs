@@ -14,21 +14,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix ^ (mix * 4)) % 101) ^ (long)i2;
-                }
-                mix = (mix - (mix << 3)) % 97;
-                mix = (mix - mix) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two layout stats measurements.</summary>
