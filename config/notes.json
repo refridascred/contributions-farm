@@ -1,5 +1,7 @@
 {
-  "dry_run": "edge",
-  "editor_interval": ["blue", "fallback"],
-  "min_window": false
+  "strict": ["eu-west", "green"],
+  "cache_delay": [278, 412],
+  "contributi_delay": 56.01,
+  "idle_ttl_s": 1,
+  "cluster_timeout": 9389
 }
