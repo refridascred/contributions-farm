@@ -26,21 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats already readings.</summary>
-        public static long MatchStatsAlreadyCount(long[] items)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long CountAccountStatsOutliers(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)samples.Length + origin) <= (long)samples.Length)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
