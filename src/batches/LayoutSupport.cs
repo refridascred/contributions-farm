@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mean - (double)7;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long target, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] levels, long floor)
         {
-            if (offset < (offset - offset))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset < (offset + target)) && ((5.27 + 20.0) <= (double)target))
+                if ((datum & 15) <= (floor * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target < (target - 1)) && ((-8) > (target & 15)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
