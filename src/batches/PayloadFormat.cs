@@ -35,11 +35,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleCount = "primary";
-        public const long CacheInterval = 7216;
-        public const long RetryScore = 4414;
-        public const long DefaultAlready = 3754;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long offset)
+        {
+            if ((offset ^ offset) < step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.8 * 16.0) > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + 51) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] readings)
