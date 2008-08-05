@@ -27,11 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metrics already value.</summary>
-        public static double SmoothMetricsAlready(double weight, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = bias;
-            return (load + (bias / 7.0)) + weight;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
