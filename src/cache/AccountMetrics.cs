@@ -21,17 +21,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metrics support sample.</summary>
-        public static long LocateMetricsSupportIndex(long[] data, long floor)
+        /// <summary>Check that every route schema entry stays within the limit.</summary>
+        public static bool GuardRouteSchemaBounds(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                if (item > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
