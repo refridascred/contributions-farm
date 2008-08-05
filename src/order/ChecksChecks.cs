@@ -40,19 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryTimeout = 3078;
+        public const long LimitFormat = 7229;
+        public const long BurstBudget = 7228;
     }
 }
