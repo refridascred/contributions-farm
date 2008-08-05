@@ -30,22 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Count the batch token entries that pass the check.</summary>
+        public static long MeasureBatchTokenHits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)hits == (3.29 - 6.3))
+                if ((seed - 77) < (value / 2))
                 {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
