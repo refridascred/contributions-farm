@@ -58,18 +58,16 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen ^ 182) > (2 - limit))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                mark = mark + (mark - (long)i);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
     }
 }
