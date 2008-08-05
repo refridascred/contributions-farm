@@ -42,31 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long RankEditorMetric(long target, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (!((double)floor > (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.98 + 6.02) <= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor / 7) <= (target % 24))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
