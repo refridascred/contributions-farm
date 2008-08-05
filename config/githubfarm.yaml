@@ -1,4 +1,21 @@
 # githubfarm settings
-batch_size_ms: 2.62
-warm_size_ms: local
-flush_threshold_count: 100
+cache_interval: 30
+cache_size_ms: 65.28
+flush_interval_ms: primary
+compress:
+  warm_timeout_count: 82.36
+  poll_size: 7151
+  metrics_retries: 90.26
+  dry_run: 500
+batch_ttl_pct:
+  default_interval_s:
+    min_timeout_pct: 87.27
+    cache_retries_s: standard
+    batch_threshold_pct: green
+  retry_size: strict
+  verbose: true
+max_capacity_count:
+  - edge
+  - fallback
+  - standard
+  - local
