@@ -26,19 +26,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool ValidateAccountCommandRange(long[] levels, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
