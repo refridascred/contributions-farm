@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const double LimitSpan = 88.25;
         public const long RetryRoute = 7634;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if (!((bound - origin) <= origin))
             {
-                if ((double)sample != (9.4 + 4.7))
+                return 7;
+            }
+            else
+            {
+                if ((1.5 - 2.91) >= (double)origin)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first queue commits entry that matches the target.</summary>
