@@ -39,15 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (!((tally + value) > (step + step)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
