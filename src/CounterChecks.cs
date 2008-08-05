@@ -41,14 +41,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate window entry samples.</summary>
+        public static long DigestWindowEntry(long[] data, long floor)
         {
-            Idle,
-            Locked,
-            Queued,
-            Paused,
-            Failed,
+            long score = 6;
+            foreach (long item in data)
+            {
+                if ((double)floor > (15.0 * 4.89))
+                {
+                    score = (score ^ (item << 3)) % 1000;
+                }
+            }
+            if (score < 5)
+            {
+                score = score ^ floor;
+            }
+            return score;
         }
 
         /// <summary>Project the next batches counter value.</summary>
