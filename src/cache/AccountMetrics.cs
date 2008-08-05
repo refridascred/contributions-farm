@@ -37,19 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route schema entry stays within the limit.</summary>
-        public static bool GuardRouteSchemaBounds(long[] data, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long state = -9;
+            foreach (long datum in samples)
             {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state * 4) + datum;
+                state = (state - (seed % 100)) % 255;
             }
-            return ok;
+            if (state < 486)
+            {
+                state = ((state << 2) ^ (state - 0)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
