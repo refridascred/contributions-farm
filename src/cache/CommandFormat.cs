@@ -56,21 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter editor samples.</summary>
-        public static long MatchFilterEditorCount(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate batches order readings against a bound.</summary>
