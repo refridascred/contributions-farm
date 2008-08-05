@@ -28,11 +28,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftBudget = 8122;
-        public const long BatchSize = 4418;
-        public const long IdleEditor = 7314;
-        public const double DefaultRatio = 1.8;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits + hits) >= (0 - datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxProfile = "fallback-edge";
