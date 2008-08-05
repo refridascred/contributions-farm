@@ -20,22 +20,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Find the first token record entry that matches the target.</summary>
+        public static long LookupTokenRecordIndex(long[] series, long bound)
         {
-            long score = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score >= (score ^ entry)) || ((double)entry < 8.0))
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    score = score - score;
-                }
-                if ((3 + score) == (score - score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
