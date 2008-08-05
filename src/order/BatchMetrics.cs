@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] levels, long origin)
         {
-            long total = 95;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((5 * 5) >= total)
+                if (value <= origin)
                 {
-                    total = (total + (datum ^ step)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Fold a list of command channel readings.</summary>
