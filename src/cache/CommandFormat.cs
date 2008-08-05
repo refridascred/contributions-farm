@@ -41,13 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
