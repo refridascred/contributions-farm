@@ -1,12 +1,14 @@
 {
-  "poll_ratio_count": [329, 142, 257, 260],
-  "readonly": "stable",
-  "retry_delay_pct": {
-    "stats_retries": [318, 40],
-    "commits_capacity": 75.93,
-    "flush_retries": "open"
-  },
-  "queue_delay": 8284,
-  "burst_limit_s": "eu-west",
-  "sync_ttl_s": true
+  "base_interval": "strict",
+  "dry_run": "open",
+  "default_retries_pct": {
+    "warm_ratio": {
+      "persist": 4297,
+      "sync_depth_s": "latest",
+      "layout_interval": 7476
+    },
+    "cache_delay_count": "blue",
+    "editor_threshold": 2915,
+    "strict": 100
+  }
 }
