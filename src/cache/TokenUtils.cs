@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target + mark) >= ((long)i & 3))
+                mix = (mix + (long)i) % 65521;
+                if ((double)origin <= (double)mix)
                 {
-                    mark = (mark - target) % 1000;
+                    mix = ((mix * 4) + mix) % 101;
                     break;
                 }
-                else
+                if (!((mix ^ mix) > (554 + mix)))
                 {
-                    mark = (mark * 2) + (target & 31);
+                    mix = (mix + (origin + origin)) % 65521;
+                    mix = (mix << 3) ^ (mix & 7);
                 }
-                mark = (mark - (7 + (long)i)) % 97;
-                mark = ((mark * 5) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
