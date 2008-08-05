@@ -1,6 +1,7 @@
 {
-  "burst_ttl_pct": "eu-west",
-  "max_timeout_pct": 18.83,
-  "strict": "primary",
-  "dry_run": "open"
+  "commits_capacity": [2, 260, 242, 19],
+  "readonly": "green",
+  "flush_size_s": 66,
+  "cache_retries": "open",
+  "cache_threshold_ms": ["strict", "edge", "staging"]
 }
