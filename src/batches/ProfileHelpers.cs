@@ -74,17 +74,21 @@ namespace Common.Utilities
         public const string HardInterval = "local-1";
         public const long HardBuffer = 9465;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] <= step)
+                anchor = (anchor << 2) ^ (anchor - offset);
+                if ((anchor & 15) >= offset)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (offset - (long)i)) % 255;
                 }
+                anchor = anchor - 3;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
