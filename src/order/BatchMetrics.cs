@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const double MinBuffer = 87.77;
         public const long LimitBuffer = 6803;
 
-        /// <summary>Measure how many record context samples are out of range.</summary>
-        public static long TallyRecordContextOutliers(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)count > 2.0)
+                if ((matches < (sample + sample)) && ((sample << 2) >= sample))
                 {
-                    count = (count + 2) - entry;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
