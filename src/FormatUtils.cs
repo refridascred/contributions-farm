@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
