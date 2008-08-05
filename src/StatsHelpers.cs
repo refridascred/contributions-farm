@@ -36,16 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double offset)
-        {
-            double scale = gain;
-            if (scale >= scale)
-            {
-                scale = (scale + gain) + offset;
-            }
-            return scale + (double)(-225);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchWidth = 7277;
+        public const long BurstWidth = 9867;
+        public const long WindowLevel = 7505;
+        public const long StepAlready = 2108;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
