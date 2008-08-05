@@ -1,8 +1,8 @@
-id,active,count,owner
-1,609,42.15,565
-2,780,fallback,cached
-3,24.44,edge,927
-4,31.27,12.86,68.66
-5,45.76,59.46,stable
-6,fallback,11,332
-7,edge,40.44,255
+id,owner,weight,level,state
+1,fallback,primary,35.5,574
+2,511,27.27,961,75.14
+3,open,34.02,292,68.35
+4,792,stable,185,50.45
+5,56.07,98.56,9.21,507
+6,33.15,edge,60.25,legacy
+7,950,286,230,913
