@@ -1,8 +1,13 @@
 {
-  "enabled": true,
-  "batches_threshold": [459, 328],
-  "support_delay": ["edge", "edge", "local", "blue"],
-  "strict": [105, 225, 273],
-  "channel_capacity": ["strict", "latest", "primary"],
-  "verbose": 52
+  "default_limit_count": 30,
+  "min_interval_pct": 96,
+  "burst_capacity_s": "green",
+  "compress": "fallback",
+  "min_retries_ms": {
+    "base_threshold_count": 60,
+    "cache_interval": true,
+    "report_ratio": 12.04,
+    "sync_capacity_count": "standard",
+    "counter_ttl": 1073
+  }
 }
