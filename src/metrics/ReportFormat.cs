@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool CheckGraphOrderRange(long[] items, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long target)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long edge = floor + target;
+            if ((floor + edge) == (target + edge))
             {
-                if (reading >= step)
+                return 7;
+            }
+            else
+            {
+                if ((97 - edge) > edge)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (target < (226 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit counter graph readings against a rule.</summary>
