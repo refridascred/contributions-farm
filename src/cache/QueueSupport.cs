@@ -50,15 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric schema series from a seed.</summary>
-        public static long RollMetricSchema(long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
