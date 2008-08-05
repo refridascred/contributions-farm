@@ -36,17 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a checks channel reading by value.</summary>
-        public static long LookupChecksChannelIndex(long[] data, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = floor + limit;
+            if ((8.91 <= (double)span) || ((floor + limit) >= limit))
             {
-                if (data[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (double)span)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
