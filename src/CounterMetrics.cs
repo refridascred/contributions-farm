@@ -47,17 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter schema entry that matches the target.</summary>
-        public static long LookupCounterSchemaIndex(long[] samples, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
