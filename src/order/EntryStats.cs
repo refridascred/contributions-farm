@@ -40,22 +40,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] levels, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (4 > (target / 3))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the format mode values.</summary>
