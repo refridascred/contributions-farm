@@ -57,18 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample < (5.0 + 8.0)))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
