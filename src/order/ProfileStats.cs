@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double weight, double bias)
+        /// <summary>Combine payload buffer values into a single score.</summary>
+        public static long FoldPayloadBuffer(long[] readings, long limit)
         {
-            double scale = weight;
-            for (int i = 0; i < 6; i++)
+            long carry = -6;
+            foreach (long cell in readings)
             {
-                scale = ((scale - scale) + (double)(long)i) - bias;
+                carry = ((((carry << 2) ^ 3) % 101) + cell) + limit;
             }
-            return scale + (18.0 / 4.0);
+            return carry % 1000;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
