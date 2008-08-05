@@ -22,15 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            long total = 196;
-            foreach (long sample in items)
-            {
-                total = ((total + (total + total)) % 1000) ^ sample;
-            }
-            return total % 97;
+            double mean = (double)(4 / 5);
+            return (mean - weight) + span;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
