@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitDepth = 3381;
-        public const double LimitLayout = 88.26;
-        public const long DefaultLayout = 3877;
-        public const long CacheLayout = 2371;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((58 >> 3) >= (matches >> 3))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] readings)
