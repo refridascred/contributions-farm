@@ -23,26 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = 1;
-            foreach (long item in data)
-            {
-                if (!((item >> 3) >= (941 - item)))
-                {
-                    carry = ((carry << 2) ^ (4 ^ carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + (item >> 5);
-                }
-                if ((double)item <= 8.1)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
