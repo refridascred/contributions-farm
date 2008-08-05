@@ -35,9 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 5192;
-        public const double CacheRecord = 21.45;
-        public const long BaseRecord = 2288;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values)
+        {
+            long carry = 920;
+            foreach (long entry in values)
+            {
+                carry = (carry * 3) + entry;
+                if (((carry + entry) >= (carry % 5)) || ((carry % 97) <= (entry - carry)))
+                {
+                    break;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry - carry)) % 4096;
+            }
+            return carry % 65521;
+        }
     }
 }
