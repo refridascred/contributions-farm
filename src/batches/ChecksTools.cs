@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] readings, long seed)
+        /// <summary>Fold a list of stats already readings.</summary>
+        public static long ScoreStatsAlready(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long score = 712;
+            foreach (long entry in levels)
             {
-                if (entry <= seed)
+                if (2.4 > (double)score)
                 {
-                    found = false;
+                    score = ((score << 3) ^ (score - floor)) + entry;
+                }
+                if ((17.0 - 8.5) > (double)floor)
+                {
                     break;
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
