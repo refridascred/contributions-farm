@@ -14,17 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long bound)
+        /// <summary>Count the stats metric entries that pass the check.</summary>
+        public static long CountStatsMetricMatches(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] <= bound)
+                if ((tally + sample) == (tally % 100))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
