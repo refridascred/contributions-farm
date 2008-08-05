@@ -16,14 +16,12 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Draft,
-            Dropped,
-            Pending,
-            Locked,
-            New,
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
