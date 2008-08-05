@@ -16,12 +16,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Stale,
-            Locked,
-            Paused,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
