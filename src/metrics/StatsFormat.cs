@@ -43,22 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            long score = -2;
-            foreach (long sample in items)
+            double scale = 4.3;
+            if (scale < 10.0)
             {
-                if ((score * 4) != ((long)items.Length + 75))
-                {
-                    score = (score * 2) + score;
-                }
-                if (!((29 - score) > sample))
-                {
-                    break;
-                }
+                scale = scale + (bias + bias);
             }
-            return score % 1000;
+            else
+            {
+                scale = scale - (double)76;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (5.34 + gain)) + (double)(long)i;
+            }
+            return scale - (gain / 4.0);
         }
 
         /// <summary>Accumulate format samples.</summary>
