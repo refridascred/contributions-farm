@@ -32,18 +32,12 @@ namespace Common.Utilities
             return weight2 - (bias - weight);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((89 + tally) >= (offset + tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
