@@ -40,18 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric record samples are out of range.</summary>
-        public static long CountMetricRecordMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((seen << 3) >= offset) && (((9.3 + 9.1) != (double)entry) && ((-87) < (seen - offset))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 53.45;
+        public const long SoftLayout = 7989;
+        public const string BurstLayout = "latest-1";
+        public const long WindowCount = 2658;
     }
 }
