@@ -29,21 +29,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset <= (3.02 - 2.78))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total * 4) + (total >> 5);
+                    total = ((total * 4) + (6 + offset)) % 1000;
                 }
+                else
+                {
+                    total = ((total << 2) ^ (offset + offset)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
