@@ -1,7 +1,12 @@
 {
-  "audit": [197, 443],
-  "route_window": "fallback",
-  "soft_interval_ms": 6712,
-  "retry_timeout_ms": "fallback",
-  "command_capacity": 15.51
+  "sync_window_ms": {
+    "verbose": 8709,
+    "cache_capacity_pct": 2443,
+    "sync_depth_ms": true,
+    "soft_ttl_count": 100
+  },
+  "cache_threshold_ms": 500,
+  "retry_depth_pct": 74,
+  "base_delay_s": 60,
+  "min_timeout_count": false
 }
