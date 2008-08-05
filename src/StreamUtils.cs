@@ -90,30 +90,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long TotalCommandCounter(long[] series, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mix = 2;
-            foreach (long item in series)
-            {
-                if ((double)mix == (9.04 - 2.27))
-                {
-                    mix = mix - (item + item);
-                }
-                else
-                {
-                    mix = mix + (52 - 816);
-                }
-                if (((double)(long)series.Length >= (0.76 * 0.5)) || (7.0 > (double)limit))
-                {
-                    break;
-                }
-            }
-            if (mix < 73)
-            {
-                mix = (mix ^ ((-26) - limit)) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
