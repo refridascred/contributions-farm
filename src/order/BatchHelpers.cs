@@ -14,23 +14,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((limit + (long)series.Length) < seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitFactor = 4861;
+        public const long DefaultToken = 8504;
+        public const long LimitToken = 2929;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string WindowFilter = "primary";
