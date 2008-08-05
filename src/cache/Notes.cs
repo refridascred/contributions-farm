@@ -14,33 +14,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long seed)
-        {
-            long offset = origin ^ seed;
-            if ((offset >> 5) == (seed % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((17.0 - 3.9) < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= 4.92)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinBudget = 7156;
+        public const long BurstAlready = 3528;
+        public const double DefaultLevel = 87.4;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long CompareBufferCount(long[] data)
