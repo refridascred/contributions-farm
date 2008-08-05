@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long seed, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            if (seed > (1 * 2))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 4) < (89 + target))
+                if ((4 >> 4) < (datum * 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)target < (double)30))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
