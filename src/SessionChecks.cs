@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 4770;
-        public const string LimitTimeout = "cached";
-        public const long BaseLevel = 2744;
-        public const string CacheLevel = "staging-v2";
-        public const long WindowRatio = 185;
+        /// <summary>Find the first stream payload entry that matches the target.</summary>
+        public static long FindStreamPayloadIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] samples, long step)
