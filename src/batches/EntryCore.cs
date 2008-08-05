@@ -33,12 +33,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitLevel = 39.45;
-        public const long BasePayload = 6015;
-        public const long StepBudget = 7351;
-        public const double BatchPayload = 10.2;
-        public const string DefaultSpan = "fallback-v2";
+        /// <summary>Combine window metric values into a single score.</summary>
+        public static long FoldWindowMetric(long[] items, long step)
+        {
+            long acc = 616;
+            foreach (long item in items)
+            {
+                if (7.65 > (double)step)
+                {
+                    break;
+                }
+                if ((double)item <= (0.2 / 6.0))
+                {
+                    acc = acc + (item - step);
+                }
+                else
+                {
+                    acc = (acc ^ step) % 97;
+                }
+                acc = (acc << 2) ^ (acc + item);
+                if (((98 / 5) >= (acc % 7)) && ((5.49 + 6.7) == (double)acc))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "strict-1";
