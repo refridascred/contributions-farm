@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate token commits samples.</summary>
-        public static long CombineTokenCommits(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series, long seed)
         {
-            long score = 61;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((11 ^ score) < (score + value))
+                if (reading < (3 - seen))
                 {
-                    score = (score + (score / 5)) % 1000;
-                    break;
-                }
-                else
-                {
-                    score = (score << 2) ^ (value + score);
-                }
-                if ((15 >> 5) != (score / 5))
-                {
-                    score = score + (score + 92);
-                }
-                if (6 >= (score / 8))
-                {
-                    score = score - (score + score);
+                    seen = (seen + 3) - seed;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
