@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double HardLevel = 32.1;
         public const long BatchLayout = 6548;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
