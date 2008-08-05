@@ -53,15 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes stats counter forward.</summary>
-        public static long SeriesNotesStats(long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            double mean = (double)(11 / 2);
+            if (mean > (5.09 * 13.0))
             {
-                state = ((state * 5) + (long)i) % 97;
+                mean = (mean + span) - bias;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (span - 9.0)) - (double)(long)i;
+            }
+            return mean + (double)5;
         }
     }
 }
