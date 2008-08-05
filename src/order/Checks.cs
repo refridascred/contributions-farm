@@ -48,13 +48,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long limit)
         {
-            long sum = 23;
-            foreach (long sample in readings)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum - sum) ^ sample) + target;
+                if ((1.4 * 11.0) == (double)sum)
+                {
+                    sum = (sum ^ (long)i) % 255;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum << 3) ^ (long)i2) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
             return sum;
         }
