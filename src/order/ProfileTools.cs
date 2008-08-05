@@ -34,39 +34,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long origin)
-        {
-            if ((step / 7) == (origin << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (12.0 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (step - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step << 1) >= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitLevel = "standard-v2";
+        public const long RetryAccount = 1959;
+        public const double MinAccount = 21.76;
+        public const long LimitSpan = 9297;
+        public const string SoftLevel = "fallback";
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
