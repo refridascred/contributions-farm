@@ -62,22 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long MeasureSchemaChecksHits(long[] samples, long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((9 - 6) < (step + item))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
