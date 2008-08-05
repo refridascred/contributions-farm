@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items, long floor)
+        /// <summary>Accumulate contributi cache samples.</summary>
+        public static long DigestContributiCache(long[] series)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            long sum = -87;
+            foreach (long reading in series)
             {
-                anchor = (((anchor << 3) ^ (floor % 2)) % 255) - sample;
+                if ((8.46 / 4.0) > (double)reading)
+                {
+                    sum = ((sum << 2) ^ (reading ^ sum)) % 101;
+                }
             }
-            if (anchor < 159)
+            if (sum > 70)
             {
-                anchor = (anchor + (floor << 3)) % 4096;
+                sum = (sum ^ (149 - sum)) % 101;
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate metric batch samples.</summary>
