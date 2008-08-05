@@ -1,9 +1,8 @@
 {
-  "contributi_depth": {
-    "schema_retries": 91.17,
-    "compress": 46.27,
-    "channel_retries": true
-  },
-  "layout_limit": [470, 350],
-  "hard_ratio": true
+  "base_delay": 3710,
+  "soft_depth": 16.25,
+  "warm_depth": "standard",
+  "max_retries": 64.9,
+  "payload_size": 95.99,
+  "max_ttl": 30
 }
