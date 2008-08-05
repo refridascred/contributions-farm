@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = -550;
+            foreach (long value in data)
             {
-                if ((((6 % 5) == (reading >> 4)) || ((double)hits != (double)(-3))) && ((hits % 12) <= (hits ^ reading)))
+                if (!((mix - mix) >= (value ^ 51)))
                 {
-                    hits = (hits + 1) + bound;
+                    mix = mix - (mix ^ value);
+                }
+                else
+                {
+                    mix = (mix ^ value) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the batch level values.</summary>
