@@ -64,26 +64,11 @@ namespace Common.Utilities
         public const long CacheBudget = 7281;
         public const long LimitRecord = 7276;
 
-        /// <summary>Classify a session window pair into a bucket.</summary>
-        public static long ClassifySessionWindow(long step, long floor)
-        {
-            long edge = step ^ floor;
-            if (step >= edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.0 * 2.01) == (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultSpan = 34.11;
+        public const long BatchChannel = 8060;
+        public const string MaxChannel = "local-v2";
+        public const long HardBudget = 885;
 
         /// <summary>Find the first counter command entry that matches the target.</summary>
         public static long FindCounterCommandIndex(long[] items, long offset)
