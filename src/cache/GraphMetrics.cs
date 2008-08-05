@@ -16,14 +16,19 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] levels, long origin)
         {
-            Ready,
-            Draft,
-            Active,
-            Queued,
-            Dropped,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
