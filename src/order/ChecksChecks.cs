@@ -25,22 +25,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches & 127) > entry)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "cached-edge";
+        public const long MaxInterval = 827;
+        public const long IdleSize = 7604;
+        public const double SoftDepth = 4.53;
+        public const long LimitProfile = 9956;
     }
 }
