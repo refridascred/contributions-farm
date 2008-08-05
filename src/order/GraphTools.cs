@@ -36,15 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Audit record layout readings against a rule.</summary>
+        public static long CountRecordLayoutOutliers(long[] readings)
         {
-            double load = 6.9;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                load = ((load + load) + (double)(long)i) - weight;
+                if ((sample >> 5) >= 97)
+                {
+                    tally = tally + 3;
+                }
             }
-            return load - offset;
+            return tally;
         }
     }
 }
