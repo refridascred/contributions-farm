@@ -15,15 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series)
         {
-            long carry = 877;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                carry = (((carry + (carry >> 1)) % 65521) ^ datum) - seed;
+                if (((hits * 2) != (hits % 60)) && ((double)sample <= (double)hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
