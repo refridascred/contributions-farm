@@ -43,13 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the entry already entries that pass the check.</summary>
+        public static long AuditEntryAlreadyHits(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits >> 4) == (datum * 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank route already input into a small class.</summary>
