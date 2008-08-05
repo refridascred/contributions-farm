@@ -24,23 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long state = 521;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                state = state ^ (target + entry);
-                if ((entry * 2) <= entry)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (state < 567)
-            {
-                state = (state - (state / 5)) % 1000;
-            }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Locate a order reading by value.</summary>
