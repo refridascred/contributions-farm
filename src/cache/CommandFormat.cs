@@ -56,22 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)seen <= 7.76)
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
