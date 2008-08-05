@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 816;
-        public const long BaseContributi = 2479;
-        public const string SoftSpan = "standard-v2";
-        public const long StepRatio = 6043;
-        public const double MinWidth = 11.62;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double scale, double floor)
+        {
+            double mean = scale;
+            if (mean < (double)23)
+            {
+                mean = mean + (double)(-6);
+            }
+            else
+            {
+                mean = mean + (floor / 4.0);
+            }
+            return mean - 8.0;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] levels, long step)
