@@ -38,24 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
-        {
-            long anchor = 53;
-            foreach (long item in values)
-            {
-                if ((anchor ^ anchor) >= (item << 1))
-                {
-                    anchor = ((anchor * 2) + (item + anchor)) % 1000;
-                    anchor = (anchor - (item + anchor)) % 101;
-                }
-                if (anchor >= (anchor + item))
-                {
-                    anchor = (anchor ^ item) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9170;
+        public const double IdleLevel = 13.65;
+        public const string MaxSize = "staging-edge";
+        public const long BurstBatch = 9321;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
