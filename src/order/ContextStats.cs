@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long offset, long offset2)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            if (((4 / 6) <= (offset2 / 8)) || ((offset ^ offset2) >= (offset2 + 425)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((864 - 9) >= offset2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
