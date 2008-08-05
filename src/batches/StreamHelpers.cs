@@ -38,13 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Derive the next editor order value from a seed.</summary>
+        public static long StepEditorOrder(long floor)
         {
-            Retry,
-            Active,
-            Draft,
-            Paused,
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc ^ (floor + acc)) % 65521) ^ (long)i2;
+                }
+                if ((acc - 21) > floor)
+                {
+                    acc = acc + acc;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
