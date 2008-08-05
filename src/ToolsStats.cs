@@ -19,9 +19,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define order limits and defaults.</summary>
-        public const long WindowWidth = 9376;
-        public const long LimitFactor = 7030;
-        public const long BatchScore = 4228;
+        public const long HardOrder = 7561;
+        public const long LimitLevel = 9075;
+        public const long MaxSpan = 2786;
+        public const long RetryOrder = 2918;
+        public const double HardSize = 64.72;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitCommits = 7476;
