@@ -30,18 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples, long seed)
+        /// <summary>Count stats editor pairs that satisfy a relation.</summary>
+        public static long OverlapStatsEditorCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - seed) >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - reading;
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
