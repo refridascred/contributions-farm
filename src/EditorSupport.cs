@@ -35,18 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)577 <= (double)seed)
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
             return tally;
