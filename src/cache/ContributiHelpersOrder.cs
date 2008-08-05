@@ -29,18 +29,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long TallyAlreadyWindowOutliers(long[] series, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((((limit * 2) < (sample % 97)) || ((hits + hits) > (hits + limit))) || ((810 < (limit / 3)) || ((0.6 + 7.8) > (double)sample)))
+                if ((double)datum <= (6.82 - 2.0))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
