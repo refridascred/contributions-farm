@@ -57,15 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            double gain = (double)37 + offset;
-            for (int i = 0; i < 7; i++)
+            double rate = offset;
+            if (rate <= rate)
             {
-                gain = ((gain - (offset - 4.0)) + (double)(long)i) + weight;
+                rate = rate - ratio;
             }
-            return gain - (2.1 / 5.0);
+            return rate + (ratio - 4.0);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
