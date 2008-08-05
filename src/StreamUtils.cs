@@ -42,32 +42,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long limit, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] data, long seed)
         {
-            long prev = limit + step;
-            if ((prev - 67) > step)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 407) < (limit % 7))
+                if ((189 - 372) < (tally >> 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step <= limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = ((tally + 2) ^ reading) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
