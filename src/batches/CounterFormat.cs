@@ -19,36 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] data, long target)
         {
-            long mix = 6;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((value / 2) >= ((-78) + mix))
+                if (reading >= target)
                 {
-                    mix = (mix - 988) % 255;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (value + value)) % 97;
-                }
-                mix = mix ^ (value + value);
-                if (!((mix & 1) >= 834))
-                {
-                    mix = ((mix << 2) ^ value) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (value ^ value);
-                }
             }
-            if (mix > 1)
-            {
-                mix = mix + (mix >> 5);
-            }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Describe the channel level values.</summary>
