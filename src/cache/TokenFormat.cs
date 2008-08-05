@@ -29,13 +29,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double offset)
         {
-            Locked,
-            Done,
-            Queued,
-            Dropped,
+            double bias = (double)20;
+            if (bias >= (double)35)
+            {
+                bias = (bias - offset) + weight;
+            }
+            return bias - offset;
         }
     }
 }
