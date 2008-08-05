@@ -19,26 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] series, long step)
         {
-            long anchor = 404;
+            bool stale = true;
             foreach (long value in series)
             {
-                if (!((value / 5) <= (value % 16)))
+                if (value < step)
                 {
-                    anchor = anchor - (anchor - anchor);
-                }
-                if ((7 ^ value) > (value % 100))
-                {
-                    anchor = (anchor * 3) + (5 << 3);
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Project the next cache checks value.</summary>
