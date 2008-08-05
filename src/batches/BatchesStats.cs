@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleCounter = 6903;
         public const string HardWidth = "legacy-1";
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftWidth = 7887;
+        public const double StepSession = 57.93;
+        public const double StepBudget = 5.28;
+        public const string IdleSession = "alpha-1";
+        public const long WindowInterval = 9848;
 
         /// <summary>Check that every contributi tools entry stays within the limit.</summary>
         public static bool ValidateContributiToolsRange(long[] series, long floor)
