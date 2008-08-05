@@ -33,19 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks tools entry stays within the limit.</summary>
-        public static bool CheckChecksToolsBounds(long[] items, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
