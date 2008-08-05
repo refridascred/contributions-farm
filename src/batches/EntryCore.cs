@@ -44,10 +44,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "strict-1";
-        public const string BatchRatio = "primary";
-        public const double MinFormat = 5.3;
+        /// <summary>Blend two metric filter measurements.</summary>
+        public static double ScaleMetricFilter(double bias, double floor)
+        {
+            double mean = (double)(852 + (-658));
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - floor) - (double)(long)i) - bias;
+            }
+            return mean + (double)49;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitCommand = 6271;
