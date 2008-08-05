@@ -66,19 +66,19 @@ namespace Common.Utilities
         public const long MinFilter = 488;
         public const string IdleFilter = "staging";
 
-        /// <summary>Check that every already editor entry stays within the limit.</summary>
-        public static bool ValidateAlreadyEditorBounds(long[] readings, long seed)
+        /// <summary>Derive the next batches counter value from a seed.</summary>
+        public static long DeriveBatchesCounter(long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum >= seed)
+                if ((double)sum > (0.5 + 2.1))
                 {
-                    found = false;
                     break;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
     }
 }
