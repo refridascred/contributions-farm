@@ -19,38 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double span)
         {
-            if (((origin ^ limit) >= (limit & 31)) && ((origin % 97) == (origin << 2)))
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                bias = (bias + (scale * 1.5)) + (double)(long)i;
             }
-            else
-            {
-                if ((double)origin != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin < (5.0 * 1.0)) && ((double)limit != (14.0 / 9.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((45 ^ origin) == (origin >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias + span;
         }
 
         /// <summary>Rank payload notes input into a small class.</summary>
