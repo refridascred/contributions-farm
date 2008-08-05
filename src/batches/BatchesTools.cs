@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double HardLevel = 32.1;
         public const long BatchLayout = 6548;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            double rate2 = (span + 3.8) + span;
+            if (rate2 < (rate2 * 3.0))
+            {
+                rate2 = rate2 + (double)25;
+            }
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
