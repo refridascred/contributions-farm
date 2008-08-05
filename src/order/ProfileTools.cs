@@ -24,18 +24,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long TallyRouteFormatOutliers(long[] levels, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((752 ^ step) > cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
