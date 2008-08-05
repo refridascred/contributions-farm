@@ -1,9 +1,7 @@
-id,label,level,region
-1,5.43,66.08,latest
-2,326,13.58,575
-3,436,legacy,917
-4,stable,548,local
-5,primary,912,239
-6,52.32,86.55,77.75
-7,cached,98.89,stable
-8,70.73,primary,cached
+id,rank,region
+1,legacy,fallback
+2,green,334
+3,45.65,124
+4,475,92.87
+5,323,58.62
+6,35.45,stable
