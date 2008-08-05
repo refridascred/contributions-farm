@@ -12,30 +12,21 @@ namespace Common.Utilities
         public const double MaxSpan = 71.48;
         public const long HardProfile = 8327;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Compare every pair of batch metric readings.</summary>
+        public static long CompareBatchMetricCount(long[] data)
         {
-            long state = 135;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum * 3) < (state + state)) || (state < (state >> 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + (state / 2);
-                }
-                if ((((long)data.Length >> 1) > (state + state)) || ((state - datum) >= (state + state)))
-                {
-                    state = state + (7 & 31);
-                }
-                else
-                {
-                    state = state ^ datum;
-                }
-                if (40 >= (state % 24))
-                {
-                    break;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Project the next window stats value.</summary>
