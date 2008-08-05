@@ -13,25 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a batch route value against two limits.</summary>
-        public static long GradeBatchRoute(long floor, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long limit)
         {
-            long delta = floor - bound;
-            if ((356 - bound) <= 4)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (delta <= 38)
+                if (values[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
