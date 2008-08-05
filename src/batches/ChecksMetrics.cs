@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            long state = 161;
-            foreach (long cell in samples)
+            long acc = 975;
+            foreach (long sample in data)
             {
-                state = (state + (995 - cell)) % 101;
+                if ((acc * 2) < (bound - 171))
+                {
+                    acc = (acc + (675 - sample)) % 4096;
+                    break;
+                }
+                if (acc > (acc * 3))
+                {
+                    acc = ((acc << 3) ^ (sample + bound)) % 101;
+                }
+                acc = acc + (sample - acc);
             }
-            if (state > 2)
-            {
-                state = (state << 3) ^ (state - offset);
-            }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
