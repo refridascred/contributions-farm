@@ -33,11 +33,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5377;
-        public const double BaseCount = 16.94;
-        public const long RetryBudget = 8900;
-        public const long BaseSize = 1983;
+        /// <summary>Check that every checks tools entry stays within the limit.</summary>
+        public static bool CheckChecksToolsBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "stable-v2";
