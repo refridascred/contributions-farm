@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] levels, long floor)
+        /// <summary>Rank counter schema input into a small class.</summary>
+        public static long BucketCounterSchema(long step, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((target + target) != (target & 255))
             {
-                if ((datum + matches) > (floor & 255))
+                return 6;
+            }
+            else
+            {
+                if ((target >> 5) == (step / 7))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!((target / 3) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step <= (double)22) && ((9.3 / 8.0) == (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
