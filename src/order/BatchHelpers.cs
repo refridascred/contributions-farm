@@ -37,13 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Scale a entry format figure with a bias.</summary>
+        public static double BlendEntryFormat(double rate, double floor)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            double load = (double)(7 << 2);
+            if (load > (load / 4.0))
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load + (double)1;
         }
     }
 }
