@@ -47,13 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Find the first counter schema entry that matches the target.</summary>
+        public static long LookupCounterSchemaIndex(long[] samples, long bound)
         {
-            Retry,
-            Synced,
-            Paused,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
