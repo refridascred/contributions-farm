@@ -1,15 +1,11 @@
 {
-  "retry_ratio_pct": "standard",
-  "min_retries": {
-    "sync_window": "staging",
-    "flush_timeout_ms": "open",
-    "route_depth": 48.15,
-    "min_limit_count": [4, 379, 4],
-    "min_capacity_s": 7922,
-    "stream_window": 1024
-  },
-  "stream_capacity": 1716,
-  "layout_ttl": 6706,
-  "soft_capacity": ["edge", "fallback"],
-  "poll_size_pct": "primary"
+  "poll_capacity": "stable",
+  "verbose": 27.22,
+  "idle_threshold_count": {
+    "idle_size_ms": "local",
+    "layout_ratio": [487, 354, 388],
+    "sync_timeout": "standard",
+    "hard_size_count": 30,
+    "order_ratio": "open"
+  }
 }
