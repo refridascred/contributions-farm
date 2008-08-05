@@ -44,11 +44,16 @@ namespace Common.Utilities
         public const long WindowFactor = 5075;
         public const long MinLevel = 5931;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 23.98;
-        public const long BurstProfile = 3773;
-        public const long RetryBudget = 7783;
-        public const long LimitProfile = 4651;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long seed)
+        {
+            long anchor = -6;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor << 3) ^ (anchor & 127)) + cell) + seed;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Find the first contributi tools entry that matches the target.</summary>
         public static long SeekContributiToolsIndex(long[] items, long bound)
