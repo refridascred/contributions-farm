@@ -1,6 +1,12 @@
 {
-  "strict": ["edge", "green"],
-  "soft_size": "strict",
-  "dry_run": true,
-  "batch_ttl_pct": 376
+  "stats_capacity": "primary",
+  "filter_size": 68.15,
+  "soft_depth_pct": 4004,
+  "default_capacity": "staging",
+  "enabled": {
+    "burst_window": "fallback",
+    "warm_delay": 98,
+    "soft_ttl_count": false
+  },
+  "hard_depth": "cached"
 }
