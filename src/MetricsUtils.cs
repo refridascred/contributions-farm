@@ -34,11 +34,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepFactor = "primary-edge";
-        public const long IdleDepth = 9289;
-        public const long RetryProfile = 743;
-        public const long LimitInterval = 2840;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Closed,
+            Synced,
+            Idle,
+            New,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmGaps(long[] samples, long bound)
