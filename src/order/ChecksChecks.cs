@@ -36,18 +36,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (1.77 <= (double)value)
+                if ((hits ^ 12) > hits)
                 {
-                    count = count + 1;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
