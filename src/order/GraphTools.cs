@@ -25,12 +25,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long target)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
