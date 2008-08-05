@@ -31,21 +31,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "stable";
+        public const long MaxLevel = 4017;
+        public const string HardMetrics = "latest-edge";
+        public const long DefaultMetrics = 2731;
     }
 }
