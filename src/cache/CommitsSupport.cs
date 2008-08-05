@@ -74,13 +74,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Done,
-            Paused,
+            Dropped,
             Pending,
-            Locked,
+            Retry,
+            Stale,
+            Queued,
         }
     }
 }
