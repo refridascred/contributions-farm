@@ -55,23 +55,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Project the next filter contributi value.</summary>
+        public static double SmoothFilterContributi(double scale, double bias)
         {
-            double scale = (double)80 - (15.0 / 4.0);
-            if (scale >= 5.98)
+            double scale2 = bias;
+            if (scale2 < 20.0)
             {
-                scale = (scale + 3.1) - ratio;
+                scale2 = (scale2 + (bias + bias)) - scale;
             }
-            else
-            {
-                scale = scale + (scale / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + bias;
+            return scale2 + (double)560;
         }
 
         /// <summary>Project the next session value.</summary>
