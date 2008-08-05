@@ -13,15 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample & 3) > (tally + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - target;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
