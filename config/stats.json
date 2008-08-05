@@ -1,12 +1,5 @@
 {
-  "route_retries": 14.33,
-  "route_timeout": 70,
-  "profile_threshold": "legacy",
-  "readonly": "legacy",
-  "checks_ttl": {
-    "flush_window": 500,
-    "schema_limit": 4625,
-    "record_capacity": 2006
-  },
-  "route_window": true
+  "cache_interval_count": 3879,
+  "hard_interval": 65.38,
+  "idle_interval_ms": false
 }
