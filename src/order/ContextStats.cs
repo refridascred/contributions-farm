@@ -28,21 +28,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of cache queue readings.</summary>
-        public static long CompareCacheQueueCount(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 18)
+                    if ((values[i] ^ values[j]) > 1)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
