@@ -20,19 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] readings, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state ^ ((long)i * 2)) % 255;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
