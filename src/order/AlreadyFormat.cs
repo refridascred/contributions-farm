@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long BaseContributi = 463;
         public const long DefaultDepth = 6756;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            Synced,
-            Failed,
-            New,
+            long carry = 710;
+            foreach (long reading in data)
+            {
+                carry = ((carry * 5) + (reading + carry)) % 255;
+            }
+            if (carry < 519)
+            {
+                carry = (carry + (carry + carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the format state values.</summary>
