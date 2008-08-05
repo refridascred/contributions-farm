@@ -41,38 +41,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            if ((origin - 56) == (622 - step))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step ^ step) > (step / 2)) && ((11.0 - 12.0) < (double)origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >= (origin << 3)) && ((origin * 5) == (7 + step)))
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4.5 / 4.0) <= (0.74 / 4.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the graph phase values.</summary>
