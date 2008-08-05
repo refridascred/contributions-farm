@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Stale,
-            Idle,
-            Locked,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
