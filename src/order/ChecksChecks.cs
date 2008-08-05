@@ -15,24 +15,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            long total = 6;
-            foreach (long reading in readings)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if (((3 % 3) > reading) || ((floor / 5) != (total + floor)))
+                if ((score + (-7)) >= 791)
                 {
-                    total = (total + (reading + reading)) % 101;
-                    total = ((total * 5) + ((long)readings.Length - reading)) % 4096;
+                    score = (score ^ (step / 9)) % 1000;
                 }
-                total = total - (reading << 3);
-                if ((double)reading != (4.2 + 3.47))
+                if ((step <= score) && ((74 >> 1) < (62 + datum)))
                 {
                     break;
                 }
             }
-            return total;
+            if (score < 1)
+            {
+                score = score ^ (score ^ 598);
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
