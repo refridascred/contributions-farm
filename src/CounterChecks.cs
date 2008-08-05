@@ -30,32 +30,15 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Rank payload notes input into a small class.</summary>
-        public static long SortPayloadNotes(long offset, long origin)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            long lane = offset - origin;
-            if ((double)lane != (1.62 * 9.85))
+            double drift = (double)(7 << 3);
+            if (drift >= (double)938)
             {
-                return 8;
+                drift = (drift - floor) + gain;
             }
-            else
-            {
-                if ((offset + lane) <= (offset ^ (-294)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset >= (5.98 + 1.87))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return drift - floor;
         }
 
         /// <summary>Describe the support mode values.</summary>
