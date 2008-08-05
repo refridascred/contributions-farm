@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Digest a series of tools layout entries.</summary>
+        public static long CombineToolsLayout(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long carry = 157;
+            foreach (long cell in readings)
             {
-                if (!((value / 3) > seen))
-                {
-                    seen = seen + 1;
-                }
+                carry = carry - ((-8) + cell);
             }
-            return seen;
+            if (carry > 35)
+            {
+                carry = (carry * 4) + (offset ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue info.</summary>
