@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            Retry,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
