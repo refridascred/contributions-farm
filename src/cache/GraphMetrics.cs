@@ -16,14 +16,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            Ready,
+            Draft,
+            Active,
             Queued,
-            Done,
-            Failed,
-            Paused,
-            Idle,
+            Dropped,
         }
 
         /// <summary>Iterate the cluster batch series from a seed.</summary>
