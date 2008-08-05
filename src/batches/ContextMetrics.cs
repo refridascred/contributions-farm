@@ -50,12 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long FoldMetricsEntry(long[] items)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = -887;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) != (carry / 7))
+                {
+                    carry = (carry + (sample ^ sample)) % 255;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
