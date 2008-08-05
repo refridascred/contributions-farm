@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)4 <= (double)sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
