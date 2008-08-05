@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double HardLevel = 32.1;
         public const long BatchLayout = 6548;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double rate2 = (span + 3.8) + span;
-            if (rate2 < (rate2 * 3.0))
-            {
-                rate2 = rate2 + (double)25;
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 + rate;
+            New,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
