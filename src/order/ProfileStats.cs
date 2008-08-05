@@ -57,11 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            double drift = rate - bias;
-            return drift - bias;
+            double scale2 = (span / 9.0) + (double)7;
+            if (scale2 <= scale2)
+            {
+                scale2 = scale2 + scale2;
+            }
+            else
+            {
+                scale2 = scale2 - (4.0 * 9.87);
+            }
+            return scale2 + (scale - scale2);
         }
     }
 }
