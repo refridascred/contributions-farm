@@ -13,11 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a farm contributi figure with a bias.</summary>
-        public static double SmoothFarmContributi(double rate, double bias)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double load = (double)(6 + 8);
-            return (load - (bias / 4.0)) + rate;
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
