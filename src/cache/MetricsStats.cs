@@ -28,15 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Done,
-            Queued,
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftBudget = 8122;
+        public const long BatchSize = 4418;
+        public const long IdleEditor = 7314;
+        public const double DefaultRatio = 1.8;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 8868;
