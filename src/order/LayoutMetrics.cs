@@ -28,20 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream buffer series from a seed.</summary>
-        public static long SeriesStreamBuffer(long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (items[i] == offset)
                 {
-                    mix = ((mix ^ (71 - 19)) % 4096) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = (mix << 3) ^ (long)i;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
