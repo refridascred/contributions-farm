@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Match up command commits samples.</summary>
+        public static long PairCommandCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((8.5 / 5.0) > (8.05 * 7.53)) && (matches <= (0 ^ matches)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
