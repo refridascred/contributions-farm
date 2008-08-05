@@ -43,20 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 2816;
+        public const long MinScore = 188;
+        public const long CacheWindow = 9187;
+        public const long SoftLevel = 5398;
+        public const long BatchSize = 3598;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
