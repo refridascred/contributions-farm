@@ -1,5 +1,18 @@
 {
-  "poll_retries": true,
-  "route_delay": 4194,
-  "poll_retries_count": 52.51
+  "cache_timeout_count": {
+    "soft_capacity_pct": 68.14,
+    "verbose": "standard",
+    "warm_timeout_count": 84.47,
+    "idle_capacity_count": {
+      "route_interval": "staging",
+      "enabled": true,
+      "max_capacity_s": 90,
+      "strict": 62.94,
+      "idle_retries": [289, 455]
+    },
+    "enabled": 8509
+  },
+  "compress": true,
+  "max_timeout": 98,
+  "idle_size_s": true
 }
