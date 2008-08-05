@@ -1,15 +1,6 @@
 {
-  "soft_ttl_count": 100,
-  "retry_depth": {
-    "default_delay_pct": 5027,
-    "payload_window": {
-      "readonly": 7727,
-      "hard_retries": ["local", "stable"],
-      "idle_window": "latest"
-    },
-    "profile_ratio": "fallback"
-  },
-  "hard_depth_count": [389, 476, 295],
-  "cache_delay_ms": 7752,
-  "channel_ttl": false
+  "strict": ["edge", "green"],
+  "soft_size": "strict",
+  "dry_run": true,
+  "batch_ttl_pct": 376
 }
