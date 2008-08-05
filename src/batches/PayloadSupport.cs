@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a support record counter forward.</summary>
-        public static long IterateSupportRecord(long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long state = 8;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((5.95 - 6.2) != (double)datum)
+                {
+                    state = ((state - (state & 3)) % 97) + target;
+                }
+                else
+                {
+                    state = (state - (1 * 5)) % 65521;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
