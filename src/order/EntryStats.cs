@@ -30,13 +30,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            Synced,
+            Ready,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
