@@ -98,13 +98,20 @@ namespace Common.Utilities
             return mean + (bias + bias2);
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Iterate the entry record series from a seed.</summary>
+        public static long SeriesEntryRecord(long limit)
         {
-            New,
-            Done,
-            Idle,
-            Stale,
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = mark ^ mark;
+                if ((limit + mark) >= limit)
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
