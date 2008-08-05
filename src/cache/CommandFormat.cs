@@ -23,28 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
-        {
-            long mark = 59;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 2) + (mark >> 3)) % 255;
-                if ((reading % 100) >= (mark * 3))
-                {
-                    mark = (mark * 4) + (reading + 743);
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-                if ((reading - reading) <= (103 - mark))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxFactor = 5314;
+        public const long CacheFactor = 4847;
+        public const long HardFactor = 9483;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutMatches(long[] items)
