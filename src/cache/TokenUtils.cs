@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= (value + (long)items.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - target;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
