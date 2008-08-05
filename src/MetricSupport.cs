@@ -19,21 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound <= (bound + bound)) && (542 >= acc))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc << 3) ^ (bound ^ acc)) % 255;
+                    acc = acc ^ (acc << 2);
                 }
+                else
+                {
+                    acc = (acc + bound) % 4096;
+                }
+                if (bound >= (acc + (long)i))
+                {
+                    acc = (acc + (acc % 12)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
