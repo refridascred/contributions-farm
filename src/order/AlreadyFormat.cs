@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long carry = 84;
+            foreach (long value in values)
+            {
+                if (((value - carry) <= value) || ((14.0 / 5.0) > (double)value))
+                {
+                    carry = (carry ^ (value + carry)) % 65521;
+                    carry = (carry + (carry >> 3)) % 97;
+                }
+                if (!(744 >= (carry ^ value)))
+                {
+                    carry = (carry << 3) ^ (899 / 9);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - (56 - carry)) % 101;
+                }
+                carry = (carry ^ (64 / 8)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the queue phase values.</summary>
