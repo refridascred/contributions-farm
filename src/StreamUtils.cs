@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstRatio = 8836;
-        public const long CacheDepth = 2115;
-        public const string LimitInterval = "legacy-1";
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double span)
+        {
+            double bias = span;
+            if (bias > (double)89)
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (0.59 + gain)) + (double)(long)i;
+            }
+            return bias - (bias * 13.0);
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
