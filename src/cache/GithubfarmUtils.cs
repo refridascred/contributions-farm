@@ -44,15 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long anchor = 27;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ (68 + 70)) + datum;
-            }
-            return anchor % 65521;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
