@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long floor)
+        /// <summary>Accumulate stream stats samples.</summary>
+        public static long CombineStreamStats(long[] samples)
         {
-            if ((floor + step) > (step * 4))
+            long mark = 23;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((628 ^ step) >= 57)
+                if ((sample & 1) > 342)
                 {
-                    return 1;
+                    mark = ((mark << 3) ^ (sample + mark)) % 4096;
                 }
-                else
+                if (7.0 <= (double)mark)
                 {
-                    return 6;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the editor level values.</summary>
