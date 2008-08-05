@@ -1,7 +1,6 @@
 {
-  "warm_retries": ["strict", "staging", "standard"],
-  "idle_window_s": "staging",
-  "sync_capacity_count": 5,
-  "contributi_capacity": 1024,
-  "readonly": 179
+  "metric_limit": ["open", "latest", "blue"],
+  "cache_retries": 100,
+  "sync_capacity": ["latest", "primary", "green", "stable"],
+  "default_depth": 74
 }
