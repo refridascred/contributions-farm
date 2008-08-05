@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the cluster entry entries that pass the check.</summary>
-        public static long AuditClusterEntryMatches(long[] samples, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((target + reading) >= (0 + 949))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
