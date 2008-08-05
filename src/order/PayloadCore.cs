@@ -16,25 +16,19 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long offset, long offset2)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long bound)
         {
-            long bound = offset + offset2;
-            if (((offset2 / 7) != (bound + offset2)) && ((offset & 63) < bound))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 3) >= (offset2 + offset2))
+                if (cell != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many layout counter samples are out of range.</summary>
