@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] levels, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 3;
+            foreach (long item in data)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 2) ^ mix) % 97) + item;
             }
-            return -1;
+            if (mix < 65)
+            {
+                mix = ((mix * 3) + step) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
