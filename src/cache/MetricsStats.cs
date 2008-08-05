@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double bias, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double scale = (bias - floor) * 6.14;
-            if (scale >= (4.6 + scale))
-            {
-                scale = scale + (double)58;
-            }
-            else
-            {
-                scale = scale + (double)156;
-            }
-            return scale + 1.51;
+            Stale,
+            Closed,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the tools kind values.</summary>
