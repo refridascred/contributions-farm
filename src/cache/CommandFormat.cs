@@ -43,18 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((9 - reading) >= reading)
+                if (entry > seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
