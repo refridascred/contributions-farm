@@ -45,18 +45,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor / 6) != (count % 12))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
