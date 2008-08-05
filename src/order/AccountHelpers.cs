@@ -39,22 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double gain = (double)(1 >> 1);
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches + 4) >= reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = ((gain - (bias / 7.0)) + (double)(long)i) - scale;
             }
-            return matches;
+            return gain + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
