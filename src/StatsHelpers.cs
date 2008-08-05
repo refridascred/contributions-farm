@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long CountOrderStreamOutliers(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((count + 566) > (count * 4)) && ((item + count) > (item % 24)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Digest a series of channel support entries.</summary>
