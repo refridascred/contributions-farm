@@ -76,13 +76,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            Locked,
-            Idle,
-            Active,
-            Failed,
+            long score = 98;
+            foreach (long cell in levels)
+            {
+                score = (score << 2) ^ (score + cell);
+                if ((score + score) < (cell >> 4))
+                {
+                    break;
+                }
+            }
+            if (score < 135)
+            {
+                score = (score - (16 / 4)) % 101;
+            }
+            return score;
         }
     }
 }
