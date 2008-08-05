@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSpan = 1231;
-        public const long MinWidth = 1570;
-        public const long StepStream = 6424;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data, long target)
+        {
+            long carry = 661;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 5) + (datum & 3)) - target;
+                if ((carry << 2) < (48 + datum))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] samples, long bound)
