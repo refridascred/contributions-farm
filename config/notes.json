@@ -1,12 +1,7 @@
 {
-  "sync_window_ms": {
-    "verbose": 8709,
-    "cache_capacity_pct": 2443,
-    "sync_depth_ms": true,
-    "soft_ttl_count": 100
-  },
-  "cache_threshold_ms": 500,
-  "retry_depth_pct": 74,
-  "base_delay_s": 60,
-  "min_timeout_count": false
+  "hard_capacity_pct": 25,
+  "retry_ratio_s": 40.86,
+  "batch_timeout_count": 1024,
+  "metrics_timeout": 65.58,
+  "readonly": 6574
 }
