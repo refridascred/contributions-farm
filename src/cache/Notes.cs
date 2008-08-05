@@ -57,21 +57,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)step < 4.0)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)step <= (8.55 * 7.33)) || ((step + target) >= (4 & 31)))
                 {
-                    if ((values[i] ^ values[j]) < 15)
+                    return 1;
+                }
+                else
+                {
+                    if (!((target & 15) >= (target % 2)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target << 1) != (target * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
