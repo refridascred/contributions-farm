@@ -1,5 +1,23 @@
 {
-  "enabled": ["open", "strict", "strict"],
-  "farm_size": 53.24,
-  "base_threshold_s": "standard"
+  "min_depth": 26.54,
+  "audit": 100,
+  "verbose": 573,
+  "poll_window": true,
+  "dry_run": {
+    "dry_run": {
+      "batch_threshold_ms": 902,
+      "soft_interval_count": 23.44,
+      "burst_ratio_count": false,
+      "profile_threshold": 60,
+      "dry_run": 7529
+    },
+    "verbose": ["standard", "legacy", "eu-west"],
+    "counter_window": 63,
+    "min_depth": {
+      "enabled": 12.62,
+      "cache_interval": "legacy",
+      "verbose": 500
+    },
+    "audit": "latest"
+  }
 }
