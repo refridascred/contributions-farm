@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const long RetryToken = 8183;
         public const long IdleCount = 7122;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] series, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
