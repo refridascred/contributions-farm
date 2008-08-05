@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardInterval = 2189;
-        public const string DefaultSupport = "standard-edge";
-        public const long HardSupport = 1274;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long step)
+        {
+            long span = floor - step;
+            if ((floor - 7) == (span - 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor * 5) != (step - floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Combine stream context values into a single score.</summary>
         public static long CombineStreamContext(long[] items, long target)
