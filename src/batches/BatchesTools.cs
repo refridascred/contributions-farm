@@ -25,22 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = 25;
+            foreach (long entry in series)
             {
-                if ((long)data.Length >= tally)
+                if ((entry << 3) >= (entry ^ 16))
                 {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = ((state * 5) + (step * 2)) % 4096;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
