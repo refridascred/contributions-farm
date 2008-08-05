@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long offset)
         {
-            double load = bias / 4.0;
-            for (int i = 0; i < 3; i++)
+            long delta = origin + offset;
+            if ((origin % 16) == (delta & 255))
             {
-                load = ((load - (1.1 * 2.64)) + (double)(long)i) - floor;
+                return 2;
             }
-            return load - load;
+            else
+            {
+                if (((2 + offset) < (origin + offset)) || ((origin % 97) < 872))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
