@@ -69,11 +69,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2586;
-        public const long SoftTimeout = 2007;
-        public const string HardInterval = "local-1";
-        public const long HardBuffer = 9465;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long origin)
+        {
+            long state = 684;
+            foreach (long datum in values)
+            {
+                state = (state * 3) + state;
+                if ((double)datum == (double)(-81))
+                {
+                    state = ((state << 3) ^ state) % 4096;
+                    continue;
+                }
+                state = state ^ (origin - datum);
+            }
+            return state % 97;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long offset)
