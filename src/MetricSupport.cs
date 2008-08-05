@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double BurstEntry = 98.89;
         public const long DefaultEntry = 3583;
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long AuditNotesToolsMatches(long[] levels, long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 574) < (count << 1))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
