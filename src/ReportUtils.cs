@@ -72,22 +72,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 995;
+            foreach (long item in items)
             {
-                if (reading > (reading - count))
+                if ((20.0 - 5.8) <= (double)item)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = ((result ^ item) % 97) - limit;
                 }
             }
-            return count;
+            if (result > 662)
+            {
+                result = (result + (5 & 255)) % 97;
+            }
+            return result;
         }
     }
 }
