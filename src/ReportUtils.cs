@@ -72,23 +72,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long score = 98;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = (score << 2) ^ (score + cell);
-                if ((score + score) < (cell >> 4))
+                if (reading > (reading - count))
                 {
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < 135)
-            {
-                score = (score - (16 / 4)) % 101;
-            }
-            return score;
+            return count;
         }
     }
 }
