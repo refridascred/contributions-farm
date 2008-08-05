@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values, long seed)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)count <= (5.0 - 18.0)))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) + item) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
