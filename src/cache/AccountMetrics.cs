@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            New,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a layout entry.</summary>
