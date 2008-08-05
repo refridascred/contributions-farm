@@ -18,9 +18,12 @@ namespace Common.Utilities
         public const long SoftCommand = 3146;
         public const long RetryRatio = 1755;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftFactor = 19.94;
-        public const long MaxScore = 1618;
-        public const long WindowBudget = 9918;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
