@@ -58,21 +58,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Rank route already input into a small class.</summary>
+        public static long ClassifyRouteAlready(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target << 2) < (target % 97))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset & 7) != (target + 949))
                 {
-                    if ((data[i] ^ data[j]) > 18)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + target) < (offset % 3))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target < 179) && ((0.73 + 12.0) == (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
