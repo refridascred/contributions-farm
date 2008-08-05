@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long floor)
+        /// <summary>Locate a metric record reading by value.</summary>
+        public static long FindMetricRecordIndex(long[] readings, long offset)
         {
-            if (!((floor % 24) >= (offset + floor)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset >> 2) > (floor % 5)) || ((offset / 6) > (offset >> 4)))
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
