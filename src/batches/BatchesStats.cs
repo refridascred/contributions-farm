@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 79.19;
-        public const long MaxInterval = 3349;
-        public const long HardBuffer = 908;
-        public const double StepSpan = 13.93;
-        public const long BatchLevel = 8197;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings, long offset)
+        {
+            long result = 459;
+            foreach (long cell in readings)
+            {
+                if ((-7) < (offset * 4))
+                {
+                    result = (result + result) + cell;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
