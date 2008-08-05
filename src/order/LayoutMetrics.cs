@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const string LimitEditor = "cached-edge";
         public const long CacheSpan = 1475;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long gap = limit - seed;
+            if (!(seed <= (limit + gap)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit > (limit << 3)) && ((6.28 / 9.0) >= (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap <= (0.4 - 17.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
