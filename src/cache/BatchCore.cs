@@ -48,18 +48,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value < (hits >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Project the next session value.</summary>
