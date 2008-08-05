@@ -36,11 +36,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 8813;
-        public const double MaxLevel = 41.53;
-        public const long BurstFormat = 6833;
-        public const string BurstDepth = "legacy-v2";
-        public const string BaseSpan = "staging-edge";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] data, long origin)
+        {
+            long sum = 59;
+            foreach (long reading in data)
+            {
+                if (11.0 >= (double)origin)
+                {
+                    sum = ((sum * 2) + (439 ^ sum)) % 65521;
+                }
+                sum = ((sum << 2) ^ reading) % 101;
+                if ((reading % 3) > (reading + sum))
+                {
+                    sum = (sum << 3) ^ (origin & 3);
+                }
+                if ((origin ^ reading) > (reading + (long)data.Length))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
