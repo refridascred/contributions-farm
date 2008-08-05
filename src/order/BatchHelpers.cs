@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the schema metric entries that pass the check.</summary>
-        public static long AuditSchemaMetricMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((116 + bound) <= ((long)levels.Length << 3))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1343;
+        public const double DefaultQueue = 3.23;
+        public const long BurstDepth = 7563;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
