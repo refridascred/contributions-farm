@@ -1,7 +1,10 @@
 {
-  "idle_depth_ms": 2016,
-  "hard_ttl_pct": 100,
-  "editor_ratio": false,
-  "poll_timeout_ms": "open",
-  "batch_limit": "primary"
+  "cache_depth": [40, 146, 65],
+  "dry_run": 9874,
+  "warm_window_ms": {
+    "layout_limit": [448, 367, 396],
+    "batch_ratio": 100,
+    "hard_depth_ms": 6.49,
+    "compress": true
+  }
 }
