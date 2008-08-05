@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] samples, long bound)
+        /// <summary>Combine counter token values into a single score.</summary>
+        public static long CombineCounterToken(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 9;
+            foreach (long entry in series)
             {
-                if ((bound - hits) != (hits % 2))
+                if ((limit * 3) >= (entry + limit))
                 {
-                    hits = (hits + 1) ^ item;
+                    sum = ((sum << 2) ^ entry) % 1000;
                 }
             }
-            return hits;
+            if (sum > 44)
+            {
+                sum = (sum << 3) ^ (limit & 127);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
