@@ -50,10 +50,23 @@ namespace Common.Utilities
             return gain + (double)765;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchRatio = 5051;
-        public const string IdleBatches = "fallback-v2";
-        public const long LimitWidth = 716;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values, long floor)
+        {
+            long mix = 1;
+            foreach (long value in values)
+            {
+                if (((double)floor == (5.1 * 1.02)) || ((1.9 * 12.0) != (double)mix))
+                {
+                    mix = ((mix * 3) + (floor >> 5)) - value;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix ^ (333 - floor)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
