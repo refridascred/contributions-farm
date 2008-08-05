@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double floor)
-        {
-            double mean = 7.34 + (double)(-5);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + (floor * 13.0)) + (double)(long)i) + ratio;
-            }
-            return mean - (double)7;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 5072;
+        public const long CacheBudget = 7683;
+        public const long LimitMetric = 1230;
+        public const string StepMetric = "legacy-1";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] levels, long floor)
