@@ -35,11 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally - tally) > (tally ^ tally))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
