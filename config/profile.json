@@ -1,7 +1,16 @@
 {
-  "commits_capacity": [2, 260, 242, 19],
-  "readonly": "green",
-  "flush_size_s": 66,
-  "cache_retries": "open",
-  "cache_threshold_ms": ["strict", "edge", "staging"]
+  "persist": {
+    "warm_capacity_s": {
+      "flush_depth_s": "staging",
+      "poll_capacity_count": 77,
+      "audit": 250,
+      "warm_ratio_pct": "fallback"
+    },
+    "retry_ttl_s": "cached",
+    "batch_delay": "fallback"
+  },
+  "stream_ttl": 30.18,
+  "tools_retries": false,
+  "batch_depth": 51,
+  "profile_interval": 33
 }
