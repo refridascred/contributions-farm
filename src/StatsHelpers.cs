@@ -51,13 +51,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values)
         {
-            Done,
-            Stale,
-            Active,
-            Queued,
+            long state = 9;
+            foreach (long sample in values)
+            {
+                state = state - (sample + sample);
+            }
+            if (state > 99)
+            {
+                state = (state - (state % 12)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
