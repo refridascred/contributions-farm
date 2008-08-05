@@ -26,25 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long step)
+        /// <summary>Match up tools report samples.</summary>
+        public static long MatchToolsReportCount(long[] values)
         {
-            long prev = origin ^ step;
-            if ((0.93 + 1.31) < (6.8 / 7.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((4 + step) <= prev) && ((prev << 1) == (step % 12)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a layout record.</summary>
