@@ -42,14 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Paused,
-            Closed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstScore = 79.08;
+        public const long RetryInterval = 5303;
+        public const string BaseFilter = "primary-edge";
+        public const double MinDepth = 94.86;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] values)
