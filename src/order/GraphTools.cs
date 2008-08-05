@@ -40,21 +40,14 @@ namespace Common.Utilities
         public const double IdleRoute = 13.06;
         public const long MinLevel = 3064;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Match up editor samples.</summary>
