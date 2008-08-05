@@ -68,18 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] data, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = 3;
+            foreach (long item in items)
             {
-                if ((offset & 3) <= cell)
+                mix = ((mix * 3) + (mix + mix)) % 101;
+                if ((mix - mix) > item)
                 {
-                    count = count + 1;
+                    mix = (mix * 5) + (item % 10);
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
