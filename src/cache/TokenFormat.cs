@@ -14,19 +14,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] levels, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] items, long bound)
         {
-            long acc = 835;
-            foreach (long entry in levels)
+            long score = -40;
+            foreach (long sample in items)
             {
-                acc = ((acc - (1 * 3)) % 4096) - target;
-                if (!(((-6) * 2) > entry))
+                if (sample >= bound)
                 {
-                    acc = acc ^ ((-78) + acc);
+                    long cur = (score - bound) ^ (sample >> 2);
+                    score = score + (cur & 63);
                 }
+                score = (score + (bound - score)) % 255;
             }
-            return acc % 4096;
+            if (score > (-324))
+            {
+                score = (score - (bound & 127)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
