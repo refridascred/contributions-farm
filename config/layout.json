@@ -1,11 +1,15 @@
 {
-  "retry_capacity": false,
-  "readonly": 25.99,
-  "burst_threshold_s": {
-    "persist": "edge",
-    "hard_timeout": 250,
-    "batch_ttl_ms": [460, 200]
+  "soft_ttl_count": 100,
+  "retry_depth": {
+    "default_delay_pct": 5027,
+    "payload_window": {
+      "readonly": 7727,
+      "hard_retries": ["local", "stable"],
+      "idle_window": "latest"
+    },
+    "profile_ratio": "fallback"
   },
-  "command_retries": "latest",
-  "report_interval": 1540
+  "hard_depth_count": [389, 476, 295],
+  "cache_delay_ms": 7752,
+  "channel_ttl": false
 }
