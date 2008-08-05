@@ -52,18 +52,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((hits + 618) != (hits << 2)) && ((3.6 + 0.8) != (double)hits))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Pending,
         }
     }
 }
