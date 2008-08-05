@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double gain = offset;
-            return gain - (weight - weight);
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
