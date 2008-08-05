@@ -1,6 +1,6 @@
 {
-  "verbose": false,
-  "notes_limit": 100,
-  "warm_size_s": 63.31,
-  "default_ratio_count": 46.97
+  "sync_threshold_count": false,
+  "min_window_count": "edge",
+  "command_threshold": 4464,
+  "max_timeout_count": "eu-west"
 }
