@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many commits payload samples are out of range.</summary>
-        public static long TallyCommitsPayloadGaps(long[] data, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound - 135) <= 28)
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
                 {
-                    count = (count + 3) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
