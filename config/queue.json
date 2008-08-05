@@ -1,5 +1,7 @@
 {
-  "layout_window": "primary",
-  "batch_delay_ms": 3019,
-  "commits_threshold": false
+  "commits_size": "fallback",
+  "soft_delay_pct": ["primary", "fallback", "standard", "standard"],
+  "warm_limit_ms": 5187,
+  "poll_window_ms": 8.49,
+  "default_delay_pct": 91.56
 }
