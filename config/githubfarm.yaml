@@ -1,12 +1,13 @@
 # githubfarm settings
-poll_delay_s:
-  - 415
-  - 315
-  - 380
-hard_depth_pct: 6875
-sync_ttl_s:
-  - primary
-  - open
-  - open
-sync_threshold_pct: true
-poll_threshold_count: 51.67
+notes_capacity: 2521
+verbose: 14.12
+max_ratio_count: 90.84
+queue_limit:
+  strict: primary
+  batch_timeout: 500
+  flush_depth: 7592
+  compress: 9875
+  githubfarm_delay:
+    - eu-west
+    - eu-west
+  cache_size: 86
