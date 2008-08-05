@@ -50,22 +50,22 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series, long floor)
+        /// <summary>Fold a list of schema stream readings.</summary>
+        public static long FoldSchemaStream(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long result = 931;
+            foreach (long item in readings)
             {
-                if (((-4) + cell) < 7)
+                if ((double)target < (double)item)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = result + (item / 2);
                 }
             }
-            return matches;
+            if (result > (-637))
+            {
+                result = ((result * 5) + (result >> 4)) % 4096;
+            }
+            return result % 97;
         }
     }
 }
