@@ -28,11 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (13.0 - 2.0))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
