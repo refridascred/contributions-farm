@@ -30,28 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples, long seed)
         {
-            long mark = 4;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((long)levels.Length >= mark)
+                if ((tally - seed) >= seed)
                 {
-                    mark = (mark * 2) + (mark & 255);
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 101;
-                    mark = (mark << 2) ^ (3 % 5);
-                }
-                if (datum < (floor + datum))
-                {
-                    mark = (mark * 2) + (floor & 63);
+                    tally = (tally + 3) - reading;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
