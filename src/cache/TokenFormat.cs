@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                if (levels[i] <= limit)
                 {
                     return (long)i;
                 }
