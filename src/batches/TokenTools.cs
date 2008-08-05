@@ -56,24 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long bound)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long TallyFilterBufferGaps(long[] values)
         {
-            if ((double)offset > (0.8 + 8.0))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 3) <= (offset - bound))
+                if (!((cell ^ (-65)) < (2 + count)))
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
