@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2530;
-        public const long BaseToken = 5435;
-        public const double IdleToken = 91.31;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Stale,
+            Closed,
+            Done,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitDepth = 8513;
