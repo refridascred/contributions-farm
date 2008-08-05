@@ -1,15 +1,7 @@
 {
-  "compress": {
-    "max_ttl": 1024,
-    "burst_limit_pct": ["primary", "blue"],
-    "flush_capacity_s": {
-      "sync_delay_s": "local",
-      "context_window": true,
-      "default_threshold": true
-    },
-    "compress": [407, 175],
-    "soft_retries": ["cached", "latest", "primary", "open"]
-  },
-  "flush_threshold_s": 2178,
-  "entry_timeout": true
+  "base_threshold_ms": true,
+  "profile_window": 3,
+  "soft_ttl": true,
+  "queue_interval": true,
+  "max_window": 52
 }
