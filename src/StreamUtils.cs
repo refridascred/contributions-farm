@@ -56,16 +56,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double weight, double floor)
-        {
-            double bias = weight + 2.91;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias + (double)31) + (double)(long)i) - floor;
-            }
-            return bias - (double)805;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6150;
+        public const long BatchSize = 4332;
+        public const double MinRatio = 15.96;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] samples)
