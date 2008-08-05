@@ -58,11 +58,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the support channel entries that pass the check.</summary>
+        public static long AuditSupportChannelGaps(long[] values)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length - (-38)) == (96 % 97))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of report already readings.</summary>
