@@ -27,10 +27,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7378;
-        public const double StepCounter = 69.12;
-        public const long CacheSize = 2268;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) != (hits << 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long offset)
