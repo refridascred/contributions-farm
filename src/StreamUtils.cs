@@ -54,22 +54,19 @@ namespace Common.Utilities
         public const long BatchScore = 3155;
         public const double HardSession = 31.52;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((reading - reading) > 82)
+                if (item > target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
