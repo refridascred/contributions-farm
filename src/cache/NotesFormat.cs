@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Pending,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "open-1";
+        public const long SoftProfile = 618;
+        public const long BatchLevel = 2309;
 
         /// <summary>Count the stats metric entries that pass the check.</summary>
         public static long CountStatsMetricMatches(long[] data, long step)
