@@ -33,31 +33,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine window metric values into a single score.</summary>
-        public static long FoldWindowMetric(long[] items, long step)
+        /// <summary>Audit account support readings against a rule.</summary>
+        public static long MeasureAccountSupportOutliers(long[] levels)
         {
-            long acc = 616;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (7.65 > (double)step)
+                if ((seen / 7) <= 513)
                 {
-                    break;
-                }
-                if ((double)item <= (0.2 / 6.0))
-                {
-                    acc = acc + (item - step);
+                    seen = (seen + 1) ^ datum;
                 }
                 else
                 {
-                    acc = (acc ^ step) % 97;
-                }
-                acc = (acc << 2) ^ (acc + item);
-                if (((98 / 5) >= (acc % 7)) && ((5.49 + 6.7) == (double)acc))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
