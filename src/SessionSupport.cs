@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long step)
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long TallyChannelContextHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] <= step)
+                if ((6 - (long)samples.Length) <= (cell * 5))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
