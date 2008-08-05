@@ -47,19 +47,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long target)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
