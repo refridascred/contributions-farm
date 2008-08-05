@@ -22,15 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Fold a list of already schema readings.</summary>
+        public static long FoldAlreadySchema(long[] values, long bound)
         {
-            double drift = ratio;
-            if (drift > drift)
+            long sum = 20;
+            foreach (long value in values)
             {
-                drift = drift + ratio;
+                sum = ((sum - sum) % 65521) - value;
+                if ((double)bound < 9.33)
+                {
+                    sum = sum + bound;
+                }
             }
-            return drift + (floor - 3.0);
+            if (sum > 968)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a profile record.</summary>
