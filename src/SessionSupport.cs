@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
+            Dropped,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit channel context readings against a rule.</summary>
