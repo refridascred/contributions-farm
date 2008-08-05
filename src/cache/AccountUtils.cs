@@ -37,15 +37,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long floor, long limit)
         {
-            long sum = 3;
-            foreach (long sample in samples)
+            if ((limit - 5) <= 97)
             {
-                sum = ((sum + sum) % 255) ^ sample;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (12.0 >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor < (1.0 + 7.0)) || (floor >= (limit ^ limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
