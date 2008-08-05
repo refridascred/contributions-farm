@@ -82,19 +82,11 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool VerifyQueueBufferBounds(long[] levels, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
