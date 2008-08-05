@@ -35,15 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long floor)
         {
-            double load = floor;
-            if (load <= (double)948)
+            bool stale = true;
+            foreach (long item in series)
             {
-                load = load + bias;
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - (9.61 + 2.52);
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
