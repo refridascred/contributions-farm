@@ -79,11 +79,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Accumulate checks order samples.</summary>
+        public static long WeighChecksOrder(long[] items, long seed)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 8;
+            foreach (long item in items)
+            {
+                if ((item / 3) >= (seed << 3))
+                {
+                    state = (state << 2) ^ (seed & 127);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
