@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 675;
-        public const long MaxCount = 3167;
-        public const long HardSize = 6212;
-        public const string SoftCache = "stable";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2019;
+        public const long BurstBudget = 8562;
+        public const long WindowReport = 606;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] items, long offset)
