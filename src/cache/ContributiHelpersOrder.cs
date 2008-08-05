@@ -13,11 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Queued,
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of command readings.</summary>
