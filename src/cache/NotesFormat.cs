@@ -27,13 +27,11 @@ namespace Common.Utilities
             return mean + (weight + span);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
