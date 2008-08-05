@@ -37,10 +37,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftSize = 74.71;
-        public const long BatchWindow = 8786;
-        public const string IdleRatio = "open-1";
+        /// <summary>Iterate the cache buffer series from a seed.</summary>
+        public static long IterateCacheBuffer(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc - ((long)i % 60)) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (((acc << 3) ^ (acc / 2)) % 101) + (long)i2;
+                    acc = (acc << 2) ^ acc;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    acc = (((acc * 5) + (target % 2)) % 101) - (long)i3;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long PairFarmCount(long[] items)
