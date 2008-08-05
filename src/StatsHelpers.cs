@@ -49,12 +49,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            double bias2 = offset;
+            if (bias2 > (bias * 10.0))
+            {
+                bias2 = bias2 + (double)20;
+            }
+            else
+            {
+                bias2 = bias2 - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (bias2 + bias)) - (double)(long)i;
+            }
+            return bias2 + (bias2 - bias2);
         }
     }
 }
