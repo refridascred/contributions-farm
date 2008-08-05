@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] data, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
