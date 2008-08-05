@@ -34,15 +34,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Rank githubfarm channel input into a small class.</summary>
+        public static long GradeGithubfarmChannel(long offset, long seed)
         {
-            long mark = 39;
-            foreach (long datum in samples)
+            long slot = offset - seed;
+            if ((double)slot == (6.0 / 8.0))
             {
-                mark = (mark ^ (mark ^ mark)) + datum;
+                return 6;
             }
-            return mark % 1000;
+            else
+            {
+                if (!((5 / 4) >= (seed * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (17.0 * 14.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
