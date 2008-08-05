@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 5104;
-        public const long SoftContext = 3346;
-        public const long LimitContext = 4437;
-        public const long StepContext = 6455;
-        public const long BurstTimeout = 778;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Ready,
+            Active,
+            Stale,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBudget = 4068;
