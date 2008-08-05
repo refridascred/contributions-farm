@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((long)i > (13 - 24))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc ^ (7 / 7)) % 1000) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Closed,
+            Done,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a format options.</summary>
