@@ -33,38 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            if (((offset + offset) < (bound + bound)) && ((bound + offset) <= bound))
+            long carry = 551;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound >> 1) == (offset - offset)) || ((949 + bound) < (916 - offset)))
+                if (sample >= (floor - floor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - 7) <= (3 % 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >= (73 - bound)) && ((offset + bound) <= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry * 2) + sample;
                 }
             }
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry + floor)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a tools format value against two limits.</summary>
