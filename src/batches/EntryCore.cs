@@ -24,21 +24,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin <= (seed - origin)) || ((seed + origin) != (origin / 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= (double)seed)
                 {
-                    if ((values[i] + values[j]) != 18)
+                    return 7;
+                }
+                else
+                {
+                    if (!((8 << 2) <= origin))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)151)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
