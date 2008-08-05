@@ -27,17 +27,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
