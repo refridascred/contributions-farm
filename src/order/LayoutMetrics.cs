@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
