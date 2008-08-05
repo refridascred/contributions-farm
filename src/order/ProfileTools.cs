@@ -33,19 +33,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long origin)
         {
-            double bias = weight;
-            if (bias > (double)88)
+            if ((step / 7) == (origin << 3))
             {
-                bias = bias + (offset / 4.0);
+                return 2;
             }
             else
             {
-                bias = bias + (4.1 - bias);
+                if ((double)step == (12.0 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin <= (step - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 1) >= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias + (7.62 + weight);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
