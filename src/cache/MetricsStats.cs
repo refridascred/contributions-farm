@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                if (!!((datum & 127) > (count >> 1)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of command batch entries.</summary>
