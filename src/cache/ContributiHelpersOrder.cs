@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long MinSpan = 1634;
         public const long BaseRatio = 5807;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] values, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > origin)
+                if (data[i] == bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
