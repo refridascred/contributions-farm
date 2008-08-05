@@ -53,10 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepScore = 6469;
-        public const string BurstWidth = "standard-v2";
-        public const string MinTimeout = "fallback-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2586;
+        public const long SoftTimeout = 2007;
+        public const string HardInterval = "local-1";
+        public const long HardBuffer = 9465;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] data, long step)
