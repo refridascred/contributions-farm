@@ -39,15 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            if ((double)offset > (0.8 + 8.0))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((bound << 3) <= (offset - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
