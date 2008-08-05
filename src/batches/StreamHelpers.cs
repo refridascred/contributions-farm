@@ -38,15 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Measure how many contributi filter samples are out of range.</summary>
+        public static long TallyContributiFilterOutliers(long[] samples, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (((16.0 / 6.0) > (double)item) || !((offset * 5) == (matches + offset)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
