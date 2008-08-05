@@ -50,13 +50,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long seed)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            long span = offset + seed;
+            if ((568 >> 2) <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((span & 1) <= (seed * 3)) && ((offset + 68) > (-31)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up report samples.</summary>
