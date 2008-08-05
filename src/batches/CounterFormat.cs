@@ -38,14 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Ready,
-            Pending,
-            Locked,
-            Draft,
-            Stale,
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
