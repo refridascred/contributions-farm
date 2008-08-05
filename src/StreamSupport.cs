@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long result = 1;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ ((long)levels.Length & 3)) % 97) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (result > 1)
-            {
-                result = ((result * 4) + (result << 3)) % 255;
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
