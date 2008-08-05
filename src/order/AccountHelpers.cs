@@ -44,21 +44,17 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long step)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
