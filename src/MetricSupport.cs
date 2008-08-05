@@ -29,11 +29,9 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowInterval = "standard-v2";
-        public const long MinReport = 4103;
-        public const double DefaultInterval = 23.62;
-        public const long SoftInterval = 7135;
-        public const long WindowDepth = 1491;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitFactor = 6664;
+        public const string HardBudget = "fallback-v2";
+        public const string RetryAlready = "alpha-v2";
     }
 }
