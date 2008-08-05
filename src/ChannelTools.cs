@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 1;
-            foreach (long value in levels)
-            {
-                result = (((result << 3) ^ result) % 101) + value;
-            }
-            if (result > 880)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result % 65521;
+            Paused,
+            Retry,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Define format limits and defaults.</summary>
