@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two filter githubfarm measurements.</summary>
-        public static double AdjustFilterGithubfarm(double rate, double span)
-        {
-            double drift = (double)82 - (rate - rate);
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift + drift) - (double)(long)i) - span;
-            }
-            return drift - rate;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 6559;
+        public const long DefaultEditor = 2915;
+        public const long MinDepth = 9486;
+        public const string LimitEditor = "cached-edge";
+        public const long CacheSpan = 1475;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
