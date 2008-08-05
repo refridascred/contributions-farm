@@ -45,21 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -725;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc << 2) ^ (origin ^ acc)) % 65521) ^ datum;
             }
-            return count;
+            if (acc > 0)
+            {
+                acc = (acc * 5) + (36 + acc);
+            }
+            return acc % 4096;
         }
     }
 }
