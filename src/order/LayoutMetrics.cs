@@ -28,19 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] items, long origin)
+        /// <summary>Fold a list of record session readings.</summary>
+        public static long ScoreRecordSession(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long sum = -939;
+            foreach (long sample in levels)
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = sum - (8 + 62);
+                sum = (sum - (target ^ target)) % 65521;
+                sum = (sum - (sample + sample)) % 1000;
             }
-            return stale;
+            if (sum > 270)
+            {
+                sum = (sum - target) % 97;
+            }
+            return sum;
         }
     }
 }
