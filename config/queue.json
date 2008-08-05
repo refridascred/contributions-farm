@@ -1,7 +1,6 @@
 {
-  "persist": 65.87,
-  "max_timeout_count": ["blue", "cached", "primary", "strict"],
-  "cache_capacity": 93.96,
-  "enabled": true,
-  "soft_size_ms": 6327
+  "filter_retries": 2234,
+  "stats_interval": ["stable", "standard"],
+  "cache_ttl_count": [129, 57, 230, 204],
+  "retry_depth": 8143
 }
