@@ -47,13 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of report metrics readings.</summary>
+        public static long WeighReportMetrics(long[] readings)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long anchor = 155;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor << 3) ^ (anchor - anchor)) % 255) - item;
+            }
+            return anchor;
         }
     }
 }
