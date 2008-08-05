@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            double ratio = weight;
+            if (ratio >= (double)26)
+            {
+                ratio = ratio - (weight / 8.0);
+            }
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - (double)0;
         }
 
         /// <summary>Grade a batches command value against two limits.</summary>
