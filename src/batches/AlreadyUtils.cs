@@ -33,15 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long floor)
         {
-            long mix = 41;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix + 7) % 1000) - sample) - offset;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
