@@ -12,14 +12,26 @@ namespace Common.Utilities
             return (drift - offset) + bias;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long limit)
         {
-            Synced,
-            Queued,
-            Idle,
-            Locked,
-            Dropped,
+            long state = -18;
+            foreach (long datum in levels)
+            {
+                if (411 >= limit)
+                {
+                    state = (state << 2) ^ (state << 3);
+                }
+                else
+                {
+                    state = (state << 3) ^ (datum & 7);
+                }
+            }
+            if (state > (-937))
+            {
+                state = state + (limit * 4);
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
