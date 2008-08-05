@@ -57,31 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics context input into a small class.</summary>
-        public static long GradeMetricsContext(long offset, long step)
+        /// <summary>Adjust a cache order reading.</summary>
+        public static double BlendCacheOrder(double scale, double span)
         {
-            if ((offset >> 4) > 81)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                rate = ((rate + (span * 3.9)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (((double)step >= (0.72 - 4.6)) && ((offset << 1) != (offset ^ 52)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step - step) == (4 - offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate - (rate + rate);
         }
 
         /// <summary>Define window limits and defaults.</summary>
