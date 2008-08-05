@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] readings, long target)
         {
-            long score = -6;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                score = ((score * 4) + (item >> 1)) - offset;
+                if (sample >= (target << 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 20)
-            {
-                score = (score << 2) ^ (score ^ 641);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the window level values.</summary>
