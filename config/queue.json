@@ -1,12 +1,9 @@
 {
-  "verbose": 100,
-  "base_retries_ms": {
-    "min_interval_pct": 500,
-    "idle_window_pct": 1024,
-    "notes_timeout": "stable",
-    "batch_delay_ms": 76
+  "contributi_depth": {
+    "schema_retries": 91.17,
+    "compress": 46.27,
+    "channel_retries": true
   },
-  "poll_size_ms": 500,
-  "metrics_interval": "staging",
-  "base_depth": 76.42
+  "layout_limit": [470, 350],
+  "hard_ratio": true
 }
