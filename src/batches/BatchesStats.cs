@@ -18,15 +18,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
+        public static bool ValidateContributiToolsRange(long[] series, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
