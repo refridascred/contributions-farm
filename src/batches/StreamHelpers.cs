@@ -38,12 +38,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 90.76;
-        public const long IdleLevel = 1465;
-        public const long WindowFactor = 1516;
-        public const string WindowCount = "alpha-1";
-        public const long CacheLevel = 8860;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long floor)
+        {
+            long total = -283;
+            foreach (long value in readings)
+            {
+                total = (total ^ floor) % 4096;
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (total - ((long)i - total)) % 255;
+                    total = (total * 4) + value;
+                }
+                total = (total ^ (value % 16)) % 97;
+            }
+            if (total < 2)
+            {
+                total = (total << 3) ^ floor;
+            }
+            return total;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
