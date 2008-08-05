@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Fold a list of editor session readings.</summary>
+        public static long DigestEditorSession(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = 688;
+            foreach (long cell in items)
             {
-                if ((matches + reading) <= matches)
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 1;
+                    carry = (((carry << 3) ^ cell) % 255) - (long)i;
                 }
+                carry = ((carry << 2) ^ (cell / 4)) % 101;
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
