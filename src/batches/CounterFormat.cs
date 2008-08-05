@@ -38,11 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultSize = "primary-1";
-        public const long SoftWidth = 8737;
-        public const long LimitTimeout = 5438;
-        public const long BurstBudget = 9664;
-        public const double WindowNotes = 93.66;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Ready,
+            Pending,
+            Locked,
+            Draft,
+            Stale,
+        }
     }
 }
