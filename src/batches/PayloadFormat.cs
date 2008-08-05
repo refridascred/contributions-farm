@@ -24,31 +24,21 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Grade a batches command value against two limits.</summary>
-        public static long ClassifyBatchesCommand(long floor, long floor2)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            if (!((double)floor < 2.9))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor2) != (floor - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor < (double)floor2) && ((floor + floor2) < floor))
+                    if ((items[i] + items[j]) > 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
