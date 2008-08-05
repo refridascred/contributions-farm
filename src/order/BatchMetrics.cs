@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 6933;
-        public const string RetryReport = "latest-1";
-        public const long SoftReport = 5312;
-        public const double MaxSize = 82.48;
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long MeasureMetricsGraphGaps(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell > ((-537) + target)) || ((0.3 * 7.4) == (double)cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of command channel readings.</summary>
         public static long CombineCommandChannel(long[] data, long target)
