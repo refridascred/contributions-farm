@@ -39,38 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            if ((8.1 + 2.7) == (double)step)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= (3.67 + 1.24))
+                if ((matches + 4) >= reading)
                 {
-                    return 3;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((step + origin) == (809 % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.5 * 9.23) != (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
