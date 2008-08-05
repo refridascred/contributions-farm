@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long WindowSize = 3820;
         public const long StepFactor = 3534;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (target < (hits + target))
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 6107;
+        public const long DefaultReport = 2899;
+        public const long DefaultWidth = 3401;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] series, long step)
