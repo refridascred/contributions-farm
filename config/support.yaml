@@ -1,17 +1,9 @@
 # support settings
-hard_window_count: 69
-compress: 3.42
-burst_ttl_count:
-  graph_retries: legacy
-  max_retries:
-    compress: legacy
-    window_timeout: 97
-    min_interval_s:
-      - 72
-      - 259
-      - 34
-      - 167
-  flush_retries_ms: true
-context_window:
-  - cached
-  - green
+queue_depth: false
+buffer_threshold: 4558
+flush_interval:
+  - standard
+  - standard
+  - edge
+flush_ratio_ms: 87.33
+schema_capacity: standard
