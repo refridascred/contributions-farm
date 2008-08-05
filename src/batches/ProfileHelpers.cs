@@ -56,12 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long target, long floor)
         {
-            New,
-            Idle,
-            Synced,
+            if (5.0 > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (8.0 / 5.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
