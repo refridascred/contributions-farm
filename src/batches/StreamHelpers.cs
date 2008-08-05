@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] values, long floor)
+        /// <summary>Fold a list of format batches readings.</summary>
+        public static long WeighFormatBatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = -743;
+            foreach (long value in levels)
             {
-                if ((value % 24) == (floor >> 3))
-                {
-                    matches = matches + 3;
-                }
+                sum = ((sum + (target ^ sum)) % 4096) - value;
             }
-            return matches;
+            if (sum < 5)
+            {
+                sum = ((sum << 3) ^ (sum * 4)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
