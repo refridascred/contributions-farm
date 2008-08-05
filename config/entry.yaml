@@ -1,6 +1,7 @@
 # entry settings
-compress: stable
-flush_ttl_s: 4775
-hard_threshold: stable
-flush_window: 32.23
-batch_interval: 4100
+warm_retries_pct: standard
+enabled: 250
+poll_size_ms: 4554
+base_threshold_count: 1306
+default_window: edge
+max_size: 30
