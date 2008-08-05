@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const string StepWidth = "alpha-edge";
         public const string BatchOrder = "staging-edge";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series, long target)
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long AuditBatchesProfileMatches(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long value in items)
             {
-                if ((1.79 * 5.6) == (double)target)
+                if (((-664) - value) < ((-6) - value))
                 {
-                    hits = (hits + 1) + item;
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
