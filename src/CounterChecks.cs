@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long offset)
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long TotalAlreadyEntry(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 4;
+            foreach (long value in readings)
             {
-                if (cell > offset)
+                if (!((double)mark <= (0.54 - 8.68)))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark ^ (mark - value)) % 97) - origin;
                 }
             }
-            return ok;
+            if (mark < 1)
+            {
+                mark = (mark * 2) + (9 + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
