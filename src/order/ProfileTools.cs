@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data, long offset)
         {
-            double bias = (double)(162 / 2);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                bias = (bias + (double)(long)i) - gain;
+                if (((reading * 5) == (matches >> 3)) || ((reading + offset) >= (matches + reading)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return bias - span;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
