@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheBudget = "staging-1";
-        public const string SoftDepth = "local";
-        public const long SoftScore = 249;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Draft,
+            Idle,
+            New,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] series, long seed)
