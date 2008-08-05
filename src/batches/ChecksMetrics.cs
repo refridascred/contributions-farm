@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "cached";
+        public const double BatchCounter = 96.77;
+        public const long CacheCounter = 4705;
+        public const double IdleCounter = 30.71;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
