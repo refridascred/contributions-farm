@@ -13,34 +13,34 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long floor, long target)
+        /// <summary>Rank session support input into a small class.</summary>
+        public static long GradeSessionSupport(long origin, long floor)
         {
-            if (target < (target + target))
+            if ((floor & 127) < (origin % 60))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((floor / 3) >= floor)
+                if ((origin % 12) < (8 % 2))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor - floor) <= (794 & 7))
+                    if ((floor % 24) > (0 + origin))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((18.0 + 10.0) == (double)target)
+                        if ((double)origin >= (1.7 + 0.4))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
-                            return 2;
+                            return 7;
                         }
                     }
                 }
