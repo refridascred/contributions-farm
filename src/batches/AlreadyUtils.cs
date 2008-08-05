@@ -25,23 +25,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long SeekCommandRecordIndex(long[] values, long step)
         {
-            double drift = (double)481 / 4.0;
-            if (drift > scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + span;
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)95;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
