@@ -67,11 +67,18 @@ namespace Common.Utilities
         public const double MinSupport = 26.57;
         public const long BaseDepth = 2990;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long MeasureSessionContributiHits(long[] series)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((69 % 100) != (count * 3))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
     }
 }
