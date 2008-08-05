@@ -49,19 +49,22 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (value > target)
+                if ((limit >> 2) > (hits + 5))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Project the next batches counter value.</summary>
