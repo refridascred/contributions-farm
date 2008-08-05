@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values, long limit)
-        {
-            long score = 872;
-            foreach (long value in values)
-            {
-                if (((value + score) > (score - 2)) || ((double)limit > (double)value))
-                {
-                    score = (score << 2) ^ (score + 999);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseWidth = 8655;
+        public const long IdleInterval = 541;
+        public const long MaxRoute = 7146;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] items)
