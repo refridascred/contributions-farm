@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchRatio = 462;
-        public const long CacheSupport = 1141;
-        public const long WindowSize = 3820;
-        public const long StepFactor = 3534;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
