@@ -43,18 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long target)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long CountBatchesCommitsMatches(long[] levels, long step)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long item in levels)
             {
-                if ((seen / 6) > target)
+                if ((item % 10) != (step << 1))
                 {
-                    seen = (seen + 1) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
