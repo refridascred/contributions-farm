@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] series)
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long CountOrderStreamOutliers(long[] items)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long item in items)
             {
-                if ((9 & 63) == (value & 3))
+                if (((count + 566) > (count * 4)) && ((item + count) > (item % 24)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
