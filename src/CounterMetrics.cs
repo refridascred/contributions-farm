@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long MeasureLayoutAlreadyMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((-730) - 85) < seen)
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheSize = "strict-1";
+        public const string BatchRecord = "primary-1";
+        public const double IdleRecord = 31.62;
+        public const double StepRecord = 34.49;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long bound)
