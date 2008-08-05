@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 7561;
-        public const long LimitLevel = 9075;
-        public const long MaxSpan = 2786;
-        public const long RetryOrder = 2918;
-        public const double HardSize = 64.72;
+        /// <summary>Check that every context tools entry stays within the limit.</summary>
+        public static bool ValidateContextToolsRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitCommits = 7476;
