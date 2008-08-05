@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the schema already entries that pass the check.</summary>
+        public static long MeasureSchemaAlreadyGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample <= (hits / 4)) && (((-728) - hits) >= (hits + sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
