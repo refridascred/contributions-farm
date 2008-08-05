@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = 0;
+            foreach (long item in readings)
             {
-                if (((count + reading) <= (count - reading)) && ((8 + reading) < reading))
+                if ((item << 1) >= score)
                 {
-                    count = count + 3;
+                    score = (score - (item * 4)) - bound;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
