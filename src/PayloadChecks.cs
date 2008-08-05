@@ -16,39 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long step)
-        {
-            if ((step >> 1) < (offset >> 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 > (double)offset) || ((step + 396) < (step + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - 1) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.4 - 7.9) == (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSize = 9955;
+        public const double LimitScore = 17.25;
+        public const string MinQueue = "staging";
+        public const long RetryQueue = 5936;
+        public const long BaseQueue = 9560;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] readings, long bound)
