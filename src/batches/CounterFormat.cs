@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 98;
+        public const long MaxEditor = 7878;
+        public const long CacheEditor = 2832;
+        public const long BaseSpan = 8710;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 6262;
