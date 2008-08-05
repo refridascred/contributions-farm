@@ -12,32 +12,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] data, long limit)
         {
-            long offset2 = offset - target;
-            if ((offset2 < (offset2 / 2)) && ((offset << 3) >= 95))
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target / 3) >= (target * 3)))
+                if (reading <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 4) < offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up order samples.</summary>
