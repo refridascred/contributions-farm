@@ -14,14 +14,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a contributi stream pair into a bucket.</summary>
+        public static long BucketContributiStream(long target, long offset)
         {
-            Pending,
-            Stale,
-            Synced,
-            Retry,
-            Done,
+            if ((815 << 2) > (offset + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.47 / 8.0) == (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)(-1) < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset >= 4) || ((target + offset) > (target + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
