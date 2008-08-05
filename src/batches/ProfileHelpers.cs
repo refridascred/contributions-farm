@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double MaxSpan = 71.48;
         public const long HardProfile = 8327;
 
-        /// <summary>Compare every pair of batch metric readings.</summary>
-        public static long CompareBatchMetricCount(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= target)
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Project the next window stats value.</summary>
