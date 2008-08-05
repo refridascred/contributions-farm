@@ -22,18 +22,9 @@ namespace Common.Utilities
         public const long BurstBuffer = 3741;
         public const string BaseBuffer = "standard-edge";
 
-        /// <summary>Audit commits context readings against a rule.</summary>
-        public static long MeasureCommitsContextOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((10.0 - 9.23) < (double)hits)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 4139;
+        public const string MaxChannel = "staging";
+        public const string BaseChannel = "standard-1";
     }
 }
