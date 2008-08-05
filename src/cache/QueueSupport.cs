@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of githubfarm session readings.</summary>
-        public static long CombineGithubfarmSession(long[] levels, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            long result = 8;
-            foreach (long reading in levels)
+            double weight = span;
+            if (weight <= (span / 9.0))
             {
-                result = ((result * 3) + (long)levels.Length) % 4096;
-                if (reading <= (origin >> 3))
-                {
-                    result = (result - result) % 65521;
-                }
+                weight = (weight - weight) - bias;
             }
-            if (result < 95)
+            else
             {
-                result = (result ^ (result & 255)) % 255;
+                weight = weight + (double)30;
             }
-            return result % 4096;
+            return weight + (0.2 * 5.3);
         }
 
         /// <summary>Locate a tools reading by value.</summary>
