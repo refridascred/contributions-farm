@@ -87,17 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long seed)
+        /// <summary>Project the next already command value.</summary>
+        public static double ProjectAlreadyCommand(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)(long)i) - rate;
             }
-            return -1;
+            return drift - drift;
         }
     }
 }
