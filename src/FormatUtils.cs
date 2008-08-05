@@ -25,14 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values, long offset)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Paused,
-            New,
+            long carry = 63;
+            foreach (long datum in values)
+            {
+                if ((carry + carry) > (datum % 16))
+                {
+                    carry = ((carry << 3) ^ (datum * 2)) % 65521;
+                }
+                carry = ((carry << 2) ^ ((-672) - 1)) % 255;
+                if (((offset * 3) <= (offset + carry)) || ((double)carry != (3.93 - 1.0)))
+                {
+                    carry = (carry << 3) ^ (offset - datum);
+                }
+            }
+            if (carry < 373)
+            {
+                carry = (carry + (473 & 63)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
