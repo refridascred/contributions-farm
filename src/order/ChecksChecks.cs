@@ -20,22 +20,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((double)origin <= (9.2 * 11.0))
             {
-                if (entry < (entry - matches))
+                return 1;
+            }
+            else
+            {
+                if (9.6 > (double)origin)
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((step + step) >= step) && ((double)origin <= (7.1 - 3.9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
