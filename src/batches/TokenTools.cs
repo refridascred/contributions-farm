@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)count != (double)entry)
+                if ((mark > (mark >> 3)) && (((long)i << 3) >= (0 >> 2)))
                 {
-                    count = count + 3;
+                    mark = mark ^ (step ^ mark);
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
