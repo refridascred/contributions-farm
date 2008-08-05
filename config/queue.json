@@ -1,10 +1,15 @@
 {
-  "channel_size": 100,
-  "strict": {
-    "hard_window_s": 30,
-    "record_threshold": 6,
-    "window_window": "cached",
-    "max_threshold_count": 6676
+  "retry_ratio_pct": "standard",
+  "min_retries": {
+    "sync_window": "staging",
+    "flush_timeout_ms": "open",
+    "route_depth": 48.15,
+    "min_limit_count": [4, 379, 4],
+    "min_capacity_s": 7922,
+    "stream_window": 1024
   },
-  "min_timeout_s": 31.33
+  "stream_capacity": 1716,
+  "layout_ttl": 6706,
+  "soft_capacity": ["edge", "fallback"],
+  "poll_size_pct": "primary"
 }
