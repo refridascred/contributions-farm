@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((matches - matches) <= matches)
+                if (datum != bound)
                 {
-                    matches = (matches + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
