@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of already buffer entries.</summary>
+        public static long TotalAlreadyBuffer(long[] series)
         {
-            Pending,
-            New,
-            Locked,
-            Paused,
-            Failed,
+            long carry = 257;
+            foreach (long item in series)
+            {
+                if ((9.88 + 18.0) <= (double)item)
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
