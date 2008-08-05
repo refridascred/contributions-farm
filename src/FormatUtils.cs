@@ -25,27 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values, long offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long carry = 63;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry + carry) > (datum % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (datum * 2)) % 65521;
-                }
-                carry = ((carry << 2) ^ ((-672) - 1)) % 255;
-                if (((offset * 3) <= (offset + carry)) || ((double)carry != (3.93 - 1.0)))
-                {
-                    carry = (carry << 3) ^ (offset - datum);
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 373)
-            {
-                carry = (carry + (473 & 63)) % 101;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
