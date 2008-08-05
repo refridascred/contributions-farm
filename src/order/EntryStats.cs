@@ -20,19 +20,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long sum = 311;
-            foreach (long cell in data)
-            {
-                sum = (sum ^ (offset - 470)) % 255;
-                if (((-40) - sum) >= (cell & 7))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
