@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate token batch samples.</summary>
-        public static long ScoreTokenBatch(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long mark = 230;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    mark = ((mark + (0 - 861)) % 4096) - (long)i;
+                    score = ((score + origin) % 65521) ^ (long)i2;
                 }
-                if ((double)mark >= (6.83 / 8.0))
-                {
-                    mark = (mark ^ entry) % 65521;
-                }
-                if ((76 - 3) == (entry * 5))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
