@@ -1,22 +1,14 @@
 # githubfarm settings
-min_window:
-  batch_retries:
-    dry_run: 67
-    strict: 63
-    enabled: 1130
-    retry_timeout:
-      - primary
-      - standard
-      - green
-    idle_interval: edge
-  stream_timeout: 79
-  retry_limit_pct:
-    poll_window_count: 86.91
-    hard_depth:
-      - cached
-      - edge
-    batch_interval: 6778
-    buffer_window: true
-    readonly: latest
-poll_capacity_s: 92.7
-warm_limit_ms: 6725
+burst_interval_ms:
+  - fallback
+  - primary
+  - cached
+hard_size_pct:
+  - 130
+  - 431
+  - 500
+  - 408
+dry_run: local
+base_delay: false
+flush_threshold: 500
+batch_interval_ms: 82
