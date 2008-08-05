@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseInterval = 50.86;
+        public const double IdleBuffer = 58.88;
+        public const long SoftBuffer = 302;
+        public const double SoftCount = 97.0;
+        public const string BaseSize = "legacy-1";
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ProjectEntry(double ratio, double bias)
