@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 3061;
+        public const double LimitPayload = 83.81;
+        public const long StepDepth = 2213;
+        public const long SoftPayload = 6033;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long DeriveChecks(long seed)
