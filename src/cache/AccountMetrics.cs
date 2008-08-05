@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a metrics stats value against two limits.</summary>
-        public static long RankMetricsStats(long offset, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if (!((double)origin != (8.04 + 0.4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin != (2.0 / 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - 761) <= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset <= (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
