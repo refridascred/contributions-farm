@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double DefaultQueue = 3.23;
         public const long BurstDepth = 7563;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 4423;
-        public const long MaxSupport = 7995;
-        public const double CacheFactor = 39.4;
-        public const long LimitSupport = 9786;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleRatio = 1259;
