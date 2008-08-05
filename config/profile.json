@@ -1,6 +1,6 @@
 {
-  "already_retries": 9162,
-  "max_delay_s": false,
-  "batch_interval": false,
-  "base_capacity_count": 60
+  "burst_ttl_pct": "eu-west",
+  "max_timeout_pct": 18.83,
+  "strict": "primary",
+  "dry_run": "open"
 }
