@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double IdleBudget = 72.93;
         public const long BurstSize = 3545;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 4391;
+        public const long DefaultReport = 6533;
+        public const long HardCount = 1582;
+        public const long StepDepth = 4983;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
