@@ -33,39 +33,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long floor)
+        /// <summary>Project the next route batch value.</summary>
+        public static double ProjectRouteBatch(double ratio, double offset)
         {
-            long cur = seed + floor;
-            if (cur > (floor << 2))
+            double load = ratio + (double)306;
+            if (load <= load)
             {
-                return 5;
+                load = load - (6.87 - offset);
             }
-            else
-            {
-                if (6 > (seed / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(7.07 < (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((2.67 - 9.0) < (double)cur) || ((80 ^ (-5)) >= seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return load + (double)21;
         }
 
         /// <summary>Hold a command header.</summary>
