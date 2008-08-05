@@ -1,8 +1,9 @@
-id,active,state,score
-1,primary,stable,67.69
-2,edge,cached,163
-3,571,5.78,931
-4,227,50.53,eu-west
-5,cached,516,87.12
-6,856,strict,239
-7,77.64,224,primary
+id,weight,token
+1,298,431
+2,6.28,5.81
+3,257,343
+4,legacy,87.86
+5,22.8,596
+6,open,750
+7,5.97,local
+8,95.24,eu-west
