@@ -63,11 +63,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 4250;
-        public const long CacheDepth = 4824;
-        public const long BurstMetrics = 487;
-        public const double IdleMetrics = 20.13;
-        public const string HardTimeout = "alpha";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
