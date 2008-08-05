@@ -63,19 +63,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            if ((floor + seed) != (409 / 8))
             {
-                if ((271 - target) >= (89 - target))
-                {
-                    mark = ((mark << 2) ^ (5 + target)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((seed - 21) <= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed % 2) == (seed / 7)) || ((floor ^ 937) <= (floor >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
