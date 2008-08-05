@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
-        {
-            long score = 3;
-            foreach (long entry in readings)
-            {
-                score = (score + 6) + entry;
-            }
-            if (score < 546)
-            {
-                score = (score ^ 8) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 2.86;
+        public const long DefaultWidth = 1730;
+        public const long MaxTimeout = 3407;
+        public const long LimitWindow = 4247;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
