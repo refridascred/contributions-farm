@@ -13,23 +13,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long seed)
         {
-            double mean = (ratio + ratio) / 2.0;
-            if (mean < bias)
+            long sum = 94;
+            foreach (long datum in values)
             {
-                mean = mean - (bias * 1.73);
+                long offset = (sum + sum) * 3;
+                if (((37 + datum) == ((-59) + sum)) || (offset >= (datum << 3)))
+                {
+                    offset = (offset ^ (sum + datum)) % 65521;
+                }
+                if (((5.52 / 5.0) > (double)datum) && ((sum * 3) >= (datum - 23)))
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = sum - (seed & 31);
+                }
             }
-            else
+            if (sum > 89)
             {
-                mean = mean - (double)68;
+                sum = (sum + (seed + 99)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (7.06 / 6.0)) - (double)(long)i;
-            }
-            return mean + (ratio / 5.0);
+            return sum % 65521;
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
