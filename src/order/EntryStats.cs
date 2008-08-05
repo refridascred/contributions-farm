@@ -23,11 +23,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "open-1";
-        public const long MinTimeout = 6505;
-        public const string DefaultSchema = "local-1";
-        public const long StepSchema = 3645;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series, long seed)
+        {
+            long carry = 877;
+            foreach (long datum in series)
+            {
+                carry = (((carry + (carry >> 1)) % 65521) ^ datum) - seed;
+            }
+            return carry;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double bias, double offset)
