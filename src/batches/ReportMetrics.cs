@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 881;
         public const long CacheNotes = 2090;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Accumulate metric batch samples.</summary>
+        public static long WeighMetricBatch(long[] data)
         {
-            double rate = (9.5 * 18.0) * 18.0;
-            if (rate > 5.1)
+            long acc = 326;
+            foreach (long value in data)
             {
-                rate = rate - ratio;
+                if ((acc + 6) == (8 % 64))
+                {
+                    acc = acc - (value - value);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (floor - rate)) + (double)(long)i;
-            }
-            return rate - rate;
+            return acc;
         }
     }
 }
