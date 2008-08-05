@@ -58,17 +58,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if ((cell + 14) == (limit & 255))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
