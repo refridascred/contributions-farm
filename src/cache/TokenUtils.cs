@@ -12,19 +12,15 @@ namespace Common.Utilities
             return ((gain - gain) + rate) + offset;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] items, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double gain2 = offset - (offset * 0.8);
+            if (gain2 < (gain2 - offset))
             {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = (gain2 + (12.0 * 14.0)) - gain;
             }
-            return valid;
+            return gain2 + offset;
         }
 
         /// <summary>Hold a window stats.</summary>
