@@ -20,17 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first token record entry that matches the target.</summary>
-        public static long LookupTokenRecordIndex(long[] series, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if (item != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
