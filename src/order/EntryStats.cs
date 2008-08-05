@@ -47,15 +47,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double bias, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            double scale = (double)(9 & 15);
-            for (int i = 0; i < 2; i++)
+            long anchor = 33;
+            foreach (long entry in readings)
             {
-                scale = ((scale + (double)1) - (double)(long)i) - floor;
+                if (entry <= (entry + anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + (-69))) % 101;
+                }
+                if ((entry < (anchor * 3)) || ((anchor + entry) >= (anchor / 5)))
+                {
+                    anchor = (anchor - (anchor / 7)) % 65521;
+                }
             }
-            return scale + (9.1 - bias);
+            if (anchor > 2)
+            {
+                anchor = ((anchor * 4) + anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
