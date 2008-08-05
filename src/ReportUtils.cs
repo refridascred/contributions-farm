@@ -21,10 +21,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxInterval = 71.85;
-        public const long HardCount = 1986;
-        public const long BaseScore = 6903;
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool VerifyPayloadGithubfarmLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long CompareBatchesCount(long[] values)
