@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long limit, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] series, long target)
         {
-            long diff = limit ^ origin;
-            if ((limit / 8) < diff)
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (76 ^ limit))
+                if (item > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
