@@ -79,13 +79,18 @@ namespace Common.Utilities
         public const double MinBuffer = 87.77;
         public const long LimitBuffer = 6803;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many record context samples are out of range.</summary>
+        public static long TallyRecordContextOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count > 2.0)
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
