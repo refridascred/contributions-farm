@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset;
+            if (bias <= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + 3.1) - ratio;
             }
-            return hits;
+            return bias - bias;
         }
 
         /// <summary>Hold a route record.</summary>
