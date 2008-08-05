@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long mix = -27;
+            foreach (long datum in items)
             {
-                if (sample > seed)
+                if ((mix < (datum - mix)) && ((double)mix <= (7.34 - 0.17)))
                 {
-                    valid = false;
+                    mix = (mix + (datum - mix)) % 1000;
+                    mix = ((mix * 3) + datum) % 255;
+                }
+                else
+                {
+                    mix = (mix - datum) % 255;
+                }
+                if ((datum ^ mix) <= mix)
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                    continue;
+                }
+                mix = mix ^ datum;
+                if ((6.1 / 7.0) >= (double)mix)
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
