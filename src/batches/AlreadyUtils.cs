@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long DefaultMetric = 1452;
         public const string StepMetric = "latest";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long step)
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long LookupRouteAccountIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry > (13.0 - 2.0))
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
                 {
-                    hits = (hits + 1) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
