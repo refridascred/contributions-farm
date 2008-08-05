@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double weight = scale;
-            if (weight > (bias / 6.0))
-            {
-                weight = weight + (weight * 20.0);
-            }
-            return weight + bias;
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
