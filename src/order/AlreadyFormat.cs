@@ -53,15 +53,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double floor)
         {
-            long result = 6;
-            foreach (long entry in data)
-            {
-                result = ((result + (entry - entry)) % 255) + bound;
-            }
-            return result % 65521;
+            double weight = ratio - 7.5;
+            return weight - (floor * 0.4);
         }
     }
 }
