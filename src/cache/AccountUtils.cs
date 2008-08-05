@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Look up the position of a queue command sample.</summary>
+        public static long FindQueueCommandIndex(long[] levels, long target)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
