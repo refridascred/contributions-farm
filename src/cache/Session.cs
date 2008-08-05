@@ -16,26 +16,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] data, long seed)
         {
-            long acc = 5;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(sample > (acc << 2)))
+                if (data[i] > seed)
                 {
-                    acc = ((acc * 5) + sample) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (sample + acc)) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (acc + acc)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
