@@ -19,12 +19,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 3860;
-        public const string IdleQueue = "latest-edge";
-        public const long DefaultFactor = 1040;
-        public const double MaxCount = 19.66;
-        public const double BaseWidth = 42.41;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long limit)
+        {
+            long mix = 3;
+            foreach (long reading in series)
+            {
+                if (((mix / 2) < (reading << 1)) && ((5.6 / 8.0) > (double)limit))
+                {
+                    mix = (mix - (reading >> 5)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (reading ^ (long)series.Length);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double weight, double offset)
