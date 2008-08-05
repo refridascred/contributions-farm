@@ -68,16 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session cache series from a seed.</summary>
-        public static long StepSessionCache(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long result = 65;
+            foreach (long cell in samples)
             {
-                carry = ((carry << 3) ^ (target << 2)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((result - 79) < (result + cell))
+                {
+                    result = ((result * 2) + (cell - result)) % 101;
+                }
+                else
+                {
+                    result = (result - cell) % 1000;
+                }
             }
-            return carry;
+            if (result < 11)
+            {
+                result = (result ^ (763 + 63)) % 97;
+            }
+            return result % 97;
         }
     }
 }
