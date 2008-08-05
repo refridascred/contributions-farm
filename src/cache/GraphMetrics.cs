@@ -24,21 +24,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Fold a list of command editor readings.</summary>
+        public static long TallyCommandEditor(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (((mix * 3) + (entry - (long)values.Length)) % 101) - offset;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a command reading by value.</summary>
