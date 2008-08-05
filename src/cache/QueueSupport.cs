@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] series, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] readings, long seed)
         {
             bool stale = true;
-            foreach (long value in series)
+            foreach (long sample in readings)
             {
-                if (value != floor)
+                if (sample <= seed)
                 {
                     stale = false;
                     break;
