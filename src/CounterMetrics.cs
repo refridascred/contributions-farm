@@ -19,15 +19,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            long result = 3;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                result = (((result * 2) + result) ^ datum) + bound;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the already schema entries that pass the check.</summary>
