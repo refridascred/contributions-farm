@@ -1,12 +1,5 @@
 {
-  "verbose": {
-    "hard_depth_pct": 5855,
-    "channel_retries": [188, 354, 178],
-    "route_depth": ["blue", "blue", "stable"]
-  },
-  "metrics_size": false,
-  "audit": 20,
-  "batch_window_pct": 30,
-  "warm_size": 3111,
-  "warm_interval_pct": 89
+  "hard_delay_pct": "local",
+  "enabled": [362, 43, 235, 324],
+  "poll_timeout_pct": 43
 }
