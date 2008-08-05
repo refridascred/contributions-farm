@@ -23,11 +23,27 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 5875;
-        public const long BurstWidth = 9733;
-        public const long WindowFactor = 5075;
-        public const long MinLevel = 5931;
+        /// <summary>Combine entry schema values into a single score.</summary>
+        public static long TotalEntrySchema(long[] samples)
+        {
+            long mix = 3;
+            foreach (long cell in samples)
+            {
+                if ((cell / 4) < cell)
+                {
+                    mix = ((mix * 2) + cell) % 97;
+                }
+                else
+                {
+                    mix = mix - (cell ^ cell);
+                }
+                if ((double)cell != (20.0 - 7.04))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
