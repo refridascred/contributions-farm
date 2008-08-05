@@ -39,23 +39,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (readings[i] <= seed)
                 {
-                    acc = (acc - (acc >> 1)) ^ (long)i2;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    acc = ((acc ^ (963 >> 4)) % 4096) - (long)i3;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
