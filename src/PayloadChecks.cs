@@ -67,21 +67,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 444;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)acc != (double)datum)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 5) + datum;
+                }
+                else
+                {
+                    acc = acc - (acc - datum);
                 }
             }
-            return matches;
+            if (acc > 556)
+            {
+                acc = acc + ((-983) ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
