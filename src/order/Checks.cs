@@ -56,20 +56,18 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!(carry >= (floor / 8)))
+                if (534 >= (count / 3))
                 {
-                    carry = (carry - ((long)i * 4)) % 1000;
+                    count = (count + 3) + reading;
                 }
-                carry = carry ^ floor;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
     }
 }
