@@ -23,12 +23,21 @@ namespace Common.Utilities
             return gain - (double)90;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
