@@ -1,9 +1,8 @@
-id,ratio,owner,label
-1,standard,cached,74.48
-2,68.32,49.94,37.01
-3,675,341,91
-4,938,standard,legacy
-5,492,153,85.31
-6,599,880,716
-7,72.32,cached,835
-8,eu-west,staging,21.3
+id,level,count,active
+1,staging,standard,86.33
+2,33.09,85.77,44.14
+3,710,12.18,419
+4,latest,535,legacy
+5,cached,staging,334
+6,standard,20.16,56.27
+7,732,44.4,927
