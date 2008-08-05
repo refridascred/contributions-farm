@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const long SoftStats = 8198;
         public const double DefaultStats = 57.8;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseSpan = "legacy";
+        public const long HardWidth = 8412;
+        public const long BaseMetric = 37;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryHits(long[] series)
