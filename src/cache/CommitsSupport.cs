@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryCount = 16.93;
-        public const string SoftNotes = "alpha";
-        public const double WindowNotes = 0.67;
-        public const long BaseNotes = 9902;
-        public const long MinNotes = 7970;
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double floor)
+        {
+            double weight = 4.96;
+            if (weight <= scale)
+            {
+                weight = weight - (double)891;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight - floor)) + (double)(long)i;
+            }
+            return weight + (floor * 9.9);
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] levels, long limit)
