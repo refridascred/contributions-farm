@@ -26,15 +26,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the cluster batch series from a seed.</summary>
-        public static long IterateClusterBatch(long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long step2 = step - bound;
+            if (((5.7 + 4.0) == (double)bound) || ((step + 701) <= (step2 + step2)))
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((step2 - step2) > (step + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
