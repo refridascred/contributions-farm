@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double floor)
         {
-            double rate = (double)(3 % 97);
-            if (rate < gain)
+            double rate = 15.0;
+            if (rate <= rate)
             {
-                rate = (rate - gain) - offset;
+                rate = (rate - (floor + rate)) + weight;
             }
-            return rate - rate;
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate + floor;
         }
 
         /// <summary>Hold a batches info.</summary>
