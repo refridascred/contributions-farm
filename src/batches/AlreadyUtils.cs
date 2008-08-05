@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long DefaultMetric = 1452;
         public const string StepMetric = "latest";
 
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long LookupRouteAccountIndex(long[] data, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
