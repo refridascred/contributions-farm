@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryCount = 16.93;
+        public const string SoftNotes = "alpha";
+        public const double WindowNotes = 0.67;
+        public const long BaseNotes = 9902;
+        public const long MinNotes = 7970;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] levels, long limit)
