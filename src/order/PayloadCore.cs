@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((9 + tally) > (reading & 255))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheBudget = "open-edge";
+        public const long HardOrder = 720;
+        public const long SoftWidth = 1526;
+        public const long MinOrder = 5811;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 2378;
