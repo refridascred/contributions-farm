@@ -27,23 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) != (hits << 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 2302;
+        public const long SoftStats = 1106;
+        public const long CacheRatio = 4711;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long offset)
