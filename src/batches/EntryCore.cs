@@ -49,11 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
