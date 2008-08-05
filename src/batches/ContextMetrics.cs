@@ -27,38 +27,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank graph cache input into a small class.</summary>
-        public static long GradeGraphCache(long limit, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            if ((double)limit < (17.0 / 8.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) < (limit + 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound <= (0.6 / 8.0))
+                    if ((items[i] - items[j]) == 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit & 255) >= (limit * 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
