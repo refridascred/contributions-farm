@@ -1,6 +1,11 @@
-id,count,label,ratio
-1,784,572,610
-2,440,944,224
-3,latest,54.5,stable
-4,11.25,75.69,577
-5,471,36,584
+id,active,score,state
+1,stable,914,blue
+2,470,450,60
+3,green,local,43.53
+4,87,90.26,547
+5,719,376,663
+6,open,95.36,894
+7,57.51,63.79,98.5
+8,43.19,727,staging
+9,strict,staging,542
+10,standard,313,local
