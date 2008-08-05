@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a stats buffer pair into a bucket.</summary>
-        public static long ClassifyStatsBuffer(long seed, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if (!(seed < (seed / 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + seed) == (limit >> 5)) && ((double)seed < (3.86 + 2.35)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Project the next stream cluster value.</summary>
