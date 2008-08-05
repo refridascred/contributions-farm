@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long sum = -810;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length < cell) && ((916 ^ 779) < cell))
-                {
-                    sum = ((sum << 3) ^ (cell & 255)) % 4096;
-                }
-            }
-            return sum;
+            Paused,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
