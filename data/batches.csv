@@ -1,9 +1,8 @@
-id,owner,state,level,weight
-1,215,98.62,32.07,539
-2,975,971,523,green
-3,609,693,81.82,eu-west
-4,412,97.91,100,717
-5,stable,green,blue,397
-6,3.37,56.57,70.92,57.06
-7,green,94.65,4.24,primary
-8,latest,edge,793,50.46
+id,rank,count,level
+1,edge,cached,64.41
+2,legacy,0.38,strict
+3,legacy,74.26,25.79
+4,429,187,blue
+5,14.29,60,stable
+6,64.81,local,primary
+7,666,green,114
