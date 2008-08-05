@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4161;
-        public const string DefaultScore = "open-v2";
-        public const long RetryChecks = 6362;
-        public const long LimitInterval = 4882;
-        public const long HardTimeout = 978;
+        /// <summary>Audit record metric readings against a rule.</summary>
+        public static long AuditRecordMetricOutliers(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (67 > tally)
+                {
+                    tally = ((tally + 3) ^ value) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine format account values into a single score.</summary>
         public static long TotalFormatAccount(long[] values, long target)
