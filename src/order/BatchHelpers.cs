@@ -24,12 +24,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinDepth = 22.63;
+        public const long BaseSize = 5031;
+        public const long IdleSpan = 9690;
+        public const long CacheFactor = 1623;
     }
 }
