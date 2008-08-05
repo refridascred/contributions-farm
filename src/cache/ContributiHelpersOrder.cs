@@ -23,24 +23,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 0;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ (mix & 15)) + origin;
-                mix = mix ^ (item << 3);
-                if (!((mix - mix) >= mix))
-                {
-                    mix = ((mix * 3) + (mix % 7)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 2) + item;
-                }
-            }
-            return mix % 97;
+            Ready,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
