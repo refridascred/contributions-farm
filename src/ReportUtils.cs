@@ -57,19 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCommitsGithubfarmRange(long[] levels, long target)
+        /// <summary>Adjust a farm metrics reading.</summary>
+        public static double AdjustFarmMetrics(double scale, double span)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double load = (double)(8 - 7);
+            for (int i = 0; i < 5; i++)
             {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (scale + span)) + (double)(long)i;
             }
-            return flag;
+            return load - (span - 15.0);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
