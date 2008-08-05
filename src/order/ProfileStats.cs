@@ -32,13 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            Synced,
-            Closed,
-            Done,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
