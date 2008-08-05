@@ -26,18 +26,25 @@ namespace Common.Utilities
         public const long LimitFactor = 2048;
         public const string IdleBatches = "cached-1";
 
-        /// <summary>Count the counter stream entries that pass the check.</summary>
-        public static long AuditCounterStreamHits(long[] series, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long offset = origin + bound;
+            if ((double)origin != (3.1 + 1.6))
             {
-                if (!!((seen % 100) > (5 - (long)series.Length)))
+                return 3;
+            }
+            else
+            {
+                if (((offset + 77) == (offset ^ bound)) || ((7.0 + 16.0) <= (double)origin))
                 {
-                    seen = ((seen + 3) - sample) + target;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
