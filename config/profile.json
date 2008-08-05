@@ -1,15 +1,6 @@
 {
-  "batches_retries": "latest",
-  "filter_interval": {
-    "githubfarm_ttl": {
-      "verbose": 81.38,
-      "metric_size": false,
-      "strict": 58.91
-    },
-    "metrics_capacity": [43, 176, 369, 457],
-    "strict": "local"
-  },
-  "support_timeout": 66.82,
-  "warm_timeout": false,
-  "soft_ttl": "standard"
+  "already_retries": 9162,
+  "max_delay_s": false,
+  "batch_interval": false,
+  "base_capacity_count": 60
 }
