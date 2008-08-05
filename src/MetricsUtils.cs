@@ -23,13 +23,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long origin)
         {
-            Synced,
-            Closed,
-            Done,
-            Draft,
+            long next = offset + origin;
+            if ((offset + 38) < (offset + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (70 > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)next != (15.0 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools state values.</summary>
