@@ -22,13 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            Pending,
-            Failed,
-            Locked,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
