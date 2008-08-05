@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const long StepRatio = 6210;
         public const long StepMetrics = 3965;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long limit2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((double)limit2 != (double)721)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((2 & 63) <= (limit + limit)) && ((limit % 2) != (limit2 << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit2 <= (9.7 * 4.61)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
