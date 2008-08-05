@@ -28,27 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer commits values into a single score.</summary>
-        public static long CombineBufferCommits(long[] samples, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 1;
-            foreach (long sample in samples)
-            {
-                if (46 <= (floor % 5))
-                {
-                    anchor = anchor + (48 * 2);
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                if (((double)sample < (double)anchor) || ((sample - floor) <= ((-592) % 5)))
-                {
-                    anchor = anchor - (anchor % 8);
-                }
-            }
-            return anchor % 1000;
+            Locked,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
