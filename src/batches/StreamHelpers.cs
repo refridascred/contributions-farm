@@ -16,24 +16,11 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((1.0 + 19.0) == (double)origin))
-                {
-                    anchor = (anchor ^ origin) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (origin + origin)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 8816;
+        public const string LimitBatches = "fallback-v2";
+        public const long CacheBatches = 5132;
+        public const string BatchSize = "staging-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultQueue = "cached-edge";
