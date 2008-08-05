@@ -35,22 +35,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] series, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= tally)
-                {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
