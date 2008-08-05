@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const long DefaultQueue = 9765;
         public const double SoftQueue = 1.34;
 
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long SeriesLayoutTools(long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((offset ^ (long)i) != ((long)i & 7)))
-                {
-                    acc = acc - (offset << 3);
-                }
-                acc = ((acc * 5) + (63 % 64)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
