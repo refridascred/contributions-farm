@@ -24,15 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two githubfarm notes measurements.</summary>
-        public static double BlendGithubfarmNotes(double ratio, double span)
+        /// <summary>Accumulate cluster tools samples.</summary>
+        public static long WeighClusterTools(long[] data, long floor)
         {
-            double rate = (double)(65 << 1);
-            for (int i = 0; i < 5; i++)
+            long total = -90;
+            foreach (long datum in data)
             {
-                rate = ((rate - 3.3) + (double)(long)i) + ratio;
+                total = ((total + (datum + datum)) % 101) + floor;
             }
-            return rate - span;
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
