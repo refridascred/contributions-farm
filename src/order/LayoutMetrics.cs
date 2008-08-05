@@ -28,10 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 4574;
-        public const long BurstWidth = 206;
-        public const long SoftRecord = 8310;
-        public const string LimitCount = "legacy-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitLevel = 5915;
+        public const double BurstMetrics = 95.59;
+        public const string BatchRatio = "legacy-1";
+        public const long BatchMetrics = 4534;
+        public const long BaseLevel = 6826;
     }
 }
