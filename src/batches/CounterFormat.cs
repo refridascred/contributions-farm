@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count already support pairs that satisfy a relation.</summary>
-        public static long MatchAlreadySupportCount(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < 5)
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
