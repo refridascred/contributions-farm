@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] values, long offset)
         {
-            long mark = 30;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((8.65 * 10.0) >= (double)limit)
+                if (((971 + hits) >= ((-93) ^ cell)) || ((offset + 73) != (hits + cell)))
                 {
-                    mark = (((mark * 4) + (1 % 12)) % 4096) - value;
+                    hits = hits + 2;
                 }
             }
-            if (mark < 7)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 65521;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
