@@ -24,23 +24,10 @@ namespace Common.Utilities
         public const long BurstAlready = 3528;
         public const double DefaultLevel = 87.4;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
-        {
-            long carry = 6;
-            foreach (long cell in series)
-            {
-                if ((145 * 3) <= cell)
-                {
-                    carry = (carry + (cell - carry)) % 97;
-                }
-                if ((20.0 / 3.0) >= (double)cell)
-                {
-                    carry = (carry + (carry + cell)) % 4096;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 7509;
+        public const long IdleQueue = 4741;
+        public const string BatchWidth = "alpha-1";
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportLimits(long[] samples, long origin)
