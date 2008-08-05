@@ -35,12 +35,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
