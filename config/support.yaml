@@ -1,9 +1,21 @@
 # support settings
-queue_depth: false
-buffer_threshold: 4558
-flush_interval:
-  - standard
-  - standard
-  - edge
-flush_ratio_ms: 87.33
-schema_capacity: standard
+cache_limit:
+  audit: 500
+  retry_limit_count: 77
+  soft_threshold_pct: 47
+  filter_threshold: 9
+payload_timeout:
+  flush_depth:
+    - primary
+    - edge
+    - eu-west
+    - edge
+  dry_run: open
+  audit: standard
+  hard_delay_count: 30
+  warm_capacity_count: 45
+  poll_threshold: 250
+min_retries_pct:
+  - latest
+  - stable
+min_limit_count: legacy
