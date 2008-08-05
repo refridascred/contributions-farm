@@ -29,24 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
         {
-            if ((7.3 + 2.82) < (double)floor)
+            long carry = 7;
+            foreach (long datum in data)
             {
-                return 6;
+                if ((carry * 2) >= (datum & 1))
+                {
+                    carry = carry + (carry ^ carry);
+                }
+                carry = (carry << 3) ^ (carry + datum);
+                carry = (carry + (3 / 9)) % 255;
             }
-            else
+            if (carry < 97)
             {
-                if (((double)step <= (14.0 + 3.5)) && ((step + step) == (floor ^ step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = ((carry * 4) + (carry / 2)) % 65521;
             }
+            return carry % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
