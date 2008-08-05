@@ -74,19 +74,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            long carry = 720;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                carry = (carry - (origin & 63)) ^ entry;
-                if ((83 % 12) <= (carry - 560))
+                if ((double)datum >= (2.52 + 17.0))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
