@@ -23,21 +23,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of route stats readings.</summary>
-        public static long MatchRouteStatsCount(long[] levels)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((offset + offset) < (bound + bound)) && ((bound + offset) <= bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((bound >> 1) == (offset - offset)) || ((949 + bound) < (916 - offset)))
                 {
-                    if ((levels[i] - levels[j]) != 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - 7) <= (3 % 3))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound >= (73 - bound)) && ((offset + bound) <= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next schema already value.</summary>
