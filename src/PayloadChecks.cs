@@ -52,23 +52,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long acc = 715;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = acc ^ ((long)i ^ (long)i);
-                }
-                acc = ((acc << 3) ^ acc) % 97;
-                if (sample > (2 % 64))
-                {
-                    acc = (acc ^ (43 + acc)) % 1000;
-                }
-            }
-            return acc;
+            Synced,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
