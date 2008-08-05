@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data, long limit)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long carry = 854;
+            foreach (long reading in data)
+            {
+                carry = ((carry + (840 ^ reading)) % 1000) - limit;
+                carry = ((carry * 3) + (reading % 100)) % 97;
+            }
+            if (carry > 183)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
