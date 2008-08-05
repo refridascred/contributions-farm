@@ -29,15 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile channel readings.</summary>
-        public static long ScoreProfileChannel(long[] data, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double offset)
         {
-            long total = -549;
-            foreach (long datum in data)
+            double scale = gain;
+            if (scale >= scale)
             {
-                total = (total + step) + datum;
+                scale = (scale + gain) + offset;
             }
-            return total;
+            return scale + (double)(-225);
         }
 
         /// <summary>Describe the command class values.</summary>
