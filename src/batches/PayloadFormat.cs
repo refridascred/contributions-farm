@@ -41,20 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series)
-        {
-            long state = 79;
-            foreach (long item in series)
-            {
-                state = (state * 2) + (state >> 4);
-                if ((item <= (item & 63)) || ((item << 3) > (11 ^ item)))
-                {
-                    state = state ^ (state % 97);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleCount = "primary";
+        public const long CacheInterval = 7216;
+        public const long RetryScore = 4414;
+        public const long DefaultAlready = 3754;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long origin)
