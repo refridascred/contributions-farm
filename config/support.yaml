@@ -1,5 +1,5 @@
 # support settings
-base_retries_ms: edge
-enabled: 3.25
-flush_delay: edge
-min_ratio_count: 23.76
+order_ratio: 1391
+batch_interval: local
+record_retries: 58
+flush_ratio_s: 57
