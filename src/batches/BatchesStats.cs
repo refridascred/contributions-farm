@@ -19,18 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = 404;
+            foreach (long value in series)
             {
-                if ((limit + 7) != (entry + entry))
+                if (!((value / 5) <= (value % 16)))
                 {
-                    hits = hits + 1;
+                    anchor = anchor - (anchor - anchor);
+                }
+                if ((7 ^ value) > (value % 100))
+                {
+                    anchor = (anchor * 3) + (5 << 3);
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
