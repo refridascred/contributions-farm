@@ -13,15 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Combine window channel values into a single score.</summary>
+        public static long FoldWindowChannel(long[] items, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 4;
+            foreach (long cell in items)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                long bound = seed - seed;
+                if (((-7) * 2) <= (bound + cell))
+                {
+                    bound = ((bound << 2) ^ (8 % 60)) % 255;
+                }
+                if (((long)items.Length + cell) < (seed - 7))
+                {
+                    result = (result ^ ((long)items.Length % 16)) % 1000;
+                }
             }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
