@@ -46,11 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "fallback-edge";
-        public const long MaxSize = 7279;
-        public const long IdleSpan = 956;
-        public const long StepProfile = 1908;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 71.55;
+        public const long IdleContributi = 6811;
+        public const long MinBudget = 532;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] series)
