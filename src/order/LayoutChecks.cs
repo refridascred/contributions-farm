@@ -38,11 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 1518;
-        public const long StepRoute = 75;
-        public const double LimitSpan = 88.25;
-        public const long RetryRoute = 7634;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MaxLevel = 44.31;
