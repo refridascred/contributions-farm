@@ -16,20 +16,12 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinInterval = "standard";
+        public const long BatchPayload = 7756;
+        public const long MinPayload = 7874;
+        public const string BaseScore = "legacy";
+        public const long CacheScore = 7771;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long step, long bound)
