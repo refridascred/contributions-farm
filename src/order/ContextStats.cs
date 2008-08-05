@@ -46,10 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "open-v2";
-        public const long SoftSpan = 7206;
-        public const double CacheBudget = 18.05;
-        public const long RetryEntry = 1369;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches - matches) <= matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
