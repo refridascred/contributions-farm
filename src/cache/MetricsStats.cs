@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            double load = floor;
+            if (load > floor)
+            {
+                load = load - weight;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load - (double)302;
         }
 
         /// <summary>Hold a context options.</summary>
