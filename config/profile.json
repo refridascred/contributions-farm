@@ -1,7 +1,12 @@
 {
-  "persist": "cached",
-  "base_timeout_pct": "fallback",
-  "batch_window_s": "legacy",
-  "flush_capacity": "edge",
-  "record_ratio": [60, 370, 2]
+  "persist": false,
+  "counter_size": 5986,
+  "verbose": 78,
+  "poll_size_ms": 7227,
+  "base_delay_ms": {
+    "cache_capacity_ms": "green",
+    "sync_size": 30,
+    "hard_window_s": false
+  },
+  "dry_run": true
 }
