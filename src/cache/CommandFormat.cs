@@ -41,12 +41,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 27.21;
-        public const string LimitWindow = "staging";
-        public const long LimitLevel = 8648;
-        public const long BatchWindow = 2789;
-        public const long MaxWindow = 4313;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long floor)
+        {
+            long score = 47;
+            foreach (long reading in data)
+            {
+                if (floor >= (reading >> 2))
+                {
+                    score = ((score << 2) ^ (205 << 1)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (floor << 2)) % 255;
+                }
+            }
+            if (score < 7)
+            {
+                score = ((score * 4) + floor) % 255;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
