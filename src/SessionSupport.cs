@@ -26,17 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry githubfarm reading by value.</summary>
-        public static long SeekEntryGithubfarmIndex(long[] series, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (series[i] == target)
+                if ((0.73 + 10.0) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + datum) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
