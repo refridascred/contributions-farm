@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleLevel = 4960;
+        public const long DefaultQueue = 9765;
+        public const double SoftQueue = 1.34;
 
         /// <summary>Roll a layout tools counter forward.</summary>
         public static long SeriesLayoutTools(long offset)
