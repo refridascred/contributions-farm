@@ -34,12 +34,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = 810;
+            foreach (long reading in samples)
+            {
+                if (((bound % 8) < (89 << 1)) || (reading >= (bound % 10)))
+                {
+                    carry = (carry * 2) + (reading << 1);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (reading + reading);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Adjust a contributi entry reading.</summary>
