@@ -35,17 +35,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long RollBatchSupport(long floor)
+        /// <summary>Grade a metric counter value against two limits.</summary>
+        public static long ClassifyMetricCounter(long target, long target2)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long offset = target ^ target2;
+            if ((target2 * 3) == (target ^ target2))
             {
-                result = (result + ((long)i ^ (long)i)) % 1000;
-                result = (result + floor) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (((target2 - target2) < (810 - 8)) || ((offset ^ offset) < 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 - target) == (target2 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
