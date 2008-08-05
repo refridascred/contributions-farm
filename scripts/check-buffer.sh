@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=34
+BUFFER_LIMIT=367
 log "limit is ${BUFFER_LIMIT}"
