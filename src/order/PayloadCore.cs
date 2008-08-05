@@ -18,12 +18,13 @@ namespace Common.Utilities
             return drift + (weight - bias);
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Paused,
-            Synced,
+            Idle,
             Active,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
