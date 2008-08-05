@@ -32,38 +32,12 @@ namespace Common.Utilities
         public const double IdleRoute = 13.06;
         public const long MinLevel = 3064;
 
-        /// <summary>Rank account profile input into a small class.</summary>
-        public static long SortAccountProfile(long seed, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((double)seed == (11.0 - 7.4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 3) == (seed - 532))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (18.0 * 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step > (step >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
