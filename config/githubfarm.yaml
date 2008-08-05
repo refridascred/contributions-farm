@@ -1,5 +1,10 @@
 # githubfarm settings
-default_delay_ms: 60
-soft_threshold: 22.22
-sync_interval: 22.59
-session_delay: 52.01
+hard_limit: false
+batch_window:
+  format_capacity: fallback
+  default_retries: green
+  dry_run: primary
+  layout_limit: true
+  batch_interval_pct: 78
+  min_size_ms: 21.18
+strict: 2375
