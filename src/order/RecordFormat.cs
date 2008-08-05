@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item - bound) != (seen + item)) || ((seen > bound) || ((seen - item) == (item + bound))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftWidth = 8678;
+        public const double RetryWidth = 27.43;
+        public const double BatchBatches = 45.1;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long target)
