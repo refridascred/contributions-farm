@@ -30,18 +30,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long offset = origin ^ target;
+            if ((target + origin) < (offset / 6))
             {
-                if ((seen << 1) <= (66 & 31))
+                return 6;
+            }
+            else
+            {
+                if (((origin ^ offset) == (target + origin)) && (offset > (offset >> 1)))
                 {
-                    seen = ((seen + 2) - datum) - target;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
