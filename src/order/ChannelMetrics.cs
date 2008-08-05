@@ -37,32 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a tools format value against two limits.</summary>
-        public static long SortToolsFormat(long origin, long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long step = origin ^ offset;
-            if ((offset + step) <= (origin + step))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 4) >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (430 <= (offset & 3))
+                    if ((samples[i] + samples[j]) != 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
