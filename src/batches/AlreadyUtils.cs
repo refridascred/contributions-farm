@@ -39,15 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route batch value.</summary>
-        public static double ProjectRouteBatch(double ratio, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels, long offset)
         {
-            double load = ratio + (double)306;
-            if (load <= load)
+            long mix = 41;
+            foreach (long sample in levels)
             {
-                load = load - (6.87 - offset);
+                mix = (((mix + 7) % 1000) - sample) - offset;
             }
-            return load + (double)21;
+            return mix % 4096;
         }
 
         /// <summary>Hold a command header.</summary>
