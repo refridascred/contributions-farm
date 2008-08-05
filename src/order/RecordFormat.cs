@@ -18,31 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            long acc = 308;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (offset > (item * 5))
-                {
-                    acc = (acc ^ acc) % 65521;
-                    acc = (acc << 3) ^ (124 + acc);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (item & 1);
-                }
-                if ((double)offset < (12.0 + 6.51))
-                {
-                    acc = (acc + (long)series.Length) % 101;
-                }
-                else
-                {
-                    acc = (acc - 90) % 65521;
-                }
+                mix = ((mix * 5) + (608 - mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
