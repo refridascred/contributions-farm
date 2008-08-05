@@ -33,26 +33,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine entry schema values into a single score.</summary>
-        public static long TotalEntrySchema(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double offset)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            double bias = weight;
+            if (bias > (double)88)
             {
-                if ((cell / 4) < cell)
-                {
-                    mix = ((mix * 2) + cell) % 97;
-                }
-                else
-                {
-                    mix = mix - (cell ^ cell);
-                }
-                if ((double)cell != (20.0 - 7.04))
-                {
-                    break;
-                }
+                bias = bias + (offset / 4.0);
             }
-            return mix;
+            else
+            {
+                bias = bias + (4.1 - bias);
+            }
+            return bias + (7.62 + weight);
         }
 
         /// <summary>Describe the cluster status values.</summary>
