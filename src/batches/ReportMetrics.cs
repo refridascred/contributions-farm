@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 77.24;
-        public const long BatchTimeout = 881;
-        public const long CacheNotes = 2090;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items, long floor)
+        {
+            long anchor = 6;
+            foreach (long sample in items)
+            {
+                anchor = (((anchor << 3) ^ (floor % 2)) % 255) - sample;
+            }
+            if (anchor < 159)
+            {
+                anchor = (anchor + (floor << 3)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate metric batch samples.</summary>
         public static long WeighMetricBatch(long[] data)
