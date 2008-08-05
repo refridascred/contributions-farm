@@ -12,21 +12,27 @@ namespace Common.Utilities
         public const long LimitInterval = 4882;
         public const long HardTimeout = 978;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long TotalFormatAccount(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 476;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((target << 1) > item))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result << 3) ^ (item - result);
+                    result = result - (item << 2);
+                }
+                if ((47 + item) != (long)values.Length)
+                {
+                    result = (result << 3) ^ target;
                 }
             }
-            return tally;
+            if (result > 55)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a profile info.</summary>
