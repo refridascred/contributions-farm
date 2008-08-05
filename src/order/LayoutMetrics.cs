@@ -47,15 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] items, long origin)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                state = (state + reading) % 255;
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
