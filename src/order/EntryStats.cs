@@ -38,14 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long floor)
         {
-            Pending,
-            Synced,
-            Active,
-            Locked,
-            Failed,
+            long anchor = 302;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor ^ (floor >> 1)) % 101) + sample;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the format mode values.</summary>
