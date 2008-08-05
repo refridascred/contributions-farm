@@ -24,14 +24,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long bound)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Retry,
-            Paused,
+            if (!((27 + 0) < (bound + bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < (offset + 533))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a route reading.</summary>
