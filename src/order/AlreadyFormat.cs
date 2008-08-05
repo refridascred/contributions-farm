@@ -38,19 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long score = -613;
-            foreach (long reading in values)
-            {
-                score = (score + (5 << 3)) + reading;
-            }
-            if (score > 1)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
