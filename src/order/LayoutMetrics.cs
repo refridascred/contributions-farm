@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long limit)
         {
-            double drift = (double)(605 - 24);
-            return ((drift + (8.0 / 3.0)) + weight) + floor;
+            long prev = origin + limit;
+            if ((limit & 127) <= (origin + prev))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((prev + limit) == (limit + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ origin) != (21 ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
