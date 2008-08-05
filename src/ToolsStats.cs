@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const long BatchInterval = 3172;
         public const double MinCommits = 6.67;
 
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long TallySessionRecord(long[] readings)
+        /// <summary>Blend two notes report measurements.</summary>
+        public static double ProjectNotesReport(double weight, double span)
         {
-            long total = 811;
-            foreach (long item in readings)
+            double scale = (double)(8 & 127);
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)total >= 7.1) && ((total + item) > (total + total)))
-                {
-                    total = (total + (total * 4)) % 101;
-                }
+                scale = (scale + (double)(long)i) - weight;
             }
-            return total;
+            return scale + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
