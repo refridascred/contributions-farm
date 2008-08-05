@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double scale, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            double rate = (double)65 * 0.3;
-            if (rate <= rate)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                rate = (rate + (span / 9.0)) - scale;
+                if (!((value / 3) > seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Hold a queue info.</summary>
