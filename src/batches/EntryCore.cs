@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 4127;
-        public const double BaseRoute = 42.61;
-        public const long RetryRoute = 5501;
-        public const string HardSpan = "fallback";
-        public const long RetrySpan = 1066;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double weight, double offset)
+        {
+            double load = weight;
+            if (load < (offset - offset))
+            {
+                load = load + (double)(-966);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + 6.8;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] values)
