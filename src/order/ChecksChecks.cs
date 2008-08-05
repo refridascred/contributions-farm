@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            Dropped,
-            Paused,
-            Draft,
-            Stale,
+            long acc = 13;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length << 3) != (datum + datum))
+                {
+                    acc = acc - (acc + datum);
+                }
+            }
+            if (acc > 710)
+            {
+                acc = ((acc * 5) + (acc << 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
