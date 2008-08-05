@@ -33,11 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBudget = 774;
-        public const long MinWidth = 1698;
-        public const string LimitSize = "staging-edge";
-        public const long HardBatches = 3580;
-        public const long CacheBatches = 7507;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
