@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score + origin) % 65521) ^ (long)i2;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
