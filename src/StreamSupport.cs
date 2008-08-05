@@ -29,9 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7815;
-        public const double RetryAccount = 82.69;
-        public const long BurstInterval = 8273;
+        /// <summary>Count the account layout entries that pass the check.</summary>
+        public static long AuditAccountLayoutGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)hits >= (0.6 * 2.5)) && (hits <= (4 - value))) || ((value + value) < 8))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
