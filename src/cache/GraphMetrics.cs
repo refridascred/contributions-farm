@@ -16,12 +16,19 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinInterval = "standard";
-        public const long BatchPayload = 7756;
-        public const long MinPayload = 7874;
-        public const string BaseScore = "legacy";
-        public const long CacheScore = 7771;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((matches ^ cell) >= cell) && !(9.0 < (double)target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long step, long bound)
