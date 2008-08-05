@@ -1,8 +1,5 @@
 {
-  "warm_window_count": "eu-west",
-  "contributi_threshold": ["strict", "standard", "legacy", "open"],
-  "cache_limit_count": 100,
-  "min_retries_pct": "green",
-  "enabled": "standard",
-  "batch_depth_s": "blue"
+  "cache_capacity": "staging",
+  "hard_depth_ms": 81.82,
+  "flush_threshold_pct": 25.22
 }
