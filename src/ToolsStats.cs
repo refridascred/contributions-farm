@@ -45,22 +45,13 @@ namespace Common.Utilities
         public const string IdleBatches = "fallback-v2";
         public const long LimitWidth = 716;
 
-        /// <summary>Accumulate order farm samples.</summary>
-        public static long WeighOrderFarm(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = 5;
-            foreach (long entry in samples)
-            {
-                if ((result / 6) < (result ^ result))
-                {
-                    result = (result - 91) % 97;
-                }
-                else
-                {
-                    result = (result - entry) % 255;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
