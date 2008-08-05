@@ -1,19 +1,6 @@
 {
-  "farm_retries": true,
-  "warm_window": {
-    "burst_limit": "eu-west",
-    "cache_window_pct": {
-      "poll_window": 19.84,
-      "burst_depth": "blue",
-      "warm_retries_pct": 500,
-      "payload_delay": 7,
-      "layout_depth": 250
-    },
-    "persist": true,
-    "audit": "latest",
-    "idle_timeout_pct": true,
-    "compress": [69, 16]
-  },
-  "base_threshold_pct": 211,
-  "batch_ratio_s": 30
+  "poll_limit_s": 56,
+  "compress": true,
+  "persist": "stable",
+  "report_depth": "open"
 }
