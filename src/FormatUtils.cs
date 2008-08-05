@@ -60,18 +60,13 @@ namespace Common.Utilities
             return mean + (bias + bias2);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 6;
-            foreach (long datum in levels)
-            {
-                if (!((mix - 788) < mix))
-                {
-                    mix = ((mix << 3) ^ (datum / 9)) % 255;
-                }
-            }
-            return mix;
+            New,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
