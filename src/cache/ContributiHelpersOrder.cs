@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            double ratio = weight;
-            if (ratio > (span + weight))
-            {
-                ratio = ratio + (double)2;
-            }
-            else
-            {
-                ratio = ratio - (double)59;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (ratio * 3.88);
+            double gain = (scale - scale) * 9.4;
+            return (gain - 6.2) + offset;
         }
 
         /// <summary>Describe the counter level values.</summary>
