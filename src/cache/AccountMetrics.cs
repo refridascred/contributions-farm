@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            Stale,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 7) >= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
