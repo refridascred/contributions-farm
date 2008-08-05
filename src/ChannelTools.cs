@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum & 31) == (limit - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)limit == (8.97 + 3.4))
-                {
-                    sum = (sum - sum) % 255;
-                    sum = sum - (sum << 1);
-                }
-                else
-                {
-                    sum = (sum * 3) + (sum + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
