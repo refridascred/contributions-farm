@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((hits << 1) == (hits ^ item)))
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route schema entry stays within the limit.</summary>
