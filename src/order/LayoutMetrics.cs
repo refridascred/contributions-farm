@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Look up the position of a channel counter sample.</summary>
+        public static long FindChannelCounterIndex(long[] values, long origin)
         {
-            Draft,
-            Locked,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
