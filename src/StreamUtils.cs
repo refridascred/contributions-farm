@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] data, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long mark = 561;
+            foreach (long reading in readings)
             {
-                if (value >= floor)
+                if (((long)readings.Length + mark) > (76 << 3))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark * 3) + reading) % 4096;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Hold a editor record.</summary>
