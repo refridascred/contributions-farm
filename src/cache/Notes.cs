@@ -39,11 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long target)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
