@@ -103,21 +103,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
