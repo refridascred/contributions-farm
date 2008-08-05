@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long TallyLayoutPayloadHits(long[] values, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!((floor + floor) > 19))
+                if ((seen & 127) >= seen)
                 {
-                    mark = mark + floor;
+                    seen = ((seen + 1) - reading) + target;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
