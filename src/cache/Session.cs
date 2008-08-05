@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (entry >= step)
+                if (sample < floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
