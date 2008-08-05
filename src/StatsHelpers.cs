@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up command filter samples.</summary>
-        public static long MatchCommandFilterCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9 & 63) == (value & 3))
                 {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of channel support entries.</summary>
