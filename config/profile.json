@@ -1,12 +1,13 @@
 {
-  "hard_ratio": 79.55,
-  "notes_threshold": "blue",
-  "report_delay": 500,
-  "readonly": {
-    "poll_size_ms": 7949,
-    "cache_limit_count": "strict",
-    "route_delay": "primary",
-    "record_timeout": ["fallback", "strict"],
-    "readonly": 57.43
-  }
+  "commits_delay": {
+    "min_size": 500,
+    "poll_delay": 1024,
+    "flush_window_ms": 58,
+    "sync_timeout": 38.27
+  },
+  "queue_limit": 8721,
+  "audit": true,
+  "batch_interval": "green",
+  "dry_run": 19.78,
+  "base_retries_count": 56.62
 }
