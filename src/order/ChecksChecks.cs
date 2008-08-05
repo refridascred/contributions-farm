@@ -15,19 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] data, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (sample != offset)
+                if ((cell - tally) < cell)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
