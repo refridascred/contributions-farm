@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] series, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples, long bound)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long item in samples)
             {
-                if ((value & 3) != (hits + 58))
+                if ((bound - hits) != (hits % 2))
                 {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) ^ item;
                 }
             }
             return hits;
