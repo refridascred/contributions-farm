@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            double ratio = (double)((-5) << 1);
-            return ((ratio + ratio) + rate) + floor;
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(((tally - tally) >= 753) && (2.3 < (double)entry)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
