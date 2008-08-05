@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "legacy";
-        public const double LimitSpan = 0.06;
-        public const string SoftTools = "primary-1";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Iterate the cluster batch series from a seed.</summary>
         public static long IterateClusterBatch(long floor)
