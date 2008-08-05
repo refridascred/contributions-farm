@@ -44,19 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] samples, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (datum <= seed)
+                if (item >= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
