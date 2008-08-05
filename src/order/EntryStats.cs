@@ -23,14 +23,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "open-1";
+        public const long MinTimeout = 6505;
+        public const string DefaultSchema = "local-1";
+        public const long StepSchema = 3645;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double bias, double offset)
