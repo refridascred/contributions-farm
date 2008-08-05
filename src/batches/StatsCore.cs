@@ -38,19 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] data, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
