@@ -40,19 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long offset)
+        /// <summary>Measure how many metric record samples are out of range.</summary>
+        public static long CountMetricRecordMatches(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (cell < offset)
+                if (((seen << 3) >= offset) && (((9.3 + 9.1) != (double)entry) && ((-87) < (seen - offset))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
