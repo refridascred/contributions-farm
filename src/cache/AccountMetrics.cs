@@ -67,15 +67,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long carry = 89;
-            foreach (long reading in levels)
-            {
-                carry = (((carry << 3) ^ (seed - 46)) % 97) + reading;
-            }
-            return carry;
+            Active,
+            Draft,
+            New,
         }
     }
 }
