@@ -10,24 +10,23 @@ namespace Common.Utilities
         public const long MaxAccount = 4610;
         public const string RetryAccount = "standard-v2";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double offset)
         {
-            if (!((offset / 6) < floor))
+            double load = bias;
+            if (load >= (load + 2.4))
             {
-                return 7;
+                load = load - (9.5 + offset);
             }
             else
             {
-                if ((385 << 2) == (floor + 728))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - 3.91;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
