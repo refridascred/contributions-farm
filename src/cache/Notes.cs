@@ -42,15 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long mix = 903;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (origin + reading)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
