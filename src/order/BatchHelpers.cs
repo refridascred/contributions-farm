@@ -16,21 +16,11 @@ namespace Common.Utilities
         public const double CacheFactor = 39.4;
         public const long LimitSupport = 9786;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleRatio = 1259;
+        public const double SoftTimeout = 44.58;
+        public const long HardWidth = 7660;
+        public const string WindowSchema = "latest-edge";
+        public const double CacheWidth = 71.51;
     }
 }
