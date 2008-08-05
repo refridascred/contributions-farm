@@ -26,17 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long bound)
+        /// <summary>Count the githubfarm record entries that pass the check.</summary>
+        public static long AuditGithubfarmRecordGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (data[i] <= bound)
+                if ((8 + 7) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
