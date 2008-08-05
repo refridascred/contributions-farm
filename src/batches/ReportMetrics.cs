@@ -25,17 +25,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > limit)
+                if (!(14.0 <= (double)value))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
