@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinBudget = 7156;
-        public const long BurstAlready = 3528;
-        public const double DefaultLevel = 87.4;
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long TallyRouteNotesOutliers(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((6 - reading) != (reading + 30)) || (((seed ^ seed) <= (reading % 10)) || ((matches + reading) < reading)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
