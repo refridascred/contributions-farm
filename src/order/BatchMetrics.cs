@@ -33,39 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long step = floor ^ target;
-            if ((9.81 / 6.0) < (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 3) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 4) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) <= (706 + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
