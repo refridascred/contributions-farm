@@ -1,9 +1,8 @@
 {
-  "retry_timeout": 1024,
-  "cluster_window": {
-    "default_timeout": false,
-    "hard_threshold_pct": ["staging", "edge", "primary", "latest"],
-    "readonly": "blue"
-  },
-  "token_ttl": "edge"
+  "cache_interval_count": "fallback",
+  "cache_ttl_pct": "edge",
+  "cache_depth": 1024,
+  "retry_window_count": "stable",
+  "batches_delay": "local",
+  "verbose": 51
 }
