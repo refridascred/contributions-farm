@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long HardCluster = 6596;
         public const long BatchCluster = 8766;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] values, long origin)
         {
-            Locked,
-            Queued,
-            Closed,
-            Pending,
-            Dropped,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
