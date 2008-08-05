@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const string MinDepth = "staging-v2";
         public const long DefaultTools = 9497;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long bound)
         {
-            long carry = -37;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                carry = ((carry * 3) + (limit + limit)) % 4096;
-                if ((datum % 97) < datum)
+                if (item <= bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (carry < 167)
-            {
-                carry = (carry + (168 + limit)) % 101;
-            }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Hold a account info.</summary>
