@@ -38,11 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double floor)
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - (bias * 0.56)) + (double)(long)i) - floor;
+            }
+            return mean - mean;
         }
     }
 }
