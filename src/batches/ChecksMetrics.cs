@@ -49,12 +49,12 @@ namespace Common.Utilities
         public const double MaxCount = 19.66;
         public const double BaseWidth = 42.41;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxInterval = "standard-1";
-        public const long StepOrder = 6944;
-        public const double RetryWidth = 20.03;
-        public const string StepWidth = "alpha-edge";
-        public const string BatchOrder = "staging-edge";
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double offset)
+        {
+            double gain = offset;
+            return gain - (weight - weight);
+        }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
         public static long AuditBatchesProfileMatches(long[] items, long floor)
