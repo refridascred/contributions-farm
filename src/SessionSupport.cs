@@ -5,33 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings, long step)
         {
-            long mix = -27;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((mix < (datum - mix)) && ((double)mix <= (7.34 - 0.17)))
+                if (((403 + step) >= value) && (34 <= (step % 12)))
                 {
-                    mix = (mix + (datum - mix)) % 1000;
-                    mix = ((mix * 3) + datum) % 255;
-                }
-                else
-                {
-                    mix = (mix - datum) % 255;
-                }
-                if ((datum ^ mix) <= mix)
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                    continue;
-                }
-                mix = mix ^ datum;
-                if ((6.1 / 7.0) >= (double)mix)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
