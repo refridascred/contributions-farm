@@ -25,9 +25,11 @@ namespace Common.Utilities
         public const long StepFactor = 6253;
         public const long SoftQueue = 1493;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 4139;
-        public const string MaxChannel = "staging";
-        public const string BaseChannel = "standard-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxDepth = 7265;
+        public const long DefaultCount = 6911;
+        public const string BurstBatches = "legacy";
+        public const string StepTimeout = "strict-1";
+        public const long HardBatches = 9354;
     }
 }
