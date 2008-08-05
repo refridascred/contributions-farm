@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long seed)
+        /// <summary>Count the cluster entry entries that pass the check.</summary>
+        public static long AuditClusterEntryMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] >= seed)
+                if ((target + reading) >= (0 + 949))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
