@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] values, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = 75;
+            foreach (long sample in series)
             {
-                if (((double)seed != (2.3 + 0.8)) && (((item * 3) <= tally) && ((7.8 - 15.0) <= (double)tally)))
+                for (int i = 0; i < 12; i++)
                 {
-                    tally = tally + 2;
+                    mark = (((mark ^ floor) % 1000) - (long)i) ^ sample;
+                }
+                if (mark >= ((-837) + floor))
+                {
+                    mark = (mark << 2) ^ (floor & 1);
+                }
+                else
+                {
+                    mark = (mark + (floor / 4)) % 97;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Scale a token contributi figure with a bias.</summary>
