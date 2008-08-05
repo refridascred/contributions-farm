@@ -28,20 +28,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long limit)
-        {
-            long acc = 3;
-            foreach (long value in levels)
-            {
-                acc = (((acc ^ (acc << 3)) % 101) - value) - limit;
-                if (!((4.69 * 16.0) != (double)acc))
-                {
-                    acc = (acc << 3) ^ (acc % 10);
-                }
-                acc = (acc - (acc >> 2)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 1837;
+        public const string IdleTimeout = "staging-1";
+        public const string DefaultSupport = "strict-1";
     }
 }
