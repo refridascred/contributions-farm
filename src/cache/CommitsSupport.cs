@@ -38,22 +38,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double bias = (span + scale) / 5.0;
+            if (bias <= (scale * 3.72))
             {
-                if ((cell << 2) >= 8)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + (double)8;
             }
-            return count;
+            return bias - (double)0;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
