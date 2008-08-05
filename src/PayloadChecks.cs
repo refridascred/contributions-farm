@@ -84,22 +84,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long CountMetricsAccountMatches(long[] items, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((matches > (61 * 4)) && (offset < (offset ^ 45))) && ((value >> 2) >= offset))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
