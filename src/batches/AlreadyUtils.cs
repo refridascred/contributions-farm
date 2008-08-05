@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 2047;
-        public const long DefaultTools = 5603;
-        public const long MaxTools = 8631;
-        public const long MinTools = 2567;
-        public const double DefaultBudget = 18.47;
+        /// <summary>Roll a buffer batches counter forward.</summary>
+        public static long RollBufferBatches(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((step / 2) >= 2)
+                {
+                    mix = mix - (step >> 1);
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
