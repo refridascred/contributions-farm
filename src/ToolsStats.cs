@@ -50,22 +50,15 @@ namespace Common.Utilities
             return gain + (double)765;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values, long floor)
+        /// <summary>Fold a list of contributi queue readings.</summary>
+        public static long FoldContributiQueue(long[] data, long step)
         {
-            long mix = 1;
-            foreach (long value in values)
+            long mark = 79;
+            foreach (long datum in data)
             {
-                if (((double)floor == (5.1 * 1.02)) || ((1.9 * 12.0) != (double)mix))
-                {
-                    mix = ((mix * 3) + (floor >> 5)) - value;
-                }
+                mark = ((((mark * 4) + mark) % 65521) - datum) - step;
             }
-            if (mix < 2)
-            {
-                mix = (mix ^ (333 - floor)) % 97;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a token record.</summary>
