@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardFactor = 4350;
-        public const long HardRatio = 847;
-        public const string CacheRoute = "latest-edge";
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Synced,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
