@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!!((datum & 127) > (count >> 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
