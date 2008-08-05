@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const double DefaultQueue = 3.23;
         public const long BurstDepth = 7563;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long step)
-        {
-            if ((7.3 / 8.0) != (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step != (12.0 - 5.25))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)seed >= (0.03 / 7.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 4423;
+        public const long MaxSupport = 7995;
+        public const double CacheFactor = 39.4;
+        public const long LimitSupport = 9786;
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] readings)
