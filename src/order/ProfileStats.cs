@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command support value from a seed.</summary>
-        public static long IterateCommandSupport(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] readings, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (step < (step ^ step))
+                if (((79 - entry) < (limit >> 3)) && (limit >= (limit * 5)))
                 {
-                    result = ((result << 3) ^ (step + step)) % 97;
+                    count = count + 2;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the cache buffer series from a seed.</summary>
