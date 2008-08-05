@@ -43,12 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Look up the position of a already window sample.</summary>
+        public static long LocateAlreadyWindowIndex(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
