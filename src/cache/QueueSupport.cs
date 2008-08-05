@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of tools entry readings.</summary>
-        public static long OverlapToolsEntryCount(long[] items)
+        /// <summary>Fold a list of githubfarm session readings.</summary>
+        public static long CombineGithubfarmSession(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = ((result * 3) + (long)levels.Length) % 4096;
+                if (reading <= (origin >> 3))
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - result) % 65521;
                 }
             }
-            return hits;
+            if (result < 95)
+            {
+                result = (result ^ (result & 255)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
