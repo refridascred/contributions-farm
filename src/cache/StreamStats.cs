@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 77.95;
-        public const long DefaultCommits = 6578;
-        public const long CacheCommits = 1012;
-        public const double BatchLevel = 69.02;
-        public const string StepCommits = "cached-1";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((3 % 12) <= (count / 2))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheSize = 3824;
