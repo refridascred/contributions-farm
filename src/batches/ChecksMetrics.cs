@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Locked,
-            Ready,
-            Failed,
-            New,
-            Paused,
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
