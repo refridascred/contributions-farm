@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long SoftCommand = 3146;
         public const long RetryRatio = 1755;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits ^ 12) > hits)
+                if (values[i] < bound)
                 {
-                    hits = (hits + 2) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
